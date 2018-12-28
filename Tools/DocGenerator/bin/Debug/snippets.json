@@ -1,0 +1,70 @@
+	//------------------------------------dsl文档定义部分----------------------------------------
+	"@snippets 1": {
+		"prefix": "@snippets",
+		"body": [
+			"@snippets(prefix)",
+			"$____begin____",
+			"",
+			"",
+			"",
+			"$_____end_____",
+			"@description",
+			"$____begin____",
+			"",
+			"",
+			"",
+			"$_____end_____",
+			"@doc",
+			"$____begin____",
+			"",
+			"",
+			"",
+			"$_____end_____;",
+			"//---------------------------------------------------------------------------------------------------------",
+		],
+		"description": "define dsl doc"
+	},
+	"@snippets 2": {
+		"prefix": "@snippets",
+		"body": [
+			"$_____end_____",
+			"@snippets",
+			"$____begin____",
+			"",
+			"",
+			"",
+			"$_____end_____",
+			"@description",
+			"$____begin____",
+			"",
+			"",
+			"",
+		],
+		"description": "add dsl snippets"
+	},
+	"@include": {
+		"prefix": "@include",
+		"body": [
+			"@include(\"doc.txt\");",
+		],
+		"description": "add dsl include"
+	},
+	"@doc": {
+		"prefix": "@doc",
+		"body": [
+			"@doc",
+			"$____begin____",
+			"",
+			"",
+			"",
+			"$_____end_____;",
+		],
+		"description": "add dsl doc"
+	},
+	"@order": {
+		"prefix": "@order",
+		"body": [
+			"@order(1);",
+		],
+		"description": "add dsl order"
+	},

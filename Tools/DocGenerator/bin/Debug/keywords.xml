@@ -1,0 +1,1 @@
+				<string>(?&lt;!\.)\b(loop|foreach|while|looplist|if|elseif|else|skill|section|oninterrupt|onstop|emitskill|hitskill|script|story|local|onmessage|onnamespacedmessage)\b</string>

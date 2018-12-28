@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{0DF1554E-BC94-4149-8CEE-6A941A2EC2BD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{32C39BCB-0861-4E92-B1E6-93F7C2DC63D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Infrastructure\Common\Common.csproj", "{1C8280CD-EB93-4849-940E-A99EDDF811D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorySystem", "Infrastructure\StorySystem\StorySystem.csproj", "{F1D962E1-3B17-4597-B542-BCB657E75829}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameKernel", "App\GameKernel\GameKernel.csproj", "{F5FC4012-CE76-4AD8-B04A-25B1A0BF7EEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C8280CD-EB93-4849-940E-A99EDDF811D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C8280CD-EB93-4849-940E-A99EDDF811D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C8280CD-EB93-4849-940E-A99EDDF811D6}.Debug|x86.ActiveCfg = Debug|x86
+		{1C8280CD-EB93-4849-940E-A99EDDF811D6}.Debug|x86.Build.0 = Debug|x86
+		{1C8280CD-EB93-4849-940E-A99EDDF811D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C8280CD-EB93-4849-940E-A99EDDF811D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C8280CD-EB93-4849-940E-A99EDDF811D6}.Release|x86.ActiveCfg = Release|x86
+		{1C8280CD-EB93-4849-940E-A99EDDF811D6}.Release|x86.Build.0 = Release|x86
+		{F1D962E1-3B17-4597-B542-BCB657E75829}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1D962E1-3B17-4597-B542-BCB657E75829}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1D962E1-3B17-4597-B542-BCB657E75829}.Debug|x86.ActiveCfg = Debug|x86
+		{F1D962E1-3B17-4597-B542-BCB657E75829}.Debug|x86.Build.0 = Debug|x86
+		{F1D962E1-3B17-4597-B542-BCB657E75829}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1D962E1-3B17-4597-B542-BCB657E75829}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1D962E1-3B17-4597-B542-BCB657E75829}.Release|x86.ActiveCfg = Release|x86
+		{F1D962E1-3B17-4597-B542-BCB657E75829}.Release|x86.Build.0 = Release|x86
+		{F5FC4012-CE76-4AD8-B04A-25B1A0BF7EEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5FC4012-CE76-4AD8-B04A-25B1A0BF7EEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5FC4012-CE76-4AD8-B04A-25B1A0BF7EEC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F5FC4012-CE76-4AD8-B04A-25B1A0BF7EEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5FC4012-CE76-4AD8-B04A-25B1A0BF7EEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5FC4012-CE76-4AD8-B04A-25B1A0BF7EEC}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1C8280CD-EB93-4849-940E-A99EDDF811D6} = {32C39BCB-0861-4E92-B1E6-93F7C2DC63D3}
+		{F1D962E1-3B17-4597-B542-BCB657E75829} = {32C39BCB-0861-4E92-B1E6-93F7C2DC63D3}
+		{F5FC4012-CE76-4AD8-B04A-25B1A0BF7EEC} = {0DF1554E-BC94-4149-8CEE-6A941A2EC2BD}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,24 @@
+script(main)
+{
+  local
+  {
+  };
+  onmessage("start")
+  {
+    bindui(@window){
+      onevent("button","cont","Button");
+    };
+    @window.SetActive(changetype(0,"bool"));
+  };
+  onmessage("show_victory")
+  {
+    @window.SetActive(changetype(1,"bool"));
+  };
+  onnamespacedmessage("on_click")args($tag,$inputs,$toggles,$sliders,$dropdowns)
+  {
+    @window.SetActive(changetype(0,"bool"));
+    if($tag=="cont"){
+      firemessage("on_victory_button_click");
+    };
+  };
+};

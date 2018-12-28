@@ -1,0 +1,22 @@
+19-21-49-636:======GameLog Start (Sunday, 23 December 2018, 19:21:49)======
+19-21-49-702:[Debug]:Time:19-21-49-702:StoryInstance.Init message handler num:4 True
+19-21-49-703:[Info]:ParseStory scene_main 0
+19-21-49-740:[Debug]:Time:19-21-49-740:StoryInstance.Init message handler num:11 True
+19-21-49-740:[Info]:ParseStory story_main 0
+19-21-50-020:[Warn]:Time:19-21-50-019:story_main start
+19-21-52-021:[Debug]:Time:19-21-52-021:StoryInstance.Init message handler num:3 True
+19-21-52-021:[Info]:ParseStory Start:main 0
+19-21-55-749:[Debug]:Time:19-21-55-749:StoryInstance.Init message handler num:2 True
+19-21-55-749:[Info]:ParseStory Option:main 0
+19-21-55-761:[Debug]:Time:19-21-55-761:StoryInstance.Init message handler num:3 True
+19-21-55-761:[Info]:ParseStory Info:main 0
+19-21-55-766:[Debug]:Time:19-21-55-766:StoryInstance.Init message handler num:3 True
+19-21-55-766:[Info]:ParseStory CenterInfo:main 0
+19-21-55-770:[Debug]:Time:19-21-55-769:StoryInstance.Init message handler num:3 True
+19-21-55-770:[Info]:ParseStory Victory:main 0
+19-21-55-774:[Debug]:Time:19-21-55-774:StoryInstance.Init message handler num:3 True
+19-21-55-774:[Info]:ParseStory Failed:main 0
+19-21-56-011:[Debug]:Time:19-21-56-011:StoryInstance.Init message handler num:3 True
+19-21-56-011:[Info]:ParseStory ai_player 0
+19-21-56-028:[Debug]:Time:19-21-56-028:StoryInstance.Init message handler num:3 True
+19-21-56-028:[Info]:ParseStory ai_npc 0

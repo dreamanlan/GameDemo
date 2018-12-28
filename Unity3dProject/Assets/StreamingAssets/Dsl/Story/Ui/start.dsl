@@ -1,0 +1,30 @@
+script(main)
+{
+  local
+  {
+  };
+  onmessage("start")
+  {
+    bindui(@window){
+      var("@txt","Text");
+      onevent("button","start","Button");
+    };
+    @txt_Text.text="";
+    @window.SetActive(changetype(1,"bool"));
+    localnamespacedmessage("loop_work");
+  };
+  onnamespacedmessage("loop_work")
+  {
+    sendmessagewithgameobject(@txt,"EnableTweener",0);
+    @txt_Text.text="无尽之路";
+    wait(1000);
+    sendmessagewithgameobject(@txt,"EnableTweener",1);
+  };
+  onnamespacedmessage("on_click")args($tag,$inputs,$toggles,$sliders,$dropdowns)
+  {
+    @window.SetActive(changetype(0,"bool"));
+    if($tag=="start"){
+      firemessage("on_start_button_click");
+    };
+  };
+};

@@ -1,0 +1,3146 @@
+{
+	//------------------------------------dsl文档定义部分----------------------------------------
+	"@snippets 1": {
+		"prefix": "@snippets",
+		"body": [
+			"@snippets(prefix)",
+			"$____begin____",
+			"",
+			"",
+			"",
+			"$_____end_____",
+			"@description",
+			"$____begin____",
+			"",
+			"",
+			"",
+			"$_____end_____",
+			"@doc",
+			"$____begin____",
+			"",
+			"",
+			"",
+			"$_____end_____;",
+			"//---------------------------------------------------------------------------------------------------------",
+		],
+		"description": "define dsl doc"
+	},
+	"@snippets 2": {
+		"prefix": "@snippets",
+		"body": [
+			"$_____end_____",
+			"@snippets",
+			"$____begin____",
+			"",
+			"",
+			"",
+			"$_____end_____",
+			"@description",
+			"$____begin____",
+			"",
+			"",
+			"",
+		],
+		"description": "add dsl snippets"
+	},
+	"@include": {
+		"prefix": "@include",
+		"body": [
+			"@include(\"doc.txt\");",
+		],
+		"description": "add dsl include"
+	},
+	"@doc": {
+		"prefix": "@doc",
+		"body": [
+			"@doc",
+			"$____begin____",
+			"",
+			"",
+			"",
+			"$_____end_____;",
+		],
+		"description": "add dsl doc"
+	},
+	"@order": {
+		"prefix": "@order",
+		"body": [
+			"@order(1);",
+		],
+		"description": "add dsl order"
+	},
+  //------------------------------------story部分----------------------------------------
+	"story": {
+		"prefix": "story",
+		"body": [
+			"story(main)",
+			"{",
+			"\tlocal",
+			"\t{",
+			"\t};",
+			"\tonmessage(\"start\")",
+			"\t{",
+			"\t};",
+			"};",
+		],
+		"description": "define story"
+	},
+	"local": {
+		"prefix": "local",
+		"body": [
+			"local",
+			"{",
+			"};",
+		],
+		"description": "define story local variables"
+	},	
+	"onmessage": {
+		"prefix": "onmessage",
+		"body": [
+			"onmessage(\"[msgid]\")[args($a,$b,...)]",
+			"{",
+			"};",
+		],
+		"description": "define story onmessage"
+	},
+	"onnamespacedmessage": {
+		"prefix": "onnamespacedmessage",
+		"body": [
+			"onnamespacedmessage(\"[msgid]\")[args($a,$b,...)]",
+			"{",
+			"};",
+		],
+		"description": "define story onnamespacedmessage"
+	},
+	//-------------------------------------------------------------------------------------
+	"assign (story)": {
+		"prefix": "assign",
+		"body": [
+			"assign(@var,value);"
+		],
+		"description": "assign (story)"
+		},
+
+	"= (story)": {
+		"prefix": "=",
+		"body": [
+			"@var=value;"
+		],
+		"description": "= (story)"
+		},
+
+	"inc (story)": {
+		"prefix": "inc",
+		"body": [
+			"inc(@var);",
+			"inc(@var,value);"
+		],
+		"description": "inc (story)"
+		},
+
+	"dec (story)": {
+		"prefix": "dec",
+		"body": [
+			"dec(@var);",
+			"dec(@var,value);"
+		],
+		"description": "dec (story)"
+		},
+
+	"propset (story)": {
+		"prefix": "propset",
+		"body": [
+			"propset(value,value);"
+		],
+		"description": "propset (story)"
+		},
+
+	"foreach (story)": {
+		"prefix": "foreach",
+		"body": [
+			"foreach(value1,value2,value3,...)",
+			"{",
+			"  cmd1($$);",
+			"  cmd2($$);",
+			"};"
+		],
+		"description": "foreach (story)"
+		},
+
+	"loop (story)": {
+		"prefix": "loop",
+		"body": [
+			"loop(value)",
+			"{",
+			"  cmd1($$);",
+			"  cmd2($$);",
+			"};"
+		],
+		"description": "loop (story)"
+		},
+
+	"while (story)": {
+		"prefix": "while",
+		"body": [
+			"while(value)",
+			"{",
+			"  cmd1();",
+			"  cmd2();    ",
+			"};"
+		],
+		"description": "while (story)"
+		},
+
+	"if 1 (story)": {
+		"prefix": "if",
+		"body": [
+			"if(value)",
+			"{",
+			"  cmd1();",
+			"  cmd2();",
+			"};"
+		],
+		"description": "if 1 (story)"
+		},
+
+	"if 2 (story)": {
+		"prefix": "if",
+		"body": [
+			"if(value)",
+			"{",
+			"  cmd1();",
+			"  cmd2();",
+			"}",
+			"else",
+			"{",
+			"  cmd3();",
+			"  cmd4();",
+			"};"
+		],
+		"description": "if 2 (story)"
+		},
+
+	"if 3 (story)": {
+		"prefix": "if",
+		"body": [
+			"if(value1)",
+			"{",
+			"  cmd1();",
+			"  cmd2();",
+			"}",
+			"elseif(value2)",
+			"{",
+			"  cmd3();",
+			"  cmd4();",
+			"}",
+			"elseif(valuen)",
+			"{",
+			"  cmd5();",
+			"  cmd6();",
+			"}",
+			"else",
+			"{",
+			"  cmd7();",
+			"  cmd8();",
+			"}"
+		],
+		"description": "if 3 (story)"
+		},
+
+	"wait (story)": {
+		"prefix": "wait",
+		"body": [
+			"wait(毫秒数)[if(条件表达式)];"
+		],
+		"description": "wait (story)"
+		},
+
+	"sleep (story)": {
+		"prefix": "sleep",
+		"body": [
+			"sleep(毫秒数)[if(条件表达式)];"
+		],
+		"description": "sleep (story)"
+		},
+
+	"storywait (story)": {
+		"prefix": "storywait",
+		"body": [
+			"storywait(毫秒数)[if(条件表达式)];"
+		],
+		"description": "storywait (story)"
+		},
+
+	"storysleep (story)": {
+		"prefix": "storysleep",
+		"body": [
+			"storysleep(毫秒数)[if(条件表达式)];"
+		],
+		"description": "storysleep (story)"
+		},
+
+	"log command (story)": {
+		"prefix": "log",
+		"body": [
+			"log(format，参数表);"
+		],
+		"description": "log command (story)"
+		},
+
+	"localmessage (story)": {
+		"prefix": "localmessage",
+		"body": [
+			"localmessage(消息ID，参数表);"
+		],
+		"description": "localmessage (story)"
+		},
+
+	"storylocalmessage (story)": {
+		"prefix": "storylocalmessage",
+		"body": [
+			"storylocalmessage(消息ID，参数表);"
+		],
+		"description": "storylocalmessage (story)"
+		},
+
+	"terminate (story)": {
+		"prefix": "terminate",
+		"body": [
+			"terminate();"
+		],
+		"description": "terminate (story)"
+		},
+
+	"looplist (story)": {
+		"prefix": "looplist",
+		"body": [
+			"looplist(value)",
+			"{",
+			"  	cmd1();",
+			"  	cmd2();",
+			"};"
+		],
+		"description": "looplist (story)"
+		},
+
+	"listset (story)": {
+		"prefix": "listset",
+		"body": [
+			"listset(list,index,value);"
+		],
+		"description": "listset (story)"
+		},
+
+	"listadd (story)": {
+		"prefix": "listadd",
+		"body": [
+			"listadd(list,value);"
+		],
+		"description": "listadd (story)"
+		},
+
+	"listremove (story)": {
+		"prefix": "listremove",
+		"body": [
+			"listremove(list,value);"
+		],
+		"description": "listremove (story)"
+		},
+
+	"listinsert (story)": {
+		"prefix": "listinsert",
+		"body": [
+			"listinsert(list,index,value);"
+		],
+		"description": "listinsert (story)"
+		},
+
+	"listremoveat (story)": {
+		"prefix": "listremoveat",
+		"body": [
+			"listremoveat(list,index);"
+		],
+		"description": "listremoveat (story)"
+		},
+
+	"listclear (story)": {
+		"prefix": "listclear",
+		"body": [
+			"listclear(list);"
+		],
+		"description": "listclear (story)"
+		},
+
+	"clearmessage (story)": {
+		"prefix": "clearmessage",
+		"body": [
+			"clearmessage(msgid1,msgid2,...);"
+		],
+		"description": "clearmessage (story)"
+		},
+
+	"dotnetexec (story)": {
+		"prefix": "dotnetexec",
+		"body": [
+			"dotnetexec(obj/type,method,arg1,arg2,...);"
+		],
+		"description": "dotnetexec (story)"
+		},
+
+	"dotnetset (story)": {
+		"prefix": "dotnetset",
+		"body": [
+			"dotnetset(obj/type,property,arg1,arg2,...);"
+		],
+		"description": "dotnetset (story)"
+		},
+
+	"writealllines (story)": {
+		"prefix": "writealllines",
+		"body": [
+			"writealllines(file,lines);"
+		],
+		"description": "writealllines (story)"
+		},
+
+	"writefile (story)": {
+		"prefix": "writefile",
+		"body": [
+			"writefile(file,txt);"
+		],
+		"description": "writefile (story)"
+		},
+
+	"hashtableadd (story)": {
+		"prefix": "hashtableadd",
+		"body": [
+			"hashtableadd(hashtable,key,value);"
+		],
+		"description": "hashtableadd (story)"
+		},
+
+	"hashtableset (story)": {
+		"prefix": "hashtableset",
+		"body": [
+			"hashtableset(hashtable,key,value);"
+		],
+		"description": "hashtableset (story)"
+		},
+
+	"hashtableremove (story)": {
+		"prefix": "hashtableremove",
+		"body": [
+			"hashtableremove(hashtable,key);"
+		],
+		"description": "hashtableremove (story)"
+		},
+
+	"hashtableclear (story)": {
+		"prefix": "hashtableclear",
+		"body": [
+			"hashtableclear(hashtable);"
+		],
+		"description": "hashtableclear (story)"
+		},
+
+	"waitlocalmessage (story)": {
+		"prefix": "waitlocalmessage",
+		"body": [
+			"waitlocalmessage(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
+		],
+		"description": "waitlocalmessage (story)"
+		},
+
+	"waitlocalmessagehandler (story)": {
+		"prefix": "waitlocalmessagehandler",
+		"body": [
+			"waitlocalmessagehandler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
+		],
+		"description": "waitlocalmessagehandler (story)"
+		},
+
+	"storywaitlocalmessage (story)": {
+		"prefix": "storywaitlocalmessage",
+		"body": [
+			"storywaitlocalmessage(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
+		],
+		"description": "storywaitlocalmessage (story)"
+		},
+
+	"storywaitlocalmessagehandler (story)": {
+		"prefix": "storywaitlocalmessagehandler",
+		"body": [
+			"storywaitlocalmessagehandler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
+		],
+		"description": "storywaitlocalmessagehandler (story)"
+		},
+
+	"pauselocalmessagehandler (story)": {
+		"prefix": "pauselocalmessagehandler",
+		"body": [
+			"pauselocalmessagehandler(msgid,msgid,...);"
+		],
+		"description": "pauselocalmessagehandler (story)"
+		},
+
+	"resumelocalmessagehandler (story)": {
+		"prefix": "resumelocalmessagehandler",
+		"body": [
+			"resumelocalmessagehandler(msgid,msgid,...);"
+		],
+		"description": "resumelocalmessagehandler (story)"
+		},
+
+	"pauselocalnamespacedmessagehandler (story)": {
+		"prefix": "pauselocalnamespacedmessagehandler",
+		"body": [
+			"pauselocalnamespacedmessagehandler(msgid,msgid,...);"
+		],
+		"description": "pauselocalnamespacedmessagehandler (story)"
+		},
+
+	"resumelocalnamespacedmessagehandler (story)": {
+		"prefix": "resumelocalnamespacedmessagehandler",
+		"body": [
+			"resumelocalnamespacedmessagehandler(msgid,msgid,...);"
+		],
+		"description": "resumelocalnamespacedmessagehandler (story)"
+		},
+
+	"pause (story)": {
+		"prefix": "pause",
+		"body": [
+			"pause();"
+		],
+		"description": "pause (story)"
+		},
+
+	"abs (story)": {
+		"prefix": "abs",
+		"body": [
+			"abs(x);"
+		],
+		"description": "abs (story)"
+		},
+
+	"floor (story)": {
+		"prefix": "floor",
+		"body": [
+			"floor(x);"
+		],
+		"description": "floor (story)"
+		},
+
+	"ceiling (story)": {
+		"prefix": "ceiling",
+		"body": [
+			"ceiling(x);"
+		],
+		"description": "ceiling (story)"
+		},
+
+	"round (story)": {
+		"prefix": "round",
+		"body": [
+			"round(x);"
+		],
+		"description": "round (story)"
+		},
+
+	"pow (story)": {
+		"prefix": "pow",
+		"body": [
+			"pow(x,y); or pow(x);"
+		],
+		"description": "pow (story)"
+		},
+
+	"log function (story)": {
+		"prefix": "log",
+		"body": [
+			"log(x,y); or log(x);"
+		],
+		"description": "log function (story)"
+		},
+
+	"sqrt (story)": {
+		"prefix": "sqrt",
+		"body": [
+			"sqrt(x);"
+		],
+		"description": "sqrt (story)"
+		},
+
+	"sin (story)": {
+		"prefix": "sin",
+		"body": [
+			"sin(x);"
+		],
+		"description": "sin (story)"
+		},
+
+	"cos (story)": {
+		"prefix": "cos",
+		"body": [
+			"cos(x);"
+		],
+		"description": "cos (story)"
+		},
+
+	"sinh (story)": {
+		"prefix": "sinh",
+		"body": [
+			"sinh(x);"
+		],
+		"description": "sinh (story)"
+		},
+
+	"cosh (story)": {
+		"prefix": "cosh",
+		"body": [
+			"cosh(x);"
+		],
+		"description": "cosh (story)"
+		},
+
+	"min (story)": {
+		"prefix": "min",
+		"body": [
+			"min(x,y,z,...);"
+		],
+		"description": "min (story)"
+		},
+
+	"max (story)": {
+		"prefix": "max",
+		"body": [
+			"max(x,y,z,...);"
+		],
+		"description": "max (story)"
+		},
+
+	"vector2 (story)": {
+		"prefix": "vector2",
+		"body": [
+			"vector2(x,y);"
+		],
+		"description": "vector2 (story)"
+		},
+
+	"vector3 (story)": {
+		"prefix": "vector3",
+		"body": [
+			"vector3(x,y,z);"
+		],
+		"description": "vector3 (story)"
+		},
+
+	"vector4 (story)": {
+		"prefix": "vector4",
+		"body": [
+			"vector4(x,y,z,w);"
+		],
+		"description": "vector4 (story)"
+		},
+
+	"quaternion (story)": {
+		"prefix": "quaternion",
+		"body": [
+			"quaternion(x,y,z,w);"
+		],
+		"description": "quaternion (story)"
+		},
+
+	"eular (story)": {
+		"prefix": "eular",
+		"body": [
+			"eular(x,y,z);"
+		],
+		"description": "eular (story)"
+		},
+
+	"time (story)": {
+		"prefix": "time",
+		"body": [
+			"time();"
+		],
+		"description": "time (story)"
+		},
+
+	"format (story)": {
+		"prefix": "format",
+		"body": [
+			"format(format_string，参数列表);"
+		],
+		"description": "format (story)"
+		},
+
+	"propget (story)": {
+		"prefix": "propget",
+		"body": [
+			"propget(value[,defaultvalue]);"
+		],
+		"description": "propget (story)"
+		},
+
+	"intlist (story)": {
+		"prefix": "intlist",
+		"body": [
+			"intlist(\"1 2 3 4 5\");"
+		],
+		"description": "intlist (story)"
+		},
+
+	"stringlist (story)": {
+		"prefix": "stringlist",
+		"body": [
+			"stringlist(\"a b c d e\");"
+		],
+		"description": "stringlist (story)"
+		},
+
+	"vector2list (story)": {
+		"prefix": "vector2list",
+		"body": [
+			"vector2list(\"v1x v1y v2x v2y\");"
+		],
+		"description": "vector2list (story)"
+		},
+
+	"vector3list (story)": {
+		"prefix": "vector3list",
+		"body": [
+			"vector3list(\"v1x v1y v1z v2x v2y v2z\");"
+		],
+		"description": "vector3list (story)"
+		},
+
+	"list (story)": {
+		"prefix": "list",
+		"body": [
+			"list(1,2,3,4,5);"
+		],
+		"description": "list (story)"
+		},
+
+	"substring (story)": {
+		"prefix": "substring",
+		"body": [
+			"substring(字符串,start[,length]);"
+		],
+		"description": "substring (story)"
+		},
+
+	"rndint (story)": {
+		"prefix": "rndint",
+		"body": [
+			"rndint(min,max);"
+		],
+		"description": "rndint (story)"
+		},
+
+	"rndfloat (story)": {
+		"prefix": "rndfloat",
+		"body": [
+			"rndfloat();"
+		],
+		"description": "rndfloat (story)"
+		},
+
+	"floatlist (story)": {
+		"prefix": "floatlist",
+		"body": [
+			"floatlist(\"1.0 2.0 3.0 4.0 5.0\");"
+		],
+		"description": "floatlist (story)"
+		},
+
+	"rndfromlist (story)": {
+		"prefix": "rndfromlist",
+		"body": [
+			"用法:",
+			"rndfromlist(intlist(\"1 2 3 4 5 6 7 8\")[,defaultvalue]);"
+		],
+		"description": "rndfromlist (story)"
+		},
+
+	"listget (story)": {
+		"prefix": "listget",
+		"body": [
+			"listget(list,index[,defaultvalue]);"
+		],
+		"description": "listget (story)"
+		},
+
+	"listsize (story)": {
+		"prefix": "listsize",
+		"body": [
+			"listsize(list);"
+		],
+		"description": "listsize (story)"
+		},
+
+	"vector2dist (story)": {
+		"prefix": "vector2dist",
+		"body": [
+			"vector2dist(vector2(1,2),vector2(3,4));"
+		],
+		"description": "vector2dist (story)"
+		},
+
+	"vector3dist (story)": {
+		"prefix": "vector3dist",
+		"body": [
+			"vector3dist(vector3(1,2,3),vector3(4,5,6));"
+		],
+		"description": "vector3dist (story)"
+		},
+
+	"vector2to3 (story)": {
+		"prefix": "vector2to3",
+		"body": [
+			"vector2to3(vector2(1,2));"
+		],
+		"description": "vector2to3 (story)"
+		},
+
+	"vector3to2 (story)": {
+		"prefix": "vector3to2",
+		"body": [
+			"vector3to2(vector3(1,2,3));"
+		],
+		"description": "vector3to2 (story)"
+		},
+
+	"isnull (story)": {
+		"prefix": "isnull",
+		"body": [
+			"isnull(x);"
+		],
+		"description": "isnull (story)"
+		},
+
+	"str2int (story)": {
+		"prefix": "str2int",
+		"body": [
+			"str2int(str);"
+		],
+		"description": "str2int (story)"
+		},
+
+	"str2float (story)": {
+		"prefix": "str2float",
+		"body": [
+			"str2float(str);"
+		],
+		"description": "str2float (story)"
+		},
+
+	"dotnetcall (story)": {
+		"prefix": "dotnetcall",
+		"body": [
+			"dotnetcall(obj/type,method,arg1,arg2,...);"
+		],
+		"description": "dotnetcall (story)"
+		},
+
+	"dotnetget (story)": {
+		"prefix": "dotnetget",
+		"body": [
+			"dotnetget(obj/type,property,arg1,arg2,...);"
+		],
+		"description": "dotnetget (story)"
+		},
+
+	"changetype (story)": {
+		"prefix": "changetype",
+		"body": [
+			"changetype(value,obj/type);"
+		],
+		"description": "changetype (story)"
+		},
+
+	"parseenum (story)": {
+		"prefix": "parseenum",
+		"body": [
+			"parseenum(obj/type, \"enumvalue\");"
+		],
+		"description": "parseenum (story)"
+		},
+
+	"readalllines (story)": {
+		"prefix": "readalllines",
+		"body": [
+			"readalllines(file);"
+		],
+		"description": "readalllines (story)"
+		},
+
+	"readfile (story)": {
+		"prefix": "readfile",
+		"body": [
+			"readfile(file);"
+		],
+		"description": "readfile (story)"
+		},
+
+	"tojson (story)": {
+		"prefix": "tojson",
+		"body": [
+			"tojson(hashtable);"
+		],
+		"description": "tojson (story)"
+		},
+
+	"fromjson (story)": {
+		"prefix": "fromjson",
+		"body": [
+			"fromjson(str);"
+		],
+		"description": "fromjson (story)"
+		},
+
+	"hashtable (story)": {
+		"prefix": "hashtable",
+		"body": [
+			"hashtable('a' => 1, 'b' => 2, 'c' => 3);",
+			"  或",
+			"{'a' => 1, 'b' => 2, 'c' => 3};"
+		],
+		"description": "hashtable (story)"
+		},
+
+	"hashtableget (story)": {
+		"prefix": "hashtableget",
+		"body": [
+			"hashtableget(hashtable,key[,defval]);"
+		],
+		"description": "hashtableget (story)"
+		},
+
+	"hashtablesize (story)": {
+		"prefix": "hashtablesize",
+		"body": [
+			"hashtablesize(hashtable);"
+		],
+		"description": "hashtablesize (story)"
+		},
+
+	"hashtablekeys (story)": {
+		"prefix": "hashtablekeys",
+		"body": [
+			"hashtablekeys(hashtable);"
+		],
+		"description": "hashtablekeys (story)"
+		},
+
+	"hashtablevalues (story)": {
+		"prefix": "hashtablevalues",
+		"body": [
+			"hashtablevalues(hashtable);"
+		],
+		"description": "hashtablevalues (story)"
+		},
+
+	"dictformat (story)": {
+		"prefix": "dictformat",
+		"body": [
+			"dictformat(dictId,arg1,arg2,...);"
+		],
+		"description": "dictformat (story)"
+		},
+
+	"dictget (story)": {
+		"prefix": "dictget",
+		"body": [
+			"dictget(dictId);"
+		],
+		"description": "dictget (story)"
+		},
+
+	"dictparse (story)": {
+		"prefix": "dictparse",
+		"body": [
+			"dictparse(str_from_server);"
+		],
+		"description": "dictparse (story)"
+		},
+
+	"gettype (story)": {
+		"prefix": "gettype",
+		"body": [
+			"gettype(\"System.Console\");"
+		],
+		"description": "gettype (story)"
+		},
+
+	"rndvector3 (story)": {
+		"prefix": "rndvector3",
+		"body": [
+			"rndvector3(center,radius);"
+		],
+		"description": "rndvector3 (story)"
+		},
+
+	"rndvector2 (story)": {
+		"prefix": "rndvector2",
+		"body": [
+			"rndvector2(center,radius);"
+		],
+		"description": "rndvector2 (story)"
+		},
+
+	"npcidlist (story)": {
+		"prefix": "npcidlist",
+		"body": [
+			"npcidlist();"
+		],
+		"description": "npcidlist (story)"
+		},
+
+	"objid2unitid (story)": {
+		"prefix": "objid2unitid",
+		"body": [
+			"objid2unitid(objid);"
+		],
+		"description": "objid2unitid (story)"
+		},
+
+	"unitid2objid (story)": {
+		"prefix": "unitid2objid",
+		"body": [
+			"unitid2objid(unitid);"
+		],
+		"description": "unitid2objid (story)"
+		},
+
+	"getposition (story)": {
+		"prefix": "getposition",
+		"body": [
+			"getposition(objid[, world_or_local]);"
+		],
+		"description": "getposition (story)"
+		},
+
+	"getcamp (story)": {
+		"prefix": "getcamp",
+		"body": [
+			"getcamp(objid);"
+		],
+		"description": "getcamp (story)"
+		},
+
+	"isenemy (story)": {
+		"prefix": "isenemy",
+		"body": [
+			"isenemy(camp1,camp2);"
+		],
+		"description": "isenemy (story)"
+		},
+
+	"isfriend (story)": {
+		"prefix": "isfriend",
+		"body": [
+			"isfriend(camp1,camp2);"
+		],
+		"description": "isfriend (story)"
+		},
+
+	"getpositionx (story)": {
+		"prefix": "getpositionx",
+		"body": [
+			"getpositionx(objid[, world_or_local]);"
+		],
+		"description": "getpositionx (story)"
+		},
+
+	"getpostiony (story)": {
+		"prefix": "getpostiony",
+		"body": [
+			"getpositiony(objid[, world_or_local]);"
+		],
+		"description": "getpostiony (story)"
+		},
+
+	"getpositionz (story)": {
+		"prefix": "getpositionz",
+		"body": [
+			"getpositionz(objid[, world_or_local]);"
+		],
+		"description": "getpositionz (story)"
+		},
+
+	"getrotation (story)": {
+		"prefix": "getrotation",
+		"body": [
+			"getrotation(objid[, world_or_local]);"
+		],
+		"description": "getrotation (story)"
+		},
+
+	"getrotationx (story)": {
+		"prefix": "getrotationx",
+		"body": [
+			"getrotationx(objid[, world_or_local]);"
+		],
+		"description": "getrotationx (story)"
+		},
+
+	"getrotationy (story)": {
+		"prefix": "getrotationy",
+		"body": [
+			"getrotationy(objid[, world_or_local]);"
+		],
+		"description": "getrotationy (story)"
+		},
+
+	"getrotationz (story)": {
+		"prefix": "getrotationz",
+		"body": [
+			"getrotationz(objid[, world_or_local]);"
+		],
+		"description": "getrotationz (story)"
+		},
+
+	"getscale (story)": {
+		"prefix": "getscale",
+		"body": [
+			"getscale(objid);"
+		],
+		"description": "getscale (story)"
+		},
+
+	"getscalex (story)": {
+		"prefix": "getscalex",
+		"body": [
+			"getscalex(objid);"
+		],
+		"description": "getscalex (story)"
+		},
+
+	"getscaley (story)": {
+		"prefix": "getscaley",
+		"body": [
+			"getscaley(objid);"
+		],
+		"description": "getscaley (story)"
+		},
+
+	"getscalez (story)": {
+		"prefix": "getscalez",
+		"body": [
+			"getscalez(objid);"
+		],
+		"description": "getscalez (story)"
+		},
+
+	"gethp (story)": {
+		"prefix": "gethp",
+		"body": [
+			"gethp(objid);"
+		],
+		"description": "gethp (story)"
+		},
+
+	"getmaxhp (story)": {
+		"prefix": "getmaxhp",
+		"body": [
+			"getmaxhp(objid);"
+		],
+		"description": "getmaxhp (story)"
+		},
+
+	"calcdir (story)": {
+		"prefix": "calcdir",
+		"body": [
+			"calcdir(objid,targetid);"
+		],
+		"description": "calcdir (story)"
+		},
+
+	"combatnpccount (story)": {
+		"prefix": "combatnpccount",
+		"body": [
+			"combatnpccount([camp_id]);"
+		],
+		"description": "combatnpccount (story)"
+		},
+
+	"iscombatnpc (story)": {
+		"prefix": "iscombatnpc",
+		"body": [
+			"iscombatnpc(objid);"
+		],
+		"description": "iscombatnpc (story)"
+		},
+
+	"getlinkid (story)": {
+		"prefix": "getlinkid",
+		"body": [
+			"getlinkid(objid);"
+		],
+		"description": "getlinkid (story)"
+		},
+
+	"getlevel (story)": {
+		"prefix": "getlevel",
+		"body": [
+			"getlevel(objid);"
+		],
+		"description": "getlevel (story)"
+		},
+
+	"getattr (story)": {
+		"prefix": "getattr",
+		"body": [
+			"getattr(objid,attrid,value[,defaultvalue]);"
+		],
+		"description": "getattr (story)"
+		},
+
+	"tableid2objid (story)": {
+		"prefix": "tableid2objid",
+		"body": [
+			"tableid2objid(tableid);"
+		],
+		"description": "tableid2objid (story)"
+		},
+
+	"objid2tableid (story)": {
+		"prefix": "objid2tableid",
+		"body": [
+			"objid2tableid(objid);"
+		],
+		"description": "objid2tableid (story)"
+		},
+
+	"sceneindex2objid (story)": {
+		"prefix": "sceneindex2objid",
+		"body": [
+			"sceneindex2objid(sceneindex);"
+		],
+		"description": "sceneindex2objid (story)"
+		},
+
+	"objid2sceneindex (story)": {
+		"prefix": "objid2sceneindex",
+		"body": [
+			"objid2sceneindex(objid);"
+		],
+		"description": "objid2sceneindex (story)"
+		},
+
+	"iscontrolbystory (story)": {
+		"prefix": "iscontrolbystory",
+		"body": [
+			"iscontrolbystory(objid);"
+		],
+		"description": "iscontrolbystory (story)"
+		},
+
+	"objisundercontrol (story)": {
+		"prefix": "objisundercontrol",
+		"body": [
+			"objisundercontrol(objid);"
+		],
+		"description": "objisundercontrol (story)"
+		},
+
+	"getunitytype (story)": {
+		"prefix": "getunitytype",
+		"body": [
+			"getunitytype(typename);"
+		],
+		"description": "getunitytype (story)"
+		},
+
+	"getunityuitype (story)": {
+		"prefix": "getunityuitype",
+		"body": [
+			"getunityuitype(typename);"
+		],
+		"description": "getunityuitype (story)"
+		},
+
+	"getscripttype (story)": {
+		"prefix": "getscripttype",
+		"body": [
+			"getscripttype(type_name);"
+		],
+		"description": "getscripttype (story)"
+		},
+
+	"getentityinfo (story)": {
+		"prefix": "getentityinfo",
+		"body": [
+			"getentityinfo(objid);"
+		],
+		"description": "getentityinfo (story)"
+		},
+
+	"getentityview (story)": {
+		"prefix": "getentityview",
+		"body": [
+			"getentityview(objid);"
+		],
+		"description": "getentityview (story)"
+		},
+
+	"getmountview (story)": {
+		"prefix": "getmountview",
+		"body": [
+			"getmountview(objid);"
+		],
+		"description": "getmountview (story)"
+		},
+
+	"getentityrootgameobject (story)": {
+		"prefix": "getentityrootgameobject",
+		"body": [
+			"getentityrootgameobject(objid);"
+		],
+		"description": "getentityrootgameobject (story)"
+		},
+
+	"getglobal (story)": {
+		"prefix": "getglobal",
+		"body": [
+			"getglobal();"
+		],
+		"description": "getglobal (story)"
+		},
+
+	"clientmodule (story)": {
+		"prefix": "clientmodule",
+		"body": [
+			"clientmodule();"
+		],
+		"description": "clientmodule (story)"
+		},
+
+	"ispureclient (story)": {
+		"prefix": "ispureclient",
+		"body": [
+			"ispureclient();"
+		],
+		"description": "ispureclient (story)"
+		},
+
+	"deg2rad (story)": {
+		"prefix": "deg2rad",
+		"body": [
+			"deg2rad(val);"
+		],
+		"description": "deg2rad (story)"
+		},
+
+	"rad2deg (story)": {
+		"prefix": "rad2deg",
+		"body": [
+			"rad2deg(val);"
+		],
+		"description": "rad2deg (story)"
+		},
+
+	"getspline (story)": {
+		"prefix": "getspline",
+		"body": [
+			"getspline(path, num);"
+		],
+		"description": "getspline (story)"
+		},
+
+	"getsplinepoints (story)": {
+		"prefix": "getsplinepoints",
+		"body": [
+			"getsplinepoints(path);"
+		],
+		"description": "getsplinepoints (story)"
+		},
+
+	"offsetspline (story)": {
+		"prefix": "offsetspline",
+		"body": [
+			"offsetspline(spline, vector3(x,y,z));"
+		],
+		"description": "offsetspline (story)"
+		},
+
+	"offsetvector3 (story)": {
+		"prefix": "offsetvector3",
+		"body": [
+			"offsetvector3(pt, vector3(x,y,z));",
+			"offsetvector3(pt, pt2, vector3(x,y,z));"
+		],
+		"description": "offsetvector3 (story)"
+		},
+
+	"npcfindimpactseqbyid (story)": {
+		"prefix": "npcfindimpactseqbyid",
+		"body": [
+			"npcfindimpactseqbyid(unitId,impactId);"
+		],
+		"description": "npcfindimpactseqbyid (story)"
+		},
+
+	"objfindimpactseqbyid (story)": {
+		"prefix": "objfindimpactseqbyid",
+		"body": [
+			"objfindimpactseqbyid(objId,impactId);"
+		],
+		"description": "objfindimpactseqbyid (story)"
+		},
+
+	"npcgetaiparam (story)": {
+		"prefix": "npcgetaiparam",
+		"body": [
+			"npcgetaiparam(unitId,index);"
+		],
+		"description": "npcgetaiparam (story)"
+		},
+
+	"objgetaiparam (story)": {
+		"prefix": "objgetaiparam",
+		"body": [
+			"objgetaiparam(objId,index);"
+		],
+		"description": "objgetaiparam (story)"
+		},
+
+	"getplayerlinkid (story)": {
+		"prefix": "getplayerlinkid",
+		"body": [
+			"getplayertableid();"
+		],
+		"description": "getplayerlinkid (story)"
+		},
+
+	"getplayerid (story)": {
+		"prefix": "getplayerid",
+		"body": [
+			"getplayerid();"
+		],
+		"description": "getplayerid (story)"
+		},
+
+	"findobjid (story)": {
+		"prefix": "findobjid",
+		"body": [
+			"findobjid(tableid);",
+			"findobjid(type, tableid);",
+			"findobjid(type, vector3(x, 0 ,z), range);",
+			"findobjid(type, tableid, vector3(x, 0 ,z), range);"
+		],
+		"description": "findobjid (story)"
+		},
+
+	"npcgetnpctype (story)": {
+		"prefix": "npcgetnpctype",
+		"body": [
+			"npcgetnpctype(unitid);"
+		],
+		"description": "npcgetnpctype (story)"
+		},
+
+	"npcgetsummonerid (story)": {
+		"prefix": "npcgetsummonerid",
+		"body": [
+			"npcgetsummonerid(unitid);"
+		],
+		"description": "npcgetsummonerid (story)"
+		},
+
+	"objgetnpctype (story)": {
+		"prefix": "objgetnpctype",
+		"body": [
+			"objgetnpctype(objid);"
+		],
+		"description": "objgetnpctype (story)"
+		},
+
+	"objgetsummonerid (story)": {
+		"prefix": "objgetsummonerid",
+		"body": [
+			"objgetsummonerid(objid);"
+		],
+		"description": "objgetsummonerid (story)"
+		},
+
+	"calcoffset (story)": {
+		"prefix": "calcoffset",
+		"body": [
+			"calcoffset(objid,targetobjid,vector3(x,y,z));"
+		],
+		"description": "calcoffset (story)"
+		},
+
+	"npccount (story)": {
+		"prefix": "npccount",
+		"body": [
+			"npccount(startUnitId,endUnitId);"
+		],
+		"description": "npccount (story)"
+		},
+
+	"getaidata (story)": {
+		"prefix": "getaidata",
+		"body": [
+			"getaidata(objid,aidatatype);"
+		],
+		"description": "getaidata (story)"
+		},
+
+	"npcgetsummonskillid (story)": {
+		"prefix": "npcgetsummonskillid",
+		"body": [
+			"npcgetsummonskillid(unitid);"
+		],
+		"description": "npcgetsummonskillid (story)"
+		},
+
+	"objgetsummonskillid (story)": {
+		"prefix": "objgetsummonskillid",
+		"body": [
+			"objgetsummonskillid(objid);"
+		],
+		"description": "objgetsummonskillid (story)"
+		},
+
+	"getactor (story)": {
+		"prefix": "getactor",
+		"body": [
+			"getactor(objid);"
+		],
+		"description": "getactor (story)"
+		},
+
+	"isvisible (story)": {
+		"prefix": "isvisible",
+		"body": [
+			"isvisible(objid);"
+		],
+		"description": "isvisible (story)"
+		},
+
+	"npcgetformation (story)": {
+		"prefix": "npcgetformation",
+		"body": [
+			"npcgetformation(unitid);"
+		],
+		"description": "npcgetformation (story)"
+		},
+
+	"objgetformation (story)": {
+		"prefix": "objgetformation",
+		"body": [
+			"objgetformation(objid);"
+		],
+		"description": "objgetformation (story)"
+		},
+
+	"movementenabled (story)": {
+		"prefix": "movementenabled",
+		"body": [
+			"movementenabled(objid);"
+		],
+		"description": "movementenabled (story)"
+		},
+
+	"startstory (story)": {
+		"prefix": "startstory",
+		"body": [
+			"startstory(\"clientlogic\");"
+		],
+		"description": "startstory (story)"
+		},
+
+	"stopstory (story)": {
+		"prefix": "stopstory",
+		"body": [
+			"stopstory(\"clientlogic\");"
+		],
+		"description": "stopstory (story)"
+		},
+
+	"firemessage (story)": {
+		"prefix": "firemessage",
+		"body": [
+			"firemessage(消息id,参数表);"
+		],
+		"description": "firemessage (story)"
+		},
+
+	"changescene (story)": {
+		"prefix": "changescene",
+		"body": [
+			"changescene(scene_id);"
+		],
+		"description": "changescene (story)"
+		},
+
+	"createnpc (story)": {
+		"prefix": "createnpc",
+		"body": [
+			"createnpc(npc_unit_id,vector3(x,y,z),dir,camp,linkId[,ai,stringlist(\"param1 param2 param3 ...\")])[objid(\"@objid\")];"
+		],
+		"description": "createnpc (story)"
+		},
+
+	"waitnpcload (story)": {
+		"prefix": "waitnpcload",
+		"body": [
+			"waitnpcload(npc_unit_id, timeout);"
+		],
+		"description": "waitnpcload (story)"
+		},
+
+	"waitnpcanimload (story)": {
+		"prefix": "waitnpcanimload",
+		"body": [
+			"waitnpcanimload(npc_unit_id, timeout);"
+		],
+		"description": "waitnpcanimload (story)"
+		},
+
+	"destroynpc (story)": {
+		"prefix": "destroynpc",
+		"body": [
+			"destroynpc(npc_unit_id);"
+		],
+		"description": "destroynpc (story)"
+		},
+
+	"npcmove (story)": {
+		"prefix": "npcmove",
+		"body": [
+			"npcmove(unit_id,vector3(x,y,z)[, event]);"
+		],
+		"description": "npcmove (story)"
+		},
+
+	"npcenableai (story)": {
+		"prefix": "npcenableai",
+		"body": [
+			"npcenableai(unit_id,true_or_false);"
+		],
+		"description": "npcenableai (story)"
+		},
+
+	"npcmount (story)": {
+		"prefix": "npcmount",
+		"body": [
+			"npcmount(unit_id,mount_id,timeout);"
+		],
+		"description": "npcmount (story)"
+		},
+
+	"npcunmount (story)": {
+		"prefix": "npcunmount",
+		"body": [
+			"npcunmount(unit_id,mount_id);"
+		],
+		"description": "npcunmount (story)"
+		},
+
+	"npcface (story)": {
+		"prefix": "npcface",
+		"body": [
+			"npcface(unit_id,dir);"
+		],
+		"description": "npcface (story)"
+		},
+
+	"npcmovewithwaypoints (story)": {
+		"prefix": "npcmovewithwaypoints",
+		"body": [
+			"npcmovewithwaypoints(unit_id,vector3list(\"v1x v1y v2x v2y\")[, event]);"
+		],
+		"description": "npcmovewithwaypoints (story)"
+		},
+
+	"npcstop (story)": {
+		"prefix": "npcstop",
+		"body": [
+			"npcstop(unit_id);"
+		],
+		"description": "npcstop (story)"
+		},
+
+	"npcenablemovement (story)": {
+		"prefix": "npcenablemovement",
+		"body": [
+			"npcenablemovement(unit_id[,1_or_0]);"
+		],
+		"description": "npcenablemovement (story)"
+		},
+
+	"npcsetcamp (story)": {
+		"prefix": "npcsetcamp",
+		"body": [
+			"npcsetcamp(unit_id,camp_id);"
+		],
+		"description": "npcsetcamp (story)"
+		},
+
+	"waitobjload (story)": {
+		"prefix": "waitobjload",
+		"body": [
+			"waitobjload(obj_id, timeout);"
+		],
+		"description": "waitobjload (story)"
+		},
+
+	"waitobjanimload (story)": {
+		"prefix": "waitobjanimload",
+		"body": [
+			"waitobjanimload(obj_id, timeout);"
+		],
+		"description": "waitobjanimload (story)"
+		},
+
+	"objmount (story)": {
+		"prefix": "objmount",
+		"body": [
+			"objmount(obj_id,mount_id,timeout);"
+		],
+		"description": "objmount (story)"
+		},
+
+	"objunmount (story)": {
+		"prefix": "objunmount",
+		"body": [
+			"objunmount(obj_id,mount_id);"
+		],
+		"description": "objunmount (story)"
+		},
+
+	"objface (story)": {
+		"prefix": "objface",
+		"body": [
+			"objface(objid,dir);"
+		],
+		"description": "objface (story)"
+		},
+
+	"objmove (story)": {
+		"prefix": "objmove",
+		"body": [
+			"objmove(objid,vector3(x,y,z)[, event]);"
+		],
+		"description": "objmove (story)"
+		},
+
+	"objmovewithwaypoints (story)": {
+		"prefix": "objmovewithwaypoints",
+		"body": [
+			"objmovewithwaypoints(objid,vector3list(\"v1x v1y v2x v2y\")[, event]);"
+		],
+		"description": "objmovewithwaypoints (story)"
+		},
+
+	"lockframe (story)": {
+		"prefix": "lockframe",
+		"body": [
+			"lockframe(0.1);"
+		],
+		"description": "lockframe (story)"
+		},
+
+	"setbattlestate (story)": {
+		"prefix": "setbattlestate",
+		"body": [
+			"setbattlestate(objid, 0_1_or_2);"
+		],
+		"description": "setbattlestate (story)"
+		},
+
+	"setdramastate (story)": {
+		"prefix": "setdramastate",
+		"body": [
+			"setdramastate(0_or_1);"
+		],
+		"description": "setdramastate (story)"
+		},
+
+	"isdramastate (story)": {
+		"prefix": "isdramastate",
+		"body": [
+			"isdramastate();"
+		],
+		"description": "isdramastate (story)"
+		},
+
+	"setstorystate (story)": {
+		"prefix": "setstorystate",
+		"body": [
+			"setstorystate(0_or_1);"
+		],
+		"description": "setstorystate (story)"
+		},
+
+	"isstorystate (story)": {
+		"prefix": "isstorystate",
+		"body": [
+			"isstorystate();"
+		],
+		"description": "isstorystate (story)"
+		},
+
+	"setstoryskipped (story)": {
+		"prefix": "setstoryskipped",
+		"body": [
+			"setstoryskipped(0_or_1);"
+		],
+		"description": "setstoryskipped (story)"
+		},
+
+	"isstoryskipped (story)": {
+		"prefix": "isstoryskipped",
+		"body": [
+			"isstoryskipped();"
+		],
+		"description": "isstoryskipped (story)"
+		},
+
+	"sendaimessage (story)": {
+		"prefix": "sendaimessage",
+		"body": [
+			"sendaimessage(objid,msg,arg1,arg2,...);"
+		],
+		"description": "sendaimessage (story)"
+		},
+
+	"sendaiconcurrentmessage (story)": {
+		"prefix": "sendaiconcurrentmessage",
+		"body": [
+			"sendaiconcurrentmessage(objid,msg,arg1,arg2,...);"
+		],
+		"description": "sendaiconcurrentmessage (story)"
+		},
+
+	"sendainamespacedmessage (story)": {
+		"prefix": "sendainamespacedmessage",
+		"body": [
+			"sendainamespacedmessage(objid,msg,arg1,arg2,...);"
+		],
+		"description": "sendainamespacedmessage (story)"
+		},
+
+	"sendaiconcurrentnamespacedmessage (story)": {
+		"prefix": "sendaiconcurrentnamespacedmessage",
+		"body": [
+			"sendaiconcurrentnamespacedmessage(objid,msg,arg1,arg2,...);"
+		],
+		"description": "sendaiconcurrentnamespacedmessage (story)"
+		},
+
+	"publishevent (story)": {
+		"prefix": "publishevent",
+		"body": [
+			"publishevent(ev_name,group,arg1,arg2,...);"
+		],
+		"description": "publishevent (story)"
+		},
+
+	"objanimation (story)": {
+		"prefix": "objanimation",
+		"body": [
+			"objanimation(objid,anim[,normalized_start_time]);"
+		],
+		"description": "objanimation (story)"
+		},
+
+	"npcanimation (story)": {
+		"prefix": "npcanimation",
+		"body": [
+			"npcanimation(unitid,anim[,normalized_start_time]);"
+		],
+		"description": "npcanimation (story)"
+		},
+
+	"sendmessage (story)": {
+		"prefix": "sendmessage",
+		"body": [
+			"sendmessage(name,msg,arg1,arg2,...);"
+		],
+		"description": "sendmessage (story)"
+		},
+
+	"sendmessagewithtag (story)": {
+		"prefix": "sendmessagewithtag",
+		"body": [
+			"sendmessagewithtag(tag,msg,arg1,arg2,...);"
+		],
+		"description": "sendmessagewithtag (story)"
+		},
+
+	"sendmessagewithgameobject (story)": {
+		"prefix": "sendmessagewithgameobject",
+		"body": [
+			"sendmessagewithgameobject(gameobject or objid,msg,arg1,arg2,...);"
+		],
+		"description": "sendmessagewithgameobject (story)"
+		},
+
+	"npcsetai (story)": {
+		"prefix": "npcsetai",
+		"body": [
+			"npcsetai(unit_id,ai_logic_id,stringlist(\"aiparam0 aiparam1 aiparam2\"));"
+		],
+		"description": "npcsetai (story)"
+		},
+
+	"npcaddimpact (story)": {
+		"prefix": "npcaddimpact",
+		"body": [
+			"npcaddimpact(unit_id,impact_id,arg1,arg2,arg3,...)[seq(\"@seq\")];"
+		],
+		"description": "npcaddimpact (story)"
+		},
+
+	"npcremoveimpact (story)": {
+		"prefix": "npcremoveimpact",
+		"body": [
+			"npcremoveimpact(unit_id,seq);"
+		],
+		"description": "npcremoveimpact (story)"
+		},
+
+	"objstop (story)": {
+		"prefix": "objstop",
+		"body": [
+			"objstop(objid);"
+		],
+		"description": "objstop (story)"
+		},
+
+	"objenablemovement (story)": {
+		"prefix": "objenablemovement",
+		"body": [
+			"objenablemovement(obj_id[,1_or_0]);"
+		],
+		"description": "objenablemovement (story)"
+		},
+
+	"objenableai (story)": {
+		"prefix": "objenableai",
+		"body": [
+			"objenableai(objid,true_or_false);"
+		],
+		"description": "objenableai (story)"
+		},
+
+	"objsetai (story)": {
+		"prefix": "objsetai",
+		"body": [
+			"objsetai(objid,ailogicid,stringlist(\"p1 p2 p3 p4\"));"
+		],
+		"description": "objsetai (story)"
+		},
+
+	"objaddimpact (story)": {
+		"prefix": "objaddimpact",
+		"body": [
+			"objaddimpact(objid,impactid,arg1,arg2,arg3,...)[seq(\"@seq\")];"
+		],
+		"description": "objaddimpact (story)"
+		},
+
+	"objremoveimpact (story)": {
+		"prefix": "objremoveimpact",
+		"body": [
+			"objremoveimpact(objid,seq);"
+		],
+		"description": "objremoveimpact (story)"
+		},
+
+	"highlightpromptwithdict (story)": {
+		"prefix": "highlightpromptwithdict",
+		"body": [
+			"highlightpromptwithdict(objid,dictid,arg1,arg2,...);"
+		],
+		"description": "highlightpromptwithdict (story)"
+		},
+
+	"highlightprompt (story)": {
+		"prefix": "highlightprompt",
+		"body": [
+			"highlightprompt(msg);"
+		],
+		"description": "highlightprompt (story)"
+		},
+
+	"destroynpcwithobjid (story)": {
+		"prefix": "destroynpcwithobjid",
+		"body": [
+			"destroynpcwithobjid(objid);"
+		],
+		"description": "destroynpcwithobjid (story)"
+		},
+
+	"sethp (story)": {
+		"prefix": "sethp",
+		"body": [
+			"sethp(objid,hp);"
+		],
+		"description": "sethp (story)"
+		},
+
+	"setlevel (story)": {
+		"prefix": "setlevel",
+		"body": [
+			"setlevel(objid,lvl);"
+		],
+		"description": "setlevel (story)"
+		},
+
+	"setattr (story)": {
+		"prefix": "setattr",
+		"body": [
+			"setattr(objid,attrid,value);"
+		],
+		"description": "setattr (story)"
+		},
+
+	"markcontrolbystory (story)": {
+		"prefix": "markcontrolbystory",
+		"body": [
+			"markcontrolbystory(objid,true/false);"
+		],
+		"description": "markcontrolbystory (story)"
+		},
+
+	"waitstory (story)": {
+		"prefix": "waitstory",
+		"body": [
+			"waitstory(storyid1,storyid2,...)[set(var,val)timeoutset(timeout,var,val)];"
+		],
+		"description": "waitstory (story)"
+		},
+
+	"waitallmessage (story)": {
+		"prefix": "waitallmessage",
+		"body": [
+			"waitallmessage(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
+		],
+		"description": "waitallmessage (story)"
+		},
+
+	"waitallmessagehandler (story)": {
+		"prefix": "waitallmessagehandler",
+		"body": [
+			"waitallmessagehandler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
+		],
+		"description": "waitallmessagehandler (story)"
+		},
+
+	"camerafollow (story)": {
+		"prefix": "camerafollow",
+		"body": [
+			"camerafollow(npc_unit_id1,npc_unit_id2,...)[with(camera_path)];"
+		],
+		"description": "camerafollow (story)"
+		},
+
+	"cameralook (story)": {
+		"prefix": "cameralook",
+		"body": [
+			"cameralook(unit_id)[with(camera_path)];",
+			"cameralook(vector3(x,y,z))[with(camera_path)];"
+		],
+		"description": "cameralook (story)"
+		},
+
+	"cameralookimmediately (story)": {
+		"prefix": "cameralookimmediately",
+		"body": [
+			"cameralookimmediately(unit_id)[with(camera_path)];",
+			"cameralookimmediately(vector3(x,y,z))[with(camera_path)];"
+		],
+		"description": "cameralookimmediately (story)"
+		},
+
+	"cameralooktoward (story)": {
+		"prefix": "cameralooktoward",
+		"body": [
+			"cameralooktoward(unit_id)[with(camera_path)];",
+			"cameralooktoward(vector3(x,y,z))[with(camera_path)];"
+		],
+		"description": "cameralooktoward (story)"
+		},
+
+	"camerakeepfollow (story)": {
+		"prefix": "camerakeepfollow",
+		"body": [
+			"camerakeepfollow(1_or_0)[with(camera_path)];"
+		],
+		"description": "camerakeepfollow (story)"
+		},
+
+	"camerafixedyaw (story)": {
+		"prefix": "camerafixedyaw",
+		"body": [
+			"camerafixedyaw(yaw)[with(camera_path)];"
+		],
+		"description": "camerafixedyaw (story)"
+		},
+
+	"camerayaw (story)": {
+		"prefix": "camerayaw",
+		"body": [
+			"camerayaw(yaw, anglelag, snaplag)[with(camera_path)];"
+		],
+		"description": "camerayaw (story)"
+		},
+
+	"camerafixedpitch (story)": {
+		"prefix": "camerafixedpitch",
+		"body": [
+			"camerafixedpitch(pitch)[with(camera_path)];"
+		],
+		"description": "camerafixedpitch (story)"
+		},
+
+	"camerapitch (story)": {
+		"prefix": "camerapitch",
+		"body": [
+			"camerapitch(pitch, anglelag, snaplag)[with(camera_path)];"
+		],
+		"description": "camerapitch (story)"
+		},
+
+	"cameraheight (story)": {
+		"prefix": "cameraheight",
+		"body": [
+			"cameraheight(height, lag)[with(camera_path)];"
+		],
+		"description": "cameraheight (story)"
+		},
+
+	"cameradistance (story)": {
+		"prefix": "cameradistance",
+		"body": [
+			"cameradistance(distance, lag)[with(camera_path)];"
+		],
+		"description": "cameradistance (story)"
+		},
+
+	"camerasetdistanceheight (story)": {
+		"prefix": "camerasetdistanceheight",
+		"body": [
+			"camerasetdistanceheight(distance, height)[with(camera_path)];"
+		],
+		"description": "camerasetdistanceheight (story)"
+		},
+
+	"camerastoredistanceheight (story)": {
+		"prefix": "camerastoredistanceheight",
+		"body": [
+			"camerastoredistanceheight()[with(camera_path)];"
+		],
+		"description": "camerastoredistanceheight (story)"
+		},
+
+	"camerarestoredistanceheight (story)": {
+		"prefix": "camerarestoredistanceheight",
+		"body": [
+			"camerarestoredistanceheight()[with(camera_path)];"
+		],
+		"description": "camerarestoredistanceheight (story)"
+		},
+
+	"camerasetfollowspeed (story)": {
+		"prefix": "camerasetfollowspeed",
+		"body": [
+			"camerasetfollowspeed(maxdist, mindist, maxspeed, minspeed, power)[with(camera_path)];"
+		],
+		"description": "camerasetfollowspeed (story)"
+		},
+
+	"cameraresetfollowspeed (story)": {
+		"prefix": "cameraresetfollowspeed",
+		"body": [
+			"cameraresetfollowspeed()[with(camera_path)];"
+		],
+		"description": "cameraresetfollowspeed (story)"
+		},
+
+	"camerafollowobj (story)": {
+		"prefix": "camerafollowobj",
+		"body": [
+			"camerafollowobj(objid)[with(camera_path)];"
+		],
+		"description": "camerafollowobj (story)"
+		},
+
+	"cameralookobj (story)": {
+		"prefix": "cameralookobj",
+		"body": [
+			"cameralookobj(objid)[with(camera_path)];"
+		],
+		"description": "cameralookobj (story)"
+		},
+
+	"cameralookobjimmediately (story)": {
+		"prefix": "cameralookobjimmediately",
+		"body": [
+			"cameralookobjimmediately(objid)[with(camera_path)];"
+		],
+		"description": "cameralookobjimmediately (story)"
+		},
+
+	"cameralooktowardobj (story)": {
+		"prefix": "cameralooktowardobj",
+		"body": [
+			"cameralooktowardobj(objid)[with(camera_path)];"
+		],
+		"description": "cameralooktowardobj (story)"
+		},
+
+	"cameralookcopy (story)": {
+		"prefix": "cameralookcopy",
+		"body": [
+			"cameralookcopy(src_camera_path, unit_id or vector3(x,y,z))[with(camera_path)];"
+		],
+		"description": "cameralookcopy (story)"
+		},
+
+	"cameralookobjcopy (story)": {
+		"prefix": "cameralookobjcopy",
+		"body": [
+			"cameralookobjcopy(src_camera_path, objid)[with(camera_path)];"
+		],
+		"description": "cameralookobjcopy (story)"
+		},
+
+	"cameraenable (story)": {
+		"prefix": "cameraenable",
+		"body": [
+			"cameraenable(name, 1_or_0, 1_or_0);"
+		],
+		"description": "cameraenable (story)"
+		},
+
+	"cameraenablestory (story)": {
+		"prefix": "cameraenablestory",
+		"body": [
+			"cameraenablestory(name, 1_or_0, 1_or_0);"
+		],
+		"description": "cameraenablestory (story)"
+		},
+
+	"bindtomaincamera (story)": {
+		"prefix": "bindtomaincamera",
+		"body": [
+			"bindtomaincamera(prefab_name);"
+		],
+		"description": "bindtomaincamera (story)"
+		},
+
+	"showdlg (story)": {
+		"prefix": "showdlg",
+		"body": [
+			"showdlg(objid, dlgid[, event]);"
+		],
+		"description": "showdlg (story)"
+		},
+
+	"setunitid (story)": {
+		"prefix": "setunitid",
+		"body": [
+			"setunitid(objid,unitid);"
+		],
+		"description": "setunitid (story)"
+		},
+
+	"setplayerid (story)": {
+		"prefix": "setplayerid",
+		"body": [
+			"setplayerid(objid);"
+		],
+		"description": "setplayerid (story)"
+		},
+
+	"npcsetsummonerid (story)": {
+		"prefix": "npcsetsummonerid",
+		"body": [
+			"npcsetsummonerid(unitid,objid);"
+		],
+		"description": "npcsetsummonerid (story)"
+		},
+
+	"objsetsummonerid (story)": {
+		"prefix": "objsetsummonerid",
+		"body": [
+			"objsetsummonerid(objid,objid);"
+		],
+		"description": "objsetsummonerid (story)"
+		},
+
+	"npcdisplay (story)": {
+		"prefix": "npcdisplay",
+		"body": [
+			"npcdisplay(unit_id, display_name);"
+		],
+		"description": "npcdisplay (story)"
+		},
+
+	"npcstopdisplay (story)": {
+		"prefix": "npcstopdisplay",
+		"body": [
+			"npcstopdisplay(unit_id, display_name);"
+		],
+		"description": "npcstopdisplay (story)"
+		},
+
+	"objdisplay (story)": {
+		"prefix": "objdisplay",
+		"body": [
+			"objdisplay(obj_id, display_name);"
+		],
+		"description": "objdisplay (story)"
+		},
+
+	"objstopdisplay (story)": {
+		"prefix": "objstopdisplay",
+		"body": [
+			"objstopdisplay(obj_id, display_name);"
+		],
+		"description": "objstopdisplay (story)"
+		},
+
+	"npcspeedmode (story)": {
+		"prefix": "npcspeedmode",
+		"body": [
+			"npcspeedmode(unit_id, speed_mode);"
+		],
+		"description": "npcspeedmode (story)"
+		},
+
+	"npcinfight (story)": {
+		"prefix": "npcinfight",
+		"body": [
+			"npcinfight(unit_id, is_in_fight);"
+		],
+		"description": "npcinfight (story)"
+		},
+
+	"objspeedmode (story)": {
+		"prefix": "objspeedmode",
+		"body": [
+			"objspeedmode(obj_id, speed_mode);"
+		],
+		"description": "objspeedmode (story)"
+		},
+
+	"objinfight (story)": {
+		"prefix": "objinfight",
+		"body": [
+			"objinfight(obj_id, is_in_fight);"
+		],
+		"description": "objinfight (story)"
+		},
+
+	"npccastskill (story)": {
+		"prefix": "npccastskill",
+		"body": [
+			"npccastskill(unit_id, skill_id);"
+		],
+		"description": "npccastskill (story)"
+		},
+
+	"npchideweapon (story)": {
+		"prefix": "npchideweapon",
+		"body": [
+			"npchideweapon(unit_id, type, is_hide);"
+		],
+		"description": "npchideweapon (story)"
+		},
+
+	"npcautosync (story)": {
+		"prefix": "npcautosync",
+		"body": [
+			"npcautosync(unit_id, target_pos);"
+		],
+		"description": "npcautosync (story)"
+		},
+
+	"objcastskill (story)": {
+		"prefix": "objcastskill",
+		"body": [
+			"objcastskill(obj_id, skill_id);"
+		],
+		"description": "objcastskill (story)"
+		},
+
+	"objhideweapon (story)": {
+		"prefix": "objhideweapon",
+		"body": [
+			"objhideweapon(obj_id, type, is_hide);"
+		],
+		"description": "objhideweapon (story)"
+		},
+
+	"objautosync (story)": {
+		"prefix": "objautosync",
+		"body": [
+			"objautosync(obj_id, target_pos);"
+		],
+		"description": "objautosync (story)"
+		},
+
+	"usevehicle (story)": {
+		"prefix": "usevehicle",
+		"body": [
+			"usevehicle(obj_id,vehicle_table_id[,event]);"
+		],
+		"description": "usevehicle (story)"
+		},
+
+	"areadetect (story)": {
+		"prefix": "areadetect",
+		"body": [
+			"areadetect(gameobjectname,radius,callback)[set(var,val,elseval)];"
+		],
+		"description": "areadetect (story)"
+		},
+
+	"gameobjectanimation (story)": {
+		"prefix": "gameobjectanimation",
+		"body": [
+			"gameobjectanimation(objpath, anim[, normalized_time]);"
+		],
+		"description": "gameobjectanimation (story)"
+		},
+
+	"gameobjectanimationparam (story)": {
+		"prefix": "gameobjectanimationparam",
+		"body": [
+			"gameobjectanimationparam(obj)",
+			"{",
+			"    float(name,val);",
+			"    int(name,val);",
+			"    bool(name,val);",
+			"    trigger(name,val);",
+			"};"
+		],
+		"description": "gameobjectanimationparam (story)"
+		},
+
+	"npcsetaitarget (story)": {
+		"prefix": "npcsetaitarget",
+		"body": [
+			"npcsetaitarget(unit_id,target);"
+		],
+		"description": "npcsetaitarget (story)"
+		},
+
+	"objsetaitarget (story)": {
+		"prefix": "objsetaitarget",
+		"body": [
+			"objsetaitarget(objid,target);"
+		],
+		"description": "objsetaitarget (story)"
+		},
+
+	"npcsetaireachscope (story)": {
+		"prefix": "npcsetaireachscope",
+		"body": [
+			"npcsetaireachscope(unit_id,scope);"
+		],
+		"description": "npcsetaireachscope (story)"
+		},
+
+	"objsetaireachscope (story)": {
+		"prefix": "objsetaireachscope",
+		"body": [
+			"objsetaireachscope(objid,scope);"
+		],
+		"description": "objsetaireachscope (story)"
+		},
+
+	"npcsetsummonskillid (story)": {
+		"prefix": "npcsetsummonskillid",
+		"body": [
+			"npcsetsummonskillid(unitid,skillid);"
+		],
+		"description": "npcsetsummonskillid (story)"
+		},
+
+	"objsetsummonskillid (story)": {
+		"prefix": "objsetsummonskillid",
+		"body": [
+			"objsetsummonskillid(objid,skillid);"
+		],
+		"description": "objsetsummonskillid (story)"
+		},
+
+	"objsetcamp (story)": {
+		"prefix": "objsetcamp",
+		"body": [
+			"objsetcamp(objid,camp_id);"
+		],
+		"description": "objsetcamp (story)"
+		},
+
+	"setvisible (story)": {
+		"prefix": "setvisible",
+		"body": [
+			"setvisible(objid,0_or_1);"
+		],
+		"description": "setvisible (story)"
+		},
+
+	"putonground (story)": {
+		"prefix": "putonground",
+		"body": [
+			"putonground(objpath);"
+		],
+		"description": "putonground (story)"
+		},
+
+	"npcsetformation (story)": {
+		"prefix": "npcsetformation",
+		"body": [
+			"npcsetformation(npc_unit_id,index);"
+		],
+		"description": "npcsetformation (story)"
+		},
+
+	"objsetformation (story)": {
+		"prefix": "objsetformation",
+		"body": [
+			"objsetformation(obj_id, index);"
+		],
+		"description": "objsetformation (story)"
+		},
+
+	"defplayer (story)": {
+		"prefix": "defplayer",
+		"body": [
+			"defplayer(id){",
+			"    name(val);",
+			"    title(val);",
+			"    viewrange(val);",
+			"    gohomerange(val);",
+			"    speed(val);",
+			"    bornskill(id);",
+			"    deadskill(id);",
+			"    category(val);",
+			"    npctype(type, subtype);",
+			"    avatar(prefab);",
+			"    hair(prefab);",
+			"    face(prefab);",
+			"    body(prefab);",
+			"    weapon(prefab);",
+			"    weapon2(prefab);",
+			"    animbase(prefab);",
+			"    animshow(prefab);",
+			"    camp(campid);",
+			"};"
+		],
+		"description": "defplayer (story)"
+		},
+
+	"defnpc (story)": {
+		"prefix": "defnpc",
+		"body": [
+			"defnpc(id){",
+			"    name(val);",
+			"    title(val);",
+			"    viewrange(val);",
+			"    gohomerange(val);",
+			"    speed(val);",
+			"    bornskill(id);",
+			"    deadskill(id);",
+			"    category(val);",
+			"    npctype(type, subtype);",
+			"    avatar(prefab);",
+			"    hair(prefab);",
+			"    face(prefab);",
+			"    body(prefab);",
+			"    weapon(prefab);",
+			"    weapon2(prefab);",
+			"    animbase(prefab);",
+			"    animshow(prefab);",
+			"    camp(campid);",
+			"};"
+		],
+		"description": "defnpc (story)"
+		},
+
+	"preload 1 (story)": {
+		"prefix": "preload",
+		"body": [
+			"preload(actor_id_1, actor_id_2, ...);"
+		],
+		"description": "preload story command, single line"
+		},
+
+	"preload 2 (story)": {
+		"prefix": "preload",
+		"body": [
+			"preload(objresid1, objresid2, ...)",
+			"{",
+			"  objectresources(res1, res2, ...);",
+			"  sharedresources(res1, res2, ...);",
+			"  ...",
+			"};"
+		],
+		"description": "preload story command, multiple line"
+		},
+
+	"loadui (story)": {
+		"prefix": "loadui",
+		"body": [
+			"loadui(name, prefab, dslfile);"
+		],
+		"description": "loadui (story)"
+		},
+
+	"bindui (story)": {
+		"prefix": "bindui",
+		"body": [
+			"bindui(gameobject){",
+			"    var(\"@varname\",\"Panel/Input\"); 										//variable bind to control",
+			"    inputs(\"\",...);           												//the InputField args to event",
+			"    toggles(\"\",...);																	//the Toggle args to event",
+			"    sliders(\"\",...);																	//the Slider args to event",
+			"    dropdowns(\"\",...);																//the Dropdown args to event",
+			"    onevent(\"button\",\"eventtag\",\"Panel/Button\"); 			//on_click event's tag and the control bind to",
+			"    onevent(\"toogle\",\"eventtag\",\"Panel/Toggle\"); 			//on_toggle event's tag and the control bind to",
+			"    onevent(\"dropdown\",\"eventtag\",\"Panel/Dropdown\"); 	//on_dropdown event's tag and the control bind to",
+			"    onevent(\"slider\",\"eventtag\",\"Panel/Slider\"); 			//on_slider event's tag and the control bind to",
+			"    onevent(\"input\",\"eventtag\",\"Panel/Input\"); 				//on_input event's tag and the control bind to",
+			"};"
+		],
+		"description": "bindui (story)"
+		},
+
+	"pausestory (story)": {
+		"prefix": "pausestory",
+		"body": [
+			"pausestory(storyid,storyid,...);"
+		],
+		"description": "pausestory (story)"
+		},
+
+	"resumestory (story)": {
+		"prefix": "resumestory",
+		"body": [
+			"resumestory(storyid,storyid,...);"
+		],
+		"description": "resumestory (story)"
+		},
+
+	"pauseallmessagehandler (story)": {
+		"prefix": "pauseallmessagehandler",
+		"body": [
+			"pauseallmessagehandler(msgid,msgid,...);"
+		],
+		"description": "pauseallmessagehandler (story)"
+		},
+
+	"resumeallmessagehandler (story)": {
+		"prefix": "resumeallmessagehandler",
+		"body": [
+			"resumeallmessagehandler(msgid,msgid,...);"
+		],
+		"description": "resumeallmessagehandler (story)"
+		},
+
+	"objanimationparam (story)": {
+		"prefix": "objanimationparam",
+		"body": [
+			"objanimationparam(obj_id)",
+			"{",
+			"    float(name,val);",
+			"    int(name,val);",
+			"    bool(name,val);",
+			"    trigger(name,val);",
+			"};"
+		],
+		"description": "objanimationparam (story)"
+		},
+
+	"npcanimationparam (story)": {
+		"prefix": "npcanimationparam",
+		"body": [
+			"npcanimationparam(unit_id)",
+			"{",
+			"    float(name,val);",
+			"    int(name,val);",
+			"    bool(name,val);",
+			"    trigger(name,val);",
+			"};"
+		],
+		"description": "npcanimationparam (story)"
+		},
+
+	"blackboardget (story)": {
+		"prefix": "blackboardget",
+		"body": [
+			"blackboardget(name);"
+		],
+		"description": "blackboardget (story)"
+		},
+
+	"gettime (story)": {
+		"prefix": "gettime",
+		"body": [
+			"gettime();"
+		],
+		"description": "gettime (story)"
+		},
+
+	"gettimescale (story)": {
+		"prefix": "gettimescale",
+		"body": [
+			"gettimescale();"
+		],
+		"description": "gettimescale (story)"
+		},
+
+	"isactive (story)": {
+		"prefix": "isactive",
+		"body": [
+			"isactive(game_object_path);"
+		],
+		"description": "isactive (story)"
+		},
+
+	"isreallyactive (story)": {
+		"prefix": "isreallyactive",
+		"body": [
+			"isreallyactive(game_object_path);"
+		],
+		"description": "isreallyactive (story)"
+		},
+
+	"getcomponent (story)": {
+		"prefix": "getcomponent",
+		"body": [
+			"getcomponent(game_object_path，component_type_name/type);"
+		],
+		"description": "getcomponent (story)"
+		},
+
+	"getgameobject (story)": {
+		"prefix": "getgameobject",
+		"body": [
+			"getgameobject(game_object_path);"
+		],
+		"description": "getgameobject (story)"
+		},
+
+	"getparent (story)": {
+		"prefix": "getparent",
+		"body": [
+			"getparent(game_object_path);"
+		],
+		"description": "getparent (story)"
+		},
+
+	"getchild (story)": {
+		"prefix": "getchild",
+		"body": [
+			"getchild(game_object_path, child_path);"
+		],
+		"description": "getchild (story)"
+		},
+
+	"namespace (story)": {
+		"prefix": "namespace",
+		"body": [
+			"namespace();"
+		],
+		"description": "namespace (story)"
+		},
+
+	"blackboardclear (story)": {
+		"prefix": "blackboardclear",
+		"body": [
+			"blackboardclear();"
+		],
+		"description": "blackboardclear (story)"
+		},
+
+	"blackboardset (story)": {
+		"prefix": "blackboardset",
+		"body": [
+			"blackboardset(name,value);"
+		],
+		"description": "blackboardset (story)"
+		},
+
+	"creategameobject (story)": {
+		"prefix": "creategameobject",
+		"body": [
+			"creategameobject(name, prefab[, parent])[obj(\"varname\")]{",
+			"    position(vector3(x,y,z));",
+			"    rotation(vector3(x,y,z));",
+			"    scale(vector3(x,y,z));",
+			"};"
+		],
+		"description": "creategameobject (story)"
+		},
+
+	"settransform (story)": {
+		"prefix": "settransform",
+		"body": [
+			"settransform(name, world_or_local){",
+			"    position(vector3(x,y,z));",
+			"    rotation(vector3(x,y,z));",
+			"    scale(vector3(x,y,z));",
+			"};"
+		],
+		"description": "settransform (story)"
+		},
+
+	"destroygameobject (story)": {
+		"prefix": "destroygameobject",
+		"body": [
+			"destroygameobject(path);"
+		],
+		"description": "destroygameobject (story)"
+		},
+
+	"autorecycle (story)": {
+		"prefix": "autorecycle",
+		"body": [
+			"autorecycle(path, 1_or_0);"
+		],
+		"description": "autorecycle (story)"
+		},
+
+	"followtarget (story)": {
+		"prefix": "followtarget",
+		"body": [
+			"followtarget(objid,parent);"
+		],
+		"description": "followtarget (story)"
+		},
+
+	"setparent (story)": {
+		"prefix": "setparent",
+		"body": [
+			"setparent(objpath,parent,stay_world_pos);"
+		],
+		"description": "setparent (story)"
+		},
+
+	"setactive (story)": {
+		"prefix": "setactive",
+		"body": [
+			"setactive(objpath,1_or_0);"
+		],
+		"description": "setactive (story)"
+		},
+
+	"addcomponent (story)": {
+		"prefix": "addcomponent",
+		"body": [
+			"addcomponent(objpath, component_name/component_type)[obj(\"@varname\")];"
+		],
+		"description": "addcomponent (story)"
+		},
+
+	"removecomponent (story)": {
+		"prefix": "removecomponent",
+		"body": [
+			"removecomponent(objpath,type);"
+		],
+		"description": "removecomponent (story)"
+		},
+
+	"openurl (story)": {
+		"prefix": "openurl",
+		"body": [
+			"openurl(url);"
+		],
+		"description": "openurl (story)"
+		},
+
+	"quit (story)": {
+		"prefix": "quit",
+		"body": [
+			"quit();"
+		],
+		"description": "quit (story)"
+		},
+
+	"localnamespacedmessage (story)": {
+		"prefix": "localnamespacedmessage",
+		"body": [
+			"localnamespacedmessage(msgId,arg1,arg2,...);"
+		],
+		"description": "localnamespacedmessage (story)"
+		},
+
+	"storylocalnamespacedmessage (story)": {
+		"prefix": "storylocalnamespacedmessage",
+		"body": [
+			"storylocalnamespacedmessage(msgId,arg1,arg2,...);"
+		],
+		"description": "storylocalnamespacedmessage (story)"
+		},
+
+	"clearnamespacedmessage (story)": {
+		"prefix": "clearnamespacedmessage",
+		"body": [
+			"clearnamespacedmessage(msgid1,msgid2,...);"
+		],
+		"description": "clearnamespacedmessage (story)"
+		},
+
+	"waitlocalnamespacedmessage (story)": {
+		"prefix": "waitlocalnamespacedmessage",
+		"body": [
+			"waitlocalnamespacedmessage(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
+		],
+		"description": "waitlocalnamespacedmessage (story)"
+		},
+
+	"waitlocalnamespacedmessagehandler (story)": {
+		"prefix": "waitlocalnamespacedmessagehandler",
+		"body": [
+			"waitlocalnamespacedmessagehandler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
+		],
+		"description": "waitlocalnamespacedmessagehandler (story)"
+		},
+
+	"storywaitlocalnamespacedmessage (story)": {
+		"prefix": "storywaitlocalnamespacedmessage",
+		"body": [
+			"storywaitlocalnamespacedmessage(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
+		],
+		"description": "storywaitlocalnamespacedmessage (story)"
+		},
+
+	"storywaitlocalnamespacedmessagehandler (story)": {
+		"prefix": "storywaitlocalnamespacedmessagehandler",
+		"body": [
+			"storywaitlocalnamespacedmessagehandler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
+		],
+		"description": "storywaitlocalnamespacedmessagehandler (story)"
+		},
+
+	"sendmessage PlayCurvy (story)": {
+		"prefix": "sendmessage PlayCurvy",
+		"body": [
+			"sendmessage(\"ZhanChangLogic/Spline\", \"PlayCurvy\", \"on_end_reached\");"
+		],
+		"description": "sendmessage PlayCurvy (story)"
+		},
+
+	"sendmessage PlayCurvy2 (story)": {
+		"prefix": "sendmessage PlayCurvy2",
+		"body": [
+			"sendmessage(\"ZhanChangLogic/Spline\", \"PlayCurvy2\", \"on_end_reached\", \"on_control_point_reached\");"
+		],
+		"description": "sendmessage PlayCurvy2 (story)"
+		},
+
+	"sendmessage PauseCurvy (story)": {
+		"prefix": "sendmessage PauseCurvy",
+		"body": [
+			"sendmessage(\"ZhanChangLogic/Spline\", \"PauseCurvy\");"
+		],
+		"description": "sendmessage PauseCurvy (story)"
+		},
+
+	"sendmessage ResumeCurvy (story)": {
+		"prefix": "sendmessage ResumeCurvy",
+		"body": [
+			"sendmessage(\"ZhanChangLogic/Spline\", \"ResumeCurvy\");"
+		],
+		"description": "sendmessage ResumeCurvy (story)"
+		},
+
+	"sendmessage StopCurvy (story)": {
+		"prefix": "sendmessage StopCurvy",
+		"body": [
+			"sendmessage(\"ZhanChangLogic/Spline\", \"StopCurvy\");"
+		],
+		"description": "sendmessage StopCurvy (story)"
+		},
+
+	"sendmessage PlayTimeline (story)": {
+		"prefix": "sendmessage PlayTimeline",
+		"body": [
+			"sendmessage(\"ZhanChangLogic/Spline\", \"PlayTimeline\");"
+		],
+		"description": "sendmessage PlayTimeline (story)"
+		},
+
+	"sendmessage PauseTimeline (story)": {
+		"prefix": "sendmessage PauseTimeline",
+		"body": [
+			"sendmessage(\"ZhanChangLogic/Spline\", \"PauseTimeline\");"
+		],
+		"description": "sendmessage PauseTimeline (story)"
+		},
+
+	"sendmessage ResumeTimeline (story)": {
+		"prefix": "sendmessage ResumeTimeline",
+		"body": [
+			"sendmessage(\"ZhanChangLogic/Spline\", \"ResumeTimeline\");"
+		],
+		"description": "sendmessage ResumeTimeline (story)"
+		},
+
+	"sendmessage StopTimeline (story)": {
+		"prefix": "sendmessage StopTimeline",
+		"body": [
+			"sendmessage(\"ZhanChangLogic/Spline\", \"StopTimeline\");"
+		],
+		"description": "sendmessage StopTimeline (story)"
+		},
+
+	"sendmessage PlayVideo (story)": {
+		"prefix": "sendmessage PlayVideo",
+		"body": [
+			"sendmessage(\"ZhanChangLogic/Video\", \"PlayVideo\");"
+		],
+		"description": "sendmessage PlayVideo (story)"
+		},
+
+	"sendmessage PauseVideo (story)": {
+		"prefix": "sendmessage PauseVideo",
+		"body": [
+			"sendmessage(\"ZhanChangLogic/Video\", \"PauseVideo\");"
+		],
+		"description": "sendmessage PauseVideo (story)"
+		},
+
+	"sendmessage ResumeVideo (story)": {
+		"prefix": "sendmessage ResumeVideo",
+		"body": [
+			"sendmessage(\"ZhanChangLogic/Video\", \"ResumeVideo\");"
+		],
+		"description": "sendmessage ResumeVideo (story)"
+		},
+
+	"sendmessage StopVideo (story)": {
+		"prefix": "sendmessage StopVideo",
+		"body": [
+			"sendmessage(\"ZhanChangLogic/Video\", \"StopVideo\");"
+		],
+		"description": "sendmessage StopVideo (story)"
+		},
+
+	"sendmessage DimScreen (story)": {
+		"prefix": "sendmessage DimScreen",
+		"body": [
+			"sendmessage(\"ZhanChangLogic/Camera\", \"DimScreen\", time);"
+		],
+		"description": "sendmessage DimScreen (story)"
+		},
+
+	"sendmessage LightScreen (story)": {
+		"prefix": "sendmessage LightScreen",
+		"body": [
+			"sendmessage(\"ZhanChangLogic/Camera\", \"LightScreen\", time);"
+		],
+		"description": "sendmessage LightScreen (story)"
+		},
+
+	"sendmessage LightTo (story)": {
+		"prefix": "sendmessage LightTo",
+		"body": [
+			"sendmessage(\"ZhanChangLogic/Camera\", \"LightTo\", time, red, green, blue, alpha);"
+		],
+		"description": "sendmessage LightTo (story)"
+		},
+
+	"sendmessage ToFollowPathSmoothly (story)": {
+		"prefix": "sendmessage ToFollowPathSmoothly",
+		"body": [
+			"sendmessage(\"StartScript\",\"ToFollowPathSmoothly\",@playerObjId);"
+		],
+		"description": "sendmessage ToFollowPathSmoothly (story)"
+		},
+
+	"sendmessage CameraShake (story)": {
+		"prefix": "sendmessage CameraShake",
+		"body": [
+			"sendmessage(\"ZhanChangLogic/Camera\",\"CameraShake\",time,shake_type,magnitude,shake_curve);"
+		],
+		"description": "sendmessage CameraShake (story)"
+		},
+
+	"sendmessage EnableObstacle (story)": {
+		"prefix": "sendmessage EnableObstacle",
+		"body": [
+			"sendmessage(\"ZhanChangLogic/DynamicObstacle\",\"EnableObstacle\",1_or_0);"
+		],
+		"description": "sendmessage EnableObstacle (story)"
+		},
+
+	"sendmessage SetLightVisible (story)": {
+		"prefix": "sendmessage SetLightVisible",
+		"body": [
+			"sendmessage(\"ZhanChangLogic/Light\",\"SetLightVisible\",1_or_0);"
+		],
+		"description": "sendmessage SetLightVisible (story)"
+		},
+
+	"sendmessage SetVisible (story)": {
+		"prefix": "sendmessage SetVisible",
+		"body": [
+			"sendmessage(\"ZhanChangLogic/Object\",\"SetVisible\",1_or_0);"
+		],
+		"description": "sendmessage SetVisible (story)"
+		},
+
+	"sendmessage PlayAnimation (story)": {
+		"prefix": "sendmessage PlayAnimation",
+		"body": [
+			"sendmessage(\"ZhanChangLogic/Object\",\"PlayAnimation\", anim, speed);"
+		],
+		"description": "sendmessage PlayAnimation (story)"
+		},
+
+	"sendmessage PlayParticle (story)": {
+		"prefix": "sendmessage PlayParticle",
+		"body": [
+			"sendmessage(\"ZhanChangLogic/Object\",\"PlayParticle\", 1_or_0);"
+		],
+		"description": "sendmessage PlayParticle (story)"
+		},
+
+	"sendmessage PlaySound (story)": {
+		"prefix": "sendmessage PlaySound",
+		"body": [
+			"sendmessage(\"ZhanChangLogic/Object\",\"PlaySound\", index);"
+		],
+		"description": "sendmessage PlaySound (story)"
+		},
+
+	"sendmessage StopSound (story)": {
+		"prefix": "sendmessage StopSound",
+		"body": [
+			"sendmessage(\"ZhanChangLogic/Object\",\"StopSound\", index);"
+		],
+		"description": "sendmessage StopSound (story)"
+		},
+
+	"sendmessage PlaySoundWithFmod (story)": {
+		"prefix": "sendmessage PlaySoundWithFmod",
+		"body": [
+			"sendmessage(\"StartScript\",\"PlaySoundWithFmod\", eventname);"
+		],
+		"description": "sendmessage PlaySoundWithFmod (story)"
+		},
+
+	"sendmessage ChangeWeather (story)": {
+		"prefix": "sendmessage ChangeWeather",
+		"body": [
+			"sendmessage(\"StartScript\",\"ChangeWeather\", type, time);"
+		],
+		"description": "sendmessage ChangeWeather (story)"
+		},
+
+
+
+}

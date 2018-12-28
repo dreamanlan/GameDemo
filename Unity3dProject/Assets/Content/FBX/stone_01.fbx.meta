@@ -1,0 +1,417 @@
+fileFormatVersion: 2
+guid: cb8ab3f4a88cb164986617021b9ab4b4
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Bone01
+    100004: Bone02
+    100006: Bone03
+    100008: Bone04
+    100010: Bone05
+    100012: Bone06
+    100014: Bone07
+    100016: Bone08
+    100018: Bone09
+    100020: Bone10
+    100022: Bone11
+    100024: Bone12
+    100026: Bone13
+    100028: Bone14
+    100030: Bone15
+    100032: Bone16
+    100034: Bone17
+    100036: Bone18
+    100038: Bone19
+    100040: Bone20
+    100042: Bone21
+    100044: Bone22
+    100046: Bone23
+    100048: Bone24
+    100050: Bone25
+    100052: Bone26
+    100054: Bone27
+    100056: Bone28
+    100058: Bone31
+    100060: Bone32
+    100062: Bone33
+    100064: Bone34
+    100066: Bone35
+    100068: Bone36
+    100070: Bone37
+    100072: Bone38
+    100074: Bone39
+    100076: Bone40
+    100078: Bone41
+    100080: Bone42
+    100082: Bone43
+    100084: Bone44
+    100086: Bone45
+    100088: Bone46
+    100090: Bone47
+    100092: Bone48
+    100094: Bone49
+    100096: Bone50
+    100098: Bone51
+    100100: Bone52
+    100102: Bone53
+    100104: Bone54
+    100106: Bone57
+    100108: Bone58
+    100110: Bone59
+    100112: Bone60
+    100114: Bone61
+    100116: Bone62
+    100118: Bone63
+    100120: Bone64
+    100122: Bone67
+    100124: Bone68
+    100126: Bone69
+    100128: Bone70
+    100130: Bone71
+    100132: Bone72
+    100134: Bone73
+    100136: Bone74
+    100138: Bone75
+    100140: Bone76
+    100142: Bone81
+    100144: Bone82
+    100146: Bone83
+    100148: Bone84
+    100150: Bone85
+    100152: Bone86
+    100154: Bone87
+    100156: Bone88
+    100158: Bone89
+    100160: Bone90
+    100162: Dummy01
+    100164: Dummy02
+    100166: gy_st_liangongshi001_bro_tl
+    100168: gy_st_liangongshi001_bro_tl 1
+    100170: gy_st_liangongshi001_bro_tl 10
+    100172: gy_st_liangongshi001_bro_tl 2
+    100174: gy_st_liangongshi001_bro_tl 3
+    100176: gy_st_liangongshi001_bro_tl 4
+    100178: gy_st_liangongshi001_bro_tl 5
+    100180: gy_st_liangongshi001_bro_tl 6
+    100182: gy_st_liangongshi001_bro_tl 7
+    100184: gy_st_liangongshi001_bro_tl 8
+    100186: gy_st_liangongshi001_bro_tl 9
+    100188: gy_st_liangongshi001_bro_tl01
+    100190: gy_st_liangongshi001_bro_tl02
+    100192: gy_st_liangongshi001_bro_tl03
+    100194: gy_st_liangongshi001_bro_tl04
+    100196: gy_st_liangongshi001_bro_tl05
+    100198: gy_st_liangongshi001_bro_tl06
+    100200: gy_st_liangongshi001_bro_tl07
+    100202: gy_st_liangongshi001_bro_tl08
+    100204: gy_st_liangongshi001_bro_tl09
+    100206: gy_st_liangongshi001_bro_tl11
+    100208: gy_st_liangongshi001_bro_tl13
+    100210: gy_st_liangongshi001_bro_tl14
+    100212: gy_st_liangongshi001_bro_tl15
+    100214: gy_st_liangongshi001_bro_tl16
+    100216: gy_st_liangongshi001_bro_tl17
+    100218: gy_st_liangongshi001_bro_tl18
+    100220: gy_st_liangongshi001_bro_tl19
+    100222: gy_st_liangongshi001_bro_tl20
+    100224: gy_st_liangongshi001_bro_tl21
+    100226: gy_st_liangongshi001_bro_tl23
+    100228: gy_st_liangongshi001_bro_tl24
+    100230: gy_st_liangongshi001_bro_tl25
+    100232: gy_st_liangongshi001_bro_tl26
+    100234: gy_st_liangongshi001_bro_tl27
+    100236: gy_st_liangongshi001_bro_tl30
+    100238: gy_st_liangongshi001_bro_tl31
+    100240: gy_st_liangongshi001_bro_tl32
+    100242: gy_st_liangongshi001_bro_tl33
+    100244: gy_st_liangongshi001_bro_tl34
+    400000: //RootNode
+    400002: Bone01
+    400004: Bone02
+    400006: Bone03
+    400008: Bone04
+    400010: Bone05
+    400012: Bone06
+    400014: Bone07
+    400016: Bone08
+    400018: Bone09
+    400020: Bone10
+    400022: Bone11
+    400024: Bone12
+    400026: Bone13
+    400028: Bone14
+    400030: Bone15
+    400032: Bone16
+    400034: Bone17
+    400036: Bone18
+    400038: Bone19
+    400040: Bone20
+    400042: Bone21
+    400044: Bone22
+    400046: Bone23
+    400048: Bone24
+    400050: Bone25
+    400052: Bone26
+    400054: Bone27
+    400056: Bone28
+    400058: Bone31
+    400060: Bone32
+    400062: Bone33
+    400064: Bone34
+    400066: Bone35
+    400068: Bone36
+    400070: Bone37
+    400072: Bone38
+    400074: Bone39
+    400076: Bone40
+    400078: Bone41
+    400080: Bone42
+    400082: Bone43
+    400084: Bone44
+    400086: Bone45
+    400088: Bone46
+    400090: Bone47
+    400092: Bone48
+    400094: Bone49
+    400096: Bone50
+    400098: Bone51
+    400100: Bone52
+    400102: Bone53
+    400104: Bone54
+    400106: Bone57
+    400108: Bone58
+    400110: Bone59
+    400112: Bone60
+    400114: Bone61
+    400116: Bone62
+    400118: Bone63
+    400120: Bone64
+    400122: Bone67
+    400124: Bone68
+    400126: Bone69
+    400128: Bone70
+    400130: Bone71
+    400132: Bone72
+    400134: Bone73
+    400136: Bone74
+    400138: Bone75
+    400140: Bone76
+    400142: Bone81
+    400144: Bone82
+    400146: Bone83
+    400148: Bone84
+    400150: Bone85
+    400152: Bone86
+    400154: Bone87
+    400156: Bone88
+    400158: Bone89
+    400160: Bone90
+    400162: Dummy01
+    400164: Dummy02
+    400166: gy_st_liangongshi001_bro_tl
+    400168: gy_st_liangongshi001_bro_tl 1
+    400170: gy_st_liangongshi001_bro_tl 10
+    400172: gy_st_liangongshi001_bro_tl 2
+    400174: gy_st_liangongshi001_bro_tl 3
+    400176: gy_st_liangongshi001_bro_tl 4
+    400178: gy_st_liangongshi001_bro_tl 5
+    400180: gy_st_liangongshi001_bro_tl 6
+    400182: gy_st_liangongshi001_bro_tl 7
+    400184: gy_st_liangongshi001_bro_tl 8
+    400186: gy_st_liangongshi001_bro_tl 9
+    400188: gy_st_liangongshi001_bro_tl01
+    400190: gy_st_liangongshi001_bro_tl02
+    400192: gy_st_liangongshi001_bro_tl03
+    400194: gy_st_liangongshi001_bro_tl04
+    400196: gy_st_liangongshi001_bro_tl05
+    400198: gy_st_liangongshi001_bro_tl06
+    400200: gy_st_liangongshi001_bro_tl07
+    400202: gy_st_liangongshi001_bro_tl08
+    400204: gy_st_liangongshi001_bro_tl09
+    400206: gy_st_liangongshi001_bro_tl11
+    400208: gy_st_liangongshi001_bro_tl13
+    400210: gy_st_liangongshi001_bro_tl14
+    400212: gy_st_liangongshi001_bro_tl15
+    400214: gy_st_liangongshi001_bro_tl16
+    400216: gy_st_liangongshi001_bro_tl17
+    400218: gy_st_liangongshi001_bro_tl18
+    400220: gy_st_liangongshi001_bro_tl19
+    400222: gy_st_liangongshi001_bro_tl20
+    400224: gy_st_liangongshi001_bro_tl21
+    400226: gy_st_liangongshi001_bro_tl23
+    400228: gy_st_liangongshi001_bro_tl24
+    400230: gy_st_liangongshi001_bro_tl25
+    400232: gy_st_liangongshi001_bro_tl26
+    400234: gy_st_liangongshi001_bro_tl27
+    400236: gy_st_liangongshi001_bro_tl30
+    400238: gy_st_liangongshi001_bro_tl31
+    400240: gy_st_liangongshi001_bro_tl32
+    400242: gy_st_liangongshi001_bro_tl33
+    400244: gy_st_liangongshi001_bro_tl34
+    4300000: gy_st_liangongshi001_bro_tl
+    4300002: gy_st_liangongshi001_bro_tl
+    4300004: gy_st_liangongshi001_bro_tl
+    4300006: gy_st_liangongshi001_bro_tl
+    4300008: gy_st_liangongshi001_bro_tl
+    4300010: gy_st_liangongshi001_bro_tl
+    4300012: gy_st_liangongshi001_bro_tl
+    4300014: gy_st_liangongshi001_bro_tl
+    4300016: gy_st_liangongshi001_bro_tl
+    4300018: gy_st_liangongshi001_bro_tl
+    4300020: gy_st_liangongshi001_bro_tl01
+    4300022: gy_st_liangongshi001_bro_tl02
+    4300024: gy_st_liangongshi001_bro_tl03
+    4300026: gy_st_liangongshi001_bro_tl04
+    4300028: gy_st_liangongshi001_bro_tl05
+    4300030: gy_st_liangongshi001_bro_tl06
+    4300032: gy_st_liangongshi001_bro_tl07
+    4300034: gy_st_liangongshi001_bro_tl08
+    4300036: gy_st_liangongshi001_bro_tl09
+    4300038: gy_st_liangongshi001_bro_tl11
+    4300040: gy_st_liangongshi001_bro_tl13
+    4300042: gy_st_liangongshi001_bro_tl14
+    4300044: gy_st_liangongshi001_bro_tl15
+    4300046: gy_st_liangongshi001_bro_tl16
+    4300048: gy_st_liangongshi001_bro_tl17
+    4300050: gy_st_liangongshi001_bro_tl18
+    4300052: gy_st_liangongshi001_bro_tl19
+    4300054: gy_st_liangongshi001_bro_tl20
+    4300056: gy_st_liangongshi001_bro_tl21
+    4300058: gy_st_liangongshi001_bro_tl
+    4300060: gy_st_liangongshi001_bro_tl23
+    4300062: gy_st_liangongshi001_bro_tl24
+    4300064: gy_st_liangongshi001_bro_tl25
+    4300066: gy_st_liangongshi001_bro_tl26
+    4300068: gy_st_liangongshi001_bro_tl27
+    4300070: gy_st_liangongshi001_bro_tl30
+    4300072: gy_st_liangongshi001_bro_tl31
+    4300074: gy_st_liangongshi001_bro_tl32
+    4300076: gy_st_liangongshi001_bro_tl33
+    4300078: gy_st_liangongshi001_bro_tl34
+    9500000: //RootNode
+    13700000: gy_st_liangongshi001_bro_tl
+    13700002: gy_st_liangongshi001_bro_tl 1
+    13700004: gy_st_liangongshi001_bro_tl 10
+    13700006: gy_st_liangongshi001_bro_tl 2
+    13700008: gy_st_liangongshi001_bro_tl 3
+    13700010: gy_st_liangongshi001_bro_tl 4
+    13700012: gy_st_liangongshi001_bro_tl 5
+    13700014: gy_st_liangongshi001_bro_tl 6
+    13700016: gy_st_liangongshi001_bro_tl 7
+    13700018: gy_st_liangongshi001_bro_tl 8
+    13700020: gy_st_liangongshi001_bro_tl 9
+    13700022: gy_st_liangongshi001_bro_tl01
+    13700024: gy_st_liangongshi001_bro_tl02
+    13700026: gy_st_liangongshi001_bro_tl03
+    13700028: gy_st_liangongshi001_bro_tl04
+    13700030: gy_st_liangongshi001_bro_tl05
+    13700032: gy_st_liangongshi001_bro_tl06
+    13700034: gy_st_liangongshi001_bro_tl07
+    13700036: gy_st_liangongshi001_bro_tl08
+    13700038: gy_st_liangongshi001_bro_tl09
+    13700040: gy_st_liangongshi001_bro_tl11
+    13700042: gy_st_liangongshi001_bro_tl13
+    13700044: gy_st_liangongshi001_bro_tl14
+    13700046: gy_st_liangongshi001_bro_tl15
+    13700048: gy_st_liangongshi001_bro_tl16
+    13700050: gy_st_liangongshi001_bro_tl17
+    13700052: gy_st_liangongshi001_bro_tl18
+    13700054: gy_st_liangongshi001_bro_tl19
+    13700056: gy_st_liangongshi001_bro_tl20
+    13700058: gy_st_liangongshi001_bro_tl21
+    13700060: gy_st_liangongshi001_bro_tl23
+    13700062: gy_st_liangongshi001_bro_tl24
+    13700064: gy_st_liangongshi001_bro_tl25
+    13700066: gy_st_liangongshi001_bro_tl26
+    13700068: gy_st_liangongshi001_bro_tl27
+    13700070: gy_st_liangongshi001_bro_tl30
+    13700072: gy_st_liangongshi001_bro_tl31
+    13700074: gy_st_liangongshi001_bro_tl32
+    13700076: gy_st_liangongshi001_bro_tl33
+    13700078: gy_st_liangongshi001_bro_tl34
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gy_st_liangongshi001_tl
+    second: {fileID: 2100000, guid: b11db1755d8c2d3488df91371d480318, type: 2}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 2
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

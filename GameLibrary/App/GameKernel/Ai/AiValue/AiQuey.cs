@@ -1,0 +1,168 @@
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using GameLibrary;
+using StorySystem;
+
+internal class AiQuery : IStoryValue<object>
+{
+    public void InitFromDsl(Dsl.ISyntaxComponent param)
+    {
+        Dsl.CallData callData = param as Dsl.CallData;
+        if (null != callData) {
+            LoadCallData(callData);
+        } else {
+            Dsl.FunctionData funcData = param as Dsl.FunctionData;
+            if (null != funcData) {
+                LoadFuncData(funcData);
+            } else {
+                Dsl.StatementData statementData = param as Dsl.StatementData;
+                if (null != statementData) {
+                    LoadStatementData(statementData);
+                }
+            }
+        }
+    }
+    public IStoryValue<object> Clone()
+    {
+        var newObj = new AiQuery();
+        if (null != m_Select) {
+            newObj.m_Select = m_Select.Clone() as IStoryValue;
+        }
+        if (null != m_From) {
+            newObj.m_From = m_From.Clone() as IStoryValue;
+        }
+        if (null != m_Where) {
+            newObj.m_Where = m_Where.Clone() as IStoryValue;
+        }
+        for (int i = 0; i < m_OrderBy.Count; ++i) {
+            newObj.m_OrderBy.Add(m_OrderBy[i].Clone() as IStoryValue);
+        }
+        newObj.m_Desc = m_Desc;
+        newObj.m_HaveValue = m_HaveValue;
+        newObj.m_Value = m_Value;
+        return newObj;
+    }
+    public void Evaluate(StoryInstance instance, object iterator, object[] args)
+    {
+        if (null != m_Select && null != m_From) {
+            m_From.Evaluate(instance, iterator, args);
+            ArrayList coll = new ArrayList();
+
+            //筛选
+            IEnumerable enumer = m_From.Value as IEnumerable;
+            if (null != enumer) {
+                var enumerator = enumer.GetEnumerator();
+                while (enumerator.MoveNext()) {
+                    var v = enumerator.Current;
+                    if (null != m_Where) {
+                        m_Where.Evaluate(instance, v, args);
+                        object wvObj = m_Where.Value;
+                        int wv = (int)System.Convert.ChangeType(wvObj, typeof(int));
+                        if (wv != 0) {
+                            AddRow(coll, v, instance, args);
+                        }
+                    } else {
+                        AddRow(coll, v, instance, args);
+                    }
+                }
+            }
+
+            //排序
+            int ct = m_OrderBy.Count;
+            if (ct > 0) {
+                coll.Sort(new AiQueryComparer(m_Desc, ct));
+            }
+
+            //收集结果
+            ArrayList result = new ArrayList();
+            for (int i = 0; i < coll.Count; ++i) {
+                var ao = coll[i] as ArrayList;
+                result.Add(ao[0]);
+            }
+            m_HaveValue = true;
+            m_Value = result;
+        }
+    }
+    public void Analyze(StoryInstance instance)
+    {
+    }
+    public bool HaveValue
+    {
+        get
+        {
+            return m_HaveValue;
+        }
+    }
+    public object Value
+    {
+        get
+        {
+            return m_Value;
+        }
+    }
+
+    public void LoadCallData(Dsl.CallData callData)
+    {
+        string id = callData.GetId();
+        if (id == "select") {
+            m_Select = new StoryValue();
+            m_Select.InitFromDsl(callData.GetParam(0));
+        } else if (id == "from") {
+            m_From = new StoryValue();
+            m_From.InitFromDsl(callData.GetParam(0));
+        } else if (id == "where") {
+            m_Where = new StoryValue();
+            m_Where.InitFromDsl(callData.GetParam(0));
+        } else if (id == "orderby") {
+            for (int i = 0; i < callData.GetParamNum(); ++i) {
+                StoryValue v = new StoryValue();
+                v.InitFromDsl(callData.GetParam(i));
+                m_OrderBy.Add(v);
+            }
+        } else if (id == "asc") {
+            m_Desc = false;
+        } else if (id == "desc") {
+            m_Desc = true;
+        }
+    }
+
+    public void LoadFuncData(Dsl.FunctionData funcData)
+    {
+        LoadCallData(funcData.Call);
+    }
+
+    public void LoadStatementData(Dsl.StatementData statementData)
+    {
+        for (int i = 0; i < statementData.Functions.Count; ++i) {
+            var funcData = statementData.Functions[i];
+            LoadFuncData(funcData);
+        }
+    }
+
+    private void AddRow(ArrayList coll, object v, StoryInstance instance, object[] args)
+    {
+        ArrayList row = new ArrayList();
+        coll.Add(row);
+
+        m_Select.Evaluate(instance, v, args);
+        row.Add(m_Select.Value);
+
+        for (int i = 0; i < m_OrderBy.Count; ++i) {
+            var val = m_OrderBy[i];
+            val.Evaluate(instance, v, args);
+            row.Add(val.Value);
+        }
+    }
+
+    private bool m_HaveValue;
+    private object m_Value;
+
+    private IStoryValue m_Select = null;
+    private IStoryValue m_From = null;
+    private IStoryValue m_Where = null;
+    private List<IStoryValue> m_OrderBy = new List<IStoryValue>();
+    private bool m_Desc = false;
+}

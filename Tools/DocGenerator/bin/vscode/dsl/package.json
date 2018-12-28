@@ -1,0 +1,30 @@
+{
+    "name": "dsl",
+    "displayName": "dsl",
+    "description": "a simple metalanguage for domain specific language",
+    "version": "0.0.1",
+    "publisher": "dreaman",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "categories": [
+        "Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "dsl",
+            "aliases": ["DSL", "dsl"],
+            "extensions": [".dsl"],
+            "configuration": "./dsl.configuration.json"
+        }],
+        "grammars": [{
+            "language": "dsl",
+            "scopeName": "source.dsl",
+            "path": "./syntaxes/dsl.tmLanguage"
+        }],
+    		"snippets": [{
+    				"language": "dsl",
+    				"path": "./snippets/dsl.json"
+    		}]
+    }
+}

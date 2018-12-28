@@ -1,0 +1,82 @@
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# =========================
+# Operating System Files
+# =========================
+
+# OSX
+# =========================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+GameLibrary/App/GameKernel/bin
+GameLibrary/App/GameKernel/obj
+GameLibrary/App/GameKernel/*.sdf
+GameLibrary/App/GameKernel/*.suo
+GameLibrary/App/GameKernel/*.user
+GameLibrary/App/GameKernel/*.opensdf
+GameLibrary/Infrastructure/Common/bin
+GameLibrary/Infrastructure/Common/obj
+GameLibrary/Infrastructure/Common/*.sdf
+GameLibrary/Infrastructure/Common/*.suo
+GameLibrary/Infrastructure/Common/*.user
+GameLibrary/Infrastructure/Common/*.opensdf
+GameLibrary/Infrastructure/StorySystem/bin
+GameLibrary/Infrastructure/StorySystem/obj
+GameLibrary/Infrastructure/StorySystem/*.sdf
+GameLibrary/Infrastructure/StorySystem/*.suo
+GameLibrary/Infrastructure/StorySystem/*.user
+GameLibrary/Infrastructure/StorySystem/*.opensdf
+GameLibrary/*.sdf
+GameLibrary/*.suo
+GameLibrary/*.user
+GameLibrary/*.opensdf
+GameLibrary/.vs
+GameLibrary/.DS_Store
+Unity3dProject/Assets/Plugins/game/*.mdb
+Unity3dProject/Assets/Plugins/game/*.pdb
+Unity3dProject/Library
+Unity3dProject/obj
+Unity3dProject/Temp
+Unity3dProject/*.csproj
+Unity3dProject/*.sln
+Unity3dProject/*.suo
+Unity3dProject/.vs
+Unity3dProject/.DS_Store

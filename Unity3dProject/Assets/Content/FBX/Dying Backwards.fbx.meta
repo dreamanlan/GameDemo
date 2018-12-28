@@ -1,0 +1,243 @@
+fileFormatVersion: 2
+guid: e98068ad49d8b4f6a9bbcd26183ef673
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Boy:Head
+    100002: Boy:HeadTop_End
+    100004: Boy:Hips
+    100006: Boy:LeftArm
+    100008: Boy:LeftFoot
+    100010: Boy:LeftForeArm
+    100012: Boy:LeftHand
+    100014: Boy:LeftHandIndex1
+    100016: Boy:LeftHandIndex2
+    100018: Boy:LeftHandIndex3
+    100020: Boy:LeftHandIndex4
+    100022: Boy:LeftHandMiddle1
+    100024: Boy:LeftHandMiddle2
+    100026: Boy:LeftHandMiddle3
+    100028: Boy:LeftHandMiddle4
+    100030: Boy:LeftHandPinky1
+    100032: Boy:LeftHandPinky2
+    100034: Boy:LeftHandPinky3
+    100036: Boy:LeftHandPinky4
+    100038: Boy:LeftHandRing1
+    100040: Boy:LeftHandRing2
+    100042: Boy:LeftHandRing3
+    100044: Boy:LeftHandRing4
+    100046: Boy:LeftHandThumb1
+    100048: Boy:LeftHandThumb2
+    100050: Boy:LeftHandThumb3
+    100052: Boy:LeftHandThumb4
+    100054: Boy:LeftLeg
+    100056: Boy:LeftShoulder
+    100058: Boy:LeftToeBase
+    100060: Boy:LeftUpLeg
+    100062: Boy:Neck
+    100064: Boy:RightArm
+    100066: Boy:RightFoot
+    100068: Boy:RightForeArm
+    100070: Boy:RightHand
+    100072: Boy:RightHandIndex1
+    100074: Boy:RightHandIndex2
+    100076: Boy:RightHandIndex3
+    100078: Boy:RightHandIndex4
+    100080: Boy:RightHandMiddle1
+    100082: Boy:RightHandMiddle2
+    100084: Boy:RightHandMiddle3
+    100086: Boy:RightHandMiddle4
+    100088: Boy:RightHandPinky1
+    100090: Boy:RightHandPinky2
+    100092: Boy:RightHandPinky3
+    100094: Boy:RightHandPinky4
+    100096: Boy:RightHandRing1
+    100098: Boy:RightHandRing2
+    100100: Boy:RightHandRing3
+    100102: Boy:RightHandRing4
+    100104: Boy:RightHandThumb1
+    100106: Boy:RightHandThumb2
+    100108: Boy:RightHandThumb3
+    100110: Boy:RightHandThumb4
+    100112: Boy:RightLeg
+    100114: Boy:RightShoulder
+    100116: Boy:RightToeBase
+    100118: Boy:RightUpLeg
+    100120: Boy:Spine
+    100122: Boy:Spine1
+    100124: Boy:Spine2
+    100126: //RootNode
+    400000: Boy:Head
+    400002: Boy:HeadTop_End
+    400004: Boy:Hips
+    400006: Boy:LeftArm
+    400008: Boy:LeftFoot
+    400010: Boy:LeftForeArm
+    400012: Boy:LeftHand
+    400014: Boy:LeftHandIndex1
+    400016: Boy:LeftHandIndex2
+    400018: Boy:LeftHandIndex3
+    400020: Boy:LeftHandIndex4
+    400022: Boy:LeftHandMiddle1
+    400024: Boy:LeftHandMiddle2
+    400026: Boy:LeftHandMiddle3
+    400028: Boy:LeftHandMiddle4
+    400030: Boy:LeftHandPinky1
+    400032: Boy:LeftHandPinky2
+    400034: Boy:LeftHandPinky3
+    400036: Boy:LeftHandPinky4
+    400038: Boy:LeftHandRing1
+    400040: Boy:LeftHandRing2
+    400042: Boy:LeftHandRing3
+    400044: Boy:LeftHandRing4
+    400046: Boy:LeftHandThumb1
+    400048: Boy:LeftHandThumb2
+    400050: Boy:LeftHandThumb3
+    400052: Boy:LeftHandThumb4
+    400054: Boy:LeftLeg
+    400056: Boy:LeftShoulder
+    400058: Boy:LeftToeBase
+    400060: Boy:LeftUpLeg
+    400062: Boy:Neck
+    400064: Boy:RightArm
+    400066: Boy:RightFoot
+    400068: Boy:RightForeArm
+    400070: Boy:RightHand
+    400072: Boy:RightHandIndex1
+    400074: Boy:RightHandIndex2
+    400076: Boy:RightHandIndex3
+    400078: Boy:RightHandIndex4
+    400080: Boy:RightHandMiddle1
+    400082: Boy:RightHandMiddle2
+    400084: Boy:RightHandMiddle3
+    400086: Boy:RightHandMiddle4
+    400088: Boy:RightHandPinky1
+    400090: Boy:RightHandPinky2
+    400092: Boy:RightHandPinky3
+    400094: Boy:RightHandPinky4
+    400096: Boy:RightHandRing1
+    400098: Boy:RightHandRing2
+    400100: Boy:RightHandRing3
+    400102: Boy:RightHandRing4
+    400104: Boy:RightHandThumb1
+    400106: Boy:RightHandThumb2
+    400108: Boy:RightHandThumb3
+    400110: Boy:RightHandThumb4
+    400112: Boy:RightLeg
+    400114: Boy:RightShoulder
+    400116: Boy:RightToeBase
+    400118: Boy:RightUpLeg
+    400120: Boy:Spine
+    400122: Boy:Spine1
+    400124: Boy:Spine2
+    400126: //RootNode
+    7400000: dyingbackward
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: Boy:Hips
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: dyingbackward
+      takeName: mixamo.com
+      firstFrame: 0
+      lastFrame: 138
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

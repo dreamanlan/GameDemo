@@ -1,0 +1,16 @@
+E:\work\Export\Client\Tools\DocGenerator\bin\Debug\DocGenerator.exe.config
+E:\work\Export\Client\Tools\DocGenerator\obj\Debug\DocGenerator.exe
+E:\work\Export\Client\Tools\DocGenerator\obj\Debug\DocGenerator.pdb
+E:\work\Export\Client\Tools\DocGenerator\bin\Debug\DocGenerator.exe
+E:\work\Export\Client\Tools\DocGenerator\bin\Debug\DocGenerator.pdb
+E:\work\Export\Client\Tools\DocGenerator\obj\Debug\DocGenerator.csprojResolveAssemblyReference.cache
+D:\work\Client\Tools\DocGenerator\bin\Debug\DocGenerator.exe.config
+D:\work\Client\Tools\DocGenerator\bin\Debug\DocGenerator.exe
+D:\work\Client\Tools\DocGenerator\bin\Debug\DocGenerator.pdb
+D:\work\Client\Tools\DocGenerator\bin\Debug\Common.dll
+D:\work\Client\Tools\DocGenerator\bin\Debug\Dsl.dll
+D:\work\Client\Tools\DocGenerator\bin\Debug\UnityEngine.dll
+D:\work\Client\Tools\DocGenerator\bin\Debug\Common.pdb
+D:\work\Client\Tools\DocGenerator\bin\Debug\Dsl.pdb
+D:\work\Client\Tools\DocGenerator\obj\Debug\DocGenerator.exe
+D:\work\Client\Tools\DocGenerator\obj\Debug\DocGenerator.pdb
