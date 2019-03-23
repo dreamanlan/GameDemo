@@ -57,11 +57,11 @@ namespace GameLibrary.GmCommands
             m_ConfigManager.Clear();
             m_ConfigManager.LoadStory(file, 0, string.Empty);
         }
-        public void LoadStoryText(string text)
+        public void LoadStoryText(byte[] bytes)
         {
             m_StoryInstancePool.Clear();
             m_ConfigManager.Clear();
-            m_ConfigManager.LoadStoryText(text, text, 0, string.Empty);
+            m_ConfigManager.LoadStoryText(string.Empty, bytes, 0, string.Empty);
         }
         public void StartStory(string storyId)
         {

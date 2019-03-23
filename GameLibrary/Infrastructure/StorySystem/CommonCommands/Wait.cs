@@ -166,7 +166,7 @@ namespace StorySystem.CommonCommands
             if (m_HaveCondition && m_Condition.HaveValue && m_Condition.Value == 0) {
                 return false;
             }
-            if (GameLibrary.GlobalVariables.Instance.IsStorySkipped && m_CurTime > 0) {
+            if (GameLibrary.GlobalVariables.Instance.IsStorySkipped) {
                 return false;
             }
             int curTime = m_CurTime;
@@ -236,7 +236,7 @@ namespace StorySystem.CommonCommands
             if (m_HaveCondition && m_Condition.HaveValue && m_Condition.Value == 0) {
                 return false;
             }
-            if (GameLibrary.GlobalVariables.Instance.IsStorySkipped && m_RealStartTime > 0) {
+            if (GameLibrary.GlobalVariables.Instance.IsStorySkipped) {
                 return false;
             }
             if (m_RealStartTime <= 0) {

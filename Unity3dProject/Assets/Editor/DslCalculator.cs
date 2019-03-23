@@ -109,6 +109,19 @@ namespace Expression
         {
             return (T)Convert.ChangeType(v, typeof(T));
         }
+        protected static Encoding GetEncoding(object v)
+        {
+            Encoding encoding = v as Encoding;
+            if (null != encoding) {
+                return encoding;
+            }
+            string code = v as string;
+            if (!string.IsNullOrEmpty(code)) {
+                return Encoding.GetEncoding(code);
+            }
+            int codepage = ToInt(v);
+            return Encoding.GetEncoding(codepage);
+        }
     }
     public abstract class SimpleExpressionBase : AbstractExpression
     {
@@ -235,9 +248,6 @@ namespace Expression
             object v = m_Op.Calc();
             if (m_VarId.Length > 0) {
                 Calculator.SetVariable(m_VarId, v);
-                if (null != v && m_VarId[0] != '@' && m_VarId[0] != '$') {
-                    Environment.SetEnvironmentVariable(m_VarId, v.ToString());
-                }
             }
             return v;
         }
@@ -264,9 +274,6 @@ namespace Expression
                 Calculator.RunState = RunStateEnum.Continue;
             } else if (m_VarId.Length > 0) {
                 ret = Calculator.GetVariable(m_VarId);
-                if (null == ret && m_VarId[0] != '@' && m_VarId[0] != '$') {
-                    ret = Environment.GetEnvironmentVariable(m_VarId);
-                }
             }
             return ret;
         }
@@ -2685,7 +2692,7 @@ namespace Expression
                             cs[i] = '\0';
                         }
                     }
-                    str.Split(cs);
+                    r = str.Split(cs);
                 }
             }
             return r;
@@ -3801,6 +3808,637 @@ namespace Expression
             return null;
         }
     }
+    internal class DirectoryExistExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            object ret = null;
+            if (operands.Count >= 1) {
+                var dir = operands[0] as string;
+                dir = Environment.ExpandEnvironmentVariables(dir);
+                ret = Directory.Exists(dir);
+            }
+            return ret;
+        }
+    }
+    internal class FileExistExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            object ret = null;
+            if (operands.Count >= 1) {
+                var file = operands[0] as string;
+                file = Environment.ExpandEnvironmentVariables(file);
+                ret = File.Exists(file);
+            }
+            return ret;
+        }
+    }
+    internal class ListDirectoriesExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            object ret = null;
+            if (operands.Count >= 1) {
+                var baseDir = operands[0] as string;
+                baseDir = Environment.ExpandEnvironmentVariables(baseDir);
+                IList<string> filterList = new string[] { "*" };
+                if (operands.Count >= 2) {
+                    var strList = operands[1] as IList<string>;
+                    if (null != strList && operands.Count == 2) {
+                        filterList = strList;
+                    } else {
+                        var list = new List<string>();
+                        for (int i = 1; i < operands.Count; ++i) {
+                            var str = operands[i] as string;
+                            if (null != str) {
+                                list.Add(str);
+                            }
+                        }
+                        filterList = list;
+                    }
+                }
+                if (null != baseDir && Directory.Exists(baseDir)) {
+                    var fullList = new List<string>();
+                    foreach (var filter in filterList) {
+                        var list = Directory.GetDirectories(baseDir, filter, SearchOption.TopDirectoryOnly);
+                        fullList.AddRange(list);
+                    }
+                    ret = fullList;
+                }
+            }
+            return ret;
+        }
+    }
+    internal class ListFilesExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            object ret = null;
+            if (operands.Count >= 1) {
+                var baseDir = operands[0] as string;
+                baseDir = Environment.ExpandEnvironmentVariables(baseDir);
+                IList<string> filterList = new string[] { "*" };
+                if (operands.Count >= 2) {
+                    var strList = operands[1] as IList<string>;
+                    if (null != strList && operands.Count == 2) {
+                        filterList = strList;
+                    } else {
+                        var list = new List<string>();
+                        for (int i = 1; i < operands.Count; ++i) {
+                            var str = operands[i] as string;
+                            if (null != str) {
+                                list.Add(str);
+                            }
+                        }
+                        filterList = list;
+                    }
+                }
+                if (null != baseDir && Directory.Exists(baseDir)) {
+                    var fullList = new List<string>();
+                    foreach (var filter in filterList) {
+                        var list = Directory.GetFiles(baseDir, filter, SearchOption.TopDirectoryOnly);
+                        fullList.AddRange(list);
+                    }
+                    ret = fullList;
+                }
+            }
+            return ret;
+        }
+    }
+    internal class ListAllDirectoriesExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            object ret = null;
+            if (operands.Count >= 1) {
+                var baseDir = operands[0] as string;
+                baseDir = Environment.ExpandEnvironmentVariables(baseDir);
+                IList<string> filterList = new string[] { "*" };
+                if (operands.Count >= 2) {
+                    var strList = operands[1] as IList<string>;
+                    if (null != strList && operands.Count == 2) {
+                        filterList = strList;
+                    } else {
+                        var list = new List<string>();
+                        for (int i = 1; i < operands.Count; ++i) {
+                            var str = operands[i] as string;
+                            if (null != str) {
+                                list.Add(str);
+                            }
+                        }
+                        filterList = list;
+                    }
+                }
+                if (null != baseDir && Directory.Exists(baseDir)) {
+                    var fullList = new List<string>();
+                    foreach (var filter in filterList) {
+                        var list = Directory.GetDirectories(baseDir, filter, SearchOption.AllDirectories);
+                        fullList.AddRange(list);
+                    }
+                    ret = fullList;
+                }
+            }
+            return ret;
+        }
+    }
+    internal class ListAllFilesExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            object ret = null;
+            if (operands.Count >= 1) {
+                var baseDir = operands[0] as string;
+                baseDir = Environment.ExpandEnvironmentVariables(baseDir);
+                IList<string> filterList = new string[] { "*" };
+                if (operands.Count >= 2) {
+                    var strList = operands[1] as IList<string>;
+                    if (null != strList && operands.Count == 2) {
+                        filterList = strList;
+                    } else {
+                        var list = new List<string>();
+                        for (int i = 1; i < operands.Count; ++i) {
+                            var str = operands[i] as string;
+                            if (null != str) {
+                                list.Add(str);
+                            }
+                        }
+                        filterList = list;
+                    }
+                }
+                if (null != baseDir && Directory.Exists(baseDir)) {
+                    var fullList = new List<string>();
+                    foreach (var filter in filterList) {
+                        var list = Directory.GetFiles(baseDir, filter, SearchOption.AllDirectories);
+                        fullList.AddRange(list);
+                    }
+                    ret = fullList;
+                }
+            }
+            return ret;
+        }
+    }
+    internal class CreateDirectoryExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            bool ret = false;
+            if (operands.Count >= 1) {
+                var dir = operands[0] as string;
+                dir = Environment.ExpandEnvironmentVariables(dir);
+                if (!Directory.Exists(dir)) {
+                    Directory.CreateDirectory(dir);
+                    ret = true;
+                }
+            }
+            return ret;
+        }
+    }
+    internal class CopyDirectoryExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            int ct = 0;
+            if (operands.Count >= 2) {
+                var dir1 = operands[0] as string;
+                var dir2 = operands[1] as string;
+                dir1 = Environment.ExpandEnvironmentVariables(dir1);
+                dir2 = Environment.ExpandEnvironmentVariables(dir2);
+                List<string> filterAndNewExts = new List<string>();
+                for (int i = 2; i < operands.Count; ++i) {
+                    var str = operands[i] as string;
+                    if (null != str) {
+                        filterAndNewExts.Add(str);
+                    }
+                }
+                if (filterAndNewExts.Count <= 0) {
+                    filterAndNewExts.Add("*");
+                }
+                var targetRoot = Path.GetFullPath(dir2);
+                if (Directory.Exists(dir1)) {
+                    CopyFolder(targetRoot, dir1, dir2, filterAndNewExts, ref ct);
+                }
+            }
+            return ct;
+        }
+        private static void CopyFolder(string targetRoot, string from, string to, IList<string> filterAndNewExts, ref int ct)
+        {
+            if (!Directory.Exists(to))
+                Directory.CreateDirectory(to);
+            // 子文件夹
+            foreach (string sub in Directory.GetDirectories(from)) {
+                var srcPath = Path.GetFullPath(sub);
+                if (Environment.OSVersion.Platform == PlatformID.Unix || Environment.OSVersion.Platform == PlatformID.MacOSX) {
+                    if (srcPath.IndexOf(targetRoot) == 0)
+                        continue;
+                } else {
+                    if (srcPath.IndexOf(targetRoot, StringComparison.CurrentCultureIgnoreCase) == 0)
+                        continue;
+                }
+                var sName = Path.GetFileName(sub);
+                CopyFolder(targetRoot, sub, Path.Combine(to, sName), filterAndNewExts, ref ct);
+            }
+            // 文件
+            for (int i = 0; i < filterAndNewExts.Count; i += 2) {
+                string filter = filterAndNewExts[i];
+                string newExt = string.Empty;
+                if (i + 1 < filterAndNewExts.Count) {
+                    newExt = filterAndNewExts[i + 1];
+                }
+                foreach (string file in Directory.GetFiles(from, filter, SearchOption.TopDirectoryOnly)) {
+                    string targetFile;
+                    if (string.IsNullOrEmpty(newExt))
+                        targetFile = Path.Combine(to, Path.GetFileName(file));
+                    else
+                        targetFile = Path.Combine(to, Path.ChangeExtension(Path.GetFileName(file), newExt));
+                    File.Copy(file, targetFile, true);
+                    ++ct;
+                }
+            }
+        }
+    }
+    internal class MoveDirectoryExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            bool ret = false;
+            if (operands.Count >= 2) {
+                var dir1 = operands[0] as string;
+                var dir2 = operands[1] as string;
+                dir1 = Environment.ExpandEnvironmentVariables(dir1);
+                dir2 = Environment.ExpandEnvironmentVariables(dir2);
+                if (Directory.Exists(dir1)) {
+                    if (Directory.Exists(dir2)) {
+                        Directory.Delete(dir2);
+                    }
+                    Directory.Move(dir1, dir2);
+                    ret = true;
+                }
+            }
+            return ret;
+        }
+    }
+    internal class DeleteDirectoryExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            bool ret = false;
+            if (operands.Count >= 1) {
+                var dir = operands[0] as string;
+                dir = Environment.ExpandEnvironmentVariables(dir);
+                if (Directory.Exists(dir)) {
+                    Directory.Delete(dir, true);
+                    ret = true;
+                }
+            }
+            return ret;
+        }
+    }
+    internal class CopyFileExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            bool ret = false;
+            if (operands.Count >= 2) {
+                var file1 = operands[0] as string;
+                var file2 = operands[1] as string;
+                file1 = Environment.ExpandEnvironmentVariables(file1);
+                file2 = Environment.ExpandEnvironmentVariables(file2);
+                if (File.Exists(file1)) {
+                    var dir = Path.GetDirectoryName(file2);
+                    if (!Directory.Exists(dir)) {
+                        Directory.CreateDirectory(dir);
+                    }
+                    File.Copy(file1, file2, true);
+                    ret = true;
+                }
+            }
+            return ret;
+        }
+    }
+    internal class CopyFilesExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            int ct = 0;
+            if (operands.Count >= 2) {
+                var dir1 = operands[0] as string;
+                var dir2 = operands[1] as string;
+                dir1 = Environment.ExpandEnvironmentVariables(dir1);
+                dir2 = Environment.ExpandEnvironmentVariables(dir2);
+                List<string> filterAndNewExts = new List<string>();
+                for (int i = 2; i < operands.Count; ++i) {
+                    var str = operands[i] as string;
+                    if (null != str) {
+                        filterAndNewExts.Add(str);
+                    }
+                }
+                if (filterAndNewExts.Count <= 0) {
+                    filterAndNewExts.Add("*");
+                }
+                if (Directory.Exists(dir1)) {
+                    CopyFolder(dir1, dir2, filterAndNewExts, ref ct);
+                }
+            }
+            return ct;
+        }
+        private static void CopyFolder(string from, string to, IList<string> filterAndNewExts, ref int ct)
+        {
+            if (!Directory.Exists(to))
+                Directory.CreateDirectory(to);
+            // 文件
+            for (int i = 0; i < filterAndNewExts.Count; i += 2) {
+                string filter = filterAndNewExts[i];
+                string newExt = string.Empty;
+                if (i + 1 < filterAndNewExts.Count) {
+                    newExt = filterAndNewExts[i + 1];
+                }
+                foreach (string file in Directory.GetFiles(from, filter, SearchOption.TopDirectoryOnly)) {
+                    string targetFile;
+                    if (string.IsNullOrEmpty(newExt))
+                        targetFile = Path.Combine(to, Path.GetFileName(file));
+                    else
+                        targetFile = Path.Combine(to, Path.ChangeExtension(Path.GetFileName(file), newExt));
+                    File.Copy(file, targetFile, true);
+                    ++ct;
+                }
+            }
+        }
+    }
+    internal class MoveFileExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            bool ret = false;
+            if (operands.Count >= 2) {
+                var file1 = operands[0] as string;
+                var file2 = operands[1] as string;
+                file1 = Environment.ExpandEnvironmentVariables(file1);
+                file2 = Environment.ExpandEnvironmentVariables(file2);
+                if (File.Exists(file1)) {
+                    var dir = Path.GetDirectoryName(file2);
+                    if (!Directory.Exists(dir)) {
+                        Directory.CreateDirectory(dir);
+                    }
+                    if (File.Exists(file2)) {
+                        File.Delete(file2);
+                    }
+                    File.Move(file1, file2);
+                    ret = true;
+                }
+            }
+            return ret;
+        }
+    }
+    internal class DeleteFileExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            bool ret = false;
+            if (operands.Count >= 1) {
+                var file = operands[0] as string;
+                file = Environment.ExpandEnvironmentVariables(file);
+                if (File.Exists(file)) {
+                    File.Delete(file);
+                    ret = true;
+                }
+            }
+            return ret;
+        }
+    }
+    internal class DeleteFilesExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            int ct = 0;
+            if (operands.Count >= 1) {
+                var dir = operands[0] as string;
+                List<string> filters = new List<string>();
+                for (int i = 1; i < operands.Count; ++i) {
+                    var str = operands[i] as string;
+                    if (null != str) {
+                        filters.Add(str);
+                    }
+                }
+                if (filters.Count <= 0) {
+                    filters.Add("*");
+                }
+                dir = Environment.ExpandEnvironmentVariables(dir);
+                if (Directory.Exists(dir)) {
+                    foreach (var filter in filters) {
+                        foreach (string file in Directory.GetFiles(dir, filter, SearchOption.TopDirectoryOnly)) {
+                            File.Delete(file);
+                            ++ct;
+                        }
+                    }
+                }
+            }
+            return ct;
+        }
+    }
+    internal class DeleteAllFilesExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            int ct = 0;
+            if (operands.Count >= 1) {
+                var dir = operands[0] as string;
+                List<string> filters = new List<string>();
+                for (int i = 1; i < operands.Count; ++i) {
+                    var str = operands[i] as string;
+                    if (null != str) {
+                        filters.Add(str);
+                    }
+                }
+                if (filters.Count <= 0) {
+                    filters.Add("*");
+                }
+                dir = Environment.ExpandEnvironmentVariables(dir);
+                if (Directory.Exists(dir)) {
+                    foreach (var filter in filters) {
+                        foreach (string file in Directory.GetFiles(dir, filter, SearchOption.AllDirectories)) {
+                            File.Delete(file);
+                            ++ct;
+                        }
+                    }
+                }
+            }
+            return ct;
+        }
+    }
+    internal class GetFileInfoExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            object ret = null;
+            if (operands.Count >= 1) {
+                var file = operands[0] as string;
+                file = Environment.ExpandEnvironmentVariables(file);
+                if (File.Exists(file)) {
+                    ret = new FileInfo(file);
+                }
+            }
+            return ret;
+        }
+    }
+    internal class GetDirectoryInfoExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            object ret = null;
+            if (operands.Count >= 1) {
+                var file = operands[0] as string;
+                file = Environment.ExpandEnvironmentVariables(file);
+                if (Directory.Exists(file)) {
+                    ret = new DirectoryInfo(file);
+                }
+            }
+            return ret;
+        }
+    }
+    internal class GetDriveInfoExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            object ret = null;
+            if (operands.Count >= 1) {
+                var drive = operands[0] as string;
+                ret = new DriveInfo(drive);                
+            }
+            return ret;
+        }
+    }
+    internal class GetDrivesInfoExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            object ret = DriveInfo.GetDrives();
+            return ret;
+        }
+    }
+    internal class ReadAllLinesExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            if (operands.Count >= 1) {
+                string path = operands[0] as string;
+                if (!string.IsNullOrEmpty(path)) {
+                    path = Environment.ExpandEnvironmentVariables(path);
+                    Encoding encoding = Encoding.UTF8;
+                    if (operands.Count >= 2) {
+                        var v = operands[1];
+                        encoding = GetEncoding(v);
+                    }
+                    return File.ReadAllLines(path, encoding);
+                }
+            }
+            return new string[0];
+        }
+    }
+    internal class WriteAllLinesExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            if (operands.Count >= 2) {
+                string path = operands[0] as string;
+                var lines = operands[1] as IList;
+                if (!string.IsNullOrEmpty(path) && null != lines) {
+                    path = Environment.ExpandEnvironmentVariables(path);
+                    Encoding encoding = Encoding.UTF8;
+                    if (operands.Count >= 3) {
+                        var v = operands[2];
+                        encoding = GetEncoding(v);
+                    }
+                    var strs = new List<string>();
+                    foreach (var line in lines) {
+                        strs.Add(line.ToString());
+                    }
+                    File.WriteAllLines(path, strs.ToArray(), encoding);
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+    internal class ReadAllTextExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            if (operands.Count >= 1) {
+                string path = operands[0] as string;
+                if (!string.IsNullOrEmpty(path)) {
+                    path = Environment.ExpandEnvironmentVariables(path);
+                    Encoding encoding = Encoding.UTF8;
+                    if (operands.Count >= 2) {
+                        var v = operands[1];
+                        encoding = GetEncoding(v);
+                    }
+                    return File.ReadAllText(path, encoding);
+                }
+            }
+            return null;
+        }
+    }
+    internal class WriteAllTextExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            if (operands.Count >= 2) {
+                string path = operands[0] as string;
+                var text = operands[1] as string;
+                if (!string.IsNullOrEmpty(path) && !string.IsNullOrEmpty(text)) {
+                    path = Environment.ExpandEnvironmentVariables(path);
+                    Encoding encoding = Encoding.UTF8;
+                    if (operands.Count >= 3) {
+                        var v = operands[2];
+                        encoding = GetEncoding(v);
+                    }
+                    File.WriteAllText(path, text, encoding);
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+    internal class DisplayProgressBarExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            if (operands.Count >= 3) {
+                var title = operands[0] as string;
+                var text = operands[1] as string;
+                var progress = ToFloat(operands[2]);
+                if (null != title && null != text) {
+                    EditorUtility.DisplayProgressBar(title, text, progress);
+                }
+            }
+            return true;
+        }
+    }
+    internal class DisplayCancelableProgressBarExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            bool ret = false;
+            if (operands.Count >= 3) {
+                var title = operands[0] as string;
+                var text = operands[1] as string;
+                var progress = ToFloat(operands[2]);
+                if (null != title && null != text) {
+                    ret = EditorUtility.DisplayCancelableProgressBar(title, text, progress);
+                }
+            }
+            return ret;
+        }
+    }
+    internal class ClearProgressBarExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            EditorUtility.ClearProgressBar();
+            return true;
+        }
+    }
     public enum RunStateEnum
     {
         Normal = 0,
@@ -3811,6 +4449,10 @@ namespace Expression
     }
     public sealed class DslCalculator
     {
+        public IDictionary<string, object> NamedGlobalVariables
+        {
+            get { return m_NamedGlobalVariables; }
+        }
         public void Init()
         {
             Register("args", new ExpressionFactoryHelper<ArgsGet>());
@@ -3980,6 +4622,35 @@ namespace Expression
             Register("call", new ExpressionFactoryHelper<CallExp>());
             Register("return", new ExpressionFactoryHelper<ReturnExp>());
             Register("redirect", new ExpressionFactoryHelper<RedirectExp>());
+            
+            Register("direxist", new ExpressionFactoryHelper<DirectoryExistExp>());
+            Register("fileexist", new ExpressionFactoryHelper<FileExistExp>());
+            Register("listdirs", new ExpressionFactoryHelper<ListDirectoriesExp>());
+            Register("listfiles", new ExpressionFactoryHelper<ListFilesExp>());
+            Register("listalldirs", new ExpressionFactoryHelper<ListAllDirectoriesExp>());
+            Register("listallfiles", new ExpressionFactoryHelper<ListAllFilesExp>());
+            Register("createdir", new ExpressionFactoryHelper<CreateDirectoryExp>());
+            Register("copydir", new ExpressionFactoryHelper<CopyDirectoryExp>());
+            Register("movedir", new ExpressionFactoryHelper<MoveDirectoryExp>());
+            Register("deletedir", new ExpressionFactoryHelper<DeleteDirectoryExp>());
+            Register("copyfile", new ExpressionFactoryHelper<CopyFileExp>());
+            Register("copyfiles", new ExpressionFactoryHelper<CopyFilesExp>());
+            Register("movefile", new ExpressionFactoryHelper<MoveFileExp>());
+            Register("deletefile", new ExpressionFactoryHelper<DeleteFileExp>());
+            Register("deletefiles", new ExpressionFactoryHelper<DeleteFilesExp>());
+            Register("deleteallfiles", new ExpressionFactoryHelper<DeleteAllFilesExp>());
+            Register("getfileinfo", new ExpressionFactoryHelper<GetFileInfoExp>());
+            Register("getdirinfo", new ExpressionFactoryHelper<GetDirectoryInfoExp>());
+            Register("getdriveinfo", new ExpressionFactoryHelper<GetDriveInfoExp>());
+            Register("getdrivesinfo", new ExpressionFactoryHelper<GetDrivesInfoExp>());
+            Register("readalllines", new ExpressionFactoryHelper<ReadAllLinesExp>());
+            Register("writealllines", new ExpressionFactoryHelper<WriteAllLinesExp>());
+            Register("readalltext", new ExpressionFactoryHelper<ReadAllTextExp>());
+            Register("writealltext", new ExpressionFactoryHelper<WriteAllTextExp>());
+            
+            Register("displayprogressbar", new ExpressionFactoryHelper<DisplayProgressBarExp>());
+            Register("displaycancelableprogressbar", new ExpressionFactoryHelper<DisplayCancelableProgressBarExp>());
+            Register("clearprogressbar", new ExpressionFactoryHelper<ClearProgressBarExp>());
         }
         public void Register(string name, IExpressionFactory factory)
         {
@@ -4013,6 +4684,10 @@ namespace Expression
         {
             var vars = m_NamedGlobalVariables;
             vars[v] = val;
+        }
+        public bool RemoveGlobalVariable(string v)
+        {
+            return m_NamedGlobalVariables.Remove(v);
         }
         public void Load(string dslFile)
         {
@@ -4108,6 +4783,10 @@ namespace Expression
         {
             Variables[v] = val;
         }
+        internal bool RemoveVariable(int v)
+        {
+            return Variables.Remove(v);
+        }
         internal bool TryGetVariable(string v, out object result)
         {
             bool ret = false;
@@ -4149,6 +4828,20 @@ namespace Expression
                     SetGlobalVariable(v, val);
                 }
             }
+        }
+        internal bool RemoveVariable(string v)
+        {
+            bool ret = false;
+            if (v.Length > 0) {
+                if (v[0] == '@') {
+                    ret = RemoveGlobalVariable(v);
+                } else if (v[0] == '$') {
+                    ret = NamedVariables.Remove(v);
+                } else {
+                    ret = RemoveGlobalVariable(v);
+                }
+            }
+            return ret;
         }
         internal IExpression Load(Dsl.ISyntaxComponent comp)
         {

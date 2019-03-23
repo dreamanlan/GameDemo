@@ -265,6 +265,22 @@ namespace StorySystem
             }
             return ret;
         }
+        public bool RemoveVariable(string varName)
+        {
+            bool ret = false;
+            if (varName.StartsWith("$")) {
+                if (null != m_StackVariables) {
+                    ret = m_StackVariables.Remove(varName);
+                }
+            } else if (varName.StartsWith("@") && !varName.StartsWith("@@")) {
+                ret = m_LocalVariables.Remove(varName);
+            } else {
+                if (null != m_GlobalVariables) {
+                    ret = m_GlobalVariables.Remove(varName);
+                }
+            }
+            return ret;
+        }
         public StoryInstance Clone()
         {
             StoryInstance instance = new StoryInstance();
@@ -401,22 +417,28 @@ namespace StorySystem
             for (int i = ct - 1; i >= 0; --i) {
                 StoryMessageHandler handler = m_MessageHandlers[i];
                 handler.Reset();
-                Queue<MessageInfo> queue;
-                if (m_MessageQueues.TryGetValue(handler.MessageId, out queue)) {
-                    queue.Clear();
-                }
-                if (m_ConcurrentMessageQueues.TryGetValue(handler.MessageId, out queue)) {
-                    queue.Clear();
-                }
             }
             ct = m_ConcurrentMessageHandlers.Count;
             for (int i = ct - 1; i >= 0; --i) {
                 StoryMessageHandler handler = m_ConcurrentMessageHandlers[i];
                 RecycleConcurrentMessageHandler(handler);
             }
+            foreach (KeyValuePair<string, Queue<MessageInfo>> pair in m_MessageQueues) {
+                Queue<MessageInfo> queue = pair.Value;
+                if (null != queue)
+                    queue.Clear();
+            }
+            foreach (KeyValuePair<string, Queue<MessageInfo>> pair in m_ConcurrentMessageQueues) {
+                Queue<MessageInfo> queue = pair.Value;
+                if (null != queue)
+                    queue.Clear();
+            }
             m_ConcurrentMessageHandlers.Clear();
             m_LocalVariables.Clear();
             m_Message2TriggerTimes.Clear();
+            m_MessageCount = 0;
+            m_ConcurrentMessageCount = 0;
+            m_TriggeredHandlerCount = 0;
         }
         public void Start()
         {
@@ -438,8 +460,11 @@ namespace StorySystem
             msgInfo.m_Args = args;
             Queue<MessageInfo> queue;
             if (m_MessageQueues.TryGetValue(msgId, out queue)) {
-                //LogSystem.Info("StoryInstance queue message {0}", msgId);
+                if (msgId != "start" && msgId != "PlayerStart" && !msgId.StartsWith("common_")) {
+                    LogSystem.Warn("StoryInstance queue message {0}", msgId);
+                }
                 queue.Enqueue(msgInfo);
+                ++m_MessageCount;
             } else {
                 //忽略没有处理的消息
                 //LogSystem.Info("StoryInstance ignore message {0}", msgId);
@@ -452,11 +477,14 @@ namespace StorySystem
             msgInfo.m_Args = args;
             Queue<MessageInfo> queue;
             if (m_ConcurrentMessageQueues.TryGetValue(msgId, out queue)) {
-                //LogSystem.Info("StoryInstance queue message {0}", msgId);
+                if (msgId != "start" && msgId != "PlayerStart" && !msgId.StartsWith("common_")) {
+                    LogSystem.Warn("StoryInstance queue concurrent message {0}", msgId);
+                }
                 queue.Enqueue(msgInfo);
+                ++m_ConcurrentMessageCount;
             } else {
                 //忽略没有处理的消息
-                //LogSystem.Info("StoryInstance ignore message {0}", msgId);
+                //LogSystem.Info("StoryInstance ignore concurrent message {0}", msgId);
             }
         }
         public int CountMessage(string msgId)
@@ -498,14 +526,18 @@ namespace StorySystem
                     if (null != queue)
                         queue.Clear();
                 }
+                m_MessageCount = 0;
+                m_ConcurrentMessageCount = 0;
             } else {
                 for (int i = 0; i < len; ++i) {
                     string msgId = msgIds[i];
                     Queue<MessageInfo> queue;
                     if (m_MessageQueues.TryGetValue(msgId, out queue)) {
+                        m_MessageCount -= queue.Count;
                         queue.Clear();
                     }
                     if (m_ConcurrentMessageQueues.TryGetValue(msgId, out queue)) {
+                        m_ConcurrentMessageCount -= queue.Count;
                         queue.Clear();
                     }
                 }
@@ -528,16 +560,20 @@ namespace StorySystem
                 }
             }
         }
+        public bool CanSleep()
+        {
+            return m_IsPaused || m_MessageCount + m_ConcurrentMessageCount + m_TriggeredHandlerCount <= 0;
+        }
         public void Tick(long curTime)
         {
-            if (m_IsPaused) {
+            if (m_IsPaused || m_MessageCount + m_ConcurrentMessageCount + m_TriggeredHandlerCount <= 0) {
                 m_LastTickTime = curTime;
                 return;
             }
             try {
                 m_IsInTick = true;
-                const int c_MaxMsgCountPerTick = 256;
-                const int c_MaxConcurrentMsgCountPerTick = 256;
+                const int c_MaxMsgCountPerTick = 64;
+                const int c_MaxConcurrentMsgCountPerTick = 16;
                 long delta = 0;
                 if (m_LastTickTime == 0) {
                     m_LastTickTime = curTime;
@@ -546,6 +582,7 @@ namespace StorySystem
                     m_LastTickTime = curTime;
                     m_CurTime += delta;
                 }
+                int curTriggerdCount = 0;
                 int ct = m_MessageHandlers.Count;
                 for (int ix = ct - 1; ix >= 0; --ix) {
                     long dt = delta;
@@ -554,39 +591,43 @@ namespace StorySystem
                         handler.Tick(this, dt);
                         dt = 0;
                     }
-                    if (!handler.IsTriggered) {
+                    if (!handler.IsTriggered && m_MessageCount > 0) {
                         string msgId = handler.MessageId;
                         Queue<MessageInfo> queue;
                         if (m_MessageQueues.TryGetValue(msgId, out queue)) {
                             for (int msgCt = 0; msgCt < c_MaxMsgCountPerTick && queue.Count > 0 && !handler.IsTriggered; ++msgCt) {
                                 MessageInfo info = queue.Dequeue();
+                                --m_MessageCount;
                                 UpdateMessageTriggerTime(info.m_MsgId, curTime);
                                 handler.Trigger(this, info.m_Args);
-                                handler.Tick(this, dt);
-                                dt = 0;
+                                handler.Tick(this, 0);
                             }
                         }
+                    }
+                    if (handler.IsTriggered) {
+                        ++curTriggerdCount;
                     }
                 }
                 ct = m_ConcurrentMessageHandlers.Count;
-                int concurrentMsgCt = 0;
-                foreach (var pair in m_ConcurrentMessageQueues) {
-                    Queue<MessageInfo> queue = pair.Value;
-                    if (concurrentMsgCt < c_MaxConcurrentMsgCountPerTick && queue.Count > 0) {
-                        MessageInfo info = queue.Dequeue();
-                        StoryMessageHandler handler = NewConcurrentMessageHandler(info.m_MsgId);
-                        if (null != handler) {
-                            UpdateMessageTriggerTime(info.m_MsgId, curTime);
-                            handler.Trigger(this, info.m_Args);
-                            handler.Tick(this, 0);
-                            if (handler.IsTriggered) {
-                                m_ConcurrentMessageHandlers.Add(handler);
-                            } else {
-                                RecycleConcurrentMessageHandler(handler);
+                if (m_ConcurrentMessageCount > 0) {
+                    foreach (var pair in m_ConcurrentMessageQueues) {
+                        Queue<MessageInfo> queue = pair.Value;
+                        for (int concurrentMsgCt = 0; concurrentMsgCt < c_MaxConcurrentMsgCountPerTick && queue.Count > 0; ++concurrentMsgCt) {
+                            MessageInfo info = queue.Dequeue();
+                            --m_ConcurrentMessageCount;
+                            StoryMessageHandler handler = NewConcurrentMessageHandler(info.m_MsgId);
+                            if (null != handler) {
+                                UpdateMessageTriggerTime(info.m_MsgId, curTime);
+                                handler.Trigger(this, info.m_Args);
+                                handler.Tick(this, 0);
+                                if (handler.IsTriggered) {
+                                    m_ConcurrentMessageHandlers.Add(handler);
+                                } else {
+                                    RecycleConcurrentMessageHandler(handler);
+                                }
                             }
                         }
                     }
-
                 }
                 for (int ix = ct - 1; ix >= 0; --ix) {
                     long dt = delta;
@@ -600,6 +641,7 @@ namespace StorySystem
                         RecycleConcurrentMessageHandler(handler);
                     }
                 }
+                m_TriggeredHandlerCount = curTriggerdCount + m_ConcurrentMessageHandlers.Count;
             } finally {
                 m_IsInTick = false;
             }
@@ -625,7 +667,7 @@ namespace StorySystem
             if (m_ConcurrentMessageHandlerPool.TryGetValue(msgId, out queue)) {
                 if (queue.Count > 0) {
                     StoryMessageHandler handler = queue.Dequeue();
-                     return handler;
+                    return handler;
                 }
             }
             return NewMessageHandler(msgId);
@@ -664,6 +706,9 @@ namespace StorySystem
         private bool m_IsPaused = false;
         private bool m_IsInTick = false;
         private object m_Context = null;
+        private int m_MessageCount = 0;
+        private int m_ConcurrentMessageCount = 0;
+        private int m_TriggeredHandlerCount = 0;
         private Dictionary<string, Queue<MessageInfo>> m_MessageQueues = new Dictionary<string, Queue<MessageInfo>>();
         private List<StoryMessageHandler> m_MessageHandlers = new List<StoryMessageHandler>();
         private Dictionary<string, Queue<MessageInfo>> m_ConcurrentMessageQueues = new Dictionary<string, Queue<MessageInfo>>();

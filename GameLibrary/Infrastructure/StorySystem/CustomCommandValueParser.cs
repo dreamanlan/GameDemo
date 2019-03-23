@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 using GameLibrary;
 namespace StorySystem
 {
@@ -10,49 +11,56 @@ namespace StorySystem
         {
             if (!string.IsNullOrEmpty(file)) {
                 Dsl.DslFile dataFile = new Dsl.DslFile();
-#if DEBUG
-                try {
-                    if (dataFile.Load(file, LogSystem.Log)) {
+                var bytes = new byte[Dsl.DslFile.c_BinaryIdentity.Length];
+                using (var fs = File.OpenRead(file)) {
+                    fs.Read(bytes, 0, bytes.Length);
+                    fs.Close();
+                }
+                var id = System.Text.Encoding.ASCII.GetString(bytes);
+                if (id == Dsl.DslFile.c_BinaryIdentity) {
+                    try {
+                        dataFile.LoadBinaryFile(file);
                         return dataFile;
-                    } else {
-                        LogSystem.Error("LoadStory file:{0} failed", file);
+                    } catch {
                     }
-                } catch (Exception ex) {
-                    LogSystem.Error("LoadStory file:{0} Exception:{1}\n{2}", file, ex.Message, ex.StackTrace);
+                } else {
+                    try {
+                        if (dataFile.Load(file, LogSystem.Log)) {
+                            return dataFile;
+                        } else {
+                            LogSystem.Error("LoadStory file:{0} failed", file);
+                        }
+                    } catch (Exception ex) {
+                        LogSystem.Error("LoadStory file:{0} Exception:{1}\n{2}", file, ex.Message, ex.StackTrace);
+                    }
                 }
-#else
-                try {
-                    dataFile.LoadBinaryFile(file, GlobalVariables.Instance.DecodeTable);
-                    return dataFile;
-                } catch {
-                }
-#endif
             }
             return null;
         }
-        public static Dsl.DslFile LoadStoryText(string file, string text)
+        public static Dsl.DslFile LoadStoryText(string file, byte[] bytes)
         {
-#if DEBUG
-            try {
-                Dsl.DslFile dataFile = new Dsl.DslFile();
-                if (dataFile.LoadFromString(text, file, LogSystem.Log)) {
+            if (Dsl.DslFile.IsBinaryDsl(bytes, 0)) {
+                try {
+                    Dsl.DslFile dataFile = new Dsl.DslFile();
+                    dataFile.LoadBinaryCode(bytes);
                     return dataFile;
-                } else {
-                    LogSystem.Error("LoadStoryText text:{0} failed", file);
+                } catch {
+                    return null;
                 }
-            } catch (Exception ex) {
-                LogSystem.Error("LoadStoryText text:{0} Exception:{1}\n{2}", text, ex.Message, ex.StackTrace);
-            }
-            return null;
-#else
-            try {
-                Dsl.DslFile dataFile = new Dsl.DslFile();
-                dataFile.LoadBinaryCode(text, GlobalVariables.Instance.DecodeTable);
-                return dataFile;
-            } catch {
+            } else {
+                string text = Converter.FileContent2Utf8String(bytes);
+                try {
+                    Dsl.DslFile dataFile = new Dsl.DslFile();
+                    if (dataFile.LoadFromString(text, file, LogSystem.Log)) {
+                        return dataFile;
+                    } else {
+                        LogSystem.Error("LoadStoryText text:{0} failed", file);
+                    }
+                } catch (Exception ex) {
+                    LogSystem.Error("LoadStoryText text:{0} Exception:{1}\n{2}", text, ex.Message, ex.StackTrace);
+                }
                 return null;
-            }         
-#endif
+            }
         }
         public static void FirstParse(params Dsl.DslFile[] dataFiles)
         {

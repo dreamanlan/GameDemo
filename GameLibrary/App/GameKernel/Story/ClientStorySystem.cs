@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 using StorySystem;
 using GameLibrary;
 
@@ -351,23 +352,61 @@ namespace GameLibrary.Story
         }
         public void Tick()
         {
-            int bct = m_BindedStoryInstances.Count;
-            for (int ix = bct - 1; ix >= 0; --ix) {
-                var info = m_BindedStoryInstances[ix];
-                if (null == info.Object) {
-                    m_StoryLogicInfos.Remove(info.Instance);
-                    m_BindedStoryInstances.RemoveAt(ix);
-                }
-            }
+            try {
+                UnityEngine.Profiling.Profiler.BeginSample("GfxStorySystem.Tick");
+                long curTime = TimeUtility.GetLocalMilliseconds();
+                if (m_SleepMode) {
+                    if (m_LastSleepTickTime + c_SleepTickInterval <= curTime) {
+                        m_TotalSleepTime += curTime - m_LastSleepTickTime;
+                        m_LastSleepTickTime = curTime;
 
-            long time = TimeUtility.GetLocalMilliseconds();
-            int ct = m_StoryLogicInfos.Count;
-            for (int ix = ct - 1; ix >= 0; --ix) {
-                StoryInstance info = m_StoryLogicInfos[ix];
-                info.Tick(time);
-                if (info.IsTerminated) {
-                    m_StoryLogicInfos.RemoveAt(ix);
+
+                        bool sleepMode = true;
+                        if (sleepMode) {
+                            int bct = m_BindedStoryInstances.Count;
+                            for (int ix = 0; ix < bct; ++ix) {
+                                var info = m_BindedStoryInstances[ix];
+                                if (!info.Instance.CanSleep()) {
+                                    sleepMode = false;
+                                    break;
+                                }
+                            }
+                        }
+                        if (sleepMode) {
+                            int ct = m_StoryLogicInfos.Count;
+                            for (int ix = 0; ix < ct; ++ix) {
+                                StoryInstance info = m_StoryLogicInfos[ix];
+                                if (!info.CanSleep()) {
+                                    sleepMode = false;
+                                    break;
+                                }
+                            }
+                        }
+                        m_SleepMode = sleepMode;
+                    }
                 }
+                if (!m_SleepMode) {
+                    m_TotalSleepTime = 0;
+                    int bct = m_BindedStoryInstances.Count;
+                    for (int ix = bct - 1; ix >= 0; --ix) {
+                        var info = m_BindedStoryInstances[ix];
+                        if (null == info.Object) {
+                            m_StoryLogicInfos.Remove(info.Instance);
+                            m_BindedStoryInstances.RemoveAt(ix);
+                        }
+                    }
+
+                    int ct = m_StoryLogicInfos.Count;
+                    for (int ix = ct - 1; ix >= 0; --ix) {
+                        StoryInstance info = m_StoryLogicInfos[ix];
+                        info.Tick(curTime);
+                        if (info.IsTerminated) {
+                            m_StoryLogicInfos.RemoveAt(ix);
+                        }
+                    }
+                }
+            } finally {
+                UnityEngine.Profiling.Profiler.EndSample();
             }
         }
         public void AddBindedStory(UnityEngine.Object obj, StoryInstance inst)
@@ -390,6 +429,8 @@ namespace GameLibrary.Story
                     }
                 }
             }
+            m_SleepMode = false;
+            m_LastSleepTickTime = 0;
         }
         public void SendConcurrentMessage(string msgId, params object[] args)
         {
@@ -407,6 +448,8 @@ namespace GameLibrary.Story
                     }
                 }
             }
+            m_SleepMode = false;
+            m_LastSleepTickTime = 0;
         }
         public int CountMessage(string msgId)
         {
@@ -584,15 +627,10 @@ namespace GameLibrary.Story
                 StoryConfigManager.Instance.LoadStoryText(file, text, 0, _namespace);
             }
         }
-        private string LoadAssetFile(string file)
+        private byte[] LoadAssetFile(string file)
         {
             var bytes = Utility.LoadFileFromStreamingAssets(file);
-            int ix = 0;
-            if (bytes.Length > 3 && bytes[0] == 0xef && bytes[1] == 0xbb && bytes[2] == 0xbf) {
-                ix = 3;
-            }
-            var text = Encoding.UTF8.GetString(bytes, ix, bytes.Length - ix);
-            return text;
+            return bytes;
         }
 
         private ClientStorySystem() { }
@@ -605,7 +643,12 @@ namespace GameLibrary.Story
         private List<BindedStoryInfo> m_BindedStoryInstances = new List<BindedStoryInfo>();
 
         private StrObjDict m_GlobalVariables = new StrObjDict();
-        
+        private bool m_SleepMode = false;
+        private long m_LastSleepTickTime = 0;
+        private const long c_SleepTickInterval = 1000;
+        private long m_TotalSleepTime = 0;
+        private const long c_MaxStorySleepTime = 5000;
+
         private List<StoryInstance> m_StoryLogicInfos = new List<StoryInstance>();
         private Dictionary<string, StoryInstance> m_StoryInstancePool = new Dictionary<string, StoryInstance>();
         private Dictionary<string, List<AiStoryInstanceInfo>> m_AiStoryInstancePool = new Dictionary<string, List<AiStoryInstanceInfo>>();

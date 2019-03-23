@@ -335,5 +335,15 @@ namespace GameLibrary
                 }
             }
         }
+        public static string FileContent2Utf8String(byte[] bytes)
+        {
+            if(null==bytes)
+                return string.Empty;
+            if(bytes.Length>=3 && bytes[0] == 0xEF && bytes[1] == 0xBB && bytes[2] == 0xBF) {
+                return System.Text.Encoding.UTF8.GetString(bytes, 3, bytes.Length - 3);
+            } else {
+                return System.Text.Encoding.UTF8.GetString(bytes);
+            }
+        }
     }
 }

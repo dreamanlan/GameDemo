@@ -49,10 +49,11 @@ namespace GameLibrary
         private void ExecCommand(string cmd)
         {
             try {
+                cmd = cmd.Trim();
                 int stIndex = cmd.IndexOf('(');
                 if (stIndex > 0) {
                     ClientGmStorySystem.Instance.Reset();
-                    ClientGmStorySystem.Instance.LoadStoryText("script(main){onmessage(\"start\"){" + cmd + "}}");
+                    ClientGmStorySystem.Instance.LoadStoryText(Encoding.UTF8.GetBytes("script(main){onmessage(\"start\"){" + cmd + "};};"));
                     ClientGmStorySystem.Instance.StartStory("main");
                 } else {
                     stIndex = cmd.IndexOf(' ');
@@ -87,9 +88,8 @@ namespace GameLibrary
                 } else {
                     var bytes = Utility.LoadFileFromStreamingAssets(m_LocalGmFile);
                     if (null != bytes) {
-                        var text = Encoding.UTF8.GetString(bytes);
                         ClientGmStorySystem.Instance.Reset();
-                        ClientGmStorySystem.Instance.LoadStoryText(text);
+                        ClientGmStorySystem.Instance.LoadStoryText(bytes);
                         ClientGmStorySystem.Instance.StartStory("main");
                     } else {
                         m_LocalGmFile = "";

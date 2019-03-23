@@ -133,25 +133,25 @@ namespace StorySystem
                     command = factory.Create();
                     command.Init(commandConfig);
                 } catch (Exception ex) {
-                    GameLibrary.LogSystem.Error("command:{0} line:{1} failed.", commandConfig.ToScriptString(false), commandConfig.GetLine());
+                    GameLibrary.LogSystem.Error("[LoadStory] command:{0} line:{1} failed.", commandConfig.ToScriptString(false), commandConfig.GetLine());
                     throw ex;
                 }
             } else {
 #if DEBUG
-                string err = string.Format("CreateCommand failed, line:{0} command:{1}", commandConfig.GetLine(), commandConfig.ToScriptString(false));
+                string err = string.Format("[LoadStory] CreateCommand failed, line:{0} command:{1}", commandConfig.GetLine(), commandConfig.ToScriptString(false));
                 throw new Exception(err);
 #else
-                GameLibrary.LogSystem.Error("CreateCommand failed, type:{0} line:{1}", type, commandConfig.GetLine());
+                GameLibrary.LogSystem.Error("[LoadStory] CreateCommand failed, type:{0} line:{1}", type, commandConfig.GetLine());
 #endif
             }
             if (null != command) {
-                //GameLibrary.LogSystem.Debug("CreateCommand, type:{0} command:{1}", type, command.GetType().Name);
+                //GameLibrary.LogSystem.Debug("[LoadStory] CreateCommand, type:{0} command:{1}", type, command.GetType().Name);
             } else {
 #if DEBUG
-                string err = string.Format("CreateCommand failed, line:{0} command:{1}", commandConfig.GetLine(), commandConfig.ToScriptString(false));
+                string err = string.Format("[LoadStory] CreateCommand failed, line:{0} command:{1}", commandConfig.GetLine(), commandConfig.ToScriptString(false));
                 throw new Exception(err);
 #else
-                GameLibrary.LogSystem.Error("CreateCommand failed, type:{0} line:{1}", type, commandConfig.GetLine());
+                GameLibrary.LogSystem.Error("[LoadStory] CreateCommand failed, type:{0} line:{1}", type, commandConfig.GetLine());
 #endif
             }
             return command;

@@ -20,15 +20,15 @@ namespace StorySystem
         {
             if (!string.IsNullOrEmpty(file)) {
                 Dsl.DslFile dataFile = new Dsl.DslFile();
-                var bytes = new byte[c_BinaryId.Length];
+                var bytes = new byte[Dsl.DslFile.c_BinaryIdentity.Length];
                 using (var fs = File.OpenRead(file)) {
                     fs.Read(bytes, 0, bytes.Length);
                     fs.Close();
                 }
                 var id = System.Text.Encoding.ASCII.GetString(bytes);
-                if (id == c_BinaryId) {
+                if (id == Dsl.DslFile.c_BinaryIdentity) {
                     try {
-                        dataFile.LoadBinaryFile(file, GlobalVariables.Instance.DecodeTable);
+                        dataFile.LoadBinaryFile(file);
                         Load(dataFile, sceneId, _namespace, file);
                     } catch {
                     }
@@ -37,33 +37,34 @@ namespace StorySystem
                         if (dataFile.Load(file, LogSystem.Log)) {
                             Load(dataFile, sceneId, _namespace, file);
                         } else {
-                            LogSystem.Error("LoadStory file:{0} scene:{1} failed", file, sceneId);
+                            LogSystem.Error("[LoadStory] LoadStory file:{0} scene:{1} failed", file, sceneId);
                         }
                     } catch (Exception ex) {
-                        LogSystem.Error("LoadStory file:{0} scene:{1} Exception:{2}\n{3}", file, sceneId, ex.Message, ex.StackTrace);
+                        LogSystem.Error("[LoadStory] LoadStory file:{0} scene:{1} Exception:{2}\n{3}", file, sceneId, ex.Message, ex.StackTrace);
                     }
                 }
             }
         }
-        public void LoadStoryText(string file, string text, int sceneId, string _namespace)
+        public void LoadStoryText(string file, byte[] bytes, int sceneId, string _namespace)
         {
-            if (text.Substring(0, c_BinaryId.Length) == c_BinaryId) {
+            if (Dsl.DslFile.IsBinaryDsl(bytes, 0)) {
                 try {
                     Dsl.DslFile dataFile = new Dsl.DslFile();
-                    dataFile.LoadBinaryCode(text, GlobalVariables.Instance.DecodeTable);
+                    dataFile.LoadBinaryCode(bytes);
                     Load(dataFile, sceneId, _namespace, file);
                 } catch {
                 }
             } else {
                 try {
+                    string text = Converter.FileContent2Utf8String(bytes);
                     Dsl.DslFile dataFile = new Dsl.DslFile();
                     if (dataFile.LoadFromString(text, file, LogSystem.Log)) {
                         Load(dataFile, sceneId, _namespace, file);
                     } else {
-                        LogSystem.Error("LoadStoryText text:{0} scene:{1} failed", file, sceneId);
+                        LogSystem.Error("[LoadStory] LoadStoryText text:{0} scene:{1} failed", file, sceneId);
                     }
                 } catch (Exception ex) {
-                    LogSystem.Error("LoadStoryText text:{0} scene:{1} Exception:{2}\n{3}", file, sceneId, ex.Message, ex.StackTrace);
+                    LogSystem.Error("[LoadStory] LoadStoryText text:{0} scene:{1} Exception:{2}\n{3}", file, sceneId, ex.Message, ex.StackTrace);
                 }
             }
         }
@@ -138,7 +139,7 @@ namespace StorySystem
                             CustomCommandValueParser.FirstParse(dslInfo);
                             CustomCommandValueParser.FinalParse(dslInfo);
                         } else {
-                            LogSystem.Error("Unknown story keyword '{0}'", id);
+                            LogSystem.Error("[LoadStory] Unknown story keyword '{0}'", id);
                         }
                     }
                 }
@@ -173,9 +174,7 @@ namespace StorySystem
         private object m_Lock = new object();
         private Dictionary<int, Dictionary<string, StoryInstance>> m_StoryInstances = new Dictionary<int, Dictionary<string, StoryInstance>>();
         private Dictionary<string, Dictionary<string, StoryInstance>> m_StoryInstancePool = new Dictionary<string, Dictionary<string, StoryInstance>>();
-
-        private const string c_BinaryId = "AQMFEAcL";
-
+        
         public static StoryConfigManager NewInstance()
         {
             return new StoryConfigManager();
