@@ -66,20 +66,28 @@ namespace StorySystem
         {
             for (int ix = 0; ix < dataFiles.Length; ++ix) {
                 Dsl.DslFile dataFile = dataFiles[ix];
-                for (int i = 0; i < dataFile.DslInfos.Count; i++) {
-                    Dsl.DslInfo dslInfo = dataFile.DslInfos[i];
-                    FirstParse(dslInfo);
-                }
+                FirstParse(dataFile.DslInfos);
             }
         }
         public static void FinalParse(params Dsl.DslFile[] dataFiles)
         {
             for (int ix = 0; ix < dataFiles.Length; ++ix) {
                 Dsl.DslFile dataFile = dataFiles[ix];
-                for (int i = 0; i < dataFile.DslInfos.Count; i++) {
-                    Dsl.DslInfo dslInfo = dataFile.DslInfos[i];
-                    FinalParse(dslInfo);
-                }
+                FinalParse(dataFile.DslInfos);
+            }
+        }
+        public static void FirstParse(IList<Dsl.DslInfo> dslInfos)
+        {
+            for (int i = 0; i < dslInfos.Count; i++) {
+                Dsl.DslInfo dslInfo = dslInfos[i];
+                FirstParse(dslInfo);
+            }
+        }
+        public static void FinalParse(IList<Dsl.DslInfo> dslInfos)
+        {
+            for (int i = 0; i < dslInfos.Count; i++) {
+                Dsl.DslInfo dslInfo = dslInfos[i];
+                FinalParse(dslInfo);
             }
         }
         public static void FirstParse(Dsl.DslInfo dslInfo)

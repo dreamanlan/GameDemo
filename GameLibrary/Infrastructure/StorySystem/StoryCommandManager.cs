@@ -131,7 +131,9 @@ namespace StorySystem
             if (null != factory) {
                 try {
                     command = factory.Create();
-                    command.Init(commandConfig);
+                    if (!command.Init(commandConfig)) {
+                        GameLibrary.LogSystem.Error("[LoadStory] command:{0} line:{1} failed.", commandConfig.ToScriptString(false), commandConfig.GetLine());
+                    }
                 } catch (Exception ex) {
                     GameLibrary.LogSystem.Error("[LoadStory] command:{0} line:{1} failed.", commandConfig.ToScriptString(false), commandConfig.GetLine());
                     throw ex;

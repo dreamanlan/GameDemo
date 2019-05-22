@@ -18,6 +18,21 @@ namespace StorySystem
                 }
             }
         }
+        public static object CastTo(Type t, object obj)
+        {
+            if (null == obj)
+                return null;
+            Type st = obj.GetType();
+            if (t.IsAssignableFrom(st) || st.IsSubclassOf(t)) {
+                return obj;
+            } else {
+                try {
+                    return Convert.ChangeType(obj, t);
+                } catch {
+                    return null;
+                }
+            }
+        }
         public static IStoryValue<object> AdaptFrom<T>(IStoryValue<T> original)
         {
             return new StoryValueAdapter<T>(original);

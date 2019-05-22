@@ -8,7 +8,7 @@ namespace StorySystem
     /// </summary>
     public interface IStoryCommand
     {
-        void Init(Dsl.ISyntaxComponent config);//从DSL语言初始化命令实例
+        bool Init(Dsl.ISyntaxComponent config);//从DSL语言初始化命令实例
         IStoryCommand Clone();//克隆一个新实例，每个命令只从DSL语言初始化一次，之后的实例由克隆产生，提升性能
         IStoryCommand LeadCommand { get; }   //用DSL实现的支持递归的command，自身不知道何时是新调用开始，此时借助一个引导命令来发起新调用。
         void Reset();//复位实例，保证实例状态为初始状态。
@@ -24,8 +24,9 @@ namespace StorySystem
             get { return m_IsCompositeCommand; }
             protected set { m_IsCompositeCommand = value; }
         }
-        public void Init(Dsl.ISyntaxComponent config)
+        public bool Init(Dsl.ISyntaxComponent config)
         {
+            m_LoadSuccess = true;
             Dsl.CallData callData = config as Dsl.CallData;
             if (null != callData) {
                 Load(callData);
@@ -43,6 +44,7 @@ namespace StorySystem
                     }
                 }
             }
+            return m_LoadSuccess;
         }
         public void Reset()
         {
@@ -94,10 +96,30 @@ namespace StorySystem
         {
             return false;
         }
-        protected virtual void Load(Dsl.CallData callData) { }
-        protected virtual void Load(Dsl.FunctionData funcData) { }
-        protected virtual void Load(Dsl.StatementData statementData) { }
+        protected virtual void Load(Dsl.CallData callData)
+        {
+            if (callData.GetParamNum() > 0) {
+                m_LoadSuccess = true;
+            }
+        }
+        protected virtual void Load(Dsl.FunctionData funcData)
+        {
+            if (funcData.Call.GetParamNum() > 0 || funcData.GetStatementNum() > 0 || funcData.HaveExternScript()) {
+                m_LoadSuccess = false;
+            }
+        }
+        protected virtual void Load(Dsl.StatementData statementData)
+        {
+            bool v = true;
+            foreach (var func in statementData.Functions) {
+                if (func.Call.GetParamNum() > 0 || func.GetStatementNum() > 0 || func.HaveExternScript()) {
+                    v = false;
+                }
+            }
+            m_LoadSuccess = v;
+        }
 
+        private bool m_LoadSuccess = true;
         private bool m_LastExecResult = false;
         private bool m_IsCompositeCommand = false;
     }

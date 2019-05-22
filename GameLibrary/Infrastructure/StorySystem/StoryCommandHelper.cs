@@ -60,19 +60,26 @@ namespace StorySystem
         where SubClassType : SimpleStoryCommandBase<SubClassType, ValueParamType>, new()
         where ValueParamType : IStoryValueParam, new()
     {
-        public void Init(Dsl.ISyntaxComponent config)
+        public bool Init(Dsl.ISyntaxComponent config)
         {
+            this.config = config;
             m_Params.InitFromDsl(config, 0);
+            return config is Dsl.CallData;
         }
         public IStoryCommand Clone()
         {
             SubClassType cmd = new SubClassType();
             cmd.m_Params = m_Params.Clone();
+            cmd.config = config;
             return cmd;
         }
         public IStoryCommand LeadCommand
         {
             get { return null; }
+        }
+        public string GetId()
+        {
+            return config.GetId();
         }
         public void Reset()
         {
@@ -110,5 +117,6 @@ namespace StorySystem
         protected virtual void SemanticAnalyze(StoryInstance instance) { }
         private bool m_LastExecResult = false;
         private IStoryValueParam m_Params = new ValueParamType();
+        private Dsl.ISyntaxComponent config;
     }
 }

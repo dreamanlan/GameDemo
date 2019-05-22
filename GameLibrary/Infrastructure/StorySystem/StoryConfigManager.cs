@@ -105,6 +105,7 @@ namespace StorySystem
             lock (m_Lock) {
                 Dictionary<string, StoryInstance> existStoryInstances;
                 if (!m_StoryInstancePool.TryGetValue(resourceName, out existStoryInstances)) {
+                    List<Dsl.DslInfo> cmdOrValList = new List<Dsl.DslInfo>();
                     existStoryInstances = new Dictionary<string, StoryInstance>();
                     m_StoryInstancePool.Add(resourceName, existStoryInstances);
                     for (int i = 0; i < dataFile.DslInfos.Count; i++) {
@@ -136,12 +137,13 @@ namespace StorySystem
                                 }
                             }
                         } else if (id == "command" || id == "value") {
-                            CustomCommandValueParser.FirstParse(dslInfo);
-                            CustomCommandValueParser.FinalParse(dslInfo);
+                            cmdOrValList.Add(dslInfo);
                         } else {
                             LogSystem.Error("[LoadStory] Unknown story keyword '{0}'", id);
                         }
                     }
+                    CustomCommandValueParser.FirstParse(cmdOrValList);
+                    CustomCommandValueParser.FinalParse(cmdOrValList);
                 }
                 Dictionary<string, StoryInstance> storyInstances;
                 if (!m_StoryInstances.TryGetValue(sceneId, out storyInstances)) {
