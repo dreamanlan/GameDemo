@@ -22,10 +22,10 @@ namespace GameLibrary.Story.Values
             val.m_Value = m_Value;
             return val;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
-            m_UnitId.Evaluate(instance, iterator, args);
+            m_UnitId.Evaluate(instance, handler, iterator, args);
             TryUpdateValue(instance);
         }
         public bool HaveValue
@@ -78,11 +78,11 @@ namespace GameLibrary.Story.Values
             val.m_Value = m_Value;
             return val;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
-            m_UnitId.Evaluate(instance, iterator, args);
-            m_Index.Evaluate(instance, iterator, args);
+            m_UnitId.Evaluate(instance, handler, iterator, args);
+            m_Index.Evaluate(instance, handler, iterator, args);
             TryUpdateValue(instance);
         }
         public bool HaveValue

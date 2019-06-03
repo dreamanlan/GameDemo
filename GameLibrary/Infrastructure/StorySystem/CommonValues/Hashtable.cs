@@ -24,10 +24,10 @@ namespace StorySystem.CommonValues
             val.m_Value = m_Value;
             return val;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
-            m_String.Evaluate(instance, iterator, args);
+            m_String.Evaluate(instance, handler, iterator, args);
             TryUpdateValue();
         }
         public bool HaveValue
@@ -78,10 +78,10 @@ namespace StorySystem.CommonValues
             val.m_Value = m_Value;
             return val;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
-            m_String.Evaluate(instance, iterator, args);
+            m_String.Evaluate(instance, handler, iterator, args);
             TryUpdateValue();
         }
         public bool HaveValue
@@ -132,10 +132,10 @@ namespace StorySystem.CommonValues
             val.m_Value = m_Value;
             return val;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
-            m_Hashtable.Evaluate(instance, iterator, args);
+            m_Hashtable.Evaluate(instance, handler, iterator, args);
             TryUpdateValue();
         }
         public bool HaveValue
@@ -229,10 +229,10 @@ namespace StorySystem.CommonValues
             val.m_Value = m_Value;
             return val;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
-            m_String.Evaluate(instance, iterator, args);
+            m_String.Evaluate(instance, handler, iterator, args);
             TryUpdateValue();
         }
         public bool HaveValue
@@ -312,10 +312,10 @@ namespace StorySystem.CommonValues
                 pair.m_Value = m_Value.Clone();
                 return pair;
             }
-            internal void Evaluate(StoryInstance instance, object iterator, object[] args)
+            internal void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
             {
-                m_Key.Evaluate(instance, iterator, args);
-                m_Value.Evaluate(instance, iterator, args);
+                m_Key.Evaluate(instance, handler, iterator, args);
+                m_Value.Evaluate(instance, handler, iterator, args);
             }
             internal bool HaveValue
             {
@@ -357,11 +357,11 @@ namespace StorySystem.CommonValues
             val.m_Value = m_Value;
             return val;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
             for (int i = 0; i < m_Args.Count; i++) {
-                m_Args[i].Evaluate(instance, iterator, args);
+                m_Args[i].Evaluate(instance, handler, iterator, args);
             }
             TryUpdateValue();
         }
@@ -444,15 +444,15 @@ namespace StorySystem.CommonValues
             cmd.m_DefValue = m_DefValue.Clone();
             return cmd;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
             if (m_ParamNum > 1) {
-                m_Var.Evaluate(instance, iterator, args);
-                m_Key.Evaluate(instance, iterator, args);
+                m_Var.Evaluate(instance, handler, iterator, args);
+                m_Key.Evaluate(instance, handler, iterator, args);
             }
             if (m_ParamNum > 2) {
-                m_DefValue.Evaluate(instance, iterator, args);
+                m_DefValue.Evaluate(instance, handler, iterator, args);
             }
 
             TryUpdateValue();
@@ -526,11 +526,11 @@ namespace StorySystem.CommonValues
             cmd.m_Var = m_Var.Clone();
             return cmd;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
             if (m_ParamNum > 0) {
-                m_Var.Evaluate(instance, iterator, args);
+                m_Var.Evaluate(instance, handler, iterator, args);
             }
             TryUpdateValue();
         }
@@ -588,11 +588,11 @@ namespace StorySystem.CommonValues
             cmd.m_Var = m_Var.Clone();
             return cmd;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
             if (m_ParamNum > 0) {
-                m_Var.Evaluate(instance, iterator, args);
+                m_Var.Evaluate(instance, handler, iterator, args);
             }
             TryUpdateValue();
         }
@@ -652,11 +652,11 @@ namespace StorySystem.CommonValues
             cmd.m_Var = m_Var.Clone();
             return cmd;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
             if (m_ParamNum > 0) {
-                m_Var.Evaluate(instance, iterator, args);
+                m_Var.Evaluate(instance, handler, iterator, args);
             }
             TryUpdateValue();
         }

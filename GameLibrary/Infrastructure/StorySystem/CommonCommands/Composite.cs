@@ -36,7 +36,7 @@ namespace StorySystem.CommonCommands
             m_ArgNames = new List<string>();
             m_InitialCommands = new List<IStoryCommand>();
         }
-        public void NewCall(StoryInstance instance, object iterator, object[] args)
+        public void NewCall(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             //command的执行不像函数，它支持类似协程的机制，允许暂时挂起，稍后继续，这意味着并非每次调用ExecCommand都对应语义上的一次过程调用
             //，因此栈的创建不能在ExecCommand里进行（事实上，在ExecCommand里无法区分本次执行是一次新的过程调用还是一次挂起后的继续执行）。
@@ -47,7 +47,7 @@ namespace StorySystem.CommonCommands
                 stackInfo.m_Args.Add(m_LoadedArgs[i].Clone());
             }
             for (int i = 0; i < stackInfo.m_Args.Count; i++) {
-                stackInfo.m_Args[i].Evaluate(instance, iterator, args);
+                stackInfo.m_Args[i].Evaluate(instance, handler, iterator, args);
             }
             //实参处理完，进入函数体执行，创建新的栈
             PushStack(instance, stackInfo);
@@ -72,7 +72,7 @@ namespace StorySystem.CommonCommands
                 return m_LeadCommand;
             }
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             if (m_Stack.Count > 0) {
                 StackElementInfo stackInfo = m_Stack.Peek();
@@ -85,21 +85,21 @@ namespace StorySystem.CommonCommands
                 }
             }
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta, object iterator, object[] args)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta, object iterator, object[] args)
         {
             bool ret = false;
             if (m_Stack.Count > 0) {
                 StackElementInfo stackInfo = m_Stack.Peek();
                 instance.StackVariables = stackInfo.m_StackVariables;
                 if (stackInfo.m_CommandQueue.Count == 0 && !stackInfo.m_AlreadyExecute) {
-                    Evaluate(instance, iterator, args);
+                    Evaluate(instance, handler, iterator, args);
                     Prepare(stackInfo);
                     stackInfo.m_AlreadyExecute = true;
                 }
                 if (stackInfo.m_CommandQueue.Count > 0) {
                     while (stackInfo.m_CommandQueue.Count > 0) {
                         IStoryCommand cmd = stackInfo.m_CommandQueue.Peek();
-                        if (cmd.Execute(instance, delta, iterator, args)) {
+                        if (cmd.Execute(instance, handler, delta, iterator, args)) {
                             ret = true;
                             break;
                         } else {
@@ -235,9 +235,9 @@ namespace StorySystem.CommonCommands
         {
             return null;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
-            m_Cmd.NewCall(instance, iterator, args);
+            m_Cmd.NewCall(instance, handler, iterator, args);
         }
         private CompositeCommand m_Cmd = null;
     }

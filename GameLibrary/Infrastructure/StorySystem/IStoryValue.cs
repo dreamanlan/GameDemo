@@ -10,7 +10,7 @@ namespace StorySystem
     {
         void InitFromDsl(Dsl.ISyntaxComponent param);//从DSL语言初始化值实例
         IStoryValue<T> Clone();//克隆一个新实例，每个值只从DSL语言初始化一次，之后的实例由克隆产生，提升性能
-        void Evaluate(StoryInstance instance, object iterator, object[] args);//参数替换为参数值并计算StoryValue的值
+        void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args);//参数替换为参数值并计算StoryValue的值
         bool HaveValue { get; }//是否已经有值，对常量初始化后即产生值，对参数、变量与函数则在Evaluate后产生值
         T Value { get; }//具体的值
     }
@@ -55,7 +55,7 @@ namespace StorySystem
             obj.CopyFrom(this);
             return obj;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             if (IsConst)
                 return;
@@ -66,7 +66,7 @@ namespace StorySystem
                 m_Value = iterator;
                 m_HaveValue = true;
             } else if (null != m_Proxy) {
-                m_Proxy.Evaluate(instance, iterator, args);
+                m_Proxy.Evaluate(instance, handler, iterator, args);
                 if (m_Proxy.HaveValue) {
                     m_Value = m_Proxy.Value;
                     m_HaveValue = true;
@@ -276,7 +276,7 @@ namespace StorySystem
             obj.CopyFrom(this);
             return obj;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             if (IsConst)
                 return;
@@ -287,7 +287,7 @@ namespace StorySystem
                 m_Value = StoryValueHelper.CastTo<T>(iterator);
                 m_HaveValue = true;
             } else if (null != m_Proxy) {
-                m_Proxy.Evaluate(instance, iterator, args);
+                m_Proxy.Evaluate(instance, handler, iterator, args);
                 if (m_Proxy.HaveValue) {
                     m_Value = StoryValueHelper.CastTo<T>(m_Proxy.Value);
                     m_HaveValue = true;
@@ -472,9 +472,9 @@ namespace StorySystem
             StoryValueAdapter<T> val = new StoryValueAdapter<T>(newOriginal);
             return val;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
-            m_Original.Evaluate(instance, iterator, args);
+            m_Original.Evaluate(instance, handler, iterator, args);
         
         }
         public bool HaveValue

@@ -32,14 +32,14 @@ namespace GameLibrary.Story.Values
             val.m_Value = m_Value;
             return val;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
             if (m_ParamNum > 0) {
-                m_AttrName.Evaluate(instance, iterator, args);
+                m_AttrName.Evaluate(instance, handler, iterator, args);
             }
             if (m_ParamNum > 1) {
-                m_DefaultValue.Evaluate(instance, iterator, args);
+                m_DefaultValue.Evaluate(instance, handler, iterator, args);
             }
             TryUpdateValue(instance);
         }
@@ -90,7 +90,7 @@ namespace GameLibrary.Story.Values
             val.m_Value = m_Value;
             return val;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
 
@@ -131,7 +131,7 @@ namespace GameLibrary.Story.Values
             val.m_Value = m_Value;
             return val;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
 
@@ -184,12 +184,12 @@ namespace GameLibrary.Story.Values
             val.m_Value = m_Value;
             return val;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
-            m_Type.Evaluate(instance, iterator, args);
-            m_Pos.Evaluate(instance, iterator, args);
-            m_Range.Evaluate(instance, iterator, args);
+            m_Type.Evaluate(instance, handler, iterator, args);
+            m_Pos.Evaluate(instance, handler, iterator, args);
+            m_Range.Evaluate(instance, handler, iterator, args);
             TryUpdateValue(instance);
         }
         public bool HaveValue
@@ -251,12 +251,12 @@ namespace GameLibrary.Story.Values
             val.m_Value = m_Value;
             return val;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
-            m_Type.Evaluate(instance, iterator, args);
-            m_Pos.Evaluate(instance, iterator, args);
-            m_Range.Evaluate(instance, iterator, args);
+            m_Type.Evaluate(instance, handler, iterator, args);
+            m_Pos.Evaluate(instance, handler, iterator, args);
+            m_Range.Evaluate(instance, handler, iterator, args);
             TryUpdateValue(instance);
         }
         public bool HaveValue
@@ -320,11 +320,11 @@ namespace GameLibrary.Story.Values
             val.m_Value = m_Value;
             return val;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
-            m_Pos.Evaluate(instance, iterator, args);
-            m_Range.Evaluate(instance, iterator, args);
+            m_Pos.Evaluate(instance, handler, iterator, args);
+            m_Range.Evaluate(instance, handler, iterator, args);
             TryUpdateValue(instance);
         }
         public bool HaveValue
@@ -388,11 +388,11 @@ namespace GameLibrary.Story.Values
             val.m_Value = m_Value;
             return val;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
-            m_Camp.Evaluate(instance, iterator, args);
-            m_Relation.Evaluate(instance, iterator, args);
+            m_Camp.Evaluate(instance, handler, iterator, args);
+            m_Relation.Evaluate(instance, handler, iterator, args);
             TryUpdateValue(instance);
         }
         public bool HaveValue
@@ -450,11 +450,11 @@ namespace GameLibrary.Story.Values
             val.m_Value = m_Value;
             return val;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
-            m_Camp.Evaluate(instance, iterator, args);
-            m_Relation.Evaluate(instance, iterator, args);
+            m_Camp.Evaluate(instance, handler, iterator, args);
+            m_Relation.Evaluate(instance, handler, iterator, args);
             TryUpdateValue(instance);
         }
         public bool HaveValue
@@ -508,10 +508,10 @@ namespace GameLibrary.Story.Values
             val.m_Value = m_Value;
             return val;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
-            m_Path.Evaluate(instance, iterator, args);
+            m_Path.Evaluate(instance, handler, iterator, args);
             TryUpdateValue(instance);
         }
         public bool HaveValue
@@ -561,10 +561,10 @@ namespace GameLibrary.Story.Values
             val.m_Value = m_Value;
             return val;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
-            m_Path.Evaluate(instance, iterator, args);
+            m_Path.Evaluate(instance, handler, iterator, args);
             TryUpdateValue(instance);
         }
         public bool HaveValue
@@ -614,10 +614,10 @@ namespace GameLibrary.Story.Values
             val.m_Value = m_Value;
             return val;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
-            m_Path.Evaluate(instance, iterator, args);
+            m_Path.Evaluate(instance, handler, iterator, args);
             TryUpdateValue(instance);
         }
         public bool HaveValue
@@ -669,11 +669,11 @@ namespace GameLibrary.Story.Values
             val.m_Value = m_Value;
             return val;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
-            m_Path1.Evaluate(instance, iterator, args);
-            m_Path2.Evaluate(instance, iterator, args);
+            m_Path1.Evaluate(instance, handler, iterator, args);
+            m_Path2.Evaluate(instance, handler, iterator, args);
             TryUpdateValue(instance);
         }
         public bool HaveValue
@@ -719,7 +719,7 @@ namespace GameLibrary.Story.Values
             val.m_Value = m_Value;
             return val;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
 
@@ -762,7 +762,7 @@ namespace GameLibrary.Story.Values
             val.m_Value = m_Value;
             return val;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             m_HaveValue = false;
 

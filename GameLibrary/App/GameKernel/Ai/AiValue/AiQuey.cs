@@ -45,10 +45,10 @@ internal class AiQuery : IStoryValue<object>
         newObj.m_Value = m_Value;
         return newObj;
     }
-    public void Evaluate(StoryInstance instance, object iterator, object[] args)
+    public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
     {
         if (null != m_Select && null != m_From) {
-            m_From.Evaluate(instance, iterator, args);
+            m_From.Evaluate(instance, handler, iterator, args);
             ArrayList coll = new ArrayList();
 
             //筛选
@@ -58,14 +58,14 @@ internal class AiQuery : IStoryValue<object>
                 while (enumerator.MoveNext()) {
                     var v = enumerator.Current;
                     if (null != m_Where) {
-                        m_Where.Evaluate(instance, v, args);
+                        m_Where.Evaluate(instance, handler, v, args);
                         object wvObj = m_Where.Value;
                         int wv = (int)System.Convert.ChangeType(wvObj, typeof(int));
                         if (wv != 0) {
-                            AddRow(coll, v, instance, args);
+                            AddRow(coll, v, instance, handler, args);
                         }
                     } else {
-                        AddRow(coll, v, instance, args);
+                        AddRow(coll, v, instance, handler, args);
                     }
                 }
             }
@@ -142,17 +142,17 @@ internal class AiQuery : IStoryValue<object>
         }
     }
 
-    private void AddRow(ArrayList coll, object v, StoryInstance instance, object[] args)
+    private void AddRow(ArrayList coll, object v, StoryInstance instance, StoryMessageHandler handler, object[] args)
     {
         ArrayList row = new ArrayList();
         coll.Add(row);
 
-        m_Select.Evaluate(instance, v, args);
+        m_Select.Evaluate(instance, handler, v, args);
         row.Add(m_Select.Value);
 
         for (int i = 0; i < m_OrderBy.Count; ++i) {
             var val = m_OrderBy[i];
-            val.Evaluate(instance, v, args);
+            val.Evaluate(instance, handler, v, args);
             row.Add(val.Value);
         }
     }

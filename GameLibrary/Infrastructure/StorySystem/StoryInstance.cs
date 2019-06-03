@@ -26,6 +26,52 @@ namespace StorySystem
     ///   };
     /// };
     /// </summary>
+    public sealed class StoryRuntime
+    {
+        public object Iterator
+        {
+            get { return m_Iterator; }
+            set { m_Iterator = value; }
+        }
+        public object[] Arguments
+        {
+            get { return m_Arguments; }
+            set { m_Arguments = value; }
+        }
+        public Queue<IStoryCommand> CommandQueue
+        {
+            get { return m_CommandQueue; }
+        }
+        public void Reset()
+        {
+            foreach (IStoryCommand cmd in m_CommandQueue) {
+                cmd.Reset();
+            }
+            m_CommandQueue.Clear();
+        }
+        public void Tick(StoryInstance instance, StoryMessageHandler handler, long delta)
+        {
+            while (m_CommandQueue.Count > 0) {
+                IStoryCommand cmd = m_CommandQueue.Peek();
+                if (cmd.Execute(instance, handler, delta, m_Iterator, m_Arguments)) {
+                    break;
+                } else {
+                    cmd.Reset();
+                    m_CommandQueue.Dequeue();
+                }
+            }
+        }
+
+        private object m_Iterator;
+        private object[] m_Arguments;
+        private Queue<IStoryCommand> m_CommandQueue = new Queue<IStoryCommand>();
+    }
+    public class StoryRuntimeStack : Stack<StoryRuntime>
+    {
+        public StoryRuntimeStack() { }
+        public StoryRuntimeStack(int capacity) : base(capacity) { }
+        public StoryRuntimeStack(IEnumerable<StoryRuntime> coll) : base(coll) { }
+    }
     public sealed class StoryMessageHandler
     {
         public string MessageId
@@ -50,6 +96,10 @@ namespace StorySystem
         public StrObjDict StackVariables
         {
             get { return m_StackVariables; }
+        }
+        public StoryRuntimeStack RuntimeStack
+        {
+            get { return m_RuntimeStack; }
         }
         public StoryMessageHandler Clone()
         {
@@ -100,22 +150,27 @@ namespace StorySystem
         }
         public void Reset()
         {
+            if (m_IsTriggered) {
+                LogSystem.Warn("Reset a running message handler !");
+            }
             m_IsTriggered = false;
             m_IsPaused = false;
-            foreach (IStoryCommand cmd in m_CommandQueue) {
-                cmd.Reset();
+            while (RuntimeStack.Count > 0) {
+                var runtime = RuntimeStack.Peek();
+                runtime.Reset();
+                RuntimeStack.Pop();
             }
-            m_CommandQueue.Clear();
             m_StackVariables.Clear();
         }
         public void Prepare()
         {
             Reset();
+            RuntimeStack.Push(m_Runtime);
             for (int i = 0; i < m_LoadedCommands.Count; i++) {
                 IStoryCommand cmd = m_LoadedCommands[i];
                 if (null != cmd.LeadCommand)
-                    m_CommandQueue.Enqueue(cmd.LeadCommand);
-                m_CommandQueue.Enqueue(cmd);
+                    m_Runtime.CommandQueue.Enqueue(cmd.LeadCommand);
+                m_Runtime.CommandQueue.Enqueue(cmd);
             }
         }
         public void Tick(StoryInstance instance, long delta)
@@ -126,16 +181,12 @@ namespace StorySystem
             try {
                 instance.StackVariables = StackVariables;
                 m_IsInTick = true;
-                while (m_CommandQueue.Count > 0) {
-                    IStoryCommand cmd = m_CommandQueue.Peek();
-                    if (cmd.Execute(instance, delta, null, m_Arguments)) {
-                        break;
-                    } else {
-                        cmd.Reset();
-                        m_CommandQueue.Dequeue();
-                    }
+                var runtime = RuntimeStack.Peek();
+                runtime.Tick(instance, this, delta);
+                if (runtime.CommandQueue.Count == 0) {
+                    RuntimeStack.Pop();
                 }
-                if (m_CommandQueue.Count == 0) {
+                if (RuntimeStack.Count <= 0) {
                     m_IsTriggered = false;
                 }
             } finally {
@@ -154,8 +205,10 @@ namespace StorySystem
                         instance.SetVariable(m_ArgumentNames[i], args[i]);
                     else
                         instance.SetVariable(m_ArgumentNames[i], null);
-                };
+                }
             }
+            m_Runtime.Iterator = null;
+            m_Runtime.Arguments = m_Arguments;
         }
         private void RefreshCommands(Dsl.FunctionData handlerData)
         {
@@ -171,9 +224,10 @@ namespace StorySystem
         private bool m_IsTriggered = false;
         private bool m_IsPaused = false;
         private bool m_IsInTick = false;
-        private Queue<IStoryCommand> m_CommandQueue = new Queue<IStoryCommand>();
+        private StoryRuntime m_Runtime = new StoryRuntime();
         private string[] m_ArgumentNames = null;
         private object[] m_Arguments = null;
+        private StoryRuntimeStack m_RuntimeStack = new StoryRuntimeStack();
         private List<IStoryCommand> m_LoadedCommands = new List<IStoryCommand>();
         private StrObjDict m_StackVariables = new StrObjDict();
     }
@@ -188,6 +242,11 @@ namespace StorySystem
         {
             get { return m_Namespace; }
             set { m_Namespace = value; }
+        }
+        public bool IsDebug
+        {
+            get { return m_IsDebug; }
+            set { m_IsDebug = value; }
         }
         public bool IsTerminated
         {
@@ -646,6 +705,30 @@ namespace StorySystem
                 m_IsInTick = false;
             }
         }
+        public StoryMessageHandler GetMessageHandler(string msgId)
+        {
+            StoryMessageHandler ret = null;
+            for(int i=0;i<m_MessageHandlers.Count;++i) {
+                var handler = m_MessageHandlers[i];
+                if (handler.MessageId == msgId) {
+                    ret = handler;
+                    break;
+                }
+            }
+            return ret;
+        }
+        public List<StoryMessageHandler> GetConcurrentMessageHandler(string msgId)
+        {
+            List<StoryMessageHandler> ret = new List<StoryMessageHandler>();
+            for (int i = 0; i < m_ConcurrentMessageHandlers.Count; ++i) {
+                var handler = m_ConcurrentMessageHandlers[i];
+                if (handler.MessageId == msgId) {
+                    ret.Add(handler);
+                    break;
+                }
+            }
+            return ret;
+        }
         public long GetMessageTriggerTime(string msgId)
         {
             long time;
@@ -700,6 +783,7 @@ namespace StorySystem
         private StrObjDict m_LocalVariables = new StrObjDict();
         private StrObjDict m_GlobalVariables = null;
         private StrObjDict m_StackVariables = null;
+        private bool m_IsDebug = false;
         private string m_StoryId = string.Empty;
         private string m_Namespace = string.Empty;
         private bool m_IsTerminated = false;

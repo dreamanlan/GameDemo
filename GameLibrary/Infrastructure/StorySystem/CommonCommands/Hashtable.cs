@@ -17,13 +17,13 @@ namespace StorySystem.CommonCommands
             cmd.m_Val = m_Val.Clone();
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
-            m_File.Evaluate(instance, iterator, args);
-            m_Val.Evaluate(instance, iterator, args);
+            m_File.Evaluate(instance, handler, iterator, args);
+            m_Val.Evaluate(instance, handler, iterator, args);
 
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             if (m_File.HaveValue && m_Val.HaveValue) {
                 string file = m_File.Value;
@@ -63,13 +63,13 @@ namespace StorySystem.CommonCommands
             cmd.m_Val = m_Val.Clone();
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
-            m_File.Evaluate(instance, iterator, args);
-            m_Val.Evaluate(instance, iterator, args);
+            m_File.Evaluate(instance, handler, iterator, args);
+            m_Val.Evaluate(instance, handler, iterator, args);
 
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             if (m_File.HaveValue && m_Val.HaveValue) {
                 string file = m_File.Value;
@@ -104,13 +104,13 @@ namespace StorySystem.CommonCommands
             cmd.m_Value = m_Value.Clone();
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
-            m_Var.Evaluate(instance, iterator, args);
-            m_Key.Evaluate(instance, iterator, args);
-            m_Value.Evaluate(instance, iterator, args);
+            m_Var.Evaluate(instance, handler, iterator, args);
+            m_Key.Evaluate(instance, handler, iterator, args);
+            m_Value.Evaluate(instance, handler, iterator, args);
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             if (m_Var.HaveValue && m_Key.HaveValue && m_Value.HaveValue) {
                 object obj = m_Var.Value;
@@ -149,14 +149,14 @@ namespace StorySystem.CommonCommands
             cmd.m_Value = m_Value.Clone();
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
-            m_Var.Evaluate(instance, iterator, args);
-            m_Key.Evaluate(instance, iterator, args);
-            m_Value.Evaluate(instance, iterator, args);
+            m_Var.Evaluate(instance, handler, iterator, args);
+            m_Key.Evaluate(instance, handler, iterator, args);
+            m_Value.Evaluate(instance, handler, iterator, args);
         
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             if (m_Var.HaveValue && m_Key.HaveValue && m_Value.HaveValue) {
                 object obj = m_Var.Value;
@@ -195,13 +195,13 @@ namespace StorySystem.CommonCommands
             cmd.m_Key = m_Key.Clone();
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
-            m_Var.Evaluate(instance, iterator, args);
-            m_Key.Evaluate(instance, iterator, args);
+            m_Var.Evaluate(instance, handler, iterator, args);
+            m_Key.Evaluate(instance, handler, iterator, args);
         
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             if (m_Var.HaveValue && m_Key.HaveValue) {
                 object obj = m_Var.Value;
@@ -235,12 +235,12 @@ namespace StorySystem.CommonCommands
             cmd.m_Var = m_Var.Clone();
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
-            m_Var.Evaluate(instance, iterator, args);
+            m_Var.Evaluate(instance, handler, iterator, args);
 
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             if (m_Var.HaveValue) {
                 object obj = m_Var.Value;

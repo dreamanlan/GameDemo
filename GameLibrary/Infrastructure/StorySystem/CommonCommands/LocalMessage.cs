@@ -32,14 +32,14 @@ namespace StorySystem.CommonCommands
             }
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
-            m_MsgId.Evaluate(instance, iterator, args);
+            m_MsgId.Evaluate(instance, handler, iterator, args);
             for (int i = 0; i < m_MsgArgs.Count; i++) {
-                m_MsgArgs[i].Evaluate(instance, iterator, args);
+                m_MsgArgs[i].Evaluate(instance, handler, iterator, args);
             }
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             string msgId = m_MsgId.Value;
             ArrayList arglist = new ArrayList();
@@ -101,14 +101,14 @@ namespace StorySystem.CommonCommands
             }
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
-            m_MsgId.Evaluate(instance, iterator, args);
+            m_MsgId.Evaluate(instance, handler, iterator, args);
             for (int i = 0; i < m_MsgArgs.Count; i++) {
-                m_MsgArgs[i].Evaluate(instance, iterator, args);
+                m_MsgArgs[i].Evaluate(instance, handler, iterator, args);
             }
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             if (GameLibrary.GlobalVariables.Instance.IsStorySkipped) {
                 return false;
@@ -168,13 +168,13 @@ namespace StorySystem.CommonCommands
             }
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             for (int i = 0; i < m_MsgIds.Count; i++) {
-                m_MsgIds[i].Evaluate(instance, iterator, args);
+                m_MsgIds[i].Evaluate(instance, handler, iterator, args);
             }
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             string[] arglist = new string[m_MsgIds.Count];
             for (int i = 0; i < m_MsgIds.Count; i++) {
@@ -218,20 +218,20 @@ namespace StorySystem.CommonCommands
             m_CurTime = 0;
             m_StartTime = 0;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             for (int i = 0; i < m_MsgIds.Count; i++) {
-                m_MsgIds[i].Evaluate(instance, iterator, args);
+                m_MsgIds[i].Evaluate(instance, handler, iterator, args);
             }
             if (m_HaveSet) {
-                m_SetVar.Evaluate(instance, iterator, args);
-                m_SetVal.Evaluate(instance, iterator, args);
-                m_TimeoutVal.Evaluate(instance, iterator, args);
-                m_TimeoutSetVar.Evaluate(instance, iterator, args);
-                m_TimeoutSetVal.Evaluate(instance, iterator, args);
+                m_SetVar.Evaluate(instance, handler, iterator, args);
+                m_SetVal.Evaluate(instance, handler, iterator, args);
+                m_TimeoutVal.Evaluate(instance, handler, iterator, args);
+                m_TimeoutSetVar.Evaluate(instance, handler, iterator, args);
+                m_TimeoutSetVal.Evaluate(instance, handler, iterator, args);
             }
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             if (m_StartTime <= 0) {
                 long startTime = GameLibrary.TimeUtility.GetLocalMilliseconds();
@@ -337,20 +337,20 @@ namespace StorySystem.CommonCommands
         {
             m_CurTime = 0;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             for (int i = 0; i < m_MsgIds.Count; i++) {
-                m_MsgIds[i].Evaluate(instance, iterator, args);
+                m_MsgIds[i].Evaluate(instance, handler, iterator, args);
             }
             if (m_HaveSet) {
-                m_SetVar.Evaluate(instance, iterator, args);
-                m_SetVal.Evaluate(instance, iterator, args);
-                m_TimeoutVal.Evaluate(instance, iterator, args);
-                m_TimeoutSetVar.Evaluate(instance, iterator, args);
-                m_TimeoutSetVal.Evaluate(instance, iterator, args);
+                m_SetVar.Evaluate(instance, handler, iterator, args);
+                m_SetVal.Evaluate(instance, handler, iterator, args);
+                m_TimeoutVal.Evaluate(instance, handler, iterator, args);
+                m_TimeoutSetVar.Evaluate(instance, handler, iterator, args);
+                m_TimeoutSetVal.Evaluate(instance, handler, iterator, args);
             }
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             int ct = 0;
             for (int i = 0; i < m_MsgIds.Count; i++) {
@@ -448,20 +448,20 @@ namespace StorySystem.CommonCommands
             m_CurTime = 0;
             m_StartTime = 0;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             for (int i = 0; i < m_MsgIds.Count; i++) {
-                m_MsgIds[i].Evaluate(instance, iterator, args);
+                m_MsgIds[i].Evaluate(instance, handler, iterator, args);
             }
             if (m_HaveSet) {
-                m_SetVar.Evaluate(instance, iterator, args);
-                m_SetVal.Evaluate(instance, iterator, args);
-                m_TimeoutVal.Evaluate(instance, iterator, args);
-                m_TimeoutSetVar.Evaluate(instance, iterator, args);
-                m_TimeoutSetVal.Evaluate(instance, iterator, args);
+                m_SetVar.Evaluate(instance, handler, iterator, args);
+                m_SetVal.Evaluate(instance, handler, iterator, args);
+                m_TimeoutVal.Evaluate(instance, handler, iterator, args);
+                m_TimeoutSetVar.Evaluate(instance, handler, iterator, args);
+                m_TimeoutSetVal.Evaluate(instance, handler, iterator, args);
             }
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             if (m_StartTime <= 0) {
                 long startTime = GameLibrary.TimeUtility.GetLocalMilliseconds();
@@ -567,20 +567,20 @@ namespace StorySystem.CommonCommands
         {
             m_CurTime = 0;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             for (int i = 0; i < m_MsgIds.Count; i++) {
-                m_MsgIds[i].Evaluate(instance, iterator, args);
+                m_MsgIds[i].Evaluate(instance, handler, iterator, args);
             }
             if (m_HaveSet) {
-                m_SetVar.Evaluate(instance, iterator, args);
-                m_SetVal.Evaluate(instance, iterator, args);
-                m_TimeoutVal.Evaluate(instance, iterator, args);
-                m_TimeoutSetVar.Evaluate(instance, iterator, args);
-                m_TimeoutSetVal.Evaluate(instance, iterator, args);
+                m_SetVar.Evaluate(instance, handler, iterator, args);
+                m_SetVal.Evaluate(instance, handler, iterator, args);
+                m_TimeoutVal.Evaluate(instance, handler, iterator, args);
+                m_TimeoutSetVar.Evaluate(instance, handler, iterator, args);
+                m_TimeoutSetVal.Evaluate(instance, handler, iterator, args);
             }
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             int ct = 0;
             for (int i = 0; i < m_MsgIds.Count; i++) {
@@ -670,13 +670,13 @@ namespace StorySystem.CommonCommands
         protected override void ResetState()
         {
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             for (int i = 0; i < m_MsgIds.Count; i++) {
-                m_MsgIds[i].Evaluate(instance, iterator, args);
+                m_MsgIds[i].Evaluate(instance, handler, iterator, args);
             }
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             for (int i = 0; i < m_MsgIds.Count; i++) {
                 instance.PauseMessageHandler(m_MsgIds[i].Value, true);
@@ -710,13 +710,13 @@ namespace StorySystem.CommonCommands
         protected override void ResetState()
         {
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             for (int i = 0; i < m_MsgIds.Count; i++) {
-                m_MsgIds[i].Evaluate(instance, iterator, args);
+                m_MsgIds[i].Evaluate(instance, handler, iterator, args);
             }
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             for (int i = 0; i < m_MsgIds.Count; i++) {
                 instance.PauseMessageHandler(m_MsgIds[i].Value, false);
@@ -752,14 +752,14 @@ namespace StorySystem.CommonCommands
             }
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
-            m_MsgId.Evaluate(instance, iterator, args);
+            m_MsgId.Evaluate(instance, handler, iterator, args);
             for (int i = 0; i < m_MsgArgs.Count; i++) {
-                m_MsgArgs[i].Evaluate(instance, iterator, args);
+                m_MsgArgs[i].Evaluate(instance, handler, iterator, args);
             }
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             string msgId = m_MsgId.Value;
             ArrayList arglist = new ArrayList();
@@ -825,14 +825,14 @@ namespace StorySystem.CommonCommands
             }
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
-            m_MsgId.Evaluate(instance, iterator, args);
+            m_MsgId.Evaluate(instance, handler, iterator, args);
             for (int i = 0; i < m_MsgArgs.Count; i++) {
-                m_MsgArgs[i].Evaluate(instance, iterator, args);
+                m_MsgArgs[i].Evaluate(instance, handler, iterator, args);
             }
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             if (GameLibrary.GlobalVariables.Instance.IsStorySkipped) {
                 return false;
@@ -896,13 +896,13 @@ namespace StorySystem.CommonCommands
             }
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             for (int i = 0; i < m_MsgIds.Count; i++) {
-                m_MsgIds[i].Evaluate(instance, iterator, args);
+                m_MsgIds[i].Evaluate(instance, handler, iterator, args);
             }
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             string[] arglist = new string[m_MsgIds.Count];
             string _namespace = instance.Namespace;
@@ -953,20 +953,20 @@ namespace StorySystem.CommonCommands
             m_CurTime = 0;
             m_StartTime = 0;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             for (int i = 0; i < m_MsgIds.Count; i++) {
-                m_MsgIds[i].Evaluate(instance, iterator, args);
+                m_MsgIds[i].Evaluate(instance, handler, iterator, args);
             }
             if (m_HaveSet) {
-                m_SetVar.Evaluate(instance, iterator, args);
-                m_SetVal.Evaluate(instance, iterator, args);
-                m_TimeoutVal.Evaluate(instance, iterator, args);
-                m_TimeoutSetVar.Evaluate(instance, iterator, args);
-                m_TimeoutSetVal.Evaluate(instance, iterator, args);
+                m_SetVar.Evaluate(instance, handler, iterator, args);
+                m_SetVal.Evaluate(instance, handler, iterator, args);
+                m_TimeoutVal.Evaluate(instance, handler, iterator, args);
+                m_TimeoutSetVar.Evaluate(instance, handler, iterator, args);
+                m_TimeoutSetVal.Evaluate(instance, handler, iterator, args);
             }
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             if (m_StartTime <= 0) {
                 long startTime = GameLibrary.TimeUtility.GetLocalMilliseconds();
@@ -1082,20 +1082,20 @@ namespace StorySystem.CommonCommands
         {
             m_CurTime = 0;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             for (int i = 0; i < m_MsgIds.Count; i++) {
-                m_MsgIds[i].Evaluate(instance, iterator, args);
+                m_MsgIds[i].Evaluate(instance, handler, iterator, args);
             }
             if (m_HaveSet) {
-                m_SetVar.Evaluate(instance, iterator, args);
-                m_SetVal.Evaluate(instance, iterator, args);
-                m_TimeoutVal.Evaluate(instance, iterator, args);
-                m_TimeoutSetVar.Evaluate(instance, iterator, args);
-                m_TimeoutSetVal.Evaluate(instance, iterator, args);
+                m_SetVar.Evaluate(instance, handler, iterator, args);
+                m_SetVal.Evaluate(instance, handler, iterator, args);
+                m_TimeoutVal.Evaluate(instance, handler, iterator, args);
+                m_TimeoutSetVar.Evaluate(instance, handler, iterator, args);
+                m_TimeoutSetVal.Evaluate(instance, handler, iterator, args);
             }
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             int ct = 0;
             string _namespace = instance.Namespace;
@@ -1199,20 +1199,20 @@ namespace StorySystem.CommonCommands
             m_CurTime = 0;
             m_StartTime = 0;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             for (int i = 0; i < m_MsgIds.Count; i++) {
-                m_MsgIds[i].Evaluate(instance, iterator, args);
+                m_MsgIds[i].Evaluate(instance, handler, iterator, args);
             }
             if (m_HaveSet) {
-                m_SetVar.Evaluate(instance, iterator, args);
-                m_SetVal.Evaluate(instance, iterator, args);
-                m_TimeoutVal.Evaluate(instance, iterator, args);
-                m_TimeoutSetVar.Evaluate(instance, iterator, args);
-                m_TimeoutSetVal.Evaluate(instance, iterator, args);
+                m_SetVar.Evaluate(instance, handler, iterator, args);
+                m_SetVal.Evaluate(instance, handler, iterator, args);
+                m_TimeoutVal.Evaluate(instance, handler, iterator, args);
+                m_TimeoutSetVar.Evaluate(instance, handler, iterator, args);
+                m_TimeoutSetVal.Evaluate(instance, handler, iterator, args);
             }
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             if (m_StartTime <= 0) {
                 long startTime = GameLibrary.TimeUtility.GetLocalMilliseconds();
@@ -1329,20 +1329,20 @@ namespace StorySystem.CommonCommands
         {
             m_CurTime = 0;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             for (int i = 0; i < m_MsgIds.Count; i++) {
-                m_MsgIds[i].Evaluate(instance, iterator, args);
+                m_MsgIds[i].Evaluate(instance, handler, iterator, args);
             }
             if (m_HaveSet) {
-                m_SetVar.Evaluate(instance, iterator, args);
-                m_SetVal.Evaluate(instance, iterator, args);
-                m_TimeoutVal.Evaluate(instance, iterator, args);
-                m_TimeoutSetVar.Evaluate(instance, iterator, args);
-                m_TimeoutSetVal.Evaluate(instance, iterator, args);
+                m_SetVar.Evaluate(instance, handler, iterator, args);
+                m_SetVal.Evaluate(instance, handler, iterator, args);
+                m_TimeoutVal.Evaluate(instance, handler, iterator, args);
+                m_TimeoutSetVar.Evaluate(instance, handler, iterator, args);
+                m_TimeoutSetVal.Evaluate(instance, handler, iterator, args);
             }
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             int ct = 0;
             string _namespace = instance.Namespace;
@@ -1439,13 +1439,13 @@ namespace StorySystem.CommonCommands
         protected override void ResetState()
         {
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             for (int i = 0; i < m_MsgIds.Count; i++) {
-                m_MsgIds[i].Evaluate(instance, iterator, args);
+                m_MsgIds[i].Evaluate(instance, handler, iterator, args);
             }
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             string _namespace = instance.Namespace;
             if (string.IsNullOrEmpty(_namespace)) {
@@ -1486,13 +1486,13 @@ namespace StorySystem.CommonCommands
         protected override void ResetState()
         {
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             for (int i = 0; i < m_MsgIds.Count; i++) {
-                m_MsgIds[i].Evaluate(instance, iterator, args);
+                m_MsgIds[i].Evaluate(instance, handler, iterator, args);
             }
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             string _namespace = instance.Namespace;
             if (string.IsNullOrEmpty(_namespace)) {

@@ -66,7 +66,7 @@ namespace StorySystem.CommonValues
             val.m_Value = m_Value;
             return val;
         }
-        public void Evaluate(StoryInstance instance, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
 		{
 			StackElementInfo stackInfo = NewStackElementInfo();
             //调用实参部分需要在栈建立之前运算，结果需要记录在栈上
@@ -74,7 +74,7 @@ namespace StorySystem.CommonValues
                 stackInfo.m_Args.Add(m_LoadedArgs[i].Clone());
 			}
 			for (int i = 0; i < stackInfo.m_Args.Count; i++) {
-				stackInfo.m_Args[i].Evaluate(instance, iterator, args);
+				stackInfo.m_Args[i].Evaluate(instance, handler, iterator, args);
 			}
             //实参处理完，进入函数体执行，创建新的栈
             PushStack(instance, stackInfo);
@@ -90,7 +90,7 @@ namespace StorySystem.CommonValues
                 stackInfo.m_HaveValue = true;
                 for (int i = 0; i < stackInfo.m_Commands.Count; ++i) {
                     //函数调用命令需要忽略其中的wait指令（从而不会出现“挂起-恢复”行为），所以这里传的delta值是一个很大的值，目的是为了让wait直接结束
-                    stackInfo.m_Commands[i].Execute(instance, StoryValueHelper.c_MaxWaitCommandTime, iterator, args);
+                    stackInfo.m_Commands[i].Execute(instance, handler, StoryValueHelper.c_MaxWaitCommandTime, iterator, args);
                 }
                 instance.TryGetVariable(m_ReturnName, out stackInfo.m_Value);
             } finally {

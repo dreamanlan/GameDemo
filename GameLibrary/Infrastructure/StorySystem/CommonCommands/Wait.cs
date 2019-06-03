@@ -19,13 +19,13 @@ namespace StorySystem.CommonCommands
         {
             m_CurTime = 0;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
-            m_Time.Evaluate(instance, iterator, args);
+            m_Time.Evaluate(instance, handler, iterator, args);
             if (m_HaveCondition)
-                m_Condition.Evaluate(instance, iterator, args);
+                m_Condition.Evaluate(instance, handler, iterator, args);
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             if (m_HaveCondition && m_Condition.HaveValue && m_Condition.Value == 0) {
                 return false;
@@ -86,13 +86,13 @@ namespace StorySystem.CommonCommands
         {
             m_RealStartTime = 0;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
-            m_Time.Evaluate(instance, iterator, args);
+            m_Time.Evaluate(instance, handler, iterator, args);
             if (m_HaveCondition)
-                m_Condition.Evaluate(instance, iterator, args);
+                m_Condition.Evaluate(instance, handler, iterator, args);
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             if (m_HaveCondition && m_Condition.HaveValue && m_Condition.Value == 0) {
                 return false;
@@ -155,13 +155,13 @@ namespace StorySystem.CommonCommands
         {
             m_CurTime = 0;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
-            m_Time.Evaluate(instance, iterator, args);
+            m_Time.Evaluate(instance, handler, iterator, args);
             if (m_HaveCondition)
-                m_Condition.Evaluate(instance, iterator, args);
+                m_Condition.Evaluate(instance, handler, iterator, args);
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             if (m_HaveCondition && m_Condition.HaveValue && m_Condition.Value == 0) {
                 return false;
@@ -225,13 +225,13 @@ namespace StorySystem.CommonCommands
         {
             m_RealStartTime = 0;
         }
-        protected override void Evaluate(StoryInstance instance, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
-            m_Time.Evaluate(instance, iterator, args);
+            m_Time.Evaluate(instance, handler, iterator, args);
             if (m_HaveCondition)
-                m_Condition.Evaluate(instance, iterator, args);
+                m_Condition.Evaluate(instance, handler, iterator, args);
         }
-        protected override bool ExecCommand(StoryInstance instance, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             if (m_HaveCondition && m_Condition.HaveValue && m_Condition.Value == 0) {
                 return false;

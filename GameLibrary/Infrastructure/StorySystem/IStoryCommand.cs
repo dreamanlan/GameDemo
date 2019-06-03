@@ -12,7 +12,8 @@ namespace StorySystem
         IStoryCommand Clone();//克隆一个新实例，每个命令只从DSL语言初始化一次，之后的实例由克隆产生，提升性能
         IStoryCommand LeadCommand { get; }   //用DSL实现的支持递归的command，自身不知道何时是新调用开始，此时借助一个引导命令来发起新调用。
         void Reset();//复位实例，保证实例状态为初始状态。
-        bool Execute(StoryInstance instance, long delta, object iterator, object[] args);//执行命令，包括处理参数、变量及命令逻辑
+        bool Execute(StoryInstance instance, StoryMessageHandler handler, long delta, object iterator, object[] args);//执行命令，包括处理参数、变量及命令逻辑
+        bool ExecDebugger(StoryInstance instance, StoryMessageHandler handler, long delta, object iterator, object[] args);
     }
     public abstract class AbstractStoryCommand : IStoryCommand
     {
@@ -53,11 +54,11 @@ namespace StorySystem
             }
             ResetState();
         }
-        public bool Execute(StoryInstance instance, long delta, object iterator, object[] args)
+        public bool Execute(StoryInstance instance, StoryMessageHandler handler, long delta, object iterator, object[] args)
         {
             if (IsCompositeCommand) {
                 try {
-                    return ExecCommand(instance, delta, iterator, args);
+                    return ExecCommand(instance, handler, delta, iterator, args);
                 } catch(Exception ex) {
                     GameLibrary.LogSystem.Error("AbstractStoryCommand Composite Command ExecCommand Exception:{0}\n{1}", ex.Message, ex.StackTrace);
                     return false;
@@ -66,14 +67,16 @@ namespace StorySystem
                 if (!m_LastExecResult) {
                     //重复执行时不需要每个tick都更新变量值，每个命令每次执行，变量值只读取一次。
                     try {
-                        Evaluate(instance, iterator, args);
+                        Evaluate(instance, handler, iterator, args);
                     } catch (Exception ex) {
                         GameLibrary.LogSystem.Error("AbstractStoryCommand Evaluate Exception:{0}\n{1}", ex.Message, ex.StackTrace);
                         return false;
                     }
                 }
                 try {
-                    m_LastExecResult = ExecCommand(instance, delta);
+                    if (instance.IsDebug && ExecDebugger(instance, handler, delta, iterator, args))
+                        return true;
+                    m_LastExecResult = ExecCommand(instance, handler, delta);
                 } catch (Exception ex) {
                     GameLibrary.LogSystem.Error("AbstractStoryCommand ExecCommand Exception:{0}\n{1}", ex.Message, ex.StackTrace);
                     m_LastExecResult = false;
@@ -81,18 +84,22 @@ namespace StorySystem
                 return m_LastExecResult;
             }
         }
+        public bool ExecDebugger(StoryInstance instance, StoryMessageHandler handler, long delta, object iterator, object[] args)
+        {
+            return false;
+        }
         public abstract IStoryCommand Clone();
         public virtual IStoryCommand LeadCommand
         {
             get { return null; }
         }
         protected virtual void ResetState() { }
-        protected virtual void Evaluate(StoryInstance instance, object iterator, object[] args) { }
-        protected virtual bool ExecCommand(StoryInstance instance, long delta)
+        protected virtual void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args) { }
+        protected virtual bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             return false;
         }
-        protected virtual bool ExecCommand(StoryInstance instance, long delta, object iterator, object[] args)
+        protected virtual bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta, object iterator, object[] args)
         {
             return false;
         }
