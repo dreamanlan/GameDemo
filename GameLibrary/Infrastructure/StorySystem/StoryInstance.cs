@@ -231,8 +231,10 @@ namespace StorySystem
         private List<IStoryCommand> m_LoadedCommands = new List<IStoryCommand>();
         private StrObjDict m_StackVariables = new StrObjDict();
     }
+    public delegate bool StoryCommandDebuggerDelegation(StoryInstance instance, StoryMessageHandler handler, IStoryCommand command, long delta, object iterator, object args);
     public sealed class StoryInstance
     {
+        public StoryCommandDebuggerDelegation OnExecDebugger;
         public string StoryId
         {
             get { return m_StoryId; }

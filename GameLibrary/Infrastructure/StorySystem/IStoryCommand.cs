@@ -86,6 +86,9 @@ namespace StorySystem
         }
         public bool ExecDebugger(StoryInstance instance, StoryMessageHandler handler, long delta, object iterator, object[] args)
         {
+            if (null != instance.OnExecDebugger) {
+                return instance.OnExecDebugger(instance, handler, this, delta, iterator, args);
+            }
             return false;
         }
         public abstract IStoryCommand Clone();
