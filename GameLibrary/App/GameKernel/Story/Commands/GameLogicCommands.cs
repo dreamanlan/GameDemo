@@ -12,7 +12,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class BlackboardClearCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             BlackboardClearCommand cmd = new BlackboardClearCommand();
             return cmd;
@@ -35,7 +35,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class BlackboardSetCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             BlackboardSetCommand cmd = new BlackboardSetCommand();
             cmd.m_AttrName = m_AttrName.Clone();
@@ -71,7 +71,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class SetStorySkippedCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SetStorySkippedCommand cmd = new SetStorySkippedCommand();
             cmd.m_StorySkipped = m_StorySkipped.Clone();
@@ -119,7 +119,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class SetPlayerIdCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SetPlayerIdCommand cmd = new SetPlayerIdCommand();
             cmd.m_ParamNum = m_ParamNum;
@@ -173,7 +173,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class BornFinishCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             BornFinishCommand cmd = new BornFinishCommand();
             cmd.m_ParamNum = m_ParamNum;
@@ -212,7 +212,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class DeadFinishCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             DeadFinishCommand cmd = new DeadFinishCommand();
             cmd.m_ParamNum = m_ParamNum;

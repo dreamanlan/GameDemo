@@ -21,7 +21,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class IfElseCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             IfElseCommand retCmd = new IfElseCommand();
             retCmd.m_Conditions = new List<IStoryValue<int>>();

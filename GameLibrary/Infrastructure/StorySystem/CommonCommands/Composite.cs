@@ -52,7 +52,7 @@ namespace StorySystem.CommonCommands
             //实参处理完，进入函数体执行，创建新的栈
             PushStack(instance, stackInfo);
         }
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             CompositeCommand cmd = new CompositeCommand();
             cmd.m_LoadedArgs = m_LoadedArgs;
@@ -231,7 +231,7 @@ namespace StorySystem.CommonCommands
         {
             m_Cmd = cmd;
         }
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             return null;
         }

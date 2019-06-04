@@ -12,7 +12,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class ForeachCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             ForeachCommand retCmd = new ForeachCommand();
             for (int i = 0; i < m_LoadedIterators.Count; i++) {
@@ -119,7 +119,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class LoopListCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             LoopListCommand retCmd = new LoopListCommand();
             retCmd.m_LoadedList = m_LoadedList.Clone();
@@ -219,7 +219,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class LoopCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             LoopCommand retCmd = new LoopCommand();
             retCmd.m_Count = m_Count.Clone();

@@ -9,6 +9,9 @@ namespace StorySystem
     public interface IStoryCommand
     {
         bool Init(Dsl.ISyntaxComponent config);//从DSL语言初始化命令实例
+        string GetId();//获取命令id
+        Dsl.ISyntaxComponent GetConfig();//获取命令配置dsl
+        void ShareConfig(IStoryCommand cloner);
         IStoryCommand Clone();//克隆一个新实例，每个命令只从DSL语言初始化一次，之后的实例由克隆产生，提升性能
         IStoryCommand LeadCommand { get; }   //用DSL实现的支持递归的command，自身不知道何时是新调用开始，此时借助一个引导命令来发起新调用。
         void Reset();//复位实例，保证实例状态为初始状态。
@@ -25,9 +28,22 @@ namespace StorySystem
             get { return m_IsCompositeCommand; }
             protected set { m_IsCompositeCommand = value; }
         }
+        public string GetId()
+        {
+            return m_Config.GetId();
+        }
+        public Dsl.ISyntaxComponent GetConfig()
+        {
+            return m_Config;
+        }
+        public void ShareConfig(IStoryCommand cloner)
+        {
+            m_Config = cloner.GetConfig();
+        }
         public bool Init(Dsl.ISyntaxComponent config)
         {
             m_LoadSuccess = true;
+            m_Config = config;
             Dsl.CallData callData = config as Dsl.CallData;
             if (null != callData) {
                 Load(callData);
@@ -91,11 +107,17 @@ namespace StorySystem
             }
             return false;
         }
-        public abstract IStoryCommand Clone();
+        public IStoryCommand Clone()
+        {
+            var cmd = CloneCommand();
+            cmd.ShareConfig(this);
+            return cmd;
+        }
         public virtual IStoryCommand LeadCommand
         {
             get { return null; }
         }
+        protected abstract IStoryCommand CloneCommand();
         protected virtual void ResetState() { }
         protected virtual void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args) { }
         protected virtual bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
@@ -129,6 +151,7 @@ namespace StorySystem
             m_LoadSuccess = v;
         }
 
+        private Dsl.ISyntaxComponent m_Config;
         private bool m_LoadSuccess = true;
         private bool m_LastExecResult = false;
         private bool m_IsCompositeCommand = false;

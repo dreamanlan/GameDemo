@@ -7,7 +7,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class SleepCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SleepCommand cmd = new SleepCommand();
             cmd.m_Time = m_Time.Clone();
@@ -74,7 +74,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class RealTimeSleepCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             RealTimeSleepCommand cmd = new RealTimeSleepCommand();
             cmd.m_Time = m_Time.Clone();
@@ -143,7 +143,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class StorySleepCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             StorySleepCommand cmd = new StorySleepCommand();
             cmd.m_Time = m_Time.Clone();
@@ -213,7 +213,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class StoryRealTimeSleepCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             StoryRealTimeSleepCommand cmd = new StoryRealTimeSleepCommand();
             cmd.m_Time = m_Time.Clone();

@@ -12,7 +12,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class ObjFaceCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             ObjFaceCommand cmd = new ObjFaceCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -67,7 +67,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class ObjMoveCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             ObjMoveCommand cmd = new ObjMoveCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -129,7 +129,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class ObjMoveWithWaypointsCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             ObjMoveWithWaypointsCommand cmd = new ObjMoveWithWaypointsCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -195,7 +195,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class ObjStopCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             ObjStopCommand cmd = new ObjStopCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -239,7 +239,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class ObjAttackCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             ObjAttackCommand cmd = new ObjAttackCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -286,7 +286,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class ObjEnableAiCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             ObjEnableAiCommand cmd = new ObjEnableAiCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -328,7 +328,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class ObjSetAiCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             ObjSetAiCommand cmd = new ObjSetAiCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -383,7 +383,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class ObjSetAiTargetCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             ObjSetAiTargetCommand cmd = new ObjSetAiTargetCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -423,7 +423,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class ObjAnimationCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             ObjAnimationCommand cmd = new ObjAnimationCommand();
             cmd.m_ParamNum = m_ParamNum;
@@ -483,7 +483,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class ObjAnimationParamCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             ObjAnimationParamCommand cmd = new ObjAnimationParamCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -604,7 +604,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class SetHpCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SetHpCommand cmd = new SetHpCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -643,7 +643,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class SetMaxHpCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SetMaxHpCommand cmd = new SetMaxHpCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -682,7 +682,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class SetEnergyCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SetEnergyCommand cmd = new SetEnergyCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -721,7 +721,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class SetMaxEnergyCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SetMaxEnergyCommand cmd = new SetMaxEnergyCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -760,7 +760,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class SetSpeedCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SetSpeedCommand cmd = new SetSpeedCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -799,7 +799,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class SetLevelCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SetLevelCommand cmd = new SetLevelCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -838,7 +838,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class SetExpCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SetExpCommand cmd = new SetExpCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -877,7 +877,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class SetAttrCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SetAttrCommand cmd = new SetAttrCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -926,7 +926,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class MarkControlByStoryCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             MarkControlByStoryCommand cmd = new MarkControlByStoryCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -965,7 +965,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class SetUnitIdCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SetUnitIdCommand cmd = new SetUnitIdCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -1007,7 +1007,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class ObjSetCampCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             ObjSetCampCommand cmd = new ObjSetCampCommand();
             cmd.m_ObjId = m_ObjId.Clone();

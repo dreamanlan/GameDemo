@@ -12,7 +12,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class CreateNpcCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             CreateNpcCommand cmd = new CreateNpcCommand();
             cmd.m_UnitId = m_UnitId.Clone();
@@ -149,7 +149,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class DestroyNpcCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             DestroyNpcCommand cmd = new DestroyNpcCommand();
             cmd.m_UnitId = m_UnitId.Clone();
@@ -199,7 +199,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class DestroyNpcWithObjIdCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             DestroyNpcWithObjIdCommand cmd = new DestroyNpcWithObjIdCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -247,7 +247,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class NpcFaceCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             NpcFaceCommand cmd = new NpcFaceCommand();
             cmd.m_UnitId = m_UnitId.Clone();
@@ -304,7 +304,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class NpcMoveCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             NpcMoveCommand cmd = new NpcMoveCommand();
             cmd.m_UnitId = m_UnitId.Clone();
@@ -369,7 +369,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class NpcMoveWithWaypointsCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             NpcMoveWithWaypointsCommand cmd = new NpcMoveWithWaypointsCommand();
             cmd.m_UnitId = m_UnitId.Clone();
@@ -439,7 +439,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class NpcStopCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             NpcStopCommand cmd = new NpcStopCommand();
             cmd.m_UnitId = m_UnitId.Clone();
@@ -486,7 +486,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class NpcAttackCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             NpcAttackCommand cmd = new NpcAttackCommand();
             cmd.m_UnitId = m_UnitId.Clone();
@@ -537,7 +537,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class NpcEnableAiCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             NpcEnableAiCommand cmd = new NpcEnableAiCommand();
             cmd.m_UnitId = m_UnitId.Clone();
@@ -579,7 +579,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class NpcSetAiCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             NpcSetAiCommand cmd = new NpcSetAiCommand();
             cmd.m_UnitId = m_UnitId.Clone();
@@ -640,7 +640,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class NpcSetAiTargetCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             NpcSetAiTargetCommand cmd = new NpcSetAiTargetCommand();
             cmd.m_UnitId = m_UnitId.Clone();
@@ -682,7 +682,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class NpcAnimationCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             NpcAnimationCommand cmd = new NpcAnimationCommand();
             cmd.m_ParamNum = m_ParamNum;
@@ -746,7 +746,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class NpcAnimationParamCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             NpcAnimationParamCommand cmd = new NpcAnimationParamCommand();
             cmd.m_UnitId = m_UnitId.Clone();
@@ -886,7 +886,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class NpcSetCampCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             NpcSetCampCommand cmd = new NpcSetCampCommand();
             cmd.m_UnitId = m_UnitId.Clone();

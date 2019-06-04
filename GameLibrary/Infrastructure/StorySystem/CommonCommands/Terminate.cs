@@ -7,7 +7,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class TerminateCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             TerminateCommand cmd = new TerminateCommand();
             return cmd;
@@ -25,7 +25,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class PauseCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             PauseCommand cmd = new PauseCommand();
             return cmd;

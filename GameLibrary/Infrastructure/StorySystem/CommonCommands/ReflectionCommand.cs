@@ -10,7 +10,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class DotnetExecCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             DotnetExecCommand cmd = new DotnetExecCommand();
             cmd.m_Object = m_Object.Clone();
@@ -116,7 +116,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class DotnetSetCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             DotnetSetCommand cmd = new DotnetSetCommand();
             cmd.m_Object = m_Object.Clone();
@@ -211,7 +211,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class SystemCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SystemCommand cmd = new SystemCommand();
             cmd.m_FileName = m_FileName.Clone();

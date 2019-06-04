@@ -9,7 +9,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class LogCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             LogCommand cmd = new LogCommand();
             cmd.m_Format = m_Format.Clone();

@@ -12,7 +12,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class AssignCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             AssignCommand cmd = new AssignCommand();
             cmd.m_VarName = m_VarName;
@@ -50,7 +50,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class IncCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             IncCommand cmd = new IncCommand();
             cmd.m_VarName = m_VarName;
@@ -168,7 +168,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class DecCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             DecCommand cmd = new DecCommand();
             cmd.m_VarName = m_VarName;
@@ -282,7 +282,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class PropSetCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             PropSetCommand cmd = new PropSetCommand();
             cmd.m_VarName = m_VarName.Clone();
@@ -318,7 +318,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class ListSetCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             ListSetCommand cmd = new ListSetCommand();
             cmd.m_ListValue = m_ListValue.Clone();
@@ -365,7 +365,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class ListAddCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             ListAddCommand cmd = new ListAddCommand();
             cmd.m_ListValue = m_ListValue.Clone();
@@ -402,7 +402,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class ListRemoveCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             ListRemoveCommand cmd = new ListRemoveCommand();
             cmd.m_ListValue = m_ListValue.Clone();
@@ -439,7 +439,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class ListInsertCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             ListInsertCommand cmd = new ListInsertCommand();
             cmd.m_ListValue = m_ListValue.Clone();
@@ -481,7 +481,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class ListRemoveAtCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             ListRemoveAtCommand cmd = new ListRemoveAtCommand();
             cmd.m_ListValue = m_ListValue.Clone();
@@ -518,7 +518,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class ListClearCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             ListClearCommand cmd = new ListClearCommand();
             cmd.m_ListValue = m_ListValue.Clone();

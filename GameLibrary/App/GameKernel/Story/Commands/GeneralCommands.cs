@@ -11,7 +11,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class PreloadCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             PreloadCommand cmd = new PreloadCommand();
             for (int i = 0; i < m_DslFiles.Count; i++) {
@@ -51,7 +51,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class StartStoryCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             StartStoryCommand cmd = new StartStoryCommand();
             cmd.m_StoryId = m_StoryId.Clone();
@@ -83,7 +83,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class StopStoryCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             StopStoryCommand cmd = new StopStoryCommand();
             cmd.m_StoryId = m_StoryId.Clone();
@@ -115,7 +115,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class WaitStoryCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             WaitStoryCommand cmd = new WaitStoryCommand();
             for (int i = 0; i < m_StoryIds.Count; i++) {
@@ -226,7 +226,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class PauseStoryCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             PauseStoryCommand cmd = new PauseStoryCommand();
             for (int i = 0; i < m_StoryIds.Count; i++) {
@@ -267,7 +267,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class ResumeStoryCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             ResumeStoryCommand cmd = new ResumeStoryCommand();
             for (int i = 0; i < m_StoryIds.Count; i++) {
@@ -312,7 +312,7 @@ namespace GameLibrary.Story.Commands
         {
             m_IsConcurrent = isConcurrent;
         }
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             FireMessageCommand cmd = new FireMessageCommand(m_IsConcurrent);
             cmd.m_MsgId = m_MsgId.Clone();
@@ -386,7 +386,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class WaitAllMessageCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             WaitAllMessageCommand cmd = new WaitAllMessageCommand();
             for (int i = 0; i < m_MsgIds.Count; i++) {
@@ -507,7 +507,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class WaitAllMessageHandlerCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             WaitAllMessageHandlerCommand cmd = new WaitAllMessageHandlerCommand();
             for (int i = 0; i < m_MsgIds.Count; i++) {
@@ -618,7 +618,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class PauseAllMessageHandlerCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             PauseAllMessageHandlerCommand cmd = new PauseAllMessageHandlerCommand();
             for (int i = 0; i < m_MsgIds.Count; i++) {
@@ -659,7 +659,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class ResumeAllMessageHandlerCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             ResumeAllMessageHandlerCommand cmd = new ResumeAllMessageHandlerCommand();
             for (int i = 0; i < m_MsgIds.Count; i++) {
@@ -700,7 +700,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class SendAiMessageCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SendAiMessageCommand cmd = new SendAiMessageCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -758,7 +758,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class SendAiConcurrentMessageCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SendAiConcurrentMessageCommand cmd = new SendAiConcurrentMessageCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -816,7 +816,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class SendAiNamespacedMessageCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SendAiNamespacedMessageCommand cmd = new SendAiNamespacedMessageCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -874,7 +874,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class SendAiConcurrentNamespacedMessageCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SendAiConcurrentNamespacedMessageCommand cmd = new SendAiConcurrentNamespacedMessageCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -932,7 +932,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class PublishEventCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             PublishEventCommand cmd = new PublishEventCommand();
             cmd.m_EventName = m_EventName.Clone();
@@ -988,7 +988,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class SendMessageCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SendMessageCommand cmd = new SendMessageCommand();
             cmd.m_ObjName = m_ObjName.Clone();
@@ -1049,7 +1049,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class SendMessageWithTagCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SendMessageWithTagCommand cmd = new SendMessageWithTagCommand();
             cmd.m_ObjTag = m_ObjTag.Clone();
@@ -1110,7 +1110,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class SendMessageWithGameObjectCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SendMessageWithGameObjectCommand cmd = new SendMessageWithGameObjectCommand();
             cmd.m_Object = m_Object.Clone();
@@ -1189,7 +1189,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class CreateGameObjectCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             CreateGameObjectCommand cmd = new CreateGameObjectCommand();
             cmd.m_Name = m_Name.Clone();
@@ -1401,7 +1401,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class SetTransformCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SetTransformCommand cmd = new SetTransformCommand();
             cmd.m_ObjPath = m_ObjPath.Clone();
@@ -1515,7 +1515,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class DestroyGameObjectCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             DestroyGameObjectCommand cmd = new DestroyGameObjectCommand();
             cmd.m_ObjPath = m_ObjPath.Clone();
@@ -1563,7 +1563,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class AutoRecycleCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             AutoRecycleCommand cmd = new AutoRecycleCommand();
             cmd.m_ObjPath = m_ObjPath.Clone();
@@ -1620,7 +1620,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class SetParentCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SetParentCommand cmd = new SetParentCommand();
             cmd.m_ObjPath = m_ObjPath.Clone();
@@ -1737,7 +1737,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class SetActiveCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SetActiveCommand cmd = new SetActiveCommand();
             cmd.m_ObjPath = m_ObjPath.Clone();
@@ -1814,7 +1814,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class SetVisibleCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SetVisibleCommand cmd = new SetVisibleCommand();
             cmd.m_ObjPath = m_ObjPath.Clone();
@@ -1899,7 +1899,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class AddComponentCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             AddComponentCommand cmd = new AddComponentCommand();
             cmd.m_ObjPath = m_ObjPath.Clone();
@@ -1990,7 +1990,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class RemoveComponentCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             RemoveComponentCommand cmd = new RemoveComponentCommand();
             cmd.m_ObjPath = m_ObjPath.Clone();
@@ -2054,7 +2054,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class LoadUiCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             LoadUiCommand cmd = new LoadUiCommand();
             cmd.m_Name = m_Name.Clone();
@@ -2142,7 +2142,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class BindUiCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             BindUiCommand cmd = new BindUiCommand();
             cmd.m_Obj = m_Obj.Clone();
@@ -2430,7 +2430,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class OpenUrlCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             OpenUrlCommand cmd = new OpenUrlCommand();
             cmd.m_Url = m_Url.Clone();
@@ -2462,7 +2462,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class QuitCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             QuitCommand cmd = new QuitCommand();
             return cmd;
@@ -2485,7 +2485,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class ChangeSceneCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             ChangeSceneCommand cmd = new ChangeSceneCommand();
             cmd.m_TargetScene = m_TargetScene.Clone();
@@ -2518,7 +2518,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class HighlightPromptCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             HighlightPromptCommand cmd = new HighlightPromptCommand();
             cmd.m_Info = m_Info.Clone();
@@ -2550,7 +2550,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class SetActorScaleCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SetActorScaleCommand cmd = new SetActorScaleCommand();
             cmd.m_ObjId = m_ObjId.Clone();
@@ -2590,7 +2590,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class GameObjectAnimationCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             GameObjectAnimationCommand cmd = new GameObjectAnimationCommand();
             cmd.m_ParamNum = m_ParamNum;
@@ -2670,7 +2670,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class GameObjectAnimationParamCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             GameObjectAnimationParamCommand cmd = new GameObjectAnimationParamCommand();
             cmd.m_ObjPath = m_ObjPath.Clone();
@@ -2804,7 +2804,7 @@ namespace GameLibrary.Story.Commands
     /// </summary>
     internal class SetStoryVariableCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             SetStoryVariableCommand cmd = new SetStoryVariableCommand();
             cmd.m_ParamNum = m_ParamNum;

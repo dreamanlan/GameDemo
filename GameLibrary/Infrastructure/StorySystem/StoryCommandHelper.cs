@@ -62,15 +62,15 @@ namespace StorySystem
     {
         public bool Init(Dsl.ISyntaxComponent config)
         {
-            this.config = config;
             m_Params.InitFromDsl(config, 0);
+            m_Config = config;
             return config is Dsl.CallData;
         }
         public IStoryCommand Clone()
         {
             SubClassType cmd = new SubClassType();
             cmd.m_Params = m_Params.Clone();
-            cmd.config = config;
+            cmd.m_Config = m_Config;
             return cmd;
         }
         public IStoryCommand LeadCommand
@@ -79,7 +79,15 @@ namespace StorySystem
         }
         public string GetId()
         {
-            return config.GetId();
+            return m_Config.GetId();
+        }
+        public Dsl.ISyntaxComponent GetConfig()
+        {
+            return m_Config;
+        }
+        public void ShareConfig(IStoryCommand cloner)
+        {
+            m_Config = cloner.GetConfig();
         }
         public void Reset()
         {
@@ -121,6 +129,6 @@ namespace StorySystem
         }
         private bool m_LastExecResult = false;
         private IStoryValueParam m_Params = new ValueParamType();
-        private Dsl.ISyntaxComponent config;
+        private Dsl.ISyntaxComponent m_Config;
     }
 }

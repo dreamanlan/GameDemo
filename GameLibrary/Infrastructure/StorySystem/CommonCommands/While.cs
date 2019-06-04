@@ -11,7 +11,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class WhileCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             WhileCommand retCmd = new WhileCommand();
             retCmd.m_Condition = m_Condition.Clone();

@@ -10,7 +10,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class WriteAllLinesCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             WriteAllLinesCommand cmd = new WriteAllLinesCommand();
             cmd.m_File = m_File.Clone();
@@ -56,7 +56,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class WriteFileCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             WriteFileCommand cmd = new WriteFileCommand();
             cmd.m_File = m_File.Clone();
@@ -96,7 +96,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class HashtableAddCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             HashtableAddCommand cmd = new HashtableAddCommand();
             cmd.m_Var = m_Var.Clone();
@@ -141,7 +141,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class HashtableSetCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             HashtableSetCommand cmd = new HashtableSetCommand();
             cmd.m_Var = m_Var.Clone();
@@ -188,7 +188,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class HashtableRemoveCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             HashtableRemoveCommand cmd = new HashtableRemoveCommand();
             cmd.m_Var = m_Var.Clone();
@@ -229,7 +229,7 @@ namespace StorySystem.CommonCommands
     /// </summary>
     internal sealed class HashtableClearCommand : AbstractStoryCommand
     {
-        public override IStoryCommand Clone()
+        protected override IStoryCommand CloneCommand()
         {
             HashtableClearCommand cmd = new HashtableClearCommand();
             cmd.m_Var = m_Var.Clone();
