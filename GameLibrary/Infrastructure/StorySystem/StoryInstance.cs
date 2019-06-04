@@ -179,7 +179,6 @@ namespace StorySystem
                 return;
             }
             try {
-                instance.StackVariables = StackVariables;
                 m_IsInTick = true;
                 var runtime = RuntimeStack.Peek();
                 runtime.Tick(instance, this, delta);
