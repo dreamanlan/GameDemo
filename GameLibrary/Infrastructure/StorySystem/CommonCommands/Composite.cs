@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Diagnostics;
+using Dsl;
+
 namespace StorySystem.CommonCommands
 {
     /// <summary>
@@ -27,6 +29,10 @@ namespace StorySystem.CommonCommands
         {
             get { return m_ArgNames; }
         }
+        public IDictionary<string, Dsl.ISyntaxComponent> OptArgs
+        {
+            get { return m_OptArgs; }
+        }
         public IList<StorySystem.IStoryCommand> InitialCommands
         {
             get { return m_InitialCommands; }
@@ -34,6 +40,7 @@ namespace StorySystem.CommonCommands
         public void InitSharedData()
         {
             m_ArgNames = new List<string>();
+            m_OptArgs = new Dictionary<string, ISyntaxComponent>();
             m_InitialCommands = new List<IStoryCommand>();
         }
         public void NewCall(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
@@ -46,8 +53,14 @@ namespace StorySystem.CommonCommands
             for (int i = 0; i < m_LoadedArgs.Count; ++i) {
                 stackInfo.m_Args.Add(m_LoadedArgs[i].Clone());
             }
+            foreach(var pair in m_LoadedOptArgs) {
+                stackInfo.m_OptArgs.Add(pair.Key, pair.Value.Clone());
+            }
             for (int i = 0; i < stackInfo.m_Args.Count; i++) {
                 stackInfo.m_Args[i].Evaluate(instance, handler, iterator, args);
+            }
+            foreach(var pair in stackInfo.m_OptArgs) {
+                pair.Value.Evaluate(instance, handler, iterator, args);
             }
             //实参处理完，进入函数体执行，创建新的栈
             PushStack(instance, stackInfo);
@@ -58,6 +71,7 @@ namespace StorySystem.CommonCommands
             cmd.m_LoadedArgs = m_LoadedArgs;
             cmd.m_Name = m_Name;
             cmd.m_ArgNames=m_ArgNames;
+            cmd.m_OptArgs = m_OptArgs;
             cmd.m_InitialCommands=m_InitialCommands;
             cmd.IsCompositeCommand = true;
             if (null == cmd.m_LeadCommand) {
@@ -82,6 +96,9 @@ namespace StorySystem.CommonCommands
                     } else {
                         instance.SetVariable(m_ArgNames[i], null);
                     }
+                }
+                foreach(var pair in stackInfo.m_OptArgs) {
+                    instance.SetVariable(pair.Key, pair.Value.Value);
                 }
             }
         }
@@ -117,6 +134,11 @@ namespace StorySystem.CommonCommands
         }
         protected override void Load(Dsl.CallData callData)
         {
+            foreach(var pair in m_OptArgs) {
+                StoryValue val = new StoryValue();
+                val.InitFromDsl(pair.Value);
+                m_LoadedOptArgs.Add(pair.Key, val);
+            }
             m_LoadedArgs = new List<IStoryValue<object>>();
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
@@ -127,6 +149,20 @@ namespace StorySystem.CommonCommands
             IsCompositeCommand = true;
             if (null == m_LeadCommand) {
                 m_LeadCommand = new CompositeCommandHelper(this);
+            }
+        }
+        protected override void Load(FunctionData funcData)
+        {
+            var cd = funcData.Call;
+            Load(cd);
+            foreach(var comp in funcData.Statements) {
+                var fcd = comp as Dsl.CallData;
+                if (null != fcd) {
+                    var key = fcd.GetId();
+                    StoryValue val = new StoryValue();
+                    val.InitFromDsl(fcd.GetParam(0));
+                    m_LoadedOptArgs[key] = val;
+                }
             }
         }
 
@@ -187,6 +223,7 @@ namespace StorySystem.CommonCommands
         private class StackElementInfo
         {
             internal List<IStoryValue<object>> m_Args = new List<IStoryValue<object>>();
+            internal Dictionary<string, IStoryValue<object>> m_OptArgs = new Dictionary<string, IStoryValue<object>>();
             internal StoryCommandQueue m_CommandQueue = new StoryCommandQueue();
             internal bool m_AlreadyExecute = false;
             internal StrObjDict m_StackVariables = new StrObjDict();
@@ -194,6 +231,7 @@ namespace StorySystem.CommonCommands
             internal void Reset()
             {
                 m_Args.Clear();
+                m_OptArgs.Clear();
                 m_CommandQueue.Clear();
                 m_StackVariables.Clear();
                 m_AlreadyExecute = false;
@@ -207,10 +245,12 @@ namespace StorySystem.CommonCommands
         private Stack<StackElementInfo> m_Stack = new Stack<StackElementInfo>();
 
         private List<IStoryValue<object>> m_LoadedArgs = null;
+        private Dictionary<string, IStoryValue<object>> m_LoadedOptArgs = null;
         private CompositeCommandHelper m_LeadCommand = null;
 
         private string m_Name = string.Empty;
         private List<string> m_ArgNames = null;
+        private Dictionary<string, Dsl.ISyntaxComponent> m_OptArgs = null;
         private List<IStoryCommand> m_InitialCommands = null;
     }
     internal sealed class CompositeCommandFactory : IStoryCommandFactory

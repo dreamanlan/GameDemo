@@ -32,6 +32,10 @@ namespace StorySystem.CommonValues
             get { return m_ReturnName; }
             set { m_ReturnName = value; }
         }
+        public IDictionary<string, Dsl.ISyntaxComponent> OptArgs
+        {
+            get { return m_OptArgs; }
+        }
         public IList<StorySystem.IStoryCommand> InitialCommands
         {
             get { return m_InitialCommands; }
@@ -39,6 +43,7 @@ namespace StorySystem.CommonValues
         public void InitSharedData()
         {
             m_ArgNames = new List<string>();
+            m_OptArgs = new Dictionary<string, Dsl.ISyntaxComponent>();
             m_InitialCommands = new List<IStoryCommand>();
         }
         public void InitFromDsl(Dsl.ISyntaxComponent param)
@@ -46,11 +51,11 @@ namespace StorySystem.CommonValues
             m_LoadedArgs = new List<IStoryValue<object>>();
             Dsl.CallData callData = param as Dsl.CallData;
             if (null != callData) {
-                int num = callData.GetParamNum();
-                for (int i = 0; i < num; ++i) {
-                    StoryValue val = new StoryValue();
-                    val.InitFromDsl(callData.GetParam(i));
-                    m_LoadedArgs.Add(val);
+                Load(callData);                
+            } else {
+                Dsl.FunctionData funcData = param as Dsl.FunctionData;
+                if (null != funcData) {
+                    Load(funcData);
                 }
             }
         }
@@ -61,6 +66,7 @@ namespace StorySystem.CommonValues
             val.m_Name = m_Name;
             val.m_ArgNames = m_ArgNames;
             val.m_ReturnName = m_ReturnName;
+            val.m_OptArgs = m_OptArgs;
             val.m_InitialCommands = m_InitialCommands;
             val.m_HaveValue = m_HaveValue;
             val.m_Value = m_Value;
@@ -73,9 +79,15 @@ namespace StorySystem.CommonValues
 			for (int i = 0; i < m_LoadedArgs.Count; ++i) {
                 stackInfo.m_Args.Add(m_LoadedArgs[i].Clone());
 			}
+            foreach(var pair in m_LoadedOptArgs) {
+                stackInfo.m_OptArgs.Add(pair.Key, pair.Value.Clone());
+            }
 			for (int i = 0; i < stackInfo.m_Args.Count; i++) {
 				stackInfo.m_Args[i].Evaluate(instance, handler, iterator, args);
 			}
+            foreach(var pair in stackInfo.m_OptArgs) {
+                pair.Value.Evaluate(instance, handler, iterator, args);
+            }
             //实参处理完，进入函数体执行，创建新的栈
             PushStack(instance, stackInfo);
             try {
@@ -85,6 +97,9 @@ namespace StorySystem.CommonValues
                     } else {
                         instance.SetVariable(m_ArgNames[i], null);
                     }
+                }
+                foreach(var pair in stackInfo.m_OptArgs) {
+                    instance.SetVariable(pair.Key, pair.Value.Value);
                 }
                 Prepare(stackInfo);
                 stackInfo.m_HaveValue = true;
@@ -120,6 +135,34 @@ namespace StorySystem.CommonValues
             }
         }
 
+        private void Load(Dsl.CallData callData)
+        {
+            foreach (var pair in m_OptArgs) {
+                StoryValue val = new StoryValue();
+                val.InitFromDsl(pair.Value);
+                m_LoadedOptArgs.Add(pair.Key, val);
+            }
+            int num = callData.GetParamNum();
+            for (int i = 0; i < num; ++i) {
+                StoryValue val = new StoryValue();
+                val.InitFromDsl(callData.GetParam(i));
+                m_LoadedArgs.Add(val);
+            }
+        }
+        private void Load(Dsl.FunctionData funcData)
+        {
+            var cd = funcData.Call;
+            Load(cd);
+            foreach (var comp in funcData.Statements) {
+                var fcd = comp as Dsl.CallData;
+                if (null != fcd) {
+                    var key = fcd.GetId();
+                    StoryValue val = new StoryValue();
+                    val.InitFromDsl(fcd.GetParam(0));
+                    m_LoadedOptArgs[key] = val;
+                }
+            }
+        }
         private void Prepare(StackElementInfo stackInfo)
         {
             if (null != m_InitialCommands && m_FirstStackCommands.Count <= 0) {
@@ -182,6 +225,7 @@ namespace StorySystem.CommonValues
         private class StackElementInfo
         {
             internal List<IStoryValue<object>> m_Args = new List<IStoryValue<object>>();
+            internal Dictionary<string, IStoryValue<object>> m_OptArgs = new Dictionary<string, IStoryValue<object>>();
             internal List<IStoryCommand> m_Commands = new List<IStoryCommand>();
             internal bool m_HaveValue;
             internal object m_Value;
@@ -190,6 +234,7 @@ namespace StorySystem.CommonValues
             internal void Reset()
             {
                 m_Args.Clear();
+                m_OptArgs.Clear();
                 m_Commands.Clear();
                 m_HaveValue = false;
                 m_Value = null;
@@ -206,10 +251,12 @@ namespace StorySystem.CommonValues
         private bool m_HaveValue;
         private object m_Value;
         private List<IStoryValue<object>> m_LoadedArgs = null;
+        private Dictionary<string, IStoryValue<object>> m_LoadedOptArgs = null;
 
         private string m_Name = string.Empty;
         private List<string> m_ArgNames = null;
         private string m_ReturnName = string.Empty;
+        private Dictionary<string, Dsl.ISyntaxComponent> m_OptArgs = null;
         private List<IStoryCommand> m_InitialCommands = null;
     }
     internal sealed class CompositeValueFactory : IStoryValueFactory

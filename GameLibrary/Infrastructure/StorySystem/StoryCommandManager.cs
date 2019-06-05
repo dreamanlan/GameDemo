@@ -295,9 +295,6 @@ namespace StorySystem
             StoryValueManager.Instance.RegisterValueFactory("substring", new StoryValueFactoryHelper<CommonValues.SubstringValue>());
             StoryValueManager.Instance.RegisterValueFactory("str2int", new StoryValueFactoryHelper<CommonValues.Str2IntValue>());
             StoryValueManager.Instance.RegisterValueFactory("str2float", new StoryValueFactoryHelper<CommonValues.Str2FloatValue>());
-            StoryValueManager.Instance.RegisterValueFactory("dictformat", new StoryValueFactoryHelper<CommonValues.DictFormatValue>());
-            StoryValueManager.Instance.RegisterValueFactory("dictget", new StoryValueFactoryHelper<CommonValues.DictGetValue>());
-            StoryValueManager.Instance.RegisterValueFactory("dictparse", new StoryValueFactoryHelper<CommonValues.DictParseValue>());
             StoryValueManager.Instance.RegisterValueFactory("time", new StoryValueFactoryHelper<CommonValues.TimeValue>());
             StoryValueManager.Instance.RegisterValueFactory("isnull", new StoryValueFactoryHelper<CommonValues.IsNullOperator>());
             StoryValueManager.Instance.RegisterValueFactory("gettype", new StoryValueFactoryHelper<CommonValues.GetTypeValue>());

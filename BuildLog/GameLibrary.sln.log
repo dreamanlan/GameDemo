@@ -1,5 +1,5 @@
 ﻿MSBUILD : warning MSB4056: 必须对单线程单元调用 MSBuild 引擎。当前线程模型为“MTA”。将继续，但某些任务可能无法正常工作。
-生成启动时间为 2019/6/5 17:38:08。
+生成启动时间为 2019/6/6 0:07:22。
 __________________________________________________
 项目“E:\OpenSource\GameDemo\GameLibrary\GameLibrary.sln”(clean;rebuild 个目标):
 
@@ -16,9 +16,25 @@ __________________________________________________
         正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\bin\Debug\UnityEngine.dll”。
         正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\obj\Debug\Common.dll”。
         正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\obj\Debug\Common.pdb”。
+        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache”。
+        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\obj\Debug\Common.csproj.CopyComplete”。
     __________________________________________________
     项目“E:\OpenSource\GameDemo\GameLibrary\GameLibrary.sln”正在生成“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\StorySystem.csproj”(Clean 目标):
 
+    目标 CoreClean:
+        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\bin\Debug\StorySystem.dll”。
+        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\bin\Debug\StorySystem.pdb”。
+        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\bin\Debug\Common.dll”。
+        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\bin\Debug\Dsl.dll”。
+        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\bin\Debug\LitJson.dll”。
+        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\bin\Debug\UnityEngine.dll”。
+        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\bin\Debug\Common.pdb”。
+        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\bin\Debug\Dsl.pdb”。
+        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\obj\Debug\StorySystem.dll”。
+        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\obj\Debug\StorySystem.pdb”。
+        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\obj\Debug\StorySystem.csprojAssemblyReference.cache”。
+        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\obj\Debug\StorySystem.csproj.CoreCompileInputs.cache”。
+        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\obj\Debug\StorySystem.csproj.CopyComplete”。
     目标 CleanReferencedProjects:
         __________________________________________________
         项目“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\StorySystem.csproj”正在生成“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\Common.csproj”(Clean 目标):
@@ -41,7 +57,9 @@ __________________________________________________
         正在删除文件“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\bin\Debug\Common.pdb”。
         正在删除文件“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\bin\Debug\StorySystem.pdb”。
         正在删除文件“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\bin\Debug\Dsl.pdb”。
-        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\obj\Debug\GameKernel.csprojResolveAssemblyReference.cache”。
+        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\obj\Debug\GameKernel.csprojAssemblyReference.cache”。
+        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\obj\Debug\GameKernel.csproj.CoreCompileInputs.cache”。
+        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\obj\Debug\GameKernel.csproj.CopyComplete”。
         正在删除文件“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\obj\Debug\GameKernel.dll”。
         正在删除文件“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\obj\Debug\GameKernel.pdb”。
     目标 CleanReferencedProjects:
@@ -83,31 +101,95 @@ __________________________________________________
 
         项目文件包含 ToolsVersion="4.0" 设置，但此工具集未知或缺失。您可以通过为此工具集安装相应的 .NET Framework 来解决此问题。将项目视为具有 ToolsVersion="4.0" 设置。
     目标 CoreCompile:
-        C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Csc.exe /noconfig /nowarn:1701,1702 /nostdlib+ /platform:AnyCPU /errorreport:prompt /define:TRACE;DEBUG;ENABLE_ERROR_LOG;ENABLE_LOG /highentropyva- /reference:E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\bin\Debug\Common.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\Dsl.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\LitJson.dll /reference:C:\Windows\Microsoft.NET\Framework64\v2.0.50727\mscorlib.dll /reference:"C:\Program Files\Reference Assemblies\Microsoft\Framework\v3.5\System.Core.dll" /reference:C:\Windows\Microsoft.NET\Framework64\v2.0.50727\System.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\UnityEngine.dll /debug+ /debug:full /filealign:512 /out:obj\Debug\StorySystem.dll /target:library /utf8output CommonValues\Linq.cs CustomCommandValueParser.cs CommonCommands\Assign.cs CommonCommands\Composite.cs CommonCommands\Foreach.cs CommonCommands\IfElse.cs CommonCommands\Hashtable.cs CommonCommands\LocalMessage.cs CommonCommands\Log.cs CommonCommands\ReflectionCommand.cs CommonCommands\Terminate.cs CommonCommands\Wait.cs CommonCommands\While.cs CommonValues\Arithmetic.cs CommonValues\Compare.cs CommonValues\Composite.cs CommonValues\GeneralValues.cs CommonValues\Hashtable.cs CommonValues\Logic.cs CommonValues\ReflectionValue.cs CommonValues\String.cs CommonValues\Time.cs IStoryCommand.cs IStoryCommandFactory.cs IStoryValue.cs Properties\AssemblyInfo.cs StoryCommandHelper.cs StoryCommandManager.cs StoryConfigManager.cs StoryInstance.cs StoryValueHelper.cs StoryValueManager.cs
-        StoryCommandManager.cs(29,44): error CS0246: The type or namespace name 'StoryCommandGroupDefine' could not be found (are you missing a using directive or an assembly reference?)
-        StoryCommandManager.cs(33,44): error CS0246: The type or namespace name 'StoryCommandGroupDefine' could not be found (are you missing a using directive or an assembly reference?)
-        StoryCommandManager.cs(57,49): error CS0246: The type or namespace name 'StoryCommandGroupDefine' could not be found (are you missing a using directive or an assembly reference?)
-        StoryValueManager.cs(42,42): error CS0246: The type or namespace name 'StoryValueGroupDefine' could not be found (are you missing a using directive or an assembly reference?)
-        StoryValueManager.cs(46,42): error CS0246: The type or namespace name 'StoryValueGroupDefine' could not be found (are you missing a using directive or an assembly reference?)
-        StoryValueManager.cs(70,47): error CS0246: The type or namespace name 'StoryValueGroupDefine' could not be found (are you missing a using directive or an assembly reference?)
-        StoryCommandManager.cs(12,54): error CS0103: The name 'StoryCommandGroupDefine' does not exist in the current context
-        StoryValueManager.cs(25,52): error CS0103: The name 'StoryValueGroupDefine' does not exist in the current context
-    已完成在项目“StorySystem.csproj”中生成目标“CoreCompile”的操作 - 失败。
+        C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Csc.exe /noconfig /nowarn:1701,1702 /nostdlib+ /platform:AnyCPU /errorreport:prompt /define:TRACE;DEBUG;ENABLE_ERROR_LOG;ENABLE_LOG /highentropyva- /reference:E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\bin\Debug\Common.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\Dsl.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\LitJson.dll /reference:C:\Windows\Microsoft.NET\Framework64\v2.0.50727\mscorlib.dll /reference:"C:\Program Files\Reference Assemblies\Microsoft\Framework\v3.5\System.Core.dll" /reference:C:\Windows\Microsoft.NET\Framework64\v2.0.50727\System.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\UnityEngine.dll /debug+ /debug:full /filealign:512 /out:obj\Debug\StorySystem.dll /target:library /utf8output CommonValues\Linq.cs CustomCommandValueParser.cs CommonCommands\Assign.cs CommonCommands\Composite.cs CommonCommands\Foreach.cs CommonCommands\IfElse.cs CommonCommands\Hashtable.cs CommonCommands\LocalMessage.cs CommonCommands\Log.cs CommonCommands\ReflectionCommand.cs CommonCommands\Terminate.cs CommonCommands\Wait.cs CommonCommands\While.cs CommonValues\Arithmetic.cs CommonValues\Compare.cs CommonValues\Composite.cs CommonValues\GeneralValues.cs CommonValues\Hashtable.cs CommonValues\Logic.cs CommonValues\ReflectionValue.cs CommonValues\String.cs CommonValues\Time.cs IStoryCommand.cs IStoryCommandFactory.cs IStoryValue.cs Properties\AssemblyInfo.cs StoryCommandHelper.cs StoryCommandManager.cs StoryConfigManager.cs StoryDefine.cs StoryInstance.cs StoryValueHelper.cs StoryValueManager.cs
+    目标 _CopyFilesMarkedCopyLocal:
+        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\bin\Debug\Common.dll”复制到“bin\Debug\Common.dll”。
+        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\Dsl.dll”复制到“bin\Debug\Dsl.dll”。
+        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\LitJson.dll”复制到“bin\Debug\LitJson.dll”。
+        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\UnityEngine.dll”复制到“bin\Debug\UnityEngine.dll”。
+        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\bin\Debug\Common.pdb”复制到“bin\Debug\Common.pdb”。
+        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\Dsl.pdb”复制到“bin\Debug\Dsl.pdb”。
+    目标 GetCopyToOutputDirectoryItems:
+        __________________________________________________
+        项目“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\StorySystem.csproj”正在生成“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\Common.csproj”(GetCopyToOutputDirectoryItems 目标):
 
-    已完成生成项目“StorySystem.csproj”的操作 - 失败。
+        项目文件包含 ToolsVersion="4.0" 设置，但此工具集未知或缺失。您可以通过为此工具集安装相应的 .NET Framework 来解决此问题。将项目视为具有 ToolsVersion="4.0" 设置。
+    目标 CopyFilesToOutputDirectory:
+        正在将文件从“obj\Debug\StorySystem.dll”复制到“bin\Debug\StorySystem.dll”。
+        StorySystem -> E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\bin\Debug\StorySystem.dll
+        正在将文件从“obj\Debug\StorySystem.pdb”复制到“bin\Debug\StorySystem.pdb”。
+    __________________________________________________
+    项目“E:\OpenSource\GameDemo\GameLibrary\GameLibrary.sln”正在生成“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\GameKernel.csproj”(Rebuild 目标):
 
-生成失败。
+    项目文件包含 ToolsVersion="4.0" 设置，但此工具集未知或缺失。您可以通过为此工具集安装相应的 .NET Framework 来解决此问题。将项目视为具有 ToolsVersion="4.0" 设置。
+    目标 CleanReferencedProjects:
+        __________________________________________________
+        项目“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\GameKernel.csproj”正在生成“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\Common.csproj”(Clean 目标):
+
+        项目文件包含 ToolsVersion="4.0" 设置，但此工具集未知或缺失。您可以通过为此工具集安装相应的 .NET Framework 来解决此问题。将项目视为具有 ToolsVersion="4.0" 设置。
+        目标 CoreClean:
+            正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\bin\Debug\Common.dll”。
+            正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\bin\Debug\Common.pdb”。
+            正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\bin\Debug\UnityEngine.dll”。
+            正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache”。
+            正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\obj\Debug\Common.dll”。
+            正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\obj\Debug\Common.pdb”。
+        __________________________________________________
+        项目“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\GameKernel.csproj”正在生成“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\StorySystem.csproj”(Clean 目标):
+
+    目标 ResolveProjectReferences:
+        __________________________________________________
+        项目“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\GameKernel.csproj”正在生成“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\Common.csproj”(默认目标):
+
+        项目文件包含 ToolsVersion="4.0" 设置，但此工具集未知或缺失。您可以通过为此工具集安装相应的 .NET Framework 来解决此问题。将项目视为具有 ToolsVersion="4.0" 设置。
+        目标 CoreCompile:
+            C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Csc.exe /noconfig /nowarn:1701,1702 /nostdlib+ /platform:AnyCPU /errorreport:prompt /warn:4 /define:TRACE;DEBUG;ENABLE_ERROR_LOG;ENABLE_LOG /highentropyva- /reference:C:\Windows\Microsoft.NET\Framework64\v2.0.50727\mscorlib.dll /reference:"C:\Program Files\Reference Assemblies\Microsoft\Framework\v3.5\System.Core.dll" /reference:C:\Windows\Microsoft.NET\Framework64\v2.0.50727\System.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\UnityEngine.dll /debug+ /debug:full /filealign:512 /optimize- /out:obj\Debug\Common.dll /target:library /utf8output ClientConcurrent\ClientConcurrentActionProcessor.cs ClientConcurrent\ClientConcurrentCommandProcessor.cs ClientConcurrent\ClientConcurrentDictionary.cs ClientConcurrent\ClientConcurrentObjectPool.cs ClientConcurrent\ClientConcurrentOrderedList.cs ClientConcurrent\ClientConcurrentPoolAllocatedAction.cs ClientConcurrent\ClientConcurrentQueue.cs ClientConcurrent\ClientConcurrentStack.cs ClientConcurrent\ClientConcurrentTypedDataCollection.cs ClientConcurrent\ClientInterlocked.cs ClientConcurrent\ClientSpinLock.cs ClientConcurrent\ClientSpinWait.cs ClientConcurrent\ClientWatch.cs ClientConcurrent\MyThread.cs Geometry\Geometry.cs Geometry\Geometry3D.cs GlobalVariables.cs Log\LogSystem.cs Properties\AssemblyInfo.cs PublishSubscribe\PublishSubscribeSystem.cs Util\Converter.cs Util\Heap.cs Util\Helper.cs HomePath.cs Util\IActionQueue.cs Util\LinkedListDictionary.cs Util\MyActionAndFunc.cs Util\ObjectPool.cs Util\GenericUtility.cs Util\PoolAllocatedAction.cs Util\RandomTable.cs Util\SimpleObjectPool.cs Util\StringLower.cs Util\TimeUtility.cs Util\TypedDataCollection.cs
+        目标 _CopyFilesMarkedCopyLocal:
+            正在将文件从“E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\UnityEngine.dll”复制到“bin\Debug\UnityEngine.dll”。
+        目标 CopyFilesToOutputDirectory:
+            正在将文件从“obj\Debug\Common.dll”复制到“bin\Debug\Common.dll”。
+            Common -> E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\bin\Debug\Common.dll
+            正在将文件从“obj\Debug\Common.pdb”复制到“bin\Debug\Common.pdb”。
+        __________________________________________________
+        项目“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\GameKernel.csproj”正在生成“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\StorySystem.csproj”(默认目标):
+
+        __________________________________________________
+        项目“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\GameKernel.csproj”正在生成“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\Common.csproj”(GetNativeManifest 目标):
+
+        项目文件包含 ToolsVersion="4.0" 设置，但此工具集未知或缺失。您可以通过为此工具集安装相应的 .NET Framework 来解决此问题。将项目视为具有 ToolsVersion="4.0" 设置。
+        __________________________________________________
+        项目“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\GameKernel.csproj”正在生成“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\StorySystem.csproj”(GetNativeManifest 目标):
+
+    目标 CoreCompile:
+        C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Csc.exe /noconfig /unsafe+ /nowarn:1701,1702 /nostdlib+ /errorreport:prompt /warn:4 /define:TRACE;DEBUG;ROBOT /highentropyva- /reference:E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\bin\Debug\Common.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\Dsl.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\LitJson.dll /reference:C:\Windows\Microsoft.NET\Framework64\v2.0.50727\mscorlib.dll /reference:E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\bin\Debug\StorySystem.dll /reference:"C:\Program Files\Reference Assemblies\Microsoft\Framework\v3.5\System.Core.dll" /reference:C:\Windows\Microsoft.NET\Framework64\v2.0.50727\System.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\UnityEngine.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\UnityEngine.UI.dll /debug+ /debug:full /filealign:512 /optimize- /out:obj\Debug\GameKernel.dll /target:library /utf8output Ai\AiCommand.cs Ai\AiLogicUtility.cs Ai\AiRegister.cs Scene\ObjectKdTree.cs Scene\SceneSystem.cs GameObjects\ObjectInfo\Entity_NpcType.cs Scene\SceneSystem_Ai.cs Scene\SceneSystem_Entity.cs GameController.cs GameObjects\AiInfo\AiInfo.cs GameObjects\AiInfo\NpcAiData.cs GameObjects\EntityInfoDictionary.cs GameObjects\EntityManager.cs GameObjects\EntityKdTree.cs GameObjects\MovementInfo\MovementInfo.cs GameObjects\ObjectInfo\CharacterDefines.cs GameObjects\ObjectInfo\CharacterProperty.cs GameObjects\ObjectInfo\Entity_Base.cs GameObjects\ObjectInfo\Entity_Npc.cs GameObjects\SceneSharedData\BlackBoard.cs GameObjectViews\EntityViewModelManager.cs GameObjectViews\EntityViewModel_Base.cs GameObjectViews\EntityViewModel_Npc.cs GmCommands\ClientGmStorySystem.cs GmCommands\GmCommands.cs Properties\AssemblyInfo.cs Resource\AbstractScriptBehavior.cs Resource\ResourceSystem.cs Ai\AiCommand\AiChase.cs Ai\AiCommand\AiGohome.cs Ai\AiCommand\AiKeepAway.cs Ai\AiCommand\AiRandMove.cs Ai\AiValue\AiGetTarget.cs Ai\AiValue\AiNeedChase.cs Ai\AiValue\AiNeedKeepAway.cs Ai\AiValue\AiQuey.cs Ai\AiValue\AiSelectTarget.cs Story\Commands\GameLogicCommands.cs Story\Commands\GeneralCommands.cs Story\ClientStorySystem.cs Story\UiStoryEventHandler.cs Story\UiStoryInitializer.cs Story\Values\GameLogicValues.cs Story\Values\GeneralValues.cs UtilityForClient\Logger.cs UtilityForClient\Utility.cs Story\Commands\NpcCommands.cs Story\Commands\ObjectCommands.cs Story\Values\ObjectValues.cs Story\Values\NpcValues.cs
+    目标 _CopyFilesMarkedCopyLocal:
+        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\bin\Debug\Common.dll”复制到“bin\Debug\Common.dll”。
+        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\Dsl.dll”复制到“bin\Debug\Dsl.dll”。
+        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\LitJson.dll”复制到“bin\Debug\LitJson.dll”。
+        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\bin\Debug\StorySystem.dll”复制到“bin\Debug\StorySystem.dll”。
+        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\UnityEngine.dll”复制到“bin\Debug\UnityEngine.dll”。
+        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\UnityEngine.UI.dll”复制到“bin\Debug\UnityEngine.UI.dll”。
+        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\UnityEditor.dll”复制到“bin\Debug\UnityEditor.dll”。
+        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\bin\Debug\Common.pdb”复制到“bin\Debug\Common.pdb”。
+        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\bin\Debug\StorySystem.pdb”复制到“bin\Debug\StorySystem.pdb”。
+        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\Dsl.pdb”复制到“bin\Debug\Dsl.pdb”。
+    目标 GetCopyToOutputDirectoryItems:
+        __________________________________________________
+        项目“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\GameKernel.csproj”正在生成“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\Common.csproj”(GetCopyToOutputDirectoryItems 目标):
+
+        项目文件包含 ToolsVersion="4.0" 设置，但此工具集未知或缺失。您可以通过为此工具集安装相应的 .NET Framework 来解决此问题。将项目视为具有 ToolsVersion="4.0" 设置。
+        __________________________________________________
+        项目“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\GameKernel.csproj”正在生成“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\StorySystem.csproj”(GetCopyToOutputDirectoryItems 目标):
+
+    目标 CopyFilesToOutputDirectory:
+        正在将文件从“obj\Debug\GameKernel.dll”复制到“bin\Debug\GameKernel.dll”。
+        GameKernel -> E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\bin\Debug\GameKernel.dll
+        正在将文件从“obj\Debug\GameKernel.pdb”复制到“bin\Debug\GameKernel.pdb”。
+
+已成功生成。
 
 MSBUILD : warning MSB4056: 必须对单线程单元调用 MSBuild 引擎。当前线程模型为“MTA”。将继续，但某些任务可能无法正常工作。
-StoryCommandManager.cs(29,44): error CS0246: The type or namespace name 'StoryCommandGroupDefine' could not be found (are you missing a using directive or an assembly reference?)
-StoryCommandManager.cs(33,44): error CS0246: The type or namespace name 'StoryCommandGroupDefine' could not be found (are you missing a using directive or an assembly reference?)
-StoryCommandManager.cs(57,49): error CS0246: The type or namespace name 'StoryCommandGroupDefine' could not be found (are you missing a using directive or an assembly reference?)
-StoryValueManager.cs(42,42): error CS0246: The type or namespace name 'StoryValueGroupDefine' could not be found (are you missing a using directive or an assembly reference?)
-StoryValueManager.cs(46,42): error CS0246: The type or namespace name 'StoryValueGroupDefine' could not be found (are you missing a using directive or an assembly reference?)
-StoryValueManager.cs(70,47): error CS0246: The type or namespace name 'StoryValueGroupDefine' could not be found (are you missing a using directive or an assembly reference?)
-StoryCommandManager.cs(12,54): error CS0103: The name 'StoryCommandGroupDefine' does not exist in the current context
-StoryValueManager.cs(25,52): error CS0103: The name 'StoryValueGroupDefine' does not exist in the current context
     1 个警告
-    8 个错误
+    0 个错误
 
-已用时间 00:00:04.67
+已用时间 00:00:05.84
