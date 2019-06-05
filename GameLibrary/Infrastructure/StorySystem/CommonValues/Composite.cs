@@ -63,6 +63,7 @@ namespace StorySystem.CommonValues
         {
             CompositeValue val = new CompositeValue();
             val.m_LoadedArgs = m_LoadedArgs;
+            val.m_LoadedOptArgs = m_LoadedOptArgs;
             val.m_Name = m_Name;
             val.m_ArgNames = m_ArgNames;
             val.m_ReturnName = m_ReturnName;
@@ -137,6 +138,7 @@ namespace StorySystem.CommonValues
 
         private void Load(Dsl.CallData callData)
         {
+            m_LoadedOptArgs = new Dictionary<string, IStoryValue<object>>();
             foreach (var pair in m_OptArgs) {
                 StoryValue val = new StoryValue();
                 val.InitFromDsl(pair.Value);

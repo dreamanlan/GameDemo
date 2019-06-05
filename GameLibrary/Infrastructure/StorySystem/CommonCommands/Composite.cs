@@ -69,6 +69,7 @@ namespace StorySystem.CommonCommands
         {
             CompositeCommand cmd = new CompositeCommand();
             cmd.m_LoadedArgs = m_LoadedArgs;
+            cmd.m_LoadedOptArgs = m_LoadedOptArgs;
             cmd.m_Name = m_Name;
             cmd.m_ArgNames=m_ArgNames;
             cmd.m_OptArgs = m_OptArgs;
@@ -134,7 +135,8 @@ namespace StorySystem.CommonCommands
         }
         protected override void Load(Dsl.CallData callData)
         {
-            foreach(var pair in m_OptArgs) {
+            m_LoadedOptArgs = new Dictionary<string, IStoryValue<object>>();
+            foreach (var pair in m_OptArgs) {
                 StoryValue val = new StoryValue();
                 val.InitFromDsl(pair.Value);
                 m_LoadedOptArgs.Add(pair.Key, val);
