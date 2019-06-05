@@ -187,7 +187,7 @@ namespace StorySystem.CommonCommands
         private class StackElementInfo
         {
             internal List<IStoryValue<object>> m_Args = new List<IStoryValue<object>>();
-            internal Queue<IStoryCommand> m_CommandQueue = new Queue<IStoryCommand>();
+            internal StoryCommandQueue m_CommandQueue = new StoryCommandQueue();
             internal bool m_AlreadyExecute = false;
             internal StrObjDict m_StackVariables = new StrObjDict();
 

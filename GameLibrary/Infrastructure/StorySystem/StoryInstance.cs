@@ -38,7 +38,7 @@ namespace StorySystem
             get { return m_Arguments; }
             set { m_Arguments = value; }
         }
-        public Queue<IStoryCommand> CommandQueue
+        public StoryCommandQueue CommandQueue
         {
             get { return m_CommandQueue; }
         }
@@ -64,9 +64,15 @@ namespace StorySystem
 
         private object m_Iterator;
         private object[] m_Arguments;
-        private Queue<IStoryCommand> m_CommandQueue = new Queue<IStoryCommand>();
+        private StoryCommandQueue m_CommandQueue = new StoryCommandQueue();
     }
-    public class StoryRuntimeStack : Stack<StoryRuntime>
+    public sealed class StoryCommandQueue : Queue<IStoryCommand>
+    {
+        public StoryCommandQueue() { }
+        public StoryCommandQueue(int capacity) : base(capacity) { }
+        public StoryCommandQueue(IEnumerable<IStoryCommand> coll) : base(coll) { }
+    }
+    public sealed class StoryRuntimeStack : Stack<StoryRuntime>
     {
         public StoryRuntimeStack() { }
         public StoryRuntimeStack(int capacity) : base(capacity) { }
@@ -151,8 +157,8 @@ namespace StorySystem
         public void Reset()
         {
             if (m_IsTriggered) {
-                //LogSystem.Error("Reset a running message handler !");
-                //Helper.LogCallStack(true);
+                LogSystem.Error("Reset a running message handler !");
+                Helper.LogCallStack(true);
             }
             m_IsTriggered = false;
             m_IsPaused = false;
@@ -230,6 +236,29 @@ namespace StorySystem
         private StoryRuntimeStack m_RuntimeStack = new StoryRuntimeStack();
         private List<IStoryCommand> m_LoadedCommands = new List<IStoryCommand>();
         private StrObjDict m_StackVariables = new StrObjDict();
+    }
+    public sealed class StoryMessageHandlerList : List<StoryMessageHandler>
+    {
+        public StoryMessageHandlerList() { }
+        public StoryMessageHandlerList(int capacity) : base(capacity) { }
+        public StoryMessageHandlerList(IEnumerable<StoryMessageHandler> coll) : base(coll) { }
+    }
+    public sealed class StoryMessageHandlerEnumerator
+    {
+        public StoryMessageHandler Current
+        {
+            get { return m_Enumerator.Current; }
+        }
+        public bool MoveNext()
+        {
+            return m_Enumerator.MoveNext();
+        }
+
+        internal StoryMessageHandlerEnumerator(IEnumerator<StoryMessageHandler> enumer)
+        {
+            m_Enumerator = enumer;
+        }
+        private IEnumerator<StoryMessageHandler> m_Enumerator;
     }
     public delegate bool StoryCommandDebuggerDelegation(StoryInstance instance, StoryMessageHandler handler, IStoryCommand command, long delta, object iterator, object[] args);
     public sealed class StoryInstance
@@ -707,6 +736,16 @@ namespace StorySystem
                 m_IsInTick = false;
             }
         }
+        public StoryMessageHandlerEnumerator GetMessageHandlerEnumerator()
+        {
+            var enumer = m_MessageHandlers.GetEnumerator();
+            return new StoryMessageHandlerEnumerator(enumer);
+        }
+        public StoryMessageHandlerEnumerator GetConcurrentMessageHandlerEnumerator()
+        {
+            var enumer = m_ConcurrentMessageHandlers.GetEnumerator();
+            return new StoryMessageHandlerEnumerator(enumer);
+        }
         public StoryMessageHandler GetMessageHandler(string msgId)
         {
             StoryMessageHandler ret = null;
@@ -719,17 +758,24 @@ namespace StorySystem
             }
             return ret;
         }
-        public List<StoryMessageHandler> GetConcurrentMessageHandler(string msgId)
+        public StoryMessageHandlerList GetConcurrentMessageHandler(string msgId)
         {
-            List<StoryMessageHandler> ret = new List<StoryMessageHandler>();
+            var ret = new StoryMessageHandlerList();
+            int ct = GetConcurrentMessageHandler(msgId, ret);
+            return ret;
+        }
+        public int GetConcurrentMessageHandler(string msgId, StoryMessageHandlerList list)
+        {
+            int ct = 0;
             for (int i = 0; i < m_ConcurrentMessageHandlers.Count; ++i) {
                 var handler = m_ConcurrentMessageHandlers[i];
                 if (handler.MessageId == msgId) {
-                    ret.Add(handler);
+                    list.Add(handler);
+                    ++ct;
                     break;
                 }
             }
-            return ret;
+            return ct;
         }
         public long GetMessageTriggerTime(string msgId)
         {

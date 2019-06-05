@@ -284,4 +284,189 @@ namespace StorySystem.CommonValues
         private bool m_HaveValue;
         private object m_Value;
     }
+    internal sealed class DictFormatValue : IStoryValue<object>
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.CallData callData = param as Dsl.CallData;
+            if (null != callData) {
+
+                int num = callData.GetParamNum();
+                if (num > 0) {
+                    m_DictId.InitFromDsl(callData.GetParam(0));
+                }
+                for (int i = 1; i < callData.GetParamNum(); ++i) {
+                    StoryValue val = new StoryValue();
+                    val.InitFromDsl(callData.GetParam(i));
+                    m_FormatArgs.Add(val);
+                }
+                TryUpdateValue();
+            }
+        }
+        public IStoryValue<object> Clone()
+        {
+            DictFormatValue val = new DictFormatValue();
+            val.m_DictId = m_DictId.Clone();
+            for (int i = 0; i < m_FormatArgs.Count; i++) {
+                val.m_FormatArgs.Add(m_FormatArgs[i].Clone());
+            }
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        {
+            m_HaveValue = false;
+            m_DictId.Evaluate(instance, handler, iterator, args);
+            for (int i = 0; i < m_FormatArgs.Count; i++) {
+                m_FormatArgs[i].Evaluate(instance, handler, iterator, args);
+            }
+            TryUpdateValue();
+        }
+        public bool HaveValue
+        {
+            get
+            {
+                return m_HaveValue;
+            }
+        }
+        public object Value
+        {
+            get
+            {
+                return m_Value;
+            }
+        }
+
+        private void TryUpdateValue()
+        {
+            bool canCalc = true;
+            if (!m_DictId.HaveValue) {
+                canCalc = false;
+            } else {
+                for (int i = 0; i < m_FormatArgs.Count; i++) {
+                    if (!m_FormatArgs[i].HaveValue) {
+                        canCalc = false;
+                        break;
+                    }
+                }
+            }
+            if (canCalc) {
+                m_HaveValue = true;
+                object dictId = m_DictId.Value;
+                ArrayList arglist = new ArrayList();
+                for (int i = 0; i < m_FormatArgs.Count; i++) {
+                    arglist.Add(m_FormatArgs[i].Value);
+                }
+                object[] args = arglist.ToArray();
+                m_Value = Dict.Format((string)dictId, args);
+            }
+        }
+        private IStoryValue<object> m_DictId = new StoryValue();
+        private List<IStoryValue<object>> m_FormatArgs = new List<IStoryValue<object>>();
+        private bool m_HaveValue;
+        private object m_Value;
+    }
+    internal sealed class DictGetValue : IStoryValue<object>
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.CallData callData = param as Dsl.CallData;
+            if (null != callData && callData.GetParamNum() > 0) {
+                m_DictId.InitFromDsl(callData.GetParam(0));
+                TryUpdateValue();
+            }
+        }
+        public IStoryValue<object> Clone()
+        {
+            DictGetValue val = new DictGetValue();
+            val.m_DictId = m_DictId.Clone();
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        {
+            m_HaveValue = false;
+            m_DictId.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue();
+        }
+        public bool HaveValue
+        {
+            get
+            {
+                return m_HaveValue;
+            }
+        }
+        public object Value
+        {
+            get
+            {
+                return m_Value;
+            }
+        }
+
+        private void TryUpdateValue()
+        {
+            if (m_DictId.HaveValue) {
+                object dictId = m_DictId.Value;
+                m_HaveValue = true;
+                m_Value = Dict.Get((string)dictId);
+            }
+        }
+        private IStoryValue<object> m_DictId = new StoryValue();
+        private bool m_HaveValue;
+        private object m_Value;
+    }
+    internal sealed class DictParseValue : IStoryValue<object>
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.CallData callData = param as Dsl.CallData;
+            if (null != callData && callData.GetParamNum() > 0) {
+                m_String.InitFromDsl(callData.GetParam(0));
+                TryUpdateValue();
+            }
+        }
+        public IStoryValue<object> Clone()
+        {
+            DictParseValue val = new DictParseValue();
+            val.m_String = m_String.Clone();
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        {
+            m_HaveValue = false;
+            m_String.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue();
+        }
+        public bool HaveValue
+        {
+            get
+            {
+                return m_HaveValue;
+            }
+        }
+        public object Value
+        {
+            get
+            {
+                return m_Value;
+            }
+        }
+
+        private void TryUpdateValue()
+        {
+            if (m_String.HaveValue) {
+                string str = m_String.Value;
+                m_HaveValue = true;
+                m_Value = Dict.Parse(str);
+            }
+        }
+        private IStoryValue<string> m_String = new StoryValue<string>();
+        private bool m_HaveValue;
+        private object m_Value;
+    }
 }

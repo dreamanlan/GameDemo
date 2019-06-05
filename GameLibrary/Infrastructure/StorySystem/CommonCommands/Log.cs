@@ -33,7 +33,7 @@ namespace StorySystem.CommonCommands
                 arglist.Add(m_FormatArgs[i].Value);
             }
             object[] args = arglist.ToArray();
-            LogSystem.Warn(m_Format.Value, args);
+            LogSystem.GmLog(m_Format.Value, args);
             return false;
         }
         protected override void Load(Dsl.CallData callData)

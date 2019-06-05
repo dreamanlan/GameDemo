@@ -138,7 +138,7 @@ namespace StorySystem.CommonCommands
         private void PrepareIf(int ix, StoryRuntimeStack runtimeStack)
         {
             runtimeStack.Push(m_Runtime);
-            Queue<IStoryCommand> queue = runtimeStack.Peek().CommandQueue;
+            var queue = runtimeStack.Peek().CommandQueue;
             foreach (IStoryCommand cmd in queue) {
                 cmd.Reset();
             }
@@ -154,7 +154,7 @@ namespace StorySystem.CommonCommands
         private void PrepareElse(StoryRuntimeStack runtimeStack)
         {
             runtimeStack.Push(m_Runtime);
-            Queue<IStoryCommand> queue = runtimeStack.Peek().CommandQueue;
+            var queue = runtimeStack.Peek().CommandQueue;
             foreach (IStoryCommand cmd in queue) {
                 cmd.Reset();
             }
