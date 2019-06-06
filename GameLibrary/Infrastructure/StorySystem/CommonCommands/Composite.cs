@@ -8,15 +8,23 @@ using Dsl;
 namespace StorySystem.CommonCommands
 {
     /// <summary>
-    /// name(arg1,arg2,...);
+    /// name(arg1,arg2,...)
+    /// [{
+    ///     name1(val1);
+    ///     name2(val2);
+    ///     ...
+    /// }];
     /// </summary>
     /// <remarks>
     /// 这里的Name、ArgNames与InitialCommands为同一command定义的各个调用共享。
     /// 由于解析时需要处理交叉引用，先克隆后Load。
     /// 这里的自定义命令支持挂起-恢复执行或递归(性能较低，仅处理小规模问题)，但
     /// 二者不能同时使用。
-    /// 注意：所有依赖InitialCommands等共享数据的其它成员，初始化需要写成lazy的样式，不要在Clone与Load里初始化，因为
+    /// 注意：
+    /// 1、所有依赖InitialCommands等共享数据的其它成员，初始化需要写成lazy的样式，不要在Clone与Load里初始化，因为
     /// 此时共享数据可能还不完整！
+    /// 2、因为自定义的命令与值在使用时有函数调用语义，需要可以访问传递的参数。而Evaluate接口只有一组参数，这限制了自定义
+    /// 命令与值的形式至多是Function样式而不应支持Statement样式。
     /// </remarks>
     internal sealed class CompositeCommand : AbstractStoryCommand
     {
@@ -56,8 +64,10 @@ namespace StorySystem.CommonCommands
             foreach(var pair in m_LoadedOptArgs) {
                 stackInfo.m_OptArgs.Add(pair.Key, pair.Value.Clone());
             }
+            stackInfo.m_ArgValues = new object[stackInfo.m_Args.Count];
             for (int i = 0; i < stackInfo.m_Args.Count; i++) {
                 stackInfo.m_Args[i].Evaluate(instance, handler, iterator, args);
+                stackInfo.m_ArgValues[i] = stackInfo.m_Args[i].Value;
             }
             foreach(var pair in stackInfo.m_OptArgs) {
                 pair.Value.Evaluate(instance, handler, iterator, args);
@@ -110,14 +120,14 @@ namespace StorySystem.CommonCommands
                 StackElementInfo stackInfo = m_Stack.Peek();
                 instance.StackVariables = stackInfo.m_StackVariables;
                 if (stackInfo.m_CommandQueue.Count == 0 && !stackInfo.m_AlreadyExecute) {
-                    Evaluate(instance, handler, iterator, args);
+                    Evaluate(instance, handler, stackInfo.m_ArgValues.Length, stackInfo.m_ArgValues);
                     Prepare(stackInfo);
                     stackInfo.m_AlreadyExecute = true;
                 }
                 if (stackInfo.m_CommandQueue.Count > 0) {
                     while (stackInfo.m_CommandQueue.Count > 0) {
                         IStoryCommand cmd = stackInfo.m_CommandQueue.Peek();
-                        if (cmd.Execute(instance, handler, delta, iterator, args)) {
+                        if (cmd.Execute(instance, handler, delta, stackInfo.m_ArgValues.Length, stackInfo.m_ArgValues)) {
                             ret = true;
                             break;
                         } else {
@@ -224,6 +234,7 @@ namespace StorySystem.CommonCommands
 
         private class StackElementInfo
         {
+            internal object[] m_ArgValues = null;
             internal List<IStoryValue<object>> m_Args = new List<IStoryValue<object>>();
             internal Dictionary<string, IStoryValue<object>> m_OptArgs = new Dictionary<string, IStoryValue<object>>();
             internal StoryCommandQueue m_CommandQueue = new StoryCommandQueue();

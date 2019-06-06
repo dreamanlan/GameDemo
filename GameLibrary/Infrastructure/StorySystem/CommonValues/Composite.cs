@@ -7,14 +7,22 @@ using System.Diagnostics;
 namespace StorySystem.CommonValues
 {
     /// <summary>
-    /// name(arg1,arg2,...);
+    /// name(arg1,arg2,...)
+    /// [{
+    ///     name1(val1);
+    ///     name2(val2);
+    ///     ...
+    /// }];
     /// </summary>
     /// <remarks>
-    /// 这里的Name、ArgNames、ReturnName与InitialCommands为同一value定义的各个调用共享。
+    /// 这里的Name、ArgNames、OptArgs、ReturnName与InitialCommands为同一value定义的各个调用共享。
     /// 由于解析时需要处理交叉引用，先克隆后InitFromDsl。
     /// 这里的自定义函数支持递归(性能较低，仅处理小规模问题)，不支持基于时间的wait命令，亦即不支持挂起-恢复执行。
-    /// 注意：所有依赖InitialCommands等共享数据的其它成员，初始化需要写成lazy的样式，不要在Clone与InitFromDsl里初始化，因为
+    /// 注意：
+    /// 1、所有依赖InitialCommands等共享数据的其它成员，初始化需要写成lazy的样式，不要在Clone与InitFromDsl里初始化，因为
     /// 此时共享数据可能还不完整！
+    /// 2、因为自定义的命令与值在使用时有函数调用语义，需要可以访问传递的参数。而Evaluate接口只有一组参数，这限制了自定义
+    /// 命令与值的形式至多是Function样式而不应支持Statement样式。
     /// </remarks>
     internal sealed class CompositeValue : IStoryValue<object>
     {
@@ -83,9 +91,11 @@ namespace StorySystem.CommonValues
             foreach(var pair in m_LoadedOptArgs) {
                 stackInfo.m_OptArgs.Add(pair.Key, pair.Value.Clone());
             }
-			for (int i = 0; i < stackInfo.m_Args.Count; i++) {
+            stackInfo.m_ArgValues = new object[stackInfo.m_Args.Count];
+            for (int i = 0; i < stackInfo.m_Args.Count; i++) {
 				stackInfo.m_Args[i].Evaluate(instance, handler, iterator, args);
-			}
+                stackInfo.m_ArgValues[i] = stackInfo.m_Args[i].Value;
+            }
             foreach(var pair in stackInfo.m_OptArgs) {
                 pair.Value.Evaluate(instance, handler, iterator, args);
             }
@@ -106,7 +116,7 @@ namespace StorySystem.CommonValues
                 stackInfo.m_HaveValue = true;
                 for (int i = 0; i < stackInfo.m_Commands.Count; ++i) {
                     //函数调用命令需要忽略其中的wait指令（从而不会出现“挂起-恢复”行为），所以这里传的delta值是一个很大的值，目的是为了让wait直接结束
-                    stackInfo.m_Commands[i].Execute(instance, handler, StoryValueHelper.c_MaxWaitCommandTime, iterator, args);
+                    stackInfo.m_Commands[i].Execute(instance, handler, StoryValueHelper.c_MaxWaitCommandTime, stackInfo.m_ArgValues.Length, stackInfo.m_ArgValues);
                 }
                 instance.TryGetVariable(m_ReturnName, out stackInfo.m_Value);
             } finally {
@@ -226,6 +236,7 @@ namespace StorySystem.CommonValues
 
         private class StackElementInfo
         {
+            internal object[] m_ArgValues = null;
             internal List<IStoryValue<object>> m_Args = new List<IStoryValue<object>>();
             internal Dictionary<string, IStoryValue<object>> m_OptArgs = new Dictionary<string, IStoryValue<object>>();
             internal List<IStoryCommand> m_Commands = new List<IStoryCommand>();
