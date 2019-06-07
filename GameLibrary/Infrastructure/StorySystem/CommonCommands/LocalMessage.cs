@@ -66,7 +66,7 @@ namespace StorySystem.CommonCommands
             }
         }
         private IStoryValue<string> m_MsgId = new StoryValue<string>();
-        private List<IStoryValue<object>> m_MsgArgs = new List<IStoryValue<object>>();
+        private List<IStoryValue> m_MsgArgs = new List<IStoryValue>();
         private bool m_IsConcurrent = false;
     }
     internal sealed class LocalMessageCommandFactory : IStoryCommandFactory
@@ -138,7 +138,7 @@ namespace StorySystem.CommonCommands
             }
         }
         private IStoryValue<string> m_MsgId = new StoryValue<string>();
-        private List<IStoryValue<object>> m_MsgArgs = new List<IStoryValue<object>>();
+        private List<IStoryValue> m_MsgArgs = new List<IStoryValue>();
         private bool m_IsConcurrent = false;
     }
     internal sealed class StoryLocalMessageCommandFactory : IStoryCommandFactory
@@ -306,10 +306,10 @@ namespace StorySystem.CommonCommands
         }
         private List<IStoryValue<string>> m_MsgIds = new List<IStoryValue<string>>();
         private IStoryValue<string> m_SetVar = new StoryValue<string>();
-        private IStoryValue<object> m_SetVal = new StoryValue();
+        private IStoryValue m_SetVal = new StoryValue();
         private IStoryValue<int> m_TimeoutVal = new StoryValue<int>();
         private IStoryValue<string> m_TimeoutSetVar = new StoryValue<string>();
-        private IStoryValue<object> m_TimeoutSetVal = new StoryValue();
+        private IStoryValue m_TimeoutSetVal = new StoryValue();
         private bool m_HaveSet = false;
         private int m_CurTime = 0;
         private long m_StartTime = 0;
@@ -417,10 +417,10 @@ namespace StorySystem.CommonCommands
         }
         private List<IStoryValue<string>> m_MsgIds = new List<IStoryValue<string>>();
         private IStoryValue<string> m_SetVar = new StoryValue<string>();
-        private IStoryValue<object> m_SetVal = new StoryValue();
+        private IStoryValue m_SetVal = new StoryValue();
         private IStoryValue<int> m_TimeoutVal = new StoryValue<int>();
         private IStoryValue<string> m_TimeoutSetVar = new StoryValue<string>();
-        private IStoryValue<object> m_TimeoutSetVal = new StoryValue();
+        private IStoryValue m_TimeoutSetVal = new StoryValue();
         private bool m_HaveSet = false;
         private int m_CurTime = 0;
     }
@@ -536,10 +536,10 @@ namespace StorySystem.CommonCommands
         }
         private List<IStoryValue<string>> m_MsgIds = new List<IStoryValue<string>>();
         private IStoryValue<string> m_SetVar = new StoryValue<string>();
-        private IStoryValue<object> m_SetVal = new StoryValue();
+        private IStoryValue m_SetVal = new StoryValue();
         private IStoryValue<int> m_TimeoutVal = new StoryValue<int>();
         private IStoryValue<string> m_TimeoutSetVar = new StoryValue<string>();
-        private IStoryValue<object> m_TimeoutSetVal = new StoryValue();
+        private IStoryValue m_TimeoutSetVal = new StoryValue();
         private bool m_HaveSet = false;
         private int m_CurTime = 0;
         private long m_StartTime = 0;
@@ -647,10 +647,10 @@ namespace StorySystem.CommonCommands
         }
         private List<IStoryValue<string>> m_MsgIds = new List<IStoryValue<string>>();
         private IStoryValue<string> m_SetVar = new StoryValue<string>();
-        private IStoryValue<object> m_SetVal = new StoryValue();
+        private IStoryValue m_SetVal = new StoryValue();
         private IStoryValue<int> m_TimeoutVal = new StoryValue<int>();
         private IStoryValue<string> m_TimeoutSetVar = new StoryValue<string>();
-        private IStoryValue<object> m_TimeoutSetVal = new StoryValue();
+        private IStoryValue m_TimeoutSetVal = new StoryValue();
         private bool m_HaveSet = false;
         private int m_CurTime = 0;
     }
@@ -790,7 +790,7 @@ namespace StorySystem.CommonCommands
             }
         }
         private IStoryValue<string> m_MsgId = new StoryValue<string>();
-        private List<IStoryValue<object>> m_MsgArgs = new List<IStoryValue<object>>();
+        private List<IStoryValue> m_MsgArgs = new List<IStoryValue>();
         private bool m_IsConcurrent = false;
     }
     internal sealed class LocalNamespacedMessageCommandFactory : IStoryCommandFactory
@@ -866,7 +866,7 @@ namespace StorySystem.CommonCommands
             }
         }
         private IStoryValue<string> m_MsgId = new StoryValue<string>();
-        private List<IStoryValue<object>> m_MsgArgs = new List<IStoryValue<object>>();
+        private List<IStoryValue> m_MsgArgs = new List<IStoryValue>();
         private bool m_IsConcurrent = false;
     }
     internal sealed class StoryLocalNamespacedMessageCommandFactory : IStoryCommandFactory
@@ -1051,10 +1051,10 @@ namespace StorySystem.CommonCommands
         }
         private List<IStoryValue<string>> m_MsgIds = new List<IStoryValue<string>>();
         private IStoryValue<string> m_SetVar = new StoryValue<string>();
-        private IStoryValue<object> m_SetVal = new StoryValue();
+        private IStoryValue m_SetVal = new StoryValue();
         private IStoryValue<int> m_TimeoutVal = new StoryValue<int>();
         private IStoryValue<string> m_TimeoutSetVar = new StoryValue<string>();
-        private IStoryValue<object> m_TimeoutSetVal = new StoryValue();
+        private IStoryValue m_TimeoutSetVal = new StoryValue();
         private bool m_HaveSet = false;
         private int m_CurTime = 0;
         private long m_StartTime = 0;
@@ -1168,10 +1168,10 @@ namespace StorySystem.CommonCommands
         }
         private List<IStoryValue<string>> m_MsgIds = new List<IStoryValue<string>>();
         private IStoryValue<string> m_SetVar = new StoryValue<string>();
-        private IStoryValue<object> m_SetVal = new StoryValue();
+        private IStoryValue m_SetVal = new StoryValue();
         private IStoryValue<int> m_TimeoutVal = new StoryValue<int>();
         private IStoryValue<string> m_TimeoutSetVar = new StoryValue<string>();
-        private IStoryValue<object> m_TimeoutSetVal = new StoryValue();
+        private IStoryValue m_TimeoutSetVal = new StoryValue();
         private bool m_HaveSet = false;
         private int m_CurTime = 0;
     }
@@ -1298,10 +1298,10 @@ namespace StorySystem.CommonCommands
         }
         private List<IStoryValue<string>> m_MsgIds = new List<IStoryValue<string>>();
         private IStoryValue<string> m_SetVar = new StoryValue<string>();
-        private IStoryValue<object> m_SetVal = new StoryValue();
+        private IStoryValue m_SetVal = new StoryValue();
         private IStoryValue<int> m_TimeoutVal = new StoryValue<int>();
         private IStoryValue<string> m_TimeoutSetVar = new StoryValue<string>();
-        private IStoryValue<object> m_TimeoutSetVal = new StoryValue();
+        private IStoryValue m_TimeoutSetVal = new StoryValue();
         private bool m_HaveSet = false;
         private int m_CurTime = 0;
         private long m_StartTime = 0;
@@ -1416,10 +1416,10 @@ namespace StorySystem.CommonCommands
         }
         private List<IStoryValue<string>> m_MsgIds = new List<IStoryValue<string>>();
         private IStoryValue<string> m_SetVar = new StoryValue<string>();
-        private IStoryValue<object> m_SetVal = new StoryValue();
+        private IStoryValue m_SetVal = new StoryValue();
         private IStoryValue<int> m_TimeoutVal = new StoryValue<int>();
         private IStoryValue<string> m_TimeoutSetVar = new StoryValue<string>();
-        private IStoryValue<object> m_TimeoutSetVal = new StoryValue();
+        private IStoryValue m_TimeoutSetVal = new StoryValue();
         private bool m_HaveSet = false;
         private int m_CurTime = 0;
     }

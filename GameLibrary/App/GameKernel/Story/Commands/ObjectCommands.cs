@@ -571,7 +571,7 @@ namespace GameLibrary.Story.Commands
         {
             internal string Type;
             internal IStoryValue<string> Key;
-            internal IStoryValue<object> Value;
+            internal IStoryValue Value;
             internal ParamInfo()
             {
                 Init();
@@ -919,7 +919,7 @@ namespace GameLibrary.Story.Commands
         }
         private IStoryValue<int> m_ObjId = new StoryValue<int>();
         private IStoryValue<int> m_AttrId = new StoryValue<int>();
-        private IStoryValue<object> m_Value = new StoryValue();
+        private IStoryValue m_Value = new StoryValue();
     }
     /// <summary>
     /// markcontrolbystory(objid,true_or_false);

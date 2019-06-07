@@ -222,6 +222,16 @@ namespace GameLibrary.Story
                 }
             }
         }
+        public void PreloadStoryBytes(string _namespace, string file, byte[] bytes)
+        {
+            StoryConfigManager.Instance.LoadStoryText(file, bytes, 0, _namespace);
+            Dictionary<string, StoryInstance> stories = StoryConfigManager.Instance.GetStories(file);
+            if (null != stories) {
+                foreach (KeyValuePair<string, StoryInstance> pair in stories) {
+                    AddStoryInstance(pair.Key, pair.Value.Clone());
+                }
+            }
+        }
         public void ClearStoryInstancePool()
         {
             m_StoryInstancePool.Clear();

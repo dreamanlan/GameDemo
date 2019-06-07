@@ -11,6 +11,15 @@ namespace GameLibrary
 
     public class ObjectPool<T> where T : IPoolAllocatedObject<T>, new()
     {
+        public ObjectPool()
+        {
+            m_UnusedObjects = new Queue<T>();
+        }
+        public ObjectPool(int initPoolSize)
+        {
+            m_UnusedObjects = new Queue<T>(initPoolSize);
+            Init(initPoolSize);
+        }
         public void Init(int initPoolSize)
         {
             for (int i = 0; i < initPoolSize; ++i) {
@@ -48,7 +57,7 @@ namespace GameLibrary
                 return m_UnusedObjects.Count;
             }
         }
-        private Queue<T> m_UnusedObjects = new Queue<T>();
+        private Queue<T> m_UnusedObjects = null;
     }
 
     public interface IPoolAllocatedObjectEx<T> where T : IPoolAllocatedObjectEx<T>
@@ -59,20 +68,33 @@ namespace GameLibrary
 
     public class ObjectPoolEx<T> where T : IPoolAllocatedObjectEx<T>
     {
-        public void Init(int initPoolSize, Func<T> factory)
+        public ObjectPoolEx(Func<T> creater, Action<T> destroyer)
         {
+            m_UnusedObjects = new Queue<T>();
+            m_Creater = creater;
+            m_Destroyer = destroyer;
+        }
+        public ObjectPoolEx(int initPoolSize, Func<T> creater, Action<T> destroyer)
+        {
+            m_UnusedObjects = new Queue<T>(initPoolSize);
+            Init(initPoolSize, creater, destroyer);
+        }
+        public void Init(int initPoolSize, Func<T> creater, Action<T> destroyer)
+        {
+            m_Creater = creater;
+            m_Destroyer = destroyer;
             for (int i = 0; i < initPoolSize; ++i) {
-                T t = factory();
+                T t = creater();
                 t.InitPool(this);
                 m_UnusedObjects.Enqueue(t);
             }
         }
-        public T Alloc(Func<T> factory)
+        public T Alloc()
         {
             if (m_UnusedObjects.Count > 0)
                 return m_UnusedObjects.Dequeue();
             else {
-                T t = factory();
+                T t = m_Creater();
                 if (null != t) {
                     t.InitPool(this);
                 }
@@ -87,13 +109,9 @@ namespace GameLibrary
         }
         public void Clear()
         {
-            Clear(null);
-        }
-        public void Clear(Action<T> destroyFunc)
-        {
-            if (null != destroyFunc) {
+            if (null != m_Destroyer) {
                 foreach (var item in m_UnusedObjects) {
-                    destroyFunc(item);
+                    m_Destroyer(item);
                 }
             }
             m_UnusedObjects.Clear();
@@ -105,6 +123,9 @@ namespace GameLibrary
                 return m_UnusedObjects.Count;
             }
         }
-        private Queue<T> m_UnusedObjects = new Queue<T>();
+
+        private Queue<T> m_UnusedObjects = null;
+        private Func<T> m_Creater = null;
+        private Action<T> m_Destroyer = null;
     }
 }

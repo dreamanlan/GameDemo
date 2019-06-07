@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 namespace StorySystem.CommonValues
 {
-    internal sealed class FormatValue : IStoryValue<object>
+    internal sealed class FormatValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -22,7 +22,7 @@ namespace StorySystem.CommonValues
                 TryUpdateValue();
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             FormatValue val = new FormatValue();
             val.m_Format = m_Format.Clone();
@@ -44,15 +44,13 @@ namespace StorySystem.CommonValues
         }
         public bool HaveValue
         {
-            get
-            {
+            get {
                 return m_HaveValue;
             }
         }
         public object Value
         {
-            get
-            {
+            get {
                 return m_Value;
             }
         }
@@ -82,11 +80,11 @@ namespace StorySystem.CommonValues
             }
         }
         private IStoryValue<string> m_Format = new StoryValue<string>();
-        private List<IStoryValue<object>> m_FormatArgs = new List<IStoryValue<object>>();
+        private List<IStoryValue> m_FormatArgs = new List<IStoryValue>();
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class SubstringValue : IStoryValue<object>
+    internal sealed class SubstringValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -103,7 +101,7 @@ namespace StorySystem.CommonValues
                 TryUpdateValue();
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             SubstringValue val = new SubstringValue();
             val.m_ParamNum = m_ParamNum;
@@ -126,15 +124,13 @@ namespace StorySystem.CommonValues
         }
         public bool HaveValue
         {
-            get
-            {
+            get {
                 return m_HaveValue;
             }
         }
         public object Value
         {
-            get
-            {
+            get {
                 return m_Value;
             }
         }
@@ -174,7 +170,7 @@ namespace StorySystem.CommonValues
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class Str2IntValue : IStoryValue<object>
+    internal sealed class Str2IntValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -184,7 +180,7 @@ namespace StorySystem.CommonValues
                 TryUpdateValue();
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             Str2IntValue val = new Str2IntValue();
             val.m_String = m_String.Clone();
@@ -200,15 +196,13 @@ namespace StorySystem.CommonValues
         }
         public bool HaveValue
         {
-            get
-            {
+            get {
                 return m_HaveValue;
             }
         }
         public object Value
         {
-            get
-            {
+            get {
                 return m_Value;
             }
         }
@@ -229,7 +223,7 @@ namespace StorySystem.CommonValues
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class Str2FloatValue : IStoryValue<object>
+    internal sealed class Str2FloatValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -239,7 +233,7 @@ namespace StorySystem.CommonValues
                 TryUpdateValue();
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             Str2FloatValue val = new Str2FloatValue();
             val.m_String = m_String.Clone();
@@ -255,15 +249,13 @@ namespace StorySystem.CommonValues
         }
         public bool HaveValue
         {
-            get
-            {
+            get {
                 return m_HaveValue;
             }
         }
         public object Value
         {
-            get
-            {
+            get {
                 return m_Value;
             }
         }

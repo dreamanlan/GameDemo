@@ -49,6 +49,6 @@ namespace StorySystem.CommonCommands
             }
         }
         private IStoryValue<string> m_Format = new StoryValue<string>();
-        private List<IStoryValue<object>> m_FormatArgs = new List<IStoryValue<object>>();
+        private List<IStoryValue> m_FormatArgs = new List<IStoryValue>();
     }
 }

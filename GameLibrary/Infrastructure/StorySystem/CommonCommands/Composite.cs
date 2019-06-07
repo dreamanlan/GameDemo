@@ -56,24 +56,26 @@ namespace StorySystem.CommonCommands
             //command的执行不像函数，它支持类似协程的机制，允许暂时挂起，稍后继续，这意味着并非每次调用ExecCommand都对应语义上的一次过程调用
             //，因此栈的创建不能在ExecCommand里进行（事实上，在ExecCommand里无法区分本次执行是一次新的过程调用还是一次挂起后的继续执行）。
 
-            StackElementInfo stackInfo = NewStackElementInfo();
+            var stackInfo = StoryLocalInfo.New();
+            var runtime = StoryRuntime.New();
             //调用实参部分需要在栈建立之前运算，结果需要记录在栈上
             for (int i = 0; i < m_LoadedArgs.Count; ++i) {
-                stackInfo.m_Args.Add(m_LoadedArgs[i].Clone());
+                stackInfo.Args.Add(m_LoadedArgs[i].Clone());
             }
-            foreach(var pair in m_LoadedOptArgs) {
-                stackInfo.m_OptArgs.Add(pair.Key, pair.Value.Clone());
+            foreach (var pair in m_LoadedOptArgs) {
+                stackInfo.OptArgs.Add(pair.Key, pair.Value.Clone());
             }
-            stackInfo.m_ArgValues = new object[stackInfo.m_Args.Count];
-            for (int i = 0; i < stackInfo.m_Args.Count; i++) {
-                stackInfo.m_Args[i].Evaluate(instance, handler, iterator, args);
-                stackInfo.m_ArgValues[i] = stackInfo.m_Args[i].Value;
+            runtime.Arguments = new object[stackInfo.Args.Count];
+            for (int i = 0; i < stackInfo.Args.Count; i++) {
+                stackInfo.Args[i].Evaluate(instance, handler, iterator, args);
+                runtime.Arguments[i] = stackInfo.Args[i].Value;
             }
-            foreach(var pair in stackInfo.m_OptArgs) {
+            runtime.Iterator = stackInfo.Args.Count;
+            foreach (var pair in stackInfo.OptArgs) {
                 pair.Value.Evaluate(instance, handler, iterator, args);
             }
             //实参处理完，进入函数体执行，创建新的栈
-            PushStack(instance, stackInfo);
+            PushStack(instance, handler, stackInfo, runtime);
         }
         protected override IStoryCommand CloneCommand()
         {
@@ -81,9 +83,9 @@ namespace StorySystem.CommonCommands
             cmd.m_LoadedArgs = m_LoadedArgs;
             cmd.m_LoadedOptArgs = m_LoadedOptArgs;
             cmd.m_Name = m_Name;
-            cmd.m_ArgNames=m_ArgNames;
+            cmd.m_ArgNames = m_ArgNames;
             cmd.m_OptArgs = m_OptArgs;
-            cmd.m_InitialCommands=m_InitialCommands;
+            cmd.m_InitialCommands = m_InitialCommands;
             cmd.IsCompositeCommand = true;
             if (null == cmd.m_LeadCommand) {
                 cmd.m_LeadCommand = new CompositeCommandHelper(cmd);
@@ -92,66 +94,57 @@ namespace StorySystem.CommonCommands
         }
         public override IStoryCommand LeadCommand
         {
-            get
-            {
+            get {
                 return m_LeadCommand;
             }
         }
         protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
-            if (m_Stack.Count > 0) {
-                StackElementInfo stackInfo = m_Stack.Peek();
-                for (int i = 0; i < m_ArgNames.Count; ++i) {
-                    if (i < stackInfo.m_Args.Count) {
-                        instance.SetVariable(m_ArgNames[i], stackInfo.m_Args[i].Value);
-                    } else {
-                        instance.SetVariable(m_ArgNames[i], null);
-                    }
+            var stackInfo = handler.PeekLocalInfo();
+            for (int i = 0; i < m_ArgNames.Count; ++i) {
+                if (i < stackInfo.Args.Count) {
+                    instance.SetVariable(m_ArgNames[i], stackInfo.Args[i].Value);
+                } else {
+                    instance.SetVariable(m_ArgNames[i], null);
                 }
-                foreach(var pair in stackInfo.m_OptArgs) {
-                    instance.SetVariable(pair.Key, pair.Value.Value);
-                }
+            }
+            foreach (var pair in stackInfo.OptArgs) {
+                instance.SetVariable(pair.Key, pair.Value.Value);
             }
         }
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta, object iterator, object[] args)
         {
+            var runtime = handler.PeekRuntime();
+            if (runtime.CompositeReentry) {
+                PopLocalInfo(instance, handler);
+                return false;
+            }
             bool ret = false;
-            if (m_Stack.Count > 0) {
-                StackElementInfo stackInfo = m_Stack.Peek();
-                instance.StackVariables = stackInfo.m_StackVariables;
-                if (stackInfo.m_CommandQueue.Count == 0 && !stackInfo.m_AlreadyExecute) {
-                    Evaluate(instance, handler, stackInfo.m_ArgValues.Length, stackInfo.m_ArgValues);
-                    Prepare(stackInfo);
-                    stackInfo.m_AlreadyExecute = true;
-                }
-                if (stackInfo.m_CommandQueue.Count > 0) {
-                    while (stackInfo.m_CommandQueue.Count > 0) {
-                        IStoryCommand cmd = stackInfo.m_CommandQueue.Peek();
-                        if (cmd.Execute(instance, handler, delta, stackInfo.m_ArgValues.Length, stackInfo.m_ArgValues)) {
-                            ret = true;
-                            break;
-                        } else {
-                            cmd.Reset();
-                            stackInfo.m_CommandQueue.Dequeue();
-                        }
-                    }
-                }
-                if (!ret) {
-                    PopStack(instance);
-                    stackInfo.m_AlreadyExecute = false;
-                }
+            var stackInfo = handler.PeekLocalInfo();
+            instance.StackVariables = stackInfo.StackVariables;
+            if (runtime.CommandQueue.Count == 0) {
+                Evaluate(instance, handler, runtime.Iterator, runtime.Arguments);
+                Prepare(runtime);
+            }
+            //没有wait之类命令直接执行
+            runtime.Tick(instance, handler, delta);
+            if (runtime.CommandQueue.Count == 0) {
+                PopStack(instance, handler);
+            } else {
+                //遇到wait命令，跳出执行，之后直接在StoryMessageHandler里执行栈顶的命令队列（降低开销）
+                ret = true;
             }
             return ret;
         }
         protected override void Load(Dsl.CallData callData)
         {
-            m_LoadedOptArgs = new Dictionary<string, IStoryValue<object>>();
+            m_LoadedOptArgs = new Dictionary<string, IStoryValue>();
             foreach (var pair in m_OptArgs) {
                 StoryValue val = new StoryValue();
                 val.InitFromDsl(pair.Value);
                 m_LoadedOptArgs.Add(pair.Key, val);
             }
-            m_LoadedArgs = new List<IStoryValue<object>>();
+            m_LoadedArgs = new List<IStoryValue>();
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
                 StoryValue val = new StoryValue();
@@ -167,7 +160,7 @@ namespace StorySystem.CommonCommands
         {
             var cd = funcData.Call;
             Load(cd);
-            foreach(var comp in funcData.Statements) {
+            foreach (var comp in funcData.Statements) {
                 var fcd = comp as Dsl.CallData;
                 if (null != fcd) {
                     var key = fcd.GetId();
@@ -178,87 +171,40 @@ namespace StorySystem.CommonCommands
             }
         }
 
-        private void Prepare(StackElementInfo stackInfo)
+        private void Prepare(StoryRuntime runtime)
         {
-            if (null != m_InitialCommands && m_FirstStackCommands.Count <= 0) {
-                for (int i = 0; i < m_InitialCommands.Count; ++i) {
-                    IStoryCommand cmd = m_InitialCommands[i].Clone();
-                    m_FirstStackCommands.Add(cmd);
-                }
-            }
-            if (m_Stack.Count <= 1) {
-                for (int i = 0; i < m_FirstStackCommands.Count; ++i) {
-                    IStoryCommand cmd = m_FirstStackCommands[i];
-                    if (null != cmd.LeadCommand)
-                        stackInfo.m_CommandQueue.Enqueue(cmd.LeadCommand);
-                    stackInfo.m_CommandQueue.Enqueue(cmd);
-                }
-            } else if (null != m_InitialCommands) {
+            if (null != m_InitialCommands) {
                 for (int i = 0; i < m_InitialCommands.Count; ++i) {
                     IStoryCommand cmd = m_InitialCommands[i].Clone();
                     if (null != cmd.LeadCommand)
-                        stackInfo.m_CommandQueue.Enqueue(cmd.LeadCommand);
-                    stackInfo.m_CommandQueue.Enqueue(cmd);
+                        runtime.CommandQueue.Enqueue(cmd.LeadCommand);
+                    runtime.CommandQueue.Enqueue(cmd);
                 }
             }
         }
-        private StackElementInfo NewStackElementInfo()
+        private void PushStack(StoryInstance instance, StoryMessageHandler handler, StoryLocalInfo info, StoryRuntime runtime)
         {
-            if (m_Stack.Count <= 0) {
-                m_FirstStackInfo.Reset();
-                return m_FirstStackInfo;
+            handler.PushLocalInfo(info);
+            handler.PushRuntime(runtime);
+            instance.StackVariables = info.StackVariables;
+        }
+        private void PopStack(StoryInstance instance, StoryMessageHandler handler)
+        {
+            handler.PopRuntime();
+            PopLocalInfo(instance, handler);
+        }
+        private void PopLocalInfo(StoryInstance instance, StoryMessageHandler handler)
+        {
+            handler.PopLocalInfo();
+            if (handler.LocalInfoStack.Count > 0) {
+                instance.StackVariables = handler.PeekLocalInfo().StackVariables;
             } else {
-                return new StackElementInfo();
-            }
-        }
-        private void PushStack(StoryInstance instance, StackElementInfo info)
-        {
-            if (m_Stack.Count <= 0) {
-                m_TopStack = instance.StackVariables;
-            }
-            m_Stack.Push(info);
-            instance.StackVariables = info.m_StackVariables;
-        }
-        private void PopStack(StoryInstance instance)
-        {
-            if (m_Stack.Count > 0) {
-                m_Stack.Pop();
-                if (m_Stack.Count > 0) {
-                    StackElementInfo info = m_Stack.Peek();
-                    instance.StackVariables = info.m_StackVariables;
-                } else {
-                    instance.StackVariables = m_TopStack;
-                }
+                instance.StackVariables = handler.StackVariables;
             }
         }
 
-        private class StackElementInfo
-        {
-            internal object[] m_ArgValues = null;
-            internal List<IStoryValue<object>> m_Args = new List<IStoryValue<object>>();
-            internal Dictionary<string, IStoryValue<object>> m_OptArgs = new Dictionary<string, IStoryValue<object>>();
-            internal StoryCommandQueue m_CommandQueue = new StoryCommandQueue();
-            internal bool m_AlreadyExecute = false;
-            internal StrObjDict m_StackVariables = new StrObjDict();
-
-            internal void Reset()
-            {
-                m_Args.Clear();
-                m_OptArgs.Clear();
-                m_CommandQueue.Clear();
-                m_StackVariables.Clear();
-                m_AlreadyExecute = false;
-            }
-        }
-
-        private StackElementInfo m_FirstStackInfo = new StackElementInfo();
-        private List<IStoryCommand> m_FirstStackCommands = new List<IStoryCommand>();
-
-        private StrObjDict m_TopStack = null;
-        private Stack<StackElementInfo> m_Stack = new Stack<StackElementInfo>();
-
-        private List<IStoryValue<object>> m_LoadedArgs = null;
-        private Dictionary<string, IStoryValue<object>> m_LoadedOptArgs = null;
+        private List<IStoryValue> m_LoadedArgs = null;
+        private Dictionary<string, IStoryValue> m_LoadedOptArgs = null;
         private CompositeCommandHelper m_LeadCommand = null;
 
         private string m_Name = string.Empty;

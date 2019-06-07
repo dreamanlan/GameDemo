@@ -5,7 +5,7 @@ namespace StorySystem
     /// <summary>
     /// 简单的函数值基类，简化实现IStoryValue需要写的代码行数(当前值类只支持CallData样式)
     /// </summary>
-    public abstract class SimpleStoryValueBase<SubClassType, ValueParamType> : IStoryValue<object>
+    public abstract class SimpleStoryValueBase<SubClassType, ValueParamType> : IStoryValue
         where SubClassType : SimpleStoryValueBase<SubClassType, ValueParamType>, new()
         where ValueParamType : IStoryValueParam, new()
     {
@@ -13,7 +13,7 @@ namespace StorySystem
         {
             m_Params.InitFromDsl(param, 0);
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             SubClassType val = new SubClassType();
             val.m_Params = m_Params.Clone();

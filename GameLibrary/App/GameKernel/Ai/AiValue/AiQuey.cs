@@ -6,7 +6,7 @@ using System.Text;
 using GameLibrary;
 using StorySystem;
 
-internal class AiQuery : IStoryValue<object>
+internal class AiQuery : IStoryValue
 {
     public void InitFromDsl(Dsl.ISyntaxComponent param)
     {
@@ -25,7 +25,7 @@ internal class AiQuery : IStoryValue<object>
             }
         }
     }
-    public IStoryValue<object> Clone()
+    public IStoryValue Clone()
     {
         var newObj = new AiQuery();
         if (null != m_Select) {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using GameLibrary;
 namespace StorySystem.CommonValues
 {
-    internal sealed class TimeValue : IStoryValue<object>
+    internal sealed class TimeValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -11,7 +11,7 @@ namespace StorySystem.CommonValues
             if (null != callData) {
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             TimeValue val = new TimeValue();
             val.m_HaveValue = m_HaveValue;

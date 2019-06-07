@@ -26,6 +26,76 @@ namespace StorySystem
     ///   };
     /// };
     /// </summary>
+    public sealed class StoryLocalInfo
+    {
+        public IntObjDict LocalInfos
+        {
+            get { return m_LocalInfos; }
+            set { m_LocalInfos = value; }
+        }
+        public StrObjDict StackVariables
+        {
+            get { return m_StackVariables; }
+            set { m_StackVariables = value; }
+        }
+        public IStoryValueList Args
+        {
+            get { return m_Args; }
+            set { m_Args = value; }
+        }
+        public StrIStoryValueDict OptArgs
+        {
+            get { return m_OptArgs; }
+            set { m_OptArgs = value; }
+        }
+        public bool HaveValue
+        {
+            get { return m_HaveValue; }
+            set { m_HaveValue = value; }
+        }
+        public object Value
+        {
+            get { return m_Value; }
+            set { m_Value = value; }
+        }
+        public void Reset()
+        {
+            m_LocalInfos.Clear();
+            m_StackVariables.Clear();
+            m_Args.Clear();
+            m_OptArgs.Clear();
+            m_HaveValue = false;
+            m_Value = null;
+        }
+        public object GetLocalInfo(int index)
+        {
+            object val;
+            m_LocalInfos.TryGetValue(index, out val);
+            return val;
+        }
+        public void SetLocalInfo(int index, object val)
+        {
+            m_LocalInfos[index] = val;
+        }
+
+        private IntObjDict m_LocalInfos = new IntObjDict();
+        private StrObjDict m_StackVariables = new StrObjDict();
+        private IStoryValueList m_Args = new IStoryValueList();
+        private StrIStoryValueDict m_OptArgs = new StrIStoryValueDict();
+        private bool m_HaveValue;
+        private object m_Value;
+
+        public static StoryLocalInfo New()
+        {
+            return s_StoryLocalInfoStackPool.Alloc();
+        }
+        public static void Recycle(StoryLocalInfo localInfo)
+        {
+            localInfo.Reset();
+            s_StoryLocalInfoStackPool.Recycle(localInfo);
+        }
+        private static SimpleObjectPool<StoryLocalInfo> s_StoryLocalInfoStackPool = new SimpleObjectPool<StoryLocalInfo>(8);
+    }
     public sealed class StoryRuntime
     {
         public object Iterator
@@ -42,20 +112,30 @@ namespace StorySystem
         {
             get { return m_CommandQueue; }
         }
+        public bool CompositeReentry
+        {
+            get { return m_CompositeReentry; }
+            set { m_CompositeReentry = value; }
+        }
         public void Reset()
         {
+            m_Iterator = null;
+            m_Arguments = null;
             foreach (IStoryCommand cmd in m_CommandQueue) {
                 cmd.Reset();
             }
             m_CommandQueue.Clear();
+            m_CompositeReentry = false;
         }
         public void Tick(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             while (m_CommandQueue.Count > 0) {
                 IStoryCommand cmd = m_CommandQueue.Peek();
                 if (cmd.Execute(instance, handler, delta, m_Iterator, m_Arguments)) {
+                    m_CompositeReentry = false;
                     break;
                 } else {
+                    m_CompositeReentry = false;
                     cmd.Reset();
                     m_CommandQueue.Dequeue();
                 }
@@ -65,6 +145,36 @@ namespace StorySystem
         private object m_Iterator;
         private object[] m_Arguments;
         private StoryCommandQueue m_CommandQueue = new StoryCommandQueue();
+        private bool m_CompositeReentry;
+
+        public static StoryRuntime New()
+        {
+            return s_StoryRuntimePool.Alloc();
+        }
+        public static void Recycle(StoryRuntime runtime)
+        {
+            runtime.Reset();
+            s_StoryRuntimePool.Recycle(runtime);
+        }
+        private static SimpleObjectPool<StoryRuntime> s_StoryRuntimePool = new SimpleObjectPool<StoryRuntime>(8);
+    }
+    public sealed class IStoryValueList : List<IStoryValue>
+    {
+        public IStoryValueList() { }
+        public IStoryValueList(int capacity) : base(capacity) { }
+        public IStoryValueList(IEnumerable<IStoryValue> coll) : base(coll) { }
+    }
+    public sealed class StrIStoryValueDict : Dictionary<string, IStoryValue>
+    {
+        public StrIStoryValueDict() { }
+        public StrIStoryValueDict(int capacity) : base(capacity) { }
+        public StrIStoryValueDict(IDictionary<string, IStoryValue> dict) : base(dict) { }
+    }
+    public sealed class StoryLocalInfoStack : Stack<StoryLocalInfo>
+    {
+        public StoryLocalInfoStack() { }
+        public StoryLocalInfoStack(int capacity) : base(capacity) { }
+        public StoryLocalInfoStack(IEnumerable<StoryLocalInfo> coll) : base(coll) { }
     }
     public sealed class StoryCommandQueue : Queue<IStoryCommand>
     {
@@ -101,11 +211,49 @@ namespace StorySystem
         }
         public StrObjDict StackVariables
         {
-            get { return m_StackVariables; }
+            get { return m_LocalInfo.StackVariables; }
+        }
+        public StoryLocalInfoStack LocalInfoStack
+        {
+            get { return m_LocalInfoStack; }
         }
         public StoryRuntimeStack RuntimeStack
         {
             get { return m_RuntimeStack; }
+        }
+        public StoryLocalInfo PeekLocalInfo()
+        {
+            return m_LocalInfoStack.Peek();
+        }
+        public void PushLocalInfo(StoryLocalInfo info)
+        {
+            m_LocalInfoStack.Push(info);
+        }
+        public void PopLocalInfo()
+        {
+            var r = m_LocalInfoStack.Pop();
+            if (m_LocalInfoStack.Count > 0) {
+                StoryLocalInfo.Recycle(r);
+            } else {
+                r.Reset();
+            }
+        }
+        public StoryRuntime PeekRuntime()
+        {
+            return m_RuntimeStack.Peek();
+        }
+        public void PushRuntime(StoryRuntime runtime)
+        {
+            m_RuntimeStack.Push(runtime);
+        }
+        public void PopRuntime()
+        {
+            var runtime = m_RuntimeStack.Pop();
+            if (m_RuntimeStack.Count > 0) {
+                StoryRuntime.Recycle(runtime);
+            } else {
+                runtime.Reset();
+            }
         }
         public StoryMessageHandler Clone()
         {
@@ -162,17 +310,18 @@ namespace StorySystem
             }
             m_IsTriggered = false;
             m_IsPaused = false;
-            while (RuntimeStack.Count > 0) {
-                var runtime = RuntimeStack.Peek();
-                runtime.Reset();
-                RuntimeStack.Pop();
+            while (LocalInfoStack.Count > 0) {
+                PopLocalInfo();
             }
-            m_StackVariables.Clear();
+            while (RuntimeStack.Count > 0) {
+                PopRuntime();
+            }
         }
         public void Prepare()
         {
             Reset();
-            RuntimeStack.Push(m_Runtime);
+            PushLocalInfo(m_LocalInfo);
+            PushRuntime(m_Runtime);
             for (int i = 0; i < m_LoadedCommands.Count; i++) {
                 IStoryCommand cmd = m_LoadedCommands[i];
                 if (null != cmd.LeadCommand)
@@ -191,6 +340,9 @@ namespace StorySystem
                 runtime.Tick(instance, this, delta);
                 if (runtime.CommandQueue.Count == 0) {
                     RuntimeStack.Pop();
+                    if (RuntimeStack.Count > 0) {
+                        RuntimeStack.Peek().CompositeReentry = true;
+                    }
                 }
                 if (RuntimeStack.Count <= 0) {
                     m_IsTriggered = false;
@@ -230,12 +382,13 @@ namespace StorySystem
         private bool m_IsTriggered = false;
         private bool m_IsPaused = false;
         private bool m_IsInTick = false;
+        private StoryLocalInfo m_LocalInfo = new StoryLocalInfo();
         private StoryRuntime m_Runtime = new StoryRuntime();
         private string[] m_ArgumentNames = null;
         private object[] m_Arguments = null;
+        private StoryLocalInfoStack m_LocalInfoStack = new StoryLocalInfoStack();
         private StoryRuntimeStack m_RuntimeStack = new StoryRuntimeStack();
         private List<IStoryCommand> m_LoadedCommands = new List<IStoryCommand>();
-        private StrObjDict m_StackVariables = new StrObjDict();
     }
     public sealed class StoryMessageHandlerList : List<StoryMessageHandler>
     {

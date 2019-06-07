@@ -97,10 +97,10 @@
     <Compile Include="StoryCommandHelper.cs" />
     <Compile Include="StoryCommandManager.cs" />
     <Compile Include="StoryConfigManager.cs" />
-    <Compile Include="StoryDefine.cs" />
     <Compile Include="StoryInstance.cs" />
     <Compile Include="StoryValueHelper.cs" />
     <Compile Include="StoryValueManager.cs" />
+    <Compile Include="StoryDefine.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

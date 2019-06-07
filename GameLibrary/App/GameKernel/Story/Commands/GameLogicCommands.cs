@@ -64,7 +64,7 @@ namespace GameLibrary.Story.Commands
             }
         }
         private IStoryValue<string> m_AttrName = new StoryValue<string>();
-        private IStoryValue<object> m_Value = new StoryValue();
+        private IStoryValue m_Value = new StoryValue();
     }
     /// <summary>
     /// setstoryskipped(0_or_1[, delay_time]);

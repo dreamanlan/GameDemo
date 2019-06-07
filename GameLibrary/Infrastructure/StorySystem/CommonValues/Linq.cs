@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace StorySystem.CommonValues
 {
-    internal sealed class LinqValue : IStoryValue<object>
+    internal sealed class LinqValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -24,7 +24,7 @@ namespace StorySystem.CommonValues
                 }
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             LinqValue val = new LinqValue();
             val.m_Object = m_Object.Clone();
@@ -148,9 +148,9 @@ namespace StorySystem.CommonValues
             }
         }
 
-        private IStoryValue<object> m_Object = new StoryValue();
+        private IStoryValue m_Object = new StoryValue();
         private IStoryValue<string> m_Method = new StoryValue<string>();
-        private List<IStoryValue<object>> m_Args = new List<IStoryValue<object>>();
+        private List<IStoryValue> m_Args = new List<IStoryValue>();
         private bool m_HaveValue;
         private object m_Value;
     }

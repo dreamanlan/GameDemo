@@ -7,11 +7,11 @@ namespace StorySystem
 {
     public interface IStoryValueFactory
     {
-        IStoryValue<object> Build();
+        IStoryValue Build();
     }
-    public sealed class StoryValueFactoryHelper<C> : IStoryValueFactory where C : IStoryValue<object>, new()
+    public sealed class StoryValueFactoryHelper<C> : IStoryValueFactory where C : IStoryValue, new()
     {
-        public IStoryValue<object> Build()
+        public IStoryValue Build()
         {
             C c = new C();
             return c;
@@ -79,7 +79,7 @@ namespace StorySystem
             }
             return factory;
         }
-        public IStoryValue<object> CalcValue(Dsl.ISyntaxComponent param)
+        public IStoryValue CalcValue(Dsl.ISyntaxComponent param)
         {
             lock (m_Lock) {
                 Dsl.CallData callData = param as Dsl.CallData;
@@ -94,7 +94,7 @@ namespace StorySystem
                                 return null;
                             }
                         case (int)Dsl.CallData.ParamClassEnum.PARAM_CLASS_BRACKET: {
-                                IStoryValue<object> ret = null;
+                                IStoryValue ret = null;
                                 IStoryValueFactory factory = GetFactory("list");
                                 if (null != factory) {
                                     try {
@@ -116,7 +116,7 @@ namespace StorySystem
                         //处理大括弧
                         callData = funcData.Call;
                         if (null == callData || !callData.HaveParam()) {
-                            IStoryValue<object> ret = null;
+                            IStoryValue ret = null;
                             IStoryValueFactory factory = GetFactory("hashtable");
                             if (null != factory) {
                                 try {
@@ -188,7 +188,7 @@ namespace StorySystem
                                 return CalcValue(newCall);
                             }
                         }
-                        IStoryValue<object> ret = null;
+                        IStoryValue ret = null;
                         string id = param.GetId();
                         IStoryValueFactory factory = GetFactory(id);
                         if (null != factory) {

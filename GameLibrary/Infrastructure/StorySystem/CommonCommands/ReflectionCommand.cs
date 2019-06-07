@@ -107,9 +107,9 @@ namespace StorySystem.CommonCommands
                 m_Args.Add(val);
             }
         }
-        private IStoryValue<object> m_Object = new StoryValue();
-        private IStoryValue<object> m_Method = new StoryValue();
-        private List<IStoryValue<object>> m_Args = new List<IStoryValue<object>>();
+        private IStoryValue m_Object = new StoryValue();
+        private IStoryValue m_Method = new StoryValue();
+        private List<IStoryValue> m_Args = new List<IStoryValue>();
     }
     /// <summary>
     /// dotnetset(obj,method,arg1,arg2,...);
@@ -202,9 +202,9 @@ namespace StorySystem.CommonCommands
                 m_Args.Add(val);
             }
         }
-        private IStoryValue<object> m_Object = new StoryValue();
-        private IStoryValue<object> m_Method = new StoryValue();
-        private List<IStoryValue<object>> m_Args = new List<IStoryValue<object>>();
+        private IStoryValue m_Object = new StoryValue();
+        private IStoryValue m_Method = new StoryValue();
+        private List<IStoryValue> m_Args = new List<IStoryValue>();
     }
     /// <summary>
     /// system(file,args);

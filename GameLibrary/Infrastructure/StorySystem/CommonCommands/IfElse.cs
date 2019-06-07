@@ -24,9 +24,10 @@ namespace StorySystem.CommonCommands
         protected override IStoryCommand CloneCommand()
         {
             IfElseCommand retCmd = new IfElseCommand();
-            retCmd.m_Conditions = new List<IStoryValue<int>>();
-            for (int i = 0; i < m_Conditions.Count; ++i) {
-                retCmd.m_Conditions.Add(m_Conditions[i].Clone());
+            retCmd.m_LocalInfoIndex = m_LocalInfoIndex;
+            retCmd.m_LoadedConditions = new List<IStoryValue<int>>();
+            for (int i = 0; i < m_LoadedConditions.Count; ++i) {
+                retCmd.m_LoadedConditions.Add(m_LoadedConditions[i].Clone());
             }
             for (int i = 0; i < m_LoadedIfCommands.Count; i++) {
                 List<IStoryCommand> cmds = new List<IStoryCommand>();
@@ -43,58 +44,70 @@ namespace StorySystem.CommonCommands
         }
         protected override void ResetState()
         {
-            m_AlreadyExecute = false;
         }
         protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
-            if (!m_AlreadyExecute) {
-                for (int i = 0; i < m_Conditions.Count; ++i) {
-                    m_Conditions[i].Evaluate(instance, handler, iterator, args);
-                }
+            var localInfos = handler.LocalInfoStack.Peek();
+            var conditions = localInfos.GetLocalInfo(m_LocalInfoIndex) as List<IStoryValue<int>>;
+            for (int i = 0; i < conditions.Count; ++i) {
+                conditions[i].Evaluate(instance, handler, iterator, args);
             }
         }
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta, object iterator, object[] args)
         {
+            var runtime = handler.PeekRuntime();
+            if (runtime.CompositeReentry)
+                return false;
             bool ret = false;
-            if (!m_AlreadyExecute) {
-                Evaluate(instance, handler, iterator, args);
-                bool isElse = true;
-                for (int i = 0; i < m_Conditions.Count; ++i) {
-                    if (m_Conditions[i].Value != 0) {
-                        PrepareIf(i, handler.RuntimeStack);
-                        m_Runtime.Iterator = iterator;
-                        m_Runtime.Arguments = args;
-                        isElse = false;
-                        break;
-                    }
+            var localInfos = handler.LocalInfoStack.Peek();
+            var conditions = localInfos.GetLocalInfo(m_LocalInfoIndex) as List<IStoryValue<int>>;
+            if (null == conditions) {
+                conditions = new List<IStoryValue<int>>();
+                for (int i = 0; i < m_LoadedConditions.Count; ++i) {
+                    conditions.Add(m_LoadedConditions[i].Clone());
                 }
-                if (isElse) {
-                    PrepareElse(handler.RuntimeStack);
-                    m_Runtime.Iterator = iterator;
-                    m_Runtime.Arguments = args;
+                localInfos.SetLocalInfo(m_LocalInfoIndex, conditions);
+            }
+            Evaluate(instance, handler, iterator, args);
+            bool isElse = true;
+            for (int i = 0; i < conditions.Count; ++i) {
+                if (conditions[i].Value != 0) {
+                    PrepareIf(i, handler.RuntimeStack);
+                    runtime = handler.PeekRuntime();
+                    runtime.Iterator = iterator;
+                    runtime.Arguments = args;
+                    isElse = false;
+                    break;
                 }
-                m_AlreadyExecute = true;
-                //没有wait之类命令直接执行
-                m_Runtime.Tick(instance, handler, delta);
-                if (m_Runtime.CommandQueue.Count == 0) {
-                    handler.RuntimeStack.Pop();
-                    ret = false;
-                } else {
-                    //遇到wait命令，跳出执行，之后直接在StoryMessageHandler里执行栈顶的命令队列（降低开销）
-                    ret = true;
-                }
+            }
+            if (isElse) {
+                PrepareElse(handler.RuntimeStack);
+                runtime = handler.PeekRuntime();
+                runtime.Iterator = iterator;
+                runtime.Arguments = args;
+            }
+            //没有wait之类命令直接执行
+            runtime = handler.PeekRuntime();
+            runtime.Tick(instance, handler, delta);
+            if (runtime.CommandQueue.Count == 0) {
+                handler.PopRuntime();
+                ret = false;
+            } else {
+                //遇到wait命令，跳出执行，之后直接在StoryMessageHandler里执行栈顶的命令队列（降低开销）
+                ret = true;
             }
             return ret;
         }
         protected override void Load(Dsl.FunctionData functionData)
         {
+            m_LocalInfoIndex = StoryCommandManager.Instance.AllocLocalInfoIndex();
             Dsl.CallData callData = functionData.Call;
             if (null != callData) {
                 if (callData.GetParamNum() > 0) {
                     Dsl.ISyntaxComponent param = callData.GetParam(0);
                     StoryValue<int> cond = new StoryValue<int>();
                     cond.InitFromDsl(param);
-                    m_Conditions.Add(cond);
+                    m_LoadedConditions.Add(cond);
                 }
                 List<IStoryCommand> cmds = new List<IStoryCommand>();
                 for (int i = 0; i < functionData.Statements.Count; i++) {
@@ -128,7 +141,7 @@ namespace StorySystem.CommonCommands
                             string err = string.Format("[StoryDsl] else must be the last function !!! line:{0}", functionData.GetLine());
                             throw new Exception(err);
 #else
-              GameLibrary.LogSystem.Error("[StoryDsl] else must be the last function !!!");
+              CsLibrary.LogSystem.Error("[StoryDsl] else must be the last function !!!");
 #endif
                         }
                     }
@@ -137,7 +150,8 @@ namespace StorySystem.CommonCommands
         }
         private void PrepareIf(int ix, StoryRuntimeStack runtimeStack)
         {
-            runtimeStack.Push(m_Runtime);
+            var runtime = StoryRuntime.New();
+            runtimeStack.Push(runtime);
             var queue = runtimeStack.Peek().CommandQueue;
             foreach (IStoryCommand cmd in queue) {
                 cmd.Reset();
@@ -153,7 +167,8 @@ namespace StorySystem.CommonCommands
         }
         private void PrepareElse(StoryRuntimeStack runtimeStack)
         {
-            runtimeStack.Push(m_Runtime);
+            var runtime = StoryRuntime.New();
+            runtimeStack.Push(runtime);
             var queue = runtimeStack.Peek().CommandQueue;
             foreach (IStoryCommand cmd in queue) {
                 cmd.Reset();
@@ -167,10 +182,9 @@ namespace StorySystem.CommonCommands
             }
         }
 
-        private List<IStoryValue<int>> m_Conditions = new List<IStoryValue<int>>();
-        private StoryRuntime m_Runtime = new StoryRuntime();
+        private int m_LocalInfoIndex;
+        private List<IStoryValue<int>> m_LoadedConditions = new List<IStoryValue<int>>();
         private List<List<IStoryCommand>> m_LoadedIfCommands = new List<List<IStoryCommand>>();
         private List<IStoryCommand> m_LoadedElseCommands = new List<IStoryCommand>();
-        private bool m_AlreadyExecute = false;
     }
 }

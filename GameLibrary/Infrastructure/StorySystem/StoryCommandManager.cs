@@ -10,6 +10,12 @@ namespace StorySystem
     public sealed class StoryCommandManager
     {
         public const int c_MaxCommandGroupNum = (int)StoryCommandGroupDefine.NUM;
+        public int AllocLocalInfoIndex()
+        {
+            int index = m_NextLocalInfoIndex;
+            System.Threading.Interlocked.Increment(ref m_NextLocalInfoIndex);
+            return index;
+        }
         public void RegisterCommandFactory(string type, IStoryCommandFactory factory)
         {
             RegisterCommandFactory(type, factory, false);
@@ -143,17 +149,17 @@ namespace StorySystem
                 string err = string.Format("[LoadStory] CreateCommand failed, line:{0} command:{1}", commandConfig.GetLine(), commandConfig.ToScriptString(false));
                 throw new Exception(err);
 #else
-                GameLibrary.LogSystem.Error("[LoadStory] CreateCommand failed, type:{0} line:{1}", type, commandConfig.GetLine());
+                CsLibrary.LogSystem.Error("[LoadStory] CreateCommand failed, type:{0} line:{1}", type, commandConfig.GetLine());
 #endif
             }
             if (null != command) {
-                //GameLibrary.LogSystem.Debug("[LoadStory] CreateCommand, type:{0} command:{1}", type, command.GetType().Name);
+                //CsLibrary.LogSystem.Debug("[LoadStory] CreateCommand, type:{0} command:{1}", type, command.GetType().Name);
             } else {
 #if DEBUG
                 string err = string.Format("[LoadStory] CreateCommand failed, line:{0} command:{1}", commandConfig.GetLine(), commandConfig.ToScriptString(false));
                 throw new Exception(err);
 #else
-                GameLibrary.LogSystem.Error("[LoadStory] CreateCommand failed, type:{0} line:{1}", type, commandConfig.GetLine());
+                CsLibrary.LogSystem.Error("[LoadStory] CreateCommand failed, type:{0} line:{1}", type, commandConfig.GetLine());
 #endif
             }
             return command;
@@ -315,9 +321,12 @@ namespace StorySystem
             StoryValueManager.Instance.RegisterValueFactory("hashtablekeys", new StoryValueFactoryHelper<CommonValues.HashtableKeysValue>());
             StoryValueManager.Instance.RegisterValueFactory("hashtablevalues", new StoryValueFactoryHelper<CommonValues.HashtableValuesValue>());
         }
+
         private object m_Lock = new object();
         private Dictionary<string, IStoryCommandFactory> m_StoryCommandFactories = new Dictionary<string, IStoryCommandFactory>();
         private Dictionary<string, IStoryCommandFactory>[] m_GroupedCommandFactories = new Dictionary<string, IStoryCommandFactory>[c_MaxCommandGroupNum];
+        private int m_NextLocalInfoIndex = 0;
+
         public static ulong ThreadCommandGroupsMask
         {
             get { return s_ThreadCommandGroupsMask; }

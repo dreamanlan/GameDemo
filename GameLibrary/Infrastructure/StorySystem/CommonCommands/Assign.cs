@@ -39,7 +39,7 @@ namespace StorySystem.CommonCommands
             }
         }
         private string m_VarName = null;
-        private IStoryValue<object> m_Value = new StoryValue();
+        private IStoryValue m_Value = new StoryValue();
     }
     /// <summary>
     /// inc(@local,value);
@@ -157,7 +157,7 @@ namespace StorySystem.CommonCommands
         }
         private int m_ParamNum = 0;
         private string m_VarName = null;
-        private IStoryValue<object> m_Value = new StoryValue();
+        private IStoryValue m_Value = new StoryValue();
     }
     /// <summary>
     /// dec(@local,value);
@@ -275,7 +275,7 @@ namespace StorySystem.CommonCommands
         }
         private int m_ParamNum = 0;
         private string m_VarName = null;
-        private IStoryValue<object> m_Value = new StoryValue();
+        private IStoryValue m_Value = new StoryValue();
     }
     /// <summary>
     /// propset(name,value);
@@ -311,7 +311,7 @@ namespace StorySystem.CommonCommands
             }
         }
         private IStoryValue<string> m_VarName = new StoryValue<string>();
-        private IStoryValue<object> m_Value = new StoryValue();
+        private IStoryValue m_Value = new StoryValue();
     }
     /// <summary>
     /// listset(list,index,value);
@@ -358,7 +358,7 @@ namespace StorySystem.CommonCommands
         }
         private IStoryValue<IList> m_ListValue = new StoryValue<IList>();
         private IStoryValue<int> m_IndexValue = new StoryValue<int>();
-        private IStoryValue<object> m_Value = new StoryValue();
+        private IStoryValue m_Value = new StoryValue();
     }
     /// <summary>
     /// listadd(list,value);
@@ -395,7 +395,7 @@ namespace StorySystem.CommonCommands
             }
         }
         private IStoryValue<IList> m_ListValue = new StoryValue<IList>();
-        private IStoryValue<object> m_Value = new StoryValue();
+        private IStoryValue m_Value = new StoryValue();
     }
     /// <summary>
     /// listremove(list,value);
@@ -432,7 +432,7 @@ namespace StorySystem.CommonCommands
             }
         }
         private IStoryValue<IList> m_ListValue = new StoryValue<IList>();
-        private IStoryValue<object> m_Value = new StoryValue();
+        private IStoryValue m_Value = new StoryValue();
     }
     /// <summary>
     /// listinsert(list,index,value);
@@ -474,7 +474,7 @@ namespace StorySystem.CommonCommands
         }
         private IStoryValue<IList> m_ListValue = new StoryValue<IList>();
         private IStoryValue<int> m_IndexValue = new StoryValue<int>();
-        private IStoryValue<object> m_Value = new StoryValue();
+        private IStoryValue m_Value = new StoryValue();
     }
     /// <summary>
     /// listremoveat(list,index);

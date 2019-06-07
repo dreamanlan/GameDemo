@@ -33,7 +33,7 @@ namespace StorySystem
                 }
             }
         }
-        public static IStoryValue<object> AdaptFrom<T>(IStoryValue<T> original)
+        public static IStoryValue AdaptFrom<T>(IStoryValue<T> original)
         {
             return new StoryValueAdapter<T>(original);
         }
@@ -1618,7 +1618,7 @@ namespace StorySystem
         {
             StoryValueParams val = new StoryValueParams();
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue<object> arg = m_Args[i];
+                IStoryValue arg = m_Args[i];
                 val.m_Args.Add(arg.Clone());
                 val.m_Values.Add(null);
             }
@@ -1627,12 +1627,12 @@ namespace StorySystem
         public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue<object> val = m_Args[i];
+                IStoryValue val = m_Args[i];
                 val.Evaluate(instance, handler, iterator, args);
             }
 
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue<object> val = m_Args[i];
+                IStoryValue val = m_Args[i];
                 m_Values[i] = val.Value;
             }
         }
@@ -1642,7 +1642,7 @@ namespace StorySystem
             {
                 bool ret = true;
                 for (int i = 0; i < m_Args.Count; ++i) {
-                    IStoryValue<object> val = m_Args[i];
+                    IStoryValue val = m_Args[i];
                     if (!val.HaveValue) {
                         ret = false;
                         break;
@@ -1658,7 +1658,7 @@ namespace StorySystem
                 return m_Values;
             }
         }
-        private List<IStoryValue<object>> m_Args = new List<IStoryValue<object>>();
+        private List<IStoryValue> m_Args = new List<IStoryValue>();
         private ArrayList m_Values = new ArrayList();
     }
 }

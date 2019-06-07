@@ -5,7 +5,7 @@ using GameLibrary;
 using UnityEngine;
 namespace GameLibrary.Story.Values
 {
-    internal sealed class NpcGetNpcTypeValue : IStoryValue<object>
+    internal sealed class NpcGetNpcTypeValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -14,7 +14,7 @@ namespace GameLibrary.Story.Values
                 m_UnitId.InitFromDsl(callData.GetParam(0));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             NpcGetNpcTypeValue val = new NpcGetNpcTypeValue();
             val.m_UnitId = m_UnitId.Clone();
@@ -59,7 +59,7 @@ namespace GameLibrary.Story.Values
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class NpcGetAiParamValue : IStoryValue<object>
+    internal sealed class NpcGetAiParamValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -69,7 +69,7 @@ namespace GameLibrary.Story.Values
                 m_Index.InitFromDsl(callData.GetParam(1));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             NpcGetAiParamValue val = new NpcGetAiParamValue();
             val.m_UnitId = m_UnitId.Clone();

@@ -5,7 +5,7 @@ using GameLibrary;
 using UnityEngine;
 namespace GameLibrary.Story.Values
 {
-    internal sealed class UnitId2ObjIdValue : IStoryValue<object>
+    internal sealed class UnitId2ObjIdValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -14,7 +14,7 @@ namespace GameLibrary.Story.Values
                 m_UnitId.InitFromDsl(callData.GetParam(0));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             UnitId2ObjIdValue val = new UnitId2ObjIdValue();
             val.m_UnitId = m_UnitId.Clone();
@@ -63,7 +63,7 @@ namespace GameLibrary.Story.Values
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class ObjId2UnitIdValue : IStoryValue<object>
+    internal sealed class ObjId2UnitIdValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -72,7 +72,7 @@ namespace GameLibrary.Story.Values
                 m_ObjId.InitFromDsl(callData.GetParam(0));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             ObjId2UnitIdValue val = new ObjId2UnitIdValue();
             val.m_ObjId = m_ObjId.Clone();
@@ -121,7 +121,7 @@ namespace GameLibrary.Story.Values
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class GetPositionValue : IStoryValue<object>
+    internal sealed class GetPositionValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -133,7 +133,7 @@ namespace GameLibrary.Story.Values
                     m_LocalOrWorld.InitFromDsl(callData.GetParam(1));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             GetPositionValue val = new GetPositionValue();
             val.m_ParamNum = m_ParamNum;
@@ -201,12 +201,12 @@ namespace GameLibrary.Story.Values
         }
 
         private int m_ParamNum = 0;
-        private IStoryValue<object> m_ObjId = new StoryValue();
+        private IStoryValue m_ObjId = new StoryValue();
         private IStoryValue<int> m_LocalOrWorld = new StoryValue<int>();
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class GetPositionXValue : IStoryValue<object>
+    internal sealed class GetPositionXValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -218,7 +218,7 @@ namespace GameLibrary.Story.Values
                     m_LocalOrWorld.InitFromDsl(callData.GetParam(1));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             GetPositionXValue val = new GetPositionXValue();
             val.m_ParamNum = m_ParamNum;
@@ -286,12 +286,12 @@ namespace GameLibrary.Story.Values
         }
 
         private int m_ParamNum = 0;
-        private IStoryValue<object> m_ObjId = new StoryValue();
+        private IStoryValue m_ObjId = new StoryValue();
         private IStoryValue<int> m_LocalOrWorld = new StoryValue<int>();
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class GetPositionYValue : IStoryValue<object>
+    internal sealed class GetPositionYValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -303,7 +303,7 @@ namespace GameLibrary.Story.Values
                     m_LocalOrWorld.InitFromDsl(callData.GetParam(1));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             GetPositionYValue val = new GetPositionYValue();
             val.m_ParamNum = m_ParamNum;
@@ -371,12 +371,12 @@ namespace GameLibrary.Story.Values
         }
 
         private int m_ParamNum = 0;
-        private IStoryValue<object> m_ObjId = new StoryValue();
+        private IStoryValue m_ObjId = new StoryValue();
         private IStoryValue<int> m_LocalOrWorld = new StoryValue<int>();
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class GetPositionZValue : IStoryValue<object>
+    internal sealed class GetPositionZValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -388,7 +388,7 @@ namespace GameLibrary.Story.Values
                     m_LocalOrWorld.InitFromDsl(callData.GetParam(1));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             GetPositionZValue val = new GetPositionZValue();
             val.m_ParamNum = m_ParamNum;
@@ -456,12 +456,12 @@ namespace GameLibrary.Story.Values
         }
 
         private int m_ParamNum = 0;
-        private IStoryValue<object> m_ObjId = new StoryValue();
+        private IStoryValue m_ObjId = new StoryValue();
         private IStoryValue<int> m_LocalOrWorld = new StoryValue<int>();
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class GetRotationValue : IStoryValue<object>
+    internal sealed class GetRotationValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -473,7 +473,7 @@ namespace GameLibrary.Story.Values
                     m_LocalOrWorld.InitFromDsl(callData.GetParam(1));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             GetRotationValue val = new GetRotationValue();
             val.m_ParamNum = m_ParamNum;
@@ -541,12 +541,12 @@ namespace GameLibrary.Story.Values
         }
 
         private int m_ParamNum = 0;
-        private IStoryValue<object> m_ObjId = new StoryValue();
+        private IStoryValue m_ObjId = new StoryValue();
         private IStoryValue<int> m_LocalOrWorld = new StoryValue<int>();
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class GetRotationXValue : IStoryValue<object>
+    internal sealed class GetRotationXValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -558,7 +558,7 @@ namespace GameLibrary.Story.Values
                     m_LocalOrWorld.InitFromDsl(callData.GetParam(1));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             GetRotationXValue val = new GetRotationXValue();
             val.m_ParamNum = m_ParamNum;
@@ -626,12 +626,12 @@ namespace GameLibrary.Story.Values
         }
 
         private int m_ParamNum = 0;
-        private IStoryValue<object> m_ObjId = new StoryValue();
+        private IStoryValue m_ObjId = new StoryValue();
         private IStoryValue<int> m_LocalOrWorld = new StoryValue<int>();
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class GetRotationYValue : IStoryValue<object>
+    internal sealed class GetRotationYValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -643,7 +643,7 @@ namespace GameLibrary.Story.Values
                     m_LocalOrWorld.InitFromDsl(callData.GetParam(1));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             GetRotationYValue val = new GetRotationYValue();
             val.m_ParamNum = m_ParamNum;
@@ -711,12 +711,12 @@ namespace GameLibrary.Story.Values
         }
 
         private int m_ParamNum = 0;
-        private IStoryValue<object> m_ObjId = new StoryValue();
+        private IStoryValue m_ObjId = new StoryValue();
         private IStoryValue<int> m_LocalOrWorld = new StoryValue<int>();
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class GetRotationZValue : IStoryValue<object>
+    internal sealed class GetRotationZValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -728,7 +728,7 @@ namespace GameLibrary.Story.Values
                     m_LocalOrWorld.InitFromDsl(callData.GetParam(1));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             GetRotationZValue val = new GetRotationZValue();
             val.m_ParamNum = m_ParamNum;
@@ -796,12 +796,12 @@ namespace GameLibrary.Story.Values
         }
 
         private int m_ParamNum = 0;
-        private IStoryValue<object> m_ObjId = new StoryValue();
+        private IStoryValue m_ObjId = new StoryValue();
         private IStoryValue<int> m_LocalOrWorld = new StoryValue<int>();
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class GetScaleValue : IStoryValue<object>
+    internal sealed class GetScaleValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -810,7 +810,7 @@ namespace GameLibrary.Story.Values
                 m_ObjId.InitFromDsl(callData.GetParam(0));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             GetScaleValue val = new GetScaleValue();
             val.m_ObjId = m_ObjId.Clone();
@@ -870,11 +870,11 @@ namespace GameLibrary.Story.Values
             }
         }
 
-        private IStoryValue<object> m_ObjId = new StoryValue();
+        private IStoryValue m_ObjId = new StoryValue();
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class GetScaleXValue : IStoryValue<object>
+    internal sealed class GetScaleXValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -883,7 +883,7 @@ namespace GameLibrary.Story.Values
                 m_ObjId.InitFromDsl(callData.GetParam(0));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             GetScaleXValue val = new GetScaleXValue();
             val.m_ObjId = m_ObjId.Clone();
@@ -943,11 +943,11 @@ namespace GameLibrary.Story.Values
             }
         }
 
-        private IStoryValue<object> m_ObjId = new StoryValue();
+        private IStoryValue m_ObjId = new StoryValue();
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class GetScaleYValue : IStoryValue<object>
+    internal sealed class GetScaleYValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -956,7 +956,7 @@ namespace GameLibrary.Story.Values
                 m_ObjId.InitFromDsl(callData.GetParam(0));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             GetScaleYValue val = new GetScaleYValue();
             val.m_ObjId = m_ObjId.Clone();
@@ -1016,11 +1016,11 @@ namespace GameLibrary.Story.Values
             }
         }
 
-        private IStoryValue<object> m_ObjId = new StoryValue();
+        private IStoryValue m_ObjId = new StoryValue();
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class GetScaleZValue : IStoryValue<object>
+    internal sealed class GetScaleZValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1029,7 +1029,7 @@ namespace GameLibrary.Story.Values
                 m_ObjId.InitFromDsl(callData.GetParam(0));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             GetScaleZValue val = new GetScaleZValue();
             val.m_ObjId = m_ObjId.Clone();
@@ -1089,11 +1089,11 @@ namespace GameLibrary.Story.Values
             }
         }
 
-        private IStoryValue<object> m_ObjId = new StoryValue();
+        private IStoryValue m_ObjId = new StoryValue();
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class GetCampValue : IStoryValue<object>
+    internal sealed class GetCampValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1102,7 +1102,7 @@ namespace GameLibrary.Story.Values
                 m_ObjId.InitFromDsl(callData.GetParam(0));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             GetCampValue val = new GetCampValue();
             val.m_ObjId = m_ObjId.Clone();
@@ -1151,7 +1151,7 @@ namespace GameLibrary.Story.Values
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class IsEnemyValue : IStoryValue<object>
+    internal sealed class IsEnemyValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1162,7 +1162,7 @@ namespace GameLibrary.Story.Values
                 TryUpdateValue(null);
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             IsEnemyValue val = new IsEnemyValue();
             val.m_Camp1 = m_Camp1.Clone();
@@ -1210,7 +1210,7 @@ namespace GameLibrary.Story.Values
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class IsFriendValue : IStoryValue<object>
+    internal sealed class IsFriendValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1221,7 +1221,7 @@ namespace GameLibrary.Story.Values
                 TryUpdateValue(null);
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             IsFriendValue val = new IsFriendValue();
             val.m_Camp1 = m_Camp1.Clone();
@@ -1269,7 +1269,7 @@ namespace GameLibrary.Story.Values
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class GetHpValue : IStoryValue<object>
+    internal sealed class GetHpValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1278,7 +1278,7 @@ namespace GameLibrary.Story.Values
                 m_ObjId.InitFromDsl(callData.GetParam(0));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             GetHpValue val = new GetHpValue();
             val.m_ObjId = m_ObjId.Clone();
@@ -1327,7 +1327,7 @@ namespace GameLibrary.Story.Values
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class GetMaxHpValue : IStoryValue<object>
+    internal sealed class GetMaxHpValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1336,7 +1336,7 @@ namespace GameLibrary.Story.Values
                 m_ObjId.InitFromDsl(callData.GetParam(0));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             GetMaxHpValue val = new GetMaxHpValue();
             val.m_ObjId = m_ObjId.Clone();
@@ -1385,7 +1385,7 @@ namespace GameLibrary.Story.Values
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class GetEnergyValue : IStoryValue<object>
+    internal sealed class GetEnergyValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1394,7 +1394,7 @@ namespace GameLibrary.Story.Values
                 m_ObjId.InitFromDsl(callData.GetParam(0));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             GetEnergyValue val = new GetEnergyValue();
             val.m_ObjId = m_ObjId.Clone();
@@ -1441,7 +1441,7 @@ namespace GameLibrary.Story.Values
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class GetMaxEnergyValue : IStoryValue<object>
+    internal sealed class GetMaxEnergyValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1450,7 +1450,7 @@ namespace GameLibrary.Story.Values
                 m_ObjId.InitFromDsl(callData.GetParam(0));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             GetMaxEnergyValue val = new GetMaxEnergyValue();
             val.m_ObjId = m_ObjId.Clone();
@@ -1497,7 +1497,7 @@ namespace GameLibrary.Story.Values
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class GetSpeedValue : IStoryValue<object>
+    internal sealed class GetSpeedValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1506,7 +1506,7 @@ namespace GameLibrary.Story.Values
                 m_ObjId.InitFromDsl(callData.GetParam(0));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             GetSpeedValue val = new GetSpeedValue();
             val.m_ObjId = m_ObjId.Clone();
@@ -1553,7 +1553,7 @@ namespace GameLibrary.Story.Values
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class GetLevelValue : IStoryValue<object>
+    internal sealed class GetLevelValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1562,7 +1562,7 @@ namespace GameLibrary.Story.Values
                 m_ObjId.InitFromDsl(callData.GetParam(0));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             GetLevelValue val = new GetLevelValue();
             val.m_ObjId = m_ObjId.Clone();
@@ -1609,7 +1609,7 @@ namespace GameLibrary.Story.Values
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class GetExpValue : IStoryValue<object>
+    internal sealed class GetExpValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1618,7 +1618,7 @@ namespace GameLibrary.Story.Values
                 m_ObjId.InitFromDsl(callData.GetParam(0));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             GetExpValue val = new GetExpValue();
             val.m_ObjId = m_ObjId.Clone();
@@ -1665,7 +1665,7 @@ namespace GameLibrary.Story.Values
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class GetAttrValue : IStoryValue<object>
+    internal sealed class GetAttrValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1681,7 +1681,7 @@ namespace GameLibrary.Story.Values
                 }
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             GetAttrValue val = new GetAttrValue();
             val.m_ParamNum = m_ParamNum;
@@ -1743,11 +1743,11 @@ namespace GameLibrary.Story.Values
         private int m_ParamNum = 0;
         private IStoryValue<int> m_ObjId = new StoryValue<int>();
         private IStoryValue<int> m_AttrId = new StoryValue<int>();
-        private IStoryValue<object> m_DefaultValue = new StoryValue();
+        private IStoryValue m_DefaultValue = new StoryValue();
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class CalcOffsetValue : IStoryValue<object>
+    internal sealed class CalcOffsetValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1758,7 +1758,7 @@ namespace GameLibrary.Story.Values
                 m_Offset.InitFromDsl(callData.GetParam(2));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             CalcOffsetValue val = new CalcOffsetValue();
             val.m_ObjId = m_ObjId.Clone();
@@ -1827,7 +1827,7 @@ namespace GameLibrary.Story.Values
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class CalcDirValue : IStoryValue<object>
+    internal sealed class CalcDirValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1837,7 +1837,7 @@ namespace GameLibrary.Story.Values
                 m_TargetId.InitFromDsl(callData.GetParam(1));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             CalcDirValue val = new CalcDirValue();
             val.m_ObjId = m_ObjId.Clone();
@@ -1895,7 +1895,7 @@ namespace GameLibrary.Story.Values
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class IsControlByStoryValue : IStoryValue<object>
+    internal sealed class IsControlByStoryValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1904,7 +1904,7 @@ namespace GameLibrary.Story.Values
                 m_ObjId.InitFromDsl(callData.GetParam(0));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             IsControlByStoryValue val = new IsControlByStoryValue();
             val.m_ObjId = m_ObjId.Clone();
@@ -1953,7 +1953,7 @@ namespace GameLibrary.Story.Values
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class ObjGetNpcTypeValue : IStoryValue<object>
+    internal sealed class ObjGetNpcTypeValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1962,7 +1962,7 @@ namespace GameLibrary.Story.Values
                 m_ObjId.InitFromDsl(callData.GetParam(0));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             ObjGetNpcTypeValue val = new ObjGetNpcTypeValue();
             val.m_ObjId = m_ObjId.Clone();
@@ -2011,7 +2011,7 @@ namespace GameLibrary.Story.Values
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class ObjGetAiParamValue : IStoryValue<object>
+    internal sealed class ObjGetAiParamValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -2021,7 +2021,7 @@ namespace GameLibrary.Story.Values
                 m_Index.InitFromDsl(callData.GetParam(1));
             }
         }
-        public IStoryValue<object> Clone()
+        public IStoryValue Clone()
         {
             ObjGetAiParamValue val = new ObjGetAiParamValue();
             val.m_ObjId = m_ObjId.Clone();

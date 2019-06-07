@@ -854,7 +854,7 @@ namespace GameLibrary.Story.Commands
         {
             internal string Type;
             internal IStoryValue<string> Key;
-            internal IStoryValue<object> Value;
+            internal IStoryValue Value;
             internal ParamInfo()
             {
                 Init();

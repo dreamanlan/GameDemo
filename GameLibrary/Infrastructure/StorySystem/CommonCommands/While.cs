@@ -14,7 +14,8 @@ namespace StorySystem.CommonCommands
         protected override IStoryCommand CloneCommand()
         {
             WhileCommand retCmd = new WhileCommand();
-            retCmd.m_Condition = m_Condition.Clone();
+            retCmd.m_LocalInfoIndex = m_LocalInfoIndex;
+            retCmd.m_LoadedCondition = m_LoadedCondition.Clone();
             for (int i = 0; i < m_LoadedCommands.Count; i++) {
                 retCmd.m_LoadedCommands.Add(m_LoadedCommands[i].Clone());
             }
@@ -23,27 +24,34 @@ namespace StorySystem.CommonCommands
         }
         protected override void ResetState()
         {
-            m_CurCount = 0;
         }
         protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
         {
-            m_Condition.Evaluate(instance, handler, iterator, args);
+            var localInfos = handler.LocalInfoStack.Peek();
+            var condition = localInfos.GetLocalInfo(m_LocalInfoIndex) as IStoryValue<int>;
+            condition.Evaluate(instance, handler, iterator, args);
         }
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta, object iterator, object[] args)
         {
             bool ret = true;
+            var localInfos = handler.LocalInfoStack.Peek();
+            var condition = localInfos.GetLocalInfo(m_LocalInfoIndex) as IStoryValue<int>;
+            if (null == condition) {
+                condition = m_LoadedCondition.Clone();
+                localInfos.SetLocalInfo(m_LocalInfoIndex, condition);
+            }
             while (ret) {
                 Evaluate(instance, handler, iterator, args);
-                if (m_Condition.Value != 0) {
+                if (condition.Value != 0) {
                     Prepare(handler.RuntimeStack);
-                    m_Runtime.Iterator = iterator;
-                    m_Runtime.Arguments = args;
-                    ++m_CurCount;
+                    var runtime = handler.PeekRuntime();
+                    runtime.Iterator = iterator;
+                    runtime.Arguments = args;
                     ret = true;
                     //没有wait之类命令直接执行
-                    m_Runtime.Tick(instance, handler, delta);
-                    if (m_Runtime.CommandQueue.Count == 0) {
-                        handler.RuntimeStack.Pop();
+                    runtime.Tick(instance, handler, delta);
+                    if (runtime.CommandQueue.Count == 0) {
+                        handler.PopRuntime();
                     } else {
                         //遇到wait命令，跳出执行，之后直接在StoryMessageHandler里执行栈顶的命令队列（降低开销）
                         break;
@@ -56,11 +64,12 @@ namespace StorySystem.CommonCommands
         }
         protected override void Load(Dsl.FunctionData functionData)
         {
+            m_LocalInfoIndex = StoryCommandManager.Instance.AllocLocalInfoIndex();
             Dsl.CallData callData = functionData.Call;
             if (null != callData) {
                 if (callData.GetParamNum() > 0) {
                     Dsl.ISyntaxComponent param = callData.GetParam(0);
-                    m_Condition.InitFromDsl(param);
+                    m_LoadedCondition.InitFromDsl(param);
                 }
                 for (int i = 0; i < functionData.Statements.Count; i++) {
                     IStoryCommand cmd = StoryCommandManager.Instance.CreateCommand(functionData.Statements[i]);
@@ -72,8 +81,9 @@ namespace StorySystem.CommonCommands
         }
         private void Prepare(StoryRuntimeStack runtimeStack)
         {
-            runtimeStack.Push(m_Runtime);
-            var queue = m_Runtime.CommandQueue;
+            var runtime = StoryRuntime.New();
+            runtimeStack.Push(runtime);
+            var queue = runtime.CommandQueue;
             foreach (IStoryCommand cmd in queue) {
                 cmd.Reset();
             }
@@ -86,9 +96,8 @@ namespace StorySystem.CommonCommands
             }
         }
 
-        private IStoryValue<int> m_Condition = new StoryValue<int>();
-        private StoryRuntime m_Runtime = new StoryRuntime();
+        private int m_LocalInfoIndex;
+        private IStoryValue<int> m_LoadedCondition = new StoryValue<int>();
         private List<IStoryCommand> m_LoadedCommands = new List<IStoryCommand>();
-        private int m_CurCount = 0;
     }
 }
