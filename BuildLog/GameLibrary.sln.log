@@ -1,4 +1,4 @@
-﻿Build started 2019/6/7 15:16:01.
+﻿Build started 2019/6/8 12:13:11.
 Project "/Users/lanxiang/Documents/GitHub/GameDemo/GameLibrary/GameLibrary.sln" on node 1 (clean;rebuild target(s)).
 Building with tools version "15.0".
 Target "ValidateSolutionConfiguration" in file "/Users/lanxiang/Documents/GitHub/GameDemo/GameLibrary/GameLibrary.sln.metaproj" from project "/Users/lanxiang/Documents/GitHub/GameDemo/GameLibrary/GameLibrary.sln" (entry point):
@@ -477,6 +477,7 @@ Task "Delete"
   Deleting file "/Users/lanxiang/Documents/GitHub/GameDemo/GameLibrary/Infrastructure/Common/obj/Debug/Common.csproj.CoreCompileInputs.cache".
   Deleting file "/Users/lanxiang/Documents/GitHub/GameDemo/GameLibrary/Infrastructure/Common/obj/Debug/Common.dll".
   Deleting file "/Users/lanxiang/Documents/GitHub/GameDemo/GameLibrary/Infrastructure/Common/obj/Debug/Common.pdb".
+  Deleting file "/Users/lanxiang/Documents/GitHub/GameDemo/GameLibrary/Infrastructure/Common/obj/Debug/Common.csprojResolveAssemblyReference.cache".
 Done executing task "Delete".
 Task "RemoveDuplicates"
 Done executing task "RemoveDuplicates".
@@ -2237,4 +2238,4 @@ Build succeeded.
     1 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:05.74
+Time Elapsed 00:00:04.83

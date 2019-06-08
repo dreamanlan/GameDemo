@@ -58,7 +58,7 @@ namespace StorySystem.CommonCommands
             bool ret = true;
             while (ret) {
                 if (localInfo.Iterators.Count > 0) {
-                    Prepare(handler.RuntimeStack);
+                    Prepare(handler);
                     var runtime = handler.PeekRuntime();
                     runtime.Iterator = localInfo.Iterators.Dequeue();
                     runtime.Arguments = args;
@@ -96,10 +96,10 @@ namespace StorySystem.CommonCommands
             }
             IsCompositeCommand = true;
         }
-        private void Prepare(StoryRuntimeStack runtimeStack)
+        private void Prepare(StoryMessageHandler handler)
         {
             var runtime = StoryRuntime.New();
-            runtimeStack.Push(runtime);
+            handler.PushRuntime(runtime);
             var queue = runtime.CommandQueue;
             foreach (IStoryCommand cmd in queue) {
                 cmd.Reset();
@@ -107,9 +107,11 @@ namespace StorySystem.CommonCommands
             queue.Clear();
             for (int i = 0; i < m_LoadedCommands.Count; i++) {
                 IStoryCommand cmd = m_LoadedCommands[i];
-                if (null != cmd.LeadCommand)
-                    queue.Enqueue(cmd.LeadCommand);
+                if (null != cmd.PrologueCommand)
+                    queue.Enqueue(cmd.PrologueCommand);
                 queue.Enqueue(cmd);
+                if (null != cmd.EpilogueCommand)
+                    queue.Enqueue(cmd.EpilogueCommand);
             }
         }
 
@@ -171,7 +173,7 @@ namespace StorySystem.CommonCommands
             bool ret = true;
             while (ret) {
                 if (localInfo.Iterators.Count > 0) {
-                    Prepare(handler.RuntimeStack);
+                    Prepare(handler);
                     var runtime = handler.PeekRuntime();
                     runtime.Iterator = localInfo.Iterators.Dequeue();
                     runtime.Arguments = args;
@@ -206,10 +208,10 @@ namespace StorySystem.CommonCommands
             }
             IsCompositeCommand = true;
         }
-        private void Prepare(StoryRuntimeStack runtimeStack)
+        private void Prepare(StoryMessageHandler handler)
         {
             var runtime = StoryRuntime.New();
-            runtimeStack.Push(runtime);
+            handler.PushRuntime(runtime);
             var queue = runtime.CommandQueue;
             foreach (IStoryCommand cmd in queue) {
                 cmd.Reset();
@@ -217,9 +219,11 @@ namespace StorySystem.CommonCommands
             queue.Clear();
             for (int i = 0; i < m_LoadedCommands.Count; i++) {
                 IStoryCommand cmd = m_LoadedCommands[i];
-                if (null != cmd.LeadCommand)
-                    queue.Enqueue(cmd.LeadCommand);
+                if (null != cmd.PrologueCommand)
+                    queue.Enqueue(cmd.PrologueCommand);
                 queue.Enqueue(cmd);
+                if (null != cmd.EpilogueCommand)
+                    queue.Enqueue(cmd.EpilogueCommand);
             }
         }
 
@@ -276,7 +280,7 @@ namespace StorySystem.CommonCommands
             bool ret = true;
             while (ret) {
                 if (localInfo.CurCount < localInfo.Count.Value) {
-                    Prepare(handler.RuntimeStack);
+                    Prepare(handler);
                     var runtime = handler.PeekRuntime();
                     runtime.Iterator = localInfo.CurCount;
                     runtime.Arguments = args;
@@ -313,10 +317,10 @@ namespace StorySystem.CommonCommands
             }
             IsCompositeCommand = true;
         }
-        private void Prepare(StoryRuntimeStack runtimeStack)
+        private void Prepare(StoryMessageHandler handler)
         {
             var runtime = StoryRuntime.New();
-            runtimeStack.Push(runtime);
+            handler.PushRuntime(runtime);
             var queue = runtime.CommandQueue;
             foreach (IStoryCommand cmd in queue) {
                 cmd.Reset();
@@ -324,9 +328,11 @@ namespace StorySystem.CommonCommands
             queue.Clear();
             for (int i = 0; i < m_LoadedCommands.Count; i++) {
                 IStoryCommand cmd = m_LoadedCommands[i];
-                if (null != cmd.LeadCommand)
-                    queue.Enqueue(cmd.LeadCommand);
+                if (null != cmd.PrologueCommand)
+                    queue.Enqueue(cmd.PrologueCommand);
                 queue.Enqueue(cmd);
+                if (null != cmd.EpilogueCommand)
+                    queue.Enqueue(cmd.EpilogueCommand);
             }
         }
 

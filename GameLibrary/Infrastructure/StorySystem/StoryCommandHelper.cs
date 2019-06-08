@@ -73,7 +73,11 @@ namespace StorySystem
             cmd.m_Config = m_Config;
             return cmd;
         }
-        public IStoryCommand LeadCommand
+        public IStoryCommand PrologueCommand
+        {
+            get { return null; }
+        }
+        public IStoryCommand EpilogueCommand
         {
             get { return null; }
         }

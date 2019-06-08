@@ -13,7 +13,8 @@ namespace StorySystem
         Dsl.ISyntaxComponent GetConfig();//获取命令配置dsl
         void ShareConfig(IStoryCommand cloner);
         IStoryCommand Clone();//克隆一个新实例，每个命令只从DSL语言初始化一次，之后的实例由克隆产生，提升性能
-        IStoryCommand LeadCommand { get; }   //用DSL实现的支持递归的command，自身不知道何时是新调用开始，此时借助一个引导命令来发起新调用。
+        IStoryCommand PrologueCommand { get; }   //用DSL实现的支持递归的command，因为允许跨Tick运行，无法在Tick内进行出栈入栈的操作，借助入口命令与出口命令来维持栈环境。
+        IStoryCommand EpilogueCommand { get; }   //用DSL实现的支持递归的command，因为允许跨Tick运行，无法在Tick内进行出栈入栈的操作，借助入口命令与出口命令来维持栈环境。
         void Reset();//复位实例，保证实例状态为初始状态。
         bool Execute(StoryInstance instance, StoryMessageHandler handler, long delta, object iterator, object[] args);//执行命令，包括处理参数、变量及命令逻辑
         bool ExecDebugger(StoryInstance instance, StoryMessageHandler handler, long delta, object iterator, object[] args);
@@ -113,7 +114,11 @@ namespace StorySystem
             cmd.ShareConfig(this);
             return cmd;
         }
-        public virtual IStoryCommand LeadCommand
+        public virtual IStoryCommand PrologueCommand
+        {
+            get { return null; }
+        }
+        public virtual IStoryCommand EpilogueCommand
         {
             get { return null; }
         }

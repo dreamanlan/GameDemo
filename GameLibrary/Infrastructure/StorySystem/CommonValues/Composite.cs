@@ -166,14 +166,16 @@ namespace StorySystem.CommonValues
                 }
             }
         }
-        private void Prepare(StoryRuntime stackInfo)
+        private void Prepare(StoryRuntime runtime)
         {
             if (null != m_InitialCommands) {
                 for (int i = 0; i < m_InitialCommands.Count; ++i) {
                     IStoryCommand cmd = m_InitialCommands[i].Clone();
-                    if (null != cmd.LeadCommand)
-                        stackInfo.CommandQueue.Enqueue(cmd.LeadCommand);
-                    stackInfo.CommandQueue.Enqueue(cmd);
+                    if (null != cmd.PrologueCommand)
+                        runtime.CommandQueue.Enqueue(cmd.PrologueCommand);
+                    runtime.CommandQueue.Enqueue(cmd);
+                    if (null != cmd.EpilogueCommand)
+                        runtime.CommandQueue.Enqueue(cmd.EpilogueCommand);
                 }
             }
         }

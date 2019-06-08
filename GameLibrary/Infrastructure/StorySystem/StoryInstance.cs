@@ -324,9 +324,11 @@ namespace StorySystem
             PushRuntime(m_Runtime);
             for (int i = 0; i < m_LoadedCommands.Count; i++) {
                 IStoryCommand cmd = m_LoadedCommands[i];
-                if (null != cmd.LeadCommand)
-                    m_Runtime.CommandQueue.Enqueue(cmd.LeadCommand);
+                if (null != cmd.PrologueCommand)
+                    m_Runtime.CommandQueue.Enqueue(cmd.PrologueCommand);
                 m_Runtime.CommandQueue.Enqueue(cmd);
+                if (null != cmd.EpilogueCommand)
+                    m_Runtime.CommandQueue.Enqueue(cmd.EpilogueCommand);
             }
         }
         public void Tick(StoryInstance instance, long delta)
