@@ -64,7 +64,7 @@
 		$speed = 5+4.0*6.0/(5.0+@level);
 		$npcspeed = $speed+2;
 		
-		setspeed(unitid2objid(unitid),$speed);
+		setspeed(unitid2objid(1001),$speed);
 		setspeed(unitid2objid(1002),$npcspeed);
 		setspeed(unitid2objid(1003),$npcspeed);
 		setspeed(unitid2objid(1004),$npcspeed);

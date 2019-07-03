@@ -38,6 +38,16 @@ namespace GameLibrary
             get { return m_IsIphone6; }
             set { m_IsIphone6 = value; }
         }
+        public bool StoryEditorOpen
+        {
+            get { return m_StoryEditorOpen; }
+            set { m_StoryEditorOpen = value; }
+        }
+        public bool StoryEditorContinue
+        {
+            get { return m_StoryEditorContinue; }
+            set { m_StoryEditorContinue = value; }
+        }
         public bool IsPaused
         {
             get { return m_IsPaused; }
@@ -75,6 +85,8 @@ namespace GameLibrary
         private bool m_IsDevice = false;
         private bool m_IsIphone6 = false;
 
+        private bool m_StoryEditorOpen = false;
+        private bool m_StoryEditorContinue = false;
 		private Dictionary<string, string> m_EncodeTable = new Dictionary<string, string>();
         private Dictionary<string, string> m_DecodeTable = new Dictionary<string, string>();
 

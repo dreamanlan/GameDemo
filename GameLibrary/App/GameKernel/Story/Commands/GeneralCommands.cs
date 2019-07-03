@@ -1178,6 +1178,63 @@ namespace GameLibrary.Story.Commands
         private List<IStoryValue> m_Args = new List<IStoryValue>();
     }
     /// <summary>
+    /// sendscriptmessage(msg,arg1,arg2,...);
+    /// </summary>
+    internal class SendScriptMessageCommand : AbstractStoryCommand
+    {
+        protected override IStoryCommand CloneCommand()
+        {
+            SendScriptMessageCommand cmd = new SendScriptMessageCommand();
+            cmd.m_Msg = m_Msg.Clone();
+            for (int i = 0; i < m_Args.Count; ++i) {
+                IStoryValue val = m_Args[i];
+                cmd.m_Args.Add(val.Clone());
+            }
+            return cmd;
+        }
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        {
+            m_Msg.Evaluate(instance, handler, iterator, args);
+            for (int i = 0; i < m_Args.Count; ++i) {
+                IStoryValue val = m_Args[i];
+                val.Evaluate(instance, handler, iterator, args);
+            }
+        }
+
+        protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
+        {
+            string msg = m_Msg.Value;
+            ArrayList arglist = new ArrayList();
+            for (int i = 0; i < m_Args.Count; ++i) {
+                IStoryValue val = m_Args[i];
+                arglist.Add(val.Value);
+            }
+            object[] args = arglist.ToArray();
+            if (args.Length == 0)
+                Utility.SendScriptMessage(msg, null);
+            else if (args.Length == 1)
+                Utility.SendScriptMessage(msg, args[0]);
+            else
+                Utility.SendScriptMessage(msg, args);
+            return false;
+        }
+        protected override void Load(Dsl.CallData callData)
+        {
+            int num = callData.GetParamNum();
+            if (num > 0) {
+                m_Msg.InitFromDsl(callData.GetParam(0));
+            }
+            for (int i = 1; i < callData.GetParamNum(); ++i) {
+                StoryValue val = new StoryValue();
+                val.InitFromDsl(callData.GetParam(i));
+                m_Args.Add(val);
+            }
+        }
+
+        private IStoryValue<string> m_Msg = new StoryValue<string>();
+        private List<IStoryValue> m_Args = new List<IStoryValue>();
+    }
+    /// <summary>
     /// creategameobject(name, prefab[, parent])[obj("varname")]{
     ///     position(vector3(x,y,z));
     ///     rotation(vector3(x,y,z));
