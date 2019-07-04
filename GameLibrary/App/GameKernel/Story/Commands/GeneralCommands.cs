@@ -32,7 +32,7 @@ namespace GameLibrary.Story.Commands
                 var dslFile = m_DslFiles[i].Value;
                 dslFiles.Add(dslFile);
             }
-            ClientStorySystem.Instance.PreloadSceneStories(dslFiles.ToArray());
+            ClientStorySystem.Instance.LoadSceneStories(dslFiles.ToArray());
             return false;
         }
         protected override void Load(Dsl.CallData callData)
@@ -2139,7 +2139,7 @@ namespace GameLibrary.Story.Commands
             string prefab = m_Prefab.Value;
             string dslfile = m_DslFile.Value;
             int dontDestoryOld = m_DontDestroyOld.Value;
-            ClientStorySystem.Instance.PreloadNamespacedStory(name, dslfile);
+            ClientStorySystem.Instance.LoadStoryFromFile(name, dslfile);
 			UnityEngine.GameObject asset = ResourceSystem.Instance.GetSharedResource(prefab) as UnityEngine.GameObject;
             if (null != asset) {
                 UnityEngine.GameObject uiObj = null;

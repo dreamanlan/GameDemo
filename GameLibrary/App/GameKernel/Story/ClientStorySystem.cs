@@ -187,7 +187,7 @@ namespace GameLibrary.Story
             }
             m_StoryLogicInfos.Clear();
         }
-        public void PreloadSceneStories(params string[] files)
+        public void LoadSceneStories(params string[] files)
         {
             for (int ix = 0; ix < files.Length; ++ix) {
                 var filePath = files[ix];
@@ -200,17 +200,7 @@ namespace GameLibrary.Story
                 }
             }
         }
-        public void PreloadNamespacedStory(string _namespace, string file)
-        {
-            LoadAssetStory(_namespace, file);
-            Dictionary<string, StoryInstance> stories = StoryConfigManager.Instance.GetStories(file);
-            if (null != stories) {
-                foreach (KeyValuePair<string, StoryInstance> pair in stories) {
-                    AddStoryInstance(pair.Key, pair.Value.Clone());
-                }
-            }
-        }
-        public void PreloadAiStory(string _namespace, string file)
+        public void LoadAiStory(string _namespace, string file)
         {
             LoadAssetStory(_namespace, file);
             Dictionary<string, StoryInstance> stories = StoryConfigManager.Instance.GetStories(file);
@@ -223,7 +213,17 @@ namespace GameLibrary.Story
                 }
             }
         }
-        public void PreloadStoryBytes(string _namespace, string file, byte[] bytes)
+        public void LoadStoryFromFile(string _namespace, string file)
+        {
+            LoadAssetStory(_namespace, file);
+            Dictionary<string, StoryInstance> stories = StoryConfigManager.Instance.GetStories(file);
+            if (null != stories) {
+                foreach (KeyValuePair<string, StoryInstance> pair in stories) {
+                    AddStoryInstance(pair.Key, pair.Value.Clone());
+                }
+            }
+        }
+        public void LoadStoryFromBytes(string _namespace, string file, byte[] bytes)
         {
             StoryConfigManager.Instance.LoadStoryText(file, bytes, 0, _namespace);
             Dictionary<string, StoryInstance> stories = StoryConfigManager.Instance.GetStories(file);
@@ -239,13 +239,49 @@ namespace GameLibrary.Story
             m_AiStoryInstancePool.Clear();
         }
 
-        public AiStoryInstanceInfo NewAiStoryInstance(string storyId)
+        public AiStoryInstanceInfo NewAiStoryInstance(string storyId, string _namespace, params string[] aiFiles)
         {
-            return NewAiStoryInstance(storyId, string.Empty);
-        }
-        public AiStoryInstanceInfo NewAiStoryInstance(string storyId, string _namespace, params string[] overloadFiles)
-        {
-            return NewAiStoryInstance(storyId, _namespace, true, overloadFiles);
+            if (!string.IsNullOrEmpty(_namespace)) {
+                storyId = string.Format("{0}:{1}", _namespace, storyId);
+            }
+            AiStoryInstanceInfo instInfo = GetUnusedAiStoryInstanceInfoFromPool(storyId);
+            if (null == instInfo) {
+                int ct;
+                string[] filePath;
+                ct = aiFiles.Length;
+                filePath = new string[ct];
+                for (int i = 0; i < ct; i++) {
+                    filePath[i] = aiFiles[i];
+                }
+                LoadAssetStory(_namespace, filePath);
+                StoryInstance instance = StoryConfigManager.Instance.NewStoryInstance(storyId, 0);
+                if (instance == null) {
+                    LogSystem.Error("Can't load ai story, story:{0} !", storyId);
+                    return null;
+                }
+                for (int ix = 0; ix < filePath.Length; ++ix) {
+                    Dictionary<string, StoryInstance> stories = StoryConfigManager.Instance.GetStories(filePath[ix]);
+                    if (null != stories) {
+                        foreach (KeyValuePair<string, StoryInstance> pair in stories) {
+                            if (pair.Key != storyId) {
+                                AiStoryInstanceInfo info = new AiStoryInstanceInfo();
+                                info.m_StoryInstance = pair.Value.Clone();
+                                info.m_IsUsed = false;
+                                AddAiStoryInstanceInfoToPool(pair.Key, info);
+                            }
+                        }
+                    }
+                }
+                AiStoryInstanceInfo res = new AiStoryInstanceInfo();
+                res.m_StoryInstance = instance;
+                res.m_IsUsed = true;
+
+                AddAiStoryInstanceInfoToPool(storyId, res);
+                return res;
+            } else {
+                instInfo.m_IsUsed = true;
+                return instInfo;
+            }
         }
         public void RecycleAiStoryInstance(AiStoryInstanceInfo info)
         {
@@ -275,13 +311,107 @@ namespace GameLibrary.Story
             }
             return GetStoryInstance(storyId);
         }
+        public void StartStories(string storyId)
+        {
+            StartStories(storyId, string.Empty);
+        }
+        public void StartStories(string storyId, string _namespace)
+        {
+            if (!string.IsNullOrEmpty(_namespace)) {
+                storyId = string.Format("{0}:{1}", _namespace, storyId);
+            }            
+            int ct = m_StoryLogicInfos.Count;
+            for(int i = ct - 1; i >= 0; --i) {
+                var info = m_StoryLogicInfos[i];
+                if (IsMatch(info.StoryId, storyId)) {
+                    info.Context = null;
+                    info.GlobalVariables = m_GlobalVariables;
+                    info.Start();
+
+                    LogSystem.Info("StartStory {0}", info.StoryId);
+                }
+            }
+        }
+        public void PauseStories(string storyId, bool pause)
+        {
+            PauseStories(storyId, string.Empty, pause);
+        }
+        public void PauseStories(string storyId, string _namespace, bool pause)
+        {
+            if (!string.IsNullOrEmpty(_namespace)) {
+                storyId = string.Format("{0}:{1}", _namespace, storyId);
+            }
+            int count = m_StoryLogicInfos.Count;
+            for (int index = count - 1; index >= 0; --index) {
+                StoryInstance info = m_StoryLogicInfos[index];
+                if (IsMatch(info.StoryId, storyId)) {
+                    info.IsPaused = pause;
+                }
+            }
+        }
+        public void StopStories(string storyId)
+        {
+            StopStories(storyId, string.Empty);
+        }
+        public void StopStories(string storyId, string _namespace)
+        {
+            if (!string.IsNullOrEmpty(_namespace)) {
+                storyId = string.Format("{0}:{1}", _namespace, storyId);
+            }
+            int count = m_StoryLogicInfos.Count;
+            for (int index = count - 1; index >= 0; --index) {
+                StoryInstance info = m_StoryLogicInfos[index];
+                if (IsMatch(info.StoryId, storyId)) {
+                    m_StoryLogicInfos.RemoveAt(index);
+                }
+            }
+        }
+        public int CountStories(string storyId)
+        {
+            return CountStories(storyId, string.Empty);
+        }
+        public int CountStories(string storyId, string _namespace)
+        {
+            if (!string.IsNullOrEmpty(_namespace)) {
+                storyId = string.Format("{0}:{1}", _namespace, storyId);
+            }
+            int ct = 0;
+            int count = m_StoryLogicInfos.Count;
+            for (int index = count - 1; index >= 0; --index) {
+                StoryInstance info = m_StoryLogicInfos[index];
+                if (null != info && IsMatch(info.StoryId, storyId) && !info.IsInTick) {
+                    ++ct;
+                }
+            }
+            return ct;
+        }
+        public void MarkStoriesTerminated(string storyId)
+        {
+            MarkStoriesTerminated(storyId, string.Empty);
+        }
+        public void MarkStoriesTerminated(string storyId, string _namespace)
+        {
+            if (!string.IsNullOrEmpty(_namespace)) {
+                storyId = string.Format("{0}:{1}", _namespace, storyId);
+            }
+            int count = m_StoryLogicInfos.Count;
+            for (int index = count - 1; index >= 0; --index) {
+                StoryInstance info = m_StoryLogicInfos[index];
+                if (IsMatch(info.StoryId, storyId)) {
+                    info.IsTerminated = true;
+                }
+            }
+        }
         public void StartStory(string storyId)
         {
             StartStory(storyId, string.Empty);
         }
-        public void StartStory(string storyId, string _namespace, params string[] overloadFiles)
+        public void StartStory(string storyId, string _namespace)
         {
-            StoryInstance inst = NewStoryInstance(storyId, _namespace, true, overloadFiles);
+            if (!string.IsNullOrEmpty(_namespace)) {
+                storyId = string.Format("{0}:{1}", _namespace, storyId);
+            }
+            StoryInstance inst = GetStoryInstance(storyId);
             if (null != inst) {
                 m_StoryLogicInfos.Add(inst);
                 inst.Context = null;
@@ -289,6 +419,8 @@ namespace GameLibrary.Story
                 inst.Start();
 
                 LogSystem.Info("StartStory {0}", storyId);
+            } else {
+                LogSystem.Error("Can't find story, story:{0} !", storyId);
             }
         }
         public void PauseStory(string storyId, bool pause)
@@ -499,41 +631,6 @@ namespace GameLibrary.Story
             }
         }
 
-        private StoryInstance NewStoryInstance(string storyId, string _namespace, bool logIfNotFound, params string[] overloadFiles)
-        {
-            if (!string.IsNullOrEmpty(_namespace)) {
-                storyId = string.Format("{0}:{1}", _namespace, storyId);
-            }
-            StoryInstance instance = GetStoryInstance(storyId);
-            if (null == instance) {
-                string[] filePath;
-                int ct = overloadFiles.Length;
-                filePath = new string[ct];
-                for (int i = 0; i < ct; i++) {
-                    filePath[i] = overloadFiles[i];
-                }
-                LoadAssetStory(_namespace, filePath);
-                instance = StoryConfigManager.Instance.NewStoryInstance(storyId, 0);
-                if (instance == null) {
-                    if (logIfNotFound)
-                        LogSystem.Error("Can't load story config, story:{0} !", storyId);
-                    return null;
-                }
-                for (int ix = 0; ix < filePath.Length; ++ix) {
-                    Dictionary<string, StoryInstance> stories = StoryConfigManager.Instance.GetStories(filePath[ix]);
-                    if (null != stories) {
-                        foreach (KeyValuePair<string, StoryInstance> pair in stories) {
-                            if (pair.Key != storyId)
-                                AddStoryInstance(pair.Key, pair.Value.Clone());
-                        }
-                    }
-                }
-                AddStoryInstance(storyId, instance);
-                return instance;
-            } else {
-                return instance;
-            }
-        }
         private void AddStoryInstance(string storyId, StoryInstance info)
         {
             if (!m_StoryInstancePool.ContainsKey(storyId)) {
@@ -557,51 +654,6 @@ namespace GameLibrary.Story
             Dsl.DslFile file2 = CustomCommandValueParser.LoadStoryText(valFile, LoadAssetFile(valFile));
             CustomCommandValueParser.FirstParse(file1, file2);
             CustomCommandValueParser.FinalParse(file1, file2);
-        }
-        private AiStoryInstanceInfo NewAiStoryInstance(string storyId, string _namespace, bool logIfNotFound, params string[] overloadFiles)
-        {
-            if (!string.IsNullOrEmpty(_namespace)) {
-                storyId = string.Format("{0}:{1}", _namespace, storyId);
-            }
-            AiStoryInstanceInfo instInfo = GetUnusedAiStoryInstanceInfoFromPool(storyId);
-            if (null == instInfo) {
-                int ct;
-                string[] filePath;
-                ct = overloadFiles.Length;
-                filePath = new string[ct];
-                for (int i = 0; i < ct; i++) {
-                    filePath[i] = overloadFiles[i];
-                }
-                LoadAssetStory(_namespace, filePath);
-                StoryInstance instance = StoryConfigManager.Instance.NewStoryInstance(storyId, 0);
-                if (instance == null) {
-                    if (logIfNotFound)
-                        LogSystem.Error("Can't load story config, story:{0} !", storyId);
-                    return null;
-                }
-                for (int ix = 0; ix < filePath.Length; ++ix) {
-                    Dictionary<string, StoryInstance> stories = StoryConfigManager.Instance.GetStories(filePath[ix]);
-                    if (null != stories) {
-                        foreach (KeyValuePair<string, StoryInstance> pair in stories) {
-                            if (pair.Key != storyId) {
-                                AiStoryInstanceInfo info = new AiStoryInstanceInfo();
-                                info.m_StoryInstance = pair.Value.Clone();
-                                info.m_IsUsed = false;
-                                AddAiStoryInstanceInfoToPool(pair.Key, info);
-                            }
-                        }
-                    }
-                }
-                AiStoryInstanceInfo res = new AiStoryInstanceInfo();
-                res.m_StoryInstance = instance;
-                res.m_IsUsed = true;
-
-                AddAiStoryInstanceInfoToPool(storyId, res);
-                return res;
-            } else {
-                instInfo.m_IsUsed = true;
-                return instInfo;
-            }
         }
         private void AddAiStoryInstanceInfoToPool(string storyId, AiStoryInstanceInfo info)
         {
@@ -642,6 +694,12 @@ namespace GameLibrary.Story
         {
             var bytes = Utility.LoadFileFromStreamingAssets(file);
             return bytes;
+        }
+        private bool IsMatch(string realId, string prefixId)
+        {
+            if (realId == prefixId || realId.Length > prefixId.Length && realId.StartsWith(prefixId) && realId[prefixId.Length] == ':')
+                return true;
+            return false;
         }
 
         private ClientStorySystem() { }

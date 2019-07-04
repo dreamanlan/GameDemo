@@ -23,7 +23,7 @@ namespace GameLibrary
                 ClientStorySystem.Instance.Reset();
                 ClientStorySystem.Instance.ClearStoryInstancePool();
                 StorySystem.StoryConfigManager.Instance.Clear();
-                ClientStorySystem.Instance.PreloadSceneStories(HomePath.GetAbsolutePath("Dsl/Story/Scene/scene.dsl"),
+                ClientStorySystem.Instance.LoadSceneStories(HomePath.GetAbsolutePath("Dsl/Story/Scene/scene.dsl"),
                     HomePath.GetAbsolutePath("Dsl/Story/Scene/story.dsl"));
                 ClientStorySystem.Instance.StartStory("scene_main");
 
@@ -128,7 +128,7 @@ namespace GameLibrary
             ClientStorySystem.Instance.Reset();
             ClientStorySystem.Instance.ClearStoryInstancePool();
             StorySystem.StoryConfigManager.Instance.Clear();
-            ClientStorySystem.Instance.PreloadSceneStories("Dsl/Story/Scene/scene.dsl", "Dsl/Story/Scene/story.dsl");
+            ClientStorySystem.Instance.LoadSceneStories("Dsl/Story/Scene/scene.dsl", "Dsl/Story/Scene/story.dsl");
             ClientStorySystem.Instance.StartStory("scene_main");
 
             m_BlackBoard.Reset();
