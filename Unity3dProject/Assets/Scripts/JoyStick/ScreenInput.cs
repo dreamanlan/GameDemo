@@ -228,7 +228,7 @@ public class ScreenInput : MonoBehaviour
 
     private float m_MoveThreshold = 32;
     private float m_MoveLimit = 96;
-    private float m_Coefficient = 12.0f/360;
+    private float m_Coefficient = 6.0f/360;
 
     private Vector2 m_PositionDown;
     private bool m_IsMoving;

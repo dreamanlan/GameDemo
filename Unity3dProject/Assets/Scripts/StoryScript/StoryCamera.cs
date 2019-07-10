@@ -621,9 +621,9 @@ public class StoryCamera : MonoBehaviour
     private float m_HeightSmoothLag = 0.3f;
     private float m_DistanceSmoothLag = 3.0f;
     private float m_AngularSmoothLag = 0.3f;
-    private float m_AngularMaxSpeed = 720.0f;
+    private float m_AngularMaxSpeed = 360.0f;
     private float m_SnapSmoothLag = 0.2f;
-    private float m_SnapMaxSpeed = 720.0f;
+    private float m_SnapMaxSpeed = 360.0f;
     private float m_ClampHeadPositionScreenSpace = 0.75f;
     private float m_HeightVelocity = 0.0f;
     private float m_AngleVelocity = 0.0f;
