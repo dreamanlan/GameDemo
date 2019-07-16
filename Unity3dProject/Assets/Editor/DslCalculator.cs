@@ -6,10 +6,12 @@ using System.Text;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using GameLibrary;
 
-
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN
 #region 解释器
 namespace Expression
 {
@@ -31,7 +33,17 @@ namespace Expression
     }
     public abstract class AbstractExpression : IExpression
     {
-        public abstract object Calc();
+        public object Calc()
+        {
+            object ret = null;
+            try {
+                ret = DoCalc();
+            } catch(Exception ex) {
+                Debug.LogErrorFormat("calc:[{0}] exception:{1}\n{2}", ToString(), ex.Message, ex.StackTrace);
+                throw ex;
+            }
+            return ret;
+        }
         public bool Load(Dsl.ISyntaxComponent dsl, DslCalculator calculator)
         {
             m_Calculator = calculator;
@@ -76,6 +88,7 @@ namespace Expression
         protected virtual bool Load(IList<IExpression> exps) { return false; }
         protected virtual bool Load(Dsl.FunctionData funcData) { return false; }
         protected virtual bool Load(Dsl.StatementData statementData) { return false; }
+        protected abstract object DoCalc();
 
         protected DslCalculator Calculator
         {
@@ -105,27 +118,49 @@ namespace Expression
         {
             return v.ToString();
         }
-        protected static T CastTo<T>(object v)
+        protected static T CastTo<T>(object obj)
         {
-            return (T)Convert.ChangeType(v, typeof(T));
+            if (obj is T) {
+                return (T)obj;
+            } else {
+                try {
+                    return (T)Convert.ChangeType(obj, typeof(T));
+                } catch {
+                    return default(T);
+                }
+            }
+        }
+        protected static object CastTo(Type t, object obj)
+        {
+            if (null == obj)
+                return null;
+            Type st = obj.GetType();
+            if (t.IsAssignableFrom(st) || st.IsSubclassOf(t)) {
+                return obj;
+            } else {
+                try {
+                    return Convert.ChangeType(obj, t);
+                } catch {
+                    return null;
+                }
+            }
         }
         protected static Encoding GetEncoding(object v)
         {
-            Encoding encoding = v as Encoding;
-            if (null != encoding) {
-                return encoding;
+            var name = v as string;
+            if (null != name) {
+                return Encoding.GetEncoding(name);
+            } else if (v is int) {
+                int codePage = (int)Convert.ChangeType(v, typeof(int));
+                return Encoding.GetEncoding(codePage);
+            } else {
+                return Encoding.UTF8;
             }
-            string code = v as string;
-            if (!string.IsNullOrEmpty(code)) {
-                return Encoding.GetEncoding(code);
-            }
-            int codepage = ToInt(v);
-            return Encoding.GetEncoding(codepage);
         }
     }
     public abstract class SimpleExpressionBase : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             List<object> operands = new List<object>();
             for (int i = 0; i < m_Exps.Count; ++i) {
@@ -145,7 +180,7 @@ namespace Expression
     }
     internal sealed class ArgsGet : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object ret = Calculator.Arguments;
             return ret;
@@ -157,7 +192,7 @@ namespace Expression
     }
     internal sealed class ArgGet : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object ret = null;
             var ix = (int)Convert.ChangeType(m_ArgIndex.Calc(), typeof(int));
@@ -177,7 +212,7 @@ namespace Expression
     }
     internal sealed class ArgNumGet : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object ret = Calculator.Arguments.Count;
             return ret;
@@ -189,7 +224,7 @@ namespace Expression
     }
     internal sealed class VarSet : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             var varId = m_VarId.Calc();
             object v = m_Op.Calc();
@@ -218,7 +253,7 @@ namespace Expression
     }
     internal sealed class VarGet : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             var varId = m_VarId.Calc();
             object v = null;
@@ -243,7 +278,7 @@ namespace Expression
     }
     internal sealed class NamedVarSet : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object v = m_Op.Calc();
             if (m_VarId.Length > 0) {
@@ -265,7 +300,7 @@ namespace Expression
     }
     internal sealed class NamedVarGet : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object ret = 0;
             if (m_VarId == "break") {
@@ -287,7 +322,7 @@ namespace Expression
     }
     internal sealed class ConstGet : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object v = m_Val;
             return v;
@@ -331,7 +366,7 @@ namespace Expression
     }
     internal sealed class AddExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object v1 = m_Op1.Calc();
             object v2 = m_Op2.Calc();
@@ -355,7 +390,7 @@ namespace Expression
     }
     internal sealed class SubExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object v1 = m_Op1.Calc();
             object v2 = m_Op2.Calc();
@@ -374,7 +409,7 @@ namespace Expression
     }
     internal sealed class MulExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object v1 = m_Op1.Calc();
             object v2 = m_Op2.Calc();
@@ -393,7 +428,7 @@ namespace Expression
     }
     internal sealed class DivExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object v1 = m_Op1.Calc();
             object v2 = m_Op2.Calc();
@@ -412,7 +447,7 @@ namespace Expression
     }
     internal sealed class ModExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object v1 = m_Op1.Calc();
             object v2 = m_Op2.Calc();
@@ -431,7 +466,7 @@ namespace Expression
     }
     internal sealed class BitAndExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object v1 = m_Op1.Calc();
             object v2 = m_Op2.Calc();
@@ -450,7 +485,7 @@ namespace Expression
     }
     internal sealed class BitOrExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object v1 = m_Op1.Calc();
             object v2 = m_Op2.Calc();
@@ -469,7 +504,7 @@ namespace Expression
     }
     internal sealed class BitXorExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object v1 = m_Op1.Calc();
             object v2 = m_Op2.Calc();
@@ -488,7 +523,7 @@ namespace Expression
     }
     internal sealed class BitNotExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object v1 = m_Op1.Calc();
             object v = ~ToLong(v1);
@@ -504,7 +539,7 @@ namespace Expression
     }
     internal sealed class LShiftExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object v1 = m_Op1.Calc();
             object v2 = m_Op2.Calc();
@@ -523,7 +558,7 @@ namespace Expression
     }
     internal sealed class RShiftExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object v1 = m_Op1.Calc();
             object v2 = m_Op2.Calc();
@@ -542,7 +577,7 @@ namespace Expression
     }
     internal sealed class MaxExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op1.Calc());
             double v2 = ToDouble(m_Op2.Calc());
@@ -561,7 +596,7 @@ namespace Expression
     }
     internal sealed class MinExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op1.Calc());
             double v2 = ToDouble(m_Op2.Calc());
@@ -580,7 +615,7 @@ namespace Expression
     }
     internal sealed class AbsExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op.Calc());
             object v = v1 >= 0 ? v1 : -v1;
@@ -596,7 +631,7 @@ namespace Expression
     }
     internal sealed class SinExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op.Calc());
             object v = (double)Mathf.Sin((float)v1);
@@ -612,7 +647,7 @@ namespace Expression
     }
     internal sealed class CosExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op.Calc());
             object v = (double)Mathf.Cos((float)v1);
@@ -628,7 +663,7 @@ namespace Expression
     }
     internal sealed class TanExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op.Calc());
             object v = (double)Mathf.Tan((float)v1);
@@ -644,7 +679,7 @@ namespace Expression
     }
     internal sealed class AsinExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op.Calc());
             object v = (double)Mathf.Asin((float)v1);
@@ -660,7 +695,7 @@ namespace Expression
     }
     internal sealed class AcosExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op.Calc());
             object v = (double)Mathf.Acos((float)v1);
@@ -676,7 +711,7 @@ namespace Expression
     }
     internal sealed class AtanExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op.Calc());
             object v = (double)Mathf.Atan((float)v1);
@@ -692,7 +727,7 @@ namespace Expression
     }
     internal sealed class Atan2Exp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op1.Calc());
             double v2 = ToDouble(m_Op2.Calc());
@@ -711,7 +746,7 @@ namespace Expression
     }
     internal sealed class SinhExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op.Calc());
             object v = Math.Sinh(v1);
@@ -727,7 +762,7 @@ namespace Expression
     }
     internal sealed class CoshExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op.Calc());
             object v = Math.Cosh(v1);
@@ -743,7 +778,7 @@ namespace Expression
     }
     internal sealed class TanhExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op.Calc());
             object v = Math.Tanh(v1);
@@ -759,7 +794,7 @@ namespace Expression
     }
     internal sealed class RndIntExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             long v1 = ToLong(m_Op1.Calc());
             long v2 = ToLong(m_Op2.Calc());
@@ -778,7 +813,7 @@ namespace Expression
     }
     internal sealed class RndFloatExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op1.Calc());
             double v2 = ToDouble(m_Op2.Calc());
@@ -797,7 +832,7 @@ namespace Expression
     }
     internal sealed class PowExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op1.Calc());
             double v2 = ToDouble(m_Op2.Calc());
@@ -816,7 +851,7 @@ namespace Expression
     }
     internal sealed class SqrtExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op1.Calc());
             object v = (double)Mathf.Sqrt((float)v1);
@@ -832,7 +867,7 @@ namespace Expression
     }
     internal sealed class LogExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op1.Calc());
             object v = (double)Mathf.Log((float)v1);
@@ -848,7 +883,7 @@ namespace Expression
     }
     internal sealed class Log10Exp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op1.Calc());
             object v = (double)Mathf.Log10((float)v1);
@@ -864,7 +899,7 @@ namespace Expression
     }
     internal sealed class FloorExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op1.Calc());
             object v = (double)Mathf.Floor((float)v1);
@@ -880,7 +915,7 @@ namespace Expression
     }
     internal sealed class CeilExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op1.Calc());
             object v = (double)Mathf.Ceil((float)v1);
@@ -896,7 +931,7 @@ namespace Expression
     }
     internal sealed class LerpExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op1.Calc());
             double v2 = ToDouble(m_Op2.Calc());
@@ -918,7 +953,7 @@ namespace Expression
     }
     internal sealed class LerpUnclampedExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op1.Calc());
             double v2 = ToDouble(m_Op2.Calc());
@@ -940,7 +975,7 @@ namespace Expression
     }
     internal sealed class LerpAngleExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op1.Calc());
             double v2 = ToDouble(m_Op2.Calc());
@@ -962,7 +997,7 @@ namespace Expression
     }
     internal sealed class Clamp01Exp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op.Calc());
             object v = (double)Mathf.Clamp01((float)v1);
@@ -978,7 +1013,7 @@ namespace Expression
     }
     internal sealed class ClampExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op1.Calc());
             double v2 = ToDouble(m_Op2.Calc());
@@ -1006,7 +1041,7 @@ namespace Expression
     }
     internal sealed class ApproximatelyExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             float v1 = ToFloat(m_Op1.Calc());
             float v2 = ToFloat(m_Op2.Calc());
@@ -1025,7 +1060,7 @@ namespace Expression
     }
     internal sealed class IsPowerOfTwoExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             int v1 = ToInt(m_Op1.Calc());
             int v = Mathf.IsPowerOfTwo(v1) ? 1 : 0;
@@ -1041,7 +1076,7 @@ namespace Expression
     }
     internal sealed class ClosestPowerOfTwoExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             int v1 = ToInt(m_Op1.Calc());
             int v = Mathf.ClosestPowerOfTwo(v1);
@@ -1057,7 +1092,7 @@ namespace Expression
     }
     internal sealed class NextPowerOfTwoExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             int v1 = ToInt(m_Op1.Calc());
             int v = Mathf.NextPowerOfTwo(v1);
@@ -1073,7 +1108,7 @@ namespace Expression
     }
     internal sealed class DistExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             float x1 = (float)ToDouble(m_Op1.Calc());
             float y1 = (float)ToDouble(m_Op2.Calc());
@@ -1098,7 +1133,7 @@ namespace Expression
     }
     internal sealed class DistSqrExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             float x1 = (float)ToDouble(m_Op1.Calc());
             float y1 = (float)ToDouble(m_Op2.Calc());
@@ -1123,7 +1158,7 @@ namespace Expression
     }
     internal sealed class GreatExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op1.Calc());
             double v2 = ToDouble(m_Op2.Calc());
@@ -1142,7 +1177,7 @@ namespace Expression
     }
     internal sealed class GreatEqualExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op1.Calc());
             double v2 = ToDouble(m_Op2.Calc());
@@ -1161,7 +1196,7 @@ namespace Expression
     }
     internal sealed class LessExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op1.Calc());
             double v2 = ToDouble(m_Op2.Calc());
@@ -1180,7 +1215,7 @@ namespace Expression
     }
     internal sealed class LessEqualExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             double v1 = ToDouble(m_Op1.Calc());
             double v2 = ToDouble(m_Op2.Calc());
@@ -1199,7 +1234,7 @@ namespace Expression
     }
     internal sealed class EqualExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object v1 = m_Op1.Calc();
             object v2 = m_Op2.Calc();
@@ -1218,7 +1253,7 @@ namespace Expression
     }
     internal sealed class NotEqualExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object v1 = m_Op1.Calc();
             object v2 = m_Op2.Calc();
@@ -1237,7 +1272,7 @@ namespace Expression
     }
     internal sealed class AndExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             long v1 = ToLong(m_Op1.Calc());
             long v2 = 0;
@@ -1256,7 +1291,7 @@ namespace Expression
     }
     internal sealed class OrExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             long v1 = ToLong(m_Op1.Calc());
             long v2 = 0;
@@ -1275,7 +1310,7 @@ namespace Expression
     }
     internal sealed class NotExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             long val = ToLong(m_Op.Calc());
             object v = val == 0 ? 1 : 0;
@@ -1291,7 +1326,7 @@ namespace Expression
     }
     internal sealed class CondExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object v1 = m_Op1.Calc();
             object v2 = null;
@@ -1323,7 +1358,7 @@ namespace Expression
     }
     internal sealed class IfExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object v = 0;
             for (int ix = 0; ix < m_Clauses.Count; ++ix) {
@@ -1435,7 +1470,7 @@ namespace Expression
     }
     internal sealed class WhileExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object v = 0;
             for (; ; ) {
@@ -1498,7 +1533,7 @@ namespace Expression
     }
     internal sealed class LoopExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object v = 0;
             object count = m_Count.Calc();
@@ -1559,7 +1594,7 @@ namespace Expression
     }
     internal sealed class LoopListExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object v = 0;
             object list = m_List.Calc();
@@ -1624,7 +1659,7 @@ namespace Expression
     }
     internal sealed class ForeachExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object v = 0;
             List<object> list = new List<object>();
@@ -1698,7 +1733,7 @@ namespace Expression
     }
     internal sealed class ParenthesisExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object v = 0;
             for (int ix = 0; ix < m_Expressions.Count; ++ix) {
@@ -1720,7 +1755,7 @@ namespace Expression
     }
     internal sealed class FormatExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object v = 0;
             string fmt = string.Empty;
@@ -1749,7 +1784,7 @@ namespace Expression
     }
     internal sealed class GetTypeAssemblyNameExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object ret = null;
             if (m_Expressions.Count >= 1) {
@@ -1775,7 +1810,7 @@ namespace Expression
     }
     internal sealed class GetTypeFullNameExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object ret = null;
             if (m_Expressions.Count >= 1) {
@@ -1801,7 +1836,7 @@ namespace Expression
     }
     internal sealed class GetTypeNameExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object ret = null;
             if (m_Expressions.Count >= 1) {
@@ -1827,7 +1862,7 @@ namespace Expression
     }
     internal sealed class GetTypeExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object ret = null;
             if (m_Expressions.Count >= 1) {
@@ -1868,7 +1903,7 @@ namespace Expression
     }
     internal sealed class ChangeTypeExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object ret = null;
             if (m_Expressions.Count >= 2) {
@@ -1938,7 +1973,7 @@ namespace Expression
     }
     internal sealed class ParseEnumExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object ret = null;
             if (m_Expressions.Count >= 2) {
@@ -1982,7 +2017,7 @@ namespace Expression
     }
     internal sealed class DotnetCallExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object ret = null;
             object obj = null;
@@ -2033,7 +2068,7 @@ namespace Expression
                             }
                         }
                     }
-                } else {
+                } else if (null != methodObj) {
                     IDictionary dict = obj as IDictionary;
                     if (null != dict && dict.Contains(methodObj)) {
                         var d = dict[methodObj] as Delegate;
@@ -2071,7 +2106,7 @@ namespace Expression
     }
     internal sealed class DotnetSetExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object ret = null;
             object obj = null;
@@ -2119,7 +2154,7 @@ namespace Expression
                             }
                         }
                     }
-                } else {
+                } else if (null != methodObj) {
                     IDictionary dict = obj as IDictionary;
                     if (null != dict && dict.Contains(methodObj)) {
                         dict[methodObj] = _args[0];
@@ -2149,7 +2184,7 @@ namespace Expression
     }
     internal sealed class DotnetGetExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object ret = null;
             object obj = null;
@@ -2197,7 +2232,7 @@ namespace Expression
                             }
                         }
                     }
-                } else {
+                } else if (null != methodObj) {
                     IDictionary dict = obj as IDictionary;
                     if (null != dict && dict.Contains(methodObj)) {
                         ret = dict[methodObj];
@@ -2229,7 +2264,7 @@ namespace Expression
     }
     internal sealed class LinqExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object v = 0;
             object list = m_List.Calc();
@@ -2325,7 +2360,7 @@ namespace Expression
     }
     internal sealed class IsNullExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object ret = null;
             if (m_Expressions.Count >= 1) {
@@ -2354,6 +2389,7 @@ namespace Expression
         protected override object OnCalc(IList<object> operands)
         {
             object r = null;
+#if UNITY_EDITOR
             if (operands.Count >= 1) {
                 var obj = operands[0] as UnityEngine.Object;
                 if (null != obj) {
@@ -2364,6 +2400,7 @@ namespace Expression
                         r = AssetDatabase.GetAssetPath(obj);
                 }
             }
+#endif
             return r;
         }
     }
@@ -2372,6 +2409,7 @@ namespace Expression
         protected override object OnCalc(IList<object> operands)
         {
             object ret = null;
+#if UNITY_EDITOR
             if (operands.Count >= 1) {
                 var list = new List<string>();
                 for (int i = 0; i < operands.Count; ++i) {
@@ -2391,7 +2429,24 @@ namespace Expression
                     ret = AssetDatabase.GetDependencies(list.ToArray());
                 }
             }
+#endif
             return ret;
+        }
+    }
+    internal class GetAssetImporterExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            object r = null;
+#if UNITY_EDITOR
+            if (operands.Count >= 1) {
+                var path = operands[0] as string;
+                if (null != path) {
+                    r = AssetImporter.GetAtPath(path);
+                }
+            }
+#endif
+            return r;
         }
     }
     internal class LoadAssetExp : SimpleExpressionBase
@@ -2399,12 +2454,14 @@ namespace Expression
         protected override object OnCalc(IList<object> operands)
         {
             object r = null;
+#if UNITY_EDITOR
             if (operands.Count >= 1) {
                 var path = operands[0] as string;
                 if (null != path) {
                     r = AssetDatabase.LoadMainAssetAtPath(path);
                 }
             }
+#endif
             return r;
         }
     }
@@ -2427,12 +2484,14 @@ namespace Expression
         protected override object OnCalc(IList<object> operands)
         {
             object r = null;
+#if UNITY_EDITOR
             if (operands.Count >= 1) {
                 var obj = operands[0] as UnityEngine.Object;
                 if (null != obj) {
-                    r = UnityEditor.PrefabUtility.GetPrefabType(obj);
+                    r = PrefabUtility.GetPrefabType(obj);
                 }
             }
+#endif
             return r;
         }
     }
@@ -2441,12 +2500,14 @@ namespace Expression
         protected override object OnCalc(IList<object> operands)
         {
             object r = null;
+#if UNITY_EDITOR
             if (operands.Count >= 1) {
                 var obj = operands[0] as UnityEngine.Object;
                 if (null != obj) {
-                    r = UnityEditor.PrefabUtility.GetPrefabObject(obj);
+                    r = PrefabUtility.GetPrefabObject(obj);
                 }
             }
+#endif
             return r;
         }
     }
@@ -2455,12 +2516,14 @@ namespace Expression
         protected override object OnCalc(IList<object> operands)
         {
             object r = null;
+#if UNITY_EDITOR
             if (operands.Count >= 1) {
                 var obj = operands[0] as UnityEngine.Object;
                 if (null != obj) {
-                    r = UnityEditor.PrefabUtility.GetPrefabParent(obj);
+                    r = PrefabUtility.GetPrefabParent(obj);
                 }
             }
+#endif
             return r;
         }
     }
@@ -3076,7 +3139,7 @@ namespace Expression
     }
     internal class HashtableExp : AbstractExpression
     {
-        public override object Calc()
+        protected override object DoCalc()
         {
             object r = null;
             Hashtable dict = new Hashtable();
@@ -3516,7 +3579,18 @@ namespace Expression
     {
         protected override object OnCalc(IList<object> operands)
         {
-            return Environment.GetCommandLineArgs();
+            if (operands.Count == 1 && operands[0] is string) {
+                string name = operands[0] as string;
+                string[] args = System.Environment.GetCommandLineArgs();
+                int suffixIndex = Array.FindIndex(args, item => item == name);
+                if (suffixIndex != -1 && suffixIndex < args.Length - 1) {
+                    return args[suffixIndex + 1];
+                }
+                return "";
+            }
+            else {
+                return Environment.GetCommandLineArgs();
+            }
         }
     }
     internal class OsExp : SimpleExpressionBase
@@ -4023,7 +4097,7 @@ namespace Expression
         }
         private static void CopyFolder(string targetRoot, string from, string to, IList<string> filterAndNewExts, ref int ct)
         {
-            if (!Directory.Exists(to))
+            if (!string.IsNullOrEmpty(to) && !Directory.Exists(to))
                 Directory.CreateDirectory(to);
             // 子文件夹
             foreach (string sub in Directory.GetDirectories(from)) {
@@ -4106,7 +4180,7 @@ namespace Expression
                 file2 = Environment.ExpandEnvironmentVariables(file2);
                 if (File.Exists(file1)) {
                     var dir = Path.GetDirectoryName(file2);
-                    if (!Directory.Exists(dir)) {
+                    if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir)) {
                         Directory.CreateDirectory(dir);
                     }
                     File.Copy(file1, file2, true);
@@ -4144,7 +4218,7 @@ namespace Expression
         }
         private static void CopyFolder(string from, string to, IList<string> filterAndNewExts, ref int ct)
         {
-            if (!Directory.Exists(to))
+            if (!string.IsNullOrEmpty(to) && !Directory.Exists(to))
                 Directory.CreateDirectory(to);
             // 文件
             for (int i = 0; i < filterAndNewExts.Count; i += 2) {
@@ -4177,7 +4251,7 @@ namespace Expression
                 file2 = Environment.ExpandEnvironmentVariables(file2);
                 if (File.Exists(file1)) {
                     var dir = Path.GetDirectoryName(file2);
-                    if (!Directory.Exists(dir)) {
+                    if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir)) {
                         Directory.CreateDirectory(dir);
                     }
                     if (File.Exists(file2)) {
@@ -4386,7 +4460,7 @@ namespace Expression
             if (operands.Count >= 2) {
                 string path = operands[0] as string;
                 var text = operands[1] as string;
-                if (!string.IsNullOrEmpty(path) && !string.IsNullOrEmpty(text)) {
+                if (!string.IsNullOrEmpty(path) && null != text) {
                     path = Environment.ExpandEnvironmentVariables(path);
                     Encoding encoding = Encoding.UTF8;
                     if (operands.Count >= 3) {
@@ -4404,6 +4478,7 @@ namespace Expression
     {
         protected override object OnCalc(IList<object> operands)
         {
+#if UNITY_EDITOR
             if (operands.Count >= 3) {
                 var title = operands[0] as string;
                 var text = operands[1] as string;
@@ -4412,6 +4487,7 @@ namespace Expression
                     EditorUtility.DisplayProgressBar(title, text, progress);
                 }
             }
+#endif
             return true;
         }
     }
@@ -4420,6 +4496,7 @@ namespace Expression
         protected override object OnCalc(IList<object> operands)
         {
             bool ret = false;
+#if UNITY_EDITOR
             if (operands.Count >= 3) {
                 var title = operands[0] as string;
                 var text = operands[1] as string;
@@ -4428,6 +4505,7 @@ namespace Expression
                     ret = EditorUtility.DisplayCancelableProgressBar(title, text, progress);
                 }
             }
+#endif
             return ret;
         }
     }
@@ -4435,8 +4513,191 @@ namespace Expression
     {
         protected override object OnCalc(IList<object> operands)
         {
+#if UNITY_EDITOR
             EditorUtility.ClearProgressBar();
+#endif
             return true;
+        }
+    }
+    internal class OpenWithDefaultAppExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+#if UNITY_EDITOR
+            if (operands.Count >= 1) {
+                string file = operands[0] as string;
+                if (!string.IsNullOrEmpty(file)) {
+                    EditorUtility.OpenWithDefaultApp(file);
+                }
+            }
+#endif
+            return null;
+        }
+    }
+    internal class OpenFolderPanelExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+#if UNITY_EDITOR
+            string ret = null;
+            if (operands.Count >= 3) {
+                string title = operands[0] as string;
+                string dir = operands[1] as string;
+                string def = operands[2] as string;
+                if (null != title && null != dir && null != def) {
+                    ret = EditorUtility.OpenFolderPanel(title, dir, def);
+                }
+            }
+            return ret;
+#else
+            return null;
+#endif
+        }
+    }
+    internal class OpenFilePanelExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+#if UNITY_EDITOR
+            string ret = null;
+            if (operands.Count >= 3) {
+                string title = operands[0] as string;
+                string dir = operands[1] as string;
+                string ext = operands[2] as string;
+                if (null != title && null != dir && null != ext) {
+                    ret = EditorUtility.OpenFilePanel(title, dir, ext);
+                }
+            }
+            return ret;
+#else
+            return null;
+#endif
+        }
+    }
+    internal class OpenFilePanelWithFiltersExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+#if UNITY_EDITOR
+            string ret = null;
+            if (operands.Count >= 3) {
+                string title = operands[0] as string;
+                string dir = operands[1] as string;
+                List<string> filters = new List<string>();
+                for(int i = 2; i < operands.Count; ++i) {
+                    string filter = operands[i] as string;
+                    if (!string.IsNullOrEmpty(filter)) {
+                        filters.Add(filter);
+                    }
+                }
+                if (null != title && null != dir) {
+                    ret = EditorUtility.OpenFilePanelWithFilters(title, dir, filters.ToArray());
+                }
+            }
+            return ret;
+#else
+            return null;
+#endif
+        }
+    }
+    internal class SaveFilePanelExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+#if UNITY_EDITOR
+            string ret = null;
+            if (operands.Count >= 4) {
+                string title = operands[0] as string;
+                string dir = operands[1] as string;
+                string def = operands[2] as string;
+                string ext = operands[3] as string;
+                if (null != title && null != dir && null != def && null != ext) {
+                    ret = EditorUtility.SaveFilePanel(title, dir, def, ext);
+                }
+            }
+            return ret;
+#else
+            return null;
+#endif
+        }
+    }
+    internal class SaveFilePanelInProjectExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+#if UNITY_EDITOR
+            string ret = null;
+            if (operands.Count >= 4) {
+                string title = operands[0] as string;
+                string def = operands[1] as string;
+                string ext = operands[2] as string;
+                string msg = operands[3] as string;
+                string path = string.Empty;
+                if (operands.Count >= 5) {
+                    path = operands[4] as string;
+                }
+                if (null != title && null != def && null != ext && null != msg) {
+                    if (!string.IsNullOrEmpty(path)) {
+                        ret = EditorUtility.SaveFilePanelInProject(title, def, ext, msg, path);
+                    } else {
+                        ret = EditorUtility.SaveFilePanelInProject(title, def, ext, msg);
+                    }
+                }
+            }
+            return ret;
+#else
+            return null;
+#endif
+        }
+    }
+    internal class SaveFolderPanelExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+#if UNITY_EDITOR
+            string ret = null;
+            if (operands.Count >= 3) {
+                string title = operands[0] as string;
+                string dir = operands[1] as string;
+                string def = operands[2] as string;
+                if (null != title && null != dir && null != def) {
+                    ret = EditorUtility.SaveFolderPanel(title, dir, def);
+                }
+            }
+            return ret;
+#else
+            return null;
+#endif
+        }
+    }
+    internal class DisplayDialogExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+#if UNITY_EDITOR
+            int ret = -1;
+            if (operands.Count >= 3) {
+                string title = operands[0] as string;
+                string msg = operands[1] as string;
+                string ok = operands[2] as string;
+                if (null != title && null != msg && null != ok) {
+                    if (operands.Count >= 4) {
+                        string cancel = operands[3] as string;
+                        if (operands.Count >= 5) {
+                            string alt = operands[4] as string;
+                            ret = EditorUtility.DisplayDialogComplex(title, msg, ok, cancel, alt);
+                        } else {
+                            ret = EditorUtility.DisplayDialog(title, msg, ok, cancel) ? 1 : 0;
+                        }
+                    } else {
+                        ret = EditorUtility.DisplayDialog(title, msg, ok) ? 1 : 0;
+                    }
+                }
+            }
+            return ret;
+#else
+            return -1;
+#endif
         }
     }
     public enum RunStateEnum
@@ -4531,6 +4792,7 @@ namespace Expression
             Register("isnull", new ExpressionFactoryHelper<IsNullExp>());
             Register("getassetpath", new ExpressionFactoryHelper<GetAssetPathExp>());
             Register("getdependencies", new ExpressionFactoryHelper<GetDependenciesExp>());
+            Register("getassetimporter", new ExpressionFactoryHelper<GetAssetImporterExp>());
             Register("loadasset", new ExpressionFactoryHelper<LoadAssetExp>());
             Register("unloadasset", new ExpressionFactoryHelper<UnloadAssetExp>());
             Register("getprefabtype", new ExpressionFactoryHelper<GetPrefabTypeExp>());
@@ -4651,6 +4913,14 @@ namespace Expression
             Register("displayprogressbar", new ExpressionFactoryHelper<DisplayProgressBarExp>());
             Register("displaycancelableprogressbar", new ExpressionFactoryHelper<DisplayCancelableProgressBarExp>());
             Register("clearprogressbar", new ExpressionFactoryHelper<ClearProgressBarExp>());
+            Register("openwithdefaultapp", new ExpressionFactoryHelper<OpenWithDefaultAppExp>());
+            Register("openfilepanel", new ExpressionFactoryHelper<OpenFilePanelExp>());
+            Register("openfilepanelwithfilters", new ExpressionFactoryHelper<OpenFilePanelWithFiltersExp>());
+            Register("openfolderpanel", new ExpressionFactoryHelper<OpenFolderPanelExp>());
+            Register("savefilepanel", new ExpressionFactoryHelper<SaveFilePanelExp>());
+            Register("savefilepanelinproject", new ExpressionFactoryHelper<SaveFilePanelInProjectExp>());
+            Register("savefolderpanel", new ExpressionFactoryHelper<SaveFolderPanelExp>());
+            Register("displaydialog", new ExpressionFactoryHelper<DisplayDialogExp>());
         }
         public void Register(string name, IExpressionFactory factory)
         {
@@ -4689,18 +4959,74 @@ namespace Expression
         {
             return m_NamedGlobalVariables.Remove(v);
         }
-        public void Load(string dslFile)
+        public void LoadDsl(string dslFile)
         {
             Dsl.DslFile file = new Dsl.DslFile();
             string path = dslFile;
             if (file.Load(path, (string s) => { Debug.LogError(s); })) {
                 foreach (Dsl.DslInfo info in file.DslInfos) {
-                    Load(info);
+                    LoadDsl(info);
                 }
             }
         }
-        public void Load(string proc, Dsl.FunctionData func)
+        public void LoadDsl(Dsl.DslInfo info)
         {
+            if (info.GetId() != "script")
+                return;
+            string id = info.First.Call.GetParamId(0);
+            Dsl.FunctionData func = null;
+            if (info.GetFunctionNum() == 1) {
+                func = info.First;
+            } else if (info.GetFunctionNum() == 2) {
+                func = info.Second;
+
+                if (func.GetId() == "args") {
+                    if (func.Call.GetParamNum() > 0) {
+                        List<string> names;
+                        if (!m_ProcArgNames.TryGetValue(id, out names)) {
+                            names = new List<string>();
+                            m_ProcArgNames.Add(id, names);
+                        } else {
+                            names.Clear();
+                        }
+                        foreach (var p in func.Call.Params) {
+                            names.Add(p.GetId());
+                        }
+                    }
+                } else {
+                    return;
+                }
+            } else {
+                return;
+            }
+            List<IExpression> list;
+            if (!m_Procs.TryGetValue(id, out list)) {
+                list = new List<IExpression>();
+                m_Procs.Add(id, list);
+            }
+            foreach (Dsl.ISyntaxComponent comp in func.Statements) {
+                var exp = Load(comp);
+                if (null != exp) {
+                    list.Add(exp);
+                }
+            }
+        }
+        public void LoadDsl(string proc, Dsl.FunctionData func)
+        {
+            LoadDsl(proc, null, func);
+        }
+        public void LoadDsl(string proc, IList<string> argNames, Dsl.FunctionData func)
+        {
+            if (null != argNames && argNames.Count > 0) {
+                List<string> names;
+                if(!m_ProcArgNames.TryGetValue(proc, out names)) {
+                    names = new List<string>(argNames);
+                    m_ProcArgNames.Add(proc, names);
+                } else {
+                    names.Clear();
+                    names.AddRange(argNames);
+                }
+            }
             List<IExpression> list;
             if (!m_Procs.TryGetValue(proc, out list)) {
                 list = new List<IExpression>();
@@ -4722,6 +5048,15 @@ namespace Expression
                 si.Args = args;
                 m_Stack.Push(si);
                 try {
+                    List<string> names;
+                    if(m_ProcArgNames.TryGetValue(proc, out names)) {
+                        for (int i = 0; i < names.Count; ++i) {
+                            if (i < args.Length)
+                                SetVariable(names[i], args[i]);
+                            else
+                                SetVariable(names[i], null);
+                        }
+                    }
                     for (int i = 0; i < exps.Count; ++i) {
                         var exp = exps[i];
                         try {
@@ -4762,32 +5097,32 @@ namespace Expression
             get { return m_RunState; }
             internal set { m_RunState = value; }
         }
-        internal IList<object> Arguments
+        public IList<object> Arguments
         {
             get {
                 var stackInfo = m_Stack.Peek();
                 return stackInfo.Args;
             }
         }
-        internal bool TryGetVariable(int v, out object result)
+        public bool TryGetVariable(int v, out object result)
         {
             return Variables.TryGetValue(v, out result);
         }
-        internal object GetVariable(int v)
+        public object GetVariable(int v)
         {
             object result = null;
             Variables.TryGetValue(v, out result);
             return result;
         }
-        internal void SetVariable(int v, object val)
+        public void SetVariable(int v, object val)
         {
             Variables[v] = val;
         }
-        internal bool RemoveVariable(int v)
+        public bool RemoveVariable(int v)
         {
             return Variables.Remove(v);
         }
-        internal bool TryGetVariable(string v, out object result)
+        public bool TryGetVariable(string v, out object result)
         {
             bool ret = false;
             if (v.Length > 0) {
@@ -4803,7 +5138,7 @@ namespace Expression
             }
             return ret;
         }
-        internal object GetVariable(string v)
+        public object GetVariable(string v)
         {
             object result = null;
             if (v.Length > 0) {
@@ -4817,7 +5152,7 @@ namespace Expression
             }
             return result;
         }
-        internal void SetVariable(string v, object val)
+        public void SetVariable(string v, object val)
         {
             if (v.Length > 0) {
                 if (v[0] == '@') {
@@ -4829,7 +5164,7 @@ namespace Expression
                 }
             }
         }
-        internal bool RemoveVariable(string v)
+        public bool RemoveVariable(string v)
         {
             bool ret = false;
             if (v.Length > 0) {
@@ -4843,7 +5178,7 @@ namespace Expression
             }
             return ret;
         }
-        internal IExpression Load(Dsl.ISyntaxComponent comp)
+        public IExpression Load(Dsl.ISyntaxComponent comp)
         {
             Dsl.ValueData valueData = comp as Dsl.ValueData;
             if (null != valueData) {
@@ -4860,7 +5195,7 @@ namespace Expression
             } else {
                 Dsl.CallData callData = comp as Dsl.CallData;
                 if (null != callData) {
-                    if (!callData.HaveId()) {
+                    if (!callData.HaveId() && !callData.IsHighOrder && (callData.GetParamClass() == (int)Dsl.CallData.ParamClassEnum.PARAM_CLASS_PARENTHESIS || callData.GetParamClass() == (int)Dsl.CallData.ParamClassEnum.PARAM_CLASS_BRACKET)) {
                         switch (callData.GetParamClass()) {
                             case (int)Dsl.CallData.ParamClassEnum.PARAM_CLASS_PARENTHESIS:
                                 int num = callData.GetParamNum();
@@ -5045,22 +5380,6 @@ namespace Expression
             }
             return ret;
         }
-        private void Load(Dsl.DslInfo info)
-        {
-            var func = info.First;
-            string id = func.Call.GetParamId(0);
-            List<IExpression> list;
-            if (!m_Procs.TryGetValue(id, out list)) {
-                list = new List<IExpression>();
-                m_Procs.Add(id, list);
-            }
-            foreach (Dsl.ISyntaxComponent comp in func.Statements) {
-                var exp = Load(comp);
-                if (null != exp) {
-                    list.Add(exp);
-                }
-            }
-        }
 
         private Dictionary<int, object> Variables
         {
@@ -5085,6 +5404,7 @@ namespace Expression
         }
 
         private RunStateEnum m_RunState = RunStateEnum.Normal;
+        private Dictionary<string, List<string>> m_ProcArgNames = new Dictionary<string, List<string>>();
         private Dictionary<string, List<IExpression>> m_Procs = new Dictionary<string, List<IExpression>>();
         private Stack<StackInfo> m_Stack = new Stack<StackInfo>();
         private Dictionary<string, object> m_NamedGlobalVariables = new Dictionary<string, object>();
@@ -5092,3 +5412,4 @@ namespace Expression
     }
 }
 #endregion
+#endif

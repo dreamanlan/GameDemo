@@ -384,7 +384,7 @@ internal static class TerrainEditUtility
                 int ix = 0;
                 foreach (var info in file.DslInfos) {
                     for (int i = 1; i < info.GetFunctionNum(); ++i) {
-                        calc.Load(ix.ToString(), info.GetFunction(i));
+                        calc.LoadDsl(ix.ToString(), info.GetFunction(i));
                         ++ix;
                     }
                 }
