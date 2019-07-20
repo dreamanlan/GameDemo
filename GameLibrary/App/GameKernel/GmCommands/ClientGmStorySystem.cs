@@ -63,8 +63,13 @@ namespace GameLibrary.GmCommands
             m_ConfigManager.Clear();
             m_ConfigManager.LoadStoryText(string.Empty, bytes, 0, string.Empty);
         }
+        public StoryInstance GetStory(string storyId)
+        {
+            return GetStoryInstance(storyId);
+        }
         public void StartStory(string storyId)
         {
+            StopStory(storyId);
             StoryInstance inst = NewStoryInstance(storyId);
             if (null != inst) {
                 m_StoryLogicInfos.Add(inst);
