@@ -58,20 +58,10 @@ namespace GameLibrary
             get { return m_IsStorySkipped; }
             set { m_IsStorySkipped = value; }
         }
-
-        public Dictionary<string, string> EncodeTable
+        public bool IsStorySpeedup
         {
-            get { return m_EncodeTable; }
-        }
-        public Dictionary<string, string> DecodeTable
-        {
-            get { return m_DecodeTable; }
-        }
-
-        private static void AddCrypto(string s, string d, Dictionary<string, string> encodeTable, Dictionary<string, string> decodeTable)
-        {
-            encodeTable.Add(s, d);
-            decodeTable.Add(d, s);
+            get { return m_IsStorySpeedup; }
+            set { m_IsStorySpeedup = value; }
         }
 
         private GlobalVariables()
@@ -87,11 +77,10 @@ namespace GameLibrary
 
         private bool m_StoryEditorOpen = false;
         private bool m_StoryEditorContinue = false;
-		private Dictionary<string, string> m_EncodeTable = new Dictionary<string, string>();
-        private Dictionary<string, string> m_DecodeTable = new Dictionary<string, string>();
 
         private bool m_IsPaused = false;
         private bool m_IsStorySkipped = false;
+        private bool m_IsStorySpeedup = false;
                 
         public static GlobalVariables Instance
         {
