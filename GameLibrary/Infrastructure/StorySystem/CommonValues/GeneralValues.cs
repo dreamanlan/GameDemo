@@ -99,7 +99,7 @@ namespace StorySystem.CommonValues
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class StoryValue : IStoryValue
+    internal sealed class StoryIdValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -109,7 +109,7 @@ namespace StorySystem.CommonValues
         }
         public IStoryValue Clone()
         {
-            StoryValue val = new StoryValue();
+            StoryIdValue val = new StoryIdValue();
             val.m_HaveValue = m_HaveValue;
             val.m_Value = m_Value;
             return val;
@@ -141,7 +141,7 @@ namespace StorySystem.CommonValues
         private bool m_HaveValue;
         private object m_Value;
     }
-    internal sealed class MessageValue : IStoryValue
+    internal sealed class MessageIdValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -151,7 +151,7 @@ namespace StorySystem.CommonValues
         }
         public IStoryValue Clone()
         {
-            MessageValue val = new MessageValue();
+            MessageIdValue val = new MessageIdValue();
             val.m_HaveValue = m_HaveValue;
             val.m_Value = m_Value;
             return val;
