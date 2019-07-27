@@ -737,13 +737,13 @@ namespace GameLibrary.Story.Commands
         private int m_CurTime = 0;
     }
     /// <summary>
-    /// pauseallmessagehandler(msgid1,msgid2,...);
+    /// suspendallmessagehandler(msgid1,msgid2,...);
     /// </summary>
-    internal class PauseAllMessageHandlerCommand : AbstractStoryCommand
+    internal class SuspendAllMessageHandlerCommand : AbstractStoryCommand
     {
         protected override IStoryCommand CloneCommand()
         {
-            PauseAllMessageHandlerCommand cmd = new PauseAllMessageHandlerCommand();
+            SuspendAllMessageHandlerCommand cmd = new SuspendAllMessageHandlerCommand();
             for (int i = 0; i < m_MsgIds.Count; i++) {
                 cmd.m_MsgIds.Add(m_MsgIds[i].Clone());
             }
@@ -762,7 +762,7 @@ namespace GameLibrary.Story.Commands
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             for (int i = 0; i < m_MsgIds.Count; i++) {
-                ClientStorySystem.Instance.PauseMessageHandler(m_MsgIds[i].Value, true);
+                ClientStorySystem.Instance.SuspendMessageHandler(m_MsgIds[i].Value, true);
             }
             return false;
         }
@@ -803,7 +803,7 @@ namespace GameLibrary.Story.Commands
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             for (int i = 0; i < m_MsgIds.Count; i++) {
-                ClientStorySystem.Instance.PauseMessageHandler(m_MsgIds[i].Value, false);
+                ClientStorySystem.Instance.SuspendMessageHandler(m_MsgIds[i].Value, false);
             }
             return false;
         }

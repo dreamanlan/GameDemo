@@ -22,7 +22,7 @@ namespace GameLibrary.Story
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GFX, "fireconcurrentmessage", new Story.Commands.FireConcurrentMessageCommandFactory());
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GFX, "waitallmessage", new StoryCommandFactoryHelper<Story.Commands.WaitAllMessageCommand>());
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GFX, "waitallmessagehandler", new StoryCommandFactoryHelper<Story.Commands.WaitAllMessageHandlerCommand>());
-            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GFX, "pauseallmessagehandler", new StoryCommandFactoryHelper<Story.Commands.PauseAllMessageHandlerCommand>());
+            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GFX, "suspendallmessagehandler", new StoryCommandFactoryHelper<Story.Commands.SuspendAllMessageHandlerCommand>());
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GFX, "resumeallmessagehandler", new StoryCommandFactoryHelper<Story.Commands.ResumeAllMessageHandlerCommand>());
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GFX, "sendaimessage", new StoryCommandFactoryHelper<Story.Commands.SendAiMessageCommand>());
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GFX, "sendaiconcurrentmessage", new StoryCommandFactoryHelper<Story.Commands.SendAiConcurrentMessageCommand>());
@@ -615,19 +615,19 @@ namespace GameLibrary.Story
             }
             return sum;
         }
-        public void PauseMessageHandler(string msgId, bool pause)
+        public void SuspendMessageHandler(string msgId, bool suspend)
         {
             int ct = m_StoryLogicInfos.Count;
             for (int ix = ct - 1; ix >= 0; --ix) {
                 StoryInstance info = m_StoryLogicInfos[ix];
-                info.PauseMessageHandler(msgId, pause);
+                info.SuspendMessageHandler(msgId, suspend);
             }
             foreach (var pair in m_AiStoryInstancePool) {
                 var infos = pair.Value;
                 int aiCt = infos.Count;
                 for (int ix = aiCt - 1; ix >= 0; --ix) {
                     if (infos[ix].m_IsUsed && null != infos[ix].m_StoryInstance) {
-                        infos[ix].m_StoryInstance.PauseMessageHandler(msgId, pause);
+                        infos[ix].m_StoryInstance.SuspendMessageHandler(msgId, suspend);
                     }
                 }
             }
