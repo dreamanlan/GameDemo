@@ -101,8 +101,8 @@ namespace StorySystem
                                         ret = factory.Build();
                                         ret.InitFromDsl(param);
                                     } catch (Exception ex) {
-                                        GameLibrary.LogSystem.Error("[LoadStory] value:{0} line:{1} failed.", param.ToScriptString(false), param.GetLine());
-                                        throw ex;
+                                        var msg = string.Format("[LoadStory] value:{0} line:{1} failed.", param.ToScriptString(false), param.GetLine());
+                                        throw new Exception(msg, ex);
                                     }
                                 }
                                 return ret;
@@ -123,8 +123,8 @@ namespace StorySystem
                                     ret = factory.Build();
                                     ret.InitFromDsl(param);
                                 } catch (Exception ex) {
-                                    GameLibrary.LogSystem.Error("[LoadStory] value:{0} line:{1} failed.", param.ToScriptString(false), param.GetLine());
-                                    throw ex;
+                                    var msg = string.Format("[LoadStory] value:{0} line:{1} failed.", param.ToScriptString(false), param.GetLine());
+                                    throw new Exception(msg, ex);
                                 }
                             }
                             return ret;
@@ -191,14 +191,14 @@ namespace StorySystem
                         IStoryValue ret = null;
                         string id = param.GetId();
                         if (param.GetIdType() == Dsl.ValueData.ID_TOKEN) {
-	                        IStoryValueFactory factory = GetFactory(id);
-	                        if (null != factory) {
-	                            try {
-	                                ret = factory.Build();
-	                                ret.InitFromDsl(param);
-	                            } catch (Exception ex) {
-                                    GameLibrary.LogSystem.Error("[LoadStory] value:{0}[{1}] line:{2} failed.", id, param.ToScriptString(false), param.GetLine());
-	                                throw ex;
+                            IStoryValueFactory factory = GetFactory(id);
+                            if (null != factory) {
+                                try {
+                                    ret = factory.Build();
+                                    ret.InitFromDsl(param);
+                                } catch (Exception ex) {
+                                    var msg = string.Format("[LoadStory] value:{0}[{1}] line:{2} failed.", id, param.ToScriptString(false), param.GetLine());
+                                    throw new Exception(msg, ex);
                                 }
                             } else {
 #if DEBUG

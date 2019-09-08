@@ -38,9 +38,9 @@ namespace Expression
             object ret = null;
             try {
                 ret = DoCalc();
-            } catch(Exception ex) {
-                Debug.LogErrorFormat("calc:[{0}] exception:{1}\n{2}", ToString(), ex.Message, ex.StackTrace);
-                throw ex;
+            } catch (Exception ex) {
+                var msg = string.Format("calc:[{0}]", ToString());
+                throw new Exception(msg, ex);
             }
             return ret;
         }
@@ -3788,6 +3788,17 @@ namespace Expression
             return r;
         }
     }
+    internal class DebugBreakExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            object r = null;
+            if (operands.Count >= 0) {
+                Debug.Break();
+            }
+            return r;
+        }
+    }
     internal class DebugLogExp : SimpleExpressionBase
     {
         protected override object OnCalc(IList<object> operands)
@@ -4878,6 +4889,7 @@ namespace Expression
             Register("getdirectoryname", new ExpressionFactoryHelper<GetDirectoryNameExp>());
             Register("combinepath", new ExpressionFactoryHelper<CombinePathExp>());
             Register("changeextension", new ExpressionFactoryHelper<ChangeExtensionExp>());
+            Register("debugbreak", new ExpressionFactoryHelper<DebugBreakExp>());
             Register("debuglog", new ExpressionFactoryHelper<DebugLogExp>());
             Register("debugwarning", new ExpressionFactoryHelper<DebugWarningExp>());
             Register("debugerror", new ExpressionFactoryHelper<DebugErrorExp>());
@@ -5069,19 +5081,25 @@ namespace Expression
                             }
                         } catch (DirectoryNotFoundException ex5) {
                             Debug.LogErrorFormat("calc:[{0}] exception:{1}\n{2}", exp.ToString(), ex5.Message, ex5.StackTrace);
+                            OutputInnerException(ex5);
                         } catch (FileNotFoundException ex4) {
                             Debug.LogErrorFormat("calc:[{0}] exception:{1}\n{2}", exp.ToString(), ex4.Message, ex4.StackTrace);
+                            OutputInnerException(ex4);
                         } catch (IOException ex3) {
                             Debug.LogErrorFormat("calc:[{0}] exception:{1}\n{2}", exp.ToString(), ex3.Message, ex3.StackTrace);
+                            OutputInnerException(ex3);
                             ret = -1;
                         } catch (UnauthorizedAccessException ex2) {
                             Debug.LogErrorFormat("calc:[{0}] exception:{1}\n{2}", exp.ToString(), ex2.Message, ex2.StackTrace);
+                            OutputInnerException(ex2);
                             ret = -1;
                         } catch (NotSupportedException ex1) {
                             Debug.LogErrorFormat("calc:[{0}] exception:{1}\n{2}", exp.ToString(), ex1.Message, ex1.StackTrace);
+                            OutputInnerException(ex1);
                             ret = -1;
                         }catch(Exception ex) {
                             Debug.LogErrorFormat("calc:[{0}] exception:{1}\n{2}", exp.ToString(), ex.Message, ex.StackTrace);
+                            OutputInnerException(ex);
                             ret = -1;
                             break;
                         }
@@ -5379,6 +5397,13 @@ namespace Expression
                 ret = factory.Create();
             }
             return ret;
+        }
+        private void OutputInnerException(Exception ex)
+        {
+            while (null != ex.InnerException) {
+                ex = ex.InnerException;
+                Debug.LogErrorFormat("\t=> exception:{0} stack:{1}", ex.Message, ex.StackTrace);
+            }
         }
 
         private Dictionary<int, object> Variables
