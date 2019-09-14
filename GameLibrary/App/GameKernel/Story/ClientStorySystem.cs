@@ -99,6 +99,11 @@ namespace GameLibrary.Story
             StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "isreallyactive", new StoryValueFactoryHelper<Story.Values.IsReallyActiveValue>());
             StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "isvisible", new StoryValueFactoryHelper<Story.Values.IsVisibleValue>());
             StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "getcomponent", new StoryValueFactoryHelper<Story.Values.GetComponentValue>());
+            StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "getcomponentinparent", new StoryValueFactoryHelper<Story.Values.GetComponentInParentValue>());
+            StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "getcomponentinchildren", new StoryValueFactoryHelper<Story.Values.GetComponentInChildrenValue>());
+            StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "getcomponents", new StoryValueFactoryHelper<Story.Values.GetComponentsValue>());
+            StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "getcomponentsinparent", new StoryValueFactoryHelper<Story.Values.GetComponentsInParentValue>());
+            StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "getcomponentsinchildren", new StoryValueFactoryHelper<Story.Values.GetComponentsInChildrenValue>());
             StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "getgameobject", new StoryValueFactoryHelper<Story.Values.GetGameObjectValue>());
             StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "getparent", new StoryValueFactoryHelper<Story.Values.GetParentValue>());
             StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "getchild", new StoryValueFactoryHelper<Story.Values.GetChildValue>());
