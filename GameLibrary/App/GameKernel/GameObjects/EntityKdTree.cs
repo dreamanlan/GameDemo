@@ -68,6 +68,12 @@ namespace GameLibrary
         public void Clear()
         {
             m_ObjectNum = 0;
+            for(int i = 0; i < m_Objects.Length; ++i) {
+                var obj = m_Objects[i];
+                if (null != obj) {
+                    obj.Object = null;
+                }
+            }
         }
         public void BeginBuild(int count)
         {
@@ -75,6 +81,12 @@ namespace GameLibrary
                 m_Objects = new KdTreeData[count * 2];
             }
             m_ObjectNum = 0;
+            for (int i = 0; i < m_Objects.Length; ++i) {
+                var obj = m_Objects[i];
+                if (null != obj) {
+                    obj.Object = null;
+                }
+            }
         }
         public void AddObjForBuild(EntityInfo obj)
         {
@@ -274,12 +286,16 @@ namespace GameLibrary
                             m_BuildStack.Push(m_KdTree[node].m_Left);
                             m_BuildStack.Push(left);
                             m_BuildStack.Push(begin);
+                        } else {
+                            m_KdTree[node].m_Left = 0;
                         }
 
                         if (end > left) {
                             m_BuildStack.Push(m_KdTree[node].m_Right);
                             m_BuildStack.Push(end);
                             m_BuildStack.Push(left);
+                        } else {
+                            m_KdTree[node].m_Right = 0;
                         }
                     } else {
                         m_KdTree[node].m_Begin = begin0;
@@ -287,6 +303,8 @@ namespace GameLibrary
                         m_KdTree[node].m_Left = 0;
                         m_KdTree[node].m_Right = 0;
                         nextUnusedNode -= 2;
+
+                        LogSystem.Error("KdTree build error, node {0} has no objs [{1}-{1}) and no sub tree.", node, begin0);
                     }
                 } else {
                     m_KdTree[node].m_Begin = begin;
@@ -354,7 +372,7 @@ namespace GameLibrary
                         KdTreeData obj = m_Objects[i];
                         if (Geometry.RectangleOverlapRectangle(pos.x - range, pos.z - range, pos.x + range, pos.z + range, obj.MinX, obj.MinZ, obj.MaxX, obj.MaxZ)) {
                             float distSq = Geometry.DistanceSquare(pos, obj.Position);
-                            if (!visitor(distSq, obj)) {
+                            if (!Visit(visitor, distSq, obj)) {
                                 m_QueryStack.Clear();
                                 return;
                             }
@@ -382,6 +400,15 @@ namespace GameLibrary
                     if (right > 0)
                         m_QueryStack.Push(right);
                 }
+            }
+        }
+        private bool Visit(MyFunc<float, KdTreeData, bool> visitor, float distSqr, KdTreeData obj)
+        {
+            try {
+                return visitor(distSqr, obj);
+            }catch(Exception ex) {
+                LogSystem.Error("exception:{0}\n{1}", ex.Message, ex.StackTrace);
+                return false;
             }
         }
 
@@ -435,13 +462,13 @@ namespace GameLibrary
                 bool isVertical = (maxX - minX > maxZ - minZ);
                 if (isVertical) {
                     float splitValue = 0.5f * (maxX + minX);
-                    if (!visitor(splitValue, minZ, splitValue, maxZ, begin, end, m_Objects)) {
+                    if (!Visit(visitor, splitValue, minZ, splitValue, maxZ, begin, end, m_Objects)) {
                         m_QueryStack.Clear();
                         return;
                     }
                 } else {
                     float splitValue = 0.5f * (maxZ + minZ);
-                    if (!visitor(minX, splitValue, maxX, splitValue, begin, end, m_Objects)) {
+                    if (!Visit(visitor, minX, splitValue, maxX, splitValue, begin, end, m_Objects)) {
                         m_QueryStack.Clear();
                         return;
                     }
@@ -451,6 +478,16 @@ namespace GameLibrary
                     m_QueryStack.Push(left);
                 if (right > 0)
                     m_QueryStack.Push(right);
+            }
+        }
+        private bool Visit(MyFunc<float, float, float, float, int, int, KdTreeData[], bool> visitor, float minx, float minz, float maxx, float maxz, int begin, int end, KdTreeData[] objs)
+        {
+            try {
+                return visitor(minx, minz, maxx, maxz, begin, end, objs);
+            }
+            catch (Exception ex) {
+                LogSystem.Error("exception:{0}\n{1}", ex.Message, ex.StackTrace);
+                return false;
             }
         }
 
