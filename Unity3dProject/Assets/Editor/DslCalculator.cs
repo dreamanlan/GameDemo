@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using System.IO;
+using System.Threading.Tasks;
+using System.Security.Cryptography;
 using System.Linq;
 using UnityEngine;
 #if UNITY_EDITOR
@@ -38,7 +40,8 @@ namespace Expression
             object ret = null;
             try {
                 ret = DoCalc();
-            } catch (Exception ex) {
+            }
+            catch (Exception ex) {
                 var msg = string.Format("calc:[{0}]", ToString());
                 throw new Exception(msg, ex);
             }
@@ -51,7 +54,8 @@ namespace Expression
             Dsl.ValueData valueData = dsl as Dsl.ValueData;
             if (null != valueData) {
                 return Load(valueData);
-            } else {
+            }
+            else {
                 Dsl.CallData callData = dsl as Dsl.CallData;
                 if (null != callData) {
                     bool ret = Load(callData);
@@ -65,11 +69,13 @@ namespace Expression
                         return Load(args);
                     }
                     return ret;
-                } else {
+                }
+                else {
                     Dsl.FunctionData funcData = dsl as Dsl.FunctionData;
                     if (null != funcData) {
                         return Load(funcData);
-                    } else {
+                    }
+                    else {
                         Dsl.StatementData statementData = dsl as Dsl.StatementData;
                         if (null != statementData) {
                             return Load(statementData);
@@ -122,10 +128,12 @@ namespace Expression
         {
             if (obj is T) {
                 return (T)obj;
-            } else {
+            }
+            else {
                 try {
                     return (T)Convert.ChangeType(obj, typeof(T));
-                } catch {
+                }
+                catch {
                     return default(T);
                 }
             }
@@ -137,10 +145,12 @@ namespace Expression
             Type st = obj.GetType();
             if (t.IsAssignableFrom(st) || st.IsSubclassOf(t)) {
                 return obj;
-            } else {
+            }
+            else {
                 try {
                     return Convert.ChangeType(obj, t);
-                } catch {
+                }
+                catch {
                     return null;
                 }
             }
@@ -150,10 +160,12 @@ namespace Expression
             var name = v as string;
             if (null != name) {
                 return Encoding.GetEncoding(name);
-            } else if (v is int) {
+            }
+            else if (v is int) {
                 int codePage = (int)Convert.ChangeType(v, typeof(int));
                 return Encoding.GetEncoding(codePage);
-            } else {
+            }
+            else {
                 return Encoding.UTF8;
             }
         }
@@ -228,10 +240,11 @@ namespace Expression
         {
             var varId = m_VarId.Calc();
             object v = m_Op.Calc();
-            if(varId is int) {
+            if (varId is int) {
                 int id = (int)Convert.ChangeType(varId, typeof(int));
                 Calculator.SetVariable(id, v);
-            } else {
+            }
+            else {
                 var str = varId as string;
                 if (null != str) {
                     Calculator.SetVariable(str, v);
@@ -260,7 +273,8 @@ namespace Expression
             if (varId is int) {
                 int id = (int)Convert.ChangeType(varId, typeof(int));
                 v = Calculator.GetVariable(id);
-            } else {
+            }
+            else {
                 var str = varId as string;
                 if (null != str) {
                     v = Calculator.GetVariable(str);
@@ -305,9 +319,11 @@ namespace Expression
             object ret = 0;
             if (m_VarId == "break") {
                 Calculator.RunState = RunStateEnum.Break;
-            } else if (m_VarId == "continue") {
+            }
+            else if (m_VarId == "continue") {
                 Calculator.RunState = RunStateEnum.Continue;
-            } else if (m_VarId.Length > 0) {
+            }
+            else if (m_VarId.Length > 0) {
                 ret = Calculator.GetVariable(m_VarId);
             }
             return ret;
@@ -336,27 +352,34 @@ namespace Expression
                     long v = long.Parse(id.Substring(2), System.Globalization.NumberStyles.HexNumber);
                     if (v >= int.MinValue && v <= int.MaxValue) {
                         m_Val = (int)v;
-                    } else {
-                        m_Val = v;
                     }
-                } else if (id.IndexOf('.') < 0) {
-                    long v = long.Parse(id);
-                    if (v >= int.MinValue && v <= int.MaxValue) {
-                        m_Val = (int)v;
-                    } else {
-                        m_Val = v;
-                    }
-                } else {
-                    double v = double.Parse(id);
-                    if (v >= float.MinValue && v <= float.MaxValue) {
-                        m_Val = (float)v;
-                    } else {
+                    else {
                         m_Val = v;
                     }
                 }
-            } else if (idType == Dsl.ValueData.BOOL_TOKEN) {
+                else if (id.IndexOf('.') < 0) {
+                    long v = long.Parse(id);
+                    if (v >= int.MinValue && v <= int.MaxValue) {
+                        m_Val = (int)v;
+                    }
+                    else {
+                        m_Val = v;
+                    }
+                }
+                else {
+                    double v = double.Parse(id);
+                    if (v >= float.MinValue && v <= float.MaxValue) {
+                        m_Val = (float)v;
+                    }
+                    else {
+                        m_Val = v;
+                    }
+                }
+            }
+            else if (idType == Dsl.ValueData.BOOL_TOKEN) {
                 m_Val = id == "true";
-            } else {
+            }
+            else {
                 m_Val = id;
             }
             return true;
@@ -373,7 +396,8 @@ namespace Expression
             object v;
             if (v1 is string || v2 is string) {
                 v = ToString(v1) + ToString(v2);
-            } else {
+            }
+            else {
                 v = ToDouble(v1) + ToDouble(v2);
             }
             return v;
@@ -1345,7 +1369,8 @@ namespace Expression
                 m_Op1 = Calculator.Load(cond);
                 m_Op2 = Calculator.Load(op1);
                 m_Op3 = Calculator.Load(op2);
-            } else {
+            }
+            else {
                 //error
                 Debug.LogErrorFormat("DslCalculator error, {0} line {1}", statementData.ToScriptString(false), statementData.GetLine());
             }
@@ -1374,7 +1399,8 @@ namespace Expression
                         }
                         break;
                     }
-                } else if (ix == m_Clauses.Count - 1) {
+                }
+                else if (ix == m_Clauses.Count - 1) {
                     for (int index = 0; index < clause.Expressions.Count; ++index) {
                         v = clause.Expressions[index].Calc();
                         if (Calculator.RunState != RunStateEnum.Normal) {
@@ -1413,7 +1439,8 @@ namespace Expression
                     if (first.Call.GetParamNum() > 0) {
                         Dsl.ISyntaxComponent cond = first.Call.GetParam(0);
                         item.Condition = Calculator.Load(cond);
-                    } else {
+                    }
+                    else {
                         //error
                         Debug.LogErrorFormat("DslCalculator error, {0} line {1}", first.ToScriptString(false), first.GetLine());
                     }
@@ -1431,7 +1458,8 @@ namespace Expression
                     if (fData.Call.GetParamNum() > 0) {
                         Dsl.ISyntaxComponent cond = fData.Call.GetParam(0);
                         item.Condition = Calculator.Load(cond);
-                    } else {
+                    }
+                    else {
                         //error
                         Debug.LogErrorFormat("DslCalculator error, {0} line {1}", fData.ToScriptString(false), fData.GetLine());
                     }
@@ -1440,11 +1468,13 @@ namespace Expression
                         item.Expressions.Add(subExp);
                     }
                     m_Clauses.Add(item);
-                } else if (fData.GetId() == "else") {
+                }
+                else if (fData.GetId() == "else") {
                     if (fData != statementData.Last) {
                         //error
                         Debug.LogErrorFormat("DslCalculator error, {0} line {1}", fData.ToScriptString(false), fData.GetLine());
-                    } else {
+                    }
+                    else {
                         IfExp.Clause item = new IfExp.Clause();
                         for (int ix = 0; ix < fData.GetStatementNum(); ++ix) {
                             IExpression subExp = Calculator.Load(fData.GetStatement(ix));
@@ -1452,7 +1482,8 @@ namespace Expression
                         }
                         m_Clauses.Add(item);
                     }
-                } else {
+                }
+                else {
                     //error
                     Debug.LogErrorFormat("DslCalculator error, {0} line {1}", fData.ToScriptString(false), fData.GetLine());
                 }
@@ -1481,13 +1512,15 @@ namespace Expression
                         if (Calculator.RunState == RunStateEnum.Continue) {
                             Calculator.RunState = RunStateEnum.Normal;
                             break;
-                        } else if (Calculator.RunState != RunStateEnum.Normal) {
+                        }
+                        else if (Calculator.RunState != RunStateEnum.Normal) {
                             if (Calculator.RunState == RunStateEnum.Break)
                                 Calculator.RunState = RunStateEnum.Normal;
                             return v;
                         }
                     }
-                } else {
+                }
+                else {
                     break;
                 }
             }
@@ -1516,7 +1549,8 @@ namespace Expression
                     if (first.Call.GetParamNum() > 0) {
                         Dsl.ISyntaxComponent cond = first.Call.GetParam(0);
                         m_Condition = Calculator.Load(cond);
-                    } else {
+                    }
+                    else {
                         //error
                         Debug.LogErrorFormat("DslCalculator error, {0} line {1}", first.ToScriptString(false), first.GetLine());
                     }
@@ -1542,10 +1576,11 @@ namespace Expression
                 Calculator.SetVariable("$$", i);
                 for (int index = 0; index < m_Expressions.Count; ++index) {
                     v = m_Expressions[index].Calc();
-                    if(Calculator.RunState == RunStateEnum.Continue) {
+                    if (Calculator.RunState == RunStateEnum.Continue) {
                         Calculator.RunState = RunStateEnum.Normal;
                         break;
-                    } else if(Calculator.RunState != RunStateEnum.Normal) {
+                    }
+                    else if (Calculator.RunState != RunStateEnum.Normal) {
                         if (Calculator.RunState == RunStateEnum.Break)
                             Calculator.RunState = RunStateEnum.Normal;
                         return v;
@@ -1577,7 +1612,8 @@ namespace Expression
                     if (first.Call.GetParamNum() > 0) {
                         Dsl.ISyntaxComponent exp = first.Call.GetParam(0);
                         m_Count = Calculator.Load(exp);
-                    } else {
+                    }
+                    else {
                         //error
                         Debug.LogErrorFormat("DslCalculator error, {0} line {1}", first.ToScriptString(false), first.GetLine());
                     }
@@ -1609,7 +1645,8 @@ namespace Expression
                         if (Calculator.RunState == RunStateEnum.Continue) {
                             Calculator.RunState = RunStateEnum.Normal;
                             break;
-                        } else if (Calculator.RunState != RunStateEnum.Normal) {
+                        }
+                        else if (Calculator.RunState != RunStateEnum.Normal) {
                             if (Calculator.RunState == RunStateEnum.Break)
                                 Calculator.RunState = RunStateEnum.Normal;
                             return v;
@@ -1642,7 +1679,8 @@ namespace Expression
                     if (first.Call.GetParamNum() > 0) {
                         Dsl.ISyntaxComponent exp = first.Call.GetParam(0);
                         m_List = Calculator.Load(exp);
-                    } else {
+                    }
+                    else {
                         //error
                         Debug.LogErrorFormat("DslCalculator error, {0} line {1}", first.ToScriptString(false), first.GetLine());
                     }
@@ -1676,7 +1714,8 @@ namespace Expression
                     if (Calculator.RunState == RunStateEnum.Continue) {
                         Calculator.RunState = RunStateEnum.Normal;
                         break;
-                    } else if (Calculator.RunState != RunStateEnum.Normal) {
+                    }
+                    else if (Calculator.RunState != RunStateEnum.Normal) {
                         if (Calculator.RunState == RunStateEnum.Break)
                             Calculator.RunState = RunStateEnum.Normal;
                         return v;
@@ -1716,7 +1755,8 @@ namespace Expression
                             Dsl.ISyntaxComponent exp = first.Call.GetParam(ix);
                             m_Elements.Add(Calculator.Load(exp));
                         }
-                    } else {
+                    }
+                    else {
                         //error
                         Debug.LogErrorFormat("DslCalculator error, {0} line {1}", first.ToScriptString(false), first.GetLine());
                     }
@@ -1791,7 +1831,8 @@ namespace Expression
                 var obj = m_Expressions[0].Calc();
                 try {
                     ret = obj.GetType().AssemblyQualifiedName;
-                } catch (Exception ex) {
+                }
+                catch (Exception ex) {
                     Debug.LogWarningFormat("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
                 }
             }
@@ -1817,7 +1858,8 @@ namespace Expression
                 var obj = m_Expressions[0].Calc();
                 try {
                     ret = obj.GetType().FullName;
-                } catch (Exception ex) {
+                }
+                catch (Exception ex) {
                     Debug.LogWarningFormat("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
                 }
             }
@@ -1843,7 +1885,8 @@ namespace Expression
                 var obj = m_Expressions[0].Calc();
                 try {
                     ret = obj.GetType().Name;
-                } catch (Exception ex) {
+                }
+                catch (Exception ex) {
                     Debug.LogWarningFormat("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
                 }
             }
@@ -1884,7 +1927,8 @@ namespace Expression
                     if (null == ret) {
                         Debug.LogWarningFormat("null == Type.GetType({0})", type);
                     }
-                } catch (Exception ex) {
+                }
+                catch (Exception ex) {
                     Debug.LogWarningFormat("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
                 }
             }
@@ -1912,29 +1956,41 @@ namespace Expression
                 try {
                     if (0 == type.CompareTo("sbyte")) {
                         ret = CastTo<sbyte>(obj);
-                    } else if (0 == type.CompareTo("byte")) {
+                    }
+                    else if (0 == type.CompareTo("byte")) {
                         ret = CastTo<byte>(obj);
-                    } else if (0 == type.CompareTo("short")) {
+                    }
+                    else if (0 == type.CompareTo("short")) {
                         ret = CastTo<short>(obj);
-                    } else if (0 == type.CompareTo("ushort")) {
+                    }
+                    else if (0 == type.CompareTo("ushort")) {
                         ret = CastTo<ushort>(obj);
-                    } else if (0 == type.CompareTo("int")) {
+                    }
+                    else if (0 == type.CompareTo("int")) {
                         ret = CastTo<int>(obj);
-                    } else if (0 == type.CompareTo("uint")) {
+                    }
+                    else if (0 == type.CompareTo("uint")) {
                         ret = CastTo<uint>(obj);
-                    } else if (0 == type.CompareTo("long")) {
+                    }
+                    else if (0 == type.CompareTo("long")) {
                         ret = CastTo<long>(obj);
-                    } else if (0 == type.CompareTo("ulong")) {
+                    }
+                    else if (0 == type.CompareTo("ulong")) {
                         ret = CastTo<ulong>(obj);
-                    } else if (0 == type.CompareTo("float")) {
+                    }
+                    else if (0 == type.CompareTo("float")) {
                         ret = CastTo<float>(obj);
-                    } else if (0 == type.CompareTo("double")) {
+                    }
+                    else if (0 == type.CompareTo("double")) {
                         ret = CastTo<double>(obj);
-                    } else if (0 == type.CompareTo("string")) {
+                    }
+                    else if (0 == type.CompareTo("string")) {
                         ret = CastTo<string>(obj);
-                    } else if (0 == type.CompareTo("bool")) {
+                    }
+                    else if (0 == type.CompareTo("bool")) {
                         ret = CastTo<bool>(obj);
-                    } else {
+                    }
+                    else {
                         Type t = Type.GetType("UnityEngine." + type + ", UnityEngine");
                         if (null == t) {
                             t = Type.GetType("UnityEngine.UI." + type + ", UnityEngine.UI");
@@ -1950,11 +2006,13 @@ namespace Expression
                         }
                         if (null != t) {
                             ret = Convert.ChangeType(obj, t);
-                        } else {
+                        }
+                        else {
                             Debug.LogWarningFormat("null == Type.GetType({0})", type);
                         }
                     }
-                } catch (Exception ex) {
+                }
+                catch (Exception ex) {
                     Debug.LogWarningFormat("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
                 }
             }
@@ -1995,10 +2053,12 @@ namespace Expression
                     }
                     if (null != t) {
                         ret = Enum.Parse(t, val, true);
-                    } else {
+                    }
+                    else {
                         Debug.LogWarningFormat("null == Type.GetType({0})", type);
                     }
-                } catch (Exception ex) {
+                }
+                catch (Exception ex) {
                     Debug.LogWarningFormat("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
                 }
             }
@@ -2029,10 +2089,12 @@ namespace Expression
                 var v = exp.Calc();
                 if (ix == 0) {
                     obj = v;
-                } else if (ix == 1) {
+                }
+                else if (ix == 1) {
                     methodObj = v;
                     method = v as string;
-                } else {
+                }
+                else {
                     arglist.Add(v);
                 }
             }
@@ -2045,37 +2107,43 @@ namespace Expression
                         if (null != d) {
                             ret = d.DynamicInvoke();
                         }
-                    } else {
+                    }
+                    else {
                         Type t = obj as Type;
                         if (null != t) {
                             try {
                                 BindingFlags flags = BindingFlags.Static | BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.NonPublic;
                                 Converter.CastArgsForCall(t, method, flags, _args);
                                 ret = t.InvokeMember(method, flags, null, null, _args);
-                            } catch (Exception ex) {
+                            }
+                            catch (Exception ex) {
                                 Debug.LogWarningFormat("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
                             }
-                        } else {
+                        }
+                        else {
                             t = obj.GetType();
                             if (null != t) {
                                 try {
                                     BindingFlags flags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.NonPublic;
                                     Converter.CastArgsForCall(t, method, flags, _args);
                                     ret = t.InvokeMember(method, flags, null, obj, _args);
-                                } catch (Exception ex) {
+                                }
+                                catch (Exception ex) {
                                     Debug.LogWarningFormat("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
                                 }
                             }
                         }
                     }
-                } else if (null != methodObj) {
+                }
+                else if (null != methodObj) {
                     IDictionary dict = obj as IDictionary;
                     if (null != dict && dict.Contains(methodObj)) {
                         var d = dict[methodObj] as Delegate;
                         if (null != d) {
                             ret = d.DynamicInvoke();
                         }
-                    } else {
+                    }
+                    else {
                         IEnumerable enumer = obj as IEnumerable;
                         if (null != enumer && methodObj is int) {
                             int index = (int)methodObj;
@@ -2118,10 +2186,12 @@ namespace Expression
                 var v = exp.Calc();
                 if (ix == 0) {
                     obj = v;
-                } else if (ix == 1) {
+                }
+                else if (ix == 1) {
                     methodObj = v;
                     method = v as string;
-                } else {
+                }
+                else {
                     arglist.Add(v);
                 }
             }
@@ -2131,34 +2201,40 @@ namespace Expression
                     IDictionary dict = obj as IDictionary;
                     if (null != dict && null == obj.GetType().GetMethod(method, BindingFlags.Instance | BindingFlags.Static | BindingFlags.SetField | BindingFlags.SetProperty | BindingFlags.Public | BindingFlags.NonPublic)) {
                         dict[method] = _args[0];
-                    } else {
+                    }
+                    else {
                         Type t = obj as Type;
                         if (null != t) {
                             try {
                                 BindingFlags flags = BindingFlags.Static | BindingFlags.SetField | BindingFlags.SetProperty | BindingFlags.Public | BindingFlags.NonPublic;
                                 Converter.CastArgsForSet(t, method, flags, _args);
                                 ret = t.InvokeMember(method, flags, null, null, _args);
-                            } catch (Exception ex) {
+                            }
+                            catch (Exception ex) {
                                 Debug.LogWarningFormat("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
                             }
-                        } else {
+                        }
+                        else {
                             t = obj.GetType();
                             if (null != t) {
                                 try {
                                     BindingFlags flags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.SetField | BindingFlags.SetProperty | BindingFlags.Public | BindingFlags.NonPublic;
                                     Converter.CastArgsForSet(t, method, flags, _args);
                                     ret = t.InvokeMember(method, flags, null, obj, _args);
-                                } catch (Exception ex) {
+                                }
+                                catch (Exception ex) {
                                     Debug.LogWarningFormat("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
                                 }
                             }
                         }
                     }
-                } else if (null != methodObj) {
+                }
+                else if (null != methodObj) {
                     IDictionary dict = obj as IDictionary;
                     if (null != dict && dict.Contains(methodObj)) {
                         dict[methodObj] = _args[0];
-                    } else {
+                    }
+                    else {
                         IList list = obj as IList;
                         if (null != list && methodObj is int) {
                             int index = (int)methodObj;
@@ -2196,10 +2272,12 @@ namespace Expression
                 var v = exp.Calc();
                 if (ix == 0) {
                     obj = v;
-                } else if (ix == 1) {
+                }
+                else if (ix == 1) {
                     methodObj = v;
                     method = v as string;
-                } else {
+                }
+                else {
                     arglist.Add(v);
                 }
             }
@@ -2209,34 +2287,40 @@ namespace Expression
                     IDictionary dict = obj as IDictionary;
                     if (null != dict && dict.Contains(method)) {
                         ret = dict[method];
-                    } else {
+                    }
+                    else {
                         Type t = obj as Type;
                         if (null != t) {
                             try {
                                 BindingFlags flags = BindingFlags.Static | BindingFlags.GetField | BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.NonPublic;
                                 Converter.CastArgsForGet(t, method, flags, _args);
                                 ret = t.InvokeMember(method, flags, null, null, _args);
-                            } catch (Exception ex) {
+                            }
+                            catch (Exception ex) {
                                 Debug.LogWarningFormat("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
                             }
-                        } else {
+                        }
+                        else {
                             t = obj.GetType();
                             if (null != t) {
                                 try {
                                     BindingFlags flags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.GetField | BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.NonPublic;
                                     Converter.CastArgsForGet(t, method, flags, _args);
                                     ret = t.InvokeMember(method, flags, null, obj, _args);
-                                } catch (Exception ex) {
+                                }
+                                catch (Exception ex) {
                                     Debug.LogWarningFormat("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
                                 }
                             }
                         }
                     }
-                } else if (null != methodObj) {
+                }
+                else if (null != methodObj) {
                     IDictionary dict = obj as IDictionary;
                     if (null != dict && dict.Contains(methodObj)) {
                         ret = dict[methodObj];
-                    } else {
+                    }
+                    else {
                         IEnumerable enumer = obj as IEnumerable;
                         if (null != enumer && methodObj is int) {
                             int index = (int)methodObj;
@@ -2295,7 +2379,8 @@ namespace Expression
                         int r = 0;
                         if (null != rs1 && null != rs2) {
                             r = rs1.CompareTo(rs2);
-                        } else {
+                        }
+                        else {
                             double rd1 = ToDouble(r1);
                             double rd2 = ToDouble(r2);
                             r = rd1.CompareTo(rd2);
@@ -2305,7 +2390,8 @@ namespace Expression
                         return r;
                     });
                     v = results;
-                } else if (method == "where") {
+                }
+                else if (method == "where") {
                     List<object> results = new List<object>();
                     IEnumerator enumer = obj.GetEnumerator();
                     while (enumer.MoveNext()) {
@@ -2321,7 +2407,8 @@ namespace Expression
                         }
                     }
                     v = results;
-                } else if (method == "top") {
+                }
+                else if (method == "top") {
                     object r = null;
                     for (int index = 0; index < m_Expressions.Count; ++index) {
                         r = m_Expressions[index].Calc();
@@ -2416,7 +2503,8 @@ namespace Expression
                     var str = operands[i] as string;
                     if (null != str) {
                         list.Add(str);
-                    } else {
+                    }
+                    else {
                         var strList = operands[i] as IList<string>;
                         if (null != strList) {
                             list.AddRange(strList);
@@ -2425,7 +2513,8 @@ namespace Expression
                 }
                 if (list.Count == 1) {
                     ret = AssetDatabase.GetDependencies(list[0]);
-                } else if (list.Count > 1) {
+                }
+                else if (list.Count > 1) {
                     ret = AssetDatabase.GetDependencies(list.ToArray());
                 }
             }
@@ -2694,7 +2783,8 @@ namespace Expression
                 if (null != sb) {
                     if (string.IsNullOrEmpty(fmt)) {
                         sb.AppendLine();
-                    } else {
+                    }
+                    else {
                         sb.AppendFormat(fmt, al.ToArray());
                         sb.AppendLine();
                     }
@@ -2751,7 +2841,8 @@ namespace Expression
                         string sep = seps[i].ToString();
                         if (sep.Length > 0) {
                             cs[i] = sep[0];
-                        } else {
+                        }
+                        else {
                             cs[i] = '\0';
                         }
                     }
@@ -2865,7 +2956,8 @@ namespace Expression
                         c = str[0];
                     }
                     chars.Add(c);
-                } else {
+                }
+                else {
                     char c = (char)Convert.ChangeType(operands[i], typeof(char));
                     chars.Add(c);
                 }
@@ -2896,7 +2988,7 @@ namespace Expression
             if (operands.Count >= 1) {
                 var str = operands[0] as string;
                 float v;
-                if(float.TryParse(str, out v)) {
+                if (float.TryParse(str, out v)) {
                     r = v;
                 }
             }
@@ -2911,7 +3003,7 @@ namespace Expression
             if (operands.Count >= 1) {
                 var str = operands[0] as string;
                 int v;
-                if(int.TryParse(str,System.Globalization.NumberStyles.AllowHexSpecifier, null, out v)) {
+                if (int.TryParse(str, System.Globalization.NumberStyles.AllowHexSpecifier, null, out v)) {
                     r = v;
                 }
             }
@@ -2929,7 +3021,7 @@ namespace Expression
             }
             return r;
         }
-    }    
+    }
     internal class ListSizeExp : SimpleExpressionBase
     {
         protected override object OnCalc(IList<object> operands)
@@ -2972,7 +3064,8 @@ namespace Expression
                 if (null != list) {
                     if (index >= 0 && index < list.Count) {
                         r = list[index];
-                    } else {
+                    }
+                    else {
                         r = defVal;
                     }
                 }
@@ -3301,7 +3394,7 @@ namespace Expression
                 var dict = operands[0] as IDictionary;
                 if (null != dict) {
                     var list = new ArrayList();
-                    foreach(var pair in dict){
+                    foreach (var pair in dict) {
                         list.Add(pair);
                     }
                     r = list;
@@ -3356,7 +3449,8 @@ namespace Expression
                 var queue = operands[0] as Queue<object>;
                 if (null != stack) {
                     r = stack.Peek();
-                } else if (null != queue) {
+                }
+                else if (null != queue) {
                     r = queue.Peek();
                 }
             }
@@ -3807,7 +3901,7 @@ namespace Expression
             if (operands.Count >= 1) {
                 var fmt = operands[0] as string;
                 ArrayList al = new ArrayList();
-                for(int i = 1; i < operands.Count; ++i) {
+                for (int i = 1; i < operands.Count; ++i) {
                     al.Add(operands[i]);
                 }
                 Debug.LogFormat(fmt, al.ToArray());
@@ -3856,7 +3950,7 @@ namespace Expression
                 var proc = operands[0] as string;
                 if (null != proc) {
                     ArrayList arrayList = new ArrayList();
-                    for (int i = 1; i < operands.Count;++i){
+                    for (int i = 1; i < operands.Count; ++i) {
                         arrayList.Add(operands[i]);
                     }
                     r = Calculator.Calc(proc, arrayList.ToArray());
@@ -3932,7 +4026,8 @@ namespace Expression
                     var strList = operands[1] as IList<string>;
                     if (null != strList && operands.Count == 2) {
                         filterList = strList;
-                    } else {
+                    }
+                    else {
                         var list = new List<string>();
                         for (int i = 1; i < operands.Count; ++i) {
                             var str = operands[i] as string;
@@ -3968,7 +4063,8 @@ namespace Expression
                     var strList = operands[1] as IList<string>;
                     if (null != strList && operands.Count == 2) {
                         filterList = strList;
-                    } else {
+                    }
+                    else {
                         var list = new List<string>();
                         for (int i = 1; i < operands.Count; ++i) {
                             var str = operands[i] as string;
@@ -4004,7 +4100,8 @@ namespace Expression
                     var strList = operands[1] as IList<string>;
                     if (null != strList && operands.Count == 2) {
                         filterList = strList;
-                    } else {
+                    }
+                    else {
                         var list = new List<string>();
                         for (int i = 1; i < operands.Count; ++i) {
                             var str = operands[i] as string;
@@ -4040,7 +4137,8 @@ namespace Expression
                     var strList = operands[1] as IList<string>;
                     if (null != strList && operands.Count == 2) {
                         filterList = strList;
-                    } else {
+                    }
+                    else {
                         var list = new List<string>();
                         for (int i = 1; i < operands.Count; ++i) {
                             var str = operands[i] as string;
@@ -4074,6 +4172,7 @@ namespace Expression
                 if (!Directory.Exists(dir)) {
                     Directory.CreateDirectory(dir);
                     ret = true;
+                    Debug.LogFormat("create directory {0}", dir);
                 }
             }
             return ret;
@@ -4116,7 +4215,8 @@ namespace Expression
                 if (Environment.OSVersion.Platform == PlatformID.Unix || Environment.OSVersion.Platform == PlatformID.MacOSX) {
                     if (srcPath.IndexOf(targetRoot) == 0)
                         continue;
-                } else {
+                }
+                else {
                     if (srcPath.IndexOf(targetRoot, StringComparison.CurrentCultureIgnoreCase) == 0)
                         continue;
                 }
@@ -4138,6 +4238,7 @@ namespace Expression
                         targetFile = Path.Combine(to, Path.ChangeExtension(Path.GetFileName(file), newExt));
                     File.Copy(file, targetFile, true);
                     ++ct;
+                    Debug.LogFormat("copy file {0} => {1}", file, targetFile);
                 }
             }
         }
@@ -4158,6 +4259,7 @@ namespace Expression
                     }
                     Directory.Move(dir1, dir2);
                     ret = true;
+                    Debug.LogFormat("move directory {0} => {1}", dir1, dir2);
                 }
             }
             return ret;
@@ -4174,6 +4276,7 @@ namespace Expression
                 if (Directory.Exists(dir)) {
                     Directory.Delete(dir, true);
                     ret = true;
+                    Debug.LogFormat("delete directory {0}", dir);
                 }
             }
             return ret;
@@ -4196,6 +4299,7 @@ namespace Expression
                     }
                     File.Copy(file1, file2, true);
                     ret = true;
+                    Debug.LogFormat("copy file {0} => {1}", file1, file2);
                 }
             }
             return ret;
@@ -4246,6 +4350,7 @@ namespace Expression
                         targetFile = Path.Combine(to, Path.ChangeExtension(Path.GetFileName(file), newExt));
                     File.Copy(file, targetFile, true);
                     ++ct;
+                    Debug.LogFormat("copy file {0} => {1}", file, targetFile);
                 }
             }
         }
@@ -4270,6 +4375,7 @@ namespace Expression
                     }
                     File.Move(file1, file2);
                     ret = true;
+                    Debug.LogFormat("move file {0} => {1}", file1, file2);
                 }
             }
             return ret;
@@ -4286,6 +4392,7 @@ namespace Expression
                 if (File.Exists(file)) {
                     File.Delete(file);
                     ret = true;
+                    Debug.LogFormat("delete file {0}", file);
                 }
             }
             return ret;
@@ -4314,6 +4421,7 @@ namespace Expression
                         foreach (string file in Directory.GetFiles(dir, filter, SearchOption.TopDirectoryOnly)) {
                             File.Delete(file);
                             ++ct;
+                            Debug.LogFormat("delete file {0}", file);
                         }
                     }
                 }
@@ -4344,6 +4452,7 @@ namespace Expression
                         foreach (string file in Directory.GetFiles(dir, filter, SearchOption.AllDirectories)) {
                             File.Delete(file);
                             ++ct;
+                            Debug.LogFormat("delete file {0}", file);
                         }
                     }
                 }
@@ -4388,7 +4497,7 @@ namespace Expression
             object ret = null;
             if (operands.Count >= 1) {
                 var drive = operands[0] as string;
-                ret = new DriveInfo(drive);                
+                ret = new DriveInfo(drive);
             }
             return ret;
         }
@@ -4485,6 +4594,728 @@ namespace Expression
             return false;
         }
     }
+    internal class CommandExp : AbstractExpression
+    {
+        protected override object DoCalc()
+        {
+            int exitCode = 0;
+            MemoryStream ims = null, oms = null;
+            int ct = m_CommandConfigs.Count;
+            for (int i = 0; i < ct; ++i) {
+                try {
+                    if (i > 0) {
+                        ims = oms;
+                        oms = null;
+                    }
+                    if (i < ct - 1) {
+                        oms = new MemoryStream();
+                    }
+                    var cfg = m_CommandConfigs[i];
+                    if (cfg.m_Commands.Count > 0) {
+                        exitCode = ExecCommand(cfg, ims, oms);
+                    }
+                    else {
+                        exitCode = ExecProcess(cfg, ims, oms);
+                    }
+                }
+                finally {
+                    if (null != ims) {
+                        ims.Close();
+                        ims.Dispose();
+                        ims = null;
+                    }
+                }
+            }
+            return exitCode;
+        }
+        protected override bool Load(Dsl.CallData callData)
+        {
+            var cmd = new CommandConfig();
+            m_CommandConfigs.Add(cmd);
+
+            var id = callData.GetId();
+            if (id == "process") {
+                int num = callData.GetParamNum();
+                if (num > 0) {
+                    var param0 = callData.GetParam(0);
+                    var exp0 = Calculator.Load(param0);
+                    cmd.m_FileName = exp0;
+
+                    if (num > 1) {
+                        var param1 = callData.GetParam(1);
+                        var exp1 = Calculator.Load(param1);
+                        cmd.m_Argments = exp1;
+                    }
+                }
+                else {
+                    Debug.LogFormat("[syntax error] {0} line:{1}", callData.ToScriptString(false), callData.GetLine());
+                }
+            }
+            else if (id == "command") {
+                int num = callData.GetParamNum();
+                if (num > 0) {
+                    Debug.LogFormat("[syntax error] {0} line:{1}", callData.ToScriptString(false), callData.GetLine());
+                }
+            }
+            else {
+                Debug.LogFormat("[syntax error] {0} line:{1}", callData.ToScriptString(false), callData.GetLine());
+            }
+            return true;
+        }
+        protected override bool Load(Dsl.FunctionData funcData)
+        {
+            var id = funcData.GetId();
+            var callData = funcData.Call;
+            Load(callData);
+            if (funcData.HaveStatement()) {
+                var cmd = m_CommandConfigs[m_CommandConfigs.Count - 1];
+                for (int i = 0; i < funcData.GetStatementNum(); ++i) {
+                    var comp = funcData.GetStatement(i);
+                    var cd = comp as Dsl.CallData;
+                    if (null != cd) {
+                        int num = cd.GetParamNum();
+                        if (num >= 1) {
+                            string type = cd.GetId();
+                            var exp = Calculator.Load(cd.GetParam(0));
+                            if (type == "input") {
+                                cmd.m_Input = exp;
+                            }
+                            else if (type == "output") {
+                                cmd.m_Output = exp;
+                            }
+                            else if (type == "error") {
+                                cmd.m_Error = exp;
+                            }
+                            else if (type == "nowait") {
+                                cmd.m_NoWait = exp;
+                            }
+                            else if (type == "useshellexecute") {
+                                cmd.m_UseShellExecute = exp;
+                            }
+                            else if (type == "verb") {
+                                cmd.m_Verb = exp;
+                            }
+                            else if (type == "domain") {
+                                cmd.m_Domain = exp;
+                            }
+                            else if (type == "user") {
+                                cmd.m_UserName = exp;
+                            }
+                            else if (type == "password") {
+                                cmd.m_Password = exp;
+                            }
+                            else if (type == "passwordincleartext") {
+                                cmd.m_PasswordInClearText = exp;
+                            }
+                            else if (type == "loadprofile") {
+                                cmd.m_LoadUserProfile = exp;
+                            }
+                            else if (type == "windowstyle") {
+                                cmd.m_WindowStyle = exp;
+                            }
+                            else if (type == "newwindow") {
+                                cmd.m_NewWindow = exp;
+                            }
+                            else if (type == "errordialog") {
+                                cmd.m_ErrorDialog = exp;
+                            }
+                            else if (type == "workingdirectory") {
+                                cmd.m_WorkingDirectory = exp;
+                            }
+                            else if (type == "encoding") {
+                                cmd.m_Encoding = exp;
+                            }
+                            else {
+                                Debug.LogFormat("[syntax error] {0} line:{1}", cd.ToScriptString(false), cd.GetLine());
+                            }
+                        }
+                        else {
+                            Debug.LogFormat("[syntax error] {0} line:{1}", cd.ToScriptString(false), cd.GetLine());
+                        }
+                    }
+                    else {
+                        var fd = comp as Dsl.FunctionData;
+                        if (null != fd && fd.Call.GetParamNum() == 0 && fd.HaveExternScript()) {
+                            string os = fd.GetId();
+                            string txt = fd.GetExternScript();
+                            cmd.m_Commands.Add(os, txt);
+                        }
+                        else {
+                            Debug.LogFormat("[syntax error] {0} line:{1}", comp.ToScriptString(false), comp.GetLine());
+                        }
+                    }
+                }
+            }
+            return true;
+        }
+        protected override bool Load(Dsl.StatementData statementData)
+        {
+            for (int i = 0; i < statementData.GetFunctionNum(); ++i) {
+                var funcData = statementData.GetFunction(i);
+                Load(funcData);
+            }
+            return true;
+        }
+        private int ExecProcess(CommandConfig cfg, Stream istream, Stream ostream)
+        {
+            string fileName = string.Empty;
+            if (null != cfg.m_FileName) {
+                fileName = cfg.m_FileName.Calc() as string;
+            }
+            string args = string.Empty;
+            if (null != cfg.m_Argments) {
+                args = cfg.m_Argments.Calc() as string;
+            }
+            bool noWait = false;
+            if (null != cfg.m_NoWait) {
+                noWait = (bool)Convert.ChangeType(cfg.m_NoWait.Calc(), typeof(bool));
+            }
+            DslCalculator.ProcessStartOption option = new DslCalculator.ProcessStartOption();
+            if (null != cfg.m_UseShellExecute) {
+                option.UseShellExecute = (bool)Convert.ChangeType(cfg.m_UseShellExecute.Calc(), typeof(bool));
+            }
+            if (null != cfg.m_Verb) {
+                option.Verb = cfg.m_Verb.Calc() as string;
+            }
+            if (null != cfg.m_Domain) {
+                option.Domain = cfg.m_Domain.Calc() as string;
+            }
+            if (null != cfg.m_UserName) {
+                option.UserName = cfg.m_UserName.Calc() as string;
+            }
+            if (null != cfg.m_Password) {
+                option.Password = cfg.m_Password.Calc() as string;
+            }
+            if (null != cfg.m_PasswordInClearText) {
+                option.PasswordInClearText = cfg.m_PasswordInClearText.Calc() as string;
+            }
+            if (null != cfg.m_LoadUserProfile) {
+                option.LoadUserProfile = (bool)Convert.ChangeType(cfg.m_LoadUserProfile.Calc(), typeof(bool));
+            }
+            if (null != cfg.m_WindowStyle) {
+                var str = cfg.m_WindowStyle.Calc() as string;
+                System.Diagnostics.ProcessWindowStyle style;
+                if (Enum.TryParse(str, out style)) {
+                    option.WindowStyle = style;
+                }
+            }
+            if (null != cfg.m_NewWindow) {
+                option.NewWindow = (bool)Convert.ChangeType(cfg.m_NewWindow.Calc(), typeof(bool));
+            }
+            if (null != cfg.m_ErrorDialog) {
+                option.ErrorDialog = (bool)Convert.ChangeType(cfg.m_ErrorDialog.Calc(), typeof(bool));
+            }
+            if (null != cfg.m_WorkingDirectory) {
+                option.WorkingDirectory = cfg.m_WorkingDirectory.Calc() as string;
+            }
+            Encoding encoding = null;
+            if (null != cfg.m_Encoding) {
+                var v = cfg.m_Encoding.Calc();
+                var name = v as string;
+                if (!string.IsNullOrEmpty(name)) {
+                    encoding = Encoding.GetEncoding(name);
+                }
+                else if (v is int) {
+                    int codePage = (int)Convert.ChangeType(v, typeof(int));
+                    encoding = Encoding.GetEncoding(codePage);
+                }
+            }
+            if (null == encoding) {
+                encoding = Encoding.UTF8;
+            }
+
+            fileName = Environment.ExpandEnvironmentVariables(fileName);
+            args = Environment.ExpandEnvironmentVariables(args);
+
+            IList<string> input = null;
+            if (null != cfg.m_Input) {
+                var v = cfg.m_Input.Calc();
+                try {
+                    var str = v as string;
+                    if (!string.IsNullOrEmpty(str)) {
+                        if (str[0] == '@' || str[0] == '$') {
+                            object val = Calculator.GetVariable(str);
+                            if (null != val) {
+                                var slist = new List<string>();
+                                var list = val as IList;
+                                foreach (var s in list) {
+                                    slist.Add(s.ToString());
+                                }
+                                input = slist;
+                            }
+                        }
+                        else {
+                            str = Environment.ExpandEnvironmentVariables(str);
+                            input = File.ReadAllLines(str);
+                        }
+                    }
+                    else {
+                        int vn = (int)Convert.ChangeType(v, typeof(int));
+                        object val = Calculator.GetVariable(vn);
+                        if (null != val) {
+                            var slist = new List<string>();
+                            var list = val as IList;
+                            foreach (var s in list) {
+                                slist.Add(s.ToString());
+                            }
+                            input = slist;
+                        }
+                    }
+                }
+                catch (Exception ex) {
+                    Debug.LogFormat("input {0} failed:{1}", v, ex.Message);
+                }
+            }
+            StringBuilder outputBuilder = null;
+            StringBuilder errorBuilder = null;
+            object output = null;
+            object error = null;
+            if (null != cfg.m_Output) {
+                var v = cfg.m_Output.Calc();
+                var str = v as string;
+                if (!string.IsNullOrEmpty(str)) {
+                    str = Environment.ExpandEnvironmentVariables(str);
+                    output = str;
+                }
+                else {
+                    output = v;
+                }
+                outputBuilder = new StringBuilder();
+            }
+            if (null != cfg.m_Error) {
+                var v = cfg.m_Error.Calc();
+                var str = v as string;
+                if (!string.IsNullOrEmpty(str)) {
+                    str = Environment.ExpandEnvironmentVariables(str);
+                    error = str;
+                }
+                else {
+                    error = v;
+                }
+                errorBuilder = new StringBuilder();
+            }
+
+            int exitCode = DslCalculator.NewProcess(noWait, fileName, args, option, istream, ostream, input, outputBuilder, errorBuilder, encoding);
+            Debug.LogFormat("new process:{0} {1}, exit code:{2}", fileName, args, exitCode);
+
+            if (null != outputBuilder && null != output) {
+                try {
+                    var file = output as string;
+                    if (!string.IsNullOrEmpty(file)) {
+                        if (file[0] == '@' || file[0] == '$') {
+                            Calculator.SetVariable(file, outputBuilder.ToString());
+                        }
+                        else {
+                            File.WriteAllText(file, outputBuilder.ToString());
+                        }
+                    }
+                    else {
+                        int v = (int)Convert.ChangeType(output, typeof(int));
+                        Calculator.SetVariable(v, outputBuilder.ToString());
+                    }
+                }
+                catch (Exception ex) {
+                    Debug.LogFormat("output {0} failed:{1}", output, ex.Message);
+                }
+            }
+            if (null != errorBuilder && null != error) {
+                try {
+                    var file = error as string;
+                    if (!string.IsNullOrEmpty(file)) {
+                        if (file[0] == '@' || file[0] == '$') {
+                            Calculator.SetVariable(file, errorBuilder.ToString());
+                        }
+                        else {
+                            File.WriteAllText(file, errorBuilder.ToString());
+                        }
+                    }
+                    else {
+                        int v = (int)Convert.ChangeType(error, typeof(int));
+                        Calculator.SetVariable(v, errorBuilder.ToString());
+                    }
+                }
+                catch (Exception ex) {
+                    Debug.LogFormat("error {0} failed:{1}", error, ex.Message);
+                }
+            }
+            return exitCode;
+        }
+        private int ExecCommand(CommandConfig cfg, Stream istream, Stream ostream)
+        {
+            int exitCode = 0;
+            string os = string.Empty;
+            if (Environment.OSVersion.Platform == PlatformID.Unix || Environment.OSVersion.Platform == PlatformID.MacOSX)
+                os = "unix";
+            else
+                os = "win";
+            string cmd;
+            if (cfg.m_Commands.TryGetValue(os, out cmd) || cfg.m_Commands.TryGetValue("common", out cmd)) {
+                bool noWait = false;
+                if (null != cfg.m_NoWait) {
+                    noWait = (bool)Convert.ChangeType(cfg.m_NoWait.Calc(), typeof(bool));
+                }
+                DslCalculator.ProcessStartOption option = new DslCalculator.ProcessStartOption();
+                if (null != cfg.m_UseShellExecute) {
+                    option.UseShellExecute = (bool)Convert.ChangeType(cfg.m_UseShellExecute.Calc(), typeof(bool));
+                }
+                if (null != cfg.m_Verb) {
+                    option.Verb = cfg.m_Verb.Calc() as string;
+                }
+                if (null != cfg.m_Domain) {
+                    option.Domain = cfg.m_Domain.Calc() as string;
+                }
+                if (null != cfg.m_UserName) {
+                    option.UserName = cfg.m_UserName.Calc() as string;
+                }
+                if (null != cfg.m_Password) {
+                    option.Password = cfg.m_Password.Calc() as string;
+                }
+                if (null != cfg.m_PasswordInClearText) {
+                    option.PasswordInClearText = cfg.m_PasswordInClearText.Calc() as string;
+                }
+                if (null != cfg.m_LoadUserProfile) {
+                    option.LoadUserProfile = (bool)Convert.ChangeType(cfg.m_LoadUserProfile.Calc(), typeof(bool));
+                }
+                if (null != cfg.m_WindowStyle) {
+                    var str = cfg.m_WindowStyle.Calc() as string;
+                    System.Diagnostics.ProcessWindowStyle style;
+                    if (Enum.TryParse(str, out style)) {
+                        option.WindowStyle = style;
+                    }
+                }
+                if (null != cfg.m_NewWindow) {
+                    option.NewWindow = (bool)Convert.ChangeType(cfg.m_NewWindow.Calc(), typeof(bool));
+                }
+                if (null != cfg.m_ErrorDialog) {
+                    option.ErrorDialog = (bool)Convert.ChangeType(cfg.m_ErrorDialog.Calc(), typeof(bool));
+                }
+                if (null != cfg.m_WorkingDirectory) {
+                    option.WorkingDirectory = cfg.m_WorkingDirectory.Calc() as string;
+                }
+                Encoding encoding = null;
+                if (null != cfg.m_Encoding) {
+                    var v = cfg.m_Encoding.Calc();
+                    var name = v as string;
+                    if (!string.IsNullOrEmpty(name)) {
+                        encoding = Encoding.GetEncoding(name);
+                    }
+                    else if (v is int) {
+                        int codePage = (int)Convert.ChangeType(v, typeof(int));
+                        encoding = Encoding.GetEncoding(codePage);
+                    }
+                }
+                if (null == encoding) {
+                    encoding = Encoding.UTF8;
+                }
+                IList<string> input = null;
+                if (null != cfg.m_Input) {
+                    var v = cfg.m_Input.Calc();
+                    try {
+                        var str = v as string;
+                        if (!string.IsNullOrEmpty(str)) {
+                            if (str[0] == '@' || str[0] == '$') {
+                                object val = Calculator.GetVariable(str);
+                                if (null != val) {
+                                    var slist = new List<string>();
+                                    var list = val as IList;
+                                    foreach (var s in list) {
+                                        slist.Add(s.ToString());
+                                    }
+                                    input = slist;
+                                }
+                            }
+                            else {
+                                str = Environment.ExpandEnvironmentVariables(str);
+                                input = File.ReadAllLines(str);
+                            }
+                        }
+                        else {
+                            int vn = (int)Convert.ChangeType(v, typeof(int));
+                            object val = Calculator.GetVariable(vn);
+                            if (null != val) {
+                                var slist = new List<string>();
+                                var list = val as IList;
+                                foreach (var s in list) {
+                                    slist.Add(s.ToString());
+                                }
+                                input = slist;
+                            }
+                        }
+                    }
+                    catch (Exception ex) {
+                        Debug.LogFormat("input {0} failed:{1}", v, ex.Message);
+                    }
+                }
+                StringBuilder outputBuilder = null;
+                StringBuilder errorBuilder = null;
+                object output = null;
+                object error = null;
+                if (null != cfg.m_Output) {
+                    var v = cfg.m_Output.Calc();
+                    var str = v as string;
+                    if (!string.IsNullOrEmpty(str)) {
+                        str = Environment.ExpandEnvironmentVariables(str);
+                        output = str;
+                    }
+                    else {
+                        output = v;
+                    }
+                    outputBuilder = new StringBuilder();
+                }
+                if (null != cfg.m_Error) {
+                    var v = cfg.m_Error.Calc();
+                    var str = v as string;
+                    if (!string.IsNullOrEmpty(str)) {
+                        str = Environment.ExpandEnvironmentVariables(str);
+                        error = str;
+                    }
+                    else {
+                        error = v;
+                    }
+                    errorBuilder = new StringBuilder();
+                }
+
+                cmd = cmd.Trim();
+                var lines = cmd.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                string oneCmd = string.Join(" ", lines).Trim();
+                if (!string.IsNullOrEmpty(oneCmd)) {
+                    int split = oneCmd.IndexOfAny(new char[] { ' ', '\t' });
+                    string fileName = oneCmd;
+                    string args = string.Empty;
+                    if (split > 0) {
+                        fileName = oneCmd.Substring(0, split).Trim();
+                        args = oneCmd.Substring(split).Trim();
+                    }
+
+                    fileName = Environment.ExpandEnvironmentVariables(fileName);
+                    args = Environment.ExpandEnvironmentVariables(args);
+
+                    exitCode = DslCalculator.NewProcess(noWait, fileName, args, option, istream, ostream, input, outputBuilder, errorBuilder, encoding);
+                    Debug.LogFormat("new process:{0} {1}, exit code:{2}", fileName, args, exitCode);
+
+                    if (null != outputBuilder && null != output) {
+                        try {
+                            var file = output as string;
+                            if (!string.IsNullOrEmpty(file)) {
+                                if (file[0] == '@' || file[0] == '$') {
+                                    Calculator.SetVariable(file, outputBuilder.ToString());
+                                }
+                                else {
+                                    File.WriteAllText(file, outputBuilder.ToString());
+                                }
+                            }
+                            else {
+                                int v = (int)Convert.ChangeType(output, typeof(int));
+                                Calculator.SetVariable(v, outputBuilder.ToString());
+                            }
+                        }
+                        catch (Exception ex) {
+                            Debug.LogFormat("output {0} failed:{1}", output, ex.Message);
+                        }
+                    }
+                    if (null != errorBuilder && null != error) {
+                        try {
+                            var file = error as string;
+                            if (!string.IsNullOrEmpty(file)) {
+                                if (file[0] == '@' || file[0] == '$') {
+                                    Calculator.SetVariable(file, errorBuilder.ToString());
+                                }
+                                else {
+                                    File.WriteAllText(file, errorBuilder.ToString());
+                                }
+                            }
+                            else {
+                                int v = (int)Convert.ChangeType(error, typeof(int));
+                                Calculator.SetVariable(v, errorBuilder.ToString());
+                            }
+                        }
+                        catch (Exception ex) {
+                            Debug.LogFormat("error {0} failed:{1}", error, ex.Message);
+                        }
+                    }
+                }
+            }
+            return exitCode;
+        }
+
+        private class CommandConfig
+        {
+            internal IExpression m_FileName = null;
+            internal IExpression m_Argments = null;
+            internal Dictionary<string, string> m_Commands = new Dictionary<string, string>();
+
+            internal IExpression m_NoWait = null;
+            internal IExpression m_UseShellExecute = null;
+            internal IExpression m_Verb = null;
+            internal IExpression m_Domain = null;
+            internal IExpression m_UserName = null;
+            internal IExpression m_Password = null;
+            internal IExpression m_PasswordInClearText = null;
+            internal IExpression m_LoadUserProfile = null;
+            internal IExpression m_WindowStyle = null;
+            internal IExpression m_NewWindow = null;
+            internal IExpression m_ErrorDialog = null;
+            internal IExpression m_WorkingDirectory = null;
+            internal IExpression m_Encoding = null;
+            internal IExpression m_Input = null;
+            internal IExpression m_Output = null;
+            internal IExpression m_Error = null;
+        }
+
+        private List<CommandConfig> m_CommandConfigs = new List<CommandConfig>();
+    }
+    internal class KillExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            object ret = 0;
+            if (operands.Count >= 1) {
+                int myselfId = 0;
+                var myself = System.Diagnostics.Process.GetCurrentProcess();
+                if (null != myself) {
+                    myselfId = myself.Id;
+                }
+                var vObj = operands[0];
+                var name = vObj as string;
+                if (!string.IsNullOrEmpty(name)) {
+                    int ct = 0;
+                    var ps = System.Diagnostics.Process.GetProcessesByName(name);
+                    foreach (var p in ps) {
+                        if (p.Id != myselfId) {
+                            Debug.LogFormat("kill {0}[pid:{1},session id:{2}]", p.ProcessName, p.Id, p.SessionId);
+                            p.Kill();
+                            ++ct;
+                        }
+                    }
+                    ret = ct;
+                }
+                else if (vObj is int) {
+                    int pid = (int)Convert.ChangeType(vObj, typeof(int));
+                    var p = System.Diagnostics.Process.GetProcessById(pid);
+                    if (null != p && p.Id != myselfId) {
+                        Debug.LogFormat("kill {0}[pid:{1},session id:{2}]", p.ProcessName, p.Id, p.SessionId);
+                        p.Kill();
+                        ret = 1;
+                    }
+                }
+                else {
+
+                }
+            }
+            return ret;
+        }
+    }
+    internal class KillMeExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            int ret = 0;
+            var p = System.Diagnostics.Process.GetCurrentProcess();
+            if (null != p) {
+                ret = p.Id;
+                int exitCode = 0;
+                if (operands.Count >= 1) {
+                    exitCode = (int)Convert.ChangeType(operands[0], typeof(int));
+                }
+                Debug.LogFormat("killme {0}[pid:{1},session id:{2}] exit code:{3}", p.ProcessName, p.Id, p.SessionId, exitCode);
+                Environment.Exit(exitCode);
+            }
+            return ret;
+        }
+    }
+    internal class GetCurrentProcessIdExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            int ret = 0;
+            var p = System.Diagnostics.Process.GetCurrentProcess();
+            if (null != p) {
+                ret = p.Id;
+            }
+            return ret;
+        }
+    }
+    internal class ListProcessesExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            IList<System.Diagnostics.Process> ret = null;
+            var ps = System.Diagnostics.Process.GetProcesses();
+            string filter = null;
+            if (operands.Count >= 1) {
+                filter = operands[0] as string;
+            }
+            if (null == filter)
+                filter = string.Empty;
+            if (!string.IsNullOrEmpty(filter)) {
+                var list = new List<System.Diagnostics.Process>();
+                foreach (var p in ps) {
+                    try {
+                        if (!p.HasExited) {
+                            if (p.ProcessName.IndexOf(filter, StringComparison.OrdinalIgnoreCase) >= 0) {
+                                list.Add(p);
+                            }
+                        }
+                    }
+                    catch {
+                    }
+                }
+                ret = list;
+            }
+            else {
+                ret = ps;
+            }
+            return ret;
+        }
+    }
+    internal class WaitExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            object ret = null;
+            if (operands.Count >= 1) {
+                var v = operands[0];
+                if (null != v) {
+                    int time = (int)Convert.ChangeType(v, typeof(int));
+                    System.Threading.Thread.Sleep(time);
+                    ret = time;
+                }
+            }
+            return ret;
+        }
+    }
+    internal class WaitAllExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            var tasks = DslCalculator.Tasks;
+            int timeout = -1;
+            if (operands.Count >= 1) {
+                timeout = (int)Convert.ChangeType(operands[0], typeof(int));
+            }
+            List<int> results = new List<int>();
+            if (Task.WaitAll(tasks.ToArray(), timeout)) {
+                foreach (var task in tasks) {
+                    results.Add(task.Result);
+                }
+            }
+            return results;
+        }
+    }
+    internal class WaitStartIntervalExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            if (operands.Count >= 1) {
+                var v = operands[0];
+                if (null != v) {
+                    DslCalculator.CheckStartInterval = (int)Convert.ChangeType(v, typeof(int));
+                }
+            }
+            return DslCalculator.CheckStartInterval;
+        }
+    }
+
     internal class DisplayProgressBarExp : SimpleExpressionBase
     {
         protected override object OnCalc(IList<object> operands)
@@ -4595,7 +5426,7 @@ namespace Expression
                 string title = operands[0] as string;
                 string dir = operands[1] as string;
                 List<string> filters = new List<string>();
-                for(int i = 2; i < operands.Count; ++i) {
+                for (int i = 2; i < operands.Count; ++i) {
                     string filter = operands[i] as string;
                     if (!string.IsNullOrEmpty(filter)) {
                         filters.Add(filter);
@@ -4650,7 +5481,8 @@ namespace Expression
                 if (null != title && null != def && null != ext && null != msg) {
                     if (!string.IsNullOrEmpty(path)) {
                         ret = EditorUtility.SaveFilePanelInProject(title, def, ext, msg, path);
-                    } else {
+                    }
+                    else {
                         ret = EditorUtility.SaveFilePanelInProject(title, def, ext, msg);
                     }
                 }
@@ -4697,10 +5529,12 @@ namespace Expression
                         if (operands.Count >= 5) {
                             string alt = operands[4] as string;
                             ret = EditorUtility.DisplayDialogComplex(title, msg, ok, cancel, alt);
-                        } else {
+                        }
+                        else {
                             ret = EditorUtility.DisplayDialog(title, msg, ok, cancel) ? 1 : 0;
                         }
-                    } else {
+                    }
+                    else {
                         ret = EditorUtility.DisplayDialog(title, msg, ok) ? 1 : 0;
                     }
                 }
@@ -4711,6 +5545,164 @@ namespace Expression
 #endif
         }
     }
+    internal class CalcMd5Exp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            object r = null;
+            if (operands.Count >= 1) {
+                var file = operands[0] as string;
+                if (null != file) {
+                    r = CalcMD5(file);
+                }
+            }
+            return r;
+        }
+        public string CalcMD5(string file)
+        {
+            byte[] array = null;
+            using (var stream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)) {
+                MD5 md5 = MD5.Create();
+                array = md5.ComputeHash(stream);
+                stream.Close();
+            }
+            if (null != array) {
+                StringBuilder stringBuilder = new StringBuilder();
+                for (int i = 0; i < array.Length; i++) {
+                    stringBuilder.Append(array[i].ToString("x2"));
+                }
+                return stringBuilder.ToString();
+            }
+            else {
+                return string.Empty;
+            }
+        }
+    }
+#if USE_STORY
+    internal class DebugValueExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            string ret = string.Empty;
+            if (operands.Count >= 1) {
+                string name = operands[0] as string;
+                if (operands.Count >= 2) {
+                    var val = operands[1];
+                    if (!string.IsNullOrEmpty(name)) {
+                        string valStr = null;
+                        if (null != val)
+                            valStr = val.ToString();
+                        GameLibrary.GmCommands.GlobalDebugValues.SetValue(name, valStr);
+                        ret = valStr;
+                    }
+                }
+                else {
+                    ret = GameLibrary.GmCommands.GlobalDebugValues.GetStringValue(name);
+                }
+            }
+            return ret;
+        }
+    }
+    internal class StoryVarExp : SimpleExpressionBase
+    {
+        protected override object OnCalc(IList<object> operands)
+        {
+            object ret = null;
+            if (operands.Count >= 1) {
+                string name = operands[0] as string;
+                if (operands.Count >= 2) {
+                    var val = operands[1];
+                    if (!string.IsNullOrEmpty(name)) {
+                        var instance = GameLibrary.GmCommands.ClientGmStorySystem.Instance.GetStory("main");
+                        if (null == instance) {
+                            string txt = "script(main){onmessage(\"start\"){};};";
+                            GameLibrary.GmCommands.ClientGmStorySystem.Instance.LoadStoryText(Encoding.UTF8.GetBytes(txt));
+                            instance = GameLibrary.GmCommands.ClientGmStorySystem.Instance.GetStory("main");
+                        }
+                        instance.SetVariable(name, val);
+                        ret = val;
+                    }
+                }
+                else {
+                    var instance = GameLibrary.GmCommands.ClientGmStorySystem.Instance.GetStory("main");
+                    if (null == instance) {
+                        string txt = "script(main){onmessage(\"start\"){};};";
+                        GameLibrary.GmCommands.ClientGmStorySystem.Instance.LoadStoryText(Encoding.UTF8.GetBytes(txt));
+                        instance = GameLibrary.GmCommands.ClientGmStorySystem.Instance.GetStory("main");
+                    }
+                    instance.TryGetVariable(name, out ret);
+                }
+            }
+            return ret;
+        }
+    }
+    internal class StoryValueExp : AbstractExpression
+    {
+        protected override object DoCalc()
+        {
+            object ret = null;
+            var instance = GameLibrary.GmCommands.ClientGmStorySystem.Instance.GetStory("main");
+            if (null == instance) {
+                string txt = "script(main){onmessage(\"start\"){};};";
+                GameLibrary.GmCommands.ClientGmStorySystem.Instance.LoadStoryText(Encoding.UTF8.GetBytes(txt));
+                GameLibrary.GmCommands.ClientGmStorySystem.Instance.StartStory("main");
+                instance = GameLibrary.GmCommands.ClientGmStorySystem.Instance.GetStory("main");
+            }
+            var handler = instance.GetMessageHandler("start");
+            foreach (var exp in m_Values) {
+                exp.Evaluate(instance, handler, null, null);
+                if (exp.HaveValue) {
+                    ret = exp.Value;
+                }
+            }
+            return ret;
+        }
+        protected override bool Load(Dsl.CallData callData)
+        {
+            int num = callData.GetParamNum();
+            for (int ix = 0; ix < num; ++ix) {
+                Dsl.ISyntaxComponent param = callData.GetParam(ix);
+                var exp = StorySystem.StoryValueManager.Instance.CalcValue(param);
+                m_Values.Add(exp);
+            }
+            return true;
+        }
+
+        private List<StorySystem.IStoryValue> m_Values = new List<StorySystem.IStoryValue>();
+    }
+    internal class StoryCommandExp : AbstractExpression
+    {
+        protected override object DoCalc()
+        {
+            var instance = GameLibrary.GmCommands.ClientGmStorySystem.Instance.GetStory("main");
+            if (null == instance) {
+                string txt = "script(main){onmessage(\"start\"){};};";
+                GameLibrary.GmCommands.ClientGmStorySystem.Instance.LoadStoryText(Encoding.UTF8.GetBytes(txt));
+                instance = GameLibrary.GmCommands.ClientGmStorySystem.Instance.GetStory("main");
+            }
+            var handler = instance.GetMessageHandler("start");
+            foreach (var cmd in m_Commands) {
+                cmd.Reset();
+            }
+            foreach (var cmd in m_Commands) {
+                cmd.Execute(instance, handler, 0, null, null);
+            }
+            return null;
+        }
+        protected override bool Load(Dsl.CallData callData)
+        {
+            int num = callData.GetParamNum();
+            for (int ix = 0; ix < num; ++ix) {
+                Dsl.ISyntaxComponent param = callData.GetParam(ix);
+                var cmd = StorySystem.StoryCommandManager.Instance.CreateCommand(param);
+                m_Commands.Add(cmd);
+            }
+            return true;
+        }
+
+        private List<StorySystem.IStoryCommand> m_Commands = new List<StorySystem.IStoryCommand>();
+    }
+#endif
     public enum RunStateEnum
     {
         Normal = 0,
@@ -4896,7 +5888,7 @@ namespace Expression
             Register("call", new ExpressionFactoryHelper<CallExp>());
             Register("return", new ExpressionFactoryHelper<ReturnExp>());
             Register("redirect", new ExpressionFactoryHelper<RedirectExp>());
-            
+
             Register("direxist", new ExpressionFactoryHelper<DirectoryExistExp>());
             Register("fileexist", new ExpressionFactoryHelper<FileExistExp>());
             Register("listdirs", new ExpressionFactoryHelper<ListDirectoriesExp>());
@@ -4921,7 +5913,16 @@ namespace Expression
             Register("writealllines", new ExpressionFactoryHelper<WriteAllLinesExp>());
             Register("readalltext", new ExpressionFactoryHelper<ReadAllTextExp>());
             Register("writealltext", new ExpressionFactoryHelper<WriteAllTextExp>());
-            
+            Register("process", new ExpressionFactoryHelper<CommandExp>());
+            Register("command", new ExpressionFactoryHelper<CommandExp>());
+            Register("kill", new ExpressionFactoryHelper<KillExp>());
+            Register("killme", new ExpressionFactoryHelper<KillMeExp>());
+            Register("pid", new ExpressionFactoryHelper<GetCurrentProcessIdExp>());
+            Register("plist", new ExpressionFactoryHelper<ListProcessesExp>());
+            Register("wait", new ExpressionFactoryHelper<WaitExp>());
+            Register("waitall", new ExpressionFactoryHelper<WaitAllExp>());
+            Register("waitstartinterval", new ExpressionFactoryHelper<WaitStartIntervalExp>());
+
             Register("displayprogressbar", new ExpressionFactoryHelper<DisplayProgressBarExp>());
             Register("displaycancelableprogressbar", new ExpressionFactoryHelper<DisplayCancelableProgressBarExp>());
             Register("clearprogressbar", new ExpressionFactoryHelper<ClearProgressBarExp>());
@@ -4933,12 +5934,20 @@ namespace Expression
             Register("savefilepanelinproject", new ExpressionFactoryHelper<SaveFilePanelInProjectExp>());
             Register("savefolderpanel", new ExpressionFactoryHelper<SaveFolderPanelExp>());
             Register("displaydialog", new ExpressionFactoryHelper<DisplayDialogExp>());
+            Register("calcmd5", new ExpressionFactoryHelper<CalcMd5Exp>());
+#if QINSHI
+            Register("debugvalue", new ExpressionFactoryHelper<DebugValueExp>());
+            Register("storyvar", new ExpressionFactoryHelper<StoryVarExp>());
+            Register("storyvalue", new ExpressionFactoryHelper<StoryValueExp>());
+            Register("storycommand", new ExpressionFactoryHelper<StoryCommandExp>());
+#endif
         }
         public void Register(string name, IExpressionFactory factory)
         {
             if (!m_ExpressionFactories.ContainsKey(name)) {
                 m_ExpressionFactories.Add(name, factory);
-            } else {
+            }
+            else {
                 m_ExpressionFactories[name] = factory;
             }
         }
@@ -4989,7 +5998,8 @@ namespace Expression
             Dsl.FunctionData func = null;
             if (info.GetFunctionNum() == 1) {
                 func = info.First;
-            } else if (info.GetFunctionNum() == 2) {
+            }
+            else if (info.GetFunctionNum() == 2) {
                 func = info.Second;
 
                 if (func.GetId() == "args") {
@@ -4998,17 +6008,20 @@ namespace Expression
                         if (!m_ProcArgNames.TryGetValue(id, out names)) {
                             names = new List<string>();
                             m_ProcArgNames.Add(id, names);
-                        } else {
+                        }
+                        else {
                             names.Clear();
                         }
                         foreach (var p in func.Call.Params) {
                             names.Add(p.GetId());
                         }
                     }
-                } else {
+                }
+                else {
                     return;
                 }
-            } else {
+            }
+            else {
                 return;
             }
             List<IExpression> list;
@@ -5031,10 +6044,11 @@ namespace Expression
         {
             if (null != argNames && argNames.Count > 0) {
                 List<string> names;
-                if(!m_ProcArgNames.TryGetValue(proc, out names)) {
+                if (!m_ProcArgNames.TryGetValue(proc, out names)) {
                     names = new List<string>(argNames);
                     m_ProcArgNames.Add(proc, names);
-                } else {
+                }
+                else {
                     names.Clear();
                     names.AddRange(argNames);
                 }
@@ -5061,7 +6075,7 @@ namespace Expression
                 m_Stack.Push(si);
                 try {
                     List<string> names;
-                    if(m_ProcArgNames.TryGetValue(proc, out names)) {
+                    if (m_ProcArgNames.TryGetValue(proc, out names)) {
                         for (int i = 0; i < names.Count; ++i) {
                             if (i < args.Length)
                                 SetVariable(names[i], args[i]);
@@ -5076,35 +6090,43 @@ namespace Expression
                             if (m_RunState == RunStateEnum.Return) {
                                 m_RunState = RunStateEnum.Normal;
                                 break;
-                            } else if (m_RunState == RunStateEnum.Redirect) {
+                            }
+                            else if (m_RunState == RunStateEnum.Redirect) {
                                 break;
                             }
-                        } catch (DirectoryNotFoundException ex5) {
+                        }
+                        catch (DirectoryNotFoundException ex5) {
                             Debug.LogErrorFormat("calc:[{0}] exception:{1}\n{2}", exp.ToString(), ex5.Message, ex5.StackTrace);
                             OutputInnerException(ex5);
-                        } catch (FileNotFoundException ex4) {
+                        }
+                        catch (FileNotFoundException ex4) {
                             Debug.LogErrorFormat("calc:[{0}] exception:{1}\n{2}", exp.ToString(), ex4.Message, ex4.StackTrace);
                             OutputInnerException(ex4);
-                        } catch (IOException ex3) {
+                        }
+                        catch (IOException ex3) {
                             Debug.LogErrorFormat("calc:[{0}] exception:{1}\n{2}", exp.ToString(), ex3.Message, ex3.StackTrace);
                             OutputInnerException(ex3);
                             ret = -1;
-                        } catch (UnauthorizedAccessException ex2) {
+                        }
+                        catch (UnauthorizedAccessException ex2) {
                             Debug.LogErrorFormat("calc:[{0}] exception:{1}\n{2}", exp.ToString(), ex2.Message, ex2.StackTrace);
                             OutputInnerException(ex2);
                             ret = -1;
-                        } catch (NotSupportedException ex1) {
+                        }
+                        catch (NotSupportedException ex1) {
                             Debug.LogErrorFormat("calc:[{0}] exception:{1}\n{2}", exp.ToString(), ex1.Message, ex1.StackTrace);
                             OutputInnerException(ex1);
                             ret = -1;
-                        }catch(Exception ex) {
+                        }
+                        catch (Exception ex) {
                             Debug.LogErrorFormat("calc:[{0}] exception:{1}\n{2}", exp.ToString(), ex.Message, ex.StackTrace);
                             OutputInnerException(ex);
                             ret = -1;
                             break;
                         }
                     }
-                } finally {
+                }
+                finally {
                     m_Stack.Pop();
                 }
             }
@@ -5146,12 +6168,15 @@ namespace Expression
             if (v.Length > 0) {
                 if (v[0] == '@') {
                     ret = TryGetGlobalVariable(v, out result);
-                } else if (v[0] == '$') {
+                }
+                else if (v[0] == '$') {
                     ret = NamedVariables.TryGetValue(v, out result);
-                } else {
+                }
+                else {
                     ret = TryGetGlobalVariable(v, out result);
                 }
-            } else {
+            }
+            else {
                 result = null;
             }
             return ret;
@@ -5162,9 +6187,11 @@ namespace Expression
             if (v.Length > 0) {
                 if (v[0] == '@') {
                     result = GetGlobalVariable(v);
-                } else if (v[0] == '$') {
+                }
+                else if (v[0] == '$') {
                     NamedVariables.TryGetValue(v, out result);
-                } else {
+                }
+                else {
                     result = GetGlobalVariable(v);
                 }
             }
@@ -5175,9 +6202,11 @@ namespace Expression
             if (v.Length > 0) {
                 if (v[0] == '@') {
                     SetGlobalVariable(v, val);
-                } else if (v[0] == '$') {
+                }
+                else if (v[0] == '$') {
                     NamedVariables[v] = val;
-                } else {
+                }
+                else {
                     SetGlobalVariable(v, val);
                 }
             }
@@ -5188,9 +6217,11 @@ namespace Expression
             if (v.Length > 0) {
                 if (v[0] == '@') {
                     ret = RemoveGlobalVariable(v);
-                } else if (v[0] == '$') {
+                }
+                else if (v[0] == '$') {
                     ret = NamedVariables.Remove(v);
-                } else {
+                }
+                else {
                     ret = RemoveGlobalVariable(v);
                 }
             }
@@ -5205,12 +6236,14 @@ namespace Expression
                     NamedVarGet varExp = new NamedVarGet();
                     varExp.Load(comp, this);
                     return varExp;
-                } else {
+                }
+                else {
                     ConstGet constExp = new ConstGet();
                     constExp.Load(comp, this);
                     return constExp;
                 }
-            } else {
+            }
+            else {
                 Dsl.CallData callData = comp as Dsl.CallData;
                 if (null != callData) {
                     if (!callData.HaveId() && !callData.IsHighOrder && (callData.GetParamClass() == (int)Dsl.CallData.ParamClassEnum.PARAM_CLASS_PARENTHESIS || callData.GetParamClass() == (int)Dsl.CallData.ParamClassEnum.PARAM_CLASS_BRACKET)) {
@@ -5220,7 +6253,8 @@ namespace Expression
                                 if (num == 1) {
                                     Dsl.ISyntaxComponent param = callData.GetParam(0);
                                     return Load(param);
-                                } else {
+                                }
+                                else {
                                     ParenthesisExp exp = new ParenthesisExp();
                                     exp.Load(comp, this);
                                     return exp;
@@ -5233,11 +6267,13 @@ namespace Expression
                             default:
                                 return null;
                         }
-                    } else if (!callData.HaveParam()) {
+                    }
+                    else if (!callData.HaveParam()) {
                         //退化
                         valueData = callData.Name;
                         return Load(valueData);
-                    } else {
+                    }
+                    else {
                         int paramClass = callData.GetParamClass();
                         string op = callData.GetId();
                         if (op == "=") {//赋值
@@ -5257,7 +6293,8 @@ namespace Expression
                                         newCall.Params.Add(innerCall.Call);
                                         newCall.Params.Add(innerCall.GetParam(0));
                                         newCall.Params.Add(callData.GetParam(1));
-                                    } else {
+                                    }
+                                    else {
                                         newCall.Params.Add(innerCall.Name);
                                         newCall.Params.Add(innerCall.GetParam(0));
                                         newCall.Params.Add(callData.GetParam(1));
@@ -5272,17 +6309,20 @@ namespace Expression
                             string name = callData.GetParamId(0);
                             if (name == "var") {
                                 exp = new VarSet();
-                            } else {
+                            }
+                            else {
                                 exp = new NamedVarSet();
                             }
                             if (null != exp) {
                                 exp.Load(comp, this);
-                            } else {
+                            }
+                            else {
                                 //error
                                 //Debug.LogErrorFormat("DslCalculator error, {0} line {1}", callData.ToScriptString(false), callData.GetLine());
                             }
                             return exp;
-                        } else {
+                        }
+                        else {
                             if (callData.IsHighOrder) {
                                 Dsl.CallData innerCall = callData.Call;
                                 int innerParamClass = innerCall.GetParamClass();
@@ -5297,7 +6337,8 @@ namespace Expression
                                     string member = innerCall.GetParamId(0);
                                     if (member == "orderby" || member == "orderbydesc" || member == "where" || member == "top") {
                                         apiName = "linq";
-                                    } else {
+                                    }
+                                    else {
                                         apiName = "dotnetcall";
                                     }
                                     Dsl.CallData newCall = new Dsl.CallData();
@@ -5310,7 +6351,8 @@ namespace Expression
                                             Dsl.ISyntaxComponent p = callData.Params[i];
                                             newCall.Params.Add(p);
                                         }
-                                    } else {
+                                    }
+                                    else {
                                         newCall.Params.Add(innerCall.Name);
                                         newCall.Params.Add(innerCall.GetParam(0));
                                         for (int i = 0; i < callData.GetParamNum(); ++i) {
@@ -5323,7 +6365,8 @@ namespace Expression
                                         var callExp = new DotnetCallExp();
                                         callExp.Load(newCall, this);
                                         return callExp;
-                                    } else {
+                                    }
+                                    else {
                                         var callExp = new LinqExp();
                                         callExp.Load(newCall, this);
                                         return callExp;
@@ -5342,7 +6385,8 @@ namespace Expression
                                 if (callData.IsHighOrder) {
                                     newCall.Params.Add(callData.Call);
                                     newCall.Params.Add(callData.GetParam(0));
-                                } else {
+                                }
+                                else {
                                     newCall.Params.Add(callData.Name);
                                     newCall.Params.Add(callData.GetParam(0));
                                 }
@@ -5353,7 +6397,8 @@ namespace Expression
                             }
                         }
                     }
-                } else {
+                }
+                else {
                     Dsl.FunctionData funcData = comp as Dsl.FunctionData;
                     if (null != funcData) {
                         if (funcData.HaveStatement()) {
@@ -5363,12 +6408,14 @@ namespace Expression
                                 exp.Load(comp, this);
                                 return exp;
                             }
-                        } else if (!funcData.HaveExternScript()) {
+                        }
+                        else if (!funcData.HaveExternScript()) {
                             //退化
                             callData = funcData.Call;
                             if (callData.HaveParam()) {
                                 return Load(callData);
-                            } else {
+                            }
+                            else {
                                 valueData = callData.Name;
                                 return Load(valueData);
                             }
@@ -5382,7 +6429,8 @@ namespace Expression
                     //error
                     Debug.LogErrorFormat("DslCalculator error, {0} line {1}", comp.ToScriptString(false), comp.GetLine());
                 }
-            } else {
+            }
+            else {
                 //error
                 Debug.LogErrorFormat("DslCalculator error, {0} line {1}", comp.ToScriptString(false), comp.GetLine());
             }
@@ -5434,6 +6482,155 @@ namespace Expression
         private Stack<StackInfo> m_Stack = new Stack<StackInfo>();
         private Dictionary<string, object> m_NamedGlobalVariables = new Dictionary<string, object>();
         private Dictionary<string, IExpressionFactory> m_ExpressionFactories = new Dictionary<string, IExpressionFactory>();
+
+        internal static int CheckStartInterval
+        {
+            get { return s_CheckStartInterval; }
+            set { s_CheckStartInterval = value; }
+        }
+        internal static List<Task<int>> Tasks
+        {
+            get { return s_Tasks; }
+        }
+        internal static int NewProcess(bool noWait, string fileName, string args, ProcessStartOption option, Stream istream, Stream ostream, IList<string> input, StringBuilder output, StringBuilder error, Encoding encoding)
+        {
+            if (noWait) {
+                var task = Task.Run<int>(() => NewProcessTask(fileName, args, option, istream, ostream, input, output, error, encoding));
+                s_Tasks.Add(task);
+                while (task.Status == TaskStatus.Created || task.Status == TaskStatus.WaitingForActivation || task.Status == TaskStatus.WaitingToRun) {
+                    Debug.LogFormat("wait {0}[{1}] start", Path.GetFileName(fileName), task.Status);
+                    task.Wait(s_CheckStartInterval);
+                }
+                return 0;
+            }
+            else {
+                return NewProcessTask(fileName, args, option, istream, ostream, input, output, error, encoding);
+            }
+        }
+        private static int NewProcessTask(string fileName, string args, ProcessStartOption option, Stream istream, Stream ostream, IList<string> input, StringBuilder output, StringBuilder error, Encoding encoding)
+        {
+            //考虑到跨平台兼容性，不使用特定进程环境变量
+            try {
+                var psi = new System.Diagnostics.ProcessStartInfo();
+                psi.FileName = fileName;
+                psi.Arguments = args;
+                psi.UseShellExecute = option.UseShellExecute;
+                if (null != option.Verb) {
+                    psi.Verb = option.Verb;
+                }
+                if (null != option.Domain) {
+                    psi.Domain = option.Domain;
+                }
+                if (null != option.UserName) {
+                    psi.UserName = option.UserName;
+                }
+                if (null != option.Password) {
+                    unsafe {
+                        fixed (char* pchar = option.Password.ToCharArray()) {
+                            psi.Password = new System.Security.SecureString(pchar, option.Password.Length);
+                        }
+                    }
+                }
+                if (null != option.PasswordInClearText) {
+                    psi.PasswordInClearText = option.PasswordInClearText;
+                }
+                psi.LoadUserProfile = option.LoadUserProfile;
+                psi.WindowStyle = option.WindowStyle;
+                psi.CreateNoWindow = !option.NewWindow;
+                psi.ErrorDialog = option.ErrorDialog;
+                psi.WorkingDirectory = option.WorkingDirectory;
+
+                if (null != istream || null != input) {
+                    psi.RedirectStandardInput = true;
+                }
+                if (null != ostream || null != output) {
+                    psi.RedirectStandardOutput = true;
+                    psi.StandardOutputEncoding = encoding;
+                }
+                if (null != error) {
+                    psi.RedirectStandardError = true;
+                    psi.StandardErrorEncoding = encoding;
+                }
+                var p = System.Diagnostics.Process.Start(psi);
+                if (null != p) {
+                    if (psi.RedirectStandardInput) {
+                        if (null != istream) {
+                            istream.Seek(0, SeekOrigin.Begin);
+                            using (var sr = new StreamReader(istream, encoding, true, 1024, true)) {
+                                string line;
+                                while ((line = sr.ReadLine()) != null) {
+                                    p.StandardInput.WriteLine(line);
+                                    p.StandardInput.Flush();
+                                }
+                            }
+                            p.StandardInput.Close();
+                        }
+                        else if (null != input) {
+                            foreach (var line in input) {
+                                p.StandardInput.WriteLine(line);
+                                p.StandardInput.Flush();
+                            }
+                            p.StandardInput.Close();
+                        }
+                    }
+                    p.WaitForExit();
+                    if (psi.RedirectStandardOutput) {
+                        string txt = p.StandardOutput.ReadToEnd();
+                        p.StandardOutput.Close();
+                        if (null != ostream) {
+                            ostream.Seek(0, SeekOrigin.Begin);
+                            ostream.SetLength(0);
+                            var bytes = encoding.GetBytes(txt);
+                            ostream.Write(bytes, 0, bytes.Length);
+                        }
+                        if (null != output) {
+                            output.Clear();
+                            output.Append(txt);
+                        }
+                    }
+                    if (psi.RedirectStandardError) {
+                        string txt = p.StandardError.ReadToEnd();
+                        p.StandardError.Close();
+                        if (null != error) {
+                            error.Clear();
+                            error.Append(txt);
+                        }
+                    }
+                    int r = p.ExitCode;
+                    p.Close();
+                    return r;
+                }
+                else {
+                    Debug.LogFormat("process({0} {1}) failed.", fileName, args);
+                    return -1;
+                }
+            }
+            catch (Exception ex) {
+                Debug.LogFormat("process({0} {1}) exception:{2} stack:{3}", fileName, args, ex.Message, ex.StackTrace);
+                while (null != ex.InnerException) {
+                    ex = ex.InnerException;
+                    Debug.LogFormat("\t=> exception:{0} stack:{1}", ex.Message, ex.StackTrace);
+                }
+                return -1;
+            }
+        }
+
+        internal class ProcessStartOption
+        {
+            internal bool UseShellExecute = false;
+            internal string Verb = null;
+            internal string Domain = null;
+            internal string UserName = null;
+            internal string Password = null;
+            internal string PasswordInClearText = null;
+            internal bool LoadUserProfile = false;
+            internal System.Diagnostics.ProcessWindowStyle WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
+            internal bool NewWindow = false;
+            internal bool ErrorDialog = false;
+            internal string WorkingDirectory = Environment.CurrentDirectory;
+        }
+        private static List<Task<int>> s_Tasks = new List<Task<int>>();
+        private static int s_CheckStartInterval = 500;
     }
 }
 #endregion

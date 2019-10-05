@@ -386,19 +386,7 @@ public class DebugConsole : MonoBehaviour
         this.RegisterCommandCallback("command", CMDCommand);
         this.RegisterCommandCallback("cmd", CMDCommand);
         this.RegisterCommandCallback("gm", CMDGm);
-        this.RegisterCommandCallback("block", BlockSwitch);
         this.RegisterCommandCallback("/?", CMDHelp);
-    }
-
-    private object BlockSwitch(string[] args)
-    {
-        bool on = true;
-        if (args.Length == 2)
-        {
-            on = bool.Parse(args[1]);
-            Utility.EventSystem.Publish("check_move_block", "debug", on);
-        }
-        return null;
     }
 
     [Conditional("DEBUG_CONSOLE"),
