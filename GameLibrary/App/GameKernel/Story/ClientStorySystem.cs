@@ -290,7 +290,7 @@ namespace GameLibrary.Story
         }
         public void RecycleAiStoryInstance(AiStoryInstanceInfo info)
         {
-            info.m_StoryInstance.Reset();
+            info.m_StoryInstance.Reset(false);
             info.m_IsUsed = false;
         }
 

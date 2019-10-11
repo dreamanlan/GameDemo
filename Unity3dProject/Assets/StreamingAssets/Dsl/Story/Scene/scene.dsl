@@ -7,9 +7,9 @@ script(scene_main)
     };
     onmessage("start")
     {
-	      startstory("story_main");
-	      wait(2000);
-				loadui("Start", "UI/Start", "Dsl/Story/Ui/start.dsl");
+	    startstory("story_main");
+	    wait(2000);
+		loadui("Start", "UI/Start", "Dsl/Story/Ui/start.dsl");
     };
     onmessage("scene_loaded")
     {
@@ -21,8 +21,8 @@ script(scene_main)
             npcmove(1001, vector3($x, $y, $z));
         };
     };
-		onmessage("on_start_button_click")
-		{
-				changescene("Game");
-		};
+    onmessage("on_start_button_click")
+    {
+        changescene("Game");
+    };
 };

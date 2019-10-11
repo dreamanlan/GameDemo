@@ -62,7 +62,7 @@
 		npcsetcamp(1007,4);
 
 		$speed = 5+4.0*6.0/(5.0+@level);
-		$npcspeed = $speed+2;
+		$npcspeed = $speed+6;
 		
 		setspeed(unitid2objid(1001),$speed);
 		setspeed(unitid2objid(1002),$npcspeed);

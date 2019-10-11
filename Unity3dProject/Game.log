@@ -1,177 +1,176 @@
-00-15-20-699:======GameLog Start (2019年10月12日, 0:15:20)======
-00-15-20-751:[Debug]:Time:00-15-20-751:StoryInstance.Init message handler num:4 True
-00-15-20-751:[Info]:ParseStory scene_main 0
-00-15-20-793:[Debug]:Time:00-15-20-793:StoryInstance.Init message handler num:11 True
-00-15-20-793:[Info]:ParseStory story_main 0
-00-15-20-795:[Warn]:Time:00-15-20-794:StoryInstance queue message start
-00-15-21-054:[Warn]:Time:00-15-21-052:StoryInstance queue message start
-00-15-21-055:[Warn]:Time:00-15-21-055:story_main start
-00-15-23-045:[Debug]:Time:00-15-23-045:StoryInstance.Init message handler num:3 True
-00-15-23-045:[Info]:ParseStory Start:main 0
-00-15-23-341:[Warn]:Time:00-15-23-340:StoryInstance queue message start
-00-15-23-477:[Warn]:Time:00-15-23-476:StoryInstance queue message Start:loop_work
-00-15-44-678:[Warn]:Time:00-15-44-677:StoryInstance queue message Start:on_click
-00-15-44-685:[Warn]:Time:00-15-44-683:StoryInstance queue message on_start_button_click
-00-15-46-199:[Warn]:Time:00-15-46-198:StoryInstance queue message scene_loaded
-00-15-46-210:[Warn]:Time:00-15-46-208:StoryInstance queue message start_game
-00-15-48-458:[Debug]:Time:00-15-48-458:StoryInstance.Init message handler num:2 True
-00-15-48-458:[Info]:ParseStory Option:main 0
-00-15-48-469:[Warn]:Time:00-15-48-467:StoryInstance queue message start
-00-15-48-564:[Debug]:Time:00-15-48-564:StoryInstance.Init message handler num:3 True
-00-15-48-564:[Info]:ParseStory Info:main 0
-00-15-48-567:[Warn]:Time:00-15-48-566:StoryInstance queue message start
-00-15-48-570:[Debug]:Time:00-15-48-570:StoryInstance.Init message handler num:3 True
-00-15-48-570:[Info]:ParseStory CenterInfo:main 0
-00-15-48-572:[Warn]:Time:00-15-48-571:StoryInstance queue message start
-00-15-48-573:[Debug]:Time:00-15-48-573:StoryInstance.Init message handler num:3 True
-00-15-48-573:[Info]:ParseStory Victory:main 0
-00-15-48-576:[Warn]:Time:00-15-48-575:StoryInstance queue message start
-00-15-48-577:[Debug]:Time:00-15-48-577:StoryInstance.Init message handler num:3 True
-00-15-48-577:[Info]:ParseStory Failed:main 0
-00-15-48-580:[Warn]:Time:00-15-48-578:StoryInstance queue message start
-00-15-48-756:[Debug]:Time:00-15-48-756:StoryInstance.Init message handler num:3 True
-00-15-48-756:[Info]:ParseStory ai_player 0
-00-15-48-759:[Warn]:Time:00-15-48-757:StoryInstance queue message start
-00-15-48-767:[Debug]:Time:00-15-48-767:StoryInstance.Init message handler num:3 True
-00-15-48-767:[Info]:ParseStory ai_npc 0
-00-15-48-769:[Warn]:Time:00-15-48-767:StoryInstance queue message start
-00-15-48-773:[Warn]:Time:00-15-48-771:StoryInstance queue message start
-00-15-48-778:[Warn]:Time:00-15-48-776:StoryInstance queue message start
-00-15-48-781:[Warn]:Time:00-15-48-780:StoryInstance queue message start
-00-15-48-786:[Warn]:Time:00-15-48-784:StoryInstance queue message start
-00-15-48-790:[Warn]:Time:00-15-48-788:StoryInstance queue message start
-00-15-48-811:[Warn]:Time:00-15-48-809:StoryInstance queue message on_born
-00-15-48-813:[Warn]:Time:00-15-48-811:StoryInstance queue message on_born
-00-15-48-813:[Warn]:Time:00-15-48-813:StoryInstance queue message on_born
-00-15-48-814:[Warn]:Time:00-15-48-814:StoryInstance queue message on_born
-00-15-48-815:[Warn]:Time:00-15-48-814:StoryInstance queue message on_born
-00-15-48-816:[Warn]:Time:00-15-48-815:StoryInstance queue message on_born
-00-15-48-817:[Warn]:Time:00-15-48-816:StoryInstance queue message on_born
-00-15-48-980:[Warn]:Time:00-15-48-979:StoryInstance queue message show_centerinfo
-00-15-50-984:[Warn]:Time:00-15-50-983:StoryInstance queue concurrent message notify_player
-00-15-50-985:[Warn]:Time:00-15-50-984:StoryInstance queue concurrent message notify_player
-00-15-50-986:[Warn]:Time:00-15-50-985:StoryInstance queue concurrent message notify_player
-00-15-50-987:[Warn]:Time:00-15-50-986:StoryInstance queue concurrent message notify_player
-00-15-53-040:[Warn]:Time:00-15-53-039:StoryInstance queue concurrent message on_trigger_enter
-00-15-53-040:[Warn]:Time:00-15-53-040:StoryInstance queue concurrent message on_trigger_enter
-00-15-53-041:[Warn]:Time:00-15-53-040:StoryInstance queue concurrent message on_trigger_enter
-00-15-53-042:[Warn]:Time:00-15-53-041:StoryInstance queue concurrent message on_trigger_enter
-00-15-53-051:[Warn]:Time:00-15-53-049:StoryInstance queue concurrent message baozha
-00-15-53-057:[Warn]:Time:00-15-53-055:StoryInstance queue concurrent message baozha
-00-15-53-061:[Warn]:Time:00-15-53-060:StoryInstance queue concurrent message baozha
-00-15-53-066:[Warn]:Time:00-15-53-063:StoryInstance queue concurrent message baozha
-00-15-53-680:[Warn]:Time:00-15-53-679:StoryInstance queue concurrent message on_trigger_exit
-00-15-53-682:[Warn]:Time:00-15-53-681:StoryInstance queue concurrent message on_trigger_exit
-00-15-53-682:[Warn]:Time:00-15-53-682:StoryInstance queue concurrent message on_trigger_exit
-00-15-53-683:[Warn]:Time:00-15-53-682:StoryInstance queue concurrent message on_trigger_exit
-00-15-53-710:[Warn]:Time:00-15-53-709:StoryInstance queue message hide_centerinfo
-00-15-53-729:[Warn]:Time:00-15-53-726:StoryInstance queue message on_hide_centerinfo
-00-15-59-442:[Warn]:Time:00-15-59-440:StoryInstance queue message move_to
-00-16-00-435:[Warn]:Time:00-16-00-432:StoryInstance queue concurrent message notify_player
-00-16-00-437:[Warn]:Time:00-16-00-435:StoryInstance queue concurrent message notify_player
-00-16-01-455:[Warn]:Time:00-16-01-454:StoryInstance queue concurrent message notify_player
-00-16-01-457:[Warn]:Time:00-16-01-455:StoryInstance queue concurrent message notify_player
-00-16-02-480:[Warn]:Time:00-16-02-479:StoryInstance queue concurrent message on_trigger_enter
-00-16-02-485:[Warn]:Time:00-16-02-483:StoryInstance queue concurrent message baozha
-00-16-02-546:[Warn]:Time:00-16-02-545:StoryInstance queue concurrent message on_trigger_exit
-00-16-02-664:[Warn]:Time:00-16-02-664:StoryInstance queue concurrent message on_trigger_enter
-00-16-02-666:[Warn]:Time:00-16-02-665:StoryInstance queue concurrent message baozha
-00-16-02-730:[Warn]:Time:00-16-02-729:StoryInstance queue concurrent message on_trigger_exit
-00-16-03-490:[Warn]:Time:00-16-03-489:StoryInstance queue concurrent message on_trigger_enter
-00-16-03-493:[Warn]:Time:00-16-03-492:StoryInstance queue concurrent message baozha
-00-16-03-539:[Warn]:Time:00-16-03-538:StoryInstance queue concurrent message on_trigger_exit
-00-16-03-721:[Warn]:Time:00-16-03-720:StoryInstance queue concurrent message on_trigger_enter
-00-16-03-726:[Warn]:Time:00-16-03-725:StoryInstance queue concurrent message baozha
-00-16-03-770:[Warn]:Time:00-16-03-769:StoryInstance queue concurrent message on_trigger_exit
-00-16-11-515:[Warn]:Time:00-16-11-508:StoryInstance queue concurrent message notify_player
-00-16-13-620:[Warn]:Time:00-16-13-619:StoryInstance queue concurrent message on_trigger_enter
-00-16-13-622:[Warn]:Time:00-16-13-621:StoryInstance queue concurrent message baozha
-00-16-13-686:[Warn]:Time:00-16-13-684:StoryInstance queue concurrent message on_trigger_exit
-00-16-14-533:[Warn]:Time:00-16-14-532:StoryInstance queue concurrent message notify_player
-00-16-14-533:[Warn]:Time:00-16-14-533:StoryInstance queue concurrent message notify_player
-00-16-14-535:[Warn]:Time:00-16-14-534:StoryInstance queue concurrent message notify_player
-00-16-14-536:[Warn]:Time:00-16-14-535:StoryInstance queue concurrent message notify_player
-00-16-14-538:[Warn]:Time:00-16-14-536:StoryInstance queue concurrent message notify_player
-00-16-15-554:[Warn]:Time:00-16-15-552:StoryInstance queue concurrent message notify_player
-00-16-16-540:[Warn]:Time:00-16-16-539:StoryInstance queue concurrent message on_trigger_enter
-00-16-16-542:[Warn]:Time:00-16-16-541:StoryInstance queue concurrent message baozha
-00-16-16-557:[Warn]:Time:00-16-16-556:StoryInstance queue concurrent message notify_player
-00-16-16-558:[Warn]:Time:00-16-16-557:StoryInstance queue concurrent message notify_player
-00-16-16-559:[Warn]:Time:00-16-16-558:StoryInstance queue concurrent message notify_player
-00-16-16-591:[Warn]:Time:00-16-16-590:StoryInstance queue concurrent message on_trigger_enter
-00-16-16-593:[Warn]:Time:00-16-16-591:StoryInstance queue concurrent message baozha
-00-16-16-607:[Warn]:Time:00-16-16-606:StoryInstance queue concurrent message on_trigger_exit
-00-16-16-644:[Warn]:Time:00-16-16-642:StoryInstance queue concurrent message on_trigger_exit
-00-16-16-660:[Warn]:Time:00-16-16-659:StoryInstance queue concurrent message on_trigger_enter
-00-16-16-662:[Warn]:Time:00-16-16-661:StoryInstance queue concurrent message baozha
-00-16-16-727:[Warn]:Time:00-16-16-725:StoryInstance queue concurrent message on_trigger_exit
-00-16-16-747:[Warn]:Time:00-16-16-745:StoryInstance queue concurrent message on_trigger_enter
-00-16-16-749:[Warn]:Time:00-16-16-747:StoryInstance queue concurrent message on_trigger_enter
-00-16-16-751:[Warn]:Time:00-16-16-750:StoryInstance queue concurrent message baozha
-00-16-16-753:[Warn]:Time:00-16-16-752:StoryInstance queue concurrent message baozha
-00-16-16-799:[Warn]:Time:00-16-16-798:StoryInstance queue concurrent message on_trigger_exit
-00-16-16-800:[Warn]:Time:00-16-16-799:StoryInstance queue concurrent message on_trigger_exit
-00-16-17-558:[Warn]:Time:00-16-17-557:StoryInstance queue concurrent message notify_player
-00-16-17-559:[Warn]:Time:00-16-17-558:StoryInstance queue concurrent message notify_player
-00-16-17-560:[Warn]:Time:00-16-17-559:StoryInstance queue concurrent message notify_player
-00-16-17-707:[Warn]:Time:00-16-17-706:StoryInstance queue concurrent message on_trigger_enter
-00-16-17-709:[Warn]:Time:00-16-17-708:StoryInstance queue concurrent message baozha
-00-16-17-773:[Warn]:Time:00-16-17-772:StoryInstance queue concurrent message on_trigger_exit
-00-16-18-585:[Warn]:Time:00-16-18-583:StoryInstance queue concurrent message on_trigger_enter
-00-16-18-587:[Warn]:Time:00-16-18-586:StoryInstance queue concurrent message baozha
-00-16-18-651:[Warn]:Time:00-16-18-650:StoryInstance queue concurrent message on_trigger_exit
-00-16-18-769:[Warn]:Time:00-16-18-768:StoryInstance queue concurrent message on_trigger_enter
-00-16-18-772:[Warn]:Time:00-16-18-769:StoryInstance queue concurrent message baozha
-00-16-18-784:[Warn]:Time:00-16-18-782:StoryInstance queue concurrent message on_trigger_enter
-00-16-18-787:[Warn]:Time:00-16-18-785:StoryInstance queue concurrent message baozha
-00-16-18-835:[Warn]:Time:00-16-18-833:StoryInstance queue concurrent message on_trigger_exit
-00-16-18-851:[Warn]:Time:00-16-18-850:StoryInstance queue concurrent message on_trigger_exit
-00-16-19-578:[Warn]:Time:00-16-19-577:StoryInstance queue concurrent message on_trigger_enter
-00-16-19-581:[Warn]:Time:00-16-19-580:StoryInstance queue concurrent message baozha
-00-16-19-583:[Warn]:Time:00-16-19-582:StoryInstance queue concurrent message notify_player
-00-16-19-584:[Warn]:Time:00-16-19-583:StoryInstance queue concurrent message notify_player
-00-16-19-585:[Warn]:Time:00-16-19-584:StoryInstance queue concurrent message notify_player
-00-16-19-628:[Warn]:Time:00-16-19-627:StoryInstance queue concurrent message on_trigger_enter
-00-16-19-632:[Warn]:Time:00-16-19-631:StoryInstance queue concurrent message baozha
-00-16-19-644:[Warn]:Time:00-16-19-643:StoryInstance queue concurrent message on_trigger_exit
-00-16-19-679:[Warn]:Time:00-16-19-679:StoryInstance queue concurrent message on_trigger_exit
-00-16-19-795:[Warn]:Time:00-16-19-794:StoryInstance queue concurrent message on_trigger_enter
-00-16-19-798:[Warn]:Time:00-16-19-796:StoryInstance queue concurrent message baozha
-00-16-19-845:[Warn]:Time:00-16-19-844:StoryInstance queue concurrent message on_trigger_exit
-00-16-20-590:[Warn]:Time:00-16-20-589:StoryInstance queue concurrent message notify_player
-00-16-20-591:[Warn]:Time:00-16-20-590:StoryInstance queue concurrent message notify_player
-00-16-21-583:[Warn]:Time:00-16-21-582:StoryInstance queue concurrent message on_trigger_enter
-00-16-21-586:[Warn]:Time:00-16-21-584:StoryInstance queue concurrent message baozha
-00-16-21-600:[Warn]:Time:00-16-21-599:StoryInstance queue concurrent message notify_player
-00-16-21-650:[Warn]:Time:00-16-21-649:StoryInstance queue concurrent message on_trigger_exit
-00-16-21-650:[Warn]:Time:00-16-21-650:StoryInstance queue concurrent message on_trigger_enter
-00-16-21-653:[Warn]:Time:00-16-21-651:StoryInstance queue concurrent message baozha
-00-16-21-684:[Warn]:Time:00-16-21-683:StoryInstance queue concurrent message on_trigger_enter
-00-16-21-686:[Warn]:Time:00-16-21-685:StoryInstance queue concurrent message baozha
-00-16-21-733:[Warn]:Time:00-16-21-732:StoryInstance queue concurrent message on_trigger_exit
-00-16-21-766:[Warn]:Time:00-16-21-765:StoryInstance queue concurrent message on_trigger_exit
-00-16-22-610:[Warn]:Time:00-16-22-609:StoryInstance queue concurrent message notify_player
-00-16-22-611:[Warn]:Time:00-16-22-611:StoryInstance queue concurrent message notify_player
-00-16-22-627:[Warn]:Time:00-16-22-626:StoryInstance queue concurrent message on_trigger_enter
-00-16-22-633:[Warn]:Time:00-16-22-631:StoryInstance queue concurrent message baozha
-00-16-22-660:[Warn]:Time:00-16-22-659:StoryInstance queue concurrent message on_trigger_enter
-00-16-22-664:[Warn]:Time:00-16-22-663:StoryInstance queue concurrent message baozha
-00-16-22-692:[Warn]:Time:00-16-22-692:StoryInstance queue concurrent message on_trigger_exit
-00-16-22-728:[Warn]:Time:00-16-22-727:StoryInstance queue concurrent message on_trigger_exit
-00-16-23-622:[Warn]:Time:00-16-23-621:StoryInstance queue concurrent message notify_player
-00-16-23-623:[Warn]:Time:00-16-23-622:StoryInstance queue concurrent message notify_player
-00-16-23-688:[Warn]:Time:00-16-23-686:StoryInstance queue concurrent message on_trigger_enter
-00-16-23-693:[Warn]:Time:00-16-23-690:StoryInstance queue concurrent message baozha
-00-16-23-753:[Warn]:Time:00-16-23-752:StoryInstance queue concurrent message on_trigger_exit
-00-16-24-665:[Warn]:Time:00-16-24-664:StoryInstance queue concurrent message on_trigger_enter
-00-16-24-670:[Warn]:Time:00-16-24-667:StoryInstance queue concurrent message baozha
-00-16-24-747:[Warn]:Time:00-16-24-746:StoryInstance queue concurrent message on_trigger_exit
-00-16-24-832:[Warn]:Time:00-16-24-830:StoryInstance queue concurrent message on_trigger_enter
-00-16-24-837:[Warn]:Time:00-16-24-835:StoryInstance queue concurrent message baozha
-00-16-24-881:[Warn]:Time:00-16-24-880:StoryInstance queue concurrent message on_trigger_exit
-00-16-25-757:[Warn]:Time:00-16-25-756:StoryInstance queue concurrent message on_trigger_enter
-00-16-25-761:[Warn]:Time:00-16-25-759:StoryInstance queue concurrent message baozha
-00-16-25-808:[Warn]:Time:00-16-25-807:StoryInstance queue concurrent message on_trigger_enter
-00-16-25-811:[Warn]:Time:00-16-25-810:StoryInstance queue concurrent message baozha
-00-16-25-825:[Warn]:Time:00-16-25-823:StoryInstance queue concurrent message on_trigger_exit
-00-16-25-874:[Warn]:Time:00-16-25-873:StoryInstance queue concurrent message on_trigger_exit
+01-15-17-913:======GameLog Start (2019年10月12日, 1:15:17)======
+01-15-17-996:[Debug]:Time:01-15-17-995:StoryInstance.Init message handler num:4 True
+01-15-17-996:[Info]:ParseStory scene_main 0
+01-15-18-033:[Debug]:Time:01-15-18-033:StoryInstance.Init message handler num:11 True
+01-15-18-033:[Info]:ParseStory story_main 0
+01-15-18-037:[Warn]:Time:01-15-18-035:StoryInstance queue message start
+01-15-18-290:[Warn]:Time:01-15-18-286:StoryInstance queue message start
+01-15-18-293:[Warn]:Time:01-15-18-290:story_main start
+01-15-20-280:[Debug]:Time:01-15-20-280:StoryInstance.Init message handler num:3 True
+01-15-20-280:[Info]:ParseStory Start:main 0
+01-15-20-316:[Warn]:Time:01-15-20-314:StoryInstance queue message start
+01-15-20-346:[Warn]:Time:01-15-20-345:StoryInstance queue message Start:loop_work
+01-15-22-084:[Warn]:Time:01-15-22-082:StoryInstance queue message Start:on_click
+01-15-22-090:[Warn]:Time:01-15-22-088:StoryInstance queue message on_start_button_click
+01-15-22-774:[Warn]:Time:01-15-22-772:StoryInstance queue message scene_loaded
+01-15-22-784:[Warn]:Time:01-15-22-782:StoryInstance queue message start_game
+01-15-23-924:[Debug]:Time:01-15-23-924:StoryInstance.Init message handler num:2 True
+01-15-23-924:[Info]:ParseStory Option:main 0
+01-15-23-931:[Warn]:Time:01-15-23-930:StoryInstance queue message start
+01-15-23-935:[Debug]:Time:01-15-23-935:StoryInstance.Init message handler num:3 True
+01-15-23-936:[Info]:ParseStory Info:main 0
+01-15-23-939:[Warn]:Time:01-15-23-937:StoryInstance queue message start
+01-15-23-940:[Debug]:Time:01-15-23-940:StoryInstance.Init message handler num:3 True
+01-15-23-940:[Info]:ParseStory CenterInfo:main 0
+01-15-23-942:[Warn]:Time:01-15-23-942:StoryInstance queue message start
+01-15-23-943:[Debug]:Time:01-15-23-943:StoryInstance.Init message handler num:3 True
+01-15-23-943:[Info]:ParseStory Victory:main 0
+01-15-23-946:[Warn]:Time:01-15-23-945:StoryInstance queue message start
+01-15-23-949:[Debug]:Time:01-15-23-949:StoryInstance.Init message handler num:3 True
+01-15-23-949:[Info]:ParseStory Failed:main 0
+01-15-23-952:[Warn]:Time:01-15-23-949:StoryInstance queue message start
+01-15-24-143:[Debug]:Time:01-15-24-143:StoryInstance.Init message handler num:3 True
+01-15-24-143:[Info]:ParseStory ai_player 0
+01-15-24-146:[Warn]:Time:01-15-24-144:StoryInstance queue message start
+01-15-24-154:[Debug]:Time:01-15-24-154:StoryInstance.Init message handler num:3 True
+01-15-24-154:[Info]:ParseStory ai_npc 0
+01-15-24-156:[Warn]:Time:01-15-24-154:StoryInstance queue message start
+01-15-24-160:[Warn]:Time:01-15-24-158:StoryInstance queue message start
+01-15-24-165:[Warn]:Time:01-15-24-163:StoryInstance queue message start
+01-15-24-170:[Warn]:Time:01-15-24-168:StoryInstance queue message start
+01-15-24-174:[Warn]:Time:01-15-24-172:StoryInstance queue message start
+01-15-24-182:[Warn]:Time:01-15-24-179:StoryInstance queue message start
+01-15-24-197:[Warn]:Time:01-15-24-195:StoryInstance queue message on_born
+01-15-24-198:[Warn]:Time:01-15-24-197:StoryInstance queue message on_born
+01-15-24-199:[Warn]:Time:01-15-24-198:StoryInstance queue message on_born
+01-15-24-200:[Warn]:Time:01-15-24-199:StoryInstance queue message on_born
+01-15-24-202:[Warn]:Time:01-15-24-200:StoryInstance queue message on_born
+01-15-24-204:[Warn]:Time:01-15-24-202:StoryInstance queue message on_born
+01-15-24-206:[Warn]:Time:01-15-24-204:StoryInstance queue message on_born
+01-15-24-445:[Warn]:Time:01-15-24-443:StoryInstance queue message show_centerinfo
+01-15-26-450:[Warn]:Time:01-15-26-447:StoryInstance queue concurrent message notify_player
+01-15-26-452:[Warn]:Time:01-15-26-450:StoryInstance queue concurrent message notify_player
+01-15-26-454:[Warn]:Time:01-15-26-452:StoryInstance queue concurrent message notify_player
+01-15-26-457:[Warn]:Time:01-15-26-454:StoryInstance queue concurrent message notify_player
+01-15-28-230:[Warn]:Time:01-15-28-227:StoryInstance queue message hide_centerinfo
+01-15-28-245:[Warn]:Time:01-15-28-242:StoryInstance queue message on_hide_centerinfo
+01-15-28-493:[Warn]:Time:01-15-28-491:StoryInstance queue concurrent message on_trigger_enter
+01-15-28-493:[Warn]:Time:01-15-28-493:StoryInstance queue concurrent message on_trigger_enter
+01-15-28-494:[Warn]:Time:01-15-28-494:StoryInstance queue concurrent message on_trigger_enter
+01-15-28-495:[Warn]:Time:01-15-28-494:StoryInstance queue concurrent message on_trigger_enter
+01-15-28-508:[Warn]:Time:01-15-28-506:StoryInstance queue concurrent message baozha
+01-15-28-511:[Warn]:Time:01-15-28-510:StoryInstance queue concurrent message baozha
+01-15-28-515:[Warn]:Time:01-15-28-513:StoryInstance queue concurrent message baozha
+01-15-28-518:[Warn]:Time:01-15-28-516:StoryInstance queue concurrent message baozha
+01-15-28-545:[Warn]:Time:01-15-28-544:StoryInstance queue concurrent message on_trigger_exit
+01-15-28-579:[Warn]:Time:01-15-28-578:StoryInstance queue concurrent message on_trigger_exit
+01-15-28-580:[Warn]:Time:01-15-28-579:StoryInstance queue concurrent message on_trigger_exit
+01-15-28-581:[Warn]:Time:01-15-28-580:StoryInstance queue concurrent message on_trigger_exit
+01-15-31-473:[Warn]:Time:01-15-31-472:StoryInstance queue concurrent message notify_player
+01-15-32-475:[Warn]:Time:01-15-32-474:StoryInstance queue concurrent message notify_player
+01-15-32-476:[Warn]:Time:01-15-32-475:StoryInstance queue concurrent message notify_player
+01-15-33-486:[Warn]:Time:01-15-33-485:StoryInstance queue concurrent message notify_player
+01-15-33-487:[Warn]:Time:01-15-33-486:StoryInstance queue concurrent message notify_player
+01-15-33-488:[Warn]:Time:01-15-33-487:StoryInstance queue concurrent message notify_player
+01-15-33-618:[Warn]:Time:01-15-33-616:StoryInstance queue concurrent message on_trigger_enter
+01-15-33-622:[Warn]:Time:01-15-33-620:StoryInstance queue concurrent message baozha
+01-15-33-701:[Warn]:Time:01-15-33-700:StoryInstance queue concurrent message on_trigger_exit
+01-15-34-485:[Warn]:Time:01-15-34-484:StoryInstance queue concurrent message on_trigger_enter
+01-15-34-489:[Warn]:Time:01-15-34-488:StoryInstance queue concurrent message baozha
+01-15-34-491:[Warn]:Time:01-15-34-489:StoryInstance queue concurrent message notify_player
+01-15-34-492:[Warn]:Time:01-15-34-491:StoryInstance queue concurrent message notify_player
+01-15-34-552:[Warn]:Time:01-15-34-551:StoryInstance queue concurrent message on_trigger_exit
+01-15-34-572:[Warn]:Time:01-15-34-571:StoryInstance queue concurrent message on_trigger_enter
+01-15-34-575:[Warn]:Time:01-15-34-574:StoryInstance queue concurrent message baozha
+01-15-34-637:[Warn]:Time:01-15-34-636:StoryInstance queue concurrent message on_trigger_exit
+01-15-35-496:[Warn]:Time:01-15-35-496:StoryInstance queue concurrent message notify_player
+01-15-35-497:[Warn]:Time:01-15-35-496:StoryInstance queue concurrent message notify_player
+01-15-35-515:[Warn]:Time:01-15-35-513:StoryInstance queue concurrent message on_trigger_enter
+01-15-35-521:[Warn]:Time:01-15-35-520:StoryInstance queue concurrent message baozha
+01-15-35-549:[Warn]:Time:01-15-35-549:StoryInstance queue concurrent message on_trigger_enter
+01-15-35-552:[Warn]:Time:01-15-35-550:StoryInstance queue concurrent message on_trigger_enter
+01-15-35-556:[Warn]:Time:01-15-35-555:StoryInstance queue concurrent message baozha
+01-15-35-560:[Warn]:Time:01-15-35-558:StoryInstance queue concurrent message baozha
+01-15-35-589:[Warn]:Time:01-15-35-588:StoryInstance queue concurrent message on_trigger_exit
+01-15-35-607:[Warn]:Time:01-15-35-605:StoryInstance queue concurrent message on_trigger_exit
+01-15-35-639:[Warn]:Time:01-15-35-638:StoryInstance queue concurrent message on_trigger_exit
+01-15-36-501:[Warn]:Time:01-15-36-499:StoryInstance queue concurrent message notify_player
+01-15-36-503:[Warn]:Time:01-15-36-501:StoryInstance queue concurrent message notify_player
+01-15-36-504:[Warn]:Time:01-15-36-503:StoryInstance queue concurrent message notify_player
+01-15-36-599:[Warn]:Time:01-15-36-598:StoryInstance queue concurrent message on_trigger_enter
+01-15-36-604:[Warn]:Time:01-15-36-603:StoryInstance queue concurrent message baozha
+01-15-36-649:[Warn]:Time:01-15-36-647:StoryInstance queue concurrent message on_trigger_exit
+01-15-36-716:[Warn]:Time:01-15-36-715:StoryInstance queue concurrent message on_trigger_enter
+01-15-36-722:[Warn]:Time:01-15-36-720:StoryInstance queue concurrent message baozha
+01-15-36-767:[Warn]:Time:01-15-36-766:StoryInstance queue concurrent message on_trigger_exit
+01-15-37-660:[Warn]:Time:01-15-37-659:StoryInstance queue concurrent message on_trigger_enter
+01-15-37-664:[Warn]:Time:01-15-37-662:StoryInstance queue concurrent message baozha
+01-15-37-710:[Warn]:Time:01-15-37-709:StoryInstance queue concurrent message on_trigger_exit
+01-15-37-762:[Warn]:Time:01-15-37-760:StoryInstance queue concurrent message on_trigger_enter
+01-15-37-766:[Warn]:Time:01-15-37-765:StoryInstance queue concurrent message baozha
+01-15-37-812:[Warn]:Time:01-15-37-811:StoryInstance queue concurrent message on_trigger_exit
+01-15-38-525:[Warn]:Time:01-15-38-524:StoryInstance queue concurrent message on_trigger_enter
+01-15-38-530:[Warn]:Time:01-15-38-528:StoryInstance queue concurrent message baozha
+01-15-38-532:[Warn]:Time:01-15-38-531:StoryInstance queue concurrent message notify_player
+01-15-38-533:[Warn]:Time:01-15-38-532:StoryInstance queue concurrent message notify_player
+01-15-38-576:[Warn]:Time:01-15-38-574:StoryInstance queue concurrent message on_trigger_enter
+01-15-38-581:[Warn]:Time:01-15-38-580:StoryInstance queue concurrent message baozha
+01-15-38-592:[Warn]:Time:01-15-38-591:StoryInstance queue concurrent message on_trigger_enter
+01-15-38-593:[Warn]:Time:01-15-38-592:StoryInstance queue concurrent message on_trigger_exit
+01-15-38-598:[Warn]:Time:01-15-38-596:StoryInstance queue concurrent message baozha
+01-15-38-648:[Warn]:Time:01-15-38-647:StoryInstance queue concurrent message on_trigger_exit
+01-15-38-681:[Warn]:Time:01-15-38-680:StoryInstance queue concurrent message on_trigger_exit
+01-15-40-295:[Warn]:Time:01-15-40-293:StoryInstance queue concurrent message on_trigger_enter
+01-15-40-298:[Warn]:Time:01-15-40-297:StoryInstance queue concurrent message baozha
+01-15-40-509:[Warn]:Time:01-15-40-508:StoryInstance queue concurrent message on_trigger_exit
+01-15-40-561:[Warn]:Time:01-15-40-559:StoryInstance queue concurrent message on_trigger_enter
+01-15-40-565:[Warn]:Time:01-15-40-564:StoryInstance queue concurrent message baozha
+01-15-40-627:[Warn]:Time:01-15-40-626:StoryInstance queue concurrent message on_trigger_exit
+01-15-41-555:[Warn]:Time:01-15-41-554:StoryInstance queue concurrent message notify_player
+01-15-42-565:[Warn]:Time:01-15-42-563:StoryInstance queue concurrent message notify_player
+01-15-43-575:[Warn]:Time:01-15-43-574:StoryInstance queue concurrent message notify_player
+01-15-43-577:[Warn]:Time:01-15-43-575:StoryInstance queue concurrent message notify_player
+01-15-43-757:[Warn]:Time:01-15-43-756:StoryInstance queue concurrent message on_trigger_enter
+01-15-43-760:[Warn]:Time:01-15-43-759:StoryInstance queue concurrent message baozha
+01-15-43-807:[Warn]:Time:01-15-43-806:StoryInstance queue concurrent message on_trigger_exit
+01-15-44-588:[Warn]:Time:01-15-44-587:StoryInstance queue concurrent message notify_player
+01-15-44-589:[Warn]:Time:01-15-44-588:StoryInstance queue concurrent message notify_player
+01-15-44-590:[Warn]:Time:01-15-44-589:StoryInstance queue concurrent message notify_player
+01-15-44-786:[Warn]:Time:01-15-44-785:StoryInstance queue concurrent message on_trigger_enter
+01-15-44-790:[Warn]:Time:01-15-44-789:StoryInstance queue concurrent message baozha
+01-15-44-853:[Warn]:Time:01-15-44-852:StoryInstance queue concurrent message on_trigger_exit
+01-15-45-631:[Warn]:Time:01-15-45-630:StoryInstance queue concurrent message on_trigger_enter
+01-15-45-637:[Warn]:Time:01-15-45-635:StoryInstance queue concurrent message baozha
+01-15-45-714:[Warn]:Time:01-15-45-713:StoryInstance queue concurrent message on_trigger_exit
+01-15-45-798:[Warn]:Time:01-15-45-797:StoryInstance queue concurrent message on_trigger_enter
+01-15-45-803:[Warn]:Time:01-15-45-802:StoryInstance queue concurrent message baozha
+01-15-45-849:[Warn]:Time:01-15-45-848:StoryInstance queue concurrent message on_trigger_exit
+01-15-46-627:[Warn]:Time:01-15-46-626:StoryInstance queue concurrent message on_trigger_enter
+01-15-46-632:[Warn]:Time:01-15-46-631:StoryInstance queue concurrent message baozha
+01-15-46-644:[Warn]:Time:01-15-46-644:StoryInstance queue concurrent message on_trigger_enter
+01-15-46-651:[Warn]:Time:01-15-46-649:StoryInstance queue concurrent message baozha
+01-15-46-666:[Warn]:Time:01-15-46-665:StoryInstance queue concurrent message on_trigger_enter
+01-15-46-671:[Warn]:Time:01-15-46-670:StoryInstance queue concurrent message baozha
+01-15-46-701:[Warn]:Time:01-15-46-699:StoryInstance queue concurrent message on_trigger_exit
+01-15-46-721:[Warn]:Time:01-15-46-720:StoryInstance queue concurrent message on_trigger_exit
+01-15-46-753:[Warn]:Time:01-15-46-751:StoryInstance queue concurrent message on_trigger_exit
+01-15-47-613:[Warn]:Time:01-15-47-612:StoryInstance queue concurrent message notify_player
+01-15-47-614:[Warn]:Time:01-15-47-613:StoryInstance queue concurrent message notify_player
+01-15-47-615:[Warn]:Time:01-15-47-614:StoryInstance queue concurrent message notify_player
+01-15-48-623:[Warn]:Time:01-15-48-622:StoryInstance queue concurrent message notify_player
+01-15-48-625:[Warn]:Time:01-15-48-623:StoryInstance queue concurrent message notify_player
+01-15-49-634:[Warn]:Time:01-15-49-633:StoryInstance queue concurrent message on_trigger_enter
+01-15-49-637:[Warn]:Time:01-15-49-636:StoryInstance queue concurrent message baozha
+01-15-49-720:[Warn]:Time:01-15-49-717:StoryInstance queue concurrent message on_trigger_exit
+01-15-49-722:[Warn]:Time:01-15-49-720:StoryInstance queue concurrent message on_trigger_enter
+01-15-49-725:[Warn]:Time:01-15-49-724:StoryInstance queue concurrent message baozha
+01-15-49-780:[Warn]:Time:01-15-49-778:StoryInstance queue concurrent message on_trigger_exit
+01-15-49-796:[Warn]:Time:01-15-49-793:StoryInstance queue concurrent message on_trigger_enter
+01-15-49-801:[Warn]:Time:01-15-49-798:StoryInstance queue concurrent message baozha
+01-15-49-852:[Warn]:Time:01-15-49-849:StoryInstance queue concurrent message on_trigger_exit
+01-15-50-826:[Warn]:Time:01-15-50-824:StoryInstance queue concurrent message on_trigger_enter
+01-15-50-828:[Warn]:Time:01-15-50-826:StoryInstance queue concurrent message on_trigger_enter
+01-15-50-831:[Warn]:Time:01-15-50-830:StoryInstance queue concurrent message baozha
+01-15-50-834:[Warn]:Time:01-15-50-832:StoryInstance queue concurrent message baozha
+01-15-50-894:[Warn]:Time:01-15-50-893:StoryInstance queue concurrent message on_trigger_exit
+01-15-50-894:[Warn]:Time:01-15-50-894:StoryInstance queue concurrent message on_trigger_exit
