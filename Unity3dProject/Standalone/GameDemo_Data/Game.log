@@ -1,0 +1,132 @@
+13-19-23-187:======GameLog Start (2019年10月12日, 13:19:23)======
+13-19-23-705:[Debug]:Time:13-19-23-704:StoryInstance.Init message handler num:4 True
+13-19-23-705:[Info]:ParseStory scene_main 0
+13-19-23-743:[Debug]:Time:13-19-23-743:StoryInstance.Init message handler num:11 True
+13-19-23-743:[Info]:ParseStory story_main 0
+13-19-23-745:[Warn]:Time:13-19-23-744:StoryInstance queue message start
+13-19-23-800:[Warn]:Time:13-19-23-799:StoryInstance queue message start
+13-19-23-802:[Warn]:Time:13-19-23-800:story_main start
+13-19-25-814:[Debug]:Time:13-19-25-814:StoryInstance.Init message handler num:3 True
+13-19-25-814:[Info]:ParseStory Start:main 0
+13-19-26-187:[Warn]:Time:13-19-26-185:StoryInstance queue message start
+13-19-26-243:[Warn]:Time:13-19-26-242:StoryInstance queue message Start:loop_work
+13-33-55-108:[Warn]:Time:13-33-55-106:StoryInstance queue message Start:on_click
+13-33-55-117:[Warn]:Time:13-33-55-116:StoryInstance queue message on_start_button_click
+13-33-57-419:[Warn]:Time:13-33-57-418:StoryInstance queue message scene_loaded
+13-33-57-438:[Warn]:Time:13-33-57-435:StoryInstance queue message start_game
+13-33-59-799:[Debug]:Time:13-33-59-799:StoryInstance.Init message handler num:2 True
+13-33-59-799:[Info]:ParseStory Option:main 0
+13-33-59-805:[Warn]:Time:13-33-59-803:StoryInstance queue message start
+13-33-59-899:[Debug]:Time:13-33-59-899:StoryInstance.Init message handler num:3 True
+13-33-59-899:[Info]:ParseStory Info:main 0
+13-33-59-901:[Warn]:Time:13-33-59-900:StoryInstance queue message start
+13-33-59-913:[Debug]:Time:13-33-59-913:StoryInstance.Init message handler num:3 True
+13-33-59-913:[Info]:ParseStory CenterInfo:main 0
+13-33-59-915:[Warn]:Time:13-33-59-914:StoryInstance queue message start
+13-33-59-917:[Debug]:Time:13-33-59-917:StoryInstance.Init message handler num:3 True
+13-33-59-917:[Info]:ParseStory Victory:main 0
+13-33-59-922:[Warn]:Time:13-33-59-919:StoryInstance queue message start
+13-33-59-923:[Debug]:Time:13-33-59-923:StoryInstance.Init message handler num:3 True
+13-33-59-923:[Info]:ParseStory Failed:main 0
+13-33-59-925:[Warn]:Time:13-33-59-924:StoryInstance queue message start
+13-34-00-089:[Debug]:Time:13-34-00-088:StoryInstance.Init message handler num:3 True
+13-34-00-089:[Info]:ParseStory ai_player 0
+13-34-00-091:[Warn]:Time:13-34-00-089:StoryInstance queue message start
+13-34-00-117:[Debug]:Time:13-34-00-117:StoryInstance.Init message handler num:3 True
+13-34-00-117:[Info]:ParseStory ai_npc 0
+13-34-00-118:[Warn]:Time:13-34-00-117:StoryInstance queue message start
+13-34-00-125:[Warn]:Time:13-34-00-122:StoryInstance queue message start
+13-34-00-129:[Warn]:Time:13-34-00-128:StoryInstance queue message start
+13-34-00-131:[Warn]:Time:13-34-00-130:StoryInstance queue message start
+13-34-00-139:[Warn]:Time:13-34-00-137:StoryInstance queue message start
+13-34-00-143:[Warn]:Time:13-34-00-142:StoryInstance queue message start
+13-34-00-157:[Warn]:Time:13-34-00-157:StoryInstance queue message on_born
+13-34-00-158:[Warn]:Time:13-34-00-158:StoryInstance queue message on_born
+13-34-00-159:[Warn]:Time:13-34-00-158:StoryInstance queue message on_born
+13-34-00-160:[Warn]:Time:13-34-00-159:StoryInstance queue message on_born
+13-34-00-160:[Warn]:Time:13-34-00-160:StoryInstance queue message on_born
+13-34-00-161:[Warn]:Time:13-34-00-160:StoryInstance queue message on_born
+13-34-00-161:[Warn]:Time:13-34-00-161:StoryInstance queue message on_born
+13-34-00-342:[Warn]:Time:13-34-00-341:StoryInstance queue message show_centerinfo
+13-34-02-349:[Warn]:Time:13-34-02-348:StoryInstance queue concurrent message notify_player
+13-34-02-350:[Warn]:Time:13-34-02-349:StoryInstance queue concurrent message notify_player
+13-34-02-352:[Warn]:Time:13-34-02-351:StoryInstance queue concurrent message notify_player
+13-34-02-354:[Warn]:Time:13-34-02-352:StoryInstance queue concurrent message notify_player
+13-34-04-409:[Warn]:Time:13-34-04-409:StoryInstance queue concurrent message on_trigger_enter
+13-34-04-410:[Warn]:Time:13-34-04-409:StoryInstance queue concurrent message on_trigger_enter
+13-34-04-410:[Warn]:Time:13-34-04-410:StoryInstance queue concurrent message on_trigger_enter
+13-34-04-411:[Warn]:Time:13-34-04-410:StoryInstance queue concurrent message on_trigger_enter
+13-34-04-426:[Warn]:Time:13-34-04-425:StoryInstance queue concurrent message baozha
+13-34-04-428:[Warn]:Time:13-34-04-427:StoryInstance queue concurrent message baozha
+13-34-04-435:[Warn]:Time:13-34-04-434:StoryInstance queue concurrent message baozha
+13-34-04-438:[Warn]:Time:13-34-04-437:StoryInstance queue concurrent message baozha
+13-34-04-625:[Warn]:Time:13-34-04-625:StoryInstance queue concurrent message on_trigger_exit
+13-34-04-627:[Warn]:Time:13-34-04-626:StoryInstance queue concurrent message on_trigger_exit
+13-34-04-627:[Warn]:Time:13-34-04-627:StoryInstance queue concurrent message on_trigger_exit
+13-34-04-627:[Warn]:Time:13-34-04-627:StoryInstance queue concurrent message on_trigger_exit
+13-34-04-658:[Warn]:Time:13-34-04-657:StoryInstance queue message hide_centerinfo
+13-34-04-706:[Warn]:Time:13-34-04-702:StoryInstance queue message on_hide_centerinfo
+13-34-19-646:[Warn]:Time:13-34-19-646:StoryInstance queue concurrent message notify_player
+13-34-19-647:[Warn]:Time:13-34-19-647:StoryInstance queue concurrent message notify_player
+13-34-19-648:[Warn]:Time:13-34-19-647:StoryInstance queue concurrent message notify_player
+13-34-21-647:[Warn]:Time:13-34-21-647:StoryInstance queue concurrent message on_trigger_enter
+13-34-21-650:[Warn]:Time:13-34-21-649:StoryInstance queue concurrent message baozha
+13-34-21-693:[Warn]:Time:13-34-21-691:StoryInstance queue concurrent message notify_player
+13-34-21-693:[Warn]:Time:13-34-21-693:StoryInstance queue concurrent message notify_player
+13-34-21-694:[Warn]:Time:13-34-21-693:StoryInstance queue concurrent message notify_player
+13-34-21-707:[Warn]:Time:13-34-21-705:StoryInstance queue concurrent message on_trigger_exit
+13-34-21-736:[Warn]:Time:13-34-21-735:StoryInstance queue concurrent message on_trigger_enter
+13-34-21-739:[Warn]:Time:13-34-21-738:StoryInstance queue concurrent message baozha
+13-34-21-775:[Warn]:Time:13-34-21-775:StoryInstance queue concurrent message on_trigger_enter
+13-34-21-784:[Warn]:Time:13-34-21-777:StoryInstance queue concurrent message baozha
+13-34-21-814:[Warn]:Time:13-34-21-813:StoryInstance queue concurrent message on_trigger_exit
+13-34-21-853:[Warn]:Time:13-34-21-852:StoryInstance queue concurrent message on_trigger_exit
+13-34-23-751:[Warn]:Time:13-34-23-750:StoryInstance queue concurrent message on_trigger_enter
+13-34-23-758:[Warn]:Time:13-34-23-755:StoryInstance queue concurrent message baozha
+13-34-23-791:[Warn]:Time:13-34-23-791:StoryInstance queue concurrent message on_trigger_enter
+13-34-23-792:[Warn]:Time:13-34-23-791:StoryInstance queue concurrent message on_trigger_enter
+13-34-23-797:[Warn]:Time:13-34-23-796:StoryInstance queue concurrent message baozha
+13-34-23-802:[Warn]:Time:13-34-23-801:StoryInstance queue concurrent message baozha
+13-34-23-834:[Warn]:Time:13-34-23-834:StoryInstance queue concurrent message on_trigger_exit
+13-34-23-836:[Warn]:Time:13-34-23-835:StoryInstance queue concurrent message on_trigger_exit
+13-34-23-847:[Warn]:Time:13-34-23-847:StoryInstance queue concurrent message on_trigger_exit
+13-34-24-742:[Warn]:Time:13-34-24-739:StoryInstance queue concurrent message notify_player
+13-34-24-743:[Warn]:Time:13-34-24-742:StoryInstance queue concurrent message notify_player
+13-34-25-764:[Warn]:Time:13-34-25-763:StoryInstance queue concurrent message notify_player
+13-34-25-765:[Warn]:Time:13-34-25-764:StoryInstance queue concurrent message notify_player
+13-34-26-787:[Warn]:Time:13-34-26-784:StoryInstance queue concurrent message notify_player
+13-34-26-788:[Warn]:Time:13-34-26-787:StoryInstance queue concurrent message notify_player
+13-34-26-789:[Warn]:Time:13-34-26-788:StoryInstance queue concurrent message notify_player
+13-34-26-824:[Warn]:Time:13-34-26-824:StoryInstance queue concurrent message on_trigger_enter
+13-34-26-829:[Warn]:Time:13-34-26-828:StoryInstance queue concurrent message baozha
+13-34-26-939:[Warn]:Time:13-34-26-938:StoryInstance queue concurrent message on_trigger_exit
+13-34-26-986:[Warn]:Time:13-34-26-986:StoryInstance queue concurrent message on_trigger_enter
+13-34-26-995:[Warn]:Time:13-34-26-995:StoryInstance queue concurrent message baozha
+13-34-27-056:[Warn]:Time:13-34-27-055:StoryInstance queue concurrent message on_trigger_exit
+13-34-27-934:[Warn]:Time:13-34-27-934:StoryInstance queue concurrent message on_trigger_enter
+13-34-27-938:[Warn]:Time:13-34-27-936:StoryInstance queue concurrent message baozha
+13-34-27-995:[Warn]:Time:13-34-27-994:StoryInstance queue concurrent message on_trigger_exit
+13-34-28-030:[Warn]:Time:13-34-28-030:StoryInstance queue concurrent message on_trigger_enter
+13-34-28-036:[Warn]:Time:13-34-28-034:StoryInstance queue concurrent message baozha
+13-34-28-094:[Warn]:Time:13-34-28-093:StoryInstance queue concurrent message on_trigger_exit
+13-34-28-850:[Warn]:Time:13-34-28-848:StoryInstance queue concurrent message on_trigger_enter
+13-34-28-857:[Warn]:Time:13-34-28-853:StoryInstance queue concurrent message baozha
+13-34-28-887:[Warn]:Time:13-34-28-887:StoryInstance queue concurrent message on_trigger_enter
+13-34-28-891:[Warn]:Time:13-34-28-890:StoryInstance queue concurrent message baozha
+13-34-28-919:[Warn]:Time:13-34-28-918:StoryInstance queue concurrent message on_trigger_enter
+13-34-28-919:[Warn]:Time:13-34-28-919:StoryInstance queue concurrent message on_trigger_exit
+13-34-28-923:[Warn]:Time:13-34-28-921:StoryInstance queue concurrent message baozha
+13-34-28-981:[Warn]:Time:13-34-28-980:StoryInstance queue concurrent message on_trigger_exit
+13-34-29-013:[Warn]:Time:13-34-29-012:StoryInstance queue concurrent message on_trigger_exit
+13-34-29-829:[Warn]:Time:13-34-29-828:StoryInstance queue concurrent message notify_player
+13-34-31-841:[Warn]:Time:13-34-31-840:StoryInstance queue concurrent message on_trigger_enter
+13-34-31-844:[Warn]:Time:13-34-31-843:StoryInstance queue concurrent message baozha
+13-34-31-949:[Warn]:Time:13-34-31-949:StoryInstance queue concurrent message on_trigger_exit
+13-34-43-047:[Warn]:Time:13-34-43-045:StoryInstance queue concurrent message notify_player
+13-34-44-057:[Warn]:Time:13-34-44-050:StoryInstance queue concurrent message notify_player
+13-34-45-077:[Warn]:Time:13-34-45-077:StoryInstance queue concurrent message on_trigger_enter
+13-34-45-081:[Warn]:Time:13-34-45-079:StoryInstance queue concurrent message baozha
+13-34-45-152:[Warn]:Time:13-34-45-151:StoryInstance queue concurrent message on_trigger_exit
+13-34-46-123:[Warn]:Time:13-34-46-121:StoryInstance queue concurrent message on_trigger_enter
+13-34-46-129:[Warn]:Time:13-34-46-128:StoryInstance queue concurrent message baozha
+13-34-46-163:[Warn]:Time:13-34-46-162:StoryInstance queue concurrent message on_trigger_exit
