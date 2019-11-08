@@ -6712,12 +6712,14 @@ namespace Expression
                 if (null != ostream || null != output || redirectToConsole) {
                     psi.RedirectStandardOutput = true;
                     psi.StandardOutputEncoding = encoding;
-                    p.OutputDataReceived += (sender, e) => OnOutputDataReceived(sender, e, ostream, output, redirectToConsole, encoding);
+                    var tempStringBuilder = new StringBuilder();
+                    p.OutputDataReceived += (sender, e) => OnOutputDataReceived(sender, e, ostream, output, redirectToConsole, encoding, tempStringBuilder);
                 }
                 if (null != error || redirectToConsole) {
                     psi.RedirectStandardError = true;
                     psi.StandardErrorEncoding = encoding;
-                    p.ErrorDataReceived += (sender, e) => OnErrorDataReceived(sender, e, ostream, error, redirectToConsole, encoding);
+                    var tempStringBuilder = new StringBuilder();
+                    p.ErrorDataReceived += (sender, e) => OnErrorDataReceived(sender, e, ostream, error, redirectToConsole, encoding, tempStringBuilder);
                 }
                 if (p.Start()) {
                     if (psi.RedirectStandardInput) {
@@ -6751,11 +6753,9 @@ namespace Expression
                     p.WaitForExit();
                     if (psi.RedirectStandardOutput) {
                         p.CancelOutputRead();
-                        p.StandardOutput.Close();
                     }
                     if (psi.RedirectStandardError) {
                         p.CancelErrorRead();
-                        p.StandardError.Close();
                     }
                     int r = p.ExitCode;
                     p.Close();
@@ -6776,11 +6776,13 @@ namespace Expression
             }
         }
 
-        private static void OnOutputDataReceived(object sender, System.Diagnostics.DataReceivedEventArgs e, Stream ostream, StringBuilder output, bool redirectToConsole, Encoding encoding)
+        private static void OnOutputDataReceived(object sender, System.Diagnostics.DataReceivedEventArgs e, Stream ostream, StringBuilder output, bool redirectToConsole, Encoding encoding, StringBuilder temp)
         {
             var p = sender as System.Diagnostics.Process;
             if (p.StartInfo.RedirectStandardOutput) {
-                var txt = e.Data;
+                temp.Length = 0;
+                temp.AppendLine(e.Data);
+                var txt = temp.ToString();
                 if (null != ostream) {
                     var bytes = encoding.GetBytes(txt);
                     ostream.Write(bytes, 0, bytes.Length);
@@ -6788,20 +6790,28 @@ namespace Expression
                 if (null != output) {
                     output.Append(txt);
                 }
+                if (redirectToConsole) {
+                    Console.Write(txt);
+                }
             }
         }
 
-        private static void OnErrorDataReceived(object sender, System.Diagnostics.DataReceivedEventArgs e, Stream ostream, StringBuilder error, bool redirectToConsole, Encoding encoding)
+        private static void OnErrorDataReceived(object sender, System.Diagnostics.DataReceivedEventArgs e, Stream ostream, StringBuilder error, bool redirectToConsole, Encoding encoding, StringBuilder temp)
         {
             var p = sender as System.Diagnostics.Process;
             if (p.StartInfo.RedirectStandardError) {
-                var txt = e.Data;
+                temp.Length = 0;
+                temp.AppendLine(e.Data);
+                var txt = temp.ToString();
                 if (null != ostream) {
                     var bytes = encoding.GetBytes(txt);
                     ostream.Write(bytes, 0, bytes.Length);
                 }
                 if (null != error) {
                     error.Append(txt);
+                }
+                if (redirectToConsole) {
+                    Console.Write(txt);
                 }
             }
         }
