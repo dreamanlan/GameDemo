@@ -327,21 +327,21 @@ internal static class TerrainEditUtility
                 var ds = terrainData.GetDetailLayer(0, 0, terrainData.detailWidth, terrainData.detailHeight, layer);
                 details.Add(layer, ds);
             }
-            var calc = new Expression.DslCalculator();
+            var calc = new DslExpression.DslCalculator();
             calc.Init();
-            calc.Register("getheight", new Expression.ExpressionFactoryHelper<GetHeightExp>());
-            calc.Register("getalphamap", new Expression.ExpressionFactoryHelper<GetAlphamapExp>());
-            calc.Register("getalpha", new Expression.ExpressionFactoryHelper<GetAlphaExp>());
-            calc.Register("setalpha", new Expression.ExpressionFactoryHelper<SetAlphaExp>());
-            calc.Register("getdetail", new Expression.ExpressionFactoryHelper<GetDetailExp>());
-            calc.Register("samplered", new Expression.ExpressionFactoryHelper<SampleRedExp>());
-            calc.Register("samplegreen", new Expression.ExpressionFactoryHelper<SampleGreenExp>());
-            calc.Register("sampleblue", new Expression.ExpressionFactoryHelper<SampleBlueExp>());
-            calc.Register("samplealpha", new Expression.ExpressionFactoryHelper<SampleAlphaExp>());
-            calc.Register("getcache", new Expression.ExpressionFactoryHelper<GetCacheExp>());
-            calc.Register("setcache", new Expression.ExpressionFactoryHelper<SetCacheExp>());
-            calc.Register("addtree", new Expression.ExpressionFactoryHelper<AddTreeExp>());
-            calc.Register("addobject", new Expression.ExpressionFactoryHelper<AddObjectExp>());
+            calc.Register("getheight", new DslExpression.ExpressionFactoryHelper<GetHeightExp>());
+            calc.Register("getalphamap", new DslExpression.ExpressionFactoryHelper<GetAlphamapExp>());
+            calc.Register("getalpha", new DslExpression.ExpressionFactoryHelper<GetAlphaExp>());
+            calc.Register("setalpha", new DslExpression.ExpressionFactoryHelper<SetAlphaExp>());
+            calc.Register("getdetail", new DslExpression.ExpressionFactoryHelper<GetDetailExp>());
+            calc.Register("samplered", new DslExpression.ExpressionFactoryHelper<SampleRedExp>());
+            calc.Register("samplegreen", new DslExpression.ExpressionFactoryHelper<SampleGreenExp>());
+            calc.Register("sampleblue", new DslExpression.ExpressionFactoryHelper<SampleBlueExp>());
+            calc.Register("samplealpha", new DslExpression.ExpressionFactoryHelper<SampleAlphaExp>());
+            calc.Register("getcache", new DslExpression.ExpressionFactoryHelper<GetCacheExp>());
+            calc.Register("setcache", new DslExpression.ExpressionFactoryHelper<SetCacheExp>());
+            calc.Register("addtree", new DslExpression.ExpressionFactoryHelper<AddTreeExp>());
+            calc.Register("addobject", new DslExpression.ExpressionFactoryHelper<AddObjectExp>());
             calc.SetGlobalVariable("samplers", samplers);
             calc.SetGlobalVariable("caches", caches);
             calc.SetGlobalVariable("trees", trees);
@@ -410,7 +410,7 @@ internal static class TerrainEditUtility
         }
     }
 
-    private static void ProcessWithDsl(Dsl.FunctionData funcData, string type, float[,] datas, float[, ,] alphamaps, Dictionary<int, int[,]> details, Expression.DslCalculator calc, string proc, ref bool resetTrees)
+    private static void ProcessWithDsl(Dsl.FunctionData funcData, string type, float[,] datas, float[, ,] alphamaps, Dictionary<int, int[,]> details, DslExpression.DslCalculator calc, string proc, ref bool resetTrees)
     {
         if (null == funcData)
             return;
@@ -489,7 +489,7 @@ internal static class TerrainEditUtility
         }
     }
 
-    private static void ProcessHeights(float[,] datas, Expression.DslCalculator calc, string proc, int x, int y, int w, int h)
+    private static void ProcessHeights(float[,] datas, DslExpression.DslCalculator calc, string proc, int x, int y, int w, int h)
     {
         for (int ix = 0; ix < w; ++ix) {
             for (int iy = 0; iy < h; ++iy) {
@@ -506,7 +506,7 @@ internal static class TerrainEditUtility
         quit:
         EditorUtility.ClearProgressBar();
     }
-    private static void ProcessHeights(float[,] datas, Expression.DslCalculator calc, string proc, int cx, int cy, int r)
+    private static void ProcessHeights(float[,] datas, DslExpression.DslCalculator calc, string proc, int cx, int cy, int r)
     {
         int x = cx - r;
         int y = cy - r;
@@ -532,7 +532,7 @@ internal static class TerrainEditUtility
         quit:
         EditorUtility.ClearProgressBar();
     }
-    private static void ProcessAlphamaps(float[,,] alphamaps, Expression.DslCalculator calc, string proc, int x, int y, int w, int h)
+    private static void ProcessAlphamaps(float[,,] alphamaps, DslExpression.DslCalculator calc, string proc, int x, int y, int w, int h)
     {
         int alphanum = alphamaps.GetLength(2);
         for (int ix = 0; ix < w; ++ix) {
@@ -555,7 +555,7 @@ internal static class TerrainEditUtility
         quit:
         EditorUtility.ClearProgressBar();
     }
-    private static void ProcessAlphamaps(float[,,] alphamaps, Expression.DslCalculator calc, string proc, int cx, int cy, int r)
+    private static void ProcessAlphamaps(float[,,] alphamaps, DslExpression.DslCalculator calc, string proc, int cx, int cy, int r)
     {
         int alphanum = alphamaps.GetLength(2);
         int x = cx - r;
@@ -587,7 +587,7 @@ internal static class TerrainEditUtility
         quit:
         EditorUtility.ClearProgressBar();
     }
-    private static void ProcessDetails(Dictionary<int, int[,]> details, Expression.DslCalculator calc, string proc, int x, int y, int w, int h)
+    private static void ProcessDetails(Dictionary<int, int[,]> details, DslExpression.DslCalculator calc, string proc, int x, int y, int w, int h)
     {
         for (int ix = 0; ix < w; ++ix) {
             for (int iy = 0; iy < h; ++iy) {
@@ -608,7 +608,7 @@ internal static class TerrainEditUtility
         quit:
         EditorUtility.ClearProgressBar();
     }
-    private static void ProcessDetails(Dictionary<int, int[,]> details, Expression.DslCalculator calc, string proc, int cx, int cy, int r)
+    private static void ProcessDetails(Dictionary<int, int[,]> details, DslExpression.DslCalculator calc, string proc, int cx, int cy, int r)
     {
         int x = cx - r;
         int y = cy - r;
@@ -836,7 +836,7 @@ internal static class TerrainEditUtility
     private const string c_IndentString = "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
 }
 
-internal class GetHeightExp : Expression.SimpleExpressionBase
+internal class GetHeightExp : DslExpression.SimpleExpressionBase
 {
     protected override object OnCalc(IList<object> operands)
     {
@@ -850,7 +850,7 @@ internal class GetHeightExp : Expression.SimpleExpressionBase
         return r;
     }
 }
-internal class GetAlphamapExp : Expression.SimpleExpressionBase
+internal class GetAlphamapExp : DslExpression.SimpleExpressionBase
 {
     protected override object OnCalc(IList<object> operands)
     {
@@ -865,7 +865,7 @@ internal class GetAlphamapExp : Expression.SimpleExpressionBase
         return r;
     }
 }
-internal class GetAlphaExp : Expression.SimpleExpressionBase
+internal class GetAlphaExp : DslExpression.SimpleExpressionBase
 {
     protected override object OnCalc(IList<object> operands)
     {
@@ -878,7 +878,7 @@ internal class GetAlphaExp : Expression.SimpleExpressionBase
         return r;
     }
 }
-internal class SetAlphaExp : Expression.SimpleExpressionBase
+internal class SetAlphaExp : DslExpression.SimpleExpressionBase
 {
     protected override object OnCalc(IList<object> operands)
     {
@@ -893,7 +893,7 @@ internal class SetAlphaExp : Expression.SimpleExpressionBase
         return r;
     }
 }
-internal class GetDetailExp : Expression.SimpleExpressionBase
+internal class GetDetailExp : DslExpression.SimpleExpressionBase
 {
     protected override object OnCalc(IList<object> operands)
     {
@@ -911,7 +911,7 @@ internal class GetDetailExp : Expression.SimpleExpressionBase
         return r;
     }
 }
-internal class SampleRedExp : Expression.SimpleExpressionBase
+internal class SampleRedExp : DslExpression.SimpleExpressionBase
 {
     protected override object OnCalc(IList<object> operands)
     {
@@ -933,7 +933,7 @@ internal class SampleRedExp : Expression.SimpleExpressionBase
         return r;
     }
 }
-internal class SampleGreenExp : Expression.SimpleExpressionBase
+internal class SampleGreenExp : DslExpression.SimpleExpressionBase
 {
     protected override object OnCalc(IList<object> operands)
     {
@@ -955,7 +955,7 @@ internal class SampleGreenExp : Expression.SimpleExpressionBase
         return r;
     }
 }
-internal class SampleBlueExp : Expression.SimpleExpressionBase
+internal class SampleBlueExp : DslExpression.SimpleExpressionBase
 {
     protected override object OnCalc(IList<object> operands)
     {
@@ -977,7 +977,7 @@ internal class SampleBlueExp : Expression.SimpleExpressionBase
         return r;
     }
 }
-internal class SampleAlphaExp : Expression.SimpleExpressionBase
+internal class SampleAlphaExp : DslExpression.SimpleExpressionBase
 {
     protected override object OnCalc(IList<object> operands)
     {
@@ -999,7 +999,7 @@ internal class SampleAlphaExp : Expression.SimpleExpressionBase
         return r;
     }
 }
-internal class GetCacheExp : Expression.SimpleExpressionBase
+internal class GetCacheExp : DslExpression.SimpleExpressionBase
 {
     protected override object OnCalc(IList<object> operands)
     {
@@ -1021,7 +1021,7 @@ internal class GetCacheExp : Expression.SimpleExpressionBase
         return r;
     }
 }
-internal class SetCacheExp : Expression.SimpleExpressionBase
+internal class SetCacheExp : DslExpression.SimpleExpressionBase
 {
     protected override object OnCalc(IList<object> operands)
     {
@@ -1045,7 +1045,7 @@ internal class SetCacheExp : Expression.SimpleExpressionBase
         return r;
     }
 }
-internal class AddTreeExp : Expression.SimpleExpressionBase
+internal class AddTreeExp : DslExpression.SimpleExpressionBase
 {
     protected override object OnCalc(IList<object> operands)
     {
@@ -1071,7 +1071,7 @@ internal class AddTreeExp : Expression.SimpleExpressionBase
         return r;
     }
 }
-internal class AddObjectExp : Expression.SimpleExpressionBase
+internal class AddObjectExp : DslExpression.SimpleExpressionBase
 {
     protected override object OnCalc(IList<object> operands)
     {
