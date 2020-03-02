@@ -688,11 +688,10 @@ namespace GameLibrary.Story
         }
         private void LoadCustomCommandsAndValues()
         {
-            string cmdFile = "Dsl/Story/Common/CustomCommands.dsl";
-            string valFile = "Dsl/Story/Common/CustomValues.dsl";
-
-            Dsl.DslFile file1 = CustomCommandValueParser.LoadStoryText(cmdFile, LoadAssetFile(cmdFile));
-            Dsl.DslFile file2 = CustomCommandValueParser.LoadStoryText(valFile, LoadAssetFile(valFile));
+            string valFile = "Dsl/Story/Common/CustomValues";
+            string cmdFile = "Dsl/Story/Common/CustomCommands";
+            Dsl.DslFile file1 = CustomCommandValueParser.LoadStoryText(valFile, LoadAssetFile(valFile));
+            Dsl.DslFile file2 = CustomCommandValueParser.LoadStoryText(cmdFile, LoadAssetFile(cmdFile));
             CustomCommandValueParser.FirstParse(file1, file2);
             CustomCommandValueParser.FinalParse(file1, file2);
         }

@@ -1,5 +1,5 @@
 ﻿MSBUILD : warning MSB4056: 必须对单线程单元调用 MSBuild 引擎。当前线程模型为“MTA”。将继续，但某些任务可能无法正常工作。
-生成启动时间为 2019/10/22 20:43:59。
+生成启动时间为 2020/3/3 1:50:12。
 __________________________________________________
 项目“E:\OpenSource\GameDemo\GameLibrary\GameLibrary.sln”(clean;rebuild 个目标):
 
@@ -156,34 +156,22 @@ __________________________________________________
 
     目标 CoreCompile:
         C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Csc.exe /noconfig /unsafe+ /nowarn:1701,1702 /nostdlib+ /errorreport:prompt /warn:4 /define:TRACE;DEBUG;ROBOT /highentropyva- /reference:E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\bin\Debug\Common.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\Dsl.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\LitJson.dll /reference:C:\Windows\Microsoft.NET\Framework64\v2.0.50727\mscorlib.dll /reference:E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\bin\Debug\StorySystem.dll /reference:"C:\Program Files\Reference Assemblies\Microsoft\Framework\v3.5\System.Core.dll" /reference:C:\Windows\Microsoft.NET\Framework64\v2.0.50727\System.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\UnityEngine.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\UnityEngine.UI.dll /debug+ /debug:full /filealign:512 /optimize- /out:obj\Debug\GameKernel.dll /target:library /utf8output Ai\AiCommand.cs Ai\AiLogicUtility.cs Ai\AiRegister.cs Scene\ObjectKdTree.cs Scene\SceneSystem.cs GameObjects\ObjectInfo\Entity_NpcType.cs Scene\SceneSystem_Ai.cs Scene\SceneSystem_Entity.cs GameController.cs GameObjects\AiInfo\AiInfo.cs GameObjects\AiInfo\NpcAiData.cs GameObjects\EntityInfoDictionary.cs GameObjects\EntityManager.cs GameObjects\EntityKdTree.cs GameObjects\MovementInfo\MovementInfo.cs GameObjects\ObjectInfo\CharacterDefines.cs GameObjects\ObjectInfo\CharacterProperty.cs GameObjects\ObjectInfo\Entity_Base.cs GameObjects\ObjectInfo\Entity_Npc.cs GameObjects\SceneSharedData\BlackBoard.cs GameObjectViews\EntityViewModelManager.cs GameObjectViews\EntityViewModel_Base.cs GameObjectViews\EntityViewModel_Npc.cs GmCommands\ClientGmStorySystem.cs GmCommands\GmCommands.cs Properties\AssemblyInfo.cs Resource\AbstractScriptBehavior.cs Resource\ResourceSystem.cs Ai\AiCommand\AiChase.cs Ai\AiCommand\AiGohome.cs Ai\AiCommand\AiKeepAway.cs Ai\AiCommand\AiRandMove.cs Ai\AiValue\AiGetTarget.cs Ai\AiValue\AiNeedChase.cs Ai\AiValue\AiNeedKeepAway.cs Ai\AiValue\AiQuey.cs Ai\AiValue\AiSelectTarget.cs Story\Commands\GameLogicCommands.cs Story\Commands\GeneralCommands.cs Story\ClientStorySystem.cs Story\UiStoryEventHandler.cs Story\UiStoryInitializer.cs Story\Values\GameLogicValues.cs Story\Values\GeneralValues.cs UtilityForClient\Logger.cs UtilityForClient\Utility.cs Story\Commands\NpcCommands.cs Story\Commands\ObjectCommands.cs Story\Values\ObjectValues.cs Story\Values\NpcValues.cs
-    目标 _CopyFilesMarkedCopyLocal:
-        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\bin\Debug\Common.dll”复制到“bin\Debug\Common.dll”。
-        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\Dsl.dll”复制到“bin\Debug\Dsl.dll”。
-        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\LitJson.dll”复制到“bin\Debug\LitJson.dll”。
-        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\bin\Debug\StorySystem.dll”复制到“bin\Debug\StorySystem.dll”。
-        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\UnityEngine.dll”复制到“bin\Debug\UnityEngine.dll”。
-        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\UnityEngine.UI.dll”复制到“bin\Debug\UnityEngine.UI.dll”。
-        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\UnityEditor.dll”复制到“bin\Debug\UnityEditor.dll”。
-        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\bin\Debug\Common.pdb”复制到“bin\Debug\Common.pdb”。
-        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\bin\Debug\StorySystem.pdb”复制到“bin\Debug\StorySystem.pdb”。
-        正在将文件从“E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\Dsl.pdb”复制到“bin\Debug\Dsl.pdb”。
-    目标 GetCopyToOutputDirectoryItems:
-        __________________________________________________
-        项目“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\GameKernel.csproj”正在生成“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\Common.csproj”(GetCopyToOutputDirectoryItems 目标):
+        Story\ClientStorySystem.cs(691,30): error CS0103: 当前上下文中不存在名称“FilePathDefine_Client”
+        Story\ClientStorySystem.cs(692,30): error CS0103: 当前上下文中不存在名称“FilePathDefine_Client”
+        Story\ClientStorySystem.cs(693,19): error CS0103: 当前上下文中不存在名称“ClientModule”
+        Story\ClientStorySystem.cs(694,19): error CS0103: 当前上下文中不存在名称“ClientModule”
+    已完成在项目“GameKernel.csproj”中生成目标“CoreCompile”的操作 - 失败。
 
-        项目文件包含 ToolsVersion="4.0" 设置，但此工具集未知或缺失。您可以通过为此工具集安装相应的 .NET Framework 来解决此问题。将项目视为具有 ToolsVersion="4.0" 设置。
-        __________________________________________________
-        项目“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\GameKernel.csproj”正在生成“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\StorySystem.csproj”(GetCopyToOutputDirectoryItems 目标):
+    已完成生成项目“GameKernel.csproj”的操作 - 失败。
 
-    目标 CopyFilesToOutputDirectory:
-        正在将文件从“obj\Debug\GameKernel.dll”复制到“bin\Debug\GameKernel.dll”。
-        GameKernel -> E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\bin\Debug\GameKernel.dll
-        正在将文件从“obj\Debug\GameKernel.pdb”复制到“bin\Debug\GameKernel.pdb”。
-
-已成功生成。
+生成失败。
 
 MSBUILD : warning MSB4056: 必须对单线程单元调用 MSBuild 引擎。当前线程模型为“MTA”。将继续，但某些任务可能无法正常工作。
+Story\ClientStorySystem.cs(691,30): error CS0103: 当前上下文中不存在名称“FilePathDefine_Client”
+Story\ClientStorySystem.cs(692,30): error CS0103: 当前上下文中不存在名称“FilePathDefine_Client”
+Story\ClientStorySystem.cs(693,19): error CS0103: 当前上下文中不存在名称“ClientModule”
+Story\ClientStorySystem.cs(694,19): error CS0103: 当前上下文中不存在名称“ClientModule”
     1 个警告
-    0 个错误
+    4 个错误
 
-已用时间 00:00:04.72
+已用时间 00:00:06.47
