@@ -44,13 +44,15 @@ namespace StorySystem.CommonValues
         }
         public bool HaveValue
         {
-            get {
+            get
+            {
                 return m_HaveValue;
             }
         }
         public object Value
         {
-            get {
+            get
+            {
                 return m_Value;
             }
         }
@@ -124,13 +126,15 @@ namespace StorySystem.CommonValues
         }
         public bool HaveValue
         {
-            get {
+            get
+            {
                 return m_HaveValue;
             }
         }
         public object Value
         {
-            get {
+            get
+            {
                 return m_Value;
             }
         }
@@ -142,20 +146,29 @@ namespace StorySystem.CommonValues
                 string str = m_String.Value;
                 int start = 0;
                 int len = 0;
-                if (m_ParamNum == 1 && m_String.HaveValue) {
+                if (m_ParamNum == 1) {
                     len = str.Length;
                 }
-                if (m_ParamNum == 2 && !m_Start.HaveValue) {
-                    canCalc = false;
-                } else {
-                    start = m_Start.Value;
-                    len = str.Length - start;
+                else if (m_ParamNum == 2) {
+                    if (!m_Start.HaveValue) {
+                        canCalc = false;
+                    }
+                    else {
+                        start = m_Start.Value;
+                        len = str.Length - start;
+                    }
                 }
-                if (m_ParamNum == 3 && (!m_Start.HaveValue || !m_Length.HaveValue)) {
+                else if (m_ParamNum == 3) {
+                    if (!m_Start.HaveValue || !m_Length.HaveValue) {
+                        canCalc = false;
+                    }
+                    else {
+                        start = m_Start.Value;
+                        len = m_Length.Value;
+                    }
+                }
+                else {
                     canCalc = false;
-                } else {
-                    start = m_Start.Value;
-                    len = m_Length.Value;
                 }
                 if (canCalc) {
                     m_HaveValue = true;
@@ -169,6 +182,556 @@ namespace StorySystem.CommonValues
         private IStoryValue<int> m_Length = new StoryValue<int>();
         private bool m_HaveValue;
         private object m_Value;
+    }
+    internal sealed class StringContainsValue : IStoryValue
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.CallData callData = param as Dsl.CallData;
+            if (null != callData) {
+
+                int num = callData.GetParamNum();
+                if (num > 0) {
+                    m_String.InitFromDsl(callData.GetParam(0));
+                }
+                for (int i = 1; i < callData.GetParamNum(); ++i) {
+                    StoryValue<string> val = new StoryValue<string>();
+                    val.InitFromDsl(callData.GetParam(i));
+                    m_KeyArgs.Add(val);
+                }
+                TryUpdateValue();
+            }
+        }
+        public IStoryValue Clone()
+        {
+            StringContainsValue val = new StringContainsValue();
+            val.m_String = m_String.Clone();
+            for (int i = 0; i < m_KeyArgs.Count; i++) {
+                val.m_KeyArgs.Add(m_KeyArgs[i].Clone());
+            }
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        {
+            m_HaveValue = false;
+            m_String.Evaluate(instance, handler, iterator, args);
+            for (int i = 0; i < m_KeyArgs.Count; i++) {
+                m_KeyArgs[i].Evaluate(instance, handler, iterator, args);
+            }
+            TryUpdateValue();
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public object Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+
+        private void TryUpdateValue()
+        {
+            bool canCalc = true;
+            if (!m_String.HaveValue) {
+                canCalc = false;
+            }
+            else {
+                for (int i = 0; i < m_KeyArgs.Count; i++) {
+                    if (!m_KeyArgs[i].HaveValue) {
+                        canCalc = false;
+                        break;
+                    }
+                }
+            }
+            if (canCalc) {
+                m_HaveValue = true;
+                string str = m_String.Value;
+                bool r = true;
+                for (int i = 0; i < m_KeyArgs.Count; ++i) {
+                    var key = m_KeyArgs[i].Value;
+                    if (!string.IsNullOrEmpty(key) && !str.Contains(key)) {
+                        r = false;
+                        break;
+                    }
+                }
+                m_Value = r;
+            }
+        }
+        private IStoryValue<string> m_String = new StoryValue<string>();
+        private List<IStoryValue<string>> m_KeyArgs = new List<IStoryValue<string>>();
+        private bool m_HaveValue;
+        private object m_Value;
+    }
+    internal sealed class StringNotContainsValue : IStoryValue
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.CallData callData = param as Dsl.CallData;
+            if (null != callData) {
+
+                int num = callData.GetParamNum();
+                if (num > 0) {
+                    m_String.InitFromDsl(callData.GetParam(0));
+                }
+                for (int i = 1; i < callData.GetParamNum(); ++i) {
+                    StoryValue<string> val = new StoryValue<string>();
+                    val.InitFromDsl(callData.GetParam(i));
+                    m_KeyArgs.Add(val);
+                }
+                TryUpdateValue();
+            }
+        }
+        public IStoryValue Clone()
+        {
+            StringNotContainsValue val = new StringNotContainsValue();
+            val.m_String = m_String.Clone();
+            for (int i = 0; i < m_KeyArgs.Count; i++) {
+                val.m_KeyArgs.Add(m_KeyArgs[i].Clone());
+            }
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        {
+            m_HaveValue = false;
+            m_String.Evaluate(instance, handler, iterator, args);
+            for (int i = 0; i < m_KeyArgs.Count; i++) {
+                m_KeyArgs[i].Evaluate(instance, handler, iterator, args);
+            }
+            TryUpdateValue();
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public object Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+
+        private void TryUpdateValue()
+        {
+            bool canCalc = true;
+            if (!m_String.HaveValue) {
+                canCalc = false;
+            }
+            else {
+                for (int i = 0; i < m_KeyArgs.Count; i++) {
+                    if (!m_KeyArgs[i].HaveValue) {
+                        canCalc = false;
+                        break;
+                    }
+                }
+            }
+            if (canCalc) {
+                m_HaveValue = true;
+                string str = m_String.Value;
+                bool r = true;
+                for (int i = 0; i < m_KeyArgs.Count; ++i) {
+                    var key = m_KeyArgs[i].Value;
+                    if (!string.IsNullOrEmpty(key) && str.Contains(key)) {
+                        r = false;
+                        break;
+                    }
+                }
+                m_Value = r;
+            }
+        }
+        private IStoryValue<string> m_String = new StoryValue<string>();
+        private List<IStoryValue<string>> m_KeyArgs = new List<IStoryValue<string>>();
+        private bool m_HaveValue;
+        private object m_Value;
+    }
+    internal sealed class StringContainsAnyValue : IStoryValue
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.CallData callData = param as Dsl.CallData;
+            if (null != callData) {
+
+                int num = callData.GetParamNum();
+                if (num > 0) {
+                    m_String.InitFromDsl(callData.GetParam(0));
+                }
+                for (int i = 1; i < callData.GetParamNum(); ++i) {
+                    StoryValue<string> val = new StoryValue<string>();
+                    val.InitFromDsl(callData.GetParam(i));
+                    m_KeyArgs.Add(val);
+                }
+                TryUpdateValue();
+            }
+        }
+        public IStoryValue Clone()
+        {
+            StringContainsAnyValue val = new StringContainsAnyValue();
+            val.m_String = m_String.Clone();
+            for (int i = 0; i < m_KeyArgs.Count; i++) {
+                val.m_KeyArgs.Add(m_KeyArgs[i].Clone());
+            }
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        {
+            m_HaveValue = false;
+            m_String.Evaluate(instance, handler, iterator, args);
+            for (int i = 0; i < m_KeyArgs.Count; i++) {
+                m_KeyArgs[i].Evaluate(instance, handler, iterator, args);
+            }
+            TryUpdateValue();
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public object Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+
+        private void TryUpdateValue()
+        {
+            bool canCalc = true;
+            if (!m_String.HaveValue) {
+                canCalc = false;
+            }
+            else {
+                for (int i = 0; i < m_KeyArgs.Count; i++) {
+                    if (!m_KeyArgs[i].HaveValue) {
+                        canCalc = false;
+                        break;
+                    }
+                }
+            }
+            if (canCalc) {
+                m_HaveValue = true;
+                string str = m_String.Value;
+                bool r = true;
+                for (int i = 0; i < m_KeyArgs.Count; ++i) {
+                    var key = m_KeyArgs[i].Value;
+                    if (!string.IsNullOrEmpty(key)) {
+                        if (str.Contains(key)) {
+                            r = true;
+                            break;
+                        }
+                        else {
+                            r = false;
+                        }
+                    }
+                }
+                m_Value = r;
+            }
+        }
+        private IStoryValue<string> m_String = new StoryValue<string>();
+        private List<IStoryValue<string>> m_KeyArgs = new List<IStoryValue<string>>();
+        private bool m_HaveValue;
+        private object m_Value;
+    }
+    internal sealed class StringNotContainsAnyValue : IStoryValue
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.CallData callData = param as Dsl.CallData;
+            if (null != callData) {
+
+                int num = callData.GetParamNum();
+                if (num > 0) {
+                    m_String.InitFromDsl(callData.GetParam(0));
+                }
+                for (int i = 1; i < callData.GetParamNum(); ++i) {
+                    StoryValue<string> val = new StoryValue<string>();
+                    val.InitFromDsl(callData.GetParam(i));
+                    m_KeyArgs.Add(val);
+                }
+                TryUpdateValue();
+            }
+        }
+        public IStoryValue Clone()
+        {
+            StringNotContainsAnyValue val = new StringNotContainsAnyValue();
+            val.m_String = m_String.Clone();
+            for (int i = 0; i < m_KeyArgs.Count; i++) {
+                val.m_KeyArgs.Add(m_KeyArgs[i].Clone());
+            }
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        {
+            m_HaveValue = false;
+            m_String.Evaluate(instance, handler, iterator, args);
+            for (int i = 0; i < m_KeyArgs.Count; i++) {
+                m_KeyArgs[i].Evaluate(instance, handler, iterator, args);
+            }
+            TryUpdateValue();
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public object Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+
+        private void TryUpdateValue()
+        {
+            bool canCalc = true;
+            if (!m_String.HaveValue) {
+                canCalc = false;
+            }
+            else {
+                for (int i = 0; i < m_KeyArgs.Count; i++) {
+                    if (!m_KeyArgs[i].HaveValue) {
+                        canCalc = false;
+                        break;
+                    }
+                }
+            }
+            if (canCalc) {
+                m_HaveValue = true;
+                string str = m_String.Value;
+                bool r = true;
+                for (int i = 0; i < m_KeyArgs.Count; ++i) {
+                    var key = m_KeyArgs[i].Value;
+                    if (!string.IsNullOrEmpty(key)) {
+                        if (!str.Contains(key)) {
+                            r = true;
+                            break;
+                        }
+                        else {
+                            r = false;
+                        }
+                    }
+                }
+                m_Value = r;
+            }
+        }
+        private IStoryValue<string> m_String = new StoryValue<string>();
+        private List<IStoryValue<string>> m_KeyArgs = new List<IStoryValue<string>>();
+        private bool m_HaveValue;
+        private object m_Value;
+    }
+    internal sealed class StringToLowerValue : IStoryValue
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.CallData callData = param as Dsl.CallData;
+            if (null != callData) {
+                if (callData.GetParamNum() > 0)
+                    m_StringVal.InitFromDsl(callData.GetParam(0));
+            }
+        }
+        public IStoryValue Clone()
+        {
+            StringToLowerValue val = new StringToLowerValue();
+            val.m_StringVal = m_StringVal.Clone();
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        {
+            m_HaveValue = false;
+            m_StringVal.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue(instance);
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public object Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+        private void TryUpdateValue(StoryInstance instance)
+        {
+            if (m_StringVal.HaveValue) {
+                m_HaveValue = true;
+                var str = m_StringVal.Value;
+                m_Value = str.ToLower();
+            }
+        }
+
+        private bool m_HaveValue;
+        private object m_Value;
+
+        private IStoryValue<string> m_StringVal = new StoryValue<string>();
+    }
+    internal sealed class StringToUpperValue : IStoryValue
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.CallData callData = param as Dsl.CallData;
+            if (null != callData) {
+                if (callData.GetParamNum() > 0)
+                    m_StringVal.InitFromDsl(callData.GetParam(0));
+            }
+        }
+        public IStoryValue Clone()
+        {
+            StringToUpperValue val = new StringToUpperValue();
+            val.m_StringVal = m_StringVal.Clone();
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        {
+            m_HaveValue = false;
+            m_StringVal.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue(instance);
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public object Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+        private void TryUpdateValue(StoryInstance instance)
+        {
+            if (m_StringVal.HaveValue) {
+                m_HaveValue = true;
+                var str = m_StringVal.Value;
+                m_Value = str.ToUpper();
+            }
+        }
+
+        private bool m_HaveValue;
+        private object m_Value;
+
+        private IStoryValue<string> m_StringVal = new StoryValue<string>();
+    }
+    internal sealed class Str2LowerValue : IStoryValue
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.CallData callData = param as Dsl.CallData;
+            if (null != callData) {
+                if (callData.GetParamNum() > 0)
+                    m_StringVal.InitFromDsl(callData.GetParam(0));
+            }
+        }
+        public IStoryValue Clone()
+        {
+            Str2LowerValue val = new Str2LowerValue();
+            val.m_StringVal = m_StringVal.Clone();
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        {
+            m_HaveValue = false;
+            m_StringVal.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue(instance);
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public object Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+        private void TryUpdateValue(StoryInstance instance)
+        {
+            if (m_StringVal.HaveValue) {
+                m_HaveValue = true;
+                var str = m_StringVal.Value;
+                m_Value = str.StrToLower();
+            }
+        }
+
+        private bool m_HaveValue;
+        private object m_Value;
+
+        private IStoryValue<string> m_StringVal = new StoryValue<string>();
+    }
+    internal sealed class Str2UpperValue : IStoryValue
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.CallData callData = param as Dsl.CallData;
+            if (null != callData) {
+                if (callData.GetParamNum() > 0)
+                    m_StringVal.InitFromDsl(callData.GetParam(0));
+            }
+        }
+        public IStoryValue Clone()
+        {
+            Str2UpperValue val = new Str2UpperValue();
+            val.m_StringVal = m_StringVal.Clone();
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        {
+            m_HaveValue = false;
+            m_StringVal.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue(instance);
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public object Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+        private void TryUpdateValue(StoryInstance instance)
+        {
+            if (m_StringVal.HaveValue) {
+                m_HaveValue = true;
+                var str = m_StringVal.Value;
+                m_Value = str.StrToUpper();
+            }
+        }
+
+        private bool m_HaveValue;
+        private object m_Value;
+
+        private IStoryValue<string> m_StringVal = new StoryValue<string>();
     }
     internal sealed class Str2IntValue : IStoryValue
     {
@@ -196,13 +759,15 @@ namespace StorySystem.CommonValues
         }
         public bool HaveValue
         {
-            get {
+            get
+            {
                 return m_HaveValue;
             }
         }
         public object Value
         {
-            get {
+            get
+            {
                 return m_Value;
             }
         }
@@ -249,13 +814,15 @@ namespace StorySystem.CommonValues
         }
         public bool HaveValue
         {
-            get {
+            get
+            {
                 return m_HaveValue;
             }
         }
         public object Value
         {
-            get {
+            get
+            {
                 return m_Value;
             }
         }

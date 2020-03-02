@@ -322,6 +322,14 @@ namespace StorySystem
             StoryValueManager.Instance.RegisterValueFactory("!", new StoryValueFactoryHelper<CommonValues.NotOperator>());
             StoryValueManager.Instance.RegisterValueFactory("format", new StoryValueFactoryHelper<CommonValues.FormatValue>());
             StoryValueManager.Instance.RegisterValueFactory("substring", new StoryValueFactoryHelper<CommonValues.SubstringValue>());
+            StoryValueManager.Instance.RegisterValueFactory("stringcontains", new StoryValueFactoryHelper<CommonValues.StringContainsValue>());
+            StoryValueManager.Instance.RegisterValueFactory("stringnotcontains", new StoryValueFactoryHelper<CommonValues.StringNotContainsValue>());
+            StoryValueManager.Instance.RegisterValueFactory("stringcontainsany", new StoryValueFactoryHelper<CommonValues.StringContainsAnyValue>());
+            StoryValueManager.Instance.RegisterValueFactory("stringnotcontainsany", new StoryValueFactoryHelper<CommonValues.StringNotContainsAnyValue>());
+            StoryValueManager.Instance.RegisterValueFactory("stringtolower", new StoryValueFactoryHelper<CommonValues.StringToLowerValue>());
+            StoryValueManager.Instance.RegisterValueFactory("stringtoupper", new StoryValueFactoryHelper<CommonValues.StringToUpperValue>());
+            StoryValueManager.Instance.RegisterValueFactory("str2lower", new StoryValueFactoryHelper<CommonValues.Str2LowerValue>());
+            StoryValueManager.Instance.RegisterValueFactory("str2upper", new StoryValueFactoryHelper<CommonValues.Str2UpperValue>());
             StoryValueManager.Instance.RegisterValueFactory("str2int", new StoryValueFactoryHelper<CommonValues.Str2IntValue>());
             StoryValueManager.Instance.RegisterValueFactory("str2float", new StoryValueFactoryHelper<CommonValues.Str2FloatValue>());
             StoryValueManager.Instance.RegisterValueFactory("time", new StoryValueFactoryHelper<CommonValues.TimeValue>());
