@@ -91,7 +91,10 @@ public sealed class TerrainEditWindow : EditorWindow
                 m_DslFile = file;
 
                 m_Samplers.Clear();
-                foreach(var info in m_DslFile.DslInfos) {
+                foreach(var syntaxComponent in m_DslFile.DslInfos) {
+                    var info = syntaxComponent as Dsl.StatementData;
+                    if (null == info)
+                        continue;
                     var first = info.First;
                     foreach(var comp in first.Statements) {
                         var callData = comp as Dsl.CallData;
@@ -358,7 +361,10 @@ internal static class TerrainEditUtility
             calc.SetGlobalVariable("detail", 0);
             bool resetTrees = false;
             bool canContinue = true;
-            foreach (var info in file.DslInfos) {
+            foreach (var syntaxComponent in file.DslInfos) {
+                var info = syntaxComponent as Dsl.StatementData;
+                if (null == info)
+                    continue;
                 bool check=false;
                 int num = info.GetFunctionNum();
                 if (num >= 2) {
@@ -382,14 +388,20 @@ internal static class TerrainEditUtility
             }
             if (canContinue) {
                 int ix = 0;
-                foreach (var info in file.DslInfos) {
+                foreach (var syntaxComponent in file.DslInfos) {
+                    var info = syntaxComponent as Dsl.StatementData;
+                    if (null == info)
+                        continue;
                     for (int i = 1; i < info.GetFunctionNum(); ++i) {
                         calc.LoadDsl(ix.ToString(), info.GetFunction(i));
                         ++ix;
                     }
                 }
                 int ix2 = 0;
-                foreach (var info in file.DslInfos) {
+                foreach (var syntaxComponent in file.DslInfos) {
+                    var info = syntaxComponent as Dsl.StatementData;
+                    if (null == info)
+                        continue;
                     for (int i = 1; i < info.GetFunctionNum(); ++i) {
                         ProcessWithDsl(info.First, info.GetFunctionId(i), datas, alphamaps, details, calc, ix2.ToString(), ref resetTrees);
                         ++ix2;
