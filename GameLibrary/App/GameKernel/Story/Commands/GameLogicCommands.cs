@@ -26,7 +26,7 @@ namespace GameLibrary.Story.Commands
             SceneSystem.Instance.BlackBoard.ClearVariables();
             return false;
         }
-        protected override void Load(Dsl.CallData callData)
+        protected override void Load(Dsl.FunctionData callData)
         {
         }
     }
@@ -55,7 +55,7 @@ namespace GameLibrary.Story.Commands
             SceneSystem.Instance.BlackBoard.SetVariable(name, value);
             return false;
         }
-        protected override void Load(Dsl.CallData callData)
+        protected override void Load(Dsl.FunctionData callData)
         {
             int num = callData.GetParamNum();
             if (num > 1) {
@@ -100,7 +100,7 @@ namespace GameLibrary.Story.Commands
                 return false;
             }
         }
-        protected override void Load(Dsl.CallData callData)
+        protected override void Load(Dsl.FunctionData callData)
         {
             int num = callData.GetParamNum();
             if (num > 0) {
@@ -148,7 +148,7 @@ namespace GameLibrary.Story.Commands
                 return false;
             }
         }
-        protected override void Load(Dsl.CallData callData)
+        protected override void Load(Dsl.FunctionData callData)
         {
             int num = callData.GetParamNum();
             if (num > 0) {
@@ -202,7 +202,7 @@ namespace GameLibrary.Story.Commands
             }
             return false;
         }
-        protected override void Load(Dsl.CallData callData)
+        protected override void Load(Dsl.FunctionData callData)
         {
             m_ParamNum = callData.GetParamNum();
             if (m_ParamNum > 1) {
@@ -245,7 +245,7 @@ namespace GameLibrary.Story.Commands
             }
             return false;
         }
-        protected override void Load(Dsl.CallData callData)
+        protected override void Load(Dsl.FunctionData callData)
         {
             m_ParamNum = callData.GetParamNum();
             if (m_ParamNum > 0) {
@@ -284,7 +284,7 @@ namespace GameLibrary.Story.Commands
             }
             return false;
         }
-        protected override void Load(Dsl.CallData callData)
+        protected override void Load(Dsl.FunctionData callData)
         {
             m_ParamNum = callData.GetParamNum();
             if (m_ParamNum > 0) {

@@ -10,7 +10,7 @@ internal class AiQuery : IStoryValue
 {
     public void InitFromDsl(Dsl.ISyntaxComponent param)
     {
-        Dsl.CallData callData = param as Dsl.CallData;
+        Dsl.FunctionData callData = param as Dsl.FunctionData;
         if (null != callData) {
             LoadCallData(callData);
         } else {
@@ -104,7 +104,7 @@ internal class AiQuery : IStoryValue
         }
     }
 
-    public void LoadCallData(Dsl.CallData callData)
+    public void LoadCallData(Dsl.FunctionData callData)
     {
         string id = callData.GetId();
         if (id == "select") {
@@ -131,7 +131,7 @@ internal class AiQuery : IStoryValue
 
     public void LoadFuncData(Dsl.FunctionData funcData)
     {
-        LoadCallData(funcData.Call);
+        LoadCallData(funcData.LowerOrderFunction);
     }
 
     public void LoadStatementData(Dsl.StatementData statementData)
