@@ -19,7 +19,7 @@ namespace GameLibrary.Story.Commands
             }
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             for (int i = 0; i < m_DslFiles.Count; i++) {
                 m_DslFiles[i].Evaluate(instance, handler, iterator, args);
@@ -60,7 +60,7 @@ namespace GameLibrary.Story.Commands
         }
         protected override void ResetState()
         { }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_StoryId.Evaluate(instance, handler, iterator, args);
             m_Multiple.Evaluate(instance, handler, iterator, args);
@@ -116,7 +116,7 @@ namespace GameLibrary.Story.Commands
         }
         protected override void ResetState()
         { }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_StoryId.Evaluate(instance, handler, iterator, args);
             m_Multiple.Evaluate(instance, handler, iterator, args);
@@ -179,7 +179,7 @@ namespace GameLibrary.Story.Commands
         {
             m_CurTime = 0;
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             for (int i = 0; i < m_StoryIds.Count; i++) {
                 m_StoryIds[i].Evaluate(instance, handler, iterator, args);
@@ -206,7 +206,7 @@ namespace GameLibrary.Story.Commands
             if (ct <= 0) {
                 if (m_HaveSet) {
                     string varName = m_SetVar.Value;
-                    object varVal = m_SetVal.Value;
+                    var varVal = m_SetVal.Value;
                     instance.SetVariable(varName, varVal);
                 }
             } else {
@@ -217,7 +217,7 @@ namespace GameLibrary.Story.Commands
                     ret = true;
                 } else if (m_HaveSet) {
                     string varName = m_TimeoutSetVar.Value;
-                    object varVal = m_TimeoutSetVal.Value;
+                    var varVal = m_TimeoutSetVal.Value;
                     instance.SetVariable(varName, varVal);
                 }
             }
@@ -315,7 +315,7 @@ namespace GameLibrary.Story.Commands
         protected override void ResetState()
         {
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             for (int i = 0; i < m_StoryIds.Count; i++) {
                 m_StoryIds[i].Evaluate(instance, handler, iterator, args);
@@ -379,7 +379,7 @@ namespace GameLibrary.Story.Commands
         protected override void ResetState()
         {
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             for (int i = 0; i < m_StoryIds.Count; i++) {
                 m_StoryIds[i].Evaluate(instance, handler, iterator, args);
@@ -449,7 +449,7 @@ namespace GameLibrary.Story.Commands
         protected override void ResetState()
         { }
 
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_MsgId.Evaluate(instance, handler, iterator, args);
             for (int i = 0; i < m_MsgArgs.Count; ++i) {
@@ -461,12 +461,11 @@ namespace GameLibrary.Story.Commands
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             string msgId = m_MsgId.Value;
-            ArrayList arglist = new ArrayList();
+            BoxedValueList args = ClientStorySystem.Instance.NewBoxedValueList();
             for (int i = 0; i < m_MsgArgs.Count; ++i) {
                 IStoryValue val = m_MsgArgs[i];
-                arglist.Add(val.Value);
+                args.Add(val.Value);
             }
-            object[] args = arglist.ToArray();
             if(m_IsConcurrent)
                 ClientStorySystem.Instance.SendConcurrentMessage(msgId, args);
             else
@@ -528,7 +527,7 @@ namespace GameLibrary.Story.Commands
             m_CurTime = 0;
             m_StartTime = 0;
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             for (int i = 0; i < m_MsgIds.Count; i++) {
                 m_MsgIds[i].Evaluate(instance, handler, iterator, args);
@@ -559,7 +558,7 @@ namespace GameLibrary.Story.Commands
             bool ret = false;
             if (triggered) {
                 string varName = m_SetVar.Value;
-                object varVal = m_SetVal.Value;
+                var varVal = m_SetVal.Value;
                 instance.SetVariable(varName, varVal);
             } else {
                 int timeout = m_TimeoutVal.Value;
@@ -569,7 +568,7 @@ namespace GameLibrary.Story.Commands
                     ret = true;
                 } else {
                     string varName = m_TimeoutSetVar.Value;
-                    object varVal = m_TimeoutSetVal.Value;
+                    var varVal = m_TimeoutSetVal.Value;
                     instance.SetVariable(varName, varVal);
                 }
             }
@@ -648,7 +647,7 @@ namespace GameLibrary.Story.Commands
         {
             m_CurTime = 0;
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             for (int i = 0; i < m_MsgIds.Count; i++) {
                 m_MsgIds[i].Evaluate(instance, handler, iterator, args);
@@ -671,7 +670,7 @@ namespace GameLibrary.Story.Commands
             bool ret = false;
             if (ct <= 0) {
                 string varName = m_SetVar.Value;
-                object varVal = m_SetVal.Value;
+                var varVal = m_SetVal.Value;
                 instance.SetVariable(varName, varVal);
             } else {
                 int timeout = m_TimeoutVal.Value;
@@ -681,7 +680,7 @@ namespace GameLibrary.Story.Commands
                     ret = true;
                 } else {
                     string varName = m_TimeoutSetVar.Value;
-                    object varVal = m_TimeoutSetVal.Value;
+                    var varVal = m_TimeoutSetVal.Value;
                     instance.SetVariable(varName, varVal);
                 }
             }
@@ -752,7 +751,7 @@ namespace GameLibrary.Story.Commands
         protected override void ResetState()
         {
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             for (int i = 0; i < m_MsgIds.Count; i++) {
                 m_MsgIds[i].Evaluate(instance, handler, iterator, args);
@@ -793,7 +792,7 @@ namespace GameLibrary.Story.Commands
         protected override void ResetState()
         {
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             for (int i = 0; i < m_MsgIds.Count; i++) {
                 m_MsgIds[i].Evaluate(instance, handler, iterator, args);
@@ -834,7 +833,7 @@ namespace GameLibrary.Story.Commands
             }
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_ObjId.Evaluate(instance, handler, iterator, args);
             m_Msg.Evaluate(instance, handler, iterator, args);
@@ -848,14 +847,14 @@ namespace GameLibrary.Story.Commands
         {
             int objId = m_ObjId.Value;
             string msg = m_Msg.Value;
-            ArrayList arglist = new ArrayList();
-            for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
-                arglist.Add(val.Value);
-            }
             var entity = SceneSystem.Instance.GetEntityById(objId);
             if (null != entity) {
-                entity.GetAiStateInfo().SendMessage(msg, arglist.ToArray());
+                BoxedValueList args = entity.GetAiStateInfo().NewBoxedValueList();
+                for (int i = 0; i < m_Args.Count; ++i) {
+                    IStoryValue val = m_Args[i];
+                    args.Add(val.Value);
+                }
+                entity.GetAiStateInfo().SendMessage(msg, args);
             }
             return false;
         }
@@ -892,7 +891,7 @@ namespace GameLibrary.Story.Commands
             }
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_ObjId.Evaluate(instance, handler, iterator, args);
             m_Msg.Evaluate(instance, handler, iterator, args);
@@ -906,14 +905,14 @@ namespace GameLibrary.Story.Commands
         {
             int objId = m_ObjId.Value;
             string msg = m_Msg.Value;
-            ArrayList arglist = new ArrayList();
-            for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
-                arglist.Add(val.Value);
-            }
             var entity = SceneSystem.Instance.GetEntityById(objId);
             if (null != entity) {
-                entity.GetAiStateInfo().SendConcurrentMessage(msg, arglist.ToArray());
+                BoxedValueList args = entity.GetAiStateInfo().NewBoxedValueList();
+                for (int i = 0; i < m_Args.Count; ++i) {
+                    IStoryValue val = m_Args[i];
+                    args.Add(val.Value);
+                }
+                entity.GetAiStateInfo().SendConcurrentMessage(msg, args);
             }
             return false;
         }
@@ -950,7 +949,7 @@ namespace GameLibrary.Story.Commands
             }
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_ObjId.Evaluate(instance, handler, iterator, args);
             m_Msg.Evaluate(instance, handler, iterator, args);
@@ -964,14 +963,14 @@ namespace GameLibrary.Story.Commands
         {
             int objId = m_ObjId.Value;
             string msg = m_Msg.Value;
-            ArrayList arglist = new ArrayList();
-            for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
-                arglist.Add(val.Value);
-            }
             var entity = SceneSystem.Instance.GetEntityById(objId);
             if (null != entity) {
-                entity.GetAiStateInfo().SendNamespacedMessage(msg, arglist.ToArray());
+                BoxedValueList args = entity.GetAiStateInfo().NewBoxedValueList();
+                for (int i = 0; i < m_Args.Count; ++i) {
+                    IStoryValue val = m_Args[i];
+                    args.Add(val.Value);
+                }
+                entity.GetAiStateInfo().SendNamespacedMessage(msg, args);
             }
             return false;
         }
@@ -1008,7 +1007,7 @@ namespace GameLibrary.Story.Commands
             }
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_ObjId.Evaluate(instance, handler, iterator, args);
             m_Msg.Evaluate(instance, handler, iterator, args);
@@ -1022,14 +1021,14 @@ namespace GameLibrary.Story.Commands
         {
             int objId = m_ObjId.Value;
             string msg = m_Msg.Value;
-            ArrayList arglist = new ArrayList();
-            for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
-                arglist.Add(val.Value);
-            }
             var entity = SceneSystem.Instance.GetEntityById(objId);
             if (null != entity) {
-                entity.GetAiStateInfo().SendConcurrentNamespacedMessage(msg, arglist.ToArray());
+                BoxedValueList args = entity.GetAiStateInfo().NewBoxedValueList();
+                for (int i = 0; i < m_Args.Count; ++i) {
+                    IStoryValue val = m_Args[i];
+                    args.Add(val.Value);
+                }
+                entity.GetAiStateInfo().SendConcurrentNamespacedMessage(msg, args);
             }
             return false;
         }
@@ -1066,7 +1065,7 @@ namespace GameLibrary.Story.Commands
             }
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_EventName.Evaluate(instance, handler, iterator, args);
             m_Group.Evaluate(instance, handler, iterator, args);
@@ -1083,7 +1082,7 @@ namespace GameLibrary.Story.Commands
             ArrayList arglist = new ArrayList();
             for (int i = 0; i < m_Args.Count; ++i) {
                 IStoryValue val = m_Args[i];
-                arglist.Add(val.Value);
+                arglist.Add(val.Value.Get<object>());
             }
             object[] args = arglist.ToArray();
             Utility.EventSystem.Publish(evname, group, args);
@@ -1122,7 +1121,7 @@ namespace GameLibrary.Story.Commands
             }
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_ObjName.Evaluate(instance, handler, iterator, args);
             m_Msg.Evaluate(instance, handler, iterator, args);
@@ -1139,7 +1138,7 @@ namespace GameLibrary.Story.Commands
             ArrayList arglist = new ArrayList();
             for (int i = 0; i < m_Args.Count; ++i) {
                 IStoryValue val = m_Args[i];
-                arglist.Add(val.Value);
+                arglist.Add(val.Value.Get<object>());
             }
             object[] args = arglist.ToArray();
             if (args.Length == 0)
@@ -1183,7 +1182,7 @@ namespace GameLibrary.Story.Commands
             }
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_ObjTag.Evaluate(instance, handler, iterator, args);
             m_Msg.Evaluate(instance, handler, iterator, args);
@@ -1200,7 +1199,7 @@ namespace GameLibrary.Story.Commands
             ArrayList arglist = new ArrayList();
             for (int i = 0; i < m_Args.Count; ++i) {
                 IStoryValue val = m_Args[i];
-                arglist.Add(val.Value);
+                arglist.Add(val.Value.Get<object>());
             }
             object[] args = arglist.ToArray();
             if (args.Length == 0)
@@ -1244,7 +1243,7 @@ namespace GameLibrary.Story.Commands
             }
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_Object.Evaluate(instance, handler, iterator, args);
             m_Msg.Evaluate(instance, handler, iterator, args);
@@ -1256,11 +1255,11 @@ namespace GameLibrary.Story.Commands
 
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
-            object obj = m_Object.Value;
-            var uobj = obj as UnityEngine.GameObject;
+            var objVal = m_Object.Value;
+            UnityEngine.GameObject uobj = objVal.IsObject ? objVal.ObjectVal as UnityEngine.GameObject : null;
             if (null == uobj) {
                 try {
-                    int objId = (int)obj;
+                    int objId = objVal.IsInteger ? objVal.Get<int>() : -1;
                     uobj = SceneSystem.Instance.GetGameObject(objId);
                 } catch {
                     uobj = null;
@@ -1271,7 +1270,7 @@ namespace GameLibrary.Story.Commands
                 ArrayList arglist = new ArrayList();
                 for (int i = 0; i < m_Args.Count; ++i) {
                     IStoryValue val = m_Args[i];
-                    arglist.Add(val.Value);
+                    arglist.Add(val.Value.Get<object>());
                 }
                 object[] args = arglist.ToArray();
                 if (args.Length == 0)
@@ -1315,7 +1314,7 @@ namespace GameLibrary.Story.Commands
             }
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_Msg.Evaluate(instance, handler, iterator, args);
             for (int i = 0; i < m_Args.Count; ++i) {
@@ -1330,7 +1329,7 @@ namespace GameLibrary.Story.Commands
             ArrayList arglist = new ArrayList();
             for (int i = 0; i < m_Args.Count; ++i) {
                 IStoryValue val = m_Args[i];
-                arglist.Add(val.Value);
+                arglist.Add(val.Value.Get<object>());
             }
             object[] args = arglist.ToArray();
             if (args.Length == 0)
@@ -1392,7 +1391,7 @@ namespace GameLibrary.Story.Commands
         protected override void ResetState()
         {
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_Name.Evaluate(instance, handler, iterator, args);
             m_Prefab.Evaluate(instance, handler, iterator, args);
@@ -1455,15 +1454,15 @@ namespace GameLibrary.Story.Commands
 
                 obj.name = name;
                 if (m_HaveParent) {
-                    object parent = m_Parent.Value;
-                    string path = parent as string;
+                    var parentVal = m_Parent.Value;
+                    string path = parentVal.IsString ? parentVal.StringVal : null;
                     if (null != path) {
                         var pobj = UnityEngine.GameObject.Find(path);
                         if (null != pobj) {
                             obj.transform.SetParent(pobj.transform, false);
                         }
                     } else {
-                        var pobj = parent as UnityEngine.GameObject;
+                        UnityEngine.GameObject pobj = parentVal.IsObject ? parentVal.ObjectVal as UnityEngine.GameObject : null;
                         if (null != pobj) {
                             obj.transform.SetParent(pobj.transform, false);
                         }
@@ -1583,6 +1582,10 @@ namespace GameLibrary.Story.Commands
         private IStoryValue<UnityEngine.Vector3> m_Scale = new StoryValue<UnityEngine.Vector3>();
         private List<IStoryValue<string>> m_DisableComponents = new List<IStoryValue<string>>();
         private List<IStoryValue<string>> m_RemoveComponents = new List<IStoryValue<string>>();
+
+        private bool m_NeedLoad = true;
+        private bool m_IsLoaded = false;
+        private int m_WaitTime = 0;
     }
     /// <summary>
     /// settransform(name, world_or_local){
@@ -1608,7 +1611,7 @@ namespace GameLibrary.Story.Commands
             m_Handled = false;
             m_Object = null;
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_ObjPath.Evaluate(instance, handler, iterator, args);
             m_LocalOrWorld.Evaluate(instance, handler, iterator, args);
@@ -1618,19 +1621,19 @@ namespace GameLibrary.Story.Commands
         }
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
-            object objVal = m_ObjPath.Value;
+            var objVal = m_ObjPath.Value;
             int worldOrLocal = m_LocalOrWorld.Value;
-            string objPath = objVal as string;
+            string objPath = objVal.IsString ? objVal.StringVal : null;
             if (!m_Handled) {
                 m_Handled = true;
                 UnityEngine.GameObject obj = null;
                 if (null != objPath) {
                     obj = UnityEngine.GameObject.Find(objPath);
                 } else {
-                    obj = objVal as UnityEngine.GameObject;
+                    obj = objVal.IsObject ? objVal.ObjectVal as UnityEngine.GameObject : null;
                     if (null == obj) {
                         try {
-                            int id = (int)objVal;
+                            int id = objVal.Get<int>();
                             obj = SceneSystem.Instance.GetGameObject(id);
                         } catch {
                             obj = null;
@@ -1639,12 +1642,20 @@ namespace GameLibrary.Story.Commands
                 }
                 if (null != obj) {
                     m_Object = obj;
+                    var entityInfo = SceneSystem.Instance.GetEntityByGameObject(obj);
                     if (m_Position.HaveValue) {
                         var v = m_Position.Value;
-                        if (0 == worldOrLocal)
+                        if (0 == worldOrLocal) {
                             obj.transform.localPosition = new UnityEngine.Vector3(v.x, v.y, v.z);
-                        else
-                            obj.transform.position = new UnityEngine.Vector3(v.x, v.y, v.z);
+                        }
+                        else {
+                            if (null != entityInfo) {
+                                entityInfo.GetMovementStateInfo().SetPosition(new UnityEngine.Vector3(v.x, v.y, v.z));
+                            }
+                            else {
+                                obj.transform.position = new UnityEngine.Vector3(v.x, v.y, v.z);
+                            }
+                        }
                     }
                     if (m_Rotation.HaveValue) {
                         var v = m_Rotation.Value;
@@ -1720,27 +1731,29 @@ namespace GameLibrary.Story.Commands
             cmd.m_ObjPath = m_ObjPath.Clone();
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_ObjPath.Evaluate(instance, handler, iterator, args);
         }
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
-            object objPath = m_ObjPath.Value;
-            string path = objPath as string;
+            var pathVal = m_ObjPath.Value;
+            string path = pathVal.IsString ? pathVal.StringVal : null;
             if (null != path) {
                 var obj = UnityEngine.GameObject.Find(path);
                 if (null != obj) {
                     obj.transform.SetParent(null);
                     if (!ResourceSystem.Instance.RecycleObject(obj)) {
+                        SceneSystem.Instance.GameObjectsFromDsl.Remove(obj);
                         Utility.DestroyObject(obj);
                     }
                 }
             } else {
-                var obj = objPath as UnityEngine.GameObject;
+                var obj = pathVal.IsObject ? pathVal.ObjectVal as UnityEngine.GameObject : null;
                 if (null != obj) {
                     obj.transform.SetParent(null);
                     if (!ResourceSystem.Instance.RecycleObject(obj)) {
+                        SceneSystem.Instance.GameObjectsFromDsl.Remove(obj);
                         Utility.DestroyObject(obj);
                     }
                 }
@@ -1769,24 +1782,24 @@ namespace GameLibrary.Story.Commands
             cmd.m_Enable = m_Enable.Clone();
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_ObjPath.Evaluate(instance, handler, iterator, args);
             m_Enable.Evaluate(instance, handler, iterator, args);
         }
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
-            object objVal = m_ObjPath.Value;
+            var objVal = m_ObjPath.Value;
             int enable = m_Enable.Value;
-            string objPath = objVal as string;
+            string objPath = objVal.IsString ? objVal.StringVal : null;
             UnityEngine.GameObject obj = null;
             if (null != objPath) {
                 obj = UnityEngine.GameObject.Find(objPath);
             } else {
-                obj = objVal as UnityEngine.GameObject;
+                obj = objVal.IsObject ? objVal.ObjectVal as UnityEngine.GameObject : null;
                 if (null == obj) {
                     try {
-                        int id = (int)objVal;
+                        int id = objVal.Get<int>();
                         obj = SceneSystem.Instance.GetGameObject(id);
                     } catch {
                         obj = null;
@@ -1833,7 +1846,7 @@ namespace GameLibrary.Story.Commands
             m_Object = null;
             m_ParentObject = null;
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_ObjPath.Evaluate(instance, handler, iterator, args);
             m_Parent.Evaluate(instance, handler, iterator, args);
@@ -1841,20 +1854,20 @@ namespace GameLibrary.Story.Commands
         }
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
-            object objVal = m_ObjPath.Value;
-            object parentVal = m_Parent.Value;
+            var objVal = m_ObjPath.Value;
+            var parentVal = m_Parent.Value;
             int stayWorldPos = m_StayWorldPos.Value;
-            string objPath = objVal as string;
+            string objPath = objVal.IsString ? objVal.StringVal : null;
             if (!m_Handled) {
                 m_Handled = true;
                 UnityEngine.GameObject obj = null;
                 if (null != objPath) {
                     obj = UnityEngine.GameObject.Find(objPath);
                 } else {
-                    obj = objVal as UnityEngine.GameObject;
+                    obj = objVal.IsObject ? objVal.ObjectVal as UnityEngine.GameObject : null;
                     if (null == obj) {
                         try {
-                            int id = (int)objVal;
+                            int id = objVal.Get<int>();
                             obj = SceneSystem.Instance.GetGameObject(id);
                         } catch {
                             obj = null;
@@ -1863,7 +1876,7 @@ namespace GameLibrary.Story.Commands
                 }
                 if (null != obj) {
                     m_Object = obj;
-                    string parentPath = parentVal as string;
+                    string parentPath = parentVal.IsString ? parentVal.StringVal : null;
                     if (null != parentPath) {
                         if (string.IsNullOrEmpty(parentPath)) {
                             obj.transform.SetParent(null, stayWorldPos != 0);
@@ -1875,13 +1888,13 @@ namespace GameLibrary.Story.Commands
                             }
                         }
                     } else {
-                        var pobj = parentVal as UnityEngine.GameObject;
+                        UnityEngine.GameObject pobj = parentVal.IsObject ? parentVal.ObjectVal as UnityEngine.GameObject : null;
                         if (null != pobj) {
                             m_ParentObject = pobj;
                             obj.transform.SetParent(pobj.transform, stayWorldPos != 0);
                         } else {
                             try {
-                                int id = (int)parentVal;
+                                int id = parentVal.Get<int>();
                                 if (id < 0) {
                                     m_ParentObject = null;
                                     obj.transform.SetParent(null, stayWorldPos != 0);
@@ -1948,26 +1961,26 @@ namespace GameLibrary.Story.Commands
             m_Handled = false;
             m_Object = null;
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_ObjPath.Evaluate(instance, handler, iterator, args);
             m_Active.Evaluate(instance, handler, iterator, args);
         }
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
-            object objVal = m_ObjPath.Value;
+            var objVal = m_ObjPath.Value;
             int active = m_Active.Value;
-            string objPath = objVal as string;
+            string objPath = objVal.IsString ? objVal.StringVal : null;
             if (!m_Handled) {
                 m_Handled = true;
                 UnityEngine.GameObject obj = null;
                 if (null != objPath) {
                     obj = UnityEngine.GameObject.Find(objPath);
                 } else {
-                    obj = objVal as UnityEngine.GameObject;
+                    obj = objVal.IsObject ? objVal.ObjectVal as UnityEngine.GameObject : null;
                     if (null == obj) {
                         try {
-                            int id = (int)objVal;
+                            int id = objVal.Get<int>();
                             var view = SceneSystem.Instance.GetEntityViewById(id);
                             if (null != view) {
                                 view.Active = active != 0;
@@ -1988,7 +2001,7 @@ namespace GameLibrary.Story.Commands
                     return false;
                 } else {
                     m_Object.SetActive(active != 0);
-                    return true;
+                    return false;
                 }
             }        
             return false;
@@ -2025,26 +2038,26 @@ namespace GameLibrary.Story.Commands
             m_Handled = false;
             m_Object = null;
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_ObjPath.Evaluate(instance, handler, iterator, args);
             m_Visible.Evaluate(instance, handler, iterator, args);
         }
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
-            object objVal = m_ObjPath.Value;
+            var objVal = m_ObjPath.Value;
             int visible = m_Visible.Value;
-            string objPath = objVal as string;
+            string objPath = objVal.IsString ? objVal.StringVal : null;
             if (!m_Handled) {
                 m_Handled = true;
                 UnityEngine.GameObject obj = null;
                 if (null != objPath) {
                     obj = UnityEngine.GameObject.Find(objPath);
                 } else {
-                    obj = objVal as UnityEngine.GameObject;
+                    obj = objVal.IsObject ? objVal.ObjectVal as UnityEngine.GameObject : null;
                     if (null == obj) {
                         try {
-                            int id = (int)objVal;
+                            int id = objVal.Get<int>();
                             var view = SceneSystem.Instance.GetEntityViewById(id);
                             if (null != view) {
                                 view.Visible = visible != 0;
@@ -2072,7 +2085,7 @@ namespace GameLibrary.Story.Commands
                         return false;
                     } else {
                         renderer.enabled = visible != 0;
-                        return true;
+                        return false;
                     }
                 }
             }
@@ -2107,7 +2120,7 @@ namespace GameLibrary.Story.Commands
             cmd.m_ObjVarName = m_ObjVarName.Clone();
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_ObjPath.Evaluate(instance, handler, iterator, args);
             m_ComponentType.Evaluate(instance, handler, iterator, args);
@@ -2119,15 +2132,15 @@ namespace GameLibrary.Story.Commands
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             var objPathVal = m_ObjPath.Value;
-            object componentType = m_ComponentType.Value;
-            var obj = objPathVal as UnityEngine.GameObject;
+            var componentType = m_ComponentType.Value;
+            UnityEngine.GameObject obj = objPathVal.IsObject ? objPathVal.ObjectVal as UnityEngine.GameObject : null;
             if (null == obj) {
-                string objPath = objPathVal as string;
+                string objPath = objPathVal.IsString ? objPathVal.StringVal : null;
                 if (null != objPath) {
                     obj = UnityEngine.GameObject.Find(objPath);
                 } else {
                     try {
-                        int id = (int)objPathVal;
+                        int id = objPathVal.IsInteger ? (int)objPathVal.ToLong() : -1;
                         obj = SceneSystem.Instance.GetGameObject(id);
                     } catch {
                         obj = null;
@@ -2136,11 +2149,11 @@ namespace GameLibrary.Story.Commands
             }
             if (null != obj) {
                 UnityEngine.Component component = null;
-                Type t = componentType as Type;
+                Type t = componentType.IsObject ? componentType.ObjectVal as Type : null;
                 if (null != t) {
                     component = obj.AddComponent(t);
                 } else {
-                    string name = componentType as string;
+                    string name = componentType.IsString ? componentType.StringVal : null;
                     if (null != name) {
                         t = Type.GetType(name);
                         component = obj.AddComponent(t);
@@ -2196,7 +2209,7 @@ namespace GameLibrary.Story.Commands
             cmd.m_ComponentType = m_ComponentType.Clone();
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_ObjPath.Evaluate(instance, handler, iterator, args);
             m_ComponentType.Evaluate(instance, handler, iterator, args);
@@ -2204,15 +2217,15 @@ namespace GameLibrary.Story.Commands
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             var objPathVal = m_ObjPath.Value;
-            object componentType = m_ComponentType.Value;
-            var obj = objPathVal as UnityEngine.GameObject;
+            var componentType = m_ComponentType.Value;
+            UnityEngine.GameObject obj = objPathVal.IsObject ? objPathVal.ObjectVal as UnityEngine.GameObject : null;
             if (null == obj) {
-                string objPath = objPathVal as string;
+                string objPath = objPathVal.IsString ? objPathVal.StringVal : null;
                 if (null != objPath) {
                     obj = UnityEngine.GameObject.Find(objPath);
                 } else {
                     try {
-                        int id = (int)objPathVal;
+                        int id = objPathVal.IsInteger ? (int)objPathVal.ToLong() : -1;
                         obj = SceneSystem.Instance.GetGameObject(id);
                     } catch {
                         obj = null;
@@ -2221,12 +2234,12 @@ namespace GameLibrary.Story.Commands
             }
             if (null != obj) {
                 //UnityEngine.Component component = null;
-                Type t = componentType as Type;
+                Type t = componentType.IsObject ? componentType.ObjectVal as Type : null;
                 if (null != t) {
                     var comp = obj.GetComponent(t);
                     Utility.DestroyObject(comp);
                 } else {
-                    string name = componentType as string;
+                    string name = componentType.IsString ? componentType.StringVal : null;
                     if (null != name) {
                         t = Type.GetType(name);
                         var comp = obj.GetComponent(t);
@@ -2267,7 +2280,7 @@ namespace GameLibrary.Story.Commands
         {
         }
 
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_Name.Evaluate(instance, handler, iterator, args);
             m_Prefab.Evaluate(instance, handler, iterator, args);
@@ -2368,7 +2381,7 @@ namespace GameLibrary.Story.Commands
         protected override void ResetState()
         {
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_Obj.Evaluate(instance, handler, iterator, args);
             for (int i = 0; i < m_VarInfos.Count; ++i) {
@@ -2398,7 +2411,7 @@ namespace GameLibrary.Story.Commands
         }
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
-            UnityEngine.GameObject obj = m_Obj.Value as UnityEngine.GameObject;
+            UnityEngine.GameObject obj = m_Obj.Value.ObjectVal as UnityEngine.GameObject;
             if (null != obj) {
                 UiStoryInitializer initer = obj.GetComponent<UiStoryInitializer>();
                 if (null != initer) {
@@ -2649,7 +2662,7 @@ namespace GameLibrary.Story.Commands
         }
         protected override void ResetState()
         { }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_Url.Evaluate(instance, handler, iterator, args);
         
@@ -2678,7 +2691,7 @@ namespace GameLibrary.Story.Commands
             QuitCommand cmd = new QuitCommand();
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
         
         }
@@ -2704,7 +2717,7 @@ namespace GameLibrary.Story.Commands
         }
         protected override void ResetState()
         { }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_TargetScene.Evaluate(instance, handler, iterator, args);
         
@@ -2737,7 +2750,7 @@ namespace GameLibrary.Story.Commands
         }
         protected override void ResetState()
         { }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_Info.Evaluate(instance, handler, iterator, args);
         }
@@ -2768,7 +2781,7 @@ namespace GameLibrary.Story.Commands
             cmd.m_Value = m_Value.Clone();
             return cmd;
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_ObjId.Evaluate(instance, handler, iterator, args);
             m_Value.Evaluate(instance, handler, iterator, args);
@@ -2777,10 +2790,10 @@ namespace GameLibrary.Story.Commands
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             int objId = m_ObjId.Value;
-            object value = m_Value.Value;
+            var value = m_Value.Value;
             UnityEngine.GameObject obj = SceneSystem.Instance.GetGameObject(objId);
             if (null != obj) {
-                UnityEngine.Vector3 scale = (UnityEngine.Vector3)value;                
+                UnityEngine.Vector3 scale = value;                
                 obj.transform.localScale = new UnityEngine.Vector3(scale.x, scale.y, scale.z);
             }
             return false;
@@ -2813,7 +2826,7 @@ namespace GameLibrary.Story.Commands
         protected override void ResetState()
         {
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_ObjPath.Evaluate(instance, handler, iterator, args);
             m_Anim.Evaluate(instance, handler, iterator, args);
@@ -2823,15 +2836,15 @@ namespace GameLibrary.Story.Commands
         }
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
-            object o = m_ObjPath.Value;
-            string objPath = o as string;
-            var uobj = o as UnityEngine.GameObject;
+            var o = m_ObjPath.Value;
+            string objPath = o.IsString ? o.StringVal : null;
+            UnityEngine.GameObject uobj = o.IsObject ? o.ObjectVal as UnityEngine.GameObject : null;
             if (null == uobj) {
                 if (null != objPath) {
                     uobj = UnityEngine.GameObject.Find(objPath);
                 } else {
                     try {
-                        int objId = (int)o;
+                        int objId = o.Get<int>();
                         uobj = SceneSystem.Instance.GetGameObject(objId);
                     } catch {
                         uobj = null;
@@ -2895,7 +2908,7 @@ namespace GameLibrary.Story.Commands
         protected override void ResetState()
         {
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_ObjPath.Evaluate(instance, handler, iterator, args);
             for (int i = 0; i < m_Params.Count; ++i) {
@@ -2910,15 +2923,15 @@ namespace GameLibrary.Story.Commands
         }
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
-            object o = m_ObjPath.Value;
-            string objPath = o as string;
-            var obj = o as UnityEngine.GameObject;
+            var o = m_ObjPath.Value;
+            string objPath = o.IsString ? o.StringVal : null;
+            UnityEngine.GameObject obj = o.IsObject ? o.ObjectVal as UnityEngine.GameObject : null;
             if (null == obj) {
                 if (null != objPath) {
                     obj = UnityEngine.GameObject.Find(objPath);
                 } else {
                     try {
-                        int objId = (int)o;
+                        int objId = o.Get<int>();
                         obj = SceneSystem.Instance.GetGameObject(objId);
                     } catch {
                         obj = null;
@@ -2932,15 +2945,15 @@ namespace GameLibrary.Story.Commands
                         var param = m_Params[i];
                         string type = param.Type;
                         string key = param.Key.Value;
-                        object val = param.Value.Value;
+                        var val = param.Value.Value;
                         if (type == "int") {
-                            int v = (int)Convert.ChangeType(val, typeof(int));
+                            int v = val.Get<int>();
                             animator.SetInteger(key, v);
                         } else if (type == "float") {
-                            float v = (float)Convert.ChangeType(val, typeof(float));
+                            float v = val.Get<float>();
                             animator.SetFloat(key, v);
                         } else if (type == "bool") {
-                            bool v = (bool)Convert.ChangeType(val, typeof(bool));
+                            bool v = val.Get<bool>();
                             animator.SetBool(key, v);
                         } else if (type == "trigger") {
                             string v = val.ToString();
@@ -3032,7 +3045,7 @@ namespace GameLibrary.Story.Commands
         protected override void ResetState()
         {
         }
-        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        protected override void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_StoryId.Evaluate(instance, handler, iterator, args);
             if (m_ParamNum > 3) {
@@ -3049,7 +3062,7 @@ namespace GameLibrary.Story.Commands
                 ns = m_Namespace.Value;
             }
             string name = m_Name.Value;
-            object val = m_Val.Value;
+            var val = m_Val.Value;
             var storyInstance = ClientStorySystem.Instance.GetStory(storyId, ns);
             if (null != storyInstance) {
                 storyInstance.SetVariable(name, val);

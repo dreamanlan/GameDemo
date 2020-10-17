@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace GameLibrary
 {
-    public class Converter
+    public static class Converter
     {
         private static string[] s_ListSplitString = new string[] { ";", " ", "|" };
 
@@ -223,7 +223,7 @@ namespace GameLibrary
                 string strPos = vec;
                 string[] resut = strPos.Split(s_ListSplitString, StringSplitOptions.RemoveEmptyEntries);
                 if (resut != null && resut.Length > 0 && resut[0] != "") {
-                    for (int index = 0; index < resut.Length; ) {
+                    for (int index = 0; index < resut.Length;) {
                         list.Add(new UnityEngine.Vector2(Convert.ToSingle(resut[index]), Convert.ToSingle(resut[index + 1])));
                         index += 2;
                     }
@@ -242,7 +242,7 @@ namespace GameLibrary
                 string strPos = vec;
                 string[] resut = strPos.Split(s_ListSplitString, StringSplitOptions.RemoveEmptyEntries);
                 if (resut != null && resut.Length > 0 && resut[0] != "") {
-                    for (int index = 0; index < resut.Length; ) {
+                    for (int index = 0; index < resut.Length;) {
                         list.Add(new UnityEngine.Vector3(Convert.ToSingle(resut[index]),
                               Convert.ToSingle(resut[index + 1]),
                               Convert.ToSingle(resut[index + 2])));
@@ -284,7 +284,7 @@ namespace GameLibrary
                     if (pis.Length == args.Length) {
                         for (int i = 0; i < pis.Length; ++i) {
                             if (null != args[i] && args[i].GetType() != pis[i].ParameterType && args[i].GetType().Name != "MonoType") {
-                                args[i] = Convert.ChangeType(args[i], pis[i].ParameterType);
+                                args[i] = CastTo(pis[i].ParameterType, args[i]);
                             }
                         }
                         break;
@@ -302,7 +302,7 @@ namespace GameLibrary
                     if (pis.Length == args.Length) {
                         for (int i = 0; i < pis.Length; ++i) {
                             if (null != args[i] && args[i].GetType() != pis[i].ParameterType && args[i].GetType().Name != "MonoType") {
-                                args[i] = Convert.ChangeType(args[i], pis[i].ParameterType);
+                                args[i] = CastTo(pis[i].ParameterType, args[i]);
                             }
                         }
                     }
@@ -310,7 +310,7 @@ namespace GameLibrary
             } else {
                 var f = t.GetField(property, flags);
                 if (null != f && args.Length == 1 && null != args[0] && args[0].GetType() != f.FieldType && args[0].GetType().Name != "MonoType") {
-                    args[0] = Convert.ChangeType(args[0], f.FieldType);
+                    args[0] = CastTo(f.FieldType, args[0]);
                 }
             }
         }
@@ -324,7 +324,7 @@ namespace GameLibrary
                     if (pis.Length == args.Length) {
                         for (int i = 0; i < pis.Length; ++i) {
                             if (null != args[i] && args[i].GetType() != pis[i].ParameterType && args[i].GetType().Name != "MonoType") {
-                                args[i] = Convert.ChangeType(args[i], pis[i].ParameterType);
+                                args[i] = CastTo(pis[i].ParameterType, args[i]);
                             }
                         }
                     }
@@ -335,11 +335,38 @@ namespace GameLibrary
                 }
             }
         }
+        public static T CastTo<T>(object obj)
+        {
+            if (obj is T) {
+                return (T)obj;
+            } else {
+                try {
+                    return (T)Convert.ChangeType(obj, typeof(T));
+                } catch {
+                    return default(T);
+                }
+            }
+        }
+        public static object CastTo(Type t, object obj)
+        {
+            if (null == obj)
+                return null;
+            Type st = obj.GetType();
+            if (t.IsAssignableFrom(st) || st.IsSubclassOf(t)) {
+                return obj;
+            } else {
+                try {
+                    return Convert.ChangeType(obj, t);
+                } catch {
+                    return null;
+                }
+            }
+        }
         public static string FileContent2Utf8String(byte[] bytes)
         {
-            if(null==bytes)
+            if (null == bytes)
                 return string.Empty;
-            if(bytes.Length>=3 && bytes[0] == 0xEF && bytes[1] == 0xBB && bytes[2] == 0xBF) {
+            if (bytes.Length >= 3 && bytes[0] == 0xEF && bytes[1] == 0xBB && bytes[2] == 0xBF) {
                 return System.Text.Encoding.UTF8.GetString(bytes, 3, bytes.Length - 3);
             } else {
                 return System.Text.Encoding.UTF8.GetString(bytes);

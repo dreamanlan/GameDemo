@@ -49,27 +49,12 @@ namespace GameLibrary
         private void ExecCommand(string cmd)
         {
             try {
-                cmd = cmd.Trim();
-                int stIndex = cmd.IndexOf('(');
-                if (stIndex > 0) {
-                    ClientGmStorySystem.Instance.Reset();
-                    ClientGmStorySystem.Instance.LoadStoryText(Encoding.UTF8.GetBytes("script(main){onmessage(\"start\"){" + cmd + "};};"));
-                    ClientGmStorySystem.Instance.StartStory("main");
-                } else {
-                    stIndex = cmd.IndexOf(' ');
-                    if (stIndex > 0) {
-                        string msgId = cmd.Substring(0, stIndex);
-                        string[] args = cmd.Substring(stIndex + 1).Split(new char[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
-                        ClientGmStorySystem.Instance.SendMessage(msgId, args);
-                        ClientStorySystem.Instance.SendMessage(msgId, args);
-                    } else {
-                        ClientGmStorySystem.Instance.SendMessage(cmd);
-                        ClientStorySystem.Instance.SendMessage(cmd);
-                    }
-                }
-
+                ClientGmStorySystem.Instance.Reset();
+                ClientGmStorySystem.Instance.LoadStoryText(Encoding.UTF8.GetBytes("script(main){onmessage(\"start\"){" + cmd + "}}"));
+                ClientGmStorySystem.Instance.StartStory("main");
                 LogSystem.Warn("ExecCommand {0} finish.", cmd);
-            } catch (Exception ex) {
+            }
+            catch (Exception ex) {
                 LogSystem.Error("ExecCommand exception:{0}\n{1}", ex.Message, ex.StackTrace);
             }
         }
@@ -403,7 +388,8 @@ namespace GameLibrary
                     if (null != info.GetAiStateInfo().AiStoryInstanceInfo) {
                         if (info.BornTime <= 0) {
                             info.BornTime = TimeUtility.GetLocalMilliseconds();
-                            info.GetAiStateInfo().SendNamespacedMessage("on_born");
+                            BoxedValueList args = info.GetAiStateInfo().NewBoxedValueList();
+                            info.GetAiStateInfo().SendNamespacedMessage("on_born", args);
                         } else if (info.BornTime + info.BornTimeout < curTime) {
                             info.IsBorning = false;
                             info.BornTime = 0;
@@ -418,7 +404,8 @@ namespace GameLibrary
                         if (info.DeadTime <= 0) {
                             OnEntityKilled(info);
                             info.DeadTime = TimeUtility.GetLocalMilliseconds();
-                            info.GetAiStateInfo().SendNamespacedMessage("on_dead");
+                            BoxedValueList args = info.GetAiStateInfo().NewBoxedValueList();
+                            info.GetAiStateInfo().SendNamespacedMessage("on_dead", args);
                         } else if (info.DeadTime + info.DeadTimeout < curTime) {
                             info.DeadTime = 0;
                             info.NeedDelete = true;

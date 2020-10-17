@@ -200,23 +200,43 @@ public class StoryObject : MonoBehaviour
     }
     internal void OnCollisionEnter(Collision collisionInfo)
     {
+        var args = ClientStorySystem.Instance.NewBoxedValueList();
         var collider = gameObject.GetComponent<Collider>();
-        ClientStorySystem.Instance.SendConcurrentMessage("on_collision_enter", gameObject.name, collider, collisionInfo.gameObject.name, collisionInfo.collider);
+        args.Add(gameObject.name);
+        args.Add(collider);
+        args.Add(collisionInfo.gameObject.name);
+        args.Add(collisionInfo.collider);
+        ClientStorySystem.Instance.SendMessage("on_collision_enter", args);
     }
     internal void OnCollisionExit(Collision collisionInfo)
     {
+        var args = ClientStorySystem.Instance.NewBoxedValueList();
         var collider = gameObject.GetComponent<Collider>();
-        ClientStorySystem.Instance.SendConcurrentMessage("on_collision_exit", gameObject.name, collider, collisionInfo.gameObject.name, collisionInfo.collider);
+        args.Add(gameObject.name);
+        args.Add(collider);
+        args.Add(collisionInfo.gameObject.name);
+        args.Add(collisionInfo.collider);
+        ClientStorySystem.Instance.SendMessage("on_collision_exit", args);
     }
     internal void OnTriggerEnter(Collider other)
     {
+        var args = ClientStorySystem.Instance.NewBoxedValueList();
         var collider = gameObject.GetComponent<Collider>();
-        ClientStorySystem.Instance.SendConcurrentMessage("on_trigger_enter", gameObject.name, collider, other.gameObject.name, other);
+        args.Add(gameObject.name);
+        args.Add(collider);
+        args.Add(other.gameObject.name);
+        args.Add(other);
+        ClientStorySystem.Instance.SendMessage("on_trigger_enter", args);
     }
     internal void OnTriggerExit(Collider other)
     {
+        var args = ClientStorySystem.Instance.NewBoxedValueList();
         var collider = gameObject.GetComponent<Collider>();
-        ClientStorySystem.Instance.SendConcurrentMessage("on_trigger_exit", gameObject.name, collider, other.gameObject.name, other);
+        args.Add(gameObject.name);
+        args.Add(collider);
+        args.Add(other.gameObject.name);
+        args.Add(other);
+        ClientStorySystem.Instance.SendMessage("on_trigger_exit", args);
     }
 
     private void StartTweeners(GameObject obj, float duration)

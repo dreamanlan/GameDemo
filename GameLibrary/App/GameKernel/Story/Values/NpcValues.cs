@@ -22,7 +22,7 @@ namespace GameLibrary.Story.Values
             val.m_Value = m_Value;
             return val;
         }
-        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_HaveValue = false;
             m_UnitId.Evaluate(instance, handler, iterator, args);
@@ -35,7 +35,7 @@ namespace GameLibrary.Story.Values
                 return m_HaveValue;
             }
         }
-        public object Value
+        public BoxedValue Value
         {
             get
             {
@@ -57,7 +57,7 @@ namespace GameLibrary.Story.Values
         }
         private IStoryValue<int> m_UnitId = new StoryValue<int>();
         private bool m_HaveValue;
-        private object m_Value;
+        private BoxedValue m_Value;
     }
     internal sealed class NpcGetAiParamValue : IStoryValue
     {
@@ -78,7 +78,7 @@ namespace GameLibrary.Story.Values
             val.m_Value = m_Value;
             return val;
         }
-        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
         {
             m_HaveValue = false;
             m_UnitId.Evaluate(instance, handler, iterator, args);
@@ -92,7 +92,7 @@ namespace GameLibrary.Story.Values
                 return m_HaveValue;
             }
         }
-        public object Value
+        public BoxedValue Value
         {
             get
             {
@@ -111,10 +111,10 @@ namespace GameLibrary.Story.Values
                     if (index >= 0 && index < aiState.AiParam.Length) {
                         m_Value = aiState.AiParam[index];
                     } else {
-                        m_Value = null;
+                        m_Value = BoxedValue.NullObject;
                     }
                 } else {
-                    m_Value = null;
+                    m_Value = BoxedValue.NullObject;
                 }
             }
         }
@@ -122,6 +122,6 @@ namespace GameLibrary.Story.Values
         private IStoryValue<int> m_UnitId = new StoryValue<int>();
         private IStoryValue<int> m_Index = new StoryValue<int>();
         private bool m_HaveValue;
-        private object m_Value;
+        private BoxedValue m_Value;
     }
 }

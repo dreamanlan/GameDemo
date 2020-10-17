@@ -21,7 +21,7 @@ namespace GameLibrary
 
         public void Recycle()
         {
-            m_StoryInstance.Reset();
+            m_StoryInstance.Reset(false);
             m_IsUsed = false;
         }
 
@@ -94,7 +94,7 @@ namespace GameLibrary
             m_AiStoryInstanceInfo = null;
             m_Time = 0;
             m_IsInited = false;
-            m_leaderID = 0;
+            m_LeaderID = -1;
             m_HomePos = Vector3.zero;
             m_Target = 0;
             m_HateTarget = 0;
@@ -108,8 +108,8 @@ namespace GameLibrary
         }
         public int LeaderID
         {
-            get { return m_leaderID; }
-            set { m_leaderID = value; }
+            get { return m_LeaderID; }
+            set { m_LeaderID = value; }
         }
         public string[] AiParam
         {
@@ -172,19 +172,26 @@ namespace GameLibrary
             m_Target = target;
             m_IsExternalTarget = true;
         }
-        public void SendMessage(string msgId, params object[] args)
+        public BoxedValueList NewBoxedValueList()
+        {
+            if (null != m_AiStoryInstanceInfo && null != m_AiStoryInstanceInfo.m_StoryInstance) {
+                return m_AiStoryInstanceInfo.m_StoryInstance.NewBoxedValueList();
+            }
+            return null;
+        }
+        public void SendMessage(string msgId, BoxedValueList args)
         {
             if (null != m_AiStoryInstanceInfo && null != m_AiStoryInstanceInfo.m_StoryInstance) {
                 m_AiStoryInstanceInfo.m_StoryInstance.SendMessage(msgId, args);
             }
         }
-        public void SendConcurrentMessage(string msgId, params object[] args)
+        public void SendConcurrentMessage(string msgId, BoxedValueList args)
         {
             if (null != m_AiStoryInstanceInfo && null != m_AiStoryInstanceInfo.m_StoryInstance) {
                 m_AiStoryInstanceInfo.m_StoryInstance.SendConcurrentMessage(msgId, args);
             }
         }
-        public void SendNamespacedMessage(string msgId, params object[] args)
+        public void SendNamespacedMessage(string msgId, BoxedValueList args)
         {
             if (null != m_AiStoryInstanceInfo && null != m_AiStoryInstanceInfo.m_StoryInstance) {
                 var storyInst = m_AiStoryInstanceInfo.m_StoryInstance;
@@ -194,7 +201,7 @@ namespace GameLibrary
                 m_AiStoryInstanceInfo.m_StoryInstance.SendMessage(msgId, args);
             }
         }
-        public void SendConcurrentNamespacedMessage(string msgId, params object[] args)
+        public void SendConcurrentNamespacedMessage(string msgId, BoxedValueList args)
         {
             if (null != m_AiStoryInstanceInfo && null != m_AiStoryInstanceInfo.m_StoryInstance) {
                 var storyInst = m_AiStoryInstanceInfo.m_StoryInstance;
@@ -212,7 +219,7 @@ namespace GameLibrary
         private AiStoryInstanceInfo m_AiStoryInstanceInfo = null;
         private long m_Time = 0;
         private bool m_IsInited = false;
-        private int m_leaderID = 0;
+        private int m_LeaderID = -1;
         private UnityEngine.Vector3 m_HomePos = Vector3.zero;
         private UnityEngine.Vector3 m_TargetPosition = UnityEngine.Vector3.zero;
         private int m_Target = 0;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GameLibrary;
+
 namespace StorySystem
 {
     /// <summary>
@@ -168,11 +169,11 @@ namespace StorySystem
                         GameLibrary.LogSystem.Error("{0}", err);
                         throw new Exception(err);
 #else
-                	    GameLibrary.LogSystem.Error("[LoadStory] CreateCommand failed, type:{0} line:{1}", type, commandConfig.GetLine());
+                GameLibrary.LogSystem.Error("[LoadStory] CreateCommand failed, type:{0} line:{1}", type, commandConfig.GetLine());
 #endif
                     }
                     if (null != command) {
-                        //CsLibrary.LogSystem.Debug("[LoadStory] CreateCommand, type:{0} command:{1}", type, command.GetType().Name);
+                        //GameLibrary.LogSystem.Debug("[LoadStory] CreateCommand, type:{0} command:{1}", type, command.GetType().Name);
                     }
                     else {
 #if DEBUG
@@ -180,7 +181,7 @@ namespace StorySystem
                         GameLibrary.LogSystem.Error("{0}", err);
                         throw new Exception(err);
 #else
-                	    GameLibrary.LogSystem.Error("[LoadStory] CreateCommand failed, type:{0} line:{1}", type, commandConfig.GetLine());
+                GameLibrary.LogSystem.Error("[LoadStory] CreateCommand failed, type:{0} line:{1}", type, commandConfig.GetLine());
 #endif
                     }
                 }

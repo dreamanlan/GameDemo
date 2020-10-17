@@ -45,18 +45,18 @@ internal class AiQuery : IStoryValue
         newObj.m_Value = m_Value;
         return newObj;
     }
-    public void Evaluate(StoryInstance instance, StoryMessageHandler handler, object iterator, object[] args)
+    public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
     {
         if (null != m_Select && null != m_From) {
             m_From.Evaluate(instance, handler, iterator, args);
             ArrayList coll = new ArrayList();
 
             //筛选
-            IEnumerable enumer = m_From.Value as IEnumerable;
+            IEnumerable enumer = m_From.Value.ObjectVal as IEnumerable;
             if (null != enumer) {
                 var enumerator = enumer.GetEnumerator();
                 while (enumerator.MoveNext()) {
-                    var v = enumerator.Current;
+                    var v = new BoxedValue(enumerator.Current);
                     if (null != m_Where) {
                         m_Where.Evaluate(instance, handler, v, args);
                         object wvObj = m_Where.Value;
@@ -79,11 +79,11 @@ internal class AiQuery : IStoryValue
             //收集结果
             ArrayList result = new ArrayList();
             for (int i = 0; i < coll.Count; ++i) {
-                var ao = coll[i] as ArrayList;
+                var ao = coll[i] as BoxedValueList;
                 result.Add(ao[0]);
             }
             m_HaveValue = true;
-            m_Value = result;
+            m_Value = new BoxedValue(result);
         }
     }
     public void Analyze(StoryInstance instance)
@@ -96,7 +96,7 @@ internal class AiQuery : IStoryValue
             return m_HaveValue;
         }
     }
-    public object Value
+    public BoxedValue Value
     {
         get
         {
@@ -142,9 +142,9 @@ internal class AiQuery : IStoryValue
         }
     }
 
-    private void AddRow(ArrayList coll, object v, StoryInstance instance, StoryMessageHandler handler, object[] args)
+    private void AddRow(ArrayList coll, BoxedValue v, StoryInstance instance, StoryMessageHandler handler, BoxedValueList args)
     {
-        ArrayList row = new ArrayList();
+        BoxedValueList row = new BoxedValueList();
         coll.Add(row);
 
         m_Select.Evaluate(instance, handler, v, args);
@@ -158,7 +158,7 @@ internal class AiQuery : IStoryValue
     }
 
     private bool m_HaveValue;
-    private object m_Value;
+    private BoxedValue m_Value;
 
     private IStoryValue m_Select = null;
     private IStoryValue m_From = null;

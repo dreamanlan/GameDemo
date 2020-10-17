@@ -17,12 +17,12 @@ internal class AiGetTarget : SimpleStoryValueBase<AiGetTarget, StoryValueParam<i
             if (targetId > 0) {
                 EntityInfo entity = SceneSystem.Instance.GetEntityById(targetId);
                 if (null != entity && !entity.IsDead()) {
-                    result.Value = entity;
+                    result.Value = new BoxedValue(entity);
                 } else {
-                    result.Value = null;
+                    result.Value = BoxedValue.NullObject;
                 }
             } else {
-                result.Value = null;
+                result.Value = BoxedValue.NullObject;
             }
         }
     }

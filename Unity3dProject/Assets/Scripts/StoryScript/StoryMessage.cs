@@ -8,10 +8,12 @@ public class StoryMessage : MonoBehaviour
     public void SendStoryMessage(string msgId)
     {
         if (null != Args && Args.Length > 0) {
-            ArrayList al = new ArrayList();
+            BoxedValueList al = ClientStorySystem.Instance.NewBoxedValueList();
             al.Add(gameObject.name);
-            al.AddRange(Args);
-            ClientStorySystem.Instance.SendMessage(msgId, al.ToArray());
+            foreach (var arg in Args) {
+                al.Add(arg);
+            }
+            ClientStorySystem.Instance.SendMessage(msgId, al);
         } else {
             ClientStorySystem.Instance.SendMessage(msgId, gameObject.name);
         }

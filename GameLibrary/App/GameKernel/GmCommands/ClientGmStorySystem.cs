@@ -35,7 +35,7 @@ namespace GameLibrary.GmCommands
                 return m_StoryLogicInfos.Count;
             }
         }
-        public StrObjDict GlobalVariables
+        public StrBoxedValueDict GlobalVariables
         {
             get { return m_GlobalVariables; }
         }
@@ -102,7 +102,7 @@ namespace GameLibrary.GmCommands
                 }
             }
         }
-        public void SendMessage(string msgId, params object[] args)
+        public void SendMessage(string msgId, BoxedValueList args)
         {
             int ct = m_StoryLogicInfos.Count;
             for (int ix = ct - 1; ix >= 0; --ix) {
@@ -144,7 +144,7 @@ namespace GameLibrary.GmCommands
 
         private ClientGmStorySystem() { }
 
-        private StrObjDict m_GlobalVariables = new StrObjDict();
+        private StrBoxedValueDict m_GlobalVariables = new StrBoxedValueDict();
 
         private List<StoryInstance> m_StoryLogicInfos = new List<StoryInstance>();
         private Dictionary<string, StoryInstance> m_StoryInstancePool = new Dictionary<string, StoryInstance>();

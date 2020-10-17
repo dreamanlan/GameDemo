@@ -157,7 +157,6 @@ namespace GameLibrary.Story
             StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "getattr", new StoryValueFactoryHelper<Story.Values.GetAttrValue>());
             StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "calcoffset", new StoryValueFactoryHelper<Story.Values.CalcOffsetValue>());
             StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "calcdir", new StoryValueFactoryHelper<Story.Values.CalcDirValue>());
-            StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "iscontrolbystory", new StoryValueFactoryHelper<Story.Values.IsControlByStoryValue>());
             StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "isstoryskipped", new StoryValueFactoryHelper<Story.Values.IsStorySkippedValue>());
             StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "getplayerid", new StoryValueFactoryHelper<Story.Values.GetPlayerIdValue>());
             StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "findobjid", new StoryValueFactoryHelper<Story.Values.FindObjIdValue>());
@@ -179,6 +178,10 @@ namespace GameLibrary.Story
         }
         public void Reset()
         {
+            Reset(true);
+        }
+        public void Reset(bool logIfTriggered)
+        {
             LoadCustomCommandsAndValues();
 
             m_GlobalVariables.Clear();
@@ -186,11 +189,14 @@ namespace GameLibrary.Story
             for (int index = count - 1; index >= 0; --index) {
                 StoryInstance info = m_StoryLogicInfos[index];
                 if (null != info) {
-                    info.Reset();
+                    info.Reset(logIfTriggered);
                     m_StoryLogicInfos.RemoveAt(index);
                 }
             }
             m_StoryLogicInfos.Clear();
+            m_SleepMode = false;
+            m_LastSleepTickTime = 0;
+            m_TotalSleepTime = 0;
         }
         public void LoadSceneStories(params string[] files)
         {
@@ -290,7 +296,7 @@ namespace GameLibrary.Story
         }
         public void RecycleAiStoryInstance(AiStoryInstanceInfo info)
         {
-            info.m_StoryInstance.Reset(false);
+            info.m_StoryInstance.Reset();
             info.m_IsUsed = false;
         }
 
@@ -305,7 +311,7 @@ namespace GameLibrary.Story
         {
             get { return m_StoryLogicInfos; }
         }
-        public StrObjDict GlobalVariables
+        public StrBoxedValueDict GlobalVariables
         {
             get { return m_GlobalVariables; }
         }
@@ -538,7 +544,7 @@ namespace GameLibrary.Story
         public void Tick()
         {
             try {
-                UnityEngine.Profiling.Profiler.BeginSample("GfxStorySystem.Tick");
+                UnityEngine.Profiling.Profiler.BeginSample("ClientStorySystem.Tick");
                 long curTime = TimeUtility.GetLocalMilliseconds();
                 if (m_SleepMode) {
                     if (m_LastSleepTickTime + c_SleepTickInterval <= curTime) {
@@ -598,43 +604,111 @@ namespace GameLibrary.Story
         {
             m_BindedStoryInstances.Add(new BindedStoryInfo { Object = obj, Instance = inst });
         }
-        public void SendMessage(string msgId, params object[] args)
+        public BoxedValueList NewBoxedValueList()
         {
-            int ct = m_StoryLogicInfos.Count;
-            for (int ix = ct - 1; ix >= 0; --ix) {
-                StoryInstance info = m_StoryLogicInfos[ix];
-                info.SendMessage(msgId, args);
-            }
-            foreach (var pair in m_AiStoryInstancePool) {
-                var infos = pair.Value;
-                int aiCt = infos.Count;
-                for (int ix = aiCt - 1; ix >= 0; --ix) {
-                    if (infos[ix].m_IsUsed && null != infos[ix].m_StoryInstance) {
-                        infos[ix].m_StoryInstance.SendMessage(msgId, args);
-                    }
-                }
-            }
-            m_SleepMode = false;
-            m_LastSleepTickTime = 0;
+            var args = m_BoxedValueListPool.Alloc();
+            args.Clear();
+            return args;
         }
-        public void SendConcurrentMessage(string msgId, params object[] args)
+        public void SendMessage(string msgId)
+        {
+            var args = NewBoxedValueList();
+            SendMessage(msgId, args);
+        }
+        public void SendMessage(string msgId, BoxedValue arg1)
+        {
+            var args = NewBoxedValueList();
+            args.Add(arg1);
+            SendMessage(msgId, args);
+        }
+        public void SendMessage(string msgId, BoxedValue arg1, BoxedValue arg2)
+        {
+            var args = NewBoxedValueList();
+            args.Add(arg1);
+            args.Add(arg2);
+            SendMessage(msgId, args);
+        }
+        public void SendMessage(string msgId, BoxedValue arg1, BoxedValue arg2, BoxedValue arg3)
+        {
+            var args = NewBoxedValueList();
+            args.Add(arg1);
+            args.Add(arg2);
+            args.Add(arg3);
+            SendMessage(msgId, args);
+        }
+        public void SendMessage(string msgId, BoxedValueList args)
         {
             int ct = m_StoryLogicInfos.Count;
             for (int ix = ct - 1; ix >= 0; --ix) {
                 StoryInstance info = m_StoryLogicInfos[ix];
-                info.SendConcurrentMessage(msgId, args);
+                var newArgs = info.NewBoxedValueList();
+                newArgs.AddRange(args);
+                info.SendMessage(msgId, newArgs);
             }
             foreach (var pair in m_AiStoryInstancePool) {
                 var infos = pair.Value;
                 int aiCt = infos.Count;
                 for (int ix = aiCt - 1; ix >= 0; --ix) {
                     if (infos[ix].m_IsUsed && null != infos[ix].m_StoryInstance) {
-                        infos[ix].m_StoryInstance.SendConcurrentMessage(msgId, args);
+                        var newArgs = infos[ix].m_StoryInstance.NewBoxedValueList();
+                        newArgs.AddRange(args);
+                        infos[ix].m_StoryInstance.SendMessage(msgId, newArgs);
                     }
                 }
             }
             m_SleepMode = false;
             m_LastSleepTickTime = 0;
+            m_BoxedValueListPool.Recycle(args);
+        }
+        public void SendConcurrentMessage(string msgId)
+        {
+            var args = NewBoxedValueList();
+            SendConcurrentMessage(msgId, args);
+        }
+        public void SendConcurrentMessage(string msgId, BoxedValue arg1)
+        {
+            var args = NewBoxedValueList();
+            args.Add(arg1);
+            SendConcurrentMessage(msgId, args);
+        }
+        public void SendConcurrentMessage(string msgId, BoxedValue arg1, BoxedValue arg2)
+        {
+            var args = NewBoxedValueList();
+            args.Add(arg1);
+            args.Add(arg2);
+            SendConcurrentMessage(msgId, args);
+        }
+        public void SendConcurrentMessage(string msgId, BoxedValue arg1, BoxedValue arg2, BoxedValue arg3)
+        {
+            var args = NewBoxedValueList();
+            args.Add(arg1);
+            args.Add(arg2);
+            args.Add(arg3);
+            SendConcurrentMessage(msgId, args);
+        }
+        public void SendConcurrentMessage(string msgId, BoxedValueList args)
+        {
+            int ct = m_StoryLogicInfos.Count;
+            for (int ix = ct - 1; ix >= 0; --ix) {
+                StoryInstance info = m_StoryLogicInfos[ix];
+                var newArgs = info.NewBoxedValueList();
+                newArgs.AddRange(args);
+                info.SendConcurrentMessage(msgId, newArgs);
+            }
+            foreach (var pair in m_AiStoryInstancePool) {
+                var infos = pair.Value;
+                int aiCt = infos.Count;
+                for (int ix = aiCt - 1; ix >= 0; --ix) {
+                    if (infos[ix].m_IsUsed && null != infos[ix].m_StoryInstance) {
+                        var newArgs = infos[ix].m_StoryInstance.NewBoxedValueList();
+                        newArgs.AddRange(args);
+                        infos[ix].m_StoryInstance.SendConcurrentMessage(msgId, newArgs);
+                    }
+                }
+            }
+            m_SleepMode = false;
+            m_LastSleepTickTime = 0;
+            m_BoxedValueListPool.Recycle(args);
         }
         public int CountMessage(string msgId)
         {
@@ -751,8 +825,9 @@ namespace GameLibrary.Story
             internal StoryInstance Instance;
         }
         private List<BindedStoryInfo> m_BindedStoryInstances = new List<BindedStoryInfo>();
+        private SimpleObjectPool<BoxedValueList> m_BoxedValueListPool = new SimpleObjectPool<BoxedValueList>();
 
-        private StrObjDict m_GlobalVariables = new StrObjDict();
+        private StrBoxedValueDict m_GlobalVariables = new StrBoxedValueDict();
         private bool m_SleepMode = false;
         private long m_LastSleepTickTime = 0;
         private const long c_SleepTickInterval = 1000;

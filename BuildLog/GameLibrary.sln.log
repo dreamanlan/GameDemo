@@ -1,5 +1,5 @@
 ﻿MSBUILD : warning MSB4056: 必须对单线程单元调用 MSBuild 引擎。当前线程模型为“MTA”。将继续，但某些任务可能无法正常工作。
-生成启动时间为 2020/9/16 21:35:20。
+生成启动时间为 2020/10/17 14:09:54。
 __________________________________________________
 项目“E:\OpenSource\GameDemo\GameLibrary\GameLibrary.sln”(clean;rebuild 个目标):
 
@@ -95,7 +95,10 @@ __________________________________________________
 
         项目文件包含 ToolsVersion="4.0" 设置，但此工具集未知或缺失。您可以通过为此工具集安装相应的 .NET Framework 来解决此问题。将项目视为具有 ToolsVersion="4.0" 设置。
     目标 CoreCompile:
-        C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Csc.exe /noconfig /nowarn:1701,1702 /nostdlib+ /platform:AnyCPU /errorreport:prompt /define:TRACE;DEBUG;ENABLE_ERROR_LOG;ENABLE_LOG /highentropyva- /reference:E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\bin\Debug\Common.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\Dsl.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\LitJson.dll /reference:C:\Windows\Microsoft.NET\Framework64\v2.0.50727\mscorlib.dll /reference:"C:\Program Files\Reference Assemblies\Microsoft\Framework\v3.5\System.Core.dll" /reference:C:\Windows\Microsoft.NET\Framework64\v2.0.50727\System.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\UnityEngine.dll /debug+ /debug:full /filealign:512 /out:obj\Debug\StorySystem.dll /target:library /utf8output CommonValues\Linq.cs CustomCommandValueParser.cs CommonCommands\Assign.cs CommonCommands\Composite.cs CommonCommands\Foreach.cs CommonCommands\IfElse.cs CommonCommands\Hashtable.cs CommonCommands\LocalMessage.cs CommonCommands\Log.cs CommonCommands\ReflectionCommand.cs CommonCommands\Terminate.cs CommonCommands\Wait.cs CommonCommands\While.cs CommonValues\Arithmetic.cs CommonValues\Compare.cs CommonValues\Composite.cs CommonValues\GeneralValues.cs CommonValues\Hashtable.cs CommonValues\Logic.cs CommonValues\ReflectionValue.cs CommonValues\String.cs CommonValues\Time.cs IStoryCommand.cs IStoryCommandFactory.cs IStoryValue.cs Properties\AssemblyInfo.cs StoryCommandHelper.cs StoryCommandManager.cs StoryConfigManager.cs StoryInstance.cs StoryValueHelper.cs StoryValueManager.cs StoryDefine.cs
+        C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Csc.exe /noconfig /nowarn:1701,1702 /nostdlib+ /platform:AnyCPU /errorreport:prompt /define:TRACE;DEBUG;ENABLE_ERROR_LOG;ENABLE_LOG /highentropyva- /reference:E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\bin\Debug\Common.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\Dsl.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\LitJson.dll /reference:C:\Windows\Microsoft.NET\Framework64\v2.0.50727\mscorlib.dll /reference:"C:\Program Files\Reference Assemblies\Microsoft\Framework\v3.5\System.Core.dll" /reference:C:\Windows\Microsoft.NET\Framework64\v2.0.50727\System.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\UnityEngine.dll /debug+ /debug:full /filealign:512 /out:obj\Debug\StorySystem.dll /target:library /utf8output CommonValues\Linq.cs CustomCommandValueParser.cs CommonCommands\Assign.cs CommonCommands\Composite.cs CommonCommands\Foreach.cs CommonCommands\IfElse.cs CommonCommands\Hashtable.cs CommonCommands\LocalMessage.cs CommonCommands\Log.cs CommonCommands\ReflectionCommand.cs CommonCommands\Terminate.cs CommonCommands\Wait.cs CommonCommands\While.cs CommonValues\Arithmetic.cs CommonValues\Compare.cs CommonValues\Composite.cs CommonValues\GeneralValues.cs CommonValues\Hashtable.cs CommonValues\Logic.cs CommonValues\ReflectionValue.cs CommonValues\String.cs CommonValues\Time.cs IStoryCommand.cs IStoryCommandFactory.cs IStoryValue.cs Properties\AssemblyInfo.cs StoryCommandHelper.cs StoryCommandManager.cs StoryConfigManager.cs StoryDefine.cs StoryInstance.cs StoryValueHelper.cs StoryValueManager.cs
+        CommonValues\Arithmetic.cs(1051,27): warning CS0184: 给定表达式绝不是所提供的(“int”)类型
+        CommonValues\Arithmetic.cs(1139,27): warning CS0184: 给定表达式绝不是所提供的(“int”)类型
+    已完成在项目“StorySystem.csproj”中生成目标“CoreCompile”的操作。
     目标 _CopyFilesMarkedCopyLocal:
         正在将文件从“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\bin\Debug\Common.dll”复制到“bin\Debug\Common.dll”。
         正在将文件从“E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\Dsl.dll”复制到“bin\Debug\Dsl.dll”。
@@ -112,6 +115,8 @@ __________________________________________________
         正在将文件从“obj\Debug\StorySystem.dll”复制到“bin\Debug\StorySystem.dll”。
         StorySystem -> E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\bin\Debug\StorySystem.dll
         正在将文件从“obj\Debug\StorySystem.pdb”复制到“bin\Debug\StorySystem.pdb”。
+
+    已完成生成项目“StorySystem.csproj”的操作。
     __________________________________________________
     项目“E:\OpenSource\GameDemo\GameLibrary\GameLibrary.sln”正在生成“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\GameKernel.csproj”(Rebuild 目标):
 
@@ -156,6 +161,10 @@ __________________________________________________
 
     目标 CoreCompile:
         C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Csc.exe /noconfig /unsafe+ /nowarn:1701,1702 /nostdlib+ /errorreport:prompt /warn:4 /define:TRACE;DEBUG;ROBOT /highentropyva- /reference:E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\bin\Debug\Common.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\Dsl.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\LitJson.dll /reference:C:\Windows\Microsoft.NET\Framework64\v2.0.50727\mscorlib.dll /reference:E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\bin\Debug\StorySystem.dll /reference:"C:\Program Files\Reference Assemblies\Microsoft\Framework\v3.5\System.Core.dll" /reference:C:\Windows\Microsoft.NET\Framework64\v2.0.50727\System.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\UnityEngine.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\UnityEngine.UI.dll /debug+ /debug:full /filealign:512 /optimize- /out:obj\Debug\GameKernel.dll /target:library /utf8output Ai\AiCommand.cs Ai\AiLogicUtility.cs Ai\AiRegister.cs Scene\ObjectKdTree.cs Scene\SceneSystem.cs GameObjects\ObjectInfo\Entity_NpcType.cs Scene\SceneSystem_Ai.cs Scene\SceneSystem_Entity.cs GameController.cs GameObjects\AiInfo\AiInfo.cs GameObjects\AiInfo\NpcAiData.cs GameObjects\EntityInfoDictionary.cs GameObjects\EntityManager.cs GameObjects\EntityKdTree.cs GameObjects\MovementInfo\MovementInfo.cs GameObjects\ObjectInfo\CharacterDefines.cs GameObjects\ObjectInfo\CharacterProperty.cs GameObjects\ObjectInfo\Entity_Base.cs GameObjects\ObjectInfo\Entity_Npc.cs GameObjects\SceneSharedData\BlackBoard.cs GameObjectViews\EntityViewModelManager.cs GameObjectViews\EntityViewModel_Base.cs GameObjectViews\EntityViewModel_Npc.cs GmCommands\ClientGmStorySystem.cs GmCommands\GmCommands.cs Properties\AssemblyInfo.cs Resource\AbstractScriptBehavior.cs Resource\ResourceSystem.cs Ai\AiCommand\AiChase.cs Ai\AiCommand\AiGohome.cs Ai\AiCommand\AiKeepAway.cs Ai\AiCommand\AiRandMove.cs Ai\AiValue\AiGetTarget.cs Ai\AiValue\AiNeedChase.cs Ai\AiValue\AiNeedKeepAway.cs Ai\AiValue\AiQuey.cs Ai\AiValue\AiSelectTarget.cs Story\Commands\GameLogicCommands.cs Story\Commands\GeneralCommands.cs Story\ClientStorySystem.cs Story\UiStoryEventHandler.cs Story\UiStoryInitializer.cs Story\Values\GameLogicValues.cs Story\Values\GeneralValues.cs UtilityForClient\Logger.cs UtilityForClient\Utility.cs Story\Commands\NpcCommands.cs Story\Commands\ObjectCommands.cs Story\Values\ObjectValues.cs Story\Values\NpcValues.cs
+        Story\Commands\GeneralCommands.cs(1586,22): warning CS0414: 字段“GameLibrary.Story.Commands.CreateGameObjectCommand.m_NeedLoad”已赋值，但是其值从未使用过
+        Story\Commands\GeneralCommands.cs(1587,22): warning CS0414: 字段“GameLibrary.Story.Commands.CreateGameObjectCommand.m_IsLoaded”已赋值，但是其值从未使用过
+        Story\Commands\GeneralCommands.cs(1588,21): warning CS0414: 字段“GameLibrary.Story.Commands.CreateGameObjectCommand.m_WaitTime”已赋值，但是其值从未使用过
+    已完成在项目“GameKernel.csproj”中生成目标“CoreCompile”的操作。
     目标 _CopyFilesMarkedCopyLocal:
         正在将文件从“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\bin\Debug\Common.dll”复制到“bin\Debug\Common.dll”。
         正在将文件从“E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\Dsl.dll”复制到“bin\Debug\Dsl.dll”。
@@ -180,10 +189,17 @@ __________________________________________________
         GameKernel -> E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\bin\Debug\GameKernel.dll
         正在将文件从“obj\Debug\GameKernel.pdb”复制到“bin\Debug\GameKernel.pdb”。
 
+    已完成生成项目“GameKernel.csproj”的操作。
+
 已成功生成。
 
 MSBUILD : warning MSB4056: 必须对单线程单元调用 MSBuild 引擎。当前线程模型为“MTA”。将继续，但某些任务可能无法正常工作。
-    1 个警告
+CommonValues\Arithmetic.cs(1051,27): warning CS0184: 给定表达式绝不是所提供的(“int”)类型
+CommonValues\Arithmetic.cs(1139,27): warning CS0184: 给定表达式绝不是所提供的(“int”)类型
+Story\Commands\GeneralCommands.cs(1586,22): warning CS0414: 字段“GameLibrary.Story.Commands.CreateGameObjectCommand.m_NeedLoad”已赋值，但是其值从未使用过
+Story\Commands\GeneralCommands.cs(1587,22): warning CS0414: 字段“GameLibrary.Story.Commands.CreateGameObjectCommand.m_IsLoaded”已赋值，但是其值从未使用过
+Story\Commands\GeneralCommands.cs(1588,21): warning CS0414: 字段“GameLibrary.Story.Commands.CreateGameObjectCommand.m_WaitTime”已赋值，但是其值从未使用过
+    6 个警告
     0 个错误
 
-已用时间 00:00:12.87
+已用时间 00:00:05.84
