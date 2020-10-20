@@ -1696,135 +1696,141 @@ public struct BoxedValue
     }
     private T Get<T>(Type t)
     {
-        if (t == typeof(BoxedValue)) {
-            return GenericValue.From<T>(this);
-        }
-        else if (t == typeof(bool) && Type == c_BoolType) {
-            return GenericValue.From<T>(Union.BoolVal);
-        }
-        else if (t == typeof(char) && Type == c_CharType) {
-            return GenericValue.From<T>(Union.CharVal);
-        }
-        else if (t == typeof(sbyte) && Type == c_SByteType) {
-            return GenericValue.From<T>(Union.SByteVal);
-        }
-        else if (t == typeof(short) && Type == c_ShortType) {
-            return GenericValue.From<T>(Union.ShortVal);
-        }
-        else if (t == typeof(int) && Type == c_IntType) {
-            return GenericValue.From<T>(Union.IntVal);
-        }
-        else if (t == typeof(long) && Type == c_LongType) {
-            return GenericValue.From<T>(Union.LongVal);
-        }
-        else if (t == typeof(byte) && Type == c_ByteType) {
-            return GenericValue.From<T>(Union.ByteVal);
-        }
-        else if (t == typeof(ushort) && Type == c_UShortType) {
-            return GenericValue.From<T>(Union.UShortVal);
-        }
-        else if (t == typeof(uint) && Type == c_UIntType) {
-            return GenericValue.From<T>(Union.UIntVal);
-        }
-        else if (t == typeof(ulong) && Type == c_ULongType) {
-            return GenericValue.From<T>(Union.ULongVal);
-        }
-        else if (t == typeof(float) && Type == c_FloatType) {
-            return GenericValue.From<T>(Union.FloatVal);
-        }
-        else if (t == typeof(double) && Type == c_DoubleType) {
-            return GenericValue.From<T>(Union.DoubleVal);
-        }
-        else if (t == typeof(decimal) && Type == c_DecimalType) {
-            return GenericValue.From<T>(Union.DecimalVal);
-        }
-        else if (t == typeof(UnityEngine.Vector2) && Type == c_Vector2Type) {
-            return GenericValue.From<T>(Union.Vector2Val);
-        }
-        else if (t == typeof(UnityEngine.Vector3) && Type == c_Vector3Type) {
-            return GenericValue.From<T>(Union.Vector3Val);
-        }
-        else if (t == typeof(UnityEngine.Vector4) && Type == c_Vector4Type) {
-            return GenericValue.From<T>(Union.Vector4Val);
-        }
-        else if (t == typeof(UnityEngine.Quaternion) && Type == c_QuaternionType) {
-            return GenericValue.From<T>(Union.QuaternionVal);
-        }
-        else if (t == typeof(UnityEngine.Color) && Type == c_ColorType) {
-            return GenericValue.From<T>(Union.ColorVal);
-        }
-        else if (t == typeof(UnityEngine.Color32) && Type == c_Color32Type) {
-            return GenericValue.From<T>(Union.Color32Val);
-        }
-        else if (t == typeof(bool)) {
-            long v = ToLong();
-            return GenericValue.From<T>(v != 0);
-        }
-        else if (t == typeof(char)) {
-            long v = ToLong();
-            return GenericValue.From<T>((char)v);
-        }
-        else if (t == typeof(sbyte)) {
-            long v = ToLong();
-            return GenericValue.From<T>((sbyte)v);
-        }
-        else if (t == typeof(short)) {
-            long v = ToLong();
-            return GenericValue.From<T>((short)v);
-        }
-        else if (t == typeof(int)) {
-            long v = ToLong();
-            return GenericValue.From<T>((int)v);
-        }
-        else if (t == typeof(long)) {
-            long v = ToLong();
-            return GenericValue.From<T>(v);
-        }
-        else if (t == typeof(byte)) {
-            long v = ToLong();
-            return GenericValue.From<T>((byte)v);
-        }
-        else if (t == typeof(ushort)) {
-            long v = ToLong();
-            return GenericValue.From<T>((ushort)v);
-        }
-        else if (t == typeof(uint)) {
-            long v = ToLong();
-            return GenericValue.From<T>((uint)v);
-        }
-        else if (t == typeof(ulong)) {
-            long v = ToLong();
-            return GenericValue.From<T>((ulong)v);
-        }
-        else if (t == typeof(float)) {
-            double v = ToDouble();
-            return GenericValue.From<T>((float)v);
-        }
-        else if (t == typeof(double)) {
-            double v = ToDouble();
-            return GenericValue.From<T>(v);
-        }
-        else if (t == typeof(decimal)) {
-            double v = ToDouble();
-            return GenericValue.From<T>((decimal)v);
-        }
-        else if (t == typeof(string) && Type == c_StringType) {
-            return GenericValue.From<T>(StringVal);
-        }
-        else if (t == typeof(object) && Type == c_ObjectType) {
-            return GenericValue.From<T>(ObjectVal);
-        }
-        else if (t == typeof(string)) {
-            var str = ToString();
-            return GenericValue.From<T>(str);
-        }
-        else if (t == typeof(object)) {
-            var obj = ToObject();
-            return GenericValue.From<T>(obj);
-        }
-        else {
+        if (typeof(T) == typeof(object)) {
             var obj = ToObject();
             return GenericValue.CastTo<T>(obj);
+        }
+        else {
+            if (t == typeof(BoxedValue)) {
+                return GenericValue.From<T>(this);
+            }
+            else if (t == typeof(bool) && Type == c_BoolType) {
+                return GenericValue.From<T>(Union.BoolVal);
+            }
+            else if (t == typeof(char) && Type == c_CharType) {
+                return GenericValue.From<T>(Union.CharVal);
+            }
+            else if (t == typeof(sbyte) && Type == c_SByteType) {
+                return GenericValue.From<T>(Union.SByteVal);
+            }
+            else if (t == typeof(short) && Type == c_ShortType) {
+                return GenericValue.From<T>(Union.ShortVal);
+            }
+            else if (t == typeof(int) && Type == c_IntType) {
+                return GenericValue.From<T>(Union.IntVal);
+            }
+            else if (t == typeof(long) && Type == c_LongType) {
+                return GenericValue.From<T>(Union.LongVal);
+            }
+            else if (t == typeof(byte) && Type == c_ByteType) {
+                return GenericValue.From<T>(Union.ByteVal);
+            }
+            else if (t == typeof(ushort) && Type == c_UShortType) {
+                return GenericValue.From<T>(Union.UShortVal);
+            }
+            else if (t == typeof(uint) && Type == c_UIntType) {
+                return GenericValue.From<T>(Union.UIntVal);
+            }
+            else if (t == typeof(ulong) && Type == c_ULongType) {
+                return GenericValue.From<T>(Union.ULongVal);
+            }
+            else if (t == typeof(float) && Type == c_FloatType) {
+                return GenericValue.From<T>(Union.FloatVal);
+            }
+            else if (t == typeof(double) && Type == c_DoubleType) {
+                return GenericValue.From<T>(Union.DoubleVal);
+            }
+            else if (t == typeof(decimal) && Type == c_DecimalType) {
+                return GenericValue.From<T>(Union.DecimalVal);
+            }
+            else if (t == typeof(UnityEngine.Vector2) && Type == c_Vector2Type) {
+                return GenericValue.From<T>(Union.Vector2Val);
+            }
+            else if (t == typeof(UnityEngine.Vector3) && Type == c_Vector3Type) {
+                return GenericValue.From<T>(Union.Vector3Val);
+            }
+            else if (t == typeof(UnityEngine.Vector4) && Type == c_Vector4Type) {
+                return GenericValue.From<T>(Union.Vector4Val);
+            }
+            else if (t == typeof(UnityEngine.Quaternion) && Type == c_QuaternionType) {
+                return GenericValue.From<T>(Union.QuaternionVal);
+            }
+            else if (t == typeof(UnityEngine.Color) && Type == c_ColorType) {
+                return GenericValue.From<T>(Union.ColorVal);
+            }
+            else if (t == typeof(UnityEngine.Color32) && Type == c_Color32Type) {
+                return GenericValue.From<T>(Union.Color32Val);
+            }
+            else if (t == typeof(bool)) {
+                long v = ToLong();
+                return GenericValue.From<T>(v != 0);
+            }
+            else if (t == typeof(char)) {
+                long v = ToLong();
+                return GenericValue.From<T>((char)v);
+            }
+            else if (t == typeof(sbyte)) {
+                long v = ToLong();
+                return GenericValue.From<T>((sbyte)v);
+            }
+            else if (t == typeof(short)) {
+                long v = ToLong();
+                return GenericValue.From<T>((short)v);
+            }
+            else if (t == typeof(int)) {
+                long v = ToLong();
+                return GenericValue.From<T>((int)v);
+            }
+            else if (t == typeof(long)) {
+                long v = ToLong();
+                return GenericValue.From<T>(v);
+            }
+            else if (t == typeof(byte)) {
+                long v = ToLong();
+                return GenericValue.From<T>((byte)v);
+            }
+            else if (t == typeof(ushort)) {
+                long v = ToLong();
+                return GenericValue.From<T>((ushort)v);
+            }
+            else if (t == typeof(uint)) {
+                long v = ToLong();
+                return GenericValue.From<T>((uint)v);
+            }
+            else if (t == typeof(ulong)) {
+                long v = ToLong();
+                return GenericValue.From<T>((ulong)v);
+            }
+            else if (t == typeof(float)) {
+                double v = ToDouble();
+                return GenericValue.From<T>((float)v);
+            }
+            else if (t == typeof(double)) {
+                double v = ToDouble();
+                return GenericValue.From<T>(v);
+            }
+            else if (t == typeof(decimal)) {
+                double v = ToDouble();
+                return GenericValue.From<T>((decimal)v);
+            }
+            else if (t == typeof(string) && Type == c_StringType) {
+                return GenericValue.From<T>(StringVal);
+            }
+            else if (t == typeof(object) && Type == c_ObjectType) {
+                return GenericValue.From<T>(ObjectVal);
+            }
+            else if (t == typeof(string)) {
+                var str = ToString();
+                return GenericValue.From<T>(str);
+            }
+            else if (t == typeof(object)) {
+                var obj = ToObject();
+                return GenericValue.From<T>(obj);
+            }
+            else {
+                var obj = ToObject();
+                return GenericValue.CastTo<T>(obj);
+            }
         }
     }
 
