@@ -59,7 +59,7 @@ internal class AiQuery : IStoryValue
                     var v = new BoxedValue(enumerator.Current);
                     if (null != m_Where) {
                         m_Where.Evaluate(instance, handler, v, args);
-                        object wvObj = m_Where.Value;
+                        object wvObj = m_Where.Value.Get<object>();
                         int wv = (int)System.Convert.ChangeType(wvObj, typeof(int));
                         if (wv != 0) {
                             AddRow(coll, v, instance, handler, args);

@@ -37,7 +37,7 @@ namespace StorySystem.CommonCommands
                     localInfo.List[i].Evaluate(instance, handler, iterator, args);
                 }
                 for (int i = 0; i < localInfo.List.Count; i++) {
-                    localInfo.Iterators.Enqueue(localInfo.List[i].Value);
+                    localInfo.Iterators.Enqueue(localInfo.List[i].Value.Get<object>());
                 }
             }
         }
