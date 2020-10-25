@@ -56,7 +56,7 @@ internal class AiQuery : IStoryValue
             if (null != enumer) {
                 var enumerator = enumer.GetEnumerator();
                 while (enumerator.MoveNext()) {
-                    var v = new BoxedValue(enumerator.Current);
+                    var v = BoxedValue.From(enumerator.Current);
                     if (null != m_Where) {
                         m_Where.Evaluate(instance, handler, v, args);
                         object wvObj = m_Where.Value.Get<object>();
@@ -83,7 +83,7 @@ internal class AiQuery : IStoryValue
                 result.Add(ao[0]);
             }
             m_HaveValue = true;
-            m_Value = new BoxedValue(result);
+            m_Value = BoxedValue.From(result);
         }
     }
     public void Analyze(StoryInstance instance)

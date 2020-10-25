@@ -761,115 +761,18 @@ public struct BoxedValue
         public UnityEngine.Color32 Color32Val;
     }
 
-    public BoxedValue(object v) : this()
+    public string StringVal
     {
-        Set(v);
+        get { return ObjectVal as string; }
+        set { ObjectVal = value; }
     }
-    public BoxedValue(string v) : this()
-    {
-        Set(v);
-    }
-    public BoxedValue(bool v) : this()
-    {
-        Set(v);
-    }
-    public BoxedValue(char v) : this()
-    {
-        Set(v);
-    }
-    public BoxedValue(sbyte v) : this()
-    {
-        Set(v);
-    }
-    public BoxedValue(short v) : this()
-    {
-        Set(v);
-    }
-    public BoxedValue(int v) : this()
-    {
-        Set(v);
-    }
-    public BoxedValue(long v) : this()
-    {
-        Set(v);
-    }
-    public BoxedValue(byte v) : this()
-    {
-        Set(v);
-    }
-    public BoxedValue(ushort v) : this()
-    {
-        Set(v);
-    }
-    public BoxedValue(uint v) : this()
-    {
-        Set(v);
-    }
-    public BoxedValue(ulong v) : this()
-    {
-        Set(v);
-    }
-    public BoxedValue(float v) : this()
-    {
-        Set(v);
-    }
-    public BoxedValue(double v) : this()
-    {
-        Set(v);
-    }
-    public BoxedValue(decimal v) : this()
-    {
-        Set(v);
-    }
-    public BoxedValue(UnityEngine.Vector2 v) : this()
-    {
-        Set(v);
-    }
-    public BoxedValue(UnityEngine.Vector3 v) : this()
-    {
-        Set(v);
-    }
-    public BoxedValue(UnityEngine.Vector4 v) : this()
-    {
-        Set(v);
-    }
-    public BoxedValue(UnityEngine.Quaternion v) : this()
-    {
-        Set(v);
-    }
-    public BoxedValue(UnityEngine.Color v) : this()
-    {
-        Set(v);
-    }
-    public BoxedValue(UnityEngine.Color32 v) : this()
-    {
-        Set(v);
-    }
-
-    public BoxedValue(Type v) : this()
-    {
-        Set(v);
-    }
-    public BoxedValue(UnityEngine.Object v) : this()
-    {
-        Set((object)v);
-    }
-    public BoxedValue(UnityEngine.GameObject v) : this()
-    {
-        Set((object)v);
-    }
-    public BoxedValue(UnityEngine.Component v) : this()
-    {
-        Set((object)v);
-    }
-    public BoxedValue(UnityEngine.Transform v) : this()
-    {
-        Set((object)v);
-    }
+    public int Type;
+    public object ObjectVal;
+    private UnionValue Union;
 
     public static implicit operator BoxedValue(string v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator string(BoxedValue v)
     {
@@ -877,7 +780,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(bool v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator bool(BoxedValue v)
     {
@@ -885,7 +788,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(char v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator char(BoxedValue v)
     {
@@ -893,7 +796,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(sbyte v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator sbyte(BoxedValue v)
     {
@@ -901,7 +804,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(short v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator short(BoxedValue v)
     {
@@ -909,7 +812,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(int v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator int(BoxedValue v)
     {
@@ -917,7 +820,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(long v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator long(BoxedValue v)
     {
@@ -925,7 +828,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(byte v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator byte(BoxedValue v)
     {
@@ -933,7 +836,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(ushort v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator ushort(BoxedValue v)
     {
@@ -941,7 +844,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(uint v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator uint(BoxedValue v)
     {
@@ -949,7 +852,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(ulong v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator ulong(BoxedValue v)
     {
@@ -957,7 +860,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(float v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator float(BoxedValue v)
     {
@@ -965,7 +868,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(double v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator double(BoxedValue v)
     {
@@ -973,7 +876,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(decimal v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator decimal(BoxedValue v)
     {
@@ -981,7 +884,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(UnityEngine.Vector2 v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator UnityEngine.Vector2(BoxedValue v)
     {
@@ -989,7 +892,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(UnityEngine.Vector3 v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator UnityEngine.Vector3(BoxedValue v)
     {
@@ -997,7 +900,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(UnityEngine.Vector4 v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator UnityEngine.Vector4(BoxedValue v)
     {
@@ -1005,7 +908,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(UnityEngine.Quaternion v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator UnityEngine.Quaternion(BoxedValue v)
     {
@@ -1013,7 +916,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(UnityEngine.Color v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator UnityEngine.Color(BoxedValue v)
     {
@@ -1021,7 +924,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(UnityEngine.Color32 v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator UnityEngine.Color32(BoxedValue v)
     {
@@ -1030,7 +933,7 @@ public struct BoxedValue
 
     public static implicit operator BoxedValue(Type v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator Type(BoxedValue v)
     {
@@ -1038,7 +941,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(UnityEngine.Object v)
     {
-        return new BoxedValue((object)v);
+        return BoxedValue.From((object)v);
     }
     public static implicit operator UnityEngine.Object(BoxedValue v)
     {
@@ -1046,7 +949,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(UnityEngine.GameObject v)
     {
-        return new BoxedValue((object)v);
+        return BoxedValue.From((object)v);
     }
     public static implicit operator UnityEngine.GameObject(BoxedValue v)
     {
@@ -1054,7 +957,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(UnityEngine.Component v)
     {
-        return new BoxedValue((object)v);
+        return BoxedValue.From((object)v);
     }
     public static implicit operator UnityEngine.Component(BoxedValue v)
     {
@@ -1062,7 +965,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(UnityEngine.Transform v)
     {
-        return new BoxedValue((object)v);
+        return BoxedValue.From((object)v);
     }
     public static implicit operator UnityEngine.Transform(BoxedValue v)
     {
@@ -1070,7 +973,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(UnityEngine.Component[] v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator UnityEngine.Component[](BoxedValue v)
     {
@@ -1078,7 +981,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(List<UnityEngine.Component> v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator List<UnityEngine.Component>(BoxedValue v)
     {
@@ -1086,7 +989,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(ObjList v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator ObjList(BoxedValue v)
     {
@@ -1094,7 +997,7 @@ public struct BoxedValue
     }
     public static implicit operator BoxedValue(ArrayList v)
     {
-        return new BoxedValue(v);
+        return BoxedValue.From(v);
     }
     public static implicit operator ArrayList(BoxedValue v)
     {
@@ -1176,11 +1079,11 @@ public struct BoxedValue
     public void Set<T>(T v)
     {
         var t = v != null ? v.GetType() : typeof(T);
-        Set(t, v);
+        Set<T>(t, v);
     }
     public void Set(Type t, object v)
     {
-        Set(t, v);
+        Set<object>(t, v);
     }
     public T Get<T>()
     {
@@ -1464,10 +1367,23 @@ public struct BoxedValue
     }
     public static BoxedValue From(Type t, object o)
     {
-        BoxedValue bv = new BoxedValue(o);
+        BoxedValue bv = new BoxedValue();
+        bv.Set(o);
         return bv;
     }
-    
+    public static BoxedValue FromBool(bool v)
+    {
+        BoxedValue bv = new BoxedValue();
+        bv.Set(v);
+        return bv;
+    }
+    public static BoxedValue FromObject(object v)
+    {
+        BoxedValue bv = new BoxedValue();
+        bv.Set(v);
+        return bv;
+    }
+
     private void Set<T>(Type t, T v)
     {
         if (typeof(T) == typeof(object)) {
@@ -1834,15 +1750,6 @@ public struct BoxedValue
         }
     }
 
-    public string StringVal
-    {
-        get { return ObjectVal as string; }
-        set { ObjectVal = value; }
-    }
-    public int Type;
-    public object ObjectVal;
-    private UnionValue Union;
-
     public static BoxedValue NullObject
     {
         get { return s_NullObject; }
@@ -1851,8 +1758,8 @@ public struct BoxedValue
     {
         get { return s_EmptyString; }
     }
-    private static BoxedValue s_NullObject = new BoxedValue((object)null);
-    private static BoxedValue s_EmptyString = new BoxedValue(string.Empty);
+    private static BoxedValue s_NullObject = BoxedValue.FromObject(null);
+    private static BoxedValue s_EmptyString = BoxedValue.From(string.Empty);
 }
 
 public class BoxedValueList : List<BoxedValue>

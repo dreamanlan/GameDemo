@@ -64,7 +64,7 @@ namespace StorySystem.CommonCommands
                 if (localInfo.Iterators.Count > 0) {
                     Prepare(handler);
                     runtime = handler.PeekRuntime();
-                    runtime.Iterator = new BoxedValue(localInfo.Iterators.Dequeue());
+                    runtime.Iterator = BoxedValue.From(localInfo.Iterators.Dequeue());
                     runtime.Arguments = args;
                     ret = true;
                     //没有wait之类命令直接执行
@@ -187,7 +187,7 @@ namespace StorySystem.CommonCommands
                 if (localInfo.Iterators.Count > 0) {
                     Prepare(handler);
                     runtime = handler.PeekRuntime();
-                    runtime.Iterator = new BoxedValue(localInfo.Iterators.Dequeue());
+                    runtime.Iterator = BoxedValue.From(localInfo.Iterators.Dequeue());
                     runtime.Arguments = args;
                     ret = true;
                     //没有wait之类命令直接执行

@@ -64,7 +64,7 @@ namespace GameLibrary.Story.Values
                 m_HaveValue = true;
                 object v;
                 if (SceneSystem.Instance.BlackBoard.TryGetVariable(name, out v)) {
-                    m_Value = new BoxedValue(v);
+                    m_Value = BoxedValue.From(v);
                 }
                 else {
                     if (m_ParamNum > 1) {
@@ -290,7 +290,7 @@ namespace GameLibrary.Story.Values
                 foreach (var info in list) {
                     ids.Add(info.GetId());
                 }
-                m_Value = new BoxedValue(ids);
+                m_Value = BoxedValue.From(ids);
             }
         }
 
@@ -357,7 +357,7 @@ namespace GameLibrary.Story.Values
                 foreach (var info in list) {
                     ids.Add(info.GetId());
                 }
-                m_Value = new BoxedValue(ids);
+                m_Value = BoxedValue.From(ids);
             }
         }
 

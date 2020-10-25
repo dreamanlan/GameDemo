@@ -17,7 +17,7 @@ internal class AiGetTarget : SimpleStoryValueBase<AiGetTarget, StoryValueParam<i
             if (targetId > 0) {
                 EntityInfo entity = SceneSystem.Instance.GetEntityById(targetId);
                 if (null != entity && !entity.IsDead()) {
-                    result.Value = new BoxedValue(entity);
+                    result.Value = BoxedValue.From(entity);
                 } else {
                     result.Value = BoxedValue.NullObject;
                 }

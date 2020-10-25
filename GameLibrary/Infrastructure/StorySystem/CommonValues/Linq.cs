@@ -65,12 +65,12 @@ namespace StorySystem.CommonValues
                             results.Sort((object o1, object o2) => {
                                 BoxedValue r1 = BoxedValue.NullObject;
                                 for (int i = 0; i < m_Args.Count; i++) {
-                                    m_Args[i].Evaluate(instance, handler, new BoxedValue(o1), args);
+                                    m_Args[i].Evaluate(instance, handler, BoxedValue.From(o1), args);
                                     r1 = m_Args[i].Value;
                                 }
                                 BoxedValue r2 = BoxedValue.NullObject;
                                 for (int i = 0; i < m_Args.Count; i++) {
-                                    m_Args[i].Evaluate(instance, handler, new BoxedValue(o2), args);
+                                    m_Args[i].Evaluate(instance, handler, BoxedValue.From(o2), args);
                                     r2 = m_Args[i].Value;
                                 }
                                 string rs1 = r1.ToString();
@@ -96,7 +96,7 @@ namespace StorySystem.CommonValues
 
                                 BoxedValue r = BoxedValue.NullObject;
                                 for (int i = 0; i < m_Args.Count; i++) {
-                                    m_Args[i].Evaluate(instance, handler, new BoxedValue(val), args);
+                                    m_Args[i].Evaluate(instance, handler, BoxedValue.From(val), args);
                                     r = m_Args[i].Value;
                                 }
                                 if (r.Get<int>() != 0) {
@@ -123,7 +123,7 @@ namespace StorySystem.CommonValues
                             v = results;
                         }
                     }
-                    m_Value = new BoxedValue(v);
+                    m_Value = BoxedValue.From(v);
                 } else {
                     m_Value = BoxedValue.NullObject;
                 }

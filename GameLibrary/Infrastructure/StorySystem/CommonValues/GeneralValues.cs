@@ -1014,7 +1014,7 @@ namespace StorySystem.CommonValues
                 for (int i = 0; i < list.Count; ++i) {
                     v.Add(list[i]);
                 }
-                m_Value = new BoxedValue(v);
+                m_Value = BoxedValue.From(v);
             }
         }
         private IStoryValue<string> m_ListString = new StoryValue<string>();
@@ -1069,7 +1069,7 @@ namespace StorySystem.CommonValues
                 for (int i = 0; i < list.Count; ++i) {
                     v.Add(list[i]);
                 }
-                m_Value = new BoxedValue(v);
+                m_Value = BoxedValue.From(v);
             }
         }
         private IStoryValue<string> m_ListString = new StoryValue<string>();
@@ -1124,7 +1124,7 @@ namespace StorySystem.CommonValues
                 for (int i = 0; i < list.Count; ++i) {
                     v.Add(list[i]);
                 }
-                m_Value = new BoxedValue(v);
+                m_Value = BoxedValue.From(v);
             }
         }
         private IStoryValue<string> m_ListString = new StoryValue<string>();
@@ -1179,7 +1179,7 @@ namespace StorySystem.CommonValues
                 for (int i = 0; i < list.Count; ++i) {
                     v.Add(list[i]);
                 }
-                m_Value = new BoxedValue(v);
+                m_Value = BoxedValue.From(v);
             }
         }
         private IStoryValue<string> m_ListString = new StoryValue<string>();
@@ -1234,7 +1234,7 @@ namespace StorySystem.CommonValues
                 for (int i = 0; i < list.Count; ++i) {
                     v.Add(list[i]);
                 }
-                m_Value = new BoxedValue(v);
+                m_Value = BoxedValue.From(v);
             }
         }
         private IStoryValue<string> m_ListString = new StoryValue<string>();
@@ -1303,7 +1303,7 @@ namespace StorySystem.CommonValues
                 for (int i = 0; i < m_List.Count; i++) {
                     list.Add(m_List[i].Value.Get<object>());
                 }
-                m_Value = new BoxedValue(list.ToArray());
+                m_Value = BoxedValue.From(list.ToArray());
             }
         }
         private List<IStoryValue> m_List = new List<IStoryValue>();
@@ -1360,7 +1360,7 @@ namespace StorySystem.CommonValues
                         object val = enumer.Current;
                         al.Add(val);
                     }
-                    m_Value = new BoxedValue(al.ToArray());
+                    m_Value = BoxedValue.From(al.ToArray());
                 } else {
                     m_Value = BoxedValue.NullObject;
                 }
@@ -1434,7 +1434,7 @@ namespace StorySystem.CommonValues
                 for (int i = 0; i < m_List.Count; i++) {
                     v.Add(m_List[i].Value.Get<object>());
                 }
-                m_Value = new BoxedValue(v);
+                m_Value = BoxedValue.From(v);
             }
         }
         private List<IStoryValue> m_List = new List<IStoryValue>();
@@ -1498,9 +1498,9 @@ namespace StorySystem.CommonValues
                 int ct = listValue.Count;
                 int ix = GameLibrary.Helper.Random.Next(ct);
                 if (ix >= 0 && ix < ct) {
-                    m_Value = new BoxedValue(listValue[ix]);
+                    m_Value = BoxedValue.From(listValue[ix]);
                 } else if (ct > 0) {
-                    m_Value = new BoxedValue(listValue[0]);
+                    m_Value = BoxedValue.From(listValue[0]);
                 } else if (m_ParamNum > 1) {
                     m_Value = m_DefaultValue.Value;
                 } else {
@@ -1578,9 +1578,9 @@ namespace StorySystem.CommonValues
                 int ix = m_IndexValue.Value;
                 int ct = listValue.Count;
                 if (ix >= 0 && ix < ct) {
-                    m_Value = new BoxedValue(listValue[ix]);
+                    m_Value = BoxedValue.From(listValue[ix]);
                 } else if (ct > 0) {
-                    m_Value = new BoxedValue(listValue[ct - 1]);
+                    m_Value = BoxedValue.From(listValue[ct - 1]);
                 } else if (m_ParamNum > 2) {
                     m_Value = m_DefaultValue.Value;
                 } else {

@@ -1,5 +1,5 @@
 ﻿MSBUILD : warning MSB4056: 必须对单线程单元调用 MSBuild 引擎。当前线程模型为“MTA”。将继续，但某些任务可能无法正常工作。
-生成启动时间为 2020/10/25 14:40:06。
+生成启动时间为 2020/10/25 15:56:57。
 __________________________________________________
 项目“E:\OpenSource\GameDemo\GameLibrary\GameLibrary.sln”(clean;rebuild 个目标):
 
@@ -16,6 +16,9 @@ __________________________________________________
         正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\bin\Debug\UnityEngine.dll”。
         正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\obj\Debug\Common.dll”。
         正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\obj\Debug\Common.pdb”。
+        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\obj\Debug\Common.csprojAssemblyReference.cache”。
+        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache”。
+        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\obj\Debug\Common.csproj.CopyComplete”。
     __________________________________________________
     项目“E:\OpenSource\GameDemo\GameLibrary\GameLibrary.sln”正在生成“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\StorySystem.csproj”(Clean 目标):
 
@@ -206,4 +209,4 @@ Story\Commands\GeneralCommands.cs(1588,21): warning CS0414: 字段“GameLibrary
     6 个警告
     0 个错误
 
-已用时间 00:00:04.76
+已用时间 00:00:03.82

@@ -26,7 +26,7 @@ internal class AiSelectTarget : SimpleStoryValueBase<AiSelectTarget, StoryValueP
                     npc.GetAiStateInfo().Target = entity.GetId();
                 }
             }
-            result.Value = new BoxedValue(entity);
+            result.Value = BoxedValue.From(entity);
         }
     }
 }

@@ -1514,7 +1514,7 @@ namespace GameLibrary.Story.Values
             if (m_ObjId.HaveValue) {
                 int objId = m_ObjId.Value;
                 m_HaveValue = true;
-                m_Value = new BoxedValue(SceneSystem.Instance.GetEntityById(objId));
+                m_Value = BoxedValue.From(SceneSystem.Instance.GetEntityById(objId));
             }
         }
         private IStoryValue<int> m_ObjId = new StoryValue<int>();
@@ -1563,7 +1563,7 @@ namespace GameLibrary.Story.Values
             if (m_ObjId.HaveValue) {
                 int objId = m_ObjId.Value;
                 m_HaveValue = true;
-                m_Value = new BoxedValue(SceneSystem.Instance.GetEntityViewById(objId));
+                m_Value = BoxedValue.From(SceneSystem.Instance.GetEntityViewById(objId));
             }
         }
         private IStoryValue<int> m_ObjId = new StoryValue<int>();
@@ -1607,7 +1607,7 @@ namespace GameLibrary.Story.Values
         private void TryUpdateValue(StoryInstance instance)
         {
             m_HaveValue = true;
-            m_Value = new BoxedValue(GlobalVariables.Instance);
+            m_Value = BoxedValue.From(GlobalVariables.Instance);
         }
 
         private bool m_HaveValue;
@@ -1650,7 +1650,7 @@ namespace GameLibrary.Story.Values
         private void TryUpdateValue(StoryInstance instance)
         {
             m_HaveValue = true;
-            m_Value = new BoxedValue(SceneSystem.Instance);
+            m_Value = BoxedValue.From(SceneSystem.Instance);
         }
 
         private bool m_HaveValue;
@@ -1693,7 +1693,7 @@ namespace GameLibrary.Story.Values
         private void TryUpdateValue(StoryInstance instance)
         {
             m_HaveValue = true;
-            m_Value = new BoxedValue(ResourceSystem.Instance);
+            m_Value = BoxedValue.From(ResourceSystem.Instance);
         }
 
         private bool m_HaveValue;
@@ -1753,7 +1753,7 @@ namespace GameLibrary.Story.Values
                 ns = m_Namespace.Value;
             }
             m_HaveValue = true;
-            m_Value = new BoxedValue(ClientStorySystem.Instance.GetStory(storyId, ns));
+            m_Value = BoxedValue.From(ClientStorySystem.Instance.GetStory(storyId, ns));
         }
 
         private int m_ParamNum = 0;

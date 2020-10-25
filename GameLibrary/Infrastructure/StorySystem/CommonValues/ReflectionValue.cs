@@ -49,7 +49,7 @@ namespace StorySystem.CommonValues
             if (m_TypeName.HaveValue) {
                 m_HaveValue = true;
                 string typeName = m_TypeName.Value;
-                m_Value = new BoxedValue(Type.GetType(typeName));
+                m_Value = BoxedValue.From(Type.GetType(typeName));
                 if (null == m_Value.ObjectVal) {
                     GameLibrary.LogSystem.Warn("null == Type.GetType({0})", typeName);
                 }
@@ -143,7 +143,7 @@ namespace StorySystem.CommonValues
                         if (null != dict && dict.Contains(method) && dict[method] is Delegate) {
                             var d = dict[method] as Delegate;
                             if (null != d) {
-                                m_Value = new BoxedValue(d.DynamicInvoke(args));
+                                m_Value = BoxedValue.From(d.DynamicInvoke(args));
                             }
                         }
                         else {
@@ -152,7 +152,7 @@ namespace StorySystem.CommonValues
                                 try {
                                     BindingFlags flags = BindingFlags.Static | BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.NonPublic;
                                     GameLibrary.Converter.CastArgsForCall(t, method, flags, args);
-                                    m_Value = new BoxedValue(t.InvokeMember(method, flags, null, null, args));
+                                    m_Value = BoxedValue.From(t.InvokeMember(method, flags, null, null, args));
                                 }
                                 catch (Exception ex) {
                                     GameLibrary.LogSystem.Warn("DotnetCall {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
@@ -165,7 +165,7 @@ namespace StorySystem.CommonValues
                                     try {
                                         BindingFlags flags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.NonPublic;
                                         GameLibrary.Converter.CastArgsForCall(t, method, flags, args);
-                                        m_Value = new BoxedValue(t.InvokeMember(method, flags, null, obj, args));
+                                        m_Value = BoxedValue.From(t.InvokeMember(method, flags, null, obj, args));
                                     }
                                     catch (Exception ex) {
                                         GameLibrary.LogSystem.Warn("DotnetCall {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
@@ -181,7 +181,7 @@ namespace StorySystem.CommonValues
                         if (null != dict && dict.Contains(mobj)) {
                             var d = dict[mobj] as Delegate;
                             if (null != d) {
-                                m_Value = new BoxedValue(d.DynamicInvoke(args));
+                                m_Value = BoxedValue.From(d.DynamicInvoke(args));
                             }
                         }
                         else {
@@ -194,7 +194,7 @@ namespace StorySystem.CommonValues
                                 }
                                 var d = e.Current as Delegate;
                                 if (null != d) {
-                                    m_Value = new BoxedValue(d.DynamicInvoke(args));
+                                    m_Value = BoxedValue.From(d.DynamicInvoke(args));
                                 }
                             }
                         }
@@ -290,7 +290,7 @@ namespace StorySystem.CommonValues
                     if (null != method) {
                         IDictionary dict = obj as IDictionary;
                         if (null != dict && dict.Contains(method)) {
-                            m_Value = new BoxedValue(dict[method]);
+                            m_Value = BoxedValue.From(dict[method]);
                         }
                         else {
                             Type t = obj as Type;
@@ -298,7 +298,7 @@ namespace StorySystem.CommonValues
                                 try {
                                     BindingFlags flags = BindingFlags.Static | BindingFlags.GetField | BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.NonPublic;
                                     GameLibrary.Converter.CastArgsForGet(t, method, flags, args);
-                                    m_Value = new BoxedValue(t.InvokeMember(method, flags, null, null, args));
+                                    m_Value = BoxedValue.From(t.InvokeMember(method, flags, null, null, args));
                                 }
                                 catch (Exception ex) {
                                     GameLibrary.LogSystem.Warn("DotnetGet {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
@@ -311,7 +311,7 @@ namespace StorySystem.CommonValues
                                     try {
                                         BindingFlags flags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.GetField | BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.NonPublic;
                                         GameLibrary.Converter.CastArgsForGet(t, method, flags, args);
-                                        m_Value = new BoxedValue(t.InvokeMember(method, flags, null, obj, args));
+                                        m_Value = BoxedValue.From(t.InvokeMember(method, flags, null, obj, args));
                                     }
                                     catch (Exception ex) {
                                         GameLibrary.LogSystem.Warn("DotnetGet {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
@@ -325,7 +325,7 @@ namespace StorySystem.CommonValues
                         IDictionary dict = obj as IDictionary;
                         var mobj = methodObj.Get<object>();
                         if (null != dict && dict.Contains(mobj)) {
-                            m_Value = new BoxedValue(dict[mobj]);
+                            m_Value = BoxedValue.From(dict[mobj]);
                         }
                         else {
                             IEnumerable enumer = obj as IEnumerable;
@@ -335,7 +335,7 @@ namespace StorySystem.CommonValues
                                 for (int i = 0; i <= index; ++i) {
                                     e.MoveNext();
                                 }
-                                m_Value = new BoxedValue(e.Current);
+                                m_Value = BoxedValue.From(e.Current);
                             }
                         }
                     }
@@ -444,7 +444,7 @@ namespace StorySystem.CommonValues
                         else {
                             Type t = Type.GetType(type);
                             if (null != t) {
-                                m_Value = new BoxedValue(Convert.ChangeType(obj, t));
+                                m_Value = BoxedValue.From(Convert.ChangeType(obj, t));
                             }
                             else {
                                 GameLibrary.LogSystem.Warn("null == Type.GetType({0})", type);
@@ -454,7 +454,7 @@ namespace StorySystem.CommonValues
                     else {
                         var t = objType.IsObject ? objType.ObjectVal as Type : null;
                         if (null != t) {
-                            m_Value = new BoxedValue(Convert.ChangeType(obj, t));
+                            m_Value = BoxedValue.From(Convert.ChangeType(obj, t));
                         }
                     }
                 }
@@ -524,7 +524,7 @@ namespace StorySystem.CommonValues
                         t = Type.GetType(type);
                     }
                     if (null != t) {
-                        m_Value = new BoxedValue(Enum.Parse(t, val, true));
+                        m_Value = BoxedValue.From(Enum.Parse(t, val, true));
                     }
                     else {
                         GameLibrary.LogSystem.Warn("null == Type.GetType({0})", type);

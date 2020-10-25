@@ -39,7 +39,7 @@ namespace GameLibrary.GmCommands
         {
             string key = _params.Param1Value;
             int size = _params.Param2Value;
-            BoxedValue m = new BoxedValue(new byte[size]);
+            BoxedValue m = BoxedValue.From(new byte[size]);
             if (instance.GlobalVariables.ContainsKey(key)) {
                 instance.GlobalVariables[key] = m;
             } else {

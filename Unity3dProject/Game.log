@@ -1,721 +1,356 @@
-23-01-10-333:======GameLog Start (2020年10月20日, 23:01:10)======
-23-01-10-396:[Debug]:Time:23-01-10-396:StoryInstance.Init message handler num:4 True
-23-01-10-396:[Info]:ParseStory scene_main 0
-23-01-10-450:[Debug]:Time:23-01-10-450:StoryInstance.Init message handler num:11 True
-23-01-10-450:[Info]:ParseStory story_main 0
-23-01-10-454:[Warn]:Time:23-01-10-453:StoryInstance queue message start
-23-01-10-762:[Warn]:Time:23-01-10-760:StoryInstance queue message start
-23-01-10-765:[Warn]:Time:23-01-10-764:story_main start
-23-01-12-832:[Debug]:Time:23-01-12-832:StoryInstance.Init message handler num:3 True
-23-01-12-832:[Info]:ParseStory Start:main 0
-23-01-13-045:[Warn]:Time:23-01-13-043:StoryInstance queue message start
-23-01-13-247:[Warn]:Time:23-01-13-246:StoryInstance queue message Start:loop_work
-23-01-18-203:[Warn]:Time:23-01-18-201:StoryInstance queue message Start:on_click
-23-01-18-211:[Warn]:Time:23-01-18-209:StoryInstance queue message on_start_button_click
-23-01-19-681:[Warn]:Time:23-01-19-679:StoryInstance queue message scene_loaded
-23-01-19-691:[Warn]:Time:23-01-19-690:StoryInstance queue message start_game
-23-01-21-343:[Debug]:Time:23-01-21-343:StoryInstance.Init message handler num:2 True
-23-01-21-343:[Info]:ParseStory Option:main 0
-23-01-21-353:[Warn]:Time:23-01-21-350:StoryInstance queue message start
-23-01-21-444:[Debug]:Time:23-01-21-444:StoryInstance.Init message handler num:3 True
-23-01-21-444:[Info]:ParseStory Info:main 0
-23-01-21-448:[Warn]:Time:23-01-21-445:StoryInstance queue message start
-23-01-21-450:[Debug]:Time:23-01-21-450:StoryInstance.Init message handler num:3 True
-23-01-21-450:[Info]:ParseStory CenterInfo:main 0
-23-01-21-454:[Warn]:Time:23-01-21-452:StoryInstance queue message start
-23-01-21-455:[Debug]:Time:23-01-21-455:StoryInstance.Init message handler num:3 True
-23-01-21-455:[Info]:ParseStory Victory:main 0
-23-01-21-459:[Warn]:Time:23-01-21-457:StoryInstance queue message start
-23-01-21-461:[Debug]:Time:23-01-21-461:StoryInstance.Init message handler num:3 True
-23-01-21-461:[Info]:ParseStory Failed:main 0
-23-01-21-464:[Warn]:Time:23-01-21-463:StoryInstance queue message start
-23-01-21-588:[Debug]:Time:23-01-21-588:StoryInstance.Init message handler num:3 True
-23-01-21-588:[Info]:ParseStory ai_player 0
-23-01-21-591:[Warn]:Time:23-01-21-589:StoryInstance queue message start
-23-01-21-601:[Debug]:Time:23-01-21-601:StoryInstance.Init message handler num:3 True
-23-01-21-601:[Info]:ParseStory ai_npc 0
-23-01-21-603:[Warn]:Time:23-01-21-601:StoryInstance queue message start
-23-01-21-609:[Warn]:Time:23-01-21-607:StoryInstance queue message start
-23-01-21-615:[Warn]:Time:23-01-21-613:StoryInstance queue message start
-23-01-21-620:[Warn]:Time:23-01-21-619:StoryInstance queue message start
-23-01-21-626:[Warn]:Time:23-01-21-623:StoryInstance queue message start
-23-01-21-631:[Warn]:Time:23-01-21-629:StoryInstance queue message start
-23-01-21-649:[Warn]:Time:23-01-21-647:StoryInstance queue message on_born
-23-01-21-650:[Warn]:Time:23-01-21-649:StoryInstance queue message on_born
-23-01-21-651:[Warn]:Time:23-01-21-650:StoryInstance queue message on_born
-23-01-21-652:[Warn]:Time:23-01-21-651:StoryInstance queue message on_born
-23-01-21-654:[Warn]:Time:23-01-21-652:StoryInstance queue message on_born
-23-01-21-655:[Warn]:Time:23-01-21-654:StoryInstance queue message on_born
-23-01-21-656:[Warn]:Time:23-01-21-655:StoryInstance queue message on_born
-23-01-21-871:[Warn]:Time:23-01-21-869:StoryInstance queue message show_centerinfo
-23-01-23-874:[Warn]:Time:23-01-23-872:StoryInstance queue concurrent message notify_player
-23-01-23-876:[Warn]:Time:23-01-23-874:StoryInstance queue concurrent message notify_player
-23-01-23-877:[Warn]:Time:23-01-23-876:StoryInstance queue concurrent message notify_player
-23-01-23-879:[Warn]:Time:23-01-23-877:StoryInstance queue concurrent message notify_player
-23-01-25-908:[Warn]:Time:23-01-25-907:StoryInstance queue message on_trigger_enter
-23-01-25-912:[Warn]:Time:23-01-25-909:StoryInstance queue message hide_centerinfo
-23-01-25-927:[Warn]:Time:23-01-25-925:StoryInstance queue concurrent message baozha
-23-01-26-327:[Warn]:Time:23-01-26-326:StoryInstance queue message on_trigger_exit
-23-01-26-333:[Warn]:Time:23-01-26-331:StoryInstance queue message on_hide_centerinfo
-23-01-38-091:[Warn]:Time:23-01-38-089:StoryInstance queue concurrent message notify_player
-23-01-38-093:[Warn]:Time:23-01-38-091:StoryInstance queue concurrent message notify_player
-23-01-39-102:[Warn]:Time:23-01-39-099:StoryInstance queue concurrent message notify_player
-23-01-40-110:[Warn]:Time:23-01-40-109:StoryInstance queue message on_trigger_enter
-23-01-40-117:[Warn]:Time:23-01-40-115:StoryInstance queue concurrent message baozha
-23-01-40-120:[Warn]:Time:23-01-40-118:StoryInstance queue concurrent message notify_player
-23-01-40-122:[Warn]:Time:23-01-40-120:StoryInstance queue concurrent message notify_player
-23-01-40-124:[Warn]:Time:23-01-40-122:StoryInstance queue concurrent message notify_player
-23-01-40-165:[Warn]:Time:23-01-40-164:StoryInstance queue message on_trigger_exit
-23-01-41-115:[Warn]:Time:23-01-41-113:StoryInstance queue concurrent message notify_player
-23-01-41-181:[Warn]:Time:23-01-41-179:StoryInstance queue message on_trigger_enter
-23-01-41-186:[Warn]:Time:23-01-41-183:StoryInstance queue concurrent message baozha
-23-01-41-247:[Warn]:Time:23-01-41-246:StoryInstance queue message on_trigger_exit
-23-01-42-119:[Warn]:Time:23-01-42-116:StoryInstance queue concurrent message notify_player
-23-01-42-122:[Warn]:Time:23-01-42-119:StoryInstance queue concurrent message notify_player
-23-01-42-124:[Warn]:Time:23-01-42-122:StoryInstance queue concurrent message notify_player
-23-01-42-228:[Warn]:Time:23-01-42-228:StoryInstance queue message on_trigger_enter
-23-01-42-235:[Warn]:Time:23-01-42-233:StoryInstance queue concurrent message baozha
-23-01-42-279:[Warn]:Time:23-01-42-278:StoryInstance queue message on_trigger_exit
-23-01-43-129:[Warn]:Time:23-01-43-127:StoryInstance queue concurrent message notify_player
-23-01-43-132:[Warn]:Time:23-01-43-129:StoryInstance queue concurrent message notify_player
-23-01-43-133:[Warn]:Time:23-01-43-132:StoryInstance queue concurrent message notify_player
-23-01-43-361:[Warn]:Time:23-01-43-360:StoryInstance queue message on_trigger_enter
-23-01-43-368:[Warn]:Time:23-01-43-365:StoryInstance queue concurrent message baozha
-23-01-43-406:[Warn]:Time:23-01-43-404:StoryInstance queue message on_trigger_exit
-23-01-44-145:[Warn]:Time:23-01-44-142:StoryInstance queue concurrent message notify_player
-23-01-44-344:[Warn]:Time:23-01-44-342:StoryInstance queue message on_trigger_enter
-23-01-44-401:[Warn]:Time:23-01-44-398:StoryInstance queue concurrent message baozha
-23-01-44-415:[Warn]:Time:23-01-44-413:StoryInstance queue message on_trigger_exit
-23-01-45-153:[Warn]:Time:23-01-45-150:StoryInstance queue concurrent message notify_player
-23-01-45-245:[Warn]:Time:23-01-45-243:StoryInstance queue message on_trigger_enter
-23-01-45-314:[Warn]:Time:23-01-45-313:StoryInstance queue message on_trigger_exit
-23-01-45-455:[Warn]:Time:23-01-45-453:StoryInstance queue concurrent message baozha
-23-01-45-949:[Warn]:Time:23-01-45-947:StoryInstance queue message on_trigger_enter
-23-01-46-140:[Warn]:Time:23-01-46-138:StoryInstance queue message on_trigger_exit
-23-01-46-492:[Warn]:Time:23-01-46-489:StoryInstance queue concurrent message baozha
-23-01-47-183:[Warn]:Time:23-01-47-181:StoryInstance queue message on_trigger_enter
-23-01-47-249:[Warn]:Time:23-01-47-248:StoryInstance queue message on_trigger_exit
-23-01-47-516:[Warn]:Time:23-01-47-514:StoryInstance queue concurrent message baozha
-23-01-49-195:[Warn]:Time:23-01-49-193:StoryInstance queue concurrent message notify_player
-23-01-49-197:[Warn]:Time:23-01-49-195:StoryInstance queue concurrent message notify_player
-23-01-49-199:[Warn]:Time:23-01-49-197:StoryInstance queue concurrent message notify_player
-23-01-50-201:[Warn]:Time:23-01-50-199:StoryInstance queue concurrent message notify_player
-23-01-51-238:[Warn]:Time:23-01-51-234:StoryInstance queue concurrent message notify_player
-23-01-51-269:[Warn]:Time:23-01-51-266:StoryInstance queue message on_trigger_enter
-23-01-51-276:[Warn]:Time:23-01-51-272:StoryInstance queue concurrent message baozha
-23-01-51-295:[Warn]:Time:23-01-51-291:DotnetGet Vector3.name Exception:UnityEngine.Vector3.name Due to: Attempted to access a missing member.
+17-09-12-433:======GameLog Start (2020年10月25日, 17:09:12)======
+17-09-12-509:[Debug]:Time:17-09-12-509:StoryInstance.Init message handler num:4 True
+17-09-12-509:[Info]:ParseStory scene_main 0
+17-09-12-592:[Debug]:Time:17-09-12-592:StoryInstance.Init message handler num:11 True
+17-09-12-592:[Info]:ParseStory story_main 0
+17-09-12-597:[Warn]:Time:17-09-12-595:StoryInstance queue message start
+17-09-13-054:[Warn]:Time:17-09-13-051:StoryInstance queue message start
+17-09-13-058:[Warn]:Time:17-09-13-056:story_main start
+17-09-15-007:[Debug]:Time:17-09-15-007:StoryInstance.Init message handler num:3 True
+17-09-15-007:[Info]:ParseStory Start:main 0
+17-09-15-522:[Warn]:Time:17-09-15-519:StoryInstance queue message start
+17-09-15-738:[Warn]:Time:17-09-15-736:StoryInstance queue message Start:loop_work
+17-09-17-384:[Warn]:Time:17-09-17-381:StoryInstance queue message Start:on_click
+17-09-17-393:[Warn]:Time:17-09-17-391:StoryInstance queue message on_start_button_click
+17-09-19-082:[Warn]:Time:17-09-19-080:StoryInstance queue message scene_loaded
+17-09-19-092:[Warn]:Time:17-09-19-090:StoryInstance queue message start_game
+17-09-20-804:[Debug]:Time:17-09-20-804:StoryInstance.Init message handler num:2 True
+17-09-20-804:[Info]:ParseStory Option:main 0
+17-09-20-816:[Warn]:Time:17-09-20-814:StoryInstance queue message start
+17-09-20-916:[Debug]:Time:17-09-20-916:StoryInstance.Init message handler num:3 True
+17-09-20-916:[Info]:ParseStory Info:main 0
+17-09-20-921:[Warn]:Time:17-09-20-919:StoryInstance queue message start
+17-09-20-924:[Debug]:Time:17-09-20-924:StoryInstance.Init message handler num:3 True
+17-09-20-924:[Info]:ParseStory CenterInfo:main 0
+17-09-20-928:[Warn]:Time:17-09-20-926:StoryInstance queue message start
+17-09-20-929:[Debug]:Time:17-09-20-929:StoryInstance.Init message handler num:3 True
+17-09-20-929:[Info]:ParseStory Victory:main 0
+17-09-20-934:[Warn]:Time:17-09-20-932:StoryInstance queue message start
+17-09-20-936:[Debug]:Time:17-09-20-936:StoryInstance.Init message handler num:3 True
+17-09-20-936:[Info]:ParseStory Failed:main 0
+17-09-20-940:[Warn]:Time:17-09-20-938:StoryInstance queue message start
+17-09-21-091:[Debug]:Time:17-09-21-091:StoryInstance.Init message handler num:3 True
+17-09-21-091:[Info]:ParseStory ai_player 0
+17-09-21-095:[Warn]:Time:17-09-21-092:StoryInstance queue message start
+17-09-21-106:[Debug]:Time:17-09-21-106:StoryInstance.Init message handler num:3 True
+17-09-21-106:[Info]:ParseStory ai_npc 0
+17-09-21-108:[Warn]:Time:17-09-21-106:StoryInstance queue message start
+17-09-21-115:[Warn]:Time:17-09-21-112:StoryInstance queue message start
+17-09-21-123:[Warn]:Time:17-09-21-120:StoryInstance queue message start
+17-09-21-129:[Warn]:Time:17-09-21-126:StoryInstance queue message start
+17-09-21-134:[Warn]:Time:17-09-21-132:StoryInstance queue message start
+17-09-21-141:[Warn]:Time:17-09-21-139:StoryInstance queue message start
+17-09-21-162:[Warn]:Time:17-09-21-160:StoryInstance queue message on_born
+17-09-21-164:[Warn]:Time:17-09-21-162:StoryInstance queue message on_born
+17-09-21-165:[Warn]:Time:17-09-21-164:StoryInstance queue message on_born
+17-09-21-167:[Warn]:Time:17-09-21-165:StoryInstance queue message on_born
+17-09-21-168:[Warn]:Time:17-09-21-167:StoryInstance queue message on_born
+17-09-21-169:[Warn]:Time:17-09-21-168:StoryInstance queue message on_born
+17-09-21-172:[Warn]:Time:17-09-21-169:StoryInstance queue message on_born
+17-09-21-314:[Warn]:Time:17-09-21-312:StoryInstance queue message show_centerinfo
+17-09-23-311:[Warn]:Time:17-09-23-309:StoryInstance queue concurrent message notify_player
+17-09-23-313:[Warn]:Time:17-09-23-311:StoryInstance queue concurrent message notify_player
+17-09-23-315:[Warn]:Time:17-09-23-313:StoryInstance queue concurrent message notify_player
+17-09-23-317:[Warn]:Time:17-09-23-315:StoryInstance queue concurrent message notify_player
+17-09-25-245:[Warn]:Time:17-09-25-243:StoryInstance queue message hide_centerinfo
+17-09-25-260:[Warn]:Time:17-09-25-257:StoryInstance queue message on_hide_centerinfo
+17-09-25-345:[Warn]:Time:17-09-25-344:StoryInstance queue message on_trigger_enter
+17-09-25-364:[Warn]:Time:17-09-25-362:StoryInstance queue concurrent message baozha
+17-09-25-764:[Warn]:Time:17-09-25-763:StoryInstance queue message on_trigger_exit
+17-09-28-383:[Warn]:Time:17-09-28-382:StoryInstance queue message move_to
+17-09-29-440:[Warn]:Time:17-09-29-438:StoryInstance queue concurrent message notify_player
+17-09-29-442:[Warn]:Time:17-09-29-440:StoryInstance queue concurrent message notify_player
+17-09-30-450:[Warn]:Time:17-09-30-448:StoryInstance queue concurrent message notify_player
+17-09-30-451:[Warn]:Time:17-09-30-450:StoryInstance queue concurrent message notify_player
+17-09-31-498:[Warn]:Time:17-09-31-496:StoryInstance queue message on_trigger_enter
+17-09-31-503:[Warn]:Time:17-09-31-500:StoryInstance queue concurrent message baozha
+17-09-31-582:[Warn]:Time:17-09-31-580:StoryInstance queue message on_trigger_exit
+17-09-32-461:[Warn]:Time:17-09-32-459:StoryInstance queue message on_trigger_enter
+17-09-32-512:[Warn]:Time:17-09-32-509:StoryInstance queue message on_trigger_exit
+17-09-32-545:[Warn]:Time:17-09-32-542:StoryInstance queue concurrent message baozha
+17-09-34-485:[Warn]:Time:17-09-34-483:StoryInstance queue concurrent message notify_player
+17-09-35-487:[Warn]:Time:17-09-35-486:StoryInstance queue concurrent message notify_player
+17-09-35-489:[Warn]:Time:17-09-35-487:StoryInstance queue concurrent message notify_player
+17-09-35-492:[Warn]:Time:17-09-35-490:StoryInstance queue concurrent message notify_player
+17-09-36-715:[Warn]:Time:17-09-36-713:StoryInstance queue message on_trigger_enter
+17-09-36-717:[Warn]:Time:17-09-36-715:StoryInstance queue concurrent message baozha
+17-09-36-771:[Warn]:Time:17-09-36-768:StoryInstance queue message on_trigger_exit
+17-09-37-515:[Warn]:Time:17-09-37-513:StoryInstance queue message on_trigger_enter
+17-09-37-580:[Warn]:Time:17-09-37-579:StoryInstance queue message on_trigger_exit
+17-09-37-743:[Warn]:Time:17-09-37-741:StoryInstance queue concurrent message baozha
+17-09-38-523:[Warn]:Time:17-09-38-521:StoryInstance queue concurrent message notify_player
+17-09-38-526:[Warn]:Time:17-09-38-523:StoryInstance queue concurrent message notify_player
+17-09-38-527:[Warn]:Time:17-09-38-526:StoryInstance queue concurrent message notify_player
+17-09-39-528:[Warn]:Time:17-09-39-525:StoryInstance queue concurrent message notify_player
+17-09-40-540:[Warn]:Time:17-09-40-539:StoryInstance queue message on_trigger_enter
+17-09-40-546:[Warn]:Time:17-09-40-543:StoryInstance queue concurrent message baozha
+17-09-40-548:[Warn]:Time:17-09-40-546:StoryInstance queue concurrent message notify_player
+17-09-40-549:[Warn]:Time:17-09-40-548:StoryInstance queue concurrent message notify_player
+17-09-40-551:[Warn]:Time:17-09-40-549:StoryInstance queue concurrent message notify_player
+17-09-40-553:[Warn]:Time:17-09-40-551:StoryInstance queue concurrent message notify_player
+17-09-40-555:[Warn]:Time:17-09-40-553:StoryInstance queue concurrent message notify_player
+17-09-40-590:[Warn]:Time:17-09-40-589:StoryInstance queue message on_trigger_exit
+17-09-41-550:[Warn]:Time:17-09-41-548:StoryInstance queue concurrent message notify_player
+17-09-41-661:[Warn]:Time:17-09-41-659:StoryInstance queue message on_trigger_enter
+17-09-41-667:[Warn]:Time:17-09-41-665:StoryInstance queue concurrent message baozha
+17-09-41-723:[Warn]:Time:17-09-41-721:StoryInstance queue message on_trigger_exit
+17-09-42-563:[Warn]:Time:17-09-42-561:StoryInstance queue concurrent message notify_player
+17-09-42-566:[Warn]:Time:17-09-42-563:StoryInstance queue concurrent message notify_player
+17-09-42-568:[Warn]:Time:17-09-42-566:StoryInstance queue concurrent message notify_player
+17-09-42-635:[Warn]:Time:17-09-42-633:StoryInstance queue message on_trigger_enter
+17-09-42-688:[Warn]:Time:17-09-42-686:StoryInstance queue concurrent message baozha
+17-09-42-713:[Warn]:Time:17-09-42-712:StoryInstance queue message on_trigger_exit
+17-09-43-567:[Warn]:Time:17-09-43-565:StoryInstance queue concurrent message notify_player
+17-09-43-569:[Warn]:Time:17-09-43-567:StoryInstance queue concurrent message notify_player
+17-09-43-722:[Warn]:Time:17-09-43-720:StoryInstance queue message on_trigger_enter
+17-09-43-726:[Warn]:Time:17-09-43-725:StoryInstance queue concurrent message baozha
+17-09-43-778:[Warn]:Time:17-09-43-776:StoryInstance queue message on_trigger_exit
+17-09-44-578:[Warn]:Time:17-09-44-575:StoryInstance queue concurrent message notify_player
+17-09-44-593:[Warn]:Time:17-09-44-592:StoryInstance queue message on_trigger_enter
+17-09-44-603:[Warn]:Time:17-09-44-600:DotnetGet String.name Exception:System.String.name Due to: Attempted to access a missing member.
   at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
   at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
   at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-01-51-303:[Warn]:Time:23-01-51-297:DotnetGet Vector3.name Exception:UnityEngine.Vector3.name Due to: Attempted to access a missing member.
+17-09-44-608:[Warn]:Time:17-09-44-604:DotnetGet String.name Exception:System.String.name Due to: Attempted to access a missing member.
   at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
   at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
   at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-01-51-311:[Warn]:Time:23-01-51-305:DotnetGet Vector3.name Exception:UnityEngine.Vector3.name Due to: Attempted to access a missing member.
+17-09-44-612:[Warn]:Time:17-09-44-608:DotnetGet String.name Exception:System.String.name Due to: Attempted to access a missing member.
   at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
   at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
   at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-01-51-318:[Warn]:Time:23-01-51-312:DotnetGet Vector3.transform Exception:UnityEngine.Vector3.transform Due to: Attempted to access a missing member.
+17-09-44-617:[Warn]:Time:17-09-44-613:DotnetGet String.transform Exception:System.String.transform Due to: Attempted to access a missing member.
   at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
   at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
   at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-01-51-373:[Warn]:Time:23-01-51-371:StoryInstance queue message on_trigger_exit
-23-01-52-227:[Warn]:Time:23-01-52-225:StoryInstance queue message on_trigger_enter
-23-01-52-249:[Warn]:Time:23-01-52-247:StoryInstance queue concurrent message notify_player
-23-01-52-289:[Warn]:Time:23-01-52-287:StoryInstance queue message on_trigger_exit
-23-01-52-299:[Warn]:Time:23-01-52-296:StoryInstance queue concurrent message baozha
-23-01-54-262:[Warn]:Time:23-01-54-260:StoryInstance queue concurrent message notify_player
-23-01-54-264:[Warn]:Time:23-01-54-262:StoryInstance queue concurrent message notify_player
-23-01-54-266:[Warn]:Time:23-01-54-264:StoryInstance queue concurrent message notify_player
-23-01-54-363:[Warn]:Time:23-01-54-362:StoryInstance queue message on_trigger_enter
-23-01-54-369:[Warn]:Time:23-01-54-367:StoryInstance queue concurrent message baozha
-23-01-54-421:[Warn]:Time:23-01-54-418:StoryInstance queue message on_trigger_exit
-23-01-55-267:[Warn]:Time:23-01-55-265:StoryInstance queue concurrent message notify_player
-23-01-55-269:[Warn]:Time:23-01-55-267:StoryInstance queue concurrent message notify_player
-23-01-56-303:[Warn]:Time:23-01-56-301:StoryInstance queue message on_trigger_enter
-23-01-56-309:[Warn]:Time:23-01-56-306:StoryInstance queue concurrent message baozha
-23-01-56-377:[Warn]:Time:23-01-56-375:StoryInstance queue message on_trigger_exit
-23-01-57-500:[Warn]:Time:23-01-57-498:StoryInstance queue message on_trigger_enter
-23-01-57-508:[Warn]:Time:23-01-57-506:StoryInstance queue concurrent message baozha
-23-01-57-567:[Warn]:Time:23-01-57-566:StoryInstance queue message on_trigger_exit
-23-01-58-297:[Warn]:Time:23-01-58-295:StoryInstance queue concurrent message notify_player
-23-01-58-300:[Warn]:Time:23-01-58-297:StoryInstance queue concurrent message notify_player
-23-01-59-312:[Warn]:Time:23-01-59-310:StoryInstance queue concurrent message notify_player
-23-02-00-313:[Warn]:Time:23-02-00-311:StoryInstance queue message on_trigger_enter
-23-02-00-321:[Warn]:Time:23-02-00-319:StoryInstance queue concurrent message baozha
-23-02-00-324:[Warn]:Time:23-02-00-322:StoryInstance queue concurrent message notify_player
-23-02-00-326:[Warn]:Time:23-02-00-324:StoryInstance queue concurrent message notify_player
-23-02-00-327:[Warn]:Time:23-02-00-326:StoryInstance queue concurrent message notify_player
-23-02-00-390:[Warn]:Time:23-02-00-389:StoryInstance queue message on_trigger_exit
-23-02-01-316:[Warn]:Time:23-02-01-314:StoryInstance queue concurrent message notify_player
-23-02-01-320:[Warn]:Time:23-02-01-316:StoryInstance queue concurrent message notify_player
-23-02-01-367:[Warn]:Time:23-02-01-365:StoryInstance queue message on_trigger_enter
-23-02-01-372:[Warn]:Time:23-02-01-370:StoryInstance queue concurrent message baozha
-23-02-01-441:[Warn]:Time:23-02-01-439:StoryInstance queue message on_trigger_exit
-23-02-02-387:[Warn]:Time:23-02-02-385:StoryInstance queue message on_trigger_enter
-23-02-02-391:[Warn]:Time:23-02-02-388:StoryInstance queue concurrent message baozha
-23-02-02-441:[Warn]:Time:23-02-02-440:StoryInstance queue message on_trigger_exit
-23-02-03-324:[Warn]:Time:23-02-03-323:StoryInstance queue concurrent message notify_player
-23-02-03-470:[Warn]:Time:23-02-03-467:StoryInstance queue message on_trigger_enter
-23-02-03-483:[Warn]:Time:23-02-03-477:StoryInstance queue concurrent message baozha
-23-02-03-549:[Warn]:Time:23-02-03-547:StoryInstance queue message on_trigger_exit
-23-02-05-343:[Warn]:Time:23-02-05-341:StoryInstance queue concurrent message notify_player
-23-02-05-345:[Warn]:Time:23-02-05-343:StoryInstance queue concurrent message notify_player
-23-02-05-510:[Warn]:Time:23-02-05-508:StoryInstance queue message on_trigger_enter
-23-02-05-515:[Warn]:Time:23-02-05-513:StoryInstance queue concurrent message baozha
-23-02-05-561:[Warn]:Time:23-02-05-560:StoryInstance queue message on_trigger_exit
-23-02-07-356:[Warn]:Time:23-02-07-354:StoryInstance queue concurrent message notify_player
-23-02-07-358:[Warn]:Time:23-02-07-356:StoryInstance queue concurrent message notify_player
-23-02-07-360:[Warn]:Time:23-02-07-358:StoryInstance queue concurrent message notify_player
-23-02-07-362:[Warn]:Time:23-02-07-360:StoryInstance queue concurrent message notify_player
-23-02-07-533:[Warn]:Time:23-02-07-532:StoryInstance queue message on_trigger_enter
-23-02-07-540:[Warn]:Time:23-02-07-537:StoryInstance queue concurrent message baozha
-23-02-07-592:[Warn]:Time:23-02-07-591:StoryInstance queue message on_trigger_exit
-23-02-09-362:[Warn]:Time:23-02-09-360:StoryInstance queue concurrent message notify_player
-23-02-09-393:[Warn]:Time:23-02-09-392:StoryInstance queue message on_trigger_enter
-23-02-09-400:[Warn]:Time:23-02-09-398:StoryInstance queue concurrent message baozha
-23-02-09-446:[Warn]:Time:23-02-09-444:StoryInstance queue message on_trigger_exit
-23-02-10-363:[Warn]:Time:23-02-10-361:StoryInstance queue concurrent message notify_player
-23-02-10-366:[Warn]:Time:23-02-10-364:StoryInstance queue concurrent message notify_player
-23-02-10-368:[Warn]:Time:23-02-10-366:StoryInstance queue concurrent message notify_player
-23-02-10-370:[Warn]:Time:23-02-10-368:StoryInstance queue concurrent message notify_player
-23-02-11-594:[Warn]:Time:23-02-11-593:StoryInstance queue message on_trigger_enter
-23-02-11-599:[Warn]:Time:23-02-11-596:StoryInstance queue concurrent message baozha
-23-02-11-646:[Warn]:Time:23-02-11-644:StoryInstance queue message on_trigger_exit
-23-02-12-609:[Warn]:Time:23-02-12-608:StoryInstance queue message on_trigger_enter
-23-02-12-630:[Warn]:Time:23-02-12-627:StoryInstance queue concurrent message baozha
-23-02-12-661:[Warn]:Time:23-02-12-659:StoryInstance queue message on_trigger_exit
-23-02-13-394:[Warn]:Time:23-02-13-392:StoryInstance queue concurrent message notify_player
-23-02-13-396:[Warn]:Time:23-02-13-394:StoryInstance queue concurrent message notify_player
-23-02-15-408:[Warn]:Time:23-02-15-405:StoryInstance queue concurrent message notify_player
-23-02-15-410:[Warn]:Time:23-02-15-408:StoryInstance queue concurrent message notify_player
-23-02-15-453:[Warn]:Time:23-02-15-451:StoryInstance queue message on_trigger_enter
-23-02-15-460:[Warn]:Time:23-02-15-458:StoryInstance queue concurrent message baozha
-23-02-15-534:[Warn]:Time:23-02-15-532:StoryInstance queue message on_trigger_exit
-23-02-16-416:[Warn]:Time:23-02-16-412:StoryInstance queue concurrent message notify_player
-23-02-16-418:[Warn]:Time:23-02-16-416:StoryInstance queue concurrent message notify_player
-23-02-16-421:[Warn]:Time:23-02-16-418:StoryInstance queue concurrent message notify_player
-23-02-16-423:[Warn]:Time:23-02-16-421:StoryInstance queue concurrent message notify_player
-23-02-17-428:[Warn]:Time:23-02-17-426:StoryInstance queue concurrent message notify_player
-23-02-17-625:[Warn]:Time:23-02-17-623:StoryInstance queue message on_trigger_enter
-23-02-17-629:[Warn]:Time:23-02-17-627:StoryInstance queue concurrent message baozha
-23-02-17-692:[Warn]:Time:23-02-17-690:StoryInstance queue message on_trigger_exit
-23-02-18-620:[Warn]:Time:23-02-18-618:StoryInstance queue message on_trigger_enter
-23-02-18-658:[Warn]:Time:23-02-18-656:StoryInstance queue concurrent message baozha
-23-02-18-687:[Warn]:Time:23-02-18-686:StoryInstance queue message on_trigger_exit
-23-02-19-453:[Warn]:Time:23-02-19-452:StoryInstance queue concurrent message notify_player
-23-02-19-623:[Warn]:Time:23-02-19-622:StoryInstance queue message on_trigger_enter
-23-02-19-676:[Warn]:Time:23-02-19-674:StoryInstance queue concurrent message baozha
-23-02-19-702:[Warn]:Time:23-02-19-701:StoryInstance queue message on_trigger_exit
-23-02-20-463:[Warn]:Time:23-02-20-460:StoryInstance queue concurrent message notify_player
-23-02-21-474:[Warn]:Time:23-02-21-472:StoryInstance queue concurrent message notify_player
-23-02-21-489:[Warn]:Time:23-02-21-488:StoryInstance queue message on_trigger_enter
-23-02-21-494:[Warn]:Time:23-02-21-491:StoryInstance queue concurrent message baozha
-23-02-21-498:[Warn]:Time:23-02-21-494:DotnetGet Vector3.name Exception:UnityEngine.Vector3.name Due to: Attempted to access a missing member.
+17-09-44-660:[Warn]:Time:17-09-44-660:StoryInstance queue message on_trigger_exit
+17-09-44-748:[Warn]:Time:17-09-44-746:StoryInstance queue concurrent message baozha
+17-09-45-676:[Warn]:Time:17-09-45-675:StoryInstance queue message on_trigger_enter
+17-09-45-760:[Warn]:Time:17-09-45-758:StoryInstance queue message on_trigger_exit
+17-09-45-782:[Warn]:Time:17-09-45-780:StoryInstance queue concurrent message baozha
+17-09-46-581:[Warn]:Time:17-09-46-578:StoryInstance queue concurrent message notify_player
+17-09-46-583:[Warn]:Time:17-09-46-581:StoryInstance queue concurrent message notify_player
+17-09-46-584:[Warn]:Time:17-09-46-583:StoryInstance queue concurrent message notify_player
+17-09-47-596:[Warn]:Time:17-09-47-594:StoryInstance queue concurrent message notify_player
+17-09-47-596:[Warn]:Time:17-09-47-596:StoryInstance queue concurrent message notify_player
+17-09-48-589:[Warn]:Time:17-09-48-587:StoryInstance queue message on_trigger_enter
+17-09-48-594:[Warn]:Time:17-09-48-592:StoryInstance queue concurrent message baozha
+17-09-48-606:[Warn]:Time:17-09-48-604:StoryInstance queue concurrent message notify_player
+17-09-48-656:[Warn]:Time:17-09-48-654:StoryInstance queue message on_trigger_exit
+17-09-49-616:[Warn]:Time:17-09-49-615:StoryInstance queue concurrent message notify_player
+17-09-49-618:[Warn]:Time:17-09-49-617:StoryInstance queue concurrent message notify_player
+17-09-49-715:[Warn]:Time:17-09-49-713:StoryInstance queue message on_trigger_enter
+17-09-49-718:[Warn]:Time:17-09-49-716:StoryInstance queue concurrent message baozha
+17-09-49-781:[Warn]:Time:17-09-49-780:StoryInstance queue message on_trigger_exit
+17-09-50-632:[Warn]:Time:17-09-50-631:StoryInstance queue concurrent message notify_player
+17-09-50-634:[Warn]:Time:17-09-50-632:StoryInstance queue concurrent message notify_player
+17-09-50-681:[Warn]:Time:17-09-50-680:StoryInstance queue message on_trigger_enter
+17-09-50-734:[Warn]:Time:17-09-50-732:StoryInstance queue concurrent message baozha
+17-09-50-748:[Warn]:Time:17-09-50-747:StoryInstance queue message on_trigger_exit
+17-09-51-648:[Warn]:Time:17-09-51-647:StoryInstance queue message on_trigger_enter
+17-09-51-714:[Warn]:Time:17-09-51-713:StoryInstance queue message on_trigger_exit
+17-09-51-764:[Warn]:Time:17-09-51-762:StoryInstance queue concurrent message baozha
+17-09-52-635:[Warn]:Time:17-09-52-634:StoryInstance queue concurrent message notify_player
+17-09-52-850:[Warn]:Time:17-09-52-849:StoryInstance queue message on_trigger_enter
+17-09-52-853:[Warn]:Time:17-09-52-851:StoryInstance queue concurrent message baozha
+17-09-52-916:[Warn]:Time:17-09-52-915:StoryInstance queue message on_trigger_exit
+17-09-54-662:[Warn]:Time:17-09-54-662:StoryInstance queue message on_trigger_enter
+17-09-54-666:[Warn]:Time:17-09-54-664:StoryInstance queue concurrent message baozha
+17-09-54-729:[Warn]:Time:17-09-54-728:StoryInstance queue message on_trigger_exit
+17-09-56-683:[Warn]:Time:17-09-56-681:StoryInstance queue concurrent message notify_player
+17-09-56-684:[Warn]:Time:17-09-56-683:StoryInstance queue concurrent message notify_player
+17-09-58-754:[Warn]:Time:17-09-58-752:StoryInstance queue message on_trigger_enter
+17-09-58-757:[Warn]:Time:17-09-58-755:StoryInstance queue concurrent message baozha
+17-09-58-818:[Warn]:Time:17-09-58-817:StoryInstance queue message on_trigger_exit
+17-09-59-720:[Warn]:Time:17-09-59-719:StoryInstance queue concurrent message notify_player
+17-09-59-722:[Warn]:Time:17-09-59-720:StoryInstance queue concurrent message notify_player
+17-09-59-724:[Warn]:Time:17-09-59-722:StoryInstance queue concurrent message notify_player
+17-10-00-723:[Warn]:Time:17-10-00-722:StoryInstance queue concurrent message notify_player
+17-10-00-725:[Warn]:Time:17-10-00-723:StoryInstance queue concurrent message notify_player
+17-10-00-726:[Warn]:Time:17-10-00-725:StoryInstance queue concurrent message notify_player
+17-10-01-916:[Warn]:Time:17-10-01-915:StoryInstance queue message on_trigger_enter
+17-10-01-922:[Warn]:Time:17-10-01-920:StoryInstance queue concurrent message baozha
+17-10-01-983:[Warn]:Time:17-10-01-982:StoryInstance queue message on_trigger_exit
+17-10-02-948:[Warn]:Time:17-10-02-947:StoryInstance queue message on_trigger_enter
+17-10-02-953:[Warn]:Time:17-10-02-951:StoryInstance queue concurrent message baozha
+17-10-03-019:[Warn]:Time:17-10-03-017:StoryInstance queue message on_trigger_exit
+17-10-03-754:[Warn]:Time:17-10-03-752:StoryInstance queue concurrent message notify_player
+17-10-04-767:[Warn]:Time:17-10-04-765:StoryInstance queue concurrent message notify_player
+17-10-05-768:[Warn]:Time:17-10-05-766:StoryInstance queue concurrent message notify_player
+17-10-05-919:[Warn]:Time:17-10-05-918:StoryInstance queue message on_trigger_enter
+17-10-05-923:[Warn]:Time:17-10-05-921:StoryInstance queue concurrent message baozha
+17-10-05-968:[Warn]:Time:17-10-05-967:StoryInstance queue message on_trigger_exit
+17-10-06-774:[Warn]:Time:17-10-06-771:StoryInstance queue concurrent message notify_player
+17-10-06-775:[Warn]:Time:17-10-06-774:StoryInstance queue concurrent message notify_player
+17-10-06-882:[Warn]:Time:17-10-06-880:StoryInstance queue message on_trigger_enter
+17-10-06-942:[Warn]:Time:17-10-06-940:StoryInstance queue message on_trigger_exit
+17-10-06-949:[Warn]:Time:17-10-06-947:StoryInstance queue concurrent message baozha
+17-10-07-942:[Warn]:Time:17-10-07-940:StoryInstance queue message on_trigger_enter
+17-10-07-983:[Warn]:Time:17-10-07-982:StoryInstance queue concurrent message baozha
+17-10-07-997:[Warn]:Time:17-10-07-996:StoryInstance queue message on_trigger_exit
+17-10-08-777:[Warn]:Time:17-10-08-776:StoryInstance queue concurrent message notify_player
+17-10-08-991:[Warn]:Time:17-10-08-990:StoryInstance queue message on_trigger_enter
+17-10-09-013:[Warn]:Time:17-10-09-011:StoryInstance queue concurrent message baozha
+17-10-09-059:[Warn]:Time:17-10-09-056:StoryInstance queue message on_trigger_exit
+17-10-09-792:[Warn]:Time:17-10-09-791:StoryInstance queue concurrent message notify_player
+17-10-09-794:[Warn]:Time:17-10-09-792:StoryInstance queue concurrent message notify_player
+17-10-09-796:[Warn]:Time:17-10-09-794:StoryInstance queue concurrent message notify_player
+17-10-09-798:[Warn]:Time:17-10-09-796:StoryInstance queue concurrent message notify_player
+17-10-10-901:[Warn]:Time:17-10-10-900:StoryInstance queue message on_trigger_enter
+17-10-10-906:[Warn]:Time:17-10-10-904:StoryInstance queue concurrent message baozha
+17-10-10-951:[Warn]:Time:17-10-10-950:StoryInstance queue message on_trigger_exit
+17-10-11-807:[Warn]:Time:17-10-11-805:StoryInstance queue concurrent message notify_player
+17-10-12-023:[Warn]:Time:17-10-12-021:StoryInstance queue message on_trigger_enter
+17-10-12-028:[Warn]:Time:17-10-12-027:StoryInstance queue concurrent message baozha
+17-10-12-079:[Warn]:Time:17-10-12-078:StoryInstance queue message on_trigger_exit
+17-10-12-811:[Warn]:Time:17-10-12-809:StoryInstance queue concurrent message notify_player
+17-10-13-970:[Warn]:Time:17-10-13-969:StoryInstance queue message on_trigger_enter
+17-10-13-976:[Warn]:Time:17-10-13-974:StoryInstance queue concurrent message baozha
+17-10-14-037:[Warn]:Time:17-10-14-036:StoryInstance queue message on_trigger_exit
+17-10-14-827:[Warn]:Time:17-10-14-824:StoryInstance queue concurrent message notify_player
+17-10-14-861:[Warn]:Time:17-10-14-859:StoryInstance queue message on_trigger_enter
+17-10-14-944:[Warn]:Time:17-10-14-942:StoryInstance queue message on_trigger_exit
+17-10-14-998:[Warn]:Time:17-10-14-996:StoryInstance queue concurrent message baozha
+17-10-15-840:[Warn]:Time:17-10-15-838:StoryInstance queue concurrent message notify_player
+17-10-15-842:[Warn]:Time:17-10-15-840:StoryInstance queue concurrent message notify_player
+17-10-15-844:[Warn]:Time:17-10-15-842:StoryInstance queue concurrent message notify_player
+17-10-16-855:[Warn]:Time:17-10-16-853:StoryInstance queue concurrent message notify_player
+17-10-16-936:[Warn]:Time:17-10-16-935:StoryInstance queue message on_trigger_enter
+17-10-16-942:[Warn]:Time:17-10-16-940:StoryInstance queue concurrent message baozha
+17-10-16-997:[Warn]:Time:17-10-16-995:StoryInstance queue message on_trigger_exit
+17-10-17-872:[Warn]:Time:17-10-17-871:StoryInstance queue concurrent message notify_player
+17-10-17-938:[Warn]:Time:17-10-17-936:StoryInstance queue message on_trigger_enter
+17-10-17-958:[Warn]:Time:17-10-17-956:StoryInstance queue concurrent message baozha
+17-10-18-005:[Warn]:Time:17-10-18-004:StoryInstance queue message on_trigger_exit
+17-10-19-078:[Warn]:Time:17-10-19-076:StoryInstance queue message on_trigger_enter
+17-10-19-082:[Warn]:Time:17-10-19-080:StoryInstance queue concurrent message baozha
+17-10-19-129:[Warn]:Time:17-10-19-128:StoryInstance queue message on_trigger_exit
+17-10-19-883:[Warn]:Time:17-10-19-882:StoryInstance queue concurrent message notify_player
+17-10-20-083:[Warn]:Time:17-10-20-081:StoryInstance queue message on_trigger_enter
+17-10-20-103:[Warn]:Time:17-10-20-101:StoryInstance queue concurrent message baozha
+17-10-20-133:[Warn]:Time:17-10-20-131:StoryInstance queue message on_trigger_exit
+17-10-20-897:[Warn]:Time:17-10-20-895:StoryInstance queue concurrent message notify_player
+17-10-20-898:[Warn]:Time:17-10-20-897:StoryInstance queue concurrent message notify_player
+17-10-21-910:[Warn]:Time:17-10-21-908:StoryInstance queue message on_trigger_enter
+17-10-21-914:[Warn]:Time:17-10-21-912:StoryInstance queue concurrent message baozha
+17-10-21-976:[Warn]:Time:17-10-21-974:StoryInstance queue message on_trigger_exit
+17-10-22-923:[Warn]:Time:17-10-22-921:StoryInstance queue concurrent message notify_player
+17-10-22-924:[Warn]:Time:17-10-22-923:StoryInstance queue concurrent message notify_player
+17-10-23-020:[Warn]:Time:17-10-23-019:StoryInstance queue message on_trigger_enter
+17-10-23-026:[Warn]:Time:17-10-23-024:StoryInstance queue concurrent message baozha
+17-10-23-073:[Warn]:Time:17-10-23-071:StoryInstance queue message on_trigger_exit
+17-10-23-926:[Warn]:Time:17-10-23-923:StoryInstance queue concurrent message notify_player
+17-10-23-928:[Warn]:Time:17-10-23-926:StoryInstance queue concurrent message notify_player
+17-10-24-940:[Warn]:Time:17-10-24-939:StoryInstance queue concurrent message notify_player
+17-10-24-943:[Warn]:Time:17-10-24-941:StoryInstance queue concurrent message notify_player
+17-10-24-944:[Warn]:Time:17-10-24-943:StoryInstance queue concurrent message notify_player
+17-10-25-139:[Warn]:Time:17-10-25-137:StoryInstance queue message on_trigger_enter
+17-10-25-142:[Warn]:Time:17-10-25-140:StoryInstance queue concurrent message baozha
+17-10-25-192:[Warn]:Time:17-10-25-190:StoryInstance queue message on_trigger_exit
+17-10-25-942:[Warn]:Time:17-10-25-940:StoryInstance queue concurrent message notify_player
+17-10-25-944:[Warn]:Time:17-10-25-943:StoryInstance queue concurrent message notify_player
+17-10-25-946:[Warn]:Time:17-10-25-944:StoryInstance queue concurrent message notify_player
+17-10-25-948:[Warn]:Time:17-10-25-946:StoryInstance queue concurrent message notify_player
+17-10-25-949:[Warn]:Time:17-10-25-948:StoryInstance queue concurrent message notify_player
+17-10-26-061:[Warn]:Time:17-10-26-060:StoryInstance queue message on_trigger_enter
+17-10-26-144:[Warn]:Time:17-10-26-143:StoryInstance queue message on_trigger_exit
+17-10-26-164:[Warn]:Time:17-10-26-162:StoryInstance queue concurrent message baozha
+17-10-27-136:[Warn]:Time:17-10-27-135:StoryInstance queue message on_trigger_enter
+17-10-27-187:[Warn]:Time:17-10-27-185:StoryInstance queue concurrent message baozha
+17-10-27-203:[Warn]:Time:17-10-27-201:StoryInstance queue message on_trigger_exit
+17-10-27-961:[Warn]:Time:17-10-27-959:StoryInstance queue concurrent message notify_player
+17-10-27-963:[Warn]:Time:17-10-27-961:StoryInstance queue concurrent message notify_player
+17-10-27-964:[Warn]:Time:17-10-27-963:StoryInstance queue concurrent message notify_player
+17-10-27-966:[Warn]:Time:17-10-27-964:StoryInstance queue concurrent message notify_player
+17-10-27-968:[Warn]:Time:17-10-27-966:StoryInstance queue concurrent message notify_player
+17-10-27-969:[Warn]:Time:17-10-27-968:StoryInstance queue concurrent message notify_player
+17-10-28-104:[Warn]:Time:17-10-28-103:StoryInstance queue message on_trigger_enter
+17-10-28-125:[Warn]:Time:17-10-28-123:StoryInstance queue message on_trigger_exit
+17-10-28-212:[Warn]:Time:17-10-28-210:StoryInstance queue concurrent message baozha
+17-10-28-964:[Warn]:Time:17-10-28-962:StoryInstance queue concurrent message notify_player
+17-10-28-966:[Warn]:Time:17-10-28-964:StoryInstance queue concurrent message notify_player
+17-10-29-965:[Warn]:Time:17-10-29-963:StoryInstance queue concurrent message notify_player
+17-10-29-981:[Warn]:Time:17-10-29-979:StoryInstance queue message on_trigger_enter
+17-10-29-986:[Warn]:Time:17-10-29-984:StoryInstance queue concurrent message baozha
+17-10-29-990:[Warn]:Time:17-10-29-987:DotnetGet Vector3.name Exception:UnityEngine.Vector3.name Due to: Attempted to access a missing member.
   at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
   at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
   at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-02-21-503:[Warn]:Time:23-02-21-498:DotnetGet Vector3.name Exception:UnityEngine.Vector3.name Due to: Attempted to access a missing member.
+17-10-29-995:[Warn]:Time:17-10-29-992:DotnetGet Vector3.name Exception:UnityEngine.Vector3.name Due to: Attempted to access a missing member.
   at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
   at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
   at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-02-21-508:[Warn]:Time:23-02-21-503:DotnetGet Vector3.name Exception:UnityEngine.Vector3.name Due to: Attempted to access a missing member.
+17-10-30-000:[Warn]:Time:17-10-29-995:DotnetGet Vector3.name Exception:UnityEngine.Vector3.name Due to: Attempted to access a missing member.
   at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
   at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
   at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-02-21-512:[Warn]:Time:23-02-21-508:DotnetGet Vector3.transform Exception:UnityEngine.Vector3.transform Due to: Attempted to access a missing member.
+17-10-30-004:[Warn]:Time:17-10-30-000:DotnetGet Vector3.transform Exception:UnityEngine.Vector3.transform Due to: Attempted to access a missing member.
   at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
   at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
   at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-02-21-564:[Warn]:Time:23-02-21-563:StoryInstance queue message on_trigger_exit
-23-02-22-484:[Warn]:Time:23-02-22-482:StoryInstance queue concurrent message notify_player
-23-02-22-486:[Warn]:Time:23-02-22-484:StoryInstance queue concurrent message notify_player
-23-02-22-488:[Warn]:Time:23-02-22-486:StoryInstance queue concurrent message notify_player
-23-02-22-646:[Warn]:Time:23-02-22-645:StoryInstance queue message on_trigger_enter
-23-02-22-653:[Warn]:Time:23-02-22-650:StoryInstance queue concurrent message baozha
-23-02-22-715:[Warn]:Time:23-02-22-713:StoryInstance queue message on_trigger_exit
-23-02-23-497:[Warn]:Time:23-02-23-495:StoryInstance queue concurrent message notify_player
-23-02-24-510:[Warn]:Time:23-02-24-509:StoryInstance queue concurrent message notify_player
-23-02-24-512:[Warn]:Time:23-02-24-510:StoryInstance queue concurrent message notify_player
-23-02-24-514:[Warn]:Time:23-02-24-512:StoryInstance queue concurrent message notify_player
-23-02-24-579:[Warn]:Time:23-02-24-578:StoryInstance queue message on_trigger_enter
-23-02-24-585:[Warn]:Time:23-02-24-582:StoryInstance queue concurrent message baozha
-23-02-24-674:[Warn]:Time:23-02-24-673:StoryInstance queue message on_trigger_exit
-23-02-25-530:[Warn]:Time:23-02-25-528:StoryInstance queue concurrent message notify_player
-23-02-25-532:[Warn]:Time:23-02-25-530:StoryInstance queue concurrent message notify_player
-23-02-25-534:[Warn]:Time:23-02-25-532:StoryInstance queue concurrent message notify_player
-23-02-25-536:[Warn]:Time:23-02-25-534:StoryInstance queue concurrent message notify_player
-23-02-25-626:[Warn]:Time:23-02-25-624:StoryInstance queue message on_trigger_enter
-23-02-25-632:[Warn]:Time:23-02-25-630:StoryInstance queue concurrent message baozha
-23-02-25-705:[Warn]:Time:23-02-25-703:StoryInstance queue message on_trigger_exit
-23-02-26-536:[Warn]:Time:23-02-26-533:StoryInstance queue concurrent message notify_player
-23-02-26-539:[Warn]:Time:23-02-26-536:StoryInstance queue concurrent message notify_player
-23-02-26-540:[Warn]:Time:23-02-26-539:StoryInstance queue concurrent message notify_player
-23-02-26-715:[Warn]:Time:23-02-26-713:StoryInstance queue message on_trigger_enter
-23-02-26-721:[Warn]:Time:23-02-26-719:StoryInstance queue concurrent message baozha
-23-02-26-762:[Warn]:Time:23-02-26-759:StoryInstance queue message on_trigger_exit
-23-02-27-548:[Warn]:Time:23-02-27-546:StoryInstance queue concurrent message notify_player
-23-02-27-551:[Warn]:Time:23-02-27-548:StoryInstance queue concurrent message notify_player
-23-02-27-770:[Warn]:Time:23-02-27-768:StoryInstance queue message on_trigger_enter
-23-02-27-775:[Warn]:Time:23-02-27-772:StoryInstance queue concurrent message baozha
-23-02-27-839:[Warn]:Time:23-02-27-837:StoryInstance queue message on_trigger_exit
-23-02-28-557:[Warn]:Time:23-02-28-554:StoryInstance queue concurrent message notify_player
-23-02-28-559:[Warn]:Time:23-02-28-557:StoryInstance queue concurrent message notify_player
-23-02-28-560:[Warn]:Time:23-02-28-559:StoryInstance queue concurrent message notify_player
-23-02-28-562:[Warn]:Time:23-02-28-561:StoryInstance queue concurrent message notify_player
-23-02-28-726:[Warn]:Time:23-02-28-725:StoryInstance queue message on_trigger_enter
-23-02-28-793:[Warn]:Time:23-02-28-791:StoryInstance queue message on_trigger_exit
-23-02-28-800:[Warn]:Time:23-02-28-797:StoryInstance queue concurrent message baozha
-23-02-29-558:[Warn]:Time:23-02-29-556:StoryInstance queue concurrent message notify_player
-23-02-29-574:[Warn]:Time:23-02-29-572:StoryInstance queue message on_trigger_enter
-23-02-29-579:[Warn]:Time:23-02-29-576:DotnetGet String.name Exception:System.String.name Due to: Attempted to access a missing member.
+17-10-30-036:[Warn]:Time:17-10-30-034:StoryInstance queue message on_trigger_exit
+17-10-30-949:[Warn]:Time:17-10-30-947:StoryInstance queue message on_trigger_enter
+17-10-30-966:[Warn]:Time:17-10-30-964:StoryInstance queue concurrent message notify_player
+17-10-30-968:[Warn]:Time:17-10-30-966:StoryInstance queue concurrent message notify_player
+17-10-30-970:[Warn]:Time:17-10-30-968:StoryInstance queue concurrent message notify_player
+17-10-31-016:[Warn]:Time:17-10-31-012:DotnetGet String.gameObject Exception:System.String.gameObject Due to: Attempted to access a missing member.
   at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
   at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
   at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-02-29-584:[Warn]:Time:23-02-29-580:DotnetGet String.name Exception:System.String.name Due to: Attempted to access a missing member.
-  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-02-29-588:[Warn]:Time:23-02-29-585:DotnetGet String.name Exception:System.String.name Due to: Attempted to access a missing member.
-  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-02-29-593:[Warn]:Time:23-02-29-589:DotnetGet String.transform Exception:System.String.transform Due to: Attempted to access a missing member.
-  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-02-29-620:[Warn]:Time:23-02-29-619:StoryInstance queue message on_trigger_exit
-23-02-29-817:[Warn]:Time:23-02-29-814:StoryInstance queue concurrent message baozha
-23-02-30-710:[Warn]:Time:23-02-30-708:StoryInstance queue message on_trigger_enter
-23-02-30-771:[Warn]:Time:23-02-30-769:StoryInstance queue message on_trigger_exit
-23-02-30-855:[Warn]:Time:23-02-30-853:StoryInstance queue concurrent message baozha
-23-02-31-576:[Warn]:Time:23-02-31-574:StoryInstance queue concurrent message notify_player
-23-02-31-578:[Warn]:Time:23-02-31-576:StoryInstance queue concurrent message notify_player
-23-02-33-578:[Warn]:Time:23-02-33-577:StoryInstance queue message on_trigger_enter
-23-02-33-582:[Warn]:Time:23-02-33-579:StoryInstance queue concurrent message baozha
-23-02-33-600:[Warn]:Time:23-02-33-598:StoryInstance queue concurrent message notify_player
-23-02-33-651:[Warn]:Time:23-02-33-648:StoryInstance queue message on_trigger_exit
-23-02-34-613:[Warn]:Time:23-02-34-611:StoryInstance queue concurrent message notify_player
-23-02-34-615:[Warn]:Time:23-02-34-613:StoryInstance queue concurrent message notify_player
-23-02-35-803:[Warn]:Time:23-02-35-801:StoryInstance queue message on_trigger_enter
-23-02-35-807:[Warn]:Time:23-02-35-805:StoryInstance queue concurrent message baozha
-23-02-35-871:[Warn]:Time:23-02-35-869:StoryInstance queue message on_trigger_exit
-23-02-36-729:[Warn]:Time:23-02-36-728:StoryInstance queue message on_trigger_enter
-23-02-36-780:[Warn]:Time:23-02-36-778:StoryInstance queue message on_trigger_exit
-23-02-36-849:[Warn]:Time:23-02-36-847:StoryInstance queue concurrent message baozha
-23-02-36-945:[Warn]:Time:23-02-36-943:StoryInstance queue message Option:on_toggle
-23-02-41-669:[Warn]:Time:23-02-41-666:StoryInstance queue concurrent message notify_player
-23-02-42-670:[Warn]:Time:23-02-42-668:StoryInstance queue concurrent message notify_player
-23-02-42-672:[Warn]:Time:23-02-42-670:StoryInstance queue concurrent message notify_player
-23-02-42-674:[Warn]:Time:23-02-42-672:StoryInstance queue concurrent message notify_player
-23-02-43-691:[Warn]:Time:23-02-43-687:StoryInstance queue concurrent message notify_player
-23-02-43-696:[Warn]:Time:23-02-43-691:StoryInstance queue concurrent message notify_player
-23-02-43-699:[Warn]:Time:23-02-43-696:StoryInstance queue concurrent message notify_player
-23-02-43-703:[Warn]:Time:23-02-43-699:StoryInstance queue concurrent message notify_player
-23-02-43-876:[Warn]:Time:23-02-43-875:StoryInstance queue message on_trigger_enter
-23-02-43-880:[Warn]:Time:23-02-43-877:StoryInstance queue concurrent message baozha
-23-02-43-940:[Warn]:Time:23-02-43-938:StoryInstance queue message on_trigger_exit
-23-02-44-695:[Warn]:Time:23-02-44-693:StoryInstance queue message on_trigger_enter
-23-02-44-698:[Warn]:Time:23-02-44-695:StoryInstance queue concurrent message notify_player
-23-02-44-701:[Warn]:Time:23-02-44-698:StoryInstance queue concurrent message notify_player
-23-02-44-745:[Warn]:Time:23-02-44-743:StoryInstance queue message on_trigger_exit
-23-02-44-907:[Warn]:Time:23-02-44-905:StoryInstance queue concurrent message baozha
-23-02-45-704:[Warn]:Time:23-02-45-701:StoryInstance queue concurrent message notify_player
-23-02-45-707:[Warn]:Time:23-02-45-704:StoryInstance queue concurrent message notify_player
-23-02-46-007:[Warn]:Time:23-02-46-005:StoryInstance queue message on_trigger_enter
-23-02-46-009:[Warn]:Time:23-02-46-008:StoryInstance queue concurrent message baozha
-23-02-46-067:[Warn]:Time:23-02-46-065:StoryInstance queue message on_trigger_exit
-23-02-46-716:[Warn]:Time:23-02-46-714:StoryInstance queue concurrent message notify_player
-23-02-46-719:[Warn]:Time:23-02-46-716:StoryInstance queue concurrent message notify_player
-23-02-46-721:[Warn]:Time:23-02-46-719:StoryInstance queue concurrent message notify_player
-23-02-46-732:[Warn]:Time:23-02-46-730:StoryInstance queue message on_trigger_enter
-23-02-46-737:[Warn]:Time:23-02-46-733:DotnetGet String.name Exception:System.String.name Due to: Attempted to access a missing member.
-  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-02-46-742:[Warn]:Time:23-02-46-738:DotnetGet String.name Exception:System.String.name Due to: Attempted to access a missing member.
-  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-02-46-746:[Warn]:Time:23-02-46-743:DotnetGet String.name Exception:System.String.name Due to: Attempted to access a missing member.
-  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-02-46-752:[Warn]:Time:23-02-46-747:DotnetGet String.transform Exception:System.String.transform Due to: Attempted to access a missing member.
-  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-02-46-756:[Warn]:Time:23-02-46-752:DotnetGet String.name Exception:System.String.name Due to: Attempted to access a missing member.
-  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-02-46-760:[Warn]:Time:23-02-46-757:DotnetGet String.name Exception:System.String.name Due to: Attempted to access a missing member.
-  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-02-46-764:[Warn]:Time:23-02-46-761:DotnetGet String.name Exception:System.String.name Due to: Attempted to access a missing member.
-  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-02-46-770:[Warn]:Time:23-02-46-765:DotnetGet String.transform Exception:System.String.transform Due to: Attempted to access a missing member.
-  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-02-46-774:[Warn]:Time:23-02-46-770:DotnetGet String.name Exception:System.String.name Due to: Attempted to access a missing member.
-  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-02-46-778:[Warn]:Time:23-02-46-774:DotnetGet String.name Exception:System.String.name Due to: Attempted to access a missing member.
-  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-02-46-782:[Warn]:Time:23-02-46-779:DotnetGet String.name Exception:System.String.name Due to: Attempted to access a missing member.
-  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-02-46-787:[Warn]:Time:23-02-46-783:DotnetGet String.transform Exception:System.String.transform Due to: Attempted to access a missing member.
-  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-02-46-839:[Warn]:Time:23-02-46-838:StoryInstance queue message on_trigger_exit
-23-02-47-033:[Warn]:Time:23-02-47-031:StoryInstance queue concurrent message baozha
-23-02-47-724:[Warn]:Time:23-02-47-721:StoryInstance queue concurrent message notify_player
-23-02-47-726:[Warn]:Time:23-02-47-724:StoryInstance queue concurrent message notify_player
-23-02-47-728:[Warn]:Time:23-02-47-726:StoryInstance queue concurrent message notify_player
-23-02-47-852:[Warn]:Time:23-02-47-849:StoryInstance queue message on_trigger_enter
-23-02-47-934:[Warn]:Time:23-02-47-932:StoryInstance queue message on_trigger_exit
-23-02-48-063:[Warn]:Time:23-02-48-061:StoryInstance queue concurrent message baozha
-23-02-48-723:[Warn]:Time:23-02-48-720:StoryInstance queue concurrent message notify_player
-23-02-49-726:[Warn]:Time:23-02-49-723:StoryInstance queue concurrent message notify_player
-23-02-49-727:[Warn]:Time:23-02-49-726:StoryInstance queue concurrent message notify_player
-23-02-49-729:[Warn]:Time:23-02-49-727:StoryInstance queue concurrent message notify_player
-23-02-49-882:[Warn]:Time:23-02-49-881:StoryInstance queue message on_trigger_enter
-23-02-49-887:[Warn]:Time:23-02-49-885:StoryInstance queue concurrent message baozha
-23-02-49-951:[Warn]:Time:23-02-49-949:StoryInstance queue message on_trigger_exit
-23-02-50-732:[Warn]:Time:23-02-50-730:StoryInstance queue concurrent message notify_player
-23-02-50-734:[Warn]:Time:23-02-50-733:StoryInstance queue concurrent message notify_player
-23-02-50-736:[Warn]:Time:23-02-50-734:StoryInstance queue concurrent message notify_player
-23-02-50-738:[Warn]:Time:23-02-50-736:StoryInstance queue concurrent message notify_player
-23-02-50-942:[Warn]:Time:23-02-50-941:StoryInstance queue message on_trigger_enter
-23-02-50-945:[Warn]:Time:23-02-50-943:StoryInstance queue concurrent message baozha
-23-02-50-999:[Warn]:Time:23-02-50-998:StoryInstance queue message on_trigger_exit
-23-02-51-742:[Warn]:Time:23-02-51-740:StoryInstance queue concurrent message notify_player
-23-02-51-744:[Warn]:Time:23-02-51-742:StoryInstance queue concurrent message notify_player
-23-02-51-824:[Warn]:Time:23-02-51-822:StoryInstance queue message on_trigger_enter
-23-02-51-892:[Warn]:Time:23-02-51-891:StoryInstance queue message on_trigger_exit
-23-02-51-995:[Warn]:Time:23-02-51-993:StoryInstance queue concurrent message baozha
-23-02-52-744:[Warn]:Time:23-02-52-742:StoryInstance queue message on_trigger_enter
-23-02-52-746:[Warn]:Time:23-02-52-744:StoryInstance queue concurrent message notify_player
-23-02-52-749:[Warn]:Time:23-02-52-746:StoryInstance queue concurrent message notify_player
-23-02-52-830:[Warn]:Time:23-02-52-828:StoryInstance queue message on_trigger_exit
-23-02-53-027:[Warn]:Time:23-02-53-025:StoryInstance queue concurrent message baozha
-23-02-53-943:[Warn]:Time:23-02-53-941:StoryInstance queue message on_trigger_enter
-23-02-54-008:[Warn]:Time:23-02-54-007:StoryInstance queue message on_trigger_exit
-23-02-54-055:[Warn]:Time:23-02-54-052:StoryInstance queue concurrent message baozha
-23-02-54-886:[Warn]:Time:23-02-54-885:StoryInstance queue message on_trigger_enter
-23-02-54-952:[Warn]:Time:23-02-54-951:StoryInstance queue message on_trigger_exit
-23-02-55-168:[Warn]:Time:23-02-55-164:StoryInstance queue concurrent message baozha
-23-02-58-796:[Warn]:Time:23-02-58-794:StoryInstance queue concurrent message notify_player
-23-02-59-801:[Warn]:Time:23-02-59-799:StoryInstance queue concurrent message notify_player
-23-02-59-802:[Warn]:Time:23-02-59-801:StoryInstance queue concurrent message notify_player
-23-02-59-805:[Warn]:Time:23-02-59-803:StoryInstance queue concurrent message notify_player
-23-03-00-824:[Warn]:Time:23-03-00-822:StoryInstance queue message on_trigger_enter
-23-03-00-833:[Warn]:Time:23-03-00-830:StoryInstance queue concurrent message baozha
-23-03-00-836:[Warn]:Time:23-03-00-833:StoryInstance queue concurrent message notify_player
-23-03-00-886:[Warn]:Time:23-03-00-883:StoryInstance queue message on_trigger_exit
-23-03-01-168:[Warn]:Time:23-03-01-166:StoryInstance queue message on_trigger_enter
-23-03-01-300:[Warn]:Time:23-03-01-298:StoryInstance queue message on_trigger_exit
-23-03-01-864:[Warn]:Time:23-03-01-861:StoryInstance queue concurrent message baozha
-23-03-02-297:[Warn]:Time:23-03-02-294:StoryInstance queue message Option:on_toggle
-23-03-02-851:[Warn]:Time:23-03-02-849:StoryInstance queue message on_trigger_enter
-23-03-02-892:[Warn]:Time:23-03-02-890:StoryInstance queue concurrent message baozha
-23-03-02-934:[Warn]:Time:23-03-02-931:StoryInstance queue message on_trigger_exit
-23-03-04-869:[Warn]:Time:23-03-04-865:StoryInstance queue concurrent message notify_player
-23-03-05-876:[Warn]:Time:23-03-05-874:StoryInstance queue concurrent message notify_player
-23-03-05-878:[Warn]:Time:23-03-05-876:StoryInstance queue concurrent message notify_player
-23-03-06-879:[Warn]:Time:23-03-06-876:StoryInstance queue concurrent message notify_player
-23-03-06-882:[Warn]:Time:23-03-06-879:StoryInstance queue concurrent message notify_player
-23-03-06-885:[Warn]:Time:23-03-06-882:StoryInstance queue concurrent message notify_player
-23-03-06-967:[Warn]:Time:23-03-06-965:StoryInstance queue message on_trigger_enter
-23-03-06-978:[Warn]:Time:23-03-06-975:StoryInstance queue concurrent message baozha
-23-03-07-051:[Warn]:Time:23-03-07-049:StoryInstance queue message on_trigger_exit
-23-03-07-881:[Warn]:Time:23-03-07-878:StoryInstance queue concurrent message notify_player
-23-03-07-912:[Warn]:Time:23-03-07-911:StoryInstance queue message on_trigger_enter
-23-03-07-965:[Warn]:Time:23-03-07-963:StoryInstance queue message on_trigger_exit
-23-03-08-015:[Warn]:Time:23-03-08-012:StoryInstance queue concurrent message baozha
-23-03-08-881:[Warn]:Time:23-03-08-878:StoryInstance queue message Option:on_toggle
-23-03-09-007:[Warn]:Time:23-03-09-005:StoryInstance queue message on_trigger_enter
-23-03-09-026:[Warn]:Time:23-03-09-022:StoryInstance queue concurrent message baozha
-23-03-09-072:[Warn]:Time:23-03-09-070:StoryInstance queue message on_trigger_exit
-23-03-10-036:[Warn]:Time:23-03-10-034:StoryInstance queue message Option:on_toggle
-23-03-10-052:[Warn]:Time:23-03-10-050:StoryInstance queue message on_trigger_enter
-23-03-10-058:[Warn]:Time:23-03-10-057:StoryInstance queue concurrent message baozha
-23-03-10-105:[Warn]:Time:23-03-10-103:StoryInstance queue message on_trigger_exit
-23-03-11-906:[Warn]:Time:23-03-11-904:StoryInstance queue concurrent message notify_player
-23-03-11-908:[Warn]:Time:23-03-11-906:StoryInstance queue concurrent message notify_player
-23-03-11-909:[Warn]:Time:23-03-11-908:StoryInstance queue concurrent message notify_player
-23-03-13-964:[Warn]:Time:23-03-13-962:StoryInstance queue message on_trigger_enter
-23-03-13-970:[Warn]:Time:23-03-13-968:StoryInstance queue concurrent message baozha
-23-03-14-036:[Warn]:Time:23-03-14-034:StoryInstance queue message on_trigger_exit
-23-03-18-968:[Warn]:Time:23-03-18-966:StoryInstance queue concurrent message notify_player
-23-03-18-970:[Warn]:Time:23-03-18-968:StoryInstance queue concurrent message notify_player
-23-03-18-972:[Warn]:Time:23-03-18-970:StoryInstance queue concurrent message notify_player
-23-03-19-983:[Warn]:Time:23-03-19-981:StoryInstance queue concurrent message notify_player
-23-03-19-985:[Warn]:Time:23-03-19-983:StoryInstance queue concurrent message notify_player
-23-03-19-987:[Warn]:Time:23-03-19-985:StoryInstance queue concurrent message notify_player
-23-03-20-991:[Warn]:Time:23-03-20-989:StoryInstance queue concurrent message notify_player
-23-03-20-993:[Warn]:Time:23-03-20-991:StoryInstance queue concurrent message notify_player
-23-03-20-995:[Warn]:Time:23-03-20-993:StoryInstance queue concurrent message notify_player
-23-03-20-997:[Warn]:Time:23-03-20-995:StoryInstance queue concurrent message notify_player
-23-03-20-999:[Warn]:Time:23-03-20-997:StoryInstance queue concurrent message notify_player
-23-03-21-001:[Warn]:Time:23-03-20-999:StoryInstance queue concurrent message notify_player
-23-03-21-148:[Warn]:Time:23-03-21-146:StoryInstance queue message on_trigger_enter
-23-03-21-157:[Warn]:Time:23-03-21-155:StoryInstance queue concurrent message baozha
-23-03-21-206:[Warn]:Time:23-03-21-203:StoryInstance queue message on_trigger_exit
-23-03-21-995:[Warn]:Time:23-03-21-993:StoryInstance queue concurrent message notify_player
-23-03-21-998:[Warn]:Time:23-03-21-995:StoryInstance queue concurrent message notify_player
-23-03-22-000:[Warn]:Time:23-03-21-998:StoryInstance queue concurrent message notify_player
-23-03-22-030:[Warn]:Time:23-03-22-028:StoryInstance queue message on_trigger_enter
-23-03-22-080:[Warn]:Time:23-03-22-078:StoryInstance queue message on_trigger_exit
-23-03-22-177:[Warn]:Time:23-03-22-175:StoryInstance queue concurrent message baozha
-23-03-23-008:[Warn]:Time:23-03-23-006:StoryInstance queue concurrent message notify_player
-23-03-23-192:[Warn]:Time:23-03-23-191:StoryInstance queue message on_trigger_enter
-23-03-23-201:[Warn]:Time:23-03-23-197:StoryInstance queue concurrent message baozha
-23-03-23-258:[Warn]:Time:23-03-23-256:StoryInstance queue message on_trigger_exit
-23-03-24-078:[Warn]:Time:23-03-24-076:StoryInstance queue message on_trigger_enter
-23-03-24-138:[Warn]:Time:23-03-24-137:StoryInstance queue message on_trigger_exit
-23-03-24-236:[Warn]:Time:23-03-24-234:StoryInstance queue concurrent message baozha
-23-03-25-216:[Warn]:Time:23-03-25-214:StoryInstance queue message on_trigger_enter
-23-03-25-262:[Warn]:Time:23-03-25-259:StoryInstance queue concurrent message baozha
-23-03-25-293:[Warn]:Time:23-03-25-291:StoryInstance queue message on_trigger_exit
-23-03-27-040:[Warn]:Time:23-03-27-038:StoryInstance queue concurrent message notify_player
-23-03-27-043:[Warn]:Time:23-03-27-040:StoryInstance queue concurrent message notify_player
-23-03-27-044:[Warn]:Time:23-03-27-043:StoryInstance queue concurrent message notify_player
-23-03-27-045:[Warn]:Time:23-03-27-044:StoryInstance queue concurrent message notify_player
-23-03-28-041:[Warn]:Time:23-03-28-039:StoryInstance queue concurrent message notify_player
-23-03-28-043:[Warn]:Time:23-03-28-041:StoryInstance queue concurrent message notify_player
-23-03-28-045:[Warn]:Time:23-03-28-043:StoryInstance queue concurrent message notify_player
-23-03-29-053:[Warn]:Time:23-03-29-051:StoryInstance queue concurrent message notify_player
-23-03-29-184:[Warn]:Time:23-03-29-183:StoryInstance queue message on_trigger_enter
-23-03-29-191:[Warn]:Time:23-03-29-188:StoryInstance queue concurrent message baozha
-23-03-29-246:[Warn]:Time:23-03-29-245:StoryInstance queue message on_trigger_exit
-23-03-30-081:[Warn]:Time:23-03-30-079:StoryInstance queue message on_trigger_enter
-23-03-30-147:[Warn]:Time:23-03-30-145:StoryInstance queue message on_trigger_exit
-23-03-30-223:[Warn]:Time:23-03-30-221:StoryInstance queue concurrent message baozha
-23-03-31-069:[Warn]:Time:23-03-31-067:StoryInstance queue concurrent message notify_player
-23-03-31-072:[Warn]:Time:23-03-31-069:StoryInstance queue concurrent message notify_player
-23-03-31-148:[Warn]:Time:23-03-31-146:StoryInstance queue message on_trigger_enter
-23-03-31-213:[Warn]:Time:23-03-31-212:StoryInstance queue message on_trigger_exit
-23-03-31-256:[Warn]:Time:23-03-31-254:StoryInstance queue concurrent message baozha
-23-03-32-084:[Warn]:Time:23-03-32-082:StoryInstance queue concurrent message notify_player
-23-03-32-087:[Warn]:Time:23-03-32-084:StoryInstance queue concurrent message notify_player
-23-03-33-088:[Warn]:Time:23-03-33-085:StoryInstance queue concurrent message notify_player
-23-03-33-169:[Warn]:Time:23-03-33-167:StoryInstance queue message on_trigger_enter
-23-03-33-175:[Warn]:Time:23-03-33-173:StoryInstance queue concurrent message baozha
-23-03-33-221:[Warn]:Time:23-03-33-220:StoryInstance queue message on_trigger_exit
-23-03-34-281:[Warn]:Time:23-03-34-279:StoryInstance queue message on_trigger_enter
-23-03-34-286:[Warn]:Time:23-03-34-283:StoryInstance queue concurrent message baozha
-23-03-34-350:[Warn]:Time:23-03-34-348:StoryInstance queue message on_trigger_exit
-23-03-35-105:[Warn]:Time:23-03-35-103:StoryInstance queue concurrent message notify_player
-23-03-35-187:[Warn]:Time:23-03-35-185:StoryInstance queue message on_trigger_enter
-23-03-35-255:[Warn]:Time:23-03-35-252:StoryInstance queue message on_trigger_exit
-23-03-35-419:[Warn]:Time:23-03-35-417:StoryInstance queue concurrent message baozha
-23-03-36-122:[Warn]:Time:23-03-36-120:StoryInstance queue concurrent message notify_player
-23-03-36-124:[Warn]:Time:23-03-36-123:StoryInstance queue concurrent message notify_player
-23-03-37-106:[Warn]:Time:23-03-37-104:StoryInstance queue message on_trigger_enter
-23-03-37-112:[Warn]:Time:23-03-37-110:StoryInstance queue concurrent message baozha
-23-03-37-125:[Warn]:Time:23-03-37-123:StoryInstance queue concurrent message notify_player
-23-03-37-127:[Warn]:Time:23-03-37-125:StoryInstance queue concurrent message notify_player
-23-03-37-130:[Warn]:Time:23-03-37-127:StoryInstance queue concurrent message notify_player
-23-03-37-188:[Warn]:Time:23-03-37-187:StoryInstance queue message on_trigger_exit
-23-03-38-308:[Warn]:Time:23-03-38-306:StoryInstance queue message on_trigger_enter
-23-03-38-314:[Warn]:Time:23-03-38-312:StoryInstance queue concurrent message baozha
-23-03-38-363:[Warn]:Time:23-03-38-362:StoryInstance queue message on_trigger_exit
-23-03-39-135:[Warn]:Time:23-03-39-133:StoryInstance queue concurrent message notify_player
-23-03-39-314:[Warn]:Time:23-03-39-312:StoryInstance queue message on_trigger_enter
-23-03-39-335:[Warn]:Time:23-03-39-332:StoryInstance queue concurrent message baozha
-23-03-39-364:[Warn]:Time:23-03-39-362:StoryInstance queue message on_trigger_exit
-23-03-41-186:[Warn]:Time:23-03-41-184:StoryInstance queue message on_trigger_enter
-23-03-41-190:[Warn]:Time:23-03-41-188:StoryInstance queue concurrent message baozha
-23-03-41-251:[Warn]:Time:23-03-41-249:StoryInstance queue message on_trigger_exit
-23-03-43-154:[Warn]:Time:23-03-43-151:StoryInstance queue concurrent message notify_player
-23-03-43-157:[Warn]:Time:23-03-43-154:StoryInstance queue concurrent message notify_player
-23-03-43-159:[Warn]:Time:23-03-43-157:StoryInstance queue concurrent message notify_player
-23-03-44-169:[Warn]:Time:23-03-44-167:StoryInstance queue concurrent message notify_player
-23-03-45-288:[Warn]:Time:23-03-45-287:StoryInstance queue message on_trigger_enter
-23-03-45-295:[Warn]:Time:23-03-45-293:StoryInstance queue concurrent message baozha
-23-03-45-343:[Warn]:Time:23-03-45-342:StoryInstance queue message on_trigger_exit
-23-03-46-210:[Warn]:Time:23-03-46-209:StoryInstance queue message on_trigger_enter
-23-03-46-261:[Warn]:Time:23-03-46-260:StoryInstance queue message on_trigger_exit
-23-03-46-326:[Warn]:Time:23-03-46-324:StoryInstance queue concurrent message baozha
-23-03-47-189:[Warn]:Time:23-03-47-188:StoryInstance queue concurrent message notify_player
-23-03-47-192:[Warn]:Time:23-03-47-190:StoryInstance queue concurrent message notify_player
-23-03-48-204:[Warn]:Time:23-03-48-202:StoryInstance queue concurrent message notify_player
-23-03-48-206:[Warn]:Time:23-03-48-204:StoryInstance queue concurrent message notify_player
-23-03-49-204:[Warn]:Time:23-03-49-202:StoryInstance queue concurrent message notify_player
-23-03-49-406:[Warn]:Time:23-03-49-404:StoryInstance queue message on_trigger_enter
-23-03-49-412:[Warn]:Time:23-03-49-409:StoryInstance queue concurrent message baozha
-23-03-49-453:[Warn]:Time:23-03-49-450:StoryInstance queue message on_trigger_exit
-23-03-50-213:[Warn]:Time:23-03-50-210:StoryInstance queue concurrent message notify_player
-23-03-50-293:[Warn]:Time:23-03-50-292:StoryInstance queue message on_trigger_enter
-23-03-50-361:[Warn]:Time:23-03-50-360:StoryInstance queue message on_trigger_exit
-23-03-50-442:[Warn]:Time:23-03-50-439:StoryInstance queue concurrent message baozha
-23-03-51-221:[Warn]:Time:23-03-51-219:StoryInstance queue concurrent message notify_player
-23-03-51-223:[Warn]:Time:23-03-51-221:StoryInstance queue concurrent message notify_player
-23-03-51-294:[Warn]:Time:23-03-51-292:StoryInstance queue message on_trigger_enter
-23-03-51-344:[Warn]:Time:23-03-51-343:StoryInstance queue message on_trigger_exit
-23-03-51-477:[Warn]:Time:23-03-51-474:StoryInstance queue concurrent message baozha
-23-03-52-374:[Warn]:Time:23-03-52-373:StoryInstance queue message on_trigger_enter
-23-03-52-432:[Warn]:Time:23-03-52-429:StoryInstance queue message on_trigger_exit
-23-03-52-509:[Warn]:Time:23-03-52-507:StoryInstance queue concurrent message baozha
-23-03-53-333:[Warn]:Time:23-03-53-332:StoryInstance queue message on_trigger_enter
-23-03-53-383:[Warn]:Time:23-03-53-381:StoryInstance queue message on_trigger_exit
-23-03-53-534:[Warn]:Time:23-03-53-532:StoryInstance queue concurrent message baozha
-23-04-12-405:[Warn]:Time:23-04-12-403:StoryInstance queue concurrent message notify_player
-23-04-13-404:[Warn]:Time:23-04-13-402:StoryInstance queue concurrent message notify_player
-23-04-14-409:[Warn]:Time:23-04-14-406:StoryInstance queue concurrent message notify_player
-23-04-14-411:[Warn]:Time:23-04-14-409:StoryInstance queue concurrent message notify_player
-23-04-14-414:[Warn]:Time:23-04-14-411:StoryInstance queue concurrent message notify_player
-23-04-14-623:[Warn]:Time:23-04-14-620:StoryInstance queue message on_trigger_enter
-23-04-14-629:[Warn]:Time:23-04-14-627:StoryInstance queue concurrent message baozha
-23-04-14-682:[Warn]:Time:23-04-14-680:StoryInstance queue message on_trigger_exit
-23-04-15-443:[Warn]:Time:23-04-15-441:StoryInstance queue message on_trigger_enter
-23-04-15-515:[Warn]:Time:23-04-15-513:StoryInstance queue message on_trigger_exit
-23-04-15-709:[Warn]:Time:23-04-15-707:StoryInstance queue concurrent message baozha
-23-04-16-431:[Warn]:Time:23-04-16-429:StoryInstance queue concurrent message notify_player
-23-04-16-433:[Warn]:Time:23-04-16-431:StoryInstance queue concurrent message notify_player
-23-04-16-435:[Warn]:Time:23-04-16-433:StoryInstance queue concurrent message notify_player
-23-04-16-437:[Warn]:Time:23-04-16-435:StoryInstance queue concurrent message notify_player
-23-04-16-440:[Warn]:Time:23-04-16-437:StoryInstance queue concurrent message notify_player
-23-04-16-582:[Warn]:Time:23-04-16-580:StoryInstance queue message on_trigger_enter
-23-04-16-635:[Warn]:Time:23-04-16-632:StoryInstance queue message on_trigger_exit
-23-04-16-728:[Warn]:Time:23-04-16-725:StoryInstance queue concurrent message baozha
-23-04-17-445:[Warn]:Time:23-04-17-442:StoryInstance queue concurrent message notify_player
-23-04-18-456:[Warn]:Time:23-04-18-454:StoryInstance queue concurrent message notify_player
-23-04-18-458:[Warn]:Time:23-04-18-456:StoryInstance queue concurrent message notify_player
-23-04-18-488:[Warn]:Time:23-04-18-487:StoryInstance queue message on_trigger_enter
-23-04-18-492:[Warn]:Time:23-04-18-490:StoryInstance queue concurrent message baozha
-23-04-18-554:[Warn]:Time:23-04-18-553:StoryInstance queue message on_trigger_exit
-23-04-19-527:[Warn]:Time:23-04-19-526:StoryInstance queue message on_trigger_enter
-23-04-19-536:[Warn]:Time:23-04-19-534:StoryInstance queue concurrent message baozha
-23-04-19-582:[Warn]:Time:23-04-19-580:StoryInstance queue message on_trigger_exit
-23-04-20-645:[Warn]:Time:23-04-20-643:StoryInstance queue message on_trigger_enter
-23-04-20-650:[Warn]:Time:23-04-20-646:StoryInstance queue concurrent message baozha
-23-04-20-711:[Warn]:Time:23-04-20-709:StoryInstance queue message on_trigger_exit
-23-04-32-544:[Warn]:Time:23-04-32-541:StoryInstance queue concurrent message notify_player
-23-04-34-723:[Warn]:Time:23-04-34-722:StoryInstance queue message on_trigger_enter
-23-04-34-727:[Warn]:Time:23-04-34-725:StoryInstance queue concurrent message baozha
-23-04-34-790:[Warn]:Time:23-04-34-788:StoryInstance queue message on_trigger_exit
-23-04-38-607:[Warn]:Time:23-04-38-605:StoryInstance queue concurrent message notify_player
-23-04-39-624:[Warn]:Time:23-04-39-621:StoryInstance queue concurrent message notify_player
-23-04-39-626:[Warn]:Time:23-04-39-624:StoryInstance queue concurrent message notify_player
-23-04-40-630:[Warn]:Time:23-04-40-627:StoryInstance queue concurrent message notify_player
-23-04-40-763:[Warn]:Time:23-04-40-761:StoryInstance queue message on_trigger_enter
-23-04-40-768:[Warn]:Time:23-04-40-766:StoryInstance queue concurrent message baozha
-23-04-40-822:[Warn]:Time:23-04-40-819:StoryInstance queue message on_trigger_exit
-23-04-41-587:[Warn]:Time:23-04-41-585:StoryInstance queue message on_trigger_enter
-23-04-41-674:[Warn]:Time:23-04-41-672:StoryInstance queue message on_trigger_exit
-23-04-41-800:[Warn]:Time:23-04-41-798:StoryInstance queue concurrent message baozha
-23-04-42-626:[Warn]:Time:23-04-42-624:StoryInstance queue message on_trigger_enter
-23-04-42-642:[Warn]:Time:23-04-42-640:StoryInstance queue concurrent message notify_player
-23-04-42-690:[Warn]:Time:23-04-42-689:StoryInstance queue message on_trigger_exit
-23-04-42-821:[Warn]:Time:23-04-42-820:StoryInstance queue concurrent message baozha
-23-04-44-750:[Warn]:Time:23-04-44-748:StoryInstance queue message on_trigger_enter
-23-04-44-755:[Warn]:Time:23-04-44-752:StoryInstance queue concurrent message baozha
-23-04-44-806:[Warn]:Time:23-04-44-804:StoryInstance queue message on_trigger_exit
-23-04-50-699:[Warn]:Time:23-04-50-697:StoryInstance queue concurrent message notify_player
-23-04-51-709:[Warn]:Time:23-04-51-707:StoryInstance queue concurrent message notify_player
-23-04-52-728:[Warn]:Time:23-04-52-726:StoryInstance queue message on_trigger_enter
-23-04-52-734:[Warn]:Time:23-04-52-732:StoryInstance queue concurrent message baozha
-23-04-52-785:[Warn]:Time:23-04-52-783:StoryInstance queue message on_trigger_exit
-23-04-53-874:[Warn]:Time:23-04-53-872:StoryInstance queue message on_trigger_enter
-23-04-53-882:[Warn]:Time:23-04-53-879:StoryInstance queue concurrent message baozha
-23-04-53-949:[Warn]:Time:23-04-53-947:StoryInstance queue message on_trigger_exit
-23-04-55-764:[Warn]:Time:23-04-55-761:StoryInstance queue concurrent message notify_player
-23-04-55-766:[Warn]:Time:23-04-55-764:StoryInstance queue concurrent message notify_player
-23-04-55-768:[Warn]:Time:23-04-55-766:StoryInstance queue concurrent message notify_player
-23-04-55-770:[Warn]:Time:23-04-55-768:StoryInstance queue concurrent message notify_player
-23-04-55-773:[Warn]:Time:23-04-55-770:StoryInstance queue concurrent message notify_player
-23-04-55-775:[Warn]:Time:23-04-55-773:StoryInstance queue concurrent message notify_player
-23-04-56-779:[Warn]:Time:23-04-56-776:StoryInstance queue concurrent message notify_player
-23-04-57-903:[Warn]:Time:23-04-57-902:StoryInstance queue message on_trigger_enter
-23-04-57-908:[Warn]:Time:23-04-57-906:StoryInstance queue concurrent message baozha
-23-04-57-976:[Warn]:Time:23-04-57-975:StoryInstance queue message on_trigger_exit
-23-04-58-890:[Warn]:Time:23-04-58-889:StoryInstance queue message on_trigger_enter
-23-04-58-927:[Warn]:Time:23-04-58-924:StoryInstance queue concurrent message baozha
-23-04-58-939:[Warn]:Time:23-04-58-938:StoryInstance queue message on_trigger_exit
-23-04-59-801:[Warn]:Time:23-04-59-798:StoryInstance queue concurrent message notify_player
-23-05-00-808:[Warn]:Time:23-05-00-805:StoryInstance queue concurrent message notify_player
-23-05-00-810:[Warn]:Time:23-05-00-808:StoryInstance queue concurrent message notify_player
-23-05-00-812:[Warn]:Time:23-05-00-810:StoryInstance queue concurrent message notify_player
-23-05-01-645:[Warn]:Time:23-05-01-643:StoryInstance queue message on_trigger_enter
-23-05-01-652:[Warn]:Time:23-05-01-648:StoryInstance queue concurrent message baozha
-23-05-01-804:[Warn]:Time:23-05-01-802:StoryInstance queue message on_trigger_exit
-23-05-01-829:[Warn]:Time:23-05-01-826:StoryInstance queue concurrent message notify_player
-23-05-02-836:[Warn]:Time:23-05-02-833:StoryInstance queue message on_trigger_enter
-23-05-02-848:[Warn]:Time:23-05-02-845:StoryInstance queue concurrent message baozha
-23-05-02-851:[Warn]:Time:23-05-02-848:StoryInstance queue concurrent message notify_player
-23-05-02-902:[Warn]:Time:23-05-02-898:StoryInstance queue message on_trigger_exit
-23-05-03-861:[Warn]:Time:23-05-03-859:StoryInstance queue concurrent message notify_player
-23-05-03-865:[Warn]:Time:23-05-03-862:StoryInstance queue concurrent message notify_player
-23-05-03-944:[Warn]:Time:23-05-03-941:StoryInstance queue message on_trigger_enter
-23-05-03-956:[Warn]:Time:23-05-03-953:StoryInstance queue concurrent message baozha
-23-05-04-018:[Warn]:Time:23-05-04-015:StoryInstance queue message on_trigger_exit
-23-05-04-873:[Warn]:Time:23-05-04-870:StoryInstance queue concurrent message notify_player
-23-05-04-876:[Warn]:Time:23-05-04-873:StoryInstance queue concurrent message notify_player
-23-05-04-942:[Warn]:Time:23-05-04-940:StoryInstance queue message on_trigger_enter
-23-05-04-992:[Warn]:Time:23-05-04-989:StoryInstance queue concurrent message baozha
-23-05-05-009:[Warn]:Time:23-05-05-007:StoryInstance queue message on_trigger_exit
-23-05-05-885:[Warn]:Time:23-05-05-882:StoryInstance queue concurrent message notify_player
-23-05-05-900:[Warn]:Time:23-05-05-898:StoryInstance queue message on_trigger_enter
-23-05-05-908:[Warn]:Time:23-05-05-902:DotnetGet String.name Exception:System.String.name Due to: Attempted to access a missing member.
-  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-05-05-915:[Warn]:Time:23-05-05-909:DotnetGet String.name Exception:System.String.name Due to: Attempted to access a missing member.
-  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-05-05-923:[Warn]:Time:23-05-05-916:DotnetGet String.name Exception:System.String.name Due to: Attempted to access a missing member.
-  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-05-05-932:[Warn]:Time:23-05-05-924:DotnetGet String.transform Exception:System.String.transform Due to: Attempted to access a missing member.
-  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <df7127ba07dc446d9f5831a0ec7b1d63>:0 
-  at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
-23-05-05-969:[Warn]:Time:23-05-05-967:StoryInstance queue message on_trigger_exit
-23-05-06-040:[Warn]:Time:23-05-06-035:StoryInstance queue concurrent message baozha
-23-05-07-057:[Warn]:Time:23-05-07-053:StoryInstance queue message on_trigger_enter
-23-05-07-067:[Warn]:Time:23-05-07-062:StoryInstance queue concurrent message baozha
-23-05-07-116:[Warn]:Time:23-05-07-114:StoryInstance queue message on_trigger_exit
-23-05-19-011:[Warn]:Time:23-05-19-009:StoryInstance queue concurrent message notify_player
-23-05-19-014:[Warn]:Time:23-05-19-011:StoryInstance queue concurrent message notify_player
-23-05-19-016:[Warn]:Time:23-05-19-014:StoryInstance queue concurrent message notify_player
-23-05-21-060:[Warn]:Time:23-05-21-058:StoryInstance queue message on_trigger_enter
-23-05-21-064:[Warn]:Time:23-05-21-061:StoryInstance queue concurrent message baozha
-23-05-21-128:[Warn]:Time:23-05-21-126:StoryInstance queue message on_trigger_exit
-23-05-22-036:[Warn]:Time:23-05-22-034:StoryInstance queue concurrent message notify_player
-23-05-23-051:[Warn]:Time:23-05-23-049:StoryInstance queue concurrent message notify_player
-23-05-23-053:[Warn]:Time:23-05-23-051:StoryInstance queue concurrent message notify_player
-23-05-23-054:[Warn]:Time:23-05-23-053:StoryInstance queue concurrent message notify_player
-23-05-23-057:[Warn]:Time:23-05-23-055:StoryInstance queue concurrent message notify_player
-23-05-23-058:[Warn]:Time:23-05-23-057:StoryInstance queue concurrent message notify_player
-23-05-24-183:[Warn]:Time:23-05-24-182:StoryInstance queue message on_trigger_enter
-23-05-24-186:[Warn]:Time:23-05-24-184:StoryInstance queue concurrent message baozha
-23-05-24-248:[Warn]:Time:23-05-24-247:StoryInstance queue message on_trigger_exit
-23-05-25-184:[Warn]:Time:23-05-25-182:StoryInstance queue message on_trigger_enter
-23-05-25-208:[Warn]:Time:23-05-25-206:StoryInstance queue concurrent message baozha
-23-05-25-251:[Warn]:Time:23-05-25-250:StoryInstance queue message on_trigger_exit
-23-05-26-078:[Warn]:Time:23-05-26-076:StoryInstance queue concurrent message notify_player
-23-05-28-131:[Warn]:Time:23-05-28-130:StoryInstance queue message on_trigger_enter
-23-05-28-135:[Warn]:Time:23-05-28-133:StoryInstance queue concurrent message baozha
-23-05-28-183:[Warn]:Time:23-05-28-182:StoryInstance queue message on_trigger_exit
-23-05-29-106:[Warn]:Time:23-05-29-104:StoryInstance queue concurrent message notify_player
-23-05-31-130:[Warn]:Time:23-05-31-128:StoryInstance queue message on_trigger_enter
-23-05-31-138:[Warn]:Time:23-05-31-136:StoryInstance queue concurrent message baozha
-23-05-31-202:[Warn]:Time:23-05-31-200:StoryInstance queue message on_trigger_exit
-23-05-46-257:[Warn]:Time:23-05-46-255:StoryInstance queue concurrent message notify_player
-23-05-48-333:[Warn]:Time:23-05-48-331:StoryInstance queue message on_trigger_enter
-23-05-48-336:[Warn]:Time:23-05-48-334:StoryInstance queue concurrent message baozha
-23-05-48-382:[Warn]:Time:23-05-48-381:StoryInstance queue message on_trigger_exit
+17-10-31-018:[Warn]:Time:17-10-31-016:StoryInstance queue concurrent message baozha
+17-10-31-043:[Warn]:Time:17-10-31-041:StoryInstance queue message on_trigger_exit
+17-10-31-982:[Warn]:Time:17-10-31-980:StoryInstance queue concurrent message notify_player
+17-10-31-984:[Warn]:Time:17-10-31-982:StoryInstance queue concurrent message notify_player
+17-10-32-985:[Warn]:Time:17-10-32-983:StoryInstance queue concurrent message notify_player
+17-10-32-987:[Warn]:Time:17-10-32-985:StoryInstance queue concurrent message notify_player
+17-10-33-069:[Warn]:Time:17-10-33-068:StoryInstance queue message on_trigger_enter
+17-10-33-072:[Warn]:Time:17-10-33-070:StoryInstance queue concurrent message baozha
+17-10-33-133:[Warn]:Time:17-10-33-132:StoryInstance queue message on_trigger_exit
+17-10-33-988:[Warn]:Time:17-10-33-986:StoryInstance queue concurrent message notify_player
+17-10-33-991:[Warn]:Time:17-10-33-989:StoryInstance queue concurrent message notify_player
+17-10-34-025:[Warn]:Time:17-10-34-024:StoryInstance queue message on_trigger_enter
+17-10-34-086:[Warn]:Time:17-10-34-085:StoryInstance queue message on_trigger_exit
+17-10-34-110:[Warn]:Time:17-10-34-107:StoryInstance queue concurrent message baozha
+17-10-34-992:[Warn]:Time:17-10-34-991:StoryInstance queue concurrent message notify_player
+17-10-35-042:[Warn]:Time:17-10-35-041:StoryInstance queue message on_trigger_enter
+17-10-35-092:[Warn]:Time:17-10-35-090:StoryInstance queue message on_trigger_exit
+17-10-35-129:[Warn]:Time:17-10-35-127:StoryInstance queue concurrent message baozha
+17-10-36-006:[Warn]:Time:17-10-36-004:StoryInstance queue concurrent message notify_player
+17-10-36-008:[Warn]:Time:17-10-36-007:StoryInstance queue concurrent message notify_player
+17-10-36-010:[Warn]:Time:17-10-36-009:StoryInstance queue concurrent message notify_player
+17-10-36-012:[Warn]:Time:17-10-36-010:StoryInstance queue concurrent message notify_player
+17-10-36-157:[Warn]:Time:17-10-36-155:StoryInstance queue message on_trigger_enter
+17-10-36-161:[Warn]:Time:17-10-36-159:StoryInstance queue concurrent message baozha
+17-10-36-223:[Warn]:Time:17-10-36-221:StoryInstance queue message on_trigger_exit
+17-10-37-015:[Warn]:Time:17-10-37-012:StoryInstance queue concurrent message notify_player
+17-10-37-017:[Warn]:Time:17-10-37-015:StoryInstance queue concurrent message notify_player
+17-10-37-019:[Warn]:Time:17-10-37-017:StoryInstance queue concurrent message notify_player
+17-10-37-154:[Warn]:Time:17-10-37-153:StoryInstance queue message on_trigger_enter
+17-10-37-191:[Warn]:Time:17-10-37-188:StoryInstance queue concurrent message baozha
+17-10-37-221:[Warn]:Time:17-10-37-219:StoryInstance queue message on_trigger_exit
+17-10-38-011:[Warn]:Time:17-10-38-009:StoryInstance queue message on_trigger_enter
+17-10-38-038:[Warn]:Time:17-10-38-036:StoryInstance queue concurrent message notify_player
+17-10-38-040:[Warn]:Time:17-10-38-038:StoryInstance queue concurrent message notify_player
+17-10-38-096:[Warn]:Time:17-10-38-095:StoryInstance queue message on_trigger_exit
+17-10-38-219:[Warn]:Time:17-10-38-217:StoryInstance queue concurrent message baozha
+17-10-39-043:[Warn]:Time:17-10-39-040:StoryInstance queue concurrent message notify_player
+17-10-39-157:[Warn]:Time:17-10-39-156:StoryInstance queue message on_trigger_enter
+17-10-39-210:[Warn]:Time:17-10-39-208:StoryInstance queue message on_trigger_exit
+17-10-39-249:[Warn]:Time:17-10-39-246:StoryInstance queue concurrent message baozha
+17-10-40-183:[Warn]:Time:17-10-40-182:StoryInstance queue message on_trigger_enter
+17-10-40-233:[Warn]:Time:17-10-40-232:StoryInstance queue message on_trigger_exit
+17-10-40-279:[Warn]:Time:17-10-40-278:StoryInstance queue concurrent message baozha
+17-10-41-069:[Warn]:Time:17-10-41-068:StoryInstance queue concurrent message notify_player
+17-10-41-071:[Warn]:Time:17-10-41-069:StoryInstance queue concurrent message notify_player
+17-10-41-074:[Warn]:Time:17-10-41-071:StoryInstance queue concurrent message notify_player
+17-10-41-075:[Warn]:Time:17-10-41-074:StoryInstance queue concurrent message notify_player
+17-10-41-108:[Warn]:Time:17-10-41-107:StoryInstance queue message on_trigger_enter
+17-10-41-164:[Warn]:Time:17-10-41-163:StoryInstance queue message on_trigger_exit
+17-10-41-320:[Warn]:Time:17-10-41-318:StoryInstance queue concurrent message baozha
+17-10-42-084:[Warn]:Time:17-10-42-083:StoryInstance queue concurrent message notify_player
+17-10-43-172:[Warn]:Time:17-10-43-169:StoryInstance queue message on_trigger_enter
+17-10-43-176:[Warn]:Time:17-10-43-174:StoryInstance queue concurrent message baozha
+17-10-43-238:[Warn]:Time:17-10-43-237:StoryInstance queue message on_trigger_exit
+17-10-44-194:[Warn]:Time:17-10-44-192:StoryInstance queue message on_trigger_enter
+17-10-44-198:[Warn]:Time:17-10-44-196:StoryInstance queue concurrent message baozha
+17-10-44-269:[Warn]:Time:17-10-44-267:StoryInstance queue message on_trigger_exit

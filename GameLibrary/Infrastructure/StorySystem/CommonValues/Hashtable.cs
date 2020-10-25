@@ -51,7 +51,7 @@ namespace StorySystem.CommonValues
                 m_HaveValue = true;
                 m_Value = BoxedValue.NullObject;
                 if (File.Exists(str)) {
-                    m_Value = new BoxedValue(File.ReadAllLines(str));
+                    m_Value = BoxedValue.From(File.ReadAllLines(str));
                 }
             }
         }
@@ -255,7 +255,7 @@ namespace StorySystem.CommonValues
                 string str = m_String.Value;
                 m_HaveValue = true;
                 var json = JsonMapper.ToObject(str);
-                m_Value = new BoxedValue(ToValue(json, null));
+                m_Value = BoxedValue.From(ToValue(json, null));
             }
         }
 
@@ -400,7 +400,7 @@ namespace StorySystem.CommonValues
                         dict.Add(key, pair.m_Value.Value.Get<object>());
                     }
                 }
-                m_Value = new BoxedValue(dict);
+                m_Value = BoxedValue.From(dict);
             }
         }
 
@@ -476,15 +476,15 @@ namespace StorySystem.CommonValues
                 if (null != dict && null != key) {
                     try {
                         if (dict.Contains(key)) {
-                            m_Value = new BoxedValue(dict[key]);
+                            m_Value = BoxedValue.From(dict[key]);
                         } else {
-                            m_Value = new BoxedValue(defVal);
+                            m_Value = BoxedValue.From(defVal);
                         }
                     } catch {
-                        m_Value = new BoxedValue(defVal);
+                        m_Value = BoxedValue.From(defVal);
                     }
                 } else {
-                    m_Value = new BoxedValue(defVal);
+                    m_Value = BoxedValue.From(defVal);
                 }
             }
         }
@@ -610,7 +610,7 @@ namespace StorySystem.CommonValues
                 if (null != dict) {
                     ArrayList list = new ArrayList();
                     list.AddRange(dict.Keys);
-                    m_Value = new BoxedValue(list);
+                    m_Value = BoxedValue.From(list);
                 } else {
                     m_Value.SetNullObject();
                 }
@@ -674,7 +674,7 @@ namespace StorySystem.CommonValues
                 if (null != dict) {
                     ArrayList list = new ArrayList();
                     list.AddRange(dict.Values);
-                    m_Value = new BoxedValue(list);
+                    m_Value = BoxedValue.From(list);
                 } else {
                     m_Value.SetNullObject();
                 }
