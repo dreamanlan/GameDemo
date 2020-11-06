@@ -1408,6 +1408,39 @@ public struct BoxedValue
         }
         return v;
     }
+    //供lua或防止隐式转换出问题时使用
+    public void SetBool(bool v)
+    {
+        Set(v);
+    }
+    public void SetNumber(double v)
+    {
+        Set(v);
+    }
+    public void SetString(string v)
+    {
+        Set(v);
+    }
+    public void SetObject(object v)
+    {
+        Set(v);
+    }
+    public bool GetBool()
+    {
+        return Get<bool>();
+    }
+    public double GetNumber()
+    {
+        return Get<double>();
+    }
+    public string GetString()
+    {
+        return Get<string>();
+    }
+    public object GetObject()
+    {
+        return Get<object>();
+    }
 
     public static BoxedValue From<T>(T v)
     {
@@ -1421,6 +1454,7 @@ public struct BoxedValue
         bv.Set(o);
         return bv;
     }
+    //供lua或防止隐式转换出问题时使用
     public static BoxedValue FromBool(bool v)
     {
         BoxedValue bv = new BoxedValue();
