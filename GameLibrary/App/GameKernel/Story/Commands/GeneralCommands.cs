@@ -2140,7 +2140,7 @@ namespace GameLibrary.Story.Commands
                     obj = UnityEngine.GameObject.Find(objPath);
                 } else {
                     try {
-                        int id = objPathVal.IsInteger ? (int)objPathVal.ToLong() : -1;
+                        int id = objPathVal.IsInteger ? objPathVal.Get<int>() : -1;
                         obj = SceneSystem.Instance.GetGameObject(id);
                     } catch {
                         obj = null;
@@ -2225,7 +2225,7 @@ namespace GameLibrary.Story.Commands
                     obj = UnityEngine.GameObject.Find(objPath);
                 } else {
                     try {
-                        int id = objPathVal.IsInteger ? (int)objPathVal.ToLong() : -1;
+                        int id = objPathVal.IsInteger ? objPathVal.Get<int>() : -1;
                         obj = SceneSystem.Instance.GetGameObject(id);
                     } catch {
                         obj = null;

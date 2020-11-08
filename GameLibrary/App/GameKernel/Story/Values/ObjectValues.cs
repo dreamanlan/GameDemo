@@ -176,7 +176,7 @@ namespace GameLibrary.Story.Values
                     }
                     else {
                         try {
-                            int id = objPathVal.IsInteger ? (int)objPathVal.ToLong() : -1;
+                            int id = objPathVal.IsInteger ? objPathVal.Get<int>() : -1;
                             obj = SceneSystem.Instance.GetGameObject(id);
                         }
                         catch {
@@ -261,7 +261,7 @@ namespace GameLibrary.Story.Values
                     }
                     else {
                         try {
-                            int id = objPathVal.IsInteger ? (int)objPathVal.ToLong() : -1;
+                            int id = objPathVal.IsInteger ? objPathVal.Get<int>() : -1;
                             obj = SceneSystem.Instance.GetGameObject(id);
                         }
                         catch {
@@ -346,7 +346,7 @@ namespace GameLibrary.Story.Values
                     }
                     else {
                         try {
-                            int id = objPathVal.IsInteger ? (int)objPathVal.ToLong() : -1;
+                            int id = objPathVal.IsInteger ? objPathVal.Get<int>() : -1;
                             obj = SceneSystem.Instance.GetGameObject(id);
                         }
                         catch {
@@ -431,7 +431,7 @@ namespace GameLibrary.Story.Values
                     }
                     else {
                         try {
-                            int id = objPathVal.IsInteger ? (int)objPathVal.ToLong() : -1;
+                            int id = objPathVal.IsInteger ? objPathVal.Get<int>() : -1;
                             obj = SceneSystem.Instance.GetGameObject(id);
                         }
                         catch {
@@ -516,7 +516,7 @@ namespace GameLibrary.Story.Values
                     }
                     else {
                         try {
-                            int id = objPathVal.IsInteger ? (int)objPathVal.ToLong() : -1;
+                            int id = objPathVal.IsInteger ? objPathVal.Get<int>() : -1;
                             obj = SceneSystem.Instance.GetGameObject(id);
                         }
                         catch {
@@ -601,7 +601,7 @@ namespace GameLibrary.Story.Values
                     }
                     else {
                         try {
-                            int id = objPathVal.IsInteger ? (int)objPathVal.ToLong() : -1;
+                            int id = objPathVal.IsInteger ? objPathVal.Get<int>() : -1;
                             obj = SceneSystem.Instance.GetGameObject(id);
                         }
                         catch {
@@ -686,7 +686,7 @@ namespace GameLibrary.Story.Values
                     }
                     else {
                         try {
-                            int id = objPathVal.IsInteger ? (int)objPathVal.ToLong() : -1;
+                            int id = objPathVal.IsInteger ? objPathVal.Get<int>() : -1;
                             obj = SceneSystem.Instance.GetGameObject(id);
                         }
                         catch {
@@ -771,7 +771,7 @@ namespace GameLibrary.Story.Values
                     }
                     else {
                         try {
-                            int id = objPathVal.IsInteger ? (int)objPathVal.ToLong() : -1;
+                            int id = objPathVal.IsInteger ? objPathVal.Get<int>() : -1;
                             obj = SceneSystem.Instance.GetGameObject(id);
                         }
                         catch {
@@ -849,7 +849,7 @@ namespace GameLibrary.Story.Values
                     }
                     else {
                         try {
-                            int id = objPathVal.IsInteger ? (int)objPathVal.ToLong() : -1;
+                            int id = objPathVal.IsInteger ? objPathVal.Get<int>() : -1;
                             obj = SceneSystem.Instance.GetGameObject(id);
                         }
                         catch {
@@ -922,7 +922,7 @@ namespace GameLibrary.Story.Values
                     }
                     else {
                         try {
-                            int id = objPathVal.IsInteger ? (int)objPathVal.ToLong() : -1;
+                            int id = objPathVal.IsInteger ? objPathVal.Get<int>() : -1;
                             obj = SceneSystem.Instance.GetGameObject(id);
                         }
                         catch {
@@ -995,7 +995,7 @@ namespace GameLibrary.Story.Values
                     }
                     else {
                         try {
-                            int id = objPathVal.IsInteger ? (int)objPathVal.ToLong() : -1;
+                            int id = objPathVal.IsInteger ? objPathVal.Get<int>() : -1;
                             obj = SceneSystem.Instance.GetGameObject(id);
                         }
                         catch {
@@ -1068,7 +1068,7 @@ namespace GameLibrary.Story.Values
                     }
                     else {
                         try {
-                            int id = objPathVal.IsInteger ? (int)objPathVal.ToLong() : -1;
+                            int id = objPathVal.IsInteger ? objPathVal.Get<int>() : -1;
                             obj = SceneSystem.Instance.GetGameObject(id);
                         }
                         catch {
