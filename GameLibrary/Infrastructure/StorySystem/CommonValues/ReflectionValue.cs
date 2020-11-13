@@ -443,7 +443,7 @@ namespace StorySystem.CommonValues
                                     m_Value = BoxedValue.FromObject(StoryValueHelper.CastTo(t, str));
                                 }
                                 else {
-                                    CsLibrary.LogSystem.Warn("null == Type.GetType({0})", type);
+                                    GameLibrary.LogSystem.Warn("null == Type.GetType({0})", type);
                                 }
                             }
                         }
