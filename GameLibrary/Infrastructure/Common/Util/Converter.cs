@@ -337,12 +337,17 @@ namespace GameLibrary
         }
         public static T CastTo<T>(object obj)
         {
-            if (obj is T) {
+            if (obj is BoxedValue) {
+                return ((BoxedValue)obj).Get<T>();
+            }
+            else if (obj is T) {
                 return (T)obj;
-            } else {
+            }
+            else {
                 try {
                     return (T)Convert.ChangeType(obj, typeof(T));
-                } catch {
+                }
+                catch {
                     return default(T);
                 }
             }
@@ -352,12 +357,17 @@ namespace GameLibrary
             if (null == obj)
                 return null;
             Type st = obj.GetType();
-            if (t.IsAssignableFrom(st) || st.IsSubclassOf(t)) {
+            if (obj is BoxedValue) {
+                return ((BoxedValue)obj).Get(t);
+            }
+            else if (t.IsAssignableFrom(st) || st.IsSubclassOf(t)) {
                 return obj;
-            } else {
+            }
+            else {
                 try {
                     return Convert.ChangeType(obj, t);
-                } catch {
+                }
+                catch {
                     return null;
                 }
             }
