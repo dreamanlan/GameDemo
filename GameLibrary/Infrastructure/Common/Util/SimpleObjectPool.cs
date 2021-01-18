@@ -18,13 +18,16 @@ namespace GameLibrary
         {
             for (int i = 0; i < initPoolSize; ++i) {
                 T t = new T();
-                m_UnusedObjects.Enqueue(t);
+                Recycle(t);
             }
         }
         public T Alloc()
         {
-            if (m_UnusedObjects.Count > 0)
-                return m_UnusedObjects.Dequeue();
+            if (m_UnusedObjects.Count > 0) {
+                var t = m_UnusedObjects.Dequeue();
+                m_HashCodes.Remove(t.GetHashCode());
+                return t;
+            }
             else {
                 T t = new T();
                 return t;
@@ -32,12 +35,17 @@ namespace GameLibrary
         }
         public void Recycle(T t)
         {
-            if (null != t) {
-                m_UnusedObjects.Enqueue(t);
+            if (null != t && m_UnusedObjects.Count < m_PoolSize) {
+                int hashCode = t.GetHashCode();
+                if (!m_HashCodes.Contains(hashCode)) {
+                    m_HashCodes.Add(hashCode);
+                    m_UnusedObjects.Enqueue(t);
+                }
             }
         }
         public void Clear()
         {
+            m_HashCodes.Clear();
             m_UnusedObjects.Clear();
         }
         public int Count
@@ -46,7 +54,10 @@ namespace GameLibrary
                 return m_UnusedObjects.Count;
             }
         }
+
+        private HashSet<int> m_HashCodes = new HashSet<int>();
         private Queue<T> m_UnusedObjects = new Queue<T>();
+        private int m_PoolSize = 4096;
     }
     public class SimpleObjectPoolEx<T>
     {
@@ -67,13 +78,16 @@ namespace GameLibrary
             m_Destroyer = destroyer;
             for (int i = 0; i < initPoolSize; ++i) {
                 T t = creater();
-                m_UnusedObjects.Enqueue(t);
+                Recycle(t);
             }
         }
         public T Alloc()
         {
-            if (m_UnusedObjects.Count > 0)
-                return m_UnusedObjects.Dequeue();
+            if (m_UnusedObjects.Count > 0) {
+                var t = m_UnusedObjects.Dequeue();
+                m_HashCodes.Remove(t.GetHashCode());
+                return t;
+            }
             else {
                 T t = m_Creater();
                 return t;
@@ -81,8 +95,12 @@ namespace GameLibrary
         }
         public void Recycle(T t)
         {
-            if (null != t) {
-                m_UnusedObjects.Enqueue(t);
+            if (null != t && m_UnusedObjects.Count < m_PoolSize) {
+                int hashCode = t.GetHashCode();
+                if (!m_HashCodes.Contains(hashCode)) {
+                    m_HashCodes.Add(hashCode);
+                    m_UnusedObjects.Enqueue(t);
+                }
             }
         }
         public void Clear()
@@ -92,6 +110,7 @@ namespace GameLibrary
                     m_Destroyer(item);
                 }
             }
+            m_HashCodes.Clear();
             m_UnusedObjects.Clear();
         }
         public int Count
@@ -101,8 +120,10 @@ namespace GameLibrary
             }
         }
 
-        private Queue<T> m_UnusedObjects = new Queue<T>();
+        private HashSet<int> m_HashCodes = new HashSet<int>();
+        private Queue<T> m_UnusedObjects = null;
         private Func<T> m_Creater = null;
         private Action<T> m_Destroyer = null;
+        private int m_PoolSize = 4096;
     }
 }

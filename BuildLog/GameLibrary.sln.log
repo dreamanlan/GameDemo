@@ -1,5 +1,5 @@
 ﻿MSBUILD : warning MSB4056: 必须对单线程单元调用 MSBuild 引擎。当前线程模型为“MTA”。将继续，但某些任务可能无法正常工作。
-生成启动时间为 2020/11/13 20:36:34。
+生成启动时间为 2021/1/19 1:18:27。
 __________________________________________________
 项目“E:\OpenSource\GameDemo\GameLibrary\GameLibrary.sln”(clean;rebuild 个目标):
 
@@ -16,9 +16,6 @@ __________________________________________________
         正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\bin\Debug\UnityEngine.dll”。
         正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\obj\Debug\Common.dll”。
         正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\obj\Debug\Common.pdb”。
-        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\obj\Debug\Common.csprojAssemblyReference.cache”。
-        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache”。
-        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\obj\Debug\Common.csproj.CopyComplete”。
     __________________________________________________
     项目“E:\OpenSource\GameDemo\GameLibrary\GameLibrary.sln”正在生成“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\StorySystem.csproj”(Clean 目标):
 
@@ -33,9 +30,7 @@ __________________________________________________
         正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\bin\Debug\Dsl.pdb”。
         正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\obj\Debug\StorySystem.dll”。
         正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\obj\Debug\StorySystem.pdb”。
-        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\obj\Debug\StorySystem.csprojAssemblyReference.cache”。
-        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\obj\Debug\StorySystem.csproj.CoreCompileInputs.cache”。
-        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\obj\Debug\StorySystem.csproj.CopyComplete”。
+        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\obj\Debug\StorySystem.csprojResolveAssemblyReference.cache”。
     目标 CleanReferencedProjects:
         __________________________________________________
         项目“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\StorySystem.csproj”正在生成“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\Common.csproj”(Clean 目标):
@@ -58,11 +53,9 @@ __________________________________________________
         正在删除文件“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\bin\Debug\Common.pdb”。
         正在删除文件“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\bin\Debug\StorySystem.pdb”。
         正在删除文件“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\bin\Debug\Dsl.pdb”。
+        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\obj\Debug\GameKernel.csprojResolveAssemblyReference.cache”。
         正在删除文件“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\obj\Debug\GameKernel.dll”。
         正在删除文件“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\obj\Debug\GameKernel.pdb”。
-        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\obj\Debug\GameKernel.csprojAssemblyReference.cache”。
-        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\obj\Debug\GameKernel.csproj.CoreCompileInputs.cache”。
-        正在删除文件“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\obj\Debug\GameKernel.csproj.CopyComplete”。
     目标 CleanReferencedProjects:
         __________________________________________________
         项目“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\GameKernel.csproj”正在生成“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\Common.csproj”(Clean 目标):
@@ -103,9 +96,6 @@ __________________________________________________
         项目文件包含 ToolsVersion="4.0" 设置，但此工具集未知或缺失。您可以通过为此工具集安装相应的 .NET Framework 来解决此问题。将项目视为具有 ToolsVersion="4.0" 设置。
     目标 CoreCompile:
         C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Csc.exe /noconfig /nowarn:1701,1702 /nostdlib+ /platform:AnyCPU /errorreport:prompt /define:TRACE;DEBUG;ENABLE_ERROR_LOG;ENABLE_LOG /highentropyva- /reference:E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\bin\Debug\Common.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\Dsl.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\LitJson.dll /reference:C:\Windows\Microsoft.NET\Framework64\v2.0.50727\mscorlib.dll /reference:"C:\Program Files\Reference Assemblies\Microsoft\Framework\v3.5\System.Core.dll" /reference:C:\Windows\Microsoft.NET\Framework64\v2.0.50727\System.dll /reference:E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\UnityEngine.dll /debug+ /debug:full /filealign:512 /out:obj\Debug\StorySystem.dll /target:library /utf8output CommonValues\Linq.cs CustomCommandValueParser.cs CommonCommands\Assign.cs CommonCommands\Composite.cs CommonCommands\Foreach.cs CommonCommands\IfElse.cs CommonCommands\Hashtable.cs CommonCommands\LocalMessage.cs CommonCommands\Log.cs CommonCommands\ReflectionCommand.cs CommonCommands\Terminate.cs CommonCommands\Wait.cs CommonCommands\While.cs CommonValues\Arithmetic.cs CommonValues\Compare.cs CommonValues\Composite.cs CommonValues\GeneralValues.cs CommonValues\Hashtable.cs CommonValues\Logic.cs CommonValues\ReflectionValue.cs CommonValues\String.cs CommonValues\Time.cs IStoryCommand.cs IStoryCommandFactory.cs IStoryValue.cs Properties\AssemblyInfo.cs StoryCommandHelper.cs StoryCommandManager.cs StoryConfigManager.cs StoryDefine.cs StoryInstance.cs StoryValueHelper.cs StoryValueManager.cs
-        CommonValues\Arithmetic.cs(1051,27): warning CS0184: 给定表达式绝不是所提供的(“int”)类型
-        CommonValues\Arithmetic.cs(1139,27): warning CS0184: 给定表达式绝不是所提供的(“int”)类型
-    已完成在项目“StorySystem.csproj”中生成目标“CoreCompile”的操作。
     目标 _CopyFilesMarkedCopyLocal:
         正在将文件从“E:\OpenSource\GameDemo\GameLibrary\Infrastructure\Common\bin\Debug\Common.dll”复制到“bin\Debug\Common.dll”。
         正在将文件从“E:\OpenSource\GameDemo\GameLibrary\ExternLibrary\Dsl.dll”复制到“bin\Debug\Dsl.dll”。
@@ -122,8 +112,6 @@ __________________________________________________
         正在将文件从“obj\Debug\StorySystem.dll”复制到“bin\Debug\StorySystem.dll”。
         StorySystem -> E:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\bin\Debug\StorySystem.dll
         正在将文件从“obj\Debug\StorySystem.pdb”复制到“bin\Debug\StorySystem.pdb”。
-
-    已完成生成项目“StorySystem.csproj”的操作。
     __________________________________________________
     项目“E:\OpenSource\GameDemo\GameLibrary\GameLibrary.sln”正在生成“E:\OpenSource\GameDemo\GameLibrary\App\GameKernel\GameKernel.csproj”(Rebuild 目标):
 
@@ -201,12 +189,10 @@ __________________________________________________
 已成功生成。
 
 MSBUILD : warning MSB4056: 必须对单线程单元调用 MSBuild 引擎。当前线程模型为“MTA”。将继续，但某些任务可能无法正常工作。
-CommonValues\Arithmetic.cs(1051,27): warning CS0184: 给定表达式绝不是所提供的(“int”)类型
-CommonValues\Arithmetic.cs(1139,27): warning CS0184: 给定表达式绝不是所提供的(“int”)类型
 Story\Commands\GeneralCommands.cs(1586,22): warning CS0414: 字段“GameLibrary.Story.Commands.CreateGameObjectCommand.m_NeedLoad”已赋值，但是其值从未使用过
 Story\Commands\GeneralCommands.cs(1587,22): warning CS0414: 字段“GameLibrary.Story.Commands.CreateGameObjectCommand.m_IsLoaded”已赋值，但是其值从未使用过
 Story\Commands\GeneralCommands.cs(1588,21): warning CS0414: 字段“GameLibrary.Story.Commands.CreateGameObjectCommand.m_WaitTime”已赋值，但是其值从未使用过
-    6 个警告
+    4 个警告
     0 个错误
 
-已用时间 00:00:09.56
+已用时间 00:00:28.72

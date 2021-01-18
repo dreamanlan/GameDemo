@@ -468,9 +468,9 @@ namespace StorySystem.CommonValues
                 object obj = m_Var.Value.Get<object>();
                 var dict = obj as IDictionary;
                 object key = m_Key.Value.Get<object>();
-                object defVal = null;
+                BoxedValue defVal = BoxedValue.NullObject;
                 if (m_ParamNum > 2) {
-                    defVal = m_DefValue.Value.Get<object>();
+                    defVal = m_DefValue.Value;
                 }
                 m_HaveValue = true;
                 if (null != dict && null != key) {
@@ -478,13 +478,13 @@ namespace StorySystem.CommonValues
                         if (dict.Contains(key)) {
                             m_Value = BoxedValue.From(dict[key]);
                         } else {
-                            m_Value = BoxedValue.From(defVal);
+                            m_Value = defVal;
                         }
                     } catch {
-                        m_Value = BoxedValue.From(defVal);
+                        m_Value = defVal;
                     }
                 } else {
-                    m_Value = BoxedValue.From(defVal);
+                    m_Value = defVal;
                 }
             }
         }

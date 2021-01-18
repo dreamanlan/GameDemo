@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using GameLibrary;
+
+[assembly: UnityEngine.Scripting.Preserve]
+
 namespace StorySystem
 {
     public sealed class StoryConfigManager
