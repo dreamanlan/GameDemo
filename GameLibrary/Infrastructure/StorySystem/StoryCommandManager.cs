@@ -306,6 +306,8 @@ namespace StorySystem
             StoryValueManager.Instance.RegisterValueFactory("namespace", new StoryValueFactoryHelper<CommonValues.NamespaceValue>());
             StoryValueManager.Instance.RegisterValueFactory("storyid", new StoryValueFactoryHelper<CommonValues.StoryIdValue>());
             StoryValueManager.Instance.RegisterValueFactory("messageid", new StoryValueFactoryHelper<CommonValues.MessageIdValue>());
+            StoryValueManager.Instance.RegisterValueFactory("countcommand", new StoryValueFactoryHelper<CommonValues.CountCommandValue>());
+            StoryValueManager.Instance.RegisterValueFactory("counthandlercommand", new StoryValueFactoryHelper<CommonValues.CountHandlerCommandValue>());
             StoryValueManager.Instance.RegisterValueFactory("propget", new StoryValueFactoryHelper<CommonValues.PropGetValue>());
             StoryValueManager.Instance.RegisterValueFactory("rndint", new StoryValueFactoryHelper<CommonValues.RandomIntValue>());
             StoryValueManager.Instance.RegisterValueFactory("rndfloat", new StoryValueFactoryHelper<CommonValues.RandomFloatValue>());

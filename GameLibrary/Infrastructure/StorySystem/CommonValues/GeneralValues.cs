@@ -244,6 +244,114 @@ namespace StorySystem.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
+    internal sealed class CountCommandValue : IStoryValue
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.FunctionData callData = param as Dsl.FunctionData;
+            if (null != callData) {
+                m_ParamNum = callData.GetParamNum();
+                if (m_ParamNum > 0)
+                    m_Level.InitFromDsl(callData.GetParam(0));
+            }
+        }
+        public IStoryValue Clone()
+        {
+            CountCommandValue val = new CountCommandValue();
+            val.m_ParamNum = m_ParamNum;
+            val.m_Level = m_Level.Clone();
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+            if (m_ParamNum > 0)
+                m_Level.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue(instance, handler);
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public BoxedValue Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+
+        private void TryUpdateValue(StoryInstance instance, StoryMessageHandler handler)
+        {
+            m_HaveValue = true;
+            int level = 0;
+            if (m_ParamNum > 0) {
+                level = m_Level.Value;
+            }
+            if (level <= 0)
+                m_Value = handler.PeekRuntime().CountCommand();
+            else {
+                var stack = handler.RuntimeStack;
+                int i = 0;
+                foreach(var runtime in stack) {
+                    if (i == level) {
+                        m_Value = runtime.CountCommand();
+                        break;
+                    }
+                    ++i;
+                }
+            }
+        }
+        private int m_ParamNum = 0;
+        private IStoryValue<int> m_Level = new StoryValue<int>();
+        private bool m_HaveValue;
+        private BoxedValue m_Value;
+    }
+    internal sealed class CountHandlerCommandValue : IStoryValue
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.FunctionData callData = param as Dsl.FunctionData;
+            if (null != callData) {
+            }
+        }
+        public IStoryValue Clone()
+        {
+            CountHandlerCommandValue val = new CountHandlerCommandValue();
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+
+            TryUpdateValue(instance, handler);
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public BoxedValue Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+
+        private void TryUpdateValue(StoryInstance instance, StoryMessageHandler handler)
+        {
+            m_HaveValue = true;
+            m_Value = handler.CountCommand();
+        }
+        private bool m_HaveValue;
+        private BoxedValue m_Value;
+    }
     internal sealed class PropGetValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)

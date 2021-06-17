@@ -42,15 +42,12 @@ namespace StorySystem
                             SetArgument(int.Parse(idName));
                         }
                         else {
-                            SetStack(id);
+                            SetVariable(id);
                         }
                     }
                 }
                 else if (idType == Dsl.ValueData.ID_TOKEN && id.StartsWith("@")) {
-                    if (id.StartsWith("@@"))
-                        SetGlobal(id);
-                    else
-                        SetLocal(id);
+                    SetVariable(id);
                 }
                 else {
                     CalcInitValue(param);
@@ -89,16 +86,7 @@ namespace StorySystem
                 }
             }
             else {
-                string name = string.Empty;
-                if (null != m_LocalName) {
-                    name = m_LocalName;
-                }
-                else if (null != m_GlobalName) {
-                    name = m_GlobalName;
-                }
-                else if (null != m_StackName) {
-                    name = m_StackName;
-                }
+                string name = m_VariableName;
                 if (!string.IsNullOrEmpty(name)) {
                     m_HaveValue = instance.TryGetVariable(name, out m_Value);
                 }
@@ -132,9 +120,7 @@ namespace StorySystem
         private void CopyFrom(StoryValue other)
         {
             m_ArgIndex = other.m_ArgIndex;
-            m_LocalName = other.m_LocalName;
-            m_GlobalName = other.m_GlobalName;
-            m_StackName = other.m_StackName;
+            m_VariableName = other.m_VariableName;
             if (null != other.m_Proxy) {
                 m_Proxy = other.m_Proxy.Clone();
             }
@@ -146,42 +132,16 @@ namespace StorySystem
         {
             m_HaveValue = false;
             m_ArgIndex = index;
-            m_LocalName = null;
-            m_GlobalName = null;
-            m_StackName = null;
+            m_VariableName = null;
             m_Proxy = null;
             m_Value = BoxedValue.NullObject;
             m_IsConst = false;
         }
-        private void SetLocal(string name)
+        private void SetVariable(string name)
         {
             m_HaveValue = false;
             m_ArgIndex = c_NotArg;
-            m_LocalName = name;
-            m_GlobalName = null;
-            m_StackName = null;
-            m_Proxy = null;
-            m_Value = BoxedValue.NullObject;
-            m_IsConst = false;
-        }
-        private void SetGlobal(string name)
-        {
-            m_HaveValue = false;
-            m_ArgIndex = c_NotArg;
-            m_LocalName = null;
-            m_GlobalName = name;
-            m_StackName = null;
-            m_Proxy = null;
-            m_Value = BoxedValue.NullObject;
-            m_IsConst = false;
-        }
-        private void SetStack(string name)
-        {
-            m_HaveValue = false;
-            m_ArgIndex = c_NotArg;
-            m_LocalName = null;
-            m_GlobalName = null;
-            m_StackName = name;
+            m_VariableName = name;
             m_Proxy = null;
             m_Value = BoxedValue.NullObject;
             m_IsConst = false;
@@ -190,9 +150,7 @@ namespace StorySystem
         {
             m_HaveValue = false;
             m_ArgIndex = c_NotArg;
-            m_LocalName = null;
-            m_GlobalName = null;
-            m_StackName = null;
+            m_VariableName = null;
             m_Proxy = proxy;
             m_Value = BoxedValue.NullObject;
             m_IsConst = false;
@@ -206,9 +164,7 @@ namespace StorySystem
         {
             m_HaveValue = true;
             m_ArgIndex = c_NotArg;
-            m_LocalName = null;
-            m_GlobalName = null;
-            m_StackName = null;
+            m_VariableName = null;
             m_Proxy = null;
             m_IsConst = true;
         }
@@ -252,9 +208,7 @@ namespace StorySystem
             }
         }
         private int m_ArgIndex = c_NotArg;
-        private string m_LocalName = null;
-        private string m_GlobalName = null;
-        private string m_StackName = null;
+        private string m_VariableName = null;
         private IStoryValue m_Proxy = null;
         private BoxedValue m_Value;
         private bool m_HaveValue = false;
@@ -280,15 +234,12 @@ namespace StorySystem
                             SetArgument(int.Parse(id.Substring(1)));
                         }
                         else {
-                            SetStack(id);
+                            SetVariable(id);
                         }
                     }
                 }
                 else if (idType == Dsl.ValueData.ID_TOKEN && id.StartsWith("@")) {
-                    if (id.StartsWith("@@"))
-                        SetGlobal(id);
-                    else
-                        SetLocal(id);
+                    SetVariable(id);
                 }
                 else {
                     CalcInitValue(param);
@@ -327,16 +278,7 @@ namespace StorySystem
                 }
             }
             else {
-                string name = string.Empty;
-                if (null != m_LocalName) {
-                    name = m_LocalName;
-                }
-                else if (null != m_GlobalName) {
-                    name = m_GlobalName;
-                }
-                else if (null != m_StackName) {
-                    name = m_StackName;
-                }
+                string name = m_VariableName;
                 if (!string.IsNullOrEmpty(name)) {
                     BoxedValue val;
                     m_HaveValue = instance.TryGetVariable(name, out val);
@@ -374,9 +316,7 @@ namespace StorySystem
         private void CopyFrom(StoryValue<T> other)
         {
             m_ArgIndex = other.m_ArgIndex;
-            m_LocalName = other.m_LocalName;
-            m_GlobalName = other.m_GlobalName;
-            m_StackName = other.m_StackName;
+            m_VariableName = other.m_VariableName;
             if (null != other.m_Proxy) {
                 m_Proxy = other.m_Proxy.Clone();
             }
@@ -388,41 +328,16 @@ namespace StorySystem
         {
             m_HaveValue = false;
             m_ArgIndex = index;
-            m_LocalName = null;
-            m_GlobalName = null;
+            m_VariableName = null;
             m_Proxy = null;
             m_Value = default(T);
             m_IsConst = false;
         }
-        private void SetLocal(string name)
+        private void SetVariable(string name)
         {
             m_HaveValue = false;
             m_ArgIndex = c_NotArg;
-            m_LocalName = name;
-            m_GlobalName = null;
-            m_StackName = null;
-            m_Proxy = null;
-            m_Value = default(T);
-            m_IsConst = false;
-        }
-        private void SetGlobal(string name)
-        {
-            m_HaveValue = false;
-            m_ArgIndex = c_NotArg;
-            m_LocalName = null;
-            m_GlobalName = name;
-            m_StackName = null;
-            m_Proxy = null;
-            m_Value = default(T);
-            m_IsConst = false;
-        }
-        private void SetStack(string name)
-        {
-            m_HaveValue = false;
-            m_ArgIndex = c_NotArg;
-            m_LocalName = null;
-            m_GlobalName = null;
-            m_StackName = name;
+            m_VariableName = name;
             m_Proxy = null;
             m_Value = default(T);
             m_IsConst = false;
@@ -431,9 +346,7 @@ namespace StorySystem
         {
             m_HaveValue = false;
             m_ArgIndex = c_NotArg;
-            m_LocalName = null;
-            m_GlobalName = null;
-            m_StackName = null;
+            m_VariableName = null;
             m_Proxy = proxy;
             m_Value = default(T);
         }
@@ -441,9 +354,7 @@ namespace StorySystem
         {
             m_HaveValue = true;
             m_ArgIndex = c_NotArg;
-            m_LocalName = null;
-            m_GlobalName = null;
-            m_StackName = null;
+            m_VariableName = null;
             m_Proxy = null;
             m_Value = val;
             m_IsConst = true;
@@ -489,9 +400,7 @@ namespace StorySystem
         }
         private bool m_HaveValue = false;
         private int m_ArgIndex = c_NotArg;
-        private string m_LocalName = null;
-        private string m_GlobalName = null;
-        private string m_StackName = null;
+        private string m_VariableName = null;
         private IStoryValue m_Proxy = null;
         private T m_Value;
         private bool m_IsConst = false;

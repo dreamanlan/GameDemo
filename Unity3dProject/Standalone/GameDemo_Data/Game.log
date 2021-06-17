@@ -1,59 +1,140 @@
-23-15-43-241:======GameLog Start (2020年10月20日, 23:15:43)======
-23-15-43-327:[Debug]:Time:23-15-43-327:StoryInstance.Init message handler num:4 True
-23-15-43-328:[Info]:ParseStory scene_main 0
-23-15-43-381:[Debug]:Time:23-15-43-381:StoryInstance.Init message handler num:11 True
-23-15-43-381:[Info]:ParseStory story_main 0
-23-15-43-384:[Warn]:Time:23-15-43-383:StoryInstance queue message start
-23-15-43-456:[Warn]:Time:23-15-43-456:StoryInstance queue message start
-23-15-43-459:[Warn]:Time:23-15-43-458:story_main start
-23-15-45-480:[Debug]:Time:23-15-45-480:StoryInstance.Init message handler num:3 True
-23-15-45-480:[Info]:ParseStory Start:main 0
-23-15-45-844:[Warn]:Time:23-15-45-843:StoryInstance queue message start
-23-15-45-879:[Warn]:Time:23-15-45-877:StoryInstance queue message Start:loop_work
-23-16-00-360:[Warn]:Time:23-16-00-359:StoryInstance queue message Start:on_click
-23-16-00-368:[Warn]:Time:23-16-00-367:StoryInstance queue message on_start_button_click
-23-16-01-455:[Warn]:Time:23-16-01-454:StoryInstance queue message scene_loaded
-23-16-01-462:[Warn]:Time:23-16-01-461:StoryInstance queue message start_game
-23-16-02-814:[Debug]:Time:23-16-02-814:StoryInstance.Init message handler num:2 True
-23-16-02-814:[Info]:ParseStory Option:main 0
-23-16-02-900:[Warn]:Time:23-16-02-899:StoryInstance queue message start
-23-16-02-934:[Debug]:Time:23-16-02-934:StoryInstance.Init message handler num:3 True
-23-16-02-934:[Info]:ParseStory Info:main 0
-23-16-02-936:[Warn]:Time:23-16-02-935:StoryInstance queue message start
-23-16-02-944:[Debug]:Time:23-16-02-944:StoryInstance.Init message handler num:3 True
-23-16-02-944:[Info]:ParseStory CenterInfo:main 0
-23-16-02-945:[Warn]:Time:23-16-02-944:StoryInstance queue message start
-23-16-02-946:[Debug]:Time:23-16-02-946:StoryInstance.Init message handler num:3 True
-23-16-02-946:[Info]:ParseStory Victory:main 0
-23-16-02-947:[Warn]:Time:23-16-02-946:StoryInstance queue message start
-23-16-02-948:[Debug]:Time:23-16-02-948:StoryInstance.Init message handler num:3 True
-23-16-02-948:[Info]:ParseStory Failed:main 0
-23-16-02-949:[Warn]:Time:23-16-02-948:StoryInstance queue message start
-23-16-03-078:[Debug]:Time:23-16-03-077:StoryInstance.Init message handler num:3 True
-23-16-03-078:[Info]:ParseStory ai_player 0
-23-16-03-080:[Warn]:Time:23-16-03-078:StoryInstance queue message start
-23-16-03-100:[Debug]:Time:23-16-03-100:StoryInstance.Init message handler num:3 True
-23-16-03-100:[Info]:ParseStory ai_npc 0
-23-16-03-101:[Warn]:Time:23-16-03-100:StoryInstance queue message start
-23-16-03-104:[Warn]:Time:23-16-03-103:StoryInstance queue message start
-23-16-03-109:[Warn]:Time:23-16-03-106:StoryInstance queue message start
-23-16-03-111:[Warn]:Time:23-16-03-110:StoryInstance queue message start
-23-16-03-114:[Warn]:Time:23-16-03-112:StoryInstance queue message start
-23-16-03-116:[Warn]:Time:23-16-03-115:StoryInstance queue message start
-23-16-03-126:[Warn]:Time:23-16-03-126:StoryInstance queue message on_born
-23-16-03-127:[Warn]:Time:23-16-03-127:StoryInstance queue message on_born
-23-16-03-128:[Warn]:Time:23-16-03-128:StoryInstance queue message on_born
-23-16-03-129:[Warn]:Time:23-16-03-128:StoryInstance queue message on_born
-23-16-03-129:[Warn]:Time:23-16-03-129:StoryInstance queue message on_born
-23-16-03-130:[Warn]:Time:23-16-03-129:StoryInstance queue message on_born
-23-16-03-131:[Warn]:Time:23-16-03-130:StoryInstance queue message on_born
-23-16-03-351:[Warn]:Time:23-16-03-350:StoryInstance queue message show_centerinfo
-23-16-05-346:[Warn]:Time:23-16-05-346:StoryInstance queue concurrent message notify_player
-23-16-05-346:[Warn]:Time:23-16-05-346:StoryInstance queue concurrent message notify_player
-23-16-05-347:[Warn]:Time:23-16-05-346:StoryInstance queue concurrent message notify_player
-23-16-05-348:[Warn]:Time:23-16-05-347:StoryInstance queue concurrent message notify_player
-23-16-07-162:[Warn]:Time:23-16-07-160:StoryInstance queue message hide_centerinfo
-23-16-07-179:[Warn]:Time:23-16-07-177:StoryInstance queue message on_hide_centerinfo
-23-16-07-378:[Warn]:Time:23-16-07-376:StoryInstance queue message on_trigger_enter
-23-16-07-387:[Warn]:Time:23-16-07-386:StoryInstance queue concurrent message baozha
-23-16-07-833:[Warn]:Time:23-16-07-832:StoryInstance queue message on_trigger_exit
+15-23-31-229:======GameLog Start (2021年6月17日, 15:23:31)======
+15-23-31-418:[Debug]:Time:15-23-31-417:StoryInstance.Init message handler num:4 True
+15-23-31-418:[Info]:ParseStory scene_main 0
+15-23-31-532:[Debug]:Time:15-23-31-532:StoryInstance.Init message handler num:11 True
+15-23-31-532:[Info]:ParseStory story_main 0
+15-23-31-537:[Warn]:Time:15-23-31-535:StoryInstance queue message start
+15-23-31-809:[Warn]:Time:15-23-31-808:StoryInstance queue message start
+15-23-31-812:[Warn]:Time:15-23-31-811:story_main start
+15-23-33-802:[Debug]:Time:15-23-33-802:StoryInstance.Init message handler num:3 True
+15-23-33-802:[Info]:ParseStory Start:main 0
+15-23-34-270:[Warn]:Time:15-23-34-268:StoryInstance queue message start
+15-23-34-330:[Warn]:Time:15-23-34-330:StoryInstance queue message Start:loop_work
+15-23-36-381:[Warn]:Time:15-23-36-380:StoryInstance queue message Start:on_click
+15-23-36-391:[Warn]:Time:15-23-36-390:StoryInstance queue message on_start_button_click
+15-23-37-292:[Warn]:Time:15-23-37-291:StoryInstance queue message scene_loaded
+15-23-37-303:[Warn]:Time:15-23-37-301:StoryInstance queue message start_game
+15-23-38-704:[Debug]:Time:15-23-38-704:StoryInstance.Init message handler num:2 True
+15-23-38-704:[Info]:ParseStory Option:main 0
+15-23-38-732:[Warn]:Time:15-23-38-730:StoryInstance queue message start
+15-23-38-760:[Debug]:Time:15-23-38-760:StoryInstance.Init message handler num:3 True
+15-23-38-760:[Info]:ParseStory Info:main 0
+15-23-38-762:[Warn]:Time:15-23-38-761:StoryInstance queue message start
+15-23-38-772:[Debug]:Time:15-23-38-772:StoryInstance.Init message handler num:3 True
+15-23-38-772:[Info]:ParseStory CenterInfo:main 0
+15-23-38-774:[Warn]:Time:15-23-38-773:StoryInstance queue message start
+15-23-38-775:[Debug]:Time:15-23-38-775:StoryInstance.Init message handler num:3 True
+15-23-38-775:[Info]:ParseStory Victory:main 0
+15-23-38-777:[Warn]:Time:15-23-38-776:StoryInstance queue message start
+15-23-38-778:[Debug]:Time:15-23-38-778:StoryInstance.Init message handler num:3 True
+15-23-38-778:[Info]:ParseStory Failed:main 0
+15-23-38-780:[Warn]:Time:15-23-38-778:StoryInstance queue message start
+15-23-39-022:[Debug]:Time:15-23-39-021:StoryInstance.Init message handler num:3 True
+15-23-39-022:[Info]:ParseStory ai_player 0
+15-23-39-024:[Warn]:Time:15-23-39-022:StoryInstance queue message start
+15-23-39-064:[Debug]:Time:15-23-39-064:StoryInstance.Init message handler num:3 True
+15-23-39-064:[Info]:ParseStory ai_npc 0
+15-23-39-065:[Warn]:Time:15-23-39-064:StoryInstance queue message start
+15-23-39-068:[Warn]:Time:15-23-39-067:StoryInstance queue message start
+15-23-39-072:[Warn]:Time:15-23-39-071:StoryInstance queue message start
+15-23-39-074:[Warn]:Time:15-23-39-073:StoryInstance queue message start
+15-23-39-079:[Warn]:Time:15-23-39-078:StoryInstance queue message start
+15-23-39-082:[Warn]:Time:15-23-39-081:StoryInstance queue message start
+15-23-39-095:[Warn]:Time:15-23-39-094:StoryInstance queue message on_born
+15-23-39-096:[Warn]:Time:15-23-39-095:StoryInstance queue message on_born
+15-23-39-097:[Warn]:Time:15-23-39-096:StoryInstance queue message on_born
+15-23-39-097:[Warn]:Time:15-23-39-097:StoryInstance queue message on_born
+15-23-39-099:[Warn]:Time:15-23-39-097:StoryInstance queue message on_born
+15-23-39-099:[Warn]:Time:15-23-39-099:StoryInstance queue message on_born
+15-23-39-100:[Warn]:Time:15-23-39-099:StoryInstance queue message on_born
+15-23-39-242:[Warn]:Time:15-23-39-241:StoryInstance queue message show_centerinfo
+15-23-41-254:[Warn]:Time:15-23-41-253:StoryInstance queue concurrent message notify_player
+15-23-41-255:[Warn]:Time:15-23-41-254:StoryInstance queue concurrent message notify_player
+15-23-41-256:[Warn]:Time:15-23-41-255:StoryInstance queue concurrent message notify_player
+15-23-41-257:[Warn]:Time:15-23-41-257:StoryInstance queue concurrent message notify_player
+15-23-43-036:[Warn]:Time:15-23-43-035:StoryInstance queue message hide_centerinfo
+15-23-43-054:[Warn]:Time:15-23-43-052:StoryInstance queue message on_hide_centerinfo
+15-23-43-302:[Warn]:Time:15-23-43-301:StoryInstance queue message on_trigger_enter
+15-23-43-314:[Warn]:Time:15-23-43-312:StoryInstance queue concurrent message baozha
+15-23-43-430:[Warn]:Time:15-23-43-429:StoryInstance queue message on_trigger_exit
+15-23-46-256:[Warn]:Time:15-23-46-255:StoryInstance queue message move_to
+15-23-47-318:[Warn]:Time:15-23-47-317:StoryInstance queue concurrent message notify_player
+15-23-47-321:[Warn]:Time:15-23-47-319:StoryInstance queue concurrent message notify_player
+15-23-48-325:[Warn]:Time:15-23-48-323:StoryInstance queue concurrent message notify_player
+15-23-48-329:[Warn]:Time:15-23-48-326:StoryInstance queue concurrent message notify_player
+15-23-49-334:[Warn]:Time:15-23-49-333:StoryInstance queue concurrent message notify_player
+15-23-49-335:[Warn]:Time:15-23-49-334:StoryInstance queue concurrent message notify_player
+15-23-49-336:[Warn]:Time:15-23-49-335:StoryInstance queue concurrent message notify_player
+15-23-49-337:[Warn]:Time:15-23-49-336:StoryInstance queue concurrent message notify_player
+15-23-49-367:[Warn]:Time:15-23-49-366:StoryInstance queue message on_trigger_enter
+15-23-49-369:[Warn]:Time:15-23-49-368:StoryInstance queue concurrent message baozha
+15-23-49-451:[Warn]:Time:15-23-49-450:StoryInstance queue message on_trigger_exit
+15-23-50-551:[Warn]:Time:15-23-50-550:StoryInstance queue message on_trigger_enter
+15-23-50-554:[Warn]:Time:15-23-50-553:StoryInstance queue concurrent message baozha
+15-23-50-617:[Warn]:Time:15-23-50-616:StoryInstance queue message on_trigger_exit
+15-23-51-382:[Warn]:Time:15-23-51-381:StoryInstance queue message on_trigger_enter
+15-23-51-433:[Warn]:Time:15-23-51-432:StoryInstance queue message on_trigger_exit
+15-23-51-586:[Warn]:Time:15-23-51-585:StoryInstance queue concurrent message baozha
+15-23-56-414:[Warn]:Time:15-23-56-413:StoryInstance queue concurrent message notify_player
+15-23-56-415:[Warn]:Time:15-23-56-415:StoryInstance queue concurrent message notify_player
+15-23-56-416:[Warn]:Time:15-23-56-415:StoryInstance queue concurrent message notify_player
+15-23-57-415:[Warn]:Time:15-23-57-414:StoryInstance queue concurrent message notify_player
+15-23-57-416:[Warn]:Time:15-23-57-415:StoryInstance queue concurrent message notify_player
+15-23-58-550:[Warn]:Time:15-23-58-549:StoryInstance queue message on_trigger_enter
+15-23-58-553:[Warn]:Time:15-23-58-552:StoryInstance queue concurrent message baozha
+15-23-58-616:[Warn]:Time:15-23-58-616:StoryInstance queue message on_trigger_exit
+15-23-59-432:[Warn]:Time:15-23-59-431:StoryInstance queue message on_trigger_enter
+15-23-59-499:[Warn]:Time:15-23-59-498:StoryInstance queue message on_trigger_exit
+15-23-59-586:[Warn]:Time:15-23-59-585:StoryInstance queue concurrent message baozha
+15-24-01-434:[Warn]:Time:15-24-01-432:StoryInstance queue concurrent message notify_player
+15-24-01-435:[Warn]:Time:15-24-01-434:StoryInstance queue concurrent message notify_player
+15-24-01-436:[Warn]:Time:15-24-01-435:StoryInstance queue concurrent message notify_player
+15-24-02-450:[Warn]:Time:15-24-02-449:StoryInstance queue concurrent message notify_player
+15-24-02-451:[Warn]:Time:15-24-02-450:StoryInstance queue concurrent message notify_player
+15-24-03-452:[Warn]:Time:15-24-03-450:StoryInstance queue concurrent message notify_player
+15-24-03-453:[Warn]:Time:15-24-03-452:StoryInstance queue concurrent message notify_player
+15-24-03-517:[Warn]:Time:15-24-03-516:StoryInstance queue message on_trigger_enter
+15-24-03-520:[Warn]:Time:15-24-03-519:StoryInstance queue concurrent message baozha
+15-24-03-600:[Warn]:Time:15-24-03-599:StoryInstance queue message on_trigger_exit
+15-24-04-466:[Warn]:Time:15-24-04-465:StoryInstance queue concurrent message notify_player
+15-24-04-467:[Warn]:Time:15-24-04-466:StoryInstance queue concurrent message notify_player
+15-24-04-468:[Warn]:Time:15-24-04-467:StoryInstance queue concurrent message notify_player
+15-24-04-472:[Warn]:Time:15-24-04-468:StoryInstance queue concurrent message notify_player
+15-24-04-682:[Warn]:Time:15-24-04-681:StoryInstance queue message on_trigger_enter
+15-24-04-684:[Warn]:Time:15-24-04-683:StoryInstance queue concurrent message baozha
+15-24-04-733:[Warn]:Time:15-24-04-731:StoryInstance queue message on_trigger_exit
+15-24-05-600:[Warn]:Time:15-24-05-599:StoryInstance queue message on_trigger_enter
+15-24-05-649:[Warn]:Time:15-24-05-648:StoryInstance queue message on_trigger_exit
+15-24-05-702:[Warn]:Time:15-24-05-701:StoryInstance queue concurrent message baozha
+15-24-06-481:[Warn]:Time:15-24-06-480:StoryInstance queue concurrent message notify_player
+15-24-06-714:[Warn]:Time:15-24-06-713:StoryInstance queue message on_trigger_enter
+15-24-06-733:[Warn]:Time:15-24-06-732:StoryInstance queue concurrent message baozha
+15-24-06-783:[Warn]:Time:15-24-06-782:StoryInstance queue message on_trigger_exit
+15-24-07-486:[Warn]:Time:15-24-07-485:StoryInstance queue concurrent message notify_player
+15-24-08-501:[Warn]:Time:15-24-08-500:StoryInstance queue message on_trigger_enter
+15-24-08-503:[Warn]:Time:15-24-08-502:StoryInstance queue concurrent message baozha
+15-24-08-584:[Warn]:Time:15-24-08-583:StoryInstance queue message on_trigger_exit
+15-24-09-501:[Warn]:Time:15-24-09-501:StoryInstance queue message on_trigger_enter
+15-24-09-503:[Warn]:Time:15-24-09-501:StoryInstance queue concurrent message notify_player
+15-24-09-528:[Warn]:Time:15-24-09-526:DotnetGet String.gameObject Exception:System.String.gameObject Due to: Attempted to access a missing member.
+  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x005d2] in <1cc141e219f7479c97cfdd69a39cd92f>:0 
+  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <1cc141e219f7479c97cfdd69a39cd92f>:0 
+  at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
+15-24-09-529:[Warn]:Time:15-24-09-528:StoryInstance queue concurrent message baozha
+15-24-09-531:[Warn]:Time:15-24-09-529:DotnetGet Vector3.name Exception:UnityEngine.Vector3.name Due to: Attempted to access a missing member.
+  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x005d2] in <1cc141e219f7479c97cfdd69a39cd92f>:0 
+  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <1cc141e219f7479c97cfdd69a39cd92f>:0 
+  at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
+15-24-09-536:[Warn]:Time:15-24-09-532:DotnetGet Vector3.name Exception:UnityEngine.Vector3.name Due to: Attempted to access a missing member.
+  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x005d2] in <1cc141e219f7479c97cfdd69a39cd92f>:0 
+  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <1cc141e219f7479c97cfdd69a39cd92f>:0 
+  at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
+15-24-09-538:[Warn]:Time:15-24-09-536:DotnetGet Vector3.name Exception:UnityEngine.Vector3.name Due to: Attempted to access a missing member.
+  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x005d2] in <1cc141e219f7479c97cfdd69a39cd92f>:0 
+  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <1cc141e219f7479c97cfdd69a39cd92f>:0 
+  at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
+15-24-09-540:[Warn]:Time:15-24-09-538:DotnetGet Vector3.transform Exception:UnityEngine.Vector3.transform Due to: Attempted to access a missing member.
+  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x005d2] in <1cc141e219f7479c97cfdd69a39cd92f>:0 
+  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <1cc141e219f7479c97cfdd69a39cd92f>:0 
+  at StorySystem.CommonValues.DotnetGetValue.TryUpdateValue () [0x00235] in e:\OpenSource\GameDemo\GameLibrary\Infrastructure\StorySystem\CommonValues\ReflectionValue.cs:314 
+15-24-09-551:[Warn]:Time:15-24-09-550:StoryInstance queue message on_trigger_exit
