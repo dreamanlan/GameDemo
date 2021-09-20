@@ -26,8 +26,9 @@ namespace GameLibrary.Story.Commands
             SceneSystem.Instance.BlackBoard.ClearVariables();
             return false;
         }
-        protected override void Load(Dsl.FunctionData callData)
+        protected override bool Load(Dsl.FunctionData callData)
         {
+            return true;
         }
     }
     /// <summary>
@@ -55,13 +56,14 @@ namespace GameLibrary.Story.Commands
             SceneSystem.Instance.BlackBoard.SetVariable(name, value);
             return false;
         }
-        protected override void Load(Dsl.FunctionData callData)
+        protected override bool Load(Dsl.FunctionData callData)
         {
             int num = callData.GetParamNum();
             if (num > 1) {
                 m_AttrName.InitFromDsl(callData.GetParam(0));
                 m_Value.InitFromDsl(callData.GetParam(1));
             }
+            return true;
         }
         private IStoryValue<string> m_AttrName = new StoryValue<string>();
         private IStoryValue m_Value = new StoryValue();
@@ -100,7 +102,7 @@ namespace GameLibrary.Story.Commands
                 return false;
             }
         }
-        protected override void Load(Dsl.FunctionData callData)
+        protected override bool Load(Dsl.FunctionData callData)
         {
             int num = callData.GetParamNum();
             if (num > 0) {
@@ -109,6 +111,7 @@ namespace GameLibrary.Story.Commands
             if (num > 1) {
                 m_DelayedTime.InitFromDsl(callData.GetParam(1));
             }
+            return true;
         }
         private IStoryValue<int> m_StorySkipped = new StoryValue<int>();
         private IStoryValue<int> m_DelayedTime = new StoryValue<int>();
@@ -148,7 +151,7 @@ namespace GameLibrary.Story.Commands
                 return false;
             }
         }
-        protected override void Load(Dsl.FunctionData callData)
+        protected override bool Load(Dsl.FunctionData callData)
         {
             int num = callData.GetParamNum();
             if (num > 0) {
@@ -157,6 +160,7 @@ namespace GameLibrary.Story.Commands
             if (num > 1) {
                 m_DelayedTime.InitFromDsl(callData.GetParam(1));
             }
+            return true;
         }
         private IStoryValue<int> m_StorySpeedup = new StoryValue<int>();
         private IStoryValue<int> m_DelayedTime = new StoryValue<int>();
@@ -202,7 +206,7 @@ namespace GameLibrary.Story.Commands
             }
             return false;
         }
-        protected override void Load(Dsl.FunctionData callData)
+        protected override bool Load(Dsl.FunctionData callData)
         {
             m_ParamNum = callData.GetParamNum();
             if (m_ParamNum > 1) {
@@ -211,6 +215,7 @@ namespace GameLibrary.Story.Commands
             } else if (m_ParamNum > 0) {
                 m_LeaderId.InitFromDsl(callData.GetParam(0));
             }
+            return true;
         }
         private int m_ParamNum = 0;
         private IStoryValue<int> m_ObjId = new StoryValue<int>();
@@ -245,12 +250,13 @@ namespace GameLibrary.Story.Commands
             }
             return false;
         }
-        protected override void Load(Dsl.FunctionData callData)
+        protected override bool Load(Dsl.FunctionData callData)
         {
             m_ParamNum = callData.GetParamNum();
             if (m_ParamNum > 0) {
                 m_ObjId.InitFromDsl(callData.GetParam(0));
             }
+            return true;
         }
         private int m_ParamNum = 0;
         private IStoryValue<int> m_ObjId = new StoryValue<int>();
@@ -284,12 +290,13 @@ namespace GameLibrary.Story.Commands
             }
             return false;
         }
-        protected override void Load(Dsl.FunctionData callData)
+        protected override bool Load(Dsl.FunctionData callData)
         {
             m_ParamNum = callData.GetParamNum();
             if (m_ParamNum > 0) {
                 m_ObjId.InitFromDsl(callData.GetParam(0));
             }
+            return true;
         }
         private int m_ParamNum = 0;
         private IStoryValue<int> m_ObjId = new StoryValue<int>();

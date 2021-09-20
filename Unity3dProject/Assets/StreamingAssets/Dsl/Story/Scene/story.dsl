@@ -163,6 +163,7 @@
 	};
 	onmessage("baozha")args($pt)
 	{
+		log("bazha {0}", $pt);
 		creategameobject("gbaozha", "gbaozha")obj("$obj"){
 			position($pt);
 		};

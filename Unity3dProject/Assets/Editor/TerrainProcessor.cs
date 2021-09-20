@@ -322,7 +322,7 @@ internal static class TerrainEditUtility
             }
             var terrain = root.GetComponent<Terrain>();
             var terrainData = terrain.terrainData;
-            var datas = terrainData.GetHeights(0, 0, terrainData.heightmapWidth, terrainData.heightmapHeight);
+            var datas = terrainData.GetHeights(0, 0, terrainData.heightmapResolution, terrainData.heightmapResolution);
             var alphamaps = terrainData.GetAlphamaps(0, 0, terrainData.alphamapWidth, terrainData.alphamapHeight);
             int alphanum = alphamaps.GetLength(2);
             int[] layers = terrainData.GetSupportedLayers(0, 0, terrainData.detailWidth, terrainData.detailHeight);
@@ -663,7 +663,7 @@ internal static class TerrainEditUtility
         AppendLine(sb, "{0}thickness({1});", GetIndent(indent), data.thickness);
         AppendLine(sb, "{0}basemapresolution({1});", GetIndent(indent), data.baseMapResolution);
 
-        AppendLine(sb, "{0}heightmap(size({1}, {2}), resolution({3}), scale{4});", GetIndent(indent), data.heightmapWidth, data.heightmapHeight, data.heightmapResolution, data.heightmapScale);
+        AppendLine(sb, "{0}heightmap(size({1}, {2}), resolution({3}), scale{4});", GetIndent(indent), data.heightmapResolution, data.heightmapResolution, data.heightmapResolution, data.heightmapScale);
 
         AppendLine(sb, "{0}alphamap(size({1}, {2}), resolution({3}), layers({4}))", GetIndent(indent), data.alphamapWidth, data.alphamapHeight, data.alphamapResolution, data.alphamapLayers);
         AppendLine(sb, "{0}{{", GetIndent(indent));
