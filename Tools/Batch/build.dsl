@@ -26,14 +26,14 @@ script(main)
     libdir=rootdir+"/GameLibrary/ExternLibrary";
     
     Platform="Any CPU";
-    xbuild=rootdir+"/Tools/xbuild/xbuild.exe";
+    xbuild=rootdir+"/Tools/msbuild/msbuild.exe";
     
     looplist(listhashtable(envs())){
         echo("{0}={1}",$$.Key,$$.Value);
     };
 
     mono=expand("%rootdir%/Tools/mono/mono.exe");
-    pdb2mdb=expand("%rootdir%/Tools/lib/mono/4.0/pdb2mdb.exe");
+    pdb2mdb=expand("%rootdir%/Tools/lib/mono/4.5/pdb2mdb.exe");
 		
     /*********************************************************************************
     * dll编译部分
@@ -57,11 +57,11 @@ script(main)
     var(0) = command{
         win
         {:
-            %xbuild% /nologo /noconsolelogger /p:Configuration=%cfg% /flp:LogFile=%logdir%/GameLibrary.sln.log;Encoding=UTF-8 /t:clean;rebuild %rootdir%/GameLibrary/GameLibrary.sln /p:Platform="Any CPU"
+            %xbuild% /m /nologo /noconsolelogger /p:Configuration=%cfg% /flp:LogFile=%logdir%/GameLibrary.sln.log;Encoding=UTF-8 /t:clean;rebuild %rootdir%/GameLibrary/GameLibrary.sln /p:Platform="Any CPU"
         :};
         unix
         {:
-            msbuild /nologo /noconsolelogger /p:Configuration=%cfg% /flp:LogFile=%logdir%/GameLibrary.sln.log;Encoding=UTF-8 /t:clean;rebuild %rootdir%/GameLibrary/GameLibrary.sln /p:Platform="Any CPU"
+            msbuild /m /nologo /noconsolelogger /p:Configuration=%cfg% /flp:LogFile=%logdir%/GameLibrary.sln.log;Encoding=UTF-8 /t:clean;rebuild %rootdir%/GameLibrary/GameLibrary.sln /p:Platform="Any CPU"
         :};
     };
     
@@ -79,10 +79,10 @@ script(main)
         $targetPath = plugindir+"/"+$filename;
         copyfile($$, $targetPath);
         if(osplatform()=="Unix"){
-            //process(pdb2mdb, $filename);
+			process(mono, pdb2mdb + " " + $filename);
         }else{
             echo("{0} {1}", pdb2mdb, $filename);
-            process(pdb2mdb, $filename);
+            process(mono, pdb2mdb + " " + $filename);
         };
         //echo("copy {0} to {1}", $$, $targetPath);
     };
