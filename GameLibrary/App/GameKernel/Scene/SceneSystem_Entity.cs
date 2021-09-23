@@ -5,7 +5,7 @@ using System.IO;
 using System.Text;
 using GameLibrary.GmCommands;
 using GameLibrary.Story;
-using StorySystem;
+using StoryScript;
 
 namespace GameLibrary
 {

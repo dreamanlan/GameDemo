@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace StorySystem.CommonValues
+namespace StoryScript.CommonValues
 {
     internal sealed class GreaterThanOperator : IStoryValue
     {

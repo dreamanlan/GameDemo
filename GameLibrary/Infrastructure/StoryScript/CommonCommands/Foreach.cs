@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-namespace StorySystem.CommonCommands
+namespace StoryScript.CommonCommands
 {
     /// <summary>
     /// foreach(v1,v2,v3)

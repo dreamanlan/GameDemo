@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace StorySystem
+namespace StoryScript
 {
     public interface IStoryCommandFactory
     {

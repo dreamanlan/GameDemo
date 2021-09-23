@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameLibrary;
 
-namespace StorySystem
+namespace StoryScript
 {
     /// <summary>
     /// 这个类不加锁，约束条件：所有命令注册必须在程序启动时完成。

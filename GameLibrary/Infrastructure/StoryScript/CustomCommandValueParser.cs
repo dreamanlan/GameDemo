@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using GameLibrary;
-namespace StorySystem
+namespace StoryScript
 {
     public static class CustomCommandValueParser
     {
@@ -119,7 +119,7 @@ namespace StorySystem
         {
             string id = dslInfo.GetId();
             if (id == "command") {
-                StorySystem.CommonCommands.CompositeCommand cmd = new CommonCommands.CompositeCommand();
+                StoryScript.CommonCommands.CompositeCommand cmd = new CommonCommands.CompositeCommand();
                 cmd.InitSharedData();
                 var first = dslInfo as Dsl.FunctionData;
                 if (null != first) {
@@ -167,7 +167,7 @@ namespace StorySystem
                 StoryCommandManager.Instance.RegisterCommandFactory(cmd.Name, new CommonCommands.CompositeCommandFactory(cmd), true);
             }
             else if (id == "value") {
-                StorySystem.CommonValues.CompositeValue val = new CommonValues.CompositeValue();
+                StoryScript.CommonValues.CompositeValue val = new CommonValues.CompositeValue();
                 val.InitSharedData();
                 var first = dslInfo as Dsl.FunctionData;
                 if (null != first) {
@@ -243,7 +243,7 @@ namespace StorySystem
 
                 IStoryCommandFactory factory = StoryCommandManager.Instance.FindFactory(name);
                 if (null != factory) {
-                    StorySystem.CommonCommands.CompositeCommand cmd = factory.Create() as StorySystem.CommonCommands.CompositeCommand;
+                    StoryScript.CommonCommands.CompositeCommand cmd = factory.Create() as StoryScript.CommonCommands.CompositeCommand;
                     cmd.InitialCommands.Clear();
 
                     Dsl.FunctionData bodyFunc = null;
@@ -295,7 +295,7 @@ namespace StorySystem
 
                 IStoryValueFactory factory = StoryValueManager.Instance.FindFactory(name);
                 if (null != factory) {
-                    StorySystem.CommonValues.CompositeValue val = factory.Build() as StorySystem.CommonValues.CompositeValue;
+                    StoryScript.CommonValues.CompositeValue val = factory.Build() as StoryScript.CommonValues.CompositeValue;
                     val.InitialCommands.Clear();
 
                     Dsl.FunctionData bodyFunc = null;

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace StorySystem
+namespace StoryScript
 {
     /// <summary>
     /// 简单的函数值基类，简化实现IStoryValue需要写的代码行数(当前值类只支持FunctionData样式)

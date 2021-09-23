@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using GameLibrary;
-namespace StorySystem.CommonCommands
+namespace StoryScript.CommonCommands
 {
     /// <summary>
     /// log(format,arg1,arg2,...);

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using GameLibrary;
-using StorySystem;
+using StoryScript;
 
 internal static class AiRegister
 {

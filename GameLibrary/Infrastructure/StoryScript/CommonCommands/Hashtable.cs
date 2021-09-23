@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
-namespace StorySystem.CommonCommands
+namespace StoryScript.CommonCommands
 {
     /// <summary>
     /// writealllines(file, val);

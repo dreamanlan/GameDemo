@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Diagnostics;
 
-namespace StorySystem.CommonValues
+namespace StoryScript.CommonValues
 {
     /// <summary>
     /// name(arg1,arg2,...)
@@ -44,7 +44,7 @@ namespace StorySystem.CommonValues
         {
             get { return m_OptArgs; }
         }
-        public IList<StorySystem.IStoryCommand> InitialCommands
+        public IList<StoryScript.IStoryCommand> InitialCommands
         {
             get { return m_InitialCommands; }
         }

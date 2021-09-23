@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using StorySystem;
+using StoryScript;
 using GameLibrary;
 
 namespace GameLibrary.Story.Values

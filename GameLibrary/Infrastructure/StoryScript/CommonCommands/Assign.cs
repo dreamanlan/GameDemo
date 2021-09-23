@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-namespace StorySystem.CommonCommands
+namespace StoryScript.CommonCommands
 {
     /// <summary>
     /// assign(@local,value);

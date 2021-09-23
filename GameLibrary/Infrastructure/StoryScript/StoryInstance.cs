@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using GameLibrary;
-namespace StorySystem
+namespace StoryScript
 {
     /// <summary>
     /// story(1)

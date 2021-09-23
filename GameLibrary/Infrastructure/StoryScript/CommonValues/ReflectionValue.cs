@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Diagnostics;
-namespace StorySystem.CommonValues
+namespace StoryScript.CommonValues
 {
     internal sealed class GetTypeValue : IStoryValue
     {

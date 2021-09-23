@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-using StorySystem;
+using StoryScript;
 using GameLibrary;
 
 namespace GameLibrary.Story

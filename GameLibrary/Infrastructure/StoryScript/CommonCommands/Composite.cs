@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Diagnostics;
 using Dsl;
 
-namespace StorySystem.CommonCommands
+namespace StoryScript.CommonCommands
 {
     /// <summary>
     /// name(arg1,arg2,...)
@@ -42,7 +42,7 @@ namespace StorySystem.CommonCommands
         {
             get { return m_OptArgs; }
         }
-        internal IList<StorySystem.IStoryCommand> InitialCommands
+        internal IList<StoryScript.IStoryCommand> InitialCommands
         {
             get { return m_InitialCommands; }
         }

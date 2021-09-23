@@ -8,7 +8,7 @@ using GameLibrary.Story;
 using System.Timers;
 using UnityEngine;
 using System.Collections;
-using StorySystem;
+using StoryScript;
 
 namespace GameLibrary
 {
@@ -22,7 +22,7 @@ namespace GameLibrary
                 
                 ClientStorySystem.Instance.Reset();
                 ClientStorySystem.Instance.ClearStoryInstancePool();
-                StorySystem.StoryConfigManager.Instance.Clear();
+                StoryScript.StoryConfigManager.Instance.Clear();
                 ClientStorySystem.Instance.LoadSceneStories(HomePath.GetAbsolutePath("Dsl/Story/Scene/scene.dsl"),
                     HomePath.GetAbsolutePath("Dsl/Story/Scene/story.dsl"));
                 ClientStorySystem.Instance.StartStory("scene_main");
@@ -112,7 +112,7 @@ namespace GameLibrary
             ClientGmStorySystem.Instance.Reset();
             ClientStorySystem.Instance.Reset();
             ClientStorySystem.Instance.ClearStoryInstancePool();
-            StorySystem.StoryConfigManager.Instance.Clear();
+            StoryScript.StoryConfigManager.Instance.Clear();
             ClientStorySystem.Instance.LoadSceneStories("Dsl/Story/Scene/scene.dsl", "Dsl/Story/Scene/story.dsl");
             ClientStorySystem.Instance.StartStory("scene_main");
 

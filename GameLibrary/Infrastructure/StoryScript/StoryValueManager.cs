@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameLibrary;
 using LitJson;
-namespace StorySystem
+namespace StoryScript
 {
     public interface IStoryValueFactory
     {

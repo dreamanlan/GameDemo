@@ -5,7 +5,7 @@ using GameLibrary;
 
 [assembly: UnityEngine.Scripting.Preserve]
 
-namespace StorySystem
+namespace StoryScript
 {
     public sealed class StoryConfigManager
     {

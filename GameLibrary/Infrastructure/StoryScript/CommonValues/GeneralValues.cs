@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using StorySystem;
+using StoryScript;
 using UnityEngine;
-namespace StorySystem.CommonValues
+namespace StoryScript.CommonValues
 {
     /// <summary>
     /// dummy值，用于注册没有对应实现的函数（为了解析需要注册）。

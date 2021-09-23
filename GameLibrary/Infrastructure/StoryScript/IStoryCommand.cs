@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace StorySystem
+namespace StoryScript
 {
     /// <summary>
     /// 剧情命令接口，剧情脚本的基本单位（有的命令是复合命令，由基本命令构成）。

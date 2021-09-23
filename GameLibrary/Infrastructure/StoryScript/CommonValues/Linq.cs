@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Diagnostics;
 
-namespace StorySystem.CommonValues
+namespace StoryScript.CommonValues
 {
     internal sealed class LinqValue : IStoryValue
     {

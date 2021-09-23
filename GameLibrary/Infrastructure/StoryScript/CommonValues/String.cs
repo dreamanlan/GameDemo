@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-namespace StorySystem.CommonValues
+namespace StoryScript.CommonValues
 {
     internal sealed class FormatValue : IStoryValue
     {

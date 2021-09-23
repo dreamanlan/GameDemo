@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using StorySystem;
+using StoryScript;
 using GameLibrary;
 
 namespace GameLibrary.Story.Commands

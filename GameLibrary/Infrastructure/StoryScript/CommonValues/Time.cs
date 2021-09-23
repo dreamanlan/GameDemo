@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using GameLibrary;
-namespace StorySystem.CommonValues
+namespace StoryScript.CommonValues
 {
     internal sealed class TimeValue : IStoryValue
     {

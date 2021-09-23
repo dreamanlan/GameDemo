@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace StorySystem.CommonCommands
+namespace StoryScript.CommonCommands
 {
     /// <summary>
     /// break();

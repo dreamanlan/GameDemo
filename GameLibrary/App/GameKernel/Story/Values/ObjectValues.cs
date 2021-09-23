@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using StorySystem;
+using StoryScript;
 using GameLibrary;
 using UnityEngine;
 namespace GameLibrary.Story.Values

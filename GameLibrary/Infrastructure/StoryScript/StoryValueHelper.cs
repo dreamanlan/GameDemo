@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-namespace StorySystem
+namespace StoryScript
 {
     public static class StoryValueHelper
     {

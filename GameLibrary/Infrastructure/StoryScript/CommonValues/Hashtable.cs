@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using StorySystem;
+using StoryScript;
 using LitJson;
-namespace StorySystem.CommonValues
+namespace StoryScript.CommonValues
 {
     internal sealed class ReadAllLinesValue : IStoryValue
     {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using GameLibrary;
-using StorySystem;
+using StoryScript;
 
 internal class AiNeedKeepAway : SimpleStoryValueBase<AiNeedKeepAway, StoryValueParam<int, float, float>>
 {
