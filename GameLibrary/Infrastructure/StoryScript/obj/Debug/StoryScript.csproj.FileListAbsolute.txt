@@ -1,0 +1,11 @@
+D:\OpenSource\GameDemo\GameLibrary\Infrastructure\StoryScript\bin\Debug\StoryScript.dll
+D:\OpenSource\GameDemo\GameLibrary\Infrastructure\StoryScript\bin\Debug\StoryScript.pdb
+D:\OpenSource\GameDemo\GameLibrary\Infrastructure\StoryScript\bin\Debug\Common.dll
+D:\OpenSource\GameDemo\GameLibrary\Infrastructure\StoryScript\bin\Debug\Dsl.dll
+D:\OpenSource\GameDemo\GameLibrary\Infrastructure\StoryScript\bin\Debug\LitJson.dll
+D:\OpenSource\GameDemo\GameLibrary\Infrastructure\StoryScript\bin\Debug\UnityEngine.dll
+D:\OpenSource\GameDemo\GameLibrary\Infrastructure\StoryScript\bin\Debug\Common.pdb
+D:\OpenSource\GameDemo\GameLibrary\Infrastructure\StoryScript\bin\Debug\Dsl.pdb
+D:\OpenSource\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\StoryScript.csprojResolveAssemblyReference.cache
+D:\OpenSource\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\StoryScript.dll
+D:\OpenSource\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\StoryScript.pdb
