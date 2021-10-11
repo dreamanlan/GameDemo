@@ -659,6 +659,9 @@ public static class GenericValueConverter
             try {
                 return (T)Convert.ChangeType(obj, typeof(T));
             }
+            catch (OverflowException) {
+                return (T)Convert.ChangeType(obj.ToString(), typeof(T));
+            }
             catch {
                 return default(T);
             }

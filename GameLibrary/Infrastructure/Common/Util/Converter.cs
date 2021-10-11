@@ -347,6 +347,9 @@ namespace GameLibrary
                 try {
                     return (T)Convert.ChangeType(obj, typeof(T));
                 }
+                catch (OverflowException) {
+                    return (T)Convert.ChangeType(obj.ToString(), typeof(T));
+                }
                 catch {
                     return default(T);
                 }
@@ -366,6 +369,9 @@ namespace GameLibrary
             else {
                 try {
                     return Convert.ChangeType(obj, t);
+                }
+                catch (OverflowException) {
+                    return Convert.ChangeType(obj.ToString(), t);
                 }
                 catch {
                     return null;
