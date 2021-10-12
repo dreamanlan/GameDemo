@@ -1,100 +1,60 @@
-14-18-47-755:======GameLog Start (2021年9月23日, 14:18:47)======
-14-18-47-804:[Debug]:Time:14-18-47-804:StoryInstance.Init message handler num:4 True
-14-18-47-805:[Info]:ParseStory scene_main 0
-14-18-47-843:[Debug]:Time:14-18-47-843:StoryInstance.Init message handler num:11 True
-14-18-47-843:[Info]:ParseStory story_main 0
-14-18-47-845:[Warn]:Time:14-18-47-844:StoryInstance queue message start
-14-18-48-280:[Warn]:Time:14-18-48-279:StoryInstance queue message start
-14-18-48-280:[Warn]:Time:14-18-48-280:story_main start
-14-18-50-253:[Debug]:Time:14-18-50-253:StoryInstance.Init message handler num:3 True
-14-18-50-253:[Info]:ParseStory Start:main 0
-14-18-50-290:[Warn]:Time:14-18-50-290:StoryInstance queue message start
-14-18-50-330:[Warn]:Time:14-18-50-329:StoryInstance queue message Start:loop_work
-14-18-55-690:[Warn]:Time:14-18-55-689:StoryInstance queue message Start:on_click
-14-18-55-694:[Warn]:Time:14-18-55-694:StoryInstance queue message on_start_button_click
-14-18-56-307:[Warn]:Time:14-18-56-306:StoryInstance queue message scene_loaded
-14-18-56-313:[Warn]:Time:14-18-56-313:StoryInstance queue message start_game
-14-18-56-831:[Debug]:Time:14-18-56-831:StoryInstance.Init message handler num:2 True
-14-18-56-831:[Info]:ParseStory Option:main 0
-14-18-56-837:[Warn]:Time:14-18-56-837:StoryInstance queue message start
-14-18-56-841:[Debug]:Time:14-18-56-841:StoryInstance.Init message handler num:3 True
-14-18-56-841:[Info]:ParseStory Info:main 0
-14-18-56-842:[Warn]:Time:14-18-56-842:StoryInstance queue message start
-14-18-56-844:[Debug]:Time:14-18-56-844:StoryInstance.Init message handler num:3 True
-14-18-56-844:[Info]:ParseStory CenterInfo:main 0
-14-18-56-845:[Warn]:Time:14-18-56-845:StoryInstance queue message start
-14-18-56-846:[Debug]:Time:14-18-56-846:StoryInstance.Init message handler num:3 True
-14-18-56-846:[Info]:ParseStory Victory:main 0
-14-18-56-847:[Warn]:Time:14-18-56-847:StoryInstance queue message start
-14-18-56-848:[Debug]:Time:14-18-56-848:StoryInstance.Init message handler num:3 True
-14-18-56-848:[Info]:ParseStory Failed:main 0
-14-18-56-849:[Warn]:Time:14-18-56-849:StoryInstance queue message start
-14-18-57-052:[Debug]:Time:14-18-57-052:StoryInstance.Init message handler num:3 True
-14-18-57-052:[Info]:ParseStory ai_player 0
-14-18-57-053:[Warn]:Time:14-18-57-052:StoryInstance queue message start
-14-18-57-060:[Debug]:Time:14-18-57-060:StoryInstance.Init message handler num:3 True
-14-18-57-060:[Info]:ParseStory ai_npc 0
-14-18-57-060:[Warn]:Time:14-18-57-060:StoryInstance queue message start
-14-18-57-063:[Debug]:Time:14-18-57-063:StoryInstance.Init message handler num:3 True
-14-18-57-063:[Info]:ParseStory ai_npc 0
-14-18-57-064:[Warn]:Time:14-18-57-064:StoryInstance queue message start
-14-18-57-070:[Debug]:Time:14-18-57-070:StoryInstance.Init message handler num:3 True
-14-18-57-070:[Info]:ParseStory ai_npc 0
-14-18-57-070:[Warn]:Time:14-18-57-070:StoryInstance queue message start
-14-18-57-073:[Debug]:Time:14-18-57-073:StoryInstance.Init message handler num:3 True
-14-18-57-073:[Info]:ParseStory ai_npc 0
-14-18-57-074:[Warn]:Time:14-18-57-074:StoryInstance queue message start
-14-18-57-077:[Debug]:Time:14-18-57-077:StoryInstance.Init message handler num:3 True
-14-18-57-077:[Info]:ParseStory ai_npc 0
-14-18-57-078:[Warn]:Time:14-18-57-077:StoryInstance queue message start
-14-18-57-080:[Debug]:Time:14-18-57-080:StoryInstance.Init message handler num:3 True
-14-18-57-080:[Info]:ParseStory ai_npc 0
-14-18-57-081:[Warn]:Time:14-18-57-081:StoryInstance queue message start
-14-18-57-090:[Warn]:Time:14-18-57-090:StoryInstance queue message on_born
-14-18-57-090:[Warn]:Time:14-18-57-090:StoryInstance queue message on_born
-14-18-57-091:[Warn]:Time:14-18-57-090:StoryInstance queue message on_born
-14-18-57-091:[Warn]:Time:14-18-57-091:StoryInstance queue message on_born
-14-18-57-091:[Warn]:Time:14-18-57-091:StoryInstance queue message on_born
-14-18-57-091:[Warn]:Time:14-18-57-091:StoryInstance queue message on_born
-14-18-57-092:[Warn]:Time:14-18-57-091:StoryInstance queue message on_born
-14-18-57-336:[Warn]:Time:14-18-57-336:StoryInstance queue message show_centerinfo
-14-18-59-337:[Warn]:Time:14-18-59-336:StoryInstance queue concurrent message notify_player
-14-18-59-337:[Warn]:Time:14-18-59-337:StoryInstance queue concurrent message notify_player
-14-18-59-337:[Warn]:Time:14-18-59-337:StoryInstance queue concurrent message notify_player
-14-18-59-338:[Warn]:Time:14-18-59-337:StoryInstance queue concurrent message notify_player
-14-19-00-767:[Warn]:Time:14-19-00-766:StoryInstance queue message hide_centerinfo
-14-19-00-773:[Warn]:Time:14-19-00-772:StoryInstance queue message on_hide_centerinfo
-14-19-01-363:[Warn]:Time:14-19-01-362:StoryInstance queue message on_trigger_enter
-14-19-01-363:[Warn]:Time:14-19-01-363:StoryInstance queue message on_trigger_enter
-14-19-01-363:[Warn]:Time:14-19-01-363:StoryInstance queue message on_trigger_enter
-14-19-01-363:[Warn]:Time:14-19-01-363:StoryInstance queue message on_trigger_enter
-14-19-01-368:[Warn]:Time:14-19-01-368:StoryInstance queue concurrent message baozha
-14-19-01-369:[Warn]:Time:14-19-01-368:bazha (54.0, 0.0, 44.0)
-14-19-01-402:[Warn]:Time:14-19-01-402:StoryInstance queue message on_trigger_exit
-14-19-01-422:[Warn]:Time:14-19-01-421:StoryInstance queue message on_trigger_exit
-14-19-01-422:[Warn]:Time:14-19-01-422:StoryInstance queue message on_trigger_exit
-14-19-01-422:[Warn]:Time:14-19-01-422:StoryInstance queue message on_trigger_exit
-14-19-02-374:[Warn]:Time:14-19-02-374:StoryInstance queue concurrent message baozha
-14-19-02-375:[Warn]:Time:14-19-02-374:bazha (49.0, -24.5, 47.0)
-14-19-03-379:[Warn]:Time:14-19-03-379:StoryInstance queue concurrent message baozha
-14-19-03-379:[Warn]:Time:14-19-03-379:bazha (48.0, -59.1, 45.0)
-14-19-04-388:[Warn]:Time:14-19-04-387:StoryInstance queue concurrent message baozha
-14-19-04-388:[Warn]:Time:14-19-04-388:bazha (55.0, -104.5, 49.0)
-14-19-05-358:[Warn]:Time:14-19-05-357:StoryInstance queue concurrent message notify_player
-14-19-06-360:[Warn]:Time:14-19-06-359:StoryInstance queue concurrent message notify_player
-14-19-06-360:[Warn]:Time:14-19-06-360:StoryInstance queue concurrent message notify_player
-14-19-07-363:[Warn]:Time:14-19-07-363:StoryInstance queue concurrent message notify_player
-14-19-07-480:[Warn]:Time:14-19-07-480:StoryInstance queue message on_trigger_enter
-14-19-07-482:[Warn]:Time:14-19-07-482:StoryInstance queue concurrent message baozha
-14-19-07-483:[Warn]:Time:14-19-07-482:bazha (52.0, 0.3, 59.0)
-14-19-07-541:[Warn]:Time:14-19-07-540:StoryInstance queue message on_trigger_exit
-14-19-08-364:[Warn]:Time:14-19-08-364:StoryInstance queue message on_trigger_enter
-14-19-08-423:[Warn]:Time:14-19-08-422:StoryInstance queue message on_trigger_exit
-14-19-08-442:[Warn]:Time:14-19-08-442:StoryInstance queue message on_trigger_enter
-14-19-08-484:[Warn]:Time:14-19-08-483:StoryInstance queue message on_trigger_exit
-14-19-08-496:[Warn]:Time:14-19-08-495:StoryInstance queue concurrent message baozha
-14-19-08-496:[Warn]:Time:14-19-08-496:bazha (53.0, -2.2, 62.0)
-14-19-09-502:[Warn]:Time:14-19-09-502:StoryInstance queue concurrent message baozha
-14-19-09-502:[Warn]:Time:14-19-09-502:bazha (53.0, -27.2, 63.0)
-14-19-09-543:[Warn]:Time:14-19-09-542:StoryInstance queue message on_trigger_enter
-14-19-09-601:[Warn]:Time:14-19-09-600:StoryInstance queue message on_trigger_exit
+01-33-24-319:======GameLog Start (Wednesday, October 13, 2021, 1:33:24 AM)======
+01-33-24-389:[Debug]:Time:01-33-24-389:StoryInstance.Init message handler num:4 True
+01-33-24-389:[Info]:ParseStory scene_main 0
+01-33-24-437:[Debug]:Time:01-33-24-437:StoryInstance.Init message handler num:11 True
+01-33-24-437:[Info]:ParseStory story_main 0
+01-33-24-439:[Warn]:Time:01-33-24-439:StoryInstance queue message start
+01-33-24-868:[Warn]:Time:01-33-24-867:StoryInstance queue message start
+01-33-24-869:[Warn]:Time:01-33-24-868:story_main start
+01-33-26-873:[Debug]:Time:01-33-26-873:StoryInstance.Init message handler num:3 True
+01-33-26-873:[Info]:ParseStory Start:main 0
+01-33-26-933:[Warn]:Time:01-33-26-929:StoryInstance queue message start
+01-33-26-998:[Warn]:Time:01-33-26-985:StoryInstance queue message Start:loop_work
+01-33-29-318:[Warn]:Time:01-33-29-318:StoryInstance queue message Start:on_click
+01-33-29-325:[Warn]:Time:01-33-29-325:StoryInstance queue message on_start_button_click
+01-33-29-950:[Warn]:Time:01-33-29-949:StoryInstance queue message scene_loaded
+01-33-29-958:[Warn]:Time:01-33-29-958:StoryInstance queue message start_game
+01-33-31-090:[Debug]:Time:01-33-31-090:StoryInstance.Init message handler num:2 True
+01-33-31-090:[Info]:ParseStory Option:main 0
+01-33-31-098:[Warn]:Time:01-33-31-098:StoryInstance queue message start
+01-33-31-103:[Debug]:Time:01-33-31-103:StoryInstance.Init message handler num:3 True
+01-33-31-103:[Info]:ParseStory Info:main 0
+01-33-31-105:[Warn]:Time:01-33-31-105:StoryInstance queue message start
+01-33-31-108:[Debug]:Time:01-33-31-108:StoryInstance.Init message handler num:3 True
+01-33-31-108:[Info]:ParseStory CenterInfo:main 0
+01-33-31-110:[Warn]:Time:01-33-31-109:StoryInstance queue message start
+01-33-31-111:[Debug]:Time:01-33-31-111:StoryInstance.Init message handler num:3 True
+01-33-31-111:[Info]:ParseStory Victory:main 0
+01-33-31-113:[Warn]:Time:01-33-31-112:StoryInstance queue message start
+01-33-31-114:[Debug]:Time:01-33-31-114:StoryInstance.Init message handler num:3 True
+01-33-31-114:[Info]:ParseStory Failed:main 0
+01-33-31-116:[Warn]:Time:01-33-31-116:StoryInstance queue message start
+01-33-31-336:[Debug]:Time:01-33-31-336:StoryInstance.Init message handler num:3 True
+01-33-31-336:[Info]:ParseStory ai_player 0
+01-33-31-337:[Warn]:Time:01-33-31-337:StoryInstance queue message start
+01-33-31-350:[Debug]:Time:01-33-31-347:StoryInstance.Init message handler num:3 True
+01-33-31-350:[Info]:ParseStory ai_npc 0
+01-33-31-351:[Warn]:Time:01-33-31-351:StoryInstance queue message start
+01-33-31-355:[Debug]:Time:01-33-31-355:StoryInstance.Init message handler num:3 True
+01-33-31-355:[Info]:ParseStory ai_npc 0
+01-33-31-355:[Warn]:Time:01-33-31-355:StoryInstance queue message start
+01-33-31-360:[Debug]:Time:01-33-31-360:StoryInstance.Init message handler num:3 True
+01-33-31-360:[Info]:ParseStory ai_npc 0
+01-33-31-360:[Warn]:Time:01-33-31-360:StoryInstance queue message start
+01-33-31-364:[Debug]:Time:01-33-31-364:StoryInstance.Init message handler num:3 True
+01-33-31-364:[Info]:ParseStory ai_npc 0
+01-33-31-364:[Warn]:Time:01-33-31-364:StoryInstance queue message start
+01-33-31-367:[Debug]:Time:01-33-31-367:StoryInstance.Init message handler num:3 True
+01-33-31-367:[Info]:ParseStory ai_npc 0
+01-33-31-368:[Warn]:Time:01-33-31-367:StoryInstance queue message start
+01-33-31-371:[Debug]:Time:01-33-31-371:StoryInstance.Init message handler num:3 True
+01-33-31-371:[Info]:ParseStory ai_npc 0
+01-33-31-371:[Warn]:Time:01-33-31-371:StoryInstance queue message start
+01-33-31-384:[Warn]:Time:01-33-31-383:StoryInstance queue message on_born
+01-33-31-384:[Warn]:Time:01-33-31-384:StoryInstance queue message on_born
+01-33-31-384:[Warn]:Time:01-33-31-384:StoryInstance queue message on_born
+01-33-31-384:[Warn]:Time:01-33-31-384:StoryInstance queue message on_born
+01-33-31-385:[Warn]:Time:01-33-31-385:StoryInstance queue message on_born
+01-33-31-385:[Warn]:Time:01-33-31-385:StoryInstance queue message on_born
+01-33-31-385:[Warn]:Time:01-33-31-385:StoryInstance queue message on_born
+01-33-31-607:[Warn]:Time:01-33-31-606:StoryInstance queue message show_centerinfo
