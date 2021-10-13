@@ -54,7 +54,7 @@ script(main)
     createdir(logdir);
 
     echo("building GameLibrary.sln ...");
-    var(0) = command{
+    $var0 = command{
         win
         {:
             %xbuild% /m /nologo /noconsolelogger /p:Configuration=%cfg% /flp:LogFile=%logdir%/GameLibrary.sln.log;Encoding=UTF-8 /t:clean;rebuild %rootdir%/GameLibrary/GameLibrary.sln /p:Platform="Any CPU"
@@ -65,8 +65,8 @@ script(main)
         :};
     };
     
-    echo("result:{0}", var(0));
-    if(var(0)){
+    echo("result:{0}", $var0);
+    if($var0){
         setfgcolor("Red");
         echo("compile GameLibrary.sln failed, see Client/BuildLog/GameLibrary.sln.log");
         call("setcolor");
@@ -94,7 +94,7 @@ script(main)
     deletefile(plugindir+"/UnityEditor.dll");
     cd(rootdir);
 
-    if(var(0)){
+    if($var0){
         setfgcolor("Red");
         echo("compile failed !");
         call("setcolor");
@@ -105,7 +105,7 @@ script(main)
 	    echo("press any key ...");
 	    pause();
 	  };
-    return(var(0));
+    return($var0);
 };
 
 script(setcolor)

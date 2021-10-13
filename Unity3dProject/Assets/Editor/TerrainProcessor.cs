@@ -323,6 +323,11 @@ internal static class TerrainEditUtility
             var terrain = root.GetComponent<Terrain>();
             var terrainData = terrain.terrainData;
             var datas = terrainData.GetHeights(0, 0, terrainData.heightmapResolution, terrainData.heightmapResolution);
+            for(int ix = 0; ix < datas.GetLength(0); ++ix) {
+                for(int iy = 0; iy < datas.GetLength(1); ++iy) {
+                    datas[ix, iy] = 0.5f;
+                }
+            }
             var alphamaps = terrainData.GetAlphamaps(0, 0, terrainData.alphamapWidth, terrainData.alphamapHeight);
             int alphanum = alphamaps.GetLength(2);
             int[] layers = terrainData.GetSupportedLayers(0, 0, terrainData.detailWidth, terrainData.detailHeight);
@@ -660,7 +665,6 @@ internal static class TerrainEditUtility
         ++indent;
 
         AppendLine(sb, "{0}size{1};", GetIndent(indent), data.size);
-        AppendLine(sb, "{0}thickness({1});", GetIndent(indent), data.thickness);
         AppendLine(sb, "{0}basemapresolution({1});", GetIndent(indent), data.baseMapResolution);
 
         AppendLine(sb, "{0}heightmap(size({1}, {2}), resolution({3}), scale{4});", GetIndent(indent), data.heightmapResolution, data.heightmapResolution, data.heightmapResolution, data.heightmapScale);
@@ -678,7 +682,7 @@ internal static class TerrainEditUtility
         AppendLine(sb, "{0}{{", GetIndent(indent));
         ++indent;
         foreach(var dp in data.detailPrototypes) {
-            AppendLine(sb, "{0}prototype(texture(\"{1}\", {2}, {3}), rendermode({4}), usemesh({5}), minsize({6}, {7}), maxsize({8}, {9}), noisespread({10}), bendfactor({11}), healthcolor({12}), drycolor({13}));", GetIndent(indent), dp.prototypeTexture.name, dp.prototypeTexture.width, dp.prototypeTexture.height, dp.renderMode, dp.usePrototypeMesh, dp.minWidth, dp.minHeight, dp.maxWidth, dp.maxHeight, dp.noiseSpread, dp.bendFactor, dp.healthyColor, dp.dryColor);
+            AppendLine(sb, "{0}prototype(texture(\"{1}\", {2}, {3}), rendermode({4}), usemesh({5}), minsize({6}, {7}), maxsize({8}, {9}), noisespread({10}), healthcolor({11}), drycolor({12}));", GetIndent(indent), dp.prototypeTexture.name, dp.prototypeTexture.width, dp.prototypeTexture.height, dp.renderMode, dp.usePrototypeMesh, dp.minWidth, dp.minHeight, dp.maxWidth, dp.maxHeight, dp.noiseSpread, dp.healthyColor, dp.dryColor);
         }
         foreach (var layer in data.GetSupportedLayers(0, 0, data.detailWidth, data.detailHeight)) {
             AppendLine(sb, "{0}layer({1})", GetIndent(indent), layer);
