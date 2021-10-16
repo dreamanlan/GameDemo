@@ -1,60 +1,467 @@
-01-33-24-319:======GameLog Start (Wednesday, October 13, 2021, 1:33:24 AM)======
-01-33-24-389:[Debug]:Time:01-33-24-389:StoryInstance.Init message handler num:4 True
-01-33-24-389:[Info]:ParseStory scene_main 0
-01-33-24-437:[Debug]:Time:01-33-24-437:StoryInstance.Init message handler num:11 True
-01-33-24-437:[Info]:ParseStory story_main 0
-01-33-24-439:[Warn]:Time:01-33-24-439:StoryInstance queue message start
-01-33-24-868:[Warn]:Time:01-33-24-867:StoryInstance queue message start
-01-33-24-869:[Warn]:Time:01-33-24-868:story_main start
-01-33-26-873:[Debug]:Time:01-33-26-873:StoryInstance.Init message handler num:3 True
-01-33-26-873:[Info]:ParseStory Start:main 0
-01-33-26-933:[Warn]:Time:01-33-26-929:StoryInstance queue message start
-01-33-26-998:[Warn]:Time:01-33-26-985:StoryInstance queue message Start:loop_work
-01-33-29-318:[Warn]:Time:01-33-29-318:StoryInstance queue message Start:on_click
-01-33-29-325:[Warn]:Time:01-33-29-325:StoryInstance queue message on_start_button_click
-01-33-29-950:[Warn]:Time:01-33-29-949:StoryInstance queue message scene_loaded
-01-33-29-958:[Warn]:Time:01-33-29-958:StoryInstance queue message start_game
-01-33-31-090:[Debug]:Time:01-33-31-090:StoryInstance.Init message handler num:2 True
-01-33-31-090:[Info]:ParseStory Option:main 0
-01-33-31-098:[Warn]:Time:01-33-31-098:StoryInstance queue message start
-01-33-31-103:[Debug]:Time:01-33-31-103:StoryInstance.Init message handler num:3 True
-01-33-31-103:[Info]:ParseStory Info:main 0
-01-33-31-105:[Warn]:Time:01-33-31-105:StoryInstance queue message start
-01-33-31-108:[Debug]:Time:01-33-31-108:StoryInstance.Init message handler num:3 True
-01-33-31-108:[Info]:ParseStory CenterInfo:main 0
-01-33-31-110:[Warn]:Time:01-33-31-109:StoryInstance queue message start
-01-33-31-111:[Debug]:Time:01-33-31-111:StoryInstance.Init message handler num:3 True
-01-33-31-111:[Info]:ParseStory Victory:main 0
-01-33-31-113:[Warn]:Time:01-33-31-112:StoryInstance queue message start
-01-33-31-114:[Debug]:Time:01-33-31-114:StoryInstance.Init message handler num:3 True
-01-33-31-114:[Info]:ParseStory Failed:main 0
-01-33-31-116:[Warn]:Time:01-33-31-116:StoryInstance queue message start
-01-33-31-336:[Debug]:Time:01-33-31-336:StoryInstance.Init message handler num:3 True
-01-33-31-336:[Info]:ParseStory ai_player 0
-01-33-31-337:[Warn]:Time:01-33-31-337:StoryInstance queue message start
-01-33-31-350:[Debug]:Time:01-33-31-347:StoryInstance.Init message handler num:3 True
-01-33-31-350:[Info]:ParseStory ai_npc 0
-01-33-31-351:[Warn]:Time:01-33-31-351:StoryInstance queue message start
-01-33-31-355:[Debug]:Time:01-33-31-355:StoryInstance.Init message handler num:3 True
-01-33-31-355:[Info]:ParseStory ai_npc 0
-01-33-31-355:[Warn]:Time:01-33-31-355:StoryInstance queue message start
-01-33-31-360:[Debug]:Time:01-33-31-360:StoryInstance.Init message handler num:3 True
-01-33-31-360:[Info]:ParseStory ai_npc 0
-01-33-31-360:[Warn]:Time:01-33-31-360:StoryInstance queue message start
-01-33-31-364:[Debug]:Time:01-33-31-364:StoryInstance.Init message handler num:3 True
-01-33-31-364:[Info]:ParseStory ai_npc 0
-01-33-31-364:[Warn]:Time:01-33-31-364:StoryInstance queue message start
-01-33-31-367:[Debug]:Time:01-33-31-367:StoryInstance.Init message handler num:3 True
-01-33-31-367:[Info]:ParseStory ai_npc 0
-01-33-31-368:[Warn]:Time:01-33-31-367:StoryInstance queue message start
-01-33-31-371:[Debug]:Time:01-33-31-371:StoryInstance.Init message handler num:3 True
-01-33-31-371:[Info]:ParseStory ai_npc 0
-01-33-31-371:[Warn]:Time:01-33-31-371:StoryInstance queue message start
-01-33-31-384:[Warn]:Time:01-33-31-383:StoryInstance queue message on_born
-01-33-31-384:[Warn]:Time:01-33-31-384:StoryInstance queue message on_born
-01-33-31-384:[Warn]:Time:01-33-31-384:StoryInstance queue message on_born
-01-33-31-384:[Warn]:Time:01-33-31-384:StoryInstance queue message on_born
-01-33-31-385:[Warn]:Time:01-33-31-385:StoryInstance queue message on_born
-01-33-31-385:[Warn]:Time:01-33-31-385:StoryInstance queue message on_born
-01-33-31-385:[Warn]:Time:01-33-31-385:StoryInstance queue message on_born
-01-33-31-607:[Warn]:Time:01-33-31-606:StoryInstance queue message show_centerinfo
+21-30-24-026:======GameLog Start (Saturday, October 16, 2021, 9:30:24 PM)======
+21-30-24-091:[Debug]:Time:21-30-24-091:StoryInstance.Init message handler num:4 True
+21-30-24-091:[Info]:ParseStory scene_main 0
+21-30-24-136:[Debug]:Time:21-30-24-136:StoryInstance.Init message handler num:11 True
+21-30-24-136:[Info]:ParseStory story_main 0
+21-30-24-139:[Warn]:Time:21-30-24-138:StoryInstance queue message start
+21-30-24-659:[Warn]:Time:21-30-24-659:StoryInstance queue message start
+21-30-24-660:[Warn]:Time:21-30-24-660:story_main start
+21-30-26-643:[Debug]:Time:21-30-26-643:StoryInstance.Init message handler num:3 True
+21-30-26-643:[Info]:ParseStory Start:main 0
+21-30-26-698:[Warn]:Time:21-30-26-698:StoryInstance queue message start
+21-30-26-738:[Warn]:Time:21-30-26-737:StoryInstance queue message Start:loop_work
+21-30-29-481:[Warn]:Time:21-30-29-481:StoryInstance queue message Start:on_click
+21-30-29-488:[Warn]:Time:21-30-29-488:StoryInstance queue message on_start_button_click
+21-30-30-461:[Warn]:Time:21-30-30-460:StoryInstance queue message scene_loaded
+21-30-30-476:[Warn]:Time:21-30-30-475:StoryInstance queue message on_trigger_enter
+21-30-30-476:[Warn]:Time:21-30-30-476:StoryInstance queue message on_trigger_enter
+21-30-30-477:[Warn]:Time:21-30-30-476:StoryInstance queue message on_trigger_enter
+21-30-30-477:[Warn]:Time:21-30-30-477:StoryInstance queue message on_trigger_enter
+21-30-30-478:[Warn]:Time:21-30-30-477:StoryInstance queue message on_trigger_enter
+21-30-30-478:[Warn]:Time:21-30-30-478:StoryInstance queue message on_trigger_enter
+21-30-30-478:[Warn]:Time:21-30-30-478:StoryInstance queue message on_trigger_enter
+21-30-30-479:[Warn]:Time:21-30-30-478:StoryInstance queue message on_trigger_enter
+21-30-30-479:[Warn]:Time:21-30-30-479:StoryInstance queue message on_trigger_enter
+21-30-30-480:[Warn]:Time:21-30-30-479:StoryInstance queue message on_trigger_enter
+21-30-30-480:[Warn]:Time:21-30-30-480:StoryInstance queue message on_trigger_enter
+21-30-30-480:[Warn]:Time:21-30-30-480:StoryInstance queue message on_trigger_enter
+21-30-30-481:[Warn]:Time:21-30-30-480:StoryInstance queue message on_trigger_enter
+21-30-30-481:[Warn]:Time:21-30-30-481:StoryInstance queue message on_trigger_enter
+21-30-30-482:[Warn]:Time:21-30-30-481:StoryInstance queue message on_trigger_enter
+21-30-30-482:[Warn]:Time:21-30-30-482:StoryInstance queue message on_trigger_enter
+21-30-30-483:[Warn]:Time:21-30-30-482:StoryInstance queue message on_trigger_enter
+21-30-30-483:[Warn]:Time:21-30-30-483:StoryInstance queue message on_trigger_enter
+21-30-30-483:[Warn]:Time:21-30-30-483:StoryInstance queue message on_trigger_enter
+21-30-30-484:[Warn]:Time:21-30-30-483:StoryInstance queue message on_trigger_enter
+21-30-30-484:[Warn]:Time:21-30-30-484:StoryInstance queue message on_trigger_enter
+21-30-30-485:[Warn]:Time:21-30-30-484:StoryInstance queue message on_trigger_enter
+21-30-30-485:[Warn]:Time:21-30-30-485:StoryInstance queue message on_trigger_enter
+21-30-30-485:[Warn]:Time:21-30-30-485:StoryInstance queue message on_trigger_enter
+21-30-30-486:[Warn]:Time:21-30-30-485:StoryInstance queue message on_trigger_enter
+21-30-30-486:[Warn]:Time:21-30-30-486:StoryInstance queue message on_trigger_enter
+21-30-30-487:[Warn]:Time:21-30-30-486:StoryInstance queue message on_trigger_enter
+21-30-30-487:[Warn]:Time:21-30-30-487:StoryInstance queue message on_trigger_enter
+21-30-30-487:[Warn]:Time:21-30-30-487:StoryInstance queue message on_trigger_enter
+21-30-30-488:[Warn]:Time:21-30-30-487:StoryInstance queue message on_trigger_enter
+21-30-30-488:[Warn]:Time:21-30-30-488:StoryInstance queue message on_trigger_enter
+21-30-30-489:[Warn]:Time:21-30-30-488:StoryInstance queue message on_trigger_enter
+21-30-30-489:[Warn]:Time:21-30-30-489:StoryInstance queue message on_trigger_enter
+21-30-30-490:[Warn]:Time:21-30-30-489:StoryInstance queue message on_trigger_enter
+21-30-30-490:[Warn]:Time:21-30-30-490:StoryInstance queue message on_trigger_enter
+21-30-30-490:[Warn]:Time:21-30-30-490:StoryInstance queue message on_trigger_enter
+21-30-30-491:[Warn]:Time:21-30-30-490:StoryInstance queue message on_trigger_enter
+21-30-30-491:[Warn]:Time:21-30-30-491:StoryInstance queue message on_trigger_enter
+21-30-30-492:[Warn]:Time:21-30-30-491:StoryInstance queue message on_trigger_enter
+21-30-30-492:[Warn]:Time:21-30-30-492:StoryInstance queue message on_trigger_enter
+21-30-30-492:[Warn]:Time:21-30-30-492:StoryInstance queue message on_trigger_enter
+21-30-30-493:[Warn]:Time:21-30-30-492:StoryInstance queue message on_trigger_enter
+21-30-30-493:[Warn]:Time:21-30-30-493:StoryInstance queue message on_trigger_enter
+21-30-30-494:[Warn]:Time:21-30-30-493:StoryInstance queue message on_trigger_enter
+21-30-30-494:[Warn]:Time:21-30-30-494:StoryInstance queue message on_trigger_enter
+21-30-30-495:[Warn]:Time:21-30-30-494:StoryInstance queue message on_trigger_enter
+21-30-30-495:[Warn]:Time:21-30-30-495:StoryInstance queue message on_trigger_enter
+21-30-30-495:[Warn]:Time:21-30-30-495:StoryInstance queue message on_trigger_enter
+21-30-30-496:[Warn]:Time:21-30-30-496:StoryInstance queue message on_trigger_enter
+21-30-30-496:[Warn]:Time:21-30-30-496:StoryInstance queue message on_trigger_enter
+21-30-30-497:[Warn]:Time:21-30-30-496:StoryInstance queue message on_trigger_enter
+21-30-30-497:[Warn]:Time:21-30-30-497:StoryInstance queue message on_trigger_enter
+21-30-30-498:[Warn]:Time:21-30-30-497:StoryInstance queue message on_trigger_enter
+21-30-30-498:[Warn]:Time:21-30-30-498:StoryInstance queue message on_trigger_enter
+21-30-30-498:[Warn]:Time:21-30-30-498:StoryInstance queue message on_trigger_enter
+21-30-30-499:[Warn]:Time:21-30-30-498:StoryInstance queue message on_trigger_enter
+21-30-30-499:[Warn]:Time:21-30-30-499:StoryInstance queue message on_trigger_enter
+21-30-30-500:[Warn]:Time:21-30-30-499:StoryInstance queue message on_trigger_enter
+21-30-30-500:[Warn]:Time:21-30-30-500:StoryInstance queue message on_trigger_enter
+21-30-30-500:[Warn]:Time:21-30-30-500:StoryInstance queue message on_trigger_enter
+21-30-30-501:[Warn]:Time:21-30-30-500:StoryInstance queue message on_trigger_enter
+21-30-30-501:[Warn]:Time:21-30-30-501:StoryInstance queue message on_trigger_enter
+21-30-30-502:[Warn]:Time:21-30-30-501:StoryInstance queue message on_trigger_enter
+21-30-30-502:[Warn]:Time:21-30-30-502:StoryInstance queue message on_trigger_enter
+21-30-30-502:[Warn]:Time:21-30-30-502:StoryInstance queue message on_trigger_enter
+21-30-30-503:[Warn]:Time:21-30-30-502:StoryInstance queue message on_trigger_enter
+21-30-30-503:[Warn]:Time:21-30-30-503:StoryInstance queue message on_trigger_enter
+21-30-30-504:[Warn]:Time:21-30-30-503:StoryInstance queue message on_trigger_enter
+21-30-30-504:[Warn]:Time:21-30-30-504:StoryInstance queue message on_trigger_enter
+21-30-30-504:[Warn]:Time:21-30-30-504:StoryInstance queue message on_trigger_enter
+21-30-30-505:[Warn]:Time:21-30-30-504:StoryInstance queue message on_trigger_enter
+21-30-30-505:[Warn]:Time:21-30-30-505:StoryInstance queue message on_trigger_enter
+21-30-30-506:[Warn]:Time:21-30-30-505:StoryInstance queue message on_trigger_enter
+21-30-30-506:[Warn]:Time:21-30-30-506:StoryInstance queue message on_trigger_enter
+21-30-30-507:[Warn]:Time:21-30-30-506:StoryInstance queue message on_trigger_enter
+21-30-30-507:[Warn]:Time:21-30-30-507:StoryInstance queue message on_trigger_enter
+21-30-30-507:[Warn]:Time:21-30-30-507:StoryInstance queue message on_trigger_enter
+21-30-30-508:[Warn]:Time:21-30-30-507:StoryInstance queue message on_trigger_enter
+21-30-30-508:[Warn]:Time:21-30-30-508:StoryInstance queue message on_trigger_enter
+21-30-30-509:[Warn]:Time:21-30-30-508:StoryInstance queue message on_trigger_enter
+21-30-30-509:[Warn]:Time:21-30-30-509:StoryInstance queue message on_trigger_enter
+21-30-30-509:[Warn]:Time:21-30-30-509:StoryInstance queue message on_trigger_enter
+21-30-30-510:[Warn]:Time:21-30-30-509:StoryInstance queue message on_trigger_enter
+21-30-30-510:[Warn]:Time:21-30-30-510:StoryInstance queue message on_trigger_enter
+21-30-30-526:[Warn]:Time:21-30-30-525:DotnetSet Int32.text Exception:System.Int32.text Due to: Attempted to access a missing member.
+  at System.RuntimeType.InvokeMember (System.String name, System.Reflection.BindingFlags bindingFlags, System.Reflection.Binder binder, System.Object target, System.Object[] providedArgs, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, System.String[] namedParams) [0x0070c] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.Type.InvokeMember (System.String name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object target, System.Object[] args) [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at StoryScript.CommonCommands.DotnetSetCommand.ExecCommand (StoryScript.StoryInstance instance, StoryScript.StoryMessageHandler handler, System.Int64 delta) [0x0018c] in <afafe080e5d44697acb70d3e4f10c397>:0 
+21-30-30-528:[Warn]:Time:21-30-30-527:StoryInstance queue concurrent message baozha
+21-30-30-529:[Warn]:Time:21-30-30-528:bazha (46.0, 20.1, 129.0)
+21-30-30-554:[Warn]:Time:21-30-30-553:StoryInstance queue message start_game
+21-30-31-688:[Debug]:Time:21-30-31-688:StoryInstance.Init message handler num:2 True
+21-30-31-688:[Info]:ParseStory Option:main 0
+21-30-31-698:[Warn]:Time:21-30-31-697:StoryInstance queue message start
+21-30-31-703:[Debug]:Time:21-30-31-703:StoryInstance.Init message handler num:3 True
+21-30-31-703:[Info]:ParseStory Info:main 0
+21-30-31-707:[Warn]:Time:21-30-31-706:StoryInstance queue message start
+21-30-31-710:[Debug]:Time:21-30-31-710:StoryInstance.Init message handler num:3 True
+21-30-31-710:[Info]:ParseStory CenterInfo:main 0
+21-30-31-713:[Warn]:Time:21-30-31-712:StoryInstance queue message start
+21-30-31-714:[Debug]:Time:21-30-31-714:StoryInstance.Init message handler num:3 True
+21-30-31-714:[Info]:ParseStory Victory:main 0
+21-30-31-719:[Warn]:Time:21-30-31-718:StoryInstance queue message start
+21-30-31-720:[Debug]:Time:21-30-31-720:StoryInstance.Init message handler num:3 True
+21-30-31-720:[Info]:ParseStory Failed:main 0
+21-30-31-724:[Warn]:Time:21-30-31-723:StoryInstance queue message start
+21-30-31-770:[Warn]:Time:21-30-31-770:StoryInstance queue concurrent message baozha
+21-30-31-771:[Warn]:Time:21-30-31-770:bazha (46.0, 20.2, 129.0)
+21-30-31-939:[Debug]:Time:21-30-31-939:StoryInstance.Init message handler num:3 True
+21-30-31-939:[Info]:ParseStory ai_player 0
+21-30-31-941:[Warn]:Time:21-30-31-940:StoryInstance queue message start
+21-30-31-951:[Debug]:Time:21-30-31-951:StoryInstance.Init message handler num:3 True
+21-30-31-951:[Info]:ParseStory ai_npc 0
+21-30-31-952:[Warn]:Time:21-30-31-951:StoryInstance queue message start
+21-30-31-956:[Debug]:Time:21-30-31-956:StoryInstance.Init message handler num:3 True
+21-30-31-959:[Info]:ParseStory ai_npc 0
+21-30-31-960:[Warn]:Time:21-30-31-959:StoryInstance queue message start
+21-30-31-965:[Debug]:Time:21-30-31-965:StoryInstance.Init message handler num:3 True
+21-30-31-965:[Info]:ParseStory ai_npc 0
+21-30-31-966:[Warn]:Time:21-30-31-965:StoryInstance queue message start
+21-30-31-969:[Debug]:Time:21-30-31-969:StoryInstance.Init message handler num:3 True
+21-30-31-969:[Info]:ParseStory ai_npc 0
+21-30-31-970:[Warn]:Time:21-30-31-969:StoryInstance queue message start
+21-30-31-976:[Debug]:Time:21-30-31-976:StoryInstance.Init message handler num:3 True
+21-30-31-976:[Info]:ParseStory ai_npc 0
+21-30-31-977:[Warn]:Time:21-30-31-976:StoryInstance queue message start
+21-30-31-980:[Debug]:Time:21-30-31-980:StoryInstance.Init message handler num:3 True
+21-30-31-980:[Info]:ParseStory ai_npc 0
+21-30-31-981:[Warn]:Time:21-30-31-981:StoryInstance queue message start
+21-30-32-003:[Warn]:Time:21-30-32-002:StoryInstance queue message on_born
+21-30-32-004:[Warn]:Time:21-30-32-004:StoryInstance queue message on_born
+21-30-32-005:[Warn]:Time:21-30-32-004:StoryInstance queue message on_born
+21-30-32-005:[Warn]:Time:21-30-32-005:StoryInstance queue message on_born
+21-30-32-005:[Warn]:Time:21-30-32-005:StoryInstance queue message on_born
+21-30-32-006:[Warn]:Time:21-30-32-005:StoryInstance queue message on_born
+21-30-32-006:[Warn]:Time:21-30-32-006:StoryInstance queue message on_born
+21-30-32-229:[Warn]:Time:21-30-32-228:StoryInstance queue message show_centerinfo
+21-30-32-793:[Warn]:Time:21-30-32-793:StoryInstance queue concurrent message baozha
+21-30-32-794:[Warn]:Time:21-30-32-793:bazha (52.0, 21.0, 11.0)
+21-30-33-828:[Warn]:Time:21-30-33-828:StoryInstance queue concurrent message baozha
+21-30-33-829:[Warn]:Time:21-30-33-828:bazha (52.0, 21.3, 11.0)
+21-30-34-224:[Warn]:Time:21-30-34-223:StoryInstance queue concurrent message notify_player
+21-30-34-224:[Warn]:Time:21-30-34-224:StoryInstance queue concurrent message notify_player
+21-30-34-225:[Warn]:Time:21-30-34-225:StoryInstance queue concurrent message notify_player
+21-30-34-225:[Warn]:Time:21-30-34-225:StoryInstance queue concurrent message notify_player
+21-30-34-843:[Warn]:Time:21-30-34-843:StoryInstance queue concurrent message baozha
+21-30-34-844:[Warn]:Time:21-30-34-843:bazha (124.0, 21.3, 261.0)
+21-30-35-876:[Warn]:Time:21-30-35-876:StoryInstance queue concurrent message baozha
+21-30-35-877:[Warn]:Time:21-30-35-876:bazha (124.0, 20.3, 261.0)
+21-30-35-995:[Warn]:Time:21-30-35-994:StoryInstance queue message hide_centerinfo
+21-30-36-015:[Warn]:Time:21-30-36-014:StoryInstance queue message on_hide_centerinfo
+21-30-37-796:[Warn]:Time:21-30-37-795:StoryInstance queue message on_trigger_enter
+21-30-37-797:[Warn]:Time:21-30-37-796:StoryInstance queue message on_trigger_enter
+21-30-37-798:[Warn]:Time:21-30-37-798:StoryInstance queue message on_trigger_enter
+21-30-37-800:[Warn]:Time:21-30-37-799:StoryInstance queue message on_trigger_exit
+21-30-37-801:[Warn]:Time:21-30-37-800:StoryInstance queue message on_trigger_exit
+21-30-37-802:[Warn]:Time:21-30-37-801:StoryInstance queue message on_trigger_exit
+21-30-37-804:[Warn]:Time:21-30-37-803:StoryInstance queue message on_trigger_enter
+21-30-37-805:[Warn]:Time:21-30-37-804:StoryInstance queue message on_trigger_exit
+21-30-38-216:[Warn]:Time:21-30-38-215:StoryInstance queue concurrent message baozha
+21-30-38-217:[Warn]:Time:21-30-38-216:bazha (258.0, 20.9, 497.0)
+21-30-39-245:[Warn]:Time:21-30-39-244:StoryInstance queue concurrent message baozha
+21-30-39-245:[Warn]:Time:21-30-39-245:bazha (258.0, 21.4, 497.0)
+21-30-40-275:[Warn]:Time:21-30-40-275:StoryInstance queue concurrent message baozha
+21-30-40-276:[Warn]:Time:21-30-40-276:bazha (68.0, 20.7, 69.0)
+21-30-41-977:[Warn]:Time:21-30-41-976:StoryInstance queue concurrent message baozha
+21-30-41-977:[Warn]:Time:21-30-41-977:bazha (68.0, 21.1, 69.0)
+21-30-43-008:[Warn]:Time:21-30-43-007:StoryInstance queue concurrent message baozha
+21-30-43-008:[Warn]:Time:21-30-43-008:bazha (201.0, 20.8, 432.0)
+21-30-44-045:[Warn]:Time:21-30-44-044:StoryInstance queue concurrent message baozha
+21-30-44-045:[Warn]:Time:21-30-44-045:bazha (201.0, 20.9, 432.0)
+21-30-45-076:[Warn]:Time:21-30-45-076:StoryInstance queue concurrent message baozha
+21-30-45-077:[Warn]:Time:21-30-45-076:bazha (244.4, 20.6, 198.4)
+21-30-46-107:[Warn]:Time:21-30-46-107:StoryInstance queue concurrent message baozha
+21-30-46-108:[Warn]:Time:21-30-46-107:bazha (249.0, 20.7, 197.0)
+21-30-47-129:[Warn]:Time:21-30-47-128:StoryInstance queue concurrent message baozha
+21-30-47-129:[Warn]:Time:21-30-47-129:bazha (287.0, 20.2, 430.0)
+21-30-47-656:[Warn]:Time:21-30-47-655:StoryInstance queue concurrent message notify_player
+21-30-47-656:[Warn]:Time:21-30-47-656:StoryInstance queue concurrent message notify_player
+21-30-48-153:[Warn]:Time:21-30-48-152:StoryInstance queue concurrent message baozha
+21-30-48-153:[Warn]:Time:21-30-48-153:bazha (287.0, 20.7, 430.0)
+21-30-48-671:[Warn]:Time:21-30-48-670:StoryInstance queue concurrent message notify_player
+21-30-48-672:[Warn]:Time:21-30-48-671:StoryInstance queue concurrent message notify_player
+21-30-48-672:[Warn]:Time:21-30-48-672:StoryInstance queue concurrent message notify_player
+21-30-49-177:[Warn]:Time:21-30-49-176:StoryInstance queue concurrent message baozha
+21-30-49-177:[Warn]:Time:21-30-49-177:bazha (333.0, 20.6, 478.0)
+21-30-49-675:[Warn]:Time:21-30-49-674:StoryInstance queue concurrent message notify_player
+21-30-49-707:[Warn]:Time:21-30-49-706:StoryInstance queue message on_trigger_enter
+21-30-49-750:[Warn]:Time:21-30-49-749:StoryInstance queue message on_trigger_exit
+21-30-49-794:[Warn]:Time:21-30-49-793:StoryInstance queue message on_trigger_enter
+21-30-49-842:[Warn]:Time:21-30-49-842:StoryInstance queue message on_trigger_exit
+21-30-50-213:[Warn]:Time:21-30-50-212:StoryInstance queue concurrent message baozha
+21-30-50-214:[Warn]:Time:21-30-50-213:bazha (333.0, 20.2, 478.0)
+21-30-50-679:[Warn]:Time:21-30-50-678:StoryInstance queue concurrent message notify_player
+21-30-50-680:[Warn]:Time:21-30-50-679:StoryInstance queue concurrent message notify_player
+21-30-50-680:[Warn]:Time:21-30-50-680:StoryInstance queue concurrent message notify_player
+21-30-50-681:[Warn]:Time:21-30-50-680:StoryInstance queue concurrent message notify_player
+21-30-50-779:[Warn]:Time:21-30-50-778:StoryInstance queue message on_trigger_enter
+21-30-50-791:[Warn]:Time:21-30-50-790:StoryInstance queue message on_trigger_enter
+21-30-50-811:[Warn]:Time:21-30-50-810:StoryInstance queue message on_trigger_exit
+21-30-50-831:[Warn]:Time:21-30-50-830:StoryInstance queue message on_trigger_exit
+21-30-50-934:[Warn]:Time:21-30-50-933:StoryInstance queue message on_trigger_enter
+21-30-50-971:[Warn]:Time:21-30-50-970:StoryInstance queue message on_trigger_exit
+21-30-51-232:[Warn]:Time:21-30-51-232:StoryInstance queue concurrent message baozha
+21-30-51-233:[Warn]:Time:21-30-51-232:bazha (110.0, 23.4, 413.0)
+21-30-51-715:[Warn]:Time:21-30-51-714:StoryInstance queue message on_trigger_enter
+21-30-51-762:[Warn]:Time:21-30-51-761:StoryInstance queue message on_trigger_exit
+21-30-52-257:[Warn]:Time:21-30-52-256:StoryInstance queue concurrent message baozha
+21-30-52-257:[Warn]:Time:21-30-52-257:bazha (110.0, 22.7, 413.0)
+21-30-52-695:[Warn]:Time:21-30-52-694:StoryInstance queue message on_trigger_enter
+21-30-52-696:[Warn]:Time:21-30-52-695:StoryInstance queue concurrent message notify_player
+21-30-52-697:[Warn]:Time:21-30-52-696:StoryInstance queue concurrent message notify_player
+21-30-52-697:[Warn]:Time:21-30-52-697:StoryInstance queue concurrent message notify_player
+21-30-52-698:[Warn]:Time:21-30-52-698:StoryInstance queue concurrent message notify_player
+21-30-52-739:[Warn]:Time:21-30-52-738:StoryInstance queue message on_trigger_enter
+21-30-52-740:[Warn]:Time:21-30-52-739:StoryInstance queue message on_trigger_enter
+21-30-52-759:[Warn]:Time:21-30-52-758:StoryInstance queue message on_trigger_exit
+21-30-52-788:[Warn]:Time:21-30-52-786:StoryInstance queue message on_trigger_exit
+21-30-52-814:[Warn]:Time:21-30-52-813:StoryInstance queue message on_trigger_exit
+21-30-52-883:[Warn]:Time:21-30-52-882:StoryInstance queue message on_trigger_enter
+21-30-52-946:[Warn]:Time:21-30-52-946:StoryInstance queue message on_trigger_exit
+21-30-53-285:[Warn]:Time:21-30-53-284:StoryInstance queue concurrent message baozha
+21-30-53-285:[Warn]:Time:21-30-53-285:bazha (146.0, 23.6, 307.0)
+21-30-53-703:[Warn]:Time:21-30-53-702:StoryInstance queue concurrent message notify_player
+21-30-54-301:[Warn]:Time:21-30-54-300:StoryInstance queue concurrent message baozha
+21-30-54-302:[Warn]:Time:21-30-54-301:bazha (146.0, 24.5, 307.0)
+21-30-54-711:[Warn]:Time:21-30-54-710:StoryInstance queue concurrent message notify_player
+21-30-54-867:[Warn]:Time:21-30-54-866:StoryInstance queue message on_trigger_enter
+21-30-54-899:[Warn]:Time:21-30-54-898:StoryInstance queue message on_trigger_enter
+21-30-54-900:[Warn]:Time:21-30-54-899:StoryInstance queue message on_trigger_enter
+21-30-54-915:[Warn]:Time:21-30-54-915:StoryInstance queue message on_trigger_exit
+21-30-54-916:[Warn]:Time:21-30-54-916:StoryInstance queue message on_trigger_enter
+21-30-54-938:[Warn]:Time:21-30-54-937:StoryInstance queue message on_trigger_exit
+21-30-54-963:[Warn]:Time:21-30-54-962:StoryInstance queue message on_trigger_exit
+21-30-54-987:[Warn]:Time:21-30-54-986:StoryInstance queue message on_trigger_exit
+21-30-55-337:[Warn]:Time:21-30-55-336:StoryInstance queue concurrent message baozha
+21-30-55-338:[Warn]:Time:21-30-55-337:bazha (171.0, 22.8, 359.0)
+21-30-55-915:[Warn]:Time:21-30-55-914:StoryInstance queue message on_trigger_enter
+21-30-55-979:[Warn]:Time:21-30-55-978:StoryInstance queue message on_trigger_exit
+21-30-56-357:[Warn]:Time:21-30-56-356:StoryInstance queue concurrent message baozha
+21-30-56-357:[Warn]:Time:21-30-56-357:bazha (171.0, 22.9, 359.0)
+21-30-56-895:[Warn]:Time:21-30-56-895:StoryInstance queue message on_trigger_enter
+21-30-56-931:[Warn]:Time:21-30-56-930:StoryInstance queue message on_trigger_exit
+21-30-57-389:[Warn]:Time:21-30-57-388:StoryInstance queue concurrent message baozha
+21-30-57-389:[Warn]:Time:21-30-57-389:bazha (184.0, 22.5, 479.0)
+21-30-57-731:[Warn]:Time:21-30-57-730:StoryInstance queue concurrent message notify_player
+21-30-58-416:[Warn]:Time:21-30-58-416:StoryInstance queue concurrent message baozha
+21-30-58-417:[Warn]:Time:21-30-58-416:bazha (184.0, 23.0, 479.0)
+21-30-59-452:[Warn]:Time:21-30-59-452:StoryInstance queue concurrent message baozha
+21-30-59-453:[Warn]:Time:21-30-59-452:bazha (196.0, 24.1, 409.0)
+21-30-59-882:[Warn]:Time:21-30-59-881:StoryInstance queue message on_trigger_enter
+21-30-59-934:[Warn]:Time:21-30-59-933:StoryInstance queue message on_trigger_exit
+21-31-00-488:[Warn]:Time:21-31-00-487:StoryInstance queue concurrent message baozha
+21-31-00-489:[Warn]:Time:21-31-00-488:bazha (196.0, 24.9, 409.0)
+21-31-01-512:[Warn]:Time:21-31-01-512:StoryInstance queue concurrent message baozha
+21-31-01-513:[Warn]:Time:21-31-01-512:bazha (208.0, 21.7, 265.0)
+21-31-02-520:[Warn]:Time:21-31-02-519:StoryInstance queue concurrent message baozha
+21-31-02-520:[Warn]:Time:21-31-02-520:bazha (208.0, 22.7, 265.0)
+21-31-03-532:[Warn]:Time:21-31-03-532:StoryInstance queue concurrent message baozha
+21-31-03-533:[Warn]:Time:21-31-03-532:bazha (212.0, 22.1, 365.0)
+21-31-04-548:[Warn]:Time:21-31-04-547:StoryInstance queue concurrent message baozha
+21-31-04-548:[Warn]:Time:21-31-04-548:bazha (212.0, 21.7, 365.0)
+21-31-05-572:[Warn]:Time:21-31-05-572:StoryInstance queue concurrent message baozha
+21-31-05-573:[Warn]:Time:21-31-05-572:bazha (231.0, 24.7, 375.0)
+21-31-06-588:[Warn]:Time:21-31-06-587:StoryInstance queue concurrent message baozha
+21-31-06-588:[Warn]:Time:21-31-06-588:bazha (231.0, 24.9, 375.0)
+21-31-07-604:[Warn]:Time:21-31-07-603:StoryInstance queue concurrent message baozha
+21-31-07-604:[Warn]:Time:21-31-07-604:bazha (253.0, 24.7, 431.0)
+21-31-08-616:[Warn]:Time:21-31-08-616:StoryInstance queue concurrent message baozha
+21-31-08-617:[Warn]:Time:21-31-08-616:bazha (253.0, 24.1, 431.0)
+21-31-09-632:[Warn]:Time:21-31-09-631:StoryInstance queue concurrent message baozha
+21-31-09-633:[Warn]:Time:21-31-09-632:bazha (289.0, 21.8, 266.0)
+21-31-10-652:[Warn]:Time:21-31-10-652:StoryInstance queue concurrent message baozha
+21-31-10-653:[Warn]:Time:21-31-10-653:bazha (289.0, 22.2, 266.0)
+21-31-11-663:[Warn]:Time:21-31-11-663:StoryInstance queue concurrent message baozha
+21-31-11-664:[Warn]:Time:21-31-11-663:bazha (299.0, 23.6, 25.0)
+21-31-12-679:[Warn]:Time:21-31-12-678:StoryInstance queue concurrent message baozha
+21-31-12-680:[Warn]:Time:21-31-12-680:bazha (299.0, 23.0, 25.0)
+21-31-13-701:[Warn]:Time:21-31-13-700:StoryInstance queue concurrent message baozha
+21-31-13-701:[Warn]:Time:21-31-13-701:bazha (333.0, 24.0, 236.0)
+21-31-14-716:[Warn]:Time:21-31-14-715:StoryInstance queue concurrent message baozha
+21-31-14-717:[Warn]:Time:21-31-14-716:bazha (333.0, 24.7, 236.0)
+21-31-15-731:[Warn]:Time:21-31-15-730:StoryInstance queue concurrent message baozha
+21-31-15-731:[Warn]:Time:21-31-15-731:bazha (333.0, 23.3, 216.0)
+21-31-16-744:[Warn]:Time:21-31-16-743:StoryInstance queue concurrent message baozha
+21-31-16-744:[Warn]:Time:21-31-16-744:bazha (333.0, 24.2, 216.0)
+21-31-17-752:[Warn]:Time:21-31-17-752:StoryInstance queue concurrent message baozha
+21-31-17-753:[Warn]:Time:21-31-17-752:bazha (345.0, 21.3, 183.0)
+21-31-18-767:[Warn]:Time:21-31-18-766:StoryInstance queue concurrent message baozha
+21-31-18-768:[Warn]:Time:21-31-18-767:bazha (345.0, 21.7, 183.0)
+21-31-19-690:[Debug]:Time:21-31-19-690:StoryInstance.Init message handler num:1 True
+21-31-19-690:[Info]:ParseStory main 0
+21-31-19-691:[Warn]:Time:21-31-19-690:StoryInstance queue message start
+21-31-19-693:[Warn]:Time:21-31-19-692:test
+21-31-19-792:[Warn]:Time:21-31-19-792:StoryInstance queue concurrent message baozha
+21-31-19-793:[Warn]:Time:21-31-19-793:bazha (366.0, 24.6, 221.0)
+21-31-20-816:[Warn]:Time:21-31-20-816:StoryInstance queue concurrent message baozha
+21-31-20-817:[Warn]:Time:21-31-20-816:bazha (366.0, 24.2, 221.0)
+21-31-21-832:[Warn]:Time:21-31-21-831:StoryInstance queue concurrent message baozha
+21-31-21-833:[Warn]:Time:21-31-21-832:bazha (382.0, 23.2, 15.0)
+21-31-21-875:[Warn]:Time:21-31-21-874:StoryInstance queue concurrent message notify_player
+21-31-22-724:[Warn]:Time:21-31-22-723:StoryInstance queue message move_to
+21-31-22-848:[Warn]:Time:21-31-22-847:StoryInstance queue concurrent message baozha
+21-31-22-848:[Warn]:Time:21-31-22-848:bazha (382.0, 22.4, 15.0)
+21-31-23-863:[Warn]:Time:21-31-23-863:StoryInstance queue concurrent message baozha
+21-31-23-864:[Warn]:Time:21-31-23-863:bazha (396.0, 21.7, 167.0)
+21-31-23-880:[Warn]:Time:21-31-23-879:StoryInstance queue concurrent message notify_player
+21-31-23-881:[Warn]:Time:21-31-23-880:StoryInstance queue concurrent message notify_player
+21-31-23-974:[Warn]:Time:21-31-23-973:StoryInstance queue message on_trigger_enter
+21-31-24-026:[Warn]:Time:21-31-24-026:StoryInstance queue message on_trigger_exit
+21-31-24-887:[Warn]:Time:21-31-24-887:StoryInstance queue concurrent message baozha
+21-31-24-888:[Warn]:Time:21-31-24-887:bazha (396.0, 22.2, 167.0)
+21-31-24-889:[Warn]:Time:21-31-24-888:StoryInstance queue concurrent message notify_player
+21-31-24-889:[Warn]:Time:21-31-24-889:StoryInstance queue concurrent message notify_player
+21-31-25-894:[Warn]:Time:21-31-25-893:StoryInstance queue message on_trigger_enter
+21-31-25-895:[Warn]:Time:21-31-25-895:StoryInstance queue concurrent message notify_player
+21-31-25-896:[Warn]:Time:21-31-25-895:StoryInstance queue concurrent message notify_player
+21-31-25-912:[Warn]:Time:21-31-25-912:StoryInstance queue concurrent message baozha
+21-31-25-916:[Warn]:Time:21-31-25-915:bazha (400.0, 24.5, 119.0)
+21-31-25-962:[Warn]:Time:21-31-25-961:StoryInstance queue message on_trigger_exit
+21-31-26-114:[Warn]:Time:21-31-26-113:StoryInstance queue message on_trigger_enter
+21-31-26-162:[Warn]:Time:21-31-26-161:StoryInstance queue message on_trigger_exit
+21-31-26-930:[Warn]:Time:21-31-26-929:StoryInstance queue message on_trigger_enter
+21-31-26-943:[Warn]:Time:21-31-26-943:StoryInstance queue concurrent message baozha
+21-31-26-944:[Warn]:Time:21-31-26-944:bazha (400.0, 23.9, 119.0)
+21-31-26-990:[Warn]:Time:21-31-26-989:StoryInstance queue message on_trigger_exit
+21-31-27-098:[Warn]:Time:21-31-27-097:StoryInstance queue message on_trigger_enter
+21-31-27-154:[Warn]:Time:21-31-27-153:StoryInstance queue message on_trigger_exit
+21-31-27-930:[Warn]:Time:21-31-27-929:StoryInstance queue message on_trigger_enter
+21-31-27-963:[Warn]:Time:21-31-27-963:StoryInstance queue concurrent message baozha
+21-31-27-964:[Warn]:Time:21-31-27-963:bazha (340.0, 22.7, 312.0)
+21-31-27-978:[Warn]:Time:21-31-27-977:StoryInstance queue message on_trigger_exit
+21-31-28-077:[Warn]:Time:21-31-28-077:StoryInstance queue message on_trigger_enter
+21-31-28-114:[Warn]:Time:21-31-28-113:StoryInstance queue message on_trigger_exit
+21-31-28-980:[Warn]:Time:21-31-28-980:StoryInstance queue concurrent message baozha
+21-31-28-981:[Warn]:Time:21-31-28-980:bazha (340.0, 23.2, 312.0)
+21-31-29-996:[Warn]:Time:21-31-29-996:StoryInstance queue concurrent message baozha
+21-31-29-997:[Warn]:Time:21-31-29-996:bazha (377.0, 24.3, 387.0)
+21-31-31-012:[Warn]:Time:21-31-31-011:StoryInstance queue concurrent message baozha
+21-31-31-013:[Warn]:Time:21-31-31-012:bazha (377.0, 24.4, 387.0)
+21-31-32-028:[Warn]:Time:21-31-32-028:StoryInstance queue concurrent message baozha
+21-31-32-029:[Warn]:Time:21-31-32-028:bazha (382.0, 23.1, 383.0)
+21-31-33-044:[Warn]:Time:21-31-33-043:StoryInstance queue concurrent message baozha
+21-31-33-044:[Warn]:Time:21-31-33-044:bazha (382.0, 23.0, 383.0)
+21-31-34-063:[Warn]:Time:21-31-34-063:StoryInstance queue concurrent message baozha
+21-31-34-064:[Warn]:Time:21-31-34-063:bazha (103.0, 21.5, 20.0)
+21-31-35-080:[Warn]:Time:21-31-35-080:StoryInstance queue concurrent message baozha
+21-31-35-081:[Warn]:Time:21-31-35-080:bazha (103.0, 21.9, 20.0)
+21-31-36-103:[Warn]:Time:21-31-36-103:StoryInstance queue concurrent message baozha
+21-31-36-104:[Warn]:Time:21-31-36-104:bazha (130.0, 23.6, 210.0)
+21-31-37-116:[Warn]:Time:21-31-37-115:StoryInstance queue concurrent message baozha
+21-31-37-117:[Warn]:Time:21-31-37-116:bazha (130.0, 23.9, 210.0)
+21-31-38-127:[Warn]:Time:21-31-38-126:StoryInstance queue concurrent message baozha
+21-31-38-127:[Warn]:Time:21-31-38-127:bazha (140.0, 21.1, 34.0)
+21-31-39-147:[Warn]:Time:21-31-39-147:StoryInstance queue concurrent message baozha
+21-31-39-148:[Warn]:Time:21-31-39-147:bazha (140.0, 21.7, 34.0)
+21-31-40-159:[Warn]:Time:21-31-40-159:StoryInstance queue concurrent message baozha
+21-31-40-160:[Warn]:Time:21-31-40-159:bazha (208.0, 22.7, 144.0)
+21-31-41-180:[Warn]:Time:21-31-41-179:StoryInstance queue concurrent message baozha
+21-31-41-181:[Warn]:Time:21-31-41-180:bazha (208.0, 23.4, 144.0)
+21-31-42-203:[Warn]:Time:21-31-42-203:StoryInstance queue concurrent message baozha
+21-31-42-204:[Warn]:Time:21-31-42-203:bazha (280.0, 24.0, 215.0)
+21-31-43-220:[Warn]:Time:21-31-43-219:StoryInstance queue concurrent message baozha
+21-31-43-220:[Warn]:Time:21-31-43-220:bazha (280.0, 23.5, 215.0)
+21-31-43-729:[Warn]:Time:21-31-43-728:StoryInstance queue message move_to
+21-31-44-244:[Warn]:Time:21-31-44-243:StoryInstance queue concurrent message baozha
+21-31-44-244:[Warn]:Time:21-31-44-244:bazha (14.0, 24.5, 447.0)
+21-31-45-264:[Warn]:Time:21-31-45-263:StoryInstance queue concurrent message baozha
+21-31-45-265:[Warn]:Time:21-31-45-264:bazha (14.0, 24.6, 447.0)
+21-31-46-272:[Warn]:Time:21-31-46-271:StoryInstance queue concurrent message baozha
+21-31-46-272:[Warn]:Time:21-31-46-272:bazha (22.0, 23.9, 468.0)
+21-31-47-017:[Warn]:Time:21-31-47-016:StoryInstance queue concurrent message notify_player
+21-31-47-283:[Warn]:Time:21-31-47-282:StoryInstance queue concurrent message baozha
+21-31-47-284:[Warn]:Time:21-31-47-283:bazha (22.0, 24.7, 468.0)
+21-31-48-312:[Warn]:Time:21-31-48-311:StoryInstance queue concurrent message baozha
+21-31-48-312:[Warn]:Time:21-31-48-312:bazha (23.0, 23.6, 347.0)
+21-31-49-110:[Warn]:Time:21-31-49-109:StoryInstance queue message on_trigger_enter
+21-31-49-170:[Warn]:Time:21-31-49-169:StoryInstance queue message on_trigger_exit
+21-31-49-327:[Warn]:Time:21-31-49-326:StoryInstance queue concurrent message baozha
+21-31-49-327:[Warn]:Time:21-31-49-327:bazha (23.0, 24.1, 347.0)
+21-31-50-359:[Warn]:Time:21-31-50-358:StoryInstance queue concurrent message baozha
+21-31-50-359:[Warn]:Time:21-31-50-359:bazha (29.0, 24.4, 352.0)
+21-31-51-380:[Warn]:Time:21-31-51-380:StoryInstance queue concurrent message baozha
+21-31-51-381:[Warn]:Time:21-31-51-380:bazha (29.0, 24.5, 352.0)
+21-31-52-403:[Warn]:Time:21-31-52-402:StoryInstance queue concurrent message baozha
+21-31-52-403:[Warn]:Time:21-31-52-403:bazha (74.0, 22.5, 280.0)
+21-31-53-427:[Warn]:Time:21-31-53-427:StoryInstance queue concurrent message baozha
+21-31-53-428:[Warn]:Time:21-31-53-427:bazha (74.0, 21.9, 280.0)
+21-31-54-447:[Warn]:Time:21-31-54-447:StoryInstance queue concurrent message baozha
+21-31-54-448:[Warn]:Time:21-31-54-447:bazha (77.0, 23.5, 475.0)
+21-31-55-472:[Warn]:Time:21-31-55-471:StoryInstance queue concurrent message baozha
+21-31-55-472:[Warn]:Time:21-31-55-472:bazha (77.0, 23.4, 475.0)
+21-31-56-496:[Warn]:Time:21-31-56-495:StoryInstance queue concurrent message baozha
+21-31-56-496:[Warn]:Time:21-31-56-496:bazha (91.0, 22.5, 361.0)
+21-31-57-512:[Warn]:Time:21-31-57-511:StoryInstance queue concurrent message baozha
+21-31-57-512:[Warn]:Time:21-31-57-512:bazha (91.0, 22.1, 361.0)
+21-31-58-570:[Warn]:Time:21-31-58-569:StoryInstance queue concurrent message baozha
+21-31-58-570:[Warn]:Time:21-31-58-570:bazha (42.0, -33479.0, 438.0)
+21-31-59-650:[Warn]:Time:21-31-59-649:StoryInstance queue concurrent message baozha
+21-31-59-651:[Warn]:Time:21-31-59-650:bazha (59.0, -34365.1, 54.0)
+21-32-00-681:[Warn]:Time:21-32-00-681:StoryInstance queue concurrent message baozha
+21-32-00-682:[Warn]:Time:21-32-00-681:bazha (58.0, -35212.5, 162.0)
+21-32-01-940:[Warn]:Time:21-32-01-939:StoryInstance queue concurrent message baozha
+21-32-01-941:[Warn]:Time:21-32-01-940:bazha (42.0, -36271.9, 466.0)
+21-32-03-177:[Warn]:Time:21-32-03-176:StoryInstance queue concurrent message baozha
+21-32-03-177:[Warn]:Time:21-32-03-177:bazha (60.0, -28092.2, 159.0)
+21-32-04-423:[Warn]:Time:21-32-04-422:StoryInstance queue concurrent message baozha
+21-32-04-424:[Warn]:Time:21-32-04-423:bazha (63.0, -29024.5, 67.0)
+21-32-05-517:[Warn]:Time:21-32-05-516:StoryInstance queue concurrent message baozha
+21-32-05-517:[Warn]:Time:21-32-05-517:bazha (63.0, -29032.3, 99.0)
+21-32-06-564:[Warn]:Time:21-32-06-563:StoryInstance queue concurrent message baozha
+21-32-06-564:[Warn]:Time:21-32-06-564:bazha (62.0, -29796.8, 30.0)
+21-32-07-656:[Warn]:Time:21-32-07-655:StoryInstance queue concurrent message baozha
+21-32-07-656:[Warn]:Time:21-32-07-656:bazha (66.0, -30584.0, 254.0)
+21-32-08-680:[Warn]:Time:21-32-08-680:StoryInstance queue concurrent message baozha
+21-32-08-681:[Warn]:Time:21-32-08-680:bazha (59.0, -30625.8, 116.0)
+21-32-09-916:[Warn]:Time:21-32-09-916:StoryInstance queue concurrent message baozha
+21-32-09-917:[Warn]:Time:21-32-09-916:bazha (50.0, -30806.4, 31.0)
+21-32-10-929:[Warn]:Time:21-32-10-928:StoryInstance queue concurrent message baozha
+21-32-10-929:[Warn]:Time:21-32-10-929:bazha (48.0, -31609.1, 451.0)
+21-32-11-981:[Warn]:Time:21-32-11-980:StoryInstance queue concurrent message baozha
+21-32-11-981:[Warn]:Time:21-32-11-981:bazha (60.0, -32438.7, 165.0)
+21-32-12-997:[Warn]:Time:21-32-12-996:StoryInstance queue concurrent message baozha
+21-32-12-997:[Warn]:Time:21-32-12-997:bazha (59.0, -33259.9, 205.0)
+21-32-14-079:[Warn]:Time:21-32-14-078:StoryInstance queue concurrent message baozha
+21-32-14-080:[Warn]:Time:21-32-14-079:bazha (44.0, -32448.6, 129.0)
+21-32-15-110:[Warn]:Time:21-32-15-110:StoryInstance queue concurrent message baozha
+21-32-15-111:[Warn]:Time:21-32-15-110:bazha (44.0, -33288.8, 108.0)
+21-32-16-119:[Warn]:Time:21-32-16-118:StoryInstance queue concurrent message baozha
+21-32-16-119:[Warn]:Time:21-32-16-119:bazha (55.0, -34107.1, 206.0)
+21-32-17-135:[Warn]:Time:21-32-17-135:StoryInstance queue concurrent message baozha
+21-32-17-136:[Warn]:Time:21-32-17-135:bazha (41.0, -34951.8, 200.0)
+21-32-18-144:[Warn]:Time:21-32-18-143:StoryInstance queue concurrent message baozha
+21-32-18-144:[Warn]:Time:21-32-18-144:bazha (50.0, -34973.2, 170.0)
+21-32-19-164:[Warn]:Time:21-32-19-163:StoryInstance queue concurrent message baozha
+21-32-19-164:[Warn]:Time:21-32-19-164:bazha (59.0, -34979.0, 231.0)
+21-32-20-188:[Warn]:Time:21-32-20-187:StoryInstance queue concurrent message baozha
+21-32-20-188:[Warn]:Time:21-32-20-188:bazha (49.0, -33340.4, 205.0)
+21-32-21-204:[Warn]:Time:21-32-21-203:StoryInstance queue concurrent message baozha
+21-32-21-204:[Warn]:Time:21-32-21-204:bazha (59.0, -17223.3, 256.0)
+21-32-22-219:[Warn]:Time:21-32-22-219:StoryInstance queue concurrent message baozha
+21-32-22-220:[Warn]:Time:21-32-22-219:bazha (62.0, -16637.3, 52.0)
+21-32-23-235:[Warn]:Time:21-32-23-235:StoryInstance queue concurrent message baozha
+21-32-23-236:[Warn]:Time:21-32-23-235:bazha (59.0, -17225.0, 269.0)
+21-32-24-264:[Warn]:Time:21-32-24-263:StoryInstance queue concurrent message baozha
+21-32-24-264:[Warn]:Time:21-32-24-264:bazha (58.0, -17254.0, 197.0)
+21-32-25-288:[Warn]:Time:21-32-25-287:StoryInstance queue concurrent message baozha
+21-32-25-288:[Warn]:Time:21-32-25-288:bazha (63.0, -17853.5, 181.0)
+21-32-26-303:[Warn]:Time:21-32-26-303:StoryInstance queue concurrent message baozha
+21-32-26-304:[Warn]:Time:21-32-26-303:bazha (49.0, -17859.5, 47.0)
+21-32-27-319:[Warn]:Time:21-32-27-318:StoryInstance queue concurrent message baozha
+21-32-27-319:[Warn]:Time:21-32-27-319:bazha (60.0, -18457.7, 173.0)
