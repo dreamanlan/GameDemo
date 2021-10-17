@@ -107,6 +107,7 @@ public class DebugConsole : MonoBehaviour
     bool _isOpen;
     bool _isLastHitUi;
     StringBuilder _displayString = new StringBuilder();
+    string filter;
     bool dirty;
     #region GUI position values
     // Make these values public if you want to adjust layout of console window
@@ -299,37 +300,56 @@ public class DebugConsole : MonoBehaviour
 
         public void Add(string item)
         {
+            history.RemoveAll((child) => child == item);
             history.Add(item);
             index = 0;
         }
 
         string current;
 
-        public string Fetch(string current, bool next)
+        public string Fetch(string current, bool next, string filter = "")
         {
+            List<string> list = (filter == null || filter == "" || filter == "`" || filter == "~") ? history : history.FindAll((item) => item.StartsWith(filter));
             if (index == 0) {
                 this.current = current;
             }
 
-            if (history.Count == 0) {
+            if (list.Count == 0) {
                 return current;
             }
 
             index += next ? -1 : 1;
 
-            if (history.Count + index < 0 || history.Count + index > history.Count - 1) {
+            if (list.Count + index < 0 || list.Count + index > list.Count - 1) {
                 index = 0;
                 return this.current;
             }
 
-            var result = history[history.Count + index];
+            var result = list[list.Count + index];
 
             return result;
+        }
+
+        public override string ToString()
+        {
+            string rlt = "";
+            for (int i = 0; i < history.Count; i++) {
+                if (i > history.Count - 500) {
+                    rlt += history[i];
+                    rlt += i < history.Count - 1 ? "\n" : "";
+                }
+            }
+            return rlt;
+        }
+        public void FromString(string s)
+        {
+            history = new List<string>(s.Split('\n'));
         }
     }
 
     List<Message> _messages = new List<Message>();
     History _history = new History();
+    string _filter = string.Empty;
 
     void Awake()
     {
@@ -343,7 +363,9 @@ public class DebugConsole : MonoBehaviour
 
     void OnEnable()
     {
-        var scale = Screen.dpi / 160.0f;
+        filter = "";
+        _history.FromString(PlayerPrefs.GetString("debug_console_history"));
+        var scale = Screen.height / 500.0f;
 
         if (scale != 0.0f && scale >= 1.1f) {
             _scaled = true;
@@ -386,7 +408,19 @@ public class DebugConsole : MonoBehaviour
         this.RegisterCommandCallback("command", CMDCommand);
         this.RegisterCommandCallback("cmd", CMDCommand);
         this.RegisterCommandCallback("gm", CMDGm);
+        this.RegisterCommandCallback("filter", CMDFilter);
         this.RegisterCommandCallback("/?", CMDHelp);
+    }
+
+    public void Show() {
+        this.enabled = true;
+        _isOpen = true;
+        filter = "";
+    }
+
+    public void Hide() {
+        _isOpen = false;
+        this.enabled = false;
     }
 
     [Conditional("DEBUG_CONSOLE"),
@@ -402,10 +436,7 @@ public class DebugConsole : MonoBehaviour
             GUI.matrix = GUI.matrix * Matrix4x4.Scale(_guiScale);
         }
 
-        while (_messages.Count > maxLinesForDisplay) {
-            _messages.RemoveAt(0);
-        }
-#if (!MOBILE) || UNITY_EDITOR
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR
         // Toggle key shows the console in non-iOS dev builds
         if (evt.keyCode == toggleKey && evt.type == EventType.KeyUp)
             _isOpen = !_isOpen;
@@ -534,10 +565,19 @@ public class DebugConsole : MonoBehaviour
                 if (evt.keyCode == KeyCode.Return) {
                     EvalInputString(_inputString);
                     _inputString = string.Empty;
-                } else if (evt.keyCode == KeyCode.UpArrow) {
-                    _inputString = _history.Fetch(_inputString, true);
-                } else if (evt.keyCode == KeyCode.DownArrow) {
-                    _inputString = _history.Fetch(_inputString, false);
+                    filter = "";
+                }
+                else if (evt.keyCode == KeyCode.UpArrow) {
+                    _inputString = _history.Fetch(_inputString, true, filter);
+                }
+                else if (evt.keyCode == KeyCode.DownArrow) {
+                    _inputString = _history.Fetch(_inputString, false, filter);
+                }
+                else if (evt.keyCode == toggleKey) {
+
+                }
+                else {
+                    filter = _inputString;
                 }
             }
         }
@@ -559,7 +599,7 @@ public class DebugConsole : MonoBehaviour
     {
         StopAllCoroutines();
     }
-    #region StaticAccessors
+#region StaticAccessors
 
     /// <summary>
     /// Prints a message string to the console.
@@ -689,13 +729,13 @@ public class DebugConsole : MonoBehaviour
         DebugConsole.Instance.UnRegisterCommandCallback(commandString);
     }
 
-    #endregion
-    #region Console commands
+#endregion
+#region Console commands
 
     //==== Built-in example DebugCommand handlers ====
     object CMDClose(params string[] args)
     {
-        _isOpen = false;
+        Hide();
 
         return "closed";
     }
@@ -729,9 +769,9 @@ public class DebugConsole : MonoBehaviour
         info.AppendFormat("Unity Ver: {0}\n", Application.unityVersion);
         info.AppendFormat("Platform: {0} Language: {1}\n", Application.platform, Application.systemLanguage);
         info.AppendFormat("Screen:({0},{1}) DPI:{2} Target:{3}fps\n", Screen.width, Screen.height, Screen.dpi, Application.targetFrameRate);
-        var scene = SceneManager.GetActiveScene();
+        var scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
         if (scene.IsValid()) {
-            info.AppendFormat("Level: {0} ({1} of {2})\n", scene.name, scene.buildIndex, SceneManager.sceneCount);
+            info.AppendFormat("Level: {0} ({1} of {2})\n", scene.name, scene.buildIndex, UnityEngine.SceneManagement.SceneManager.sceneCount);
         }
         info.AppendFormat("Quality: {0}\n", QualitySettings.names[QualitySettings.GetQualityLevel()]);
         info.AppendLine();
@@ -739,32 +779,21 @@ public class DebugConsole : MonoBehaviour
         info.AppendFormat("Cache Path: {0}\n", Application.temporaryCachePath);
         info.AppendFormat("Persistent Path: {0}\n", Application.persistentDataPath);
         info.AppendFormat("Streaming Path: {0}\n", Application.streamingAssetsPath);
-#if UNITY_WEBPLAYER
-    info.AppendLine();
-    info.AppendFormat("URL: {0}\n", Application.absoluteURL);
-    info.AppendFormat("srcValue: {0}\n", Application.srcValue);
-    info.AppendFormat("security URL: {0}\n", Application.webSecurityHostUrl);
-#endif
 #if MOBILE
-    info.AppendLine();
-    info.AppendFormat("Net Reachability: {0}\n", Application.internetReachability);
-    info.AppendFormat("Multitouch: {0}\n", Input.multiTouchEnabled);
+	    info.AppendLine();
+	    info.AppendFormat("Net Reachability: {0}\n", Application.internetReachability);
+	    info.AppendFormat("Multitouch: {0}\n", Input.multiTouchEnabled);
 #endif
 #if UNITY_EDITOR
         info.AppendLine();
         info.AppendFormat("editorApp: {0}\n", UnityEditor.EditorApplication.applicationPath);
         info.AppendFormat("editorAppContents: {0}\n", UnityEditor.EditorApplication.applicationContentsPath);
-        info.AppendFormat("scene: {0}\n", UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene());
+        var editorScene = UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene();
+        if (null != editorScene) {
+            info.AppendFormat("scene: {0} ({1})\n", editorScene.name, editorScene.buildIndex);
+        }
 #endif
         info.AppendLine();
-        var devices = WebCamTexture.devices;
-        if (devices.Length > 0) {
-            info.AppendLine("Cameras: ");
-
-            foreach (var device in devices) {
-                info.AppendFormat("  {0} front:{1}\n", device.name, device.isFrontFacing);
-            }
-        }
 
         return info.ToString();
     }
@@ -848,6 +877,20 @@ public class DebugConsole : MonoBehaviour
             return "gm need argument command.";
         }
     }
+	
+    object CMDFilter(params string[] args)
+    {
+        if (args.Length == 2) {
+            _filter = args[1];
+            BuildDisplayString();
+            return "filter set to " + args[1];
+        }
+        else {
+            _filter = string.Empty;
+            BuildDisplayString();
+            return "filter set to empty.";
+        }
+    }
 
     #endregion
     #region GUI Window Methods
@@ -884,12 +927,16 @@ public class DebugConsole : MonoBehaviour
 
         _logScrollPos = GUI.BeginScrollView(scrollRect, _logScrollPos, innerRect, false, true);
 
-        if (_messages != null || _messages.Count > 0) {
+        if (_messages.Count > 0) {
             Color oldColor = GUI.contentColor;
 
             messageLine.y = 0;
 
             foreach (Message m in _messages) {
+                string txt = m.ToString();
+                if (!txt.Contains(_filter))
+                    continue;
+
                 GUI.contentColor = m.color;
 
                 guiContent.text = m.ToGUIString();
@@ -908,14 +955,12 @@ public class DebugConsole : MonoBehaviour
         GUI.EndScrollView();
 
         DrawBottomControls();
+
+        GUI.FocusControl(ENTRYFIELD);
     }
 
     string GetDisplayString()
     {
-        if (_messages == null) {
-            return string.Empty;
-        }
-
         return _displayString.ToString();
     }
 
@@ -924,6 +969,9 @@ public class DebugConsole : MonoBehaviour
         _displayString.Length = 0;
 
         foreach (Message m in _messages) {
+            string txt = m.ToString();
+            if (!txt.Contains(_filter))
+                continue;
             _displayString.AppendLine(m.ToString());
         }
     }
@@ -946,20 +994,28 @@ public class DebugConsole : MonoBehaviour
         DrawBottomControls();
     }
 
-    #endregion
-    #region InternalFunctionality
+#endregion
+#region InternalFunctionality
     [Conditional("DEBUG_CONSOLE"),
      Conditional("UNITY_EDITOR"),
      Conditional("DEVELOPMENT_BUILD")]
     void LogMessage(Message msg)
     {
+        while (_messages.Count > maxLinesForDisplay) {
+            if (_messages.Count > maxLinesForDisplay + 1000)
+                _messages.Clear();
+            else
+                _messages.RemoveAt(0);
+        }
         _messages.Add(msg);
+        _logScrollPos.y = 50000.0f;
     }
 
     //--- Local version. Use the static version above instead.
     void ClearLog()
     {
         _messages.Clear();
+        _logScrollPos.y = 50000.0f;
     }
 
     //--- Local version. Use the static version above instead.
@@ -984,6 +1040,9 @@ public class DebugConsole : MonoBehaviour
             return;
         }
         _history.Add(inputString);
+
+        string stringToSave = _history.ToString();
+        PlayerPrefs.SetString("debug_console_history", stringToSave);
 
         LogMessage(Message.Input(inputString));
 
