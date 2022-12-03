@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.Playables;
 using System.Collections;
 using GameLibrary;
@@ -202,41 +202,65 @@ public class StoryObject : MonoBehaviour
     {
         var args = ClientStorySystem.Instance.NewBoxedValueList();
         var collider = gameObject.GetComponent<Collider>();
-        args.Add(gameObject.name);
+        args.Add(gameObject);
         args.Add(collider);
-        args.Add(collisionInfo.gameObject.name);
+        args.Add(collisionInfo.gameObject);
         args.Add(collisionInfo.collider);
-        ClientStorySystem.Instance.SendMessage("on_collision_enter", args);
+        var pt1 = gameObject.transform.position;
+        args.Add(pt1);
+        var pt2 = collisionInfo.gameObject.transform.position;
+        args.Add(pt2);
+        var time = Time.time;
+        args.Add(time);
+        ClientStorySystem.Instance.SendConcurrentMessage("on_collision_enter", args);
     }
     internal void OnCollisionExit(Collision collisionInfo)
     {
         var args = ClientStorySystem.Instance.NewBoxedValueList();
         var collider = gameObject.GetComponent<Collider>();
-        args.Add(gameObject.name);
+        args.Add(gameObject);
         args.Add(collider);
-        args.Add(collisionInfo.gameObject.name);
+        args.Add(collisionInfo.gameObject);
         args.Add(collisionInfo.collider);
-        ClientStorySystem.Instance.SendMessage("on_collision_exit", args);
+        var pt1 = gameObject.transform.position;
+        args.Add(pt1);
+        var pt2 = collisionInfo.gameObject.transform.position;
+        args.Add(pt2);
+        var time = Time.time;
+        args.Add(time);
+        ClientStorySystem.Instance.SendConcurrentMessage("on_collision_exit", args);
     }
     internal void OnTriggerEnter(Collider other)
     {
         var args = ClientStorySystem.Instance.NewBoxedValueList();
         var collider = gameObject.GetComponent<Collider>();
-        args.Add(gameObject.name);
+        args.Add(gameObject);
         args.Add(collider);
-        args.Add(other.gameObject.name);
+        args.Add(other.gameObject);
         args.Add(other);
-        ClientStorySystem.Instance.SendMessage("on_trigger_enter", args);
+        var pt1 = gameObject.transform.position;
+        args.Add(pt1);
+        var pt2 = other.transform.position;
+        args.Add(pt2);
+        var time = Time.time;
+        args.Add(time);
+        ClientStorySystem.Instance.SendConcurrentMessage("on_trigger_enter", args);
     }
     internal void OnTriggerExit(Collider other)
     {
         var args = ClientStorySystem.Instance.NewBoxedValueList();
         var collider = gameObject.GetComponent<Collider>();
-        args.Add(gameObject.name);
+        args.Add(gameObject);
         args.Add(collider);
-        args.Add(other.gameObject.name);
+        args.Add(other.gameObject);
         args.Add(other);
-        ClientStorySystem.Instance.SendMessage("on_trigger_exit", args);
+        var pt1 = gameObject.transform.position;
+        args.Add(pt1);
+        var pt2 = other.transform.position;
+        args.Add(pt2);
+        var time = Time.time;
+        args.Add(time);
+        ClientStorySystem.Instance.SendConcurrentMessage("on_trigger_exit", args);
     }
 
     private void StartTweeners(GameObject obj, float duration)

@@ -19,6 +19,9 @@ namespace GameLibrary.GmCommands
             //注册Gm命令
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "setmaxeffect", new StoryCommandFactoryHelper<SetMaxEffectCommand>());
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "setdebug", new StoryCommandFactoryHelper<SetDebugCommand>());
+            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "editorbreak", new StoryCommandFactoryHelper<EditorBreakCommand>());
+            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "debugbreak", new StoryCommandFactoryHelper<DebugBreakCommand>());
+            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "pausegame", new StoryCommandFactoryHelper<PauseGameCommand>());
 
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "allocmemory", new StoryCommandFactoryHelper<AllocMemoryCommand>());
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "freememory", new StoryCommandFactoryHelper<FreeMemoryCommand>());

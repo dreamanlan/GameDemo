@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using GameLibrary;
+using GameLibrary.GmCommands;
 
 namespace GameLibrary
 {
@@ -60,6 +61,7 @@ namespace GameLibrary
                 if (!GlobalVariables.Instance.IsPaused) {
                     SceneSystem.Instance.Tick();
                 }
+                SceneSystem.Instance.GmTick();
                 m_Logger.Tick();
             } finally {
                 UnityEngine.Profiling.Profiler.EndSample();

@@ -531,13 +531,13 @@ namespace GameLibrary.Story.Commands
                         string key = param.Key.Value;
                         var val = param.Value.Value;
                         if (type == "int") {
-                            int v = val.Get<int>();
+                            int v = val.GetInt();
                             animator.SetInteger(key, v);
                         } else if (type == "float") {
-                            float v = val.Get<float>();
+                            float v = val.GetFloat();
                             animator.SetFloat(key, v);
                         } else if (type == "bool") {
-                            bool v = val.Get<bool>();
+                            bool v = val.GetBool();
                             animator.SetBool(key, v);
                         } else if (type == "trigger") {
                             string v = val.ToString();
@@ -916,7 +916,7 @@ namespace GameLibrary.Story.Commands
         {
             int objId = m_ObjId.Value;
             int attrId = m_AttrId.Value;
-            long val = m_Value.Value.Get<long>();
+            long val = m_Value.Value.GetLong();
             EntityInfo charObj = SceneSystem.Instance.GetEntityById(objId);
             if (null != charObj) {
                 try {

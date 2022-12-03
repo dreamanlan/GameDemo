@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GameLibrary;
@@ -28,7 +28,7 @@ public class ObjectDetector : MonoBehaviour
     internal void Start()
     {
         if (null != Objects && Objects.Length > 0) {
-            m_KdTree.FullBuild(Objects, 1);
+            m_KdTree.FullBuild(Objects, 0.1f);
         }
     }
 

@@ -56,10 +56,10 @@ internal class AiQuery : IStoryValue
             if (null != enumer) {
                 var enumerator = enumer.GetEnumerator();
                 while (enumerator.MoveNext()) {
-                    var v = BoxedValue.From(enumerator.Current);
+                    var v = BoxedValue.FromObject(enumerator.Current);
                     if (null != m_Where) {
                         m_Where.Evaluate(instance, handler, v, args);
-                        object wvObj = m_Where.Value.Get<object>();
+                        object wvObj = m_Where.Value.GetObject();
                         int wv = (int)System.Convert.ChangeType(wvObj, typeof(int));
                         if (wv != 0) {
                             AddRow(coll, v, instance, handler, args);
@@ -83,7 +83,7 @@ internal class AiQuery : IStoryValue
                 result.Add(ao[0]);
             }
             m_HaveValue = true;
-            m_Value = BoxedValue.From(result);
+            m_Value = BoxedValue.FromObject(result);
         }
     }
     public void Analyze(StoryInstance instance)
@@ -137,7 +137,7 @@ internal class AiQuery : IStoryValue
     public void LoadStatementData(Dsl.StatementData statementData)
     {
         for (int i = 0; i < statementData.Functions.Count; ++i) {
-            var funcData = statementData.Functions[i];
+            var funcData = statementData.Functions[i].AsFunction;
             LoadFuncData(funcData);
         }
     }

@@ -104,12 +104,12 @@
 	onmessage("notify_player")args($obj)
 	{
 		if(!isnull($obj)){
-			if($obj.name=="obj1160"){
+			if($obj.name=="obj1201"){
 				sendmessage("StartScript", "PlayMusic", 1);
 				firemessage("show_victory");
 			}else{
-				sendmessage("objs/"+$obj.name, "EnableGravity", 1);
-				sendmessage("objs/"+$obj.name, "PlaySound", 0);
+				sendmessagewithgameobject($obj, "EnableGravity", 1);
+				sendmessagewithgameobject($obj, "PlaySound", 0);
 				if(!isnull($obj.transform) && $obj.transform.childCount==0){
 					creategameobject("fire", "SceneFire", $obj){
 						position(vector3(0,0,0));
@@ -118,39 +118,44 @@
 			};
 		};
 	};
-	onmessage("on_trigger_enter")args($name1,$collider1,$name2,$collider2)
+	onmessage("on_trigger_enter")args($obj1,$collider1,$obj2,$collider2,$pt1,$pt2,$time)
 	{
-		sendmessage("objs/"+$name1, "PlaySound", 1);
-		$pt = getposition($collider1.gameObject, 0);	
+		sendmessagewithgameobject($obj1, "PlaySound", 1);
+		$pt = getposition($obj1, 0);
+		if($pt.y < -20){
+			log("please check obj {0} {1} {2} <= {3} {4} {5}", $obj1.name, $pt, time(), $pt1, $pt2, changetype($time*1000,"long"));
+			//editorbreak();
+		};
 		$list = findallobjids($pt,5);
 		if(!isnull($list)){
 			looplist($list){
 				$objid=$$;
 				sethp($objid,gethp($objid)-100);
+				log("damage {0}", $objid);
 				sendmessagewithgameobject(getgameobject($objid),"TweenUiPrefabWithText","BlueText"+$objid,"UI/RedText",vector3(0,2,0),"","-100");
 			};
 		};
 		@hpUi.text = ""+gethp(getplayerid());
-		localconcurrentmessage("baozha", $pt);
-		wait(1000);
-		destroygameobject("objs/"+$name1+"/fire");
-		destroygameobject("objs/"+$name1);
+		localconcurrentmessage("baozha", $pt, $obj1);
+		wait(3000);
+		destroygameobject(getchild($obj1,"fire"));
+		destroygameobject($obj1);
 	};
-	onmessage("on_trigger_exit")args($name1,$collider1,$name2,$collider2)
+	onmessage("on_trigger_exit")args($obj1,$collider1,$obj2,$collider2,$pt1,$pt2,$time)
 	{
-		$tag = $collider1.tag;
+		$tag = $obj1.tag;
 		if($tag=="Red"){
 			@score=@score+100;
-			sendmessagewithgameobject(getgameobject(getplayerid()),"TweenUiPrefabWithText","RedText"+$objid,"UI/BlueText",vector3(1,2,0),"","+100");
+			sendmessagewithgameobject(getgameobject(getplayerid()),"TweenUiPrefabWithText","RedText"+getplayerid(),"UI/BlueText",vector3(1,2,0),"","+100");
 		}elseif($tag=="Blue"){
 			@score=@score+200;
-			sendmessagewithgameobject(getgameobject(getplayerid()),"TweenUiPrefabWithText","RedText"+$objid,"UI/BlueText",vector3(1,2,0),"","+200");
+			sendmessagewithgameobject(getgameobject(getplayerid()),"TweenUiPrefabWithText","RedText"+getplayerid(),"UI/BlueText",vector3(1,2,0),"","+200");
 		}elseif($tag=="LightRed"){
 			@score=@score+400;
-			sendmessagewithgameobject(getgameobject(getplayerid()),"TweenUiPrefabWithText","RedText"+$objid,"UI/BlueText",vector3(1,2,0),"","+400");
+			sendmessagewithgameobject(getgameobject(getplayerid()),"TweenUiPrefabWithText","RedText"+getplayerid(),"UI/BlueText",vector3(1,2,0),"","+400");
 		}else{
 			@score=@score+800;
-			sendmessagewithgameobject(getgameobject(getplayerid()),"TweenUiPrefabWithText","RedText"+$objid,"UI/BlueText",vector3(1,2,0),"","+800");
+			sendmessagewithgameobject(getgameobject(getplayerid()),"TweenUiPrefabWithText","RedText"+getplayerid(),"UI/BlueText",vector3(1,2,0),"","+800");
 		};
 		@scoreUi.text = ""+@score;
 		dec(@leftCount);
@@ -161,13 +166,13 @@
 		getunitytype("Physics").gravity = $g;
 		@gravityUi.text = ""+$g.y;
 	};
-	onmessage("baozha")args($pt)
+	onmessage("baozha")args($pt, $cobj)
 	{
-		log("bazha {0}", $pt);
+		log("baozha => {0} {1} {2}", $pt, $cobj.name, getposition($cobj, 1));
 		creategameobject("gbaozha", "gbaozha")obj("$obj"){
 			position($pt);
 		};
-		wait(1000);
+		wait(3000);
 		destroygameobject($obj);
 	};
 	onmessage("obj_killed")

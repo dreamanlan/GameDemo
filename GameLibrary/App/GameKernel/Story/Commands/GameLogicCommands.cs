@@ -52,7 +52,7 @@ namespace GameLibrary.Story.Commands
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             string name = m_AttrName.Value;
-            object value = m_Value.Value.Get<object>();
+            object value = m_Value.Value.GetObject();
             SceneSystem.Instance.BlackBoard.SetVariable(name, value);
             return false;
         }

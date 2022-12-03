@@ -182,15 +182,17 @@ public static partial class Utility
                 inputStream = assetManager.Call<AndroidJavaObject>("open", file);
             if (inputStream != null) {
                 int available = inputStream.Call<int>("available");
-                System.IntPtr buffer = AndroidJNI.NewByteArray(available);
+                System.IntPtr buffer = AndroidJNI.NewSByteArray(available);
                 System.IntPtr javaClass = AndroidJNI.FindClass("java/io/InputStream");
                 System.IntPtr javaMethodID = AndroidJNIHelper.GetMethodID(javaClass, "read", "([B)I");
                 int read = AndroidJNI.CallIntMethod(inputStream.GetRawObject(), javaMethodID,
                     new[] { new jvalue() { l = buffer } });
-                byte[] bytes = AndroidJNI.FromByteArray(buffer);
+                sbyte[] sbytes = AndroidJNI.FromSByteArray(buffer);
                 AndroidJNI.DeleteLocalRef(buffer);
                 inputStream.Call("close");
                 inputStream.Dispose();
+                byte[] bytes = new byte[sbytes.Length];
+                Array.Copy(bytes, sbytes, bytes.Length);
                 return bytes;
             }
         } else {

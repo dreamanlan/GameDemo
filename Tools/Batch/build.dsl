@@ -27,13 +27,35 @@ script(main)
     
     Platform="Any CPU";
     xbuild=rootdir+"/Tools/msbuild/msbuild.exe";
-    
-    looplist(listhashtable(envs())){
-        echo("{0}={1}",$$.Key,$$.Value);
+
+    echo();
+    echo("we'd better use vs2022 msbuild, vs2019 or vs2017 may fail to compile.");
+
+    msbuild2022="C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Msbuild\\Current\\Bin\\msbuild.exe";
+    msbuild2019="C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe";
+    msbuild2017="C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\MSBuild\\15.0\\Bin\\MSBuild.exe";
+
+    if(fileexist(msbuild2022)){
+        xbuild=msbuild2022;
+    }
+    elseif(fileexist(msbuild2019)){
+        xbuild=msbuild2019;
+    }
+    elseif(fileexist(msbuild2017)){
+        xbuild=msbuild2017;
+    }
+    else{
+        echo("Can't find vs2022/vs2019/vs2017, we may fail to compile.");
     };
 
     mono=expand("%rootdir%/Tools/mono/mono.exe");
     pdb2mdb=expand("%rootdir%/Tools/lib/mono/4.5/pdb2mdb.exe");
+    
+    echo();
+    looplist(listhashtable(envs())){
+        echo("{0}={1}",$$.Key,$$.Value);
+    };
+    echo();
 		
     /*********************************************************************************
     * dll编译部分

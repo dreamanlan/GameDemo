@@ -117,8 +117,8 @@ namespace GameLibrary.Story.Commands
         {
             if (statementData.Functions.Count == 2)
             {
-                Dsl.FunctionData first = statementData.First;
-                Dsl.FunctionData second = statementData.Second;
+                Dsl.FunctionData first = statementData.First.AsFunction;
+                Dsl.FunctionData second = statementData.Second.AsFunction;
                 if (null != first && null != second)
                 {
                     Load(first);
@@ -806,17 +806,17 @@ namespace GameLibrary.Story.Commands
                         var val = param.Value.Value;
                         if (type == "int")
                         {
-                            int v = val.Get<int>();
+                            int v = val.GetInt();
                             animator.SetInteger(key, v);
                         }
                         else if (type == "float")
                         {
-                            float v = val.Get<float>();
+                            float v = val.GetFloat();
                             animator.SetFloat(key, v);
                         }
                         else if (type == "bool")
                         {
-                            bool v = val.Get<bool>();
+                            bool v = val.GetBool();
                             animator.SetBool(key, v);
                         }
                         else if (type == "trigger")

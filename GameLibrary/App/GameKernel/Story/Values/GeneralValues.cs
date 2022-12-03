@@ -195,7 +195,7 @@ namespace GameLibrary.Story.Values
                     m_Value = uobj.activeSelf ? 1 : 0;
                 } else {
                     try {
-                        int objId = o.Get<int>();
+                        int objId = o.GetInt();
                         UnityEngine.GameObject obj = SceneSystem.Instance.GetGameObject(objId);
                         if (null != obj) {
                             m_Value = obj.activeSelf ? 1 : 0;
@@ -270,7 +270,7 @@ namespace GameLibrary.Story.Values
                     m_Value = uobj.activeInHierarchy ? 1 : 0;
                 } else {
                     try {
-                        int objId = o.Get<int>();
+                        int objId = o.GetInt();
                         UnityEngine.GameObject obj = SceneSystem.Instance.GetGameObject(objId);
                         if (null != obj) {
                             m_Value = obj.activeInHierarchy ? 1 : 0;
@@ -339,7 +339,7 @@ namespace GameLibrary.Story.Values
                         uobj = UnityEngine.GameObject.Find(objPath);
                     } else {
                         try {
-                            int objId = o.Get<int>();
+                            int objId = o.GetInt();
                             uobj = SceneSystem.Instance.GetGameObject(objId);
                         } catch {
                             uobj = null;
@@ -418,7 +418,7 @@ namespace GameLibrary.Story.Values
                         obj = UnityEngine.GameObject.Find(path);
                     } else {
                         try {
-                            int objId = objPath.Get<int>();
+                            int objId = objPath.GetInt();
                             obj = SceneSystem.Instance.GetGameObject(objId);
                         } catch {
                             obj = null;
@@ -500,7 +500,7 @@ namespace GameLibrary.Story.Values
                     }
                     else {
                         try {
-                            int objId = objPath.Get<int>();
+                            int objId = objPath.GetInt();
                             obj = SceneSystem.Instance.GetGameObject(objId);
                         }
                         catch {
@@ -601,7 +601,7 @@ namespace GameLibrary.Story.Values
                     }
                     else {
                         try {
-                            int objId = objPath.Get<int>();
+                            int objId = objPath.GetInt();
                             obj = SceneSystem.Instance.GetGameObject(objId);
                         }
                         catch {
@@ -693,7 +693,7 @@ namespace GameLibrary.Story.Values
                     }
                     else {
                         try {
-                            int objId = objPath.Get<int>();
+                            int objId = objPath.GetInt();
                             obj = SceneSystem.Instance.GetGameObject(objId);
                         }
                         catch {
@@ -911,7 +911,7 @@ namespace GameLibrary.Story.Values
                     }
                     else {
                         try {
-                            int objId = objPath.Get<int>();
+                            int objId = objPath.GetInt();
                             obj = SceneSystem.Instance.GetGameObject(objId);
                         }
                         catch {
@@ -1029,7 +1029,7 @@ namespace GameLibrary.Story.Values
                     }
                 } else {
                     try {
-                        int objId = o.Get<int>();
+                        int objId = o.GetInt();
                         obj = SceneSystem.Instance.GetGameObject(objId);
                         m_Value = obj;
                     } catch {
@@ -1169,7 +1169,7 @@ namespace GameLibrary.Story.Values
                     }
                 } else {
                     try {
-                        int objId = o.Get<int>();
+                        int objId = o.GetInt();
                         var obj = SceneSystem.Instance.GetGameObject(objId);
                         if (null != obj && null != obj.transform.parent) {
                             m_Value = obj.transform.parent.gameObject;
@@ -1258,7 +1258,7 @@ namespace GameLibrary.Story.Values
                     }
                 } else {
                     try {
-                        int objId = o.Get<int>();
+                        int objId = o.GetInt();
                         var obj = SceneSystem.Instance.GetGameObject(objId);
                         if (null != obj) {
                             var t = Utility.FindChildRecursive(obj.transform, childPath);
@@ -1514,7 +1514,7 @@ namespace GameLibrary.Story.Values
             if (m_ObjId.HaveValue) {
                 int objId = m_ObjId.Value;
                 m_HaveValue = true;
-                m_Value = BoxedValue.From(SceneSystem.Instance.GetEntityById(objId));
+                m_Value = BoxedValue.FromObject(SceneSystem.Instance.GetEntityById(objId));
             }
         }
         private IStoryValue<int> m_ObjId = new StoryValue<int>();
@@ -1563,7 +1563,7 @@ namespace GameLibrary.Story.Values
             if (m_ObjId.HaveValue) {
                 int objId = m_ObjId.Value;
                 m_HaveValue = true;
-                m_Value = BoxedValue.From(SceneSystem.Instance.GetEntityViewById(objId));
+                m_Value = BoxedValue.FromObject(SceneSystem.Instance.GetEntityViewById(objId));
             }
         }
         private IStoryValue<int> m_ObjId = new StoryValue<int>();
@@ -1607,7 +1607,7 @@ namespace GameLibrary.Story.Values
         private void TryUpdateValue(StoryInstance instance)
         {
             m_HaveValue = true;
-            m_Value = BoxedValue.From(GlobalVariables.Instance);
+            m_Value = BoxedValue.FromObject(GlobalVariables.Instance);
         }
 
         private bool m_HaveValue;
@@ -1650,7 +1650,7 @@ namespace GameLibrary.Story.Values
         private void TryUpdateValue(StoryInstance instance)
         {
             m_HaveValue = true;
-            m_Value = BoxedValue.From(SceneSystem.Instance);
+            m_Value = BoxedValue.FromObject(SceneSystem.Instance);
         }
 
         private bool m_HaveValue;
@@ -1693,7 +1693,7 @@ namespace GameLibrary.Story.Values
         private void TryUpdateValue(StoryInstance instance)
         {
             m_HaveValue = true;
-            m_Value = BoxedValue.From(ResourceSystem.Instance);
+            m_Value = BoxedValue.FromObject(ResourceSystem.Instance);
         }
 
         private bool m_HaveValue;
@@ -1753,7 +1753,7 @@ namespace GameLibrary.Story.Values
                 ns = m_Namespace.Value;
             }
             m_HaveValue = true;
-            m_Value = BoxedValue.From(ClientStorySystem.Instance.GetStory(storyId, ns));
+            m_Value = BoxedValue.FromObject(ClientStorySystem.Instance.GetStory(storyId, ns));
         }
 
         private int m_ParamNum = 0;

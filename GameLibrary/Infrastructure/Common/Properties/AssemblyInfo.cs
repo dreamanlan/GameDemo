@@ -34,4 +34,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: UnityEngine.UnityAPICompatibilityVersionAttribute("2017.4.9f1")]
+[assembly: UnityEngine.UnityAPICompatibilityVersionAttribute("2021.3.14f1", true)]

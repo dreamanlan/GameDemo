@@ -152,9 +152,12 @@ namespace GameLibrary
             m_EntityViewManager.Tick();
             TickAi(curTime, deltaTime);
 
-            ClientGmStorySystem.Instance.Tick();
             ClientStorySystem.Instance.Tick();
             ResourceSystem.Instance.Tick();
+        }
+        public void GmTick()
+        {
+            ClientGmStorySystem.Instance.Tick();
         }
         public void QueueAction(MyAction action)
         {
