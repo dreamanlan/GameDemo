@@ -1,1 +1,33 @@
-15-48-02-982:======GameLog Start (2023年6月27日, 15:48:02)======
+16-46-10-966:======GameLog Start (2023年6月27日, 16:46:10)======
+16-46-11-032:[Debug]:Time:16-46-11-032:StoryInstance.Init message handler num:4 True
+16-46-11-033:[Info]:ParseStory scene_main 0
+16-46-11-076:[Debug]:Time:16-46-11-076:StoryInstance.Init message handler num:11 True
+16-46-11-076:[Info]:ParseStory story_main 0
+16-46-11-078:[Warn]:Time:16-46-11-078:StoryInstance queue message start
+16-46-11-921:[Warn]:Time:16-46-11-921:StoryInstance queue message start
+16-46-11-922:[Warn]:Time:16-46-11-922:story_main start
+16-46-13-874:[Debug]:Time:16-46-13-874:StoryInstance.Init message handler num:3 True
+16-46-13-874:[Info]:ParseStory Start:main 0
+16-46-13-893:[Warn]:Time:16-46-13-892:StoryInstance queue message start
+16-46-13-931:[Warn]:Time:16-46-13-931:StoryInstance queue message Start:loop_work
+16-46-18-602:[Debug]:Time:16-46-18-602:StoryInstance.Init message handler num:1 True
+16-46-18-602:[Info]:ParseStory main 0
+16-46-18-603:[Warn]:Time:16-46-18-603:StoryInstance queue message start
+16-46-18-604:[Warn]:Time:16-46-18-604:test
+16-46-40-764:[Error]:Time:16-46-40-763:[LoadStory] LoadStoryText file: scene:0 Exception:[LoadStory] command:log[log("{0}"(1 * 2 + 3))] line:1 failed.
+  at StoryScript.StoryCommandManager.CreateCommand (Dsl.ISyntaxComponent commandConfig) [0x00442] in D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\StoryCommandManager.cs:168 
+  at StoryScript.StoryMessageHandler.RefreshCommands (Dsl.FunctionData handlerData) [0x00012] in D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\StoryInstance.cs:514 
+  at StoryScript.StoryMessageHandler.Load (Dsl.FunctionData messageHandlerData, System.String storyId) [0x00072] in D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\StoryInstance.cs:363 
+  at StoryScript.StoryInstance.Init (Dsl.ISyntaxComponent config) [0x002bf] in D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\StoryInstance.cs:777 
+  at StoryScript.StoryConfigManager.Load (Dsl.DslFile dataFile, System.Int32 sceneId, System.String _namespace, System.String resourceName) [0x000f4] in D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\StoryConfigManager.cs:214 
+  at StoryScript.StoryConfigManager.LoadStoryText (System.String file, System.Byte[] bytes, System.Int32 sceneId, System.String _namespace) [0x000d0] in D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\StoryConfigManager.cs:125 
+	=> exception:Unknown value, id:{0} line:1 stack:  at StoryScript.StoryValue.CalcInitValue (Dsl.ISyntaxComponent param) [0x0015f] in D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\IStoryValue.cs:314 
+  at StoryScript.StoryValue.InitFromDsl (Dsl.ISyntaxComponent param) [0x000d6] in D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\IStoryValue.cs:220 
+  at StoryScript.CommonCommands.LogCommand.Load (Dsl.FunctionData callData) [0x00011] in D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\CommonCommands\Log.cs:49 
+  at StoryScript.AbstractStoryCommand.Init (Dsl.ISyntaxComponent config) [0x00026] in D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\IStoryCommand.cs:57 
+  at StoryScript.StoryCommandManager.CreateCommand (Dsl.ISyntaxComponent commandConfig) [0x003dc] in D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\StoryCommandManager.cs:162 
+
+16-46-52-569:[Debug]:Time:16-46-52-569:StoryInstance.Init message handler num:1 True
+16-46-52-569:[Info]:ParseStory main 0
+16-46-52-570:[Warn]:Time:16-46-52-569:StoryInstance queue message start
+16-46-52-570:[Warn]:Time:16-46-52-570:5

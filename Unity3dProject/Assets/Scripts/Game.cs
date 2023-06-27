@@ -93,7 +93,24 @@ public class Game : MonoBehaviour
         string tempPath = Application.temporaryCachePath;
         string logPath = Application.persistentDataPath;
 
+#if DEVELOPMENT_BUILD
+        GlobalVariables.Instance.IsDevelopment = true;
+        StoryScript.StoryConfigManager.Instance.IsDevelopment = true;
+#else
+        GlobalVariables.Instance.IsDevelopment = false;
+        StoryScript.StoryConfigManager.Instance.IsDevelopment = false;
+#endif
+
+#if UNITY_EDITOR
+        GlobalVariables.Instance.IsEditor = true;
         GlobalVariables.Instance.IsDevice = false;
+        StoryScript.StoryConfigManager.Instance.IsDevice = false;
+#elif UNITY_ANDROID || UNITY_IOS
+        GlobalVariables.Instance.IsEditor = false;
+        GlobalVariables.Instance.IsDevice = true;
+        StoryScript.StoryConfigManager.Instance.IsDevice = true;
+#endif
+
 #if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
         GameControler.Instance.InitLog(logPath, suffix);
 #else
@@ -102,18 +119,6 @@ public class Game : MonoBehaviour
         } else {
             GameControler.Instance.InitLog(dataPath, suffix);
         }
-#endif
-
-#if DEVELOPMENT_BUILD
-        GlobalVariables.Instance.IsDevelopment = true;
-#else
-        GlobalVariables.Instance.IsDevelopment = false;
-#endif
-
-#if UNITY_EDITOR
-        GlobalVariables.Instance.IsEditor = true;
-#elif UNITY_ANDROID || UNITY_IOS
-        GlobalVariables.Instance.IsDevice = true;
 #endif
         GameControler.Instance.InitGame();
         yield return null;

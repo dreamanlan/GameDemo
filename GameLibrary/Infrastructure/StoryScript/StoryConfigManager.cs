@@ -275,9 +275,9 @@ namespace StoryScript
         private Dictionary<string, Dictionary<string, StoryInstance>> m_StoryInstancePool = new Dictionary<string, Dictionary<string, StoryInstance>>();
 
         private bool m_IsDebug = false;
-        private bool m_LoggerEnabled = true;
         private bool m_IsDevelopment = false;
         private bool m_IsDevice = false;
+        private bool m_LoggerEnabled = true;
 
         private bool m_StoryEditorOpen = false;
         private bool m_StoryEditorContinue = false;

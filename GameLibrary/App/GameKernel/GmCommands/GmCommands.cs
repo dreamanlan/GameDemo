@@ -29,6 +29,7 @@ namespace GameLibrary.GmCommands
         {
             int val = _params.Param1Value;
             GlobalVariables.Instance.IsDebug = val != 0;
+            StoryConfigManager.Instance.IsDebug = val != 0;
             return false;
         }
     }

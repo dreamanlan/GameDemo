@@ -98,7 +98,7 @@ namespace GameLibrary.Story.Commands
             if (curTime <= val && val <= StoryValueHelper.c_MaxWaitCommandTime) {
                 return true;
             } else {
-                GlobalVariables.Instance.IsStorySkipped = state != 0;
+                StoryConfigManager.Instance.IsStorySkipped = state != 0;
                 return false;
             }
         }
@@ -147,7 +147,7 @@ namespace GameLibrary.Story.Commands
             if (curTime <= val && val <= StoryValueHelper.c_MaxWaitCommandTime) {
                 return true;
             } else {
-                GlobalVariables.Instance.IsStorySpeedup = state != 0;
+                StoryConfigManager.Instance.IsStorySpeedup = state != 0;
                 return false;
             }
         }

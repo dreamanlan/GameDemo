@@ -6,6 +6,7 @@ using System.Text;
 using System.IO;
 using GameLibrary;
 using GameLibrary.GmCommands;
+using StoryScript;
 
 namespace GameLibrary
 {
@@ -24,8 +25,9 @@ namespace GameLibrary
             m_Logger.Init(logPath, suffix);
             m_MainThreadId = System.Threading.Thread.CurrentThread.ManagedThreadId;
             GlobalVariables.Instance.IsDebug = false;
+            StoryConfigManager.Instance.IsDebug = false;
 
-            LogSystem.OnOutput = (Log_Type type, string msg) => {
+            Action<Log_Type, string> onLog = (Log_Type type, string msg) => {
 #if DEBUG
                 if (System.Threading.Thread.CurrentThread.ManagedThreadId == m_MainThreadId) {
                     if (type == Log_Type.LT_Warn) {
@@ -37,6 +39,8 @@ namespace GameLibrary
 #endif
                 m_Logger.Log("{0}", msg);
             };
+            LogSystem.OnOutput = (Log_Type type, string msg) => onLog(type, msg);
+            StoryScript.LogSystem.OnOutput = (StoryScript.Log_Type type, string msg) => onLog((Log_Type)type, msg);
         }
         public void InitGame()
         {
@@ -58,6 +62,7 @@ namespace GameLibrary
             try {
                 UnityEngine.Profiling.Profiler.BeginSample("GameController.TickGame");
                 TimeUtility.UpdateGfxTime(UnityEngine.Time.time, UnityEngine.Time.realtimeSinceStartup, UnityEngine.Time.timeScale);
+                StoryScript.TimeUtility.UpdateGfxTime(UnityEngine.Time.time, UnityEngine.Time.realtimeSinceStartup, UnityEngine.Time.timeScale);
                 if (!GlobalVariables.Instance.IsPaused) {
                     SceneSystem.Instance.Tick();
                 }

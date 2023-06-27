@@ -115,7 +115,7 @@ namespace GameLibrary.Story.Values
         private void TryUpdateValue(StoryInstance instance)
         {
             m_HaveValue = true;
-            m_Value = GlobalVariables.Instance.IsStorySkipped ? 1 : 0;
+            m_Value = StoryConfigManager.Instance.IsStorySkipped ? 1 : 0;
         }
         private bool m_HaveValue;
         private BoxedValue m_Value;
