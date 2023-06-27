@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace GameLibrary
+namespace StoryScript
 {
     public static class Converter
     {

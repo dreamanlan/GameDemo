@@ -81,7 +81,6 @@
     <Compile Include="Log\LogSystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublishSubscribe\PublishSubscribeSystem.cs" />
-    <Compile Include="Util\Converter.cs" />
     <Compile Include="Util\Heap.cs" />
     <Compile Include="Util\Helper.cs" />
     <Compile Include="HomePath.cs" />
@@ -89,7 +88,6 @@
     <Compile Include="Util\LinkedListDictionary.cs" />
     <Compile Include="Util\MyActionAndFunc.cs" />
     <Compile Include="Util\ObjectPool.cs" />
-    <Compile Include="Util\GenericUtility.cs" />
     <Compile Include="Util\PoolAllocatedAction.cs" />
     <Compile Include="Util\RandomTable.cs" />
     <Compile Include="Util\SimpleObjectPool.cs" />

@@ -51,7 +51,7 @@ namespace StoryScript.CommonValues
                 string typeName = m_TypeName.Value;
                 m_Value = BoxedValue.FromObject(Type.GetType(typeName));
                 if (null == m_Value.ObjectVal) {
-                    GameLibrary.LogSystem.Warn("null == Type.GetType({0})", typeName);
+                    LogSystem.Warn("null == Type.GetType({0})", typeName);
                 }
             }
         }
@@ -151,11 +151,11 @@ namespace StoryScript.CommonValues
                             if (null != t) {
                                 try {
                                     BindingFlags flags = BindingFlags.Static | BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.NonPublic;
-                                    GameLibrary.Converter.CastArgsForCall(t, method, flags, args);
+                                    Converter.CastArgsForCall(t, method, flags, args);
                                     m_Value = BoxedValue.FromObject(t.InvokeMember(method, flags, null, null, args));
                                 }
                                 catch (Exception ex) {
-                                    GameLibrary.LogSystem.Warn("DotnetCall {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
+                                    LogSystem.Warn("DotnetCall {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
                                     m_Value = BoxedValue.NullObject;
                                 }
                             }
@@ -164,11 +164,11 @@ namespace StoryScript.CommonValues
                                 if (null != t) {
                                     try {
                                         BindingFlags flags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.NonPublic;
-                                        GameLibrary.Converter.CastArgsForCall(t, method, flags, args);
+                                        Converter.CastArgsForCall(t, method, flags, args);
                                         m_Value = BoxedValue.FromObject(t.InvokeMember(method, flags, null, obj, args));
                                     }
                                     catch (Exception ex) {
-                                        GameLibrary.LogSystem.Warn("DotnetCall {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
+                                        LogSystem.Warn("DotnetCall {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
                                         m_Value = BoxedValue.NullObject;
                                     }
                                 }
@@ -273,11 +273,11 @@ namespace StoryScript.CommonValues
                             if (null != t) {
                                 try {
                                     BindingFlags flags = BindingFlags.Static | BindingFlags.GetField | BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.NonPublic;
-                                    GameLibrary.Converter.CastArgsForGet(t, method, flags, args);
+                                    Converter.CastArgsForGet(t, method, flags, args);
                                     m_Value = BoxedValue.FromObject(t.InvokeMember(method, flags, null, null, args));
                                 }
                                 catch (Exception ex) {
-                                    GameLibrary.LogSystem.Warn("DotnetGet {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
+                                    LogSystem.Warn("DotnetGet {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
                                     m_Value = BoxedValue.NullObject;
                                 }
                             }
@@ -286,11 +286,11 @@ namespace StoryScript.CommonValues
                                 if (null != t) {
                                     try {
                                         BindingFlags flags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.GetField | BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.NonPublic;
-                                        GameLibrary.Converter.CastArgsForGet(t, method, flags, args);
+                                        Converter.CastArgsForGet(t, method, flags, args);
                                         m_Value = BoxedValue.FromObject(t.InvokeMember(method, flags, null, obj, args));
                                     }
                                     catch (Exception ex) {
-                                        GameLibrary.LogSystem.Warn("DotnetGet {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
+                                        LogSystem.Warn("DotnetGet {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
                                         m_Value = BoxedValue.NullObject;
                                     }
                                 }
@@ -613,7 +613,7 @@ namespace StoryScript.CommonValues
                                     m_Value = BoxedValue.FromObject(StoryValueHelper.CastTo(t, str));
                                 }
                                 else {
-                                    GameLibrary.LogSystem.Warn("null == Type.GetType({0})", type);
+                                    LogSystem.Warn("null == Type.GetType({0})", type);
                                 }
                             }
                         }
@@ -666,7 +666,7 @@ namespace StoryScript.CommonValues
                                     m_Value = BoxedValue.FromObject(obj.CastTo(t));
                                 }
                                 else {
-                                    GameLibrary.LogSystem.Warn("null == Type.GetType({0})", type);
+                                    LogSystem.Warn("null == Type.GetType({0})", type);
                                 }
                             }
                         }
@@ -679,7 +679,7 @@ namespace StoryScript.CommonValues
                     }
                 }
                 catch (Exception ex) {
-                    GameLibrary.LogSystem.Warn("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
+                    LogSystem.Warn("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
                     m_Value = BoxedValue.NullObject;
                 }
             }
@@ -747,11 +747,11 @@ namespace StoryScript.CommonValues
                         m_Value = BoxedValue.FromObject(Enum.Parse(t, val, true));
                     }
                     else {
-                        GameLibrary.LogSystem.Warn("null == Type.GetType({0})", type);
+                        LogSystem.Warn("null == Type.GetType({0})", type);
                     }
                 }
                 catch (Exception ex) {
-                    GameLibrary.LogSystem.Warn("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
+                    LogSystem.Warn("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
                     m_Value = BoxedValue.NullObject;
                 }
             }

@@ -97,6 +97,7 @@
     <Compile Include="IStoryCommand.cs" />
     <Compile Include="IStoryCommandFactory.cs" />
     <Compile Include="IStoryValue.cs" />
+    <Compile Include="Log\LogSystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StoryCommandHelper.cs" />
     <Compile Include="StoryCommandManager.cs" />
@@ -105,14 +106,14 @@
     <Compile Include="StoryInstance.cs" />
     <Compile Include="StoryValueHelper.cs" />
     <Compile Include="StoryValueManager.cs" />
+    <Compile Include="Util\Converter.cs" />
+    <Compile Include="Util\GenericUtility.cs" />
+    <Compile Include="Util\StoryHelper.cs" />
+    <Compile Include="Util\SimpleObjectPool.cs" />
+    <Compile Include="Util\StringLower.cs" />
+    <Compile Include="Util\TimeUtility.cs" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{1c8280cd-eb93-4849-940e-a99eddf811d6}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

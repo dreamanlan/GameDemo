@@ -26,7 +26,7 @@ namespace StoryScript
                         var sb = new System.Text.StringBuilder();
                         sb.AppendFormat("[LoadStory] LoadStory file:{0} Exception:{1}\n{2}", file, ex.Message, ex.StackTrace);
                         sb.AppendLine();
-                        Helper.LogInnerException(ex, sb);
+                        StoryHelper.LogInnerException(ex, sb);
                         LogSystem.Error("{0}", sb.ToString());
                     }
                 }
@@ -43,7 +43,7 @@ namespace StoryScript
                         var sb = new System.Text.StringBuilder();
                         sb.AppendFormat("[LoadStory] LoadStory file:{0} Exception:{1}\n{2}", file, ex.Message, ex.StackTrace);
                         sb.AppendLine();
-                        Helper.LogInnerException(ex, sb);
+                        StoryHelper.LogInnerException(ex, sb);
                         LogSystem.Error("{0}", sb.ToString());
                     }
                 }
@@ -62,7 +62,7 @@ namespace StoryScript
                     var sb = new System.Text.StringBuilder();
                     sb.AppendFormat("[LoadStory] LoadStoryText file:{0} Exception:{1}\n{2}", file, ex.Message, ex.StackTrace);
                     sb.AppendLine();
-                    Helper.LogInnerException(ex, sb);
+                    StoryHelper.LogInnerException(ex, sb);
                     LogSystem.Error("{0}", sb.ToString());
                 }
             }
@@ -81,7 +81,7 @@ namespace StoryScript
                     var sb = new System.Text.StringBuilder();
                     sb.AppendFormat("[LoadStory] LoadStoryText file:{0} Exception:{1}\n{2}", file, ex.Message, ex.StackTrace);
                     sb.AppendLine();
-                    Helper.LogInnerException(ex, sb);
+                    StoryHelper.LogInnerException(ex, sb);
                     LogSystem.Error("{0}", sb.ToString());
                 }
             }

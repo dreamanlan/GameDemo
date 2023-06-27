@@ -110,7 +110,7 @@ namespace StoryScript.CommonCommands
         }
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
-            if (GameLibrary.GlobalVariables.Instance.IsStorySkipped) {
+            if (StoryConfigManager.Instance.IsStorySkipped) {
                 return false;
             }
             string msgId = m_MsgId.Value;
@@ -235,7 +235,7 @@ namespace StoryScript.CommonCommands
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             if (m_StartTime <= 0) {
-                long startTime = GameLibrary.TimeUtility.GetLocalMilliseconds();
+                long startTime = TimeUtility.GetLocalMilliseconds();
                 m_StartTime = startTime;
             }
             bool triggered = false;
@@ -469,7 +469,7 @@ namespace StoryScript.CommonCommands
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             if (m_StartTime <= 0) {
-                long startTime = GameLibrary.TimeUtility.GetLocalMilliseconds();
+                long startTime = TimeUtility.GetLocalMilliseconds();
                 m_StartTime = startTime;
             }
             bool triggered = false;
@@ -489,7 +489,7 @@ namespace StoryScript.CommonCommands
                 int timeout = m_TimeoutVal.Value;
                 int curTime = m_CurTime;
                 m_CurTime += (int)delta;
-                if (!(GameLibrary.GlobalVariables.Instance.IsStorySkipped) && (timeout <= 0 || curTime <= timeout)) {
+                if (!(StoryConfigManager.Instance.IsStorySkipped) && (timeout <= 0 || curTime <= timeout)) {
                     ret = true;
                 } else {
                     string varName = m_TimeoutSetVar.Value;
@@ -602,7 +602,7 @@ namespace StoryScript.CommonCommands
                 int timeout = m_TimeoutVal.Value;
                 int curTime = m_CurTime;
                 m_CurTime += (int)delta;
-                if (!(GameLibrary.GlobalVariables.Instance.IsStorySkipped) && (timeout <= 0 || curTime <= timeout)) {
+                if (!(StoryConfigManager.Instance.IsStorySkipped) && (timeout <= 0 || curTime <= timeout)) {
                     ret = true;
                 } else {
                     string varName = m_TimeoutSetVar.Value;
@@ -845,7 +845,7 @@ namespace StoryScript.CommonCommands
         }
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
-            if (GameLibrary.GlobalVariables.Instance.IsStorySkipped) {
+            if (StoryConfigManager.Instance.IsStorySkipped) {
                 return false;
             }
             string msgId = m_MsgId.Value;
@@ -981,7 +981,7 @@ namespace StoryScript.CommonCommands
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             if (m_StartTime <= 0) {
-                long startTime = GameLibrary.TimeUtility.GetLocalMilliseconds();
+                long startTime = TimeUtility.GetLocalMilliseconds();
                 m_StartTime = startTime;
             }
             bool triggered = false;
@@ -1231,7 +1231,7 @@ namespace StoryScript.CommonCommands
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             if (m_StartTime <= 0) {
-                long startTime = GameLibrary.TimeUtility.GetLocalMilliseconds();
+                long startTime = TimeUtility.GetLocalMilliseconds();
                 m_StartTime = startTime;
             }
             bool triggered = false;
@@ -1262,7 +1262,7 @@ namespace StoryScript.CommonCommands
                 int timeout = m_TimeoutVal.Value;
                 int curTime = m_CurTime;
                 m_CurTime += (int)delta;
-                if (!(GameLibrary.GlobalVariables.Instance.IsStorySkipped) && (timeout <= 0 || curTime <= timeout)) {
+                if (!(StoryConfigManager.Instance.IsStorySkipped) && (timeout <= 0 || curTime <= timeout)) {
                     ret = true;
                 } else {
                     string varName = m_TimeoutSetVar.Value;
@@ -1382,7 +1382,7 @@ namespace StoryScript.CommonCommands
                 int timeout = m_TimeoutVal.Value;
                 int curTime = m_CurTime;
                 m_CurTime += (int)delta;
-                if (!(GameLibrary.GlobalVariables.Instance.IsStorySkipped) && (timeout <= 0 || curTime <= timeout)) {
+                if (!(StoryConfigManager.Instance.IsStorySkipped) && (timeout <= 0 || curTime <= timeout)) {
                     ret = true;
                 } else {
                     string varName = m_TimeoutSetVar.Value;

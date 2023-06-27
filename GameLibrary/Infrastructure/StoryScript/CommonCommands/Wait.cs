@@ -100,9 +100,9 @@ namespace StoryScript.CommonCommands
                 return false;
             }
             if (m_RealStartTime <= 0) {
-                m_RealStartTime = (int)GameLibrary.TimeUtility.GetLocalRealMilliseconds();
+                m_RealStartTime = (int)TimeUtility.GetLocalRealMilliseconds();
             }
-            int curTime = (int)GameLibrary.TimeUtility.GetLocalRealMilliseconds();
+            int curTime = (int)TimeUtility.GetLocalRealMilliseconds();
             int val = m_Time.Value;
             if (curTime <= m_RealStartTime + val && curTime <= m_RealStartTime + StoryValueHelper.c_MaxWaitCommandTime)
                 return true;
@@ -170,10 +170,10 @@ namespace StoryScript.CommonCommands
             if (m_HaveCondition && m_Condition.HaveValue && m_Condition.Value == 0) {
                 return false;
             }
-            if (GameLibrary.GlobalVariables.Instance.IsStorySkipped) {
+            if (StoryConfigManager.Instance.IsStorySkipped) {
                 return false;
             }
-            if (GameLibrary.GlobalVariables.Instance.IsStorySpeedup) {
+            if (StoryConfigManager.Instance.IsStorySpeedup) {
                 return false;
             }
             int curTime = m_CurTime;
@@ -245,16 +245,16 @@ namespace StoryScript.CommonCommands
             if (m_HaveCondition && m_Condition.HaveValue && m_Condition.Value == 0) {
                 return false;
             }
-            if (GameLibrary.GlobalVariables.Instance.IsStorySkipped) {
+            if (StoryConfigManager.Instance.IsStorySkipped) {
                 return false;
             }
-            if (GameLibrary.GlobalVariables.Instance.IsStorySpeedup) {
+            if (StoryConfigManager.Instance.IsStorySpeedup) {
                 return false;
             }
             if (m_RealStartTime <= 0) {
-                m_RealStartTime = (int)GameLibrary.TimeUtility.GetLocalRealMilliseconds();
+                m_RealStartTime = (int)TimeUtility.GetLocalRealMilliseconds();
             }
-            int curTime = (int)GameLibrary.TimeUtility.GetLocalRealMilliseconds();
+            int curTime = (int)TimeUtility.GetLocalRealMilliseconds();
             int val = m_Time.Value;
             if (curTime <= m_RealStartTime + val && curTime <= m_RealStartTime + StoryValueHelper.c_MaxWaitCommandTime)
                 return true;
@@ -316,14 +316,14 @@ namespace StoryScript.CommonCommands
             if (m_HaveCondition && m_Condition.HaveValue && m_Condition.Value == 0) {
                 return false;
             }
-            if (GameLibrary.GlobalVariables.Instance.IsStorySkipped) {
+            if (StoryConfigManager.Instance.IsStorySkipped) {
                 return false;
             }
-            if (GameLibrary.GlobalVariables.Instance.IsStorySpeedup) {
+            if (StoryConfigManager.Instance.IsStorySpeedup) {
                 return false;
             }
-            if (GameLibrary.GlobalVariables.Instance.StoryEditorOpen && GameLibrary.GlobalVariables.Instance.StoryEditorContinue) {
-                GameLibrary.GlobalVariables.Instance.StoryEditorContinue = false;
+            if (StoryConfigManager.Instance.StoryEditorOpen && StoryConfigManager.Instance.StoryEditorContinue) {
+                StoryConfigManager.Instance.StoryEditorContinue = false;
                 return false;
             }
             return true;

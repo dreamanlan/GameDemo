@@ -160,7 +160,7 @@ namespace StoryScript
                         try {
                             command = factory.Create();
                             if (!command.Init(commandConfig)) {
-                                GameLibrary.LogSystem.Error("[LoadStory] command:{0}[{1}] line:{2} failed.", type, commandConfig.ToScriptString(false), commandConfig.GetLine());
+                                LogSystem.Error("[LoadStory] command:{0}[{1}] line:{2} failed.", type, commandConfig.ToScriptString(false), commandConfig.GetLine());
                             }
                         }
                         catch (Exception ex) {
@@ -171,22 +171,22 @@ namespace StoryScript
                     else {
 #if DEBUG
                         string err = string.Format("[LoadStory] CreateCommand failed, line:{0} command:{1}[{2}]", commandConfig.GetLine(), type, commandConfig.ToScriptString(false));
-                        GameLibrary.LogSystem.Error("{0}", err);
+                        LogSystem.Error("{0}", err);
                         throw new Exception(err);
 #else
-                GameLibrary.LogSystem.Error("[LoadStory] CreateCommand failed, type:{0} line:{1}", type, commandConfig.GetLine());
+                LogSystem.Error("[LoadStory] CreateCommand failed, type:{0} line:{1}", type, commandConfig.GetLine());
 #endif
                     }
                     if (null != command) {
-                        //GameLibrary.LogSystem.Debug("[LoadStory] CreateCommand, type:{0} command:{1}", type, command.GetType().Name);
+                        //LogSystem.Debug("[LoadStory] CreateCommand, type:{0} command:{1}", type, command.GetType().Name);
                     }
                     else {
 #if DEBUG
                         string err = string.Format("[LoadStory] CreateCommand failed, line:{0} command:{1}[{2}]", commandConfig.GetLine(), type, commandConfig.ToScriptString(false));
-                        GameLibrary.LogSystem.Error("{0}", err);
+                        LogSystem.Error("{0}", err);
                         throw new Exception(err);
 #else
-                GameLibrary.LogSystem.Error("[LoadStory] CreateCommand failed, type:{0} line:{1}", type, commandConfig.GetLine());
+                LogSystem.Error("[LoadStory] CreateCommand failed, type:{0} line:{1}", type, commandConfig.GetLine());
 #endif
                     }
                 }

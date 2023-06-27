@@ -81,7 +81,7 @@ namespace StoryScript
                     //keyword
                 }
             }
-            if (GameLibrary.GlobalVariables.Instance.IsDevice) {
+            if (StoryConfigManager.Instance.IsDevice) {
                 //在设备上不保留配置信息了
                 m_Comments = null;
                 m_Config = null;
@@ -102,7 +102,7 @@ namespace StoryScript
                     return ExecCommand(instance, handler, delta, iterator, args);
                 }
                 catch (Exception ex) {
-                    GameLibrary.LogSystem.Error("AbstractStoryCommand Composite Command ExecCommand Exception:{0}\n{1}", ex.Message, ex.StackTrace);
+                    LogSystem.Error("AbstractStoryCommand Composite Command ExecCommand Exception:{0}\n{1}", ex.Message, ex.StackTrace);
                     return false;
                 }
             }
@@ -113,7 +113,7 @@ namespace StoryScript
                         Evaluate(instance, handler, iterator, args);
                     }
                     catch (Exception ex) {
-                        GameLibrary.LogSystem.Error("AbstractStoryCommand Evaluate Exception:{0}\n{1}", ex.Message, ex.StackTrace);
+                        LogSystem.Error("AbstractStoryCommand Evaluate Exception:{0}\n{1}", ex.Message, ex.StackTrace);
                         return false;
                     }
                 }
@@ -123,7 +123,7 @@ namespace StoryScript
                     m_LastExecResult = ExecCommand(instance, handler, delta);
                 }
                 catch (Exception ex) {
-                    GameLibrary.LogSystem.Error("AbstractStoryCommand ExecCommand Exception:{0}\n{1}", ex.Message, ex.StackTrace);
+                    LogSystem.Error("AbstractStoryCommand ExecCommand Exception:{0}\n{1}", ex.Message, ex.StackTrace);
                     m_LastExecResult = false;
                 }
                 return m_LastExecResult;

@@ -63,7 +63,7 @@ namespace StoryScript
             m_Comments = m_Params.InitFromDsl(config, 0, true);
             m_Config = config;
             m_Id = config.GetId();
-            if (GameLibrary.GlobalVariables.Instance.IsDevice) {
+            if (StoryConfigManager.Instance.IsDevice) {
                 //在设备上不保留配置信息了
                 m_Comments = null;
                 m_Config = null;
@@ -118,7 +118,7 @@ namespace StoryScript
                     m_Params.Evaluate(instance, handler, iterator, args);
                 }
                 catch (Exception ex) {
-                    GameLibrary.LogSystem.Error("SimpleStoryCommand Evaluate Exception:{0}\n{1}", ex.Message, ex.StackTrace);
+                    LogSystem.Error("SimpleStoryCommand Evaluate Exception:{0}\n{1}", ex.Message, ex.StackTrace);
                     return false;
                 }
             }
@@ -128,7 +128,7 @@ namespace StoryScript
                 m_LastExecResult = ExecCommand(instance, (ValueParamType)m_Params, delta);
             }
             catch (Exception ex) {
-                GameLibrary.LogSystem.Error("SimpleStoryCommand ExecCommand Exception:{0}\n{1}", ex.Message, ex.StackTrace);
+                LogSystem.Error("SimpleStoryCommand ExecCommand Exception:{0}\n{1}", ex.Message, ex.StackTrace);
                 m_LastExecResult = false;
             }
             return m_LastExecResult;

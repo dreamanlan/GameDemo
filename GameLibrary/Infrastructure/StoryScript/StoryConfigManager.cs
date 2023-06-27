@@ -9,6 +9,46 @@ namespace StoryScript
 {
     public sealed class StoryConfigManager
     {
+        public bool IsDebug
+        {
+            get { return m_IsDebug; }
+            set { m_IsDebug = value; }
+        }
+        public bool LoggerEnabled
+        {
+            get { return m_LoggerEnabled; }
+            set { m_LoggerEnabled = value; }
+        }
+        public bool IsDevelopment
+        {
+            get { return m_IsDevelopment; }
+            set { m_IsDevelopment = value; }
+        }
+        public bool IsDevice
+        {
+            get { return m_IsDevice; }
+            set { m_IsDevice = value; }
+        }
+        public bool StoryEditorOpen
+        {
+            get { return m_StoryEditorOpen; }
+            set { m_StoryEditorOpen = value; }
+        }
+        public bool StoryEditorContinue
+        {
+            get { return m_StoryEditorContinue; }
+            set { m_StoryEditorContinue = value; }
+        }
+        public bool IsStorySkipped
+        {
+            get { return m_IsStorySkipped; }
+            set { m_IsStorySkipped = value; }
+        }
+        public bool IsStorySpeedup
+        {
+            get { return m_IsStorySpeedup; }
+            set { m_IsStorySpeedup = value; }
+        }
         public void LoadStories(int sceneId, string _namespace, params string[] files)
         {
             for (int i = 0; i < files.Length; i++) {
@@ -38,7 +78,7 @@ namespace StoryScript
                         var sb = new System.Text.StringBuilder();
                         sb.AppendFormat("[LoadStory] LoadStory file:{0} scene:{1} Exception:{2}\n{3}", file, sceneId, ex.Message, ex.StackTrace);
                         sb.AppendLine();
-                        Helper.LogInnerException(ex, sb);
+                        StoryHelper.LogInnerException(ex, sb);
                         LogSystem.Error("{0}", sb.ToString());
                     }
                 }
@@ -55,7 +95,7 @@ namespace StoryScript
                         var sb = new System.Text.StringBuilder();
                         sb.AppendFormat("[LoadStory] LoadStory file:{0} scene:{1} Exception:{2}\n{3}", file, sceneId, ex.Message, ex.StackTrace);
                         sb.AppendLine();
-                        Helper.LogInnerException(ex, sb);
+                        StoryHelper.LogInnerException(ex, sb);
                         LogSystem.Error("{0}", sb.ToString());
                     }
                 }
@@ -73,7 +113,7 @@ namespace StoryScript
                     var sb = new System.Text.StringBuilder();
                     sb.AppendFormat("[LoadStory] LoadStoryText file:{0} scene:{1} Exception:{2}\n{3}", file, sceneId, ex.Message, ex.StackTrace);
                     sb.AppendLine();
-                    Helper.LogInnerException(ex, sb);
+                    StoryHelper.LogInnerException(ex, sb);
                     LogSystem.Error("{0}", sb.ToString());
                 }
             }
@@ -92,7 +132,7 @@ namespace StoryScript
                     var sb = new System.Text.StringBuilder();
                     sb.AppendFormat("[LoadStory] LoadStoryText file:{0} scene:{1} Exception:{2}\n{3}", file, sceneId, ex.Message, ex.StackTrace);
                     sb.AppendLine();
-                    Helper.LogInnerException(ex, sb);
+                    StoryHelper.LogInnerException(ex, sb);
                     LogSystem.Error("{0}", sb.ToString());
                 }
             }
@@ -233,6 +273,17 @@ namespace StoryScript
         private object m_Lock = new object();
         private Dictionary<int, Dictionary<string, StoryInstance>> m_StoryInstances = new Dictionary<int, Dictionary<string, StoryInstance>>();
         private Dictionary<string, Dictionary<string, StoryInstance>> m_StoryInstancePool = new Dictionary<string, Dictionary<string, StoryInstance>>();
+
+        private bool m_IsDebug = false;
+        private bool m_LoggerEnabled = true;
+        private bool m_IsDevelopment = false;
+        private bool m_IsDevice = false;
+
+        private bool m_StoryEditorOpen = false;
+        private bool m_StoryEditorContinue = false;
+
+        private bool m_IsStorySkipped = false;
+        private bool m_IsStorySpeedup = false;
 
         public static List<string> ReuseKeyBuffer
         {

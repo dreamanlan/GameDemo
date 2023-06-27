@@ -161,7 +161,7 @@ namespace StoryScript
         public void Tick(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             while (m_CommandQueue.Count > 0) {
-                if (handler.IsSuspended || handler.CanSkip && (GameLibrary.GlobalVariables.Instance.IsStorySkipped)) {
+                if (handler.IsSuspended || handler.CanSkip && (StoryConfigManager.Instance.IsStorySkipped)) {
                     break;
                 }
                 IStoryCommand cmd = m_CommandQueue.Peek();
@@ -420,7 +420,7 @@ namespace StoryScript
             else {
                 LogSystem.Error("Story {0} MessageHandler {1}, no body !", storyId, m_MessageId);
             }
-            if (GameLibrary.GlobalVariables.Instance.IsDevice) {
+            if (StoryConfigManager.Instance.IsDevice) {
                 //在设备上不保留配置信息了
                 m_Comments = null;
             }
@@ -433,7 +433,7 @@ namespace StoryScript
         {
             if (logIfTriggered && m_IsTriggered) {
                 LogSystem.Error("Reset a running message handler，story:{0} message:{1} !", m_StoryId, m_MessageId);
-                Helper.LogCallStack(true);
+                StoryHelper.LogCallStack(true);
             }
             m_CanSkip = false;
             m_IsTriggered = false;
@@ -481,7 +481,7 @@ namespace StoryScript
                         RuntimeStack.Peek().CompositeReentry = true;
                     }
                 }
-                if (RuntimeStack.Count <= 0 || isReturn || m_CanSkip && (GameLibrary.GlobalVariables.Instance.IsStorySkipped)) {
+                if (RuntimeStack.Count <= 0 || isReturn || m_CanSkip && (StoryConfigManager.Instance.IsStorySkipped)) {
                     m_IsTriggered = false;
                     //这里不用Reset，调用方会调用
                 }
@@ -830,7 +830,7 @@ namespace StoryScript
 #endif
             }
             LogSystem.Debug("StoryInstance.Init message handler num:{0} {1}", m_MessageHandlers.Count, ret);
-            if (GameLibrary.GlobalVariables.Instance.IsDevice) {
+            if (StoryScript.StoryConfigManager.Instance.IsDevice) {
                 //在设备上不保留配置信息了
                 m_Config = null;
             }

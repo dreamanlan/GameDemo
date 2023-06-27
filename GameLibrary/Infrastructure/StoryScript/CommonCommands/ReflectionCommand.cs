@@ -51,20 +51,20 @@ namespace StoryScript.CommonCommands
                         if (null != t) {
                             try {
                                 BindingFlags flags = BindingFlags.Static | BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.NonPublic;
-                                GameLibrary.Converter.CastArgsForCall(t, method, flags, args);
+                                Converter.CastArgsForCall(t, method, flags, args);
                                 t.InvokeMember(method, flags, null, null, args);
                             } catch (Exception ex) {
-                                GameLibrary.LogSystem.Warn("DotnetExec {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
+                                LogSystem.Warn("DotnetExec {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
                             }
                         } else {
                             t = obj.GetType();
                             if (null != t) {
                                 try {
                                     BindingFlags flags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.NonPublic;
-                                    GameLibrary.Converter.CastArgsForCall(t, method, flags, args);
+                                    Converter.CastArgsForCall(t, method, flags, args);
                                     t.InvokeMember(method, flags, null, obj, args);
                                 } catch (Exception ex) {
-                                    GameLibrary.LogSystem.Warn("DotnetExec {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
+                                    LogSystem.Warn("DotnetExec {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
                                 }
                             }
                         }
@@ -134,20 +134,20 @@ namespace StoryScript.CommonCommands
                         if (null != t) {
                             try {
                                 BindingFlags flags = BindingFlags.Static | BindingFlags.SetField | BindingFlags.SetProperty | BindingFlags.Public | BindingFlags.NonPublic;
-                                GameLibrary.Converter.CastArgsForSet(t, method, flags, args);
+                                Converter.CastArgsForSet(t, method, flags, args);
                                 t.InvokeMember(method, flags, null, null, args);
                             } catch (Exception ex) {
-                                GameLibrary.LogSystem.Warn("DotnetSet {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
+                                LogSystem.Warn("DotnetSet {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
                             }
                         } else {
                             t = obj.GetType();
                             if (null != t) {
                                 try {
                                     BindingFlags flags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.SetField | BindingFlags.SetProperty | BindingFlags.Public | BindingFlags.NonPublic;
-                                    GameLibrary.Converter.CastArgsForSet(t, method, flags, args);
+                                    Converter.CastArgsForSet(t, method, flags, args);
                                     t.InvokeMember(method, flags, null, obj, args);
                                 } catch (Exception ex) {
-                                    GameLibrary.LogSystem.Warn("DotnetSet {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
+                                    LogSystem.Warn("DotnetSet {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
                                 }
                             }
                         }
@@ -341,7 +341,7 @@ namespace StoryScript.CommonCommands
             try {
                 Process.Start(m_FileName.Value, m_Arguments.Value);
             } catch (Exception ex) {
-                GameLibrary.LogSystem.Warn("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
+                LogSystem.Warn("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
             }
             return false;
         }

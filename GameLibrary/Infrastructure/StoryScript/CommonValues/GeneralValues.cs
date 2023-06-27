@@ -514,7 +514,7 @@ namespace StoryScript.CommonValues
                 m_HaveValue = true;
                 int min = m_Min.Value;
                 int max = m_Max.Value;
-                m_Value = GameLibrary.Helper.Random.Next(min, max);
+                m_Value = StoryHelper.Random.Next(min, max);
             }
         }
         private IStoryValue<int> m_Min = new StoryValue<int>();
@@ -563,7 +563,7 @@ namespace StoryScript.CommonValues
         private void TryUpdateValue(StoryInstance instance)
         {
             m_HaveValue = true;
-            m_Value = GameLibrary.Helper.Random.NextFloat();
+            m_Value = StoryHelper.Random.NextFloat();
         }
         private IStoryValue<int> m_Min = new StoryValue<int>();
         private IStoryValue<int> m_Max = new StoryValue<int>();
@@ -966,7 +966,7 @@ namespace StoryScript.CommonValues
         {
             if (m_Pt1.HaveValue && m_Pt2.HaveValue) {
                 m_HaveValue = true;
-                m_Value = GameLibrary.Geometry.Distance(m_Pt1.Value, m_Pt2.Value);
+                m_Value = (m_Pt1.Value - m_Pt2.Value).magnitude;
             }
         }
         private IStoryValue<Vector3> m_Pt1 = new StoryValue<Vector3>();
@@ -1117,7 +1117,7 @@ namespace StoryScript.CommonValues
         {
             if (m_ListString.HaveValue) {
                 m_HaveValue = true;
-                List<string> list = GameLibrary.Converter.ConvertStringList(m_ListString.Value);
+                List<string> list = Converter.ConvertStringList(m_ListString.Value);
                 var v = new ObjList();
                 for (int i = 0; i < list.Count; ++i) {
                     v.Add(list[i]);
@@ -1172,7 +1172,7 @@ namespace StoryScript.CommonValues
         {
             if (m_ListString.HaveValue) {
                 m_HaveValue = true;
-                List<int> list = GameLibrary.Converter.ConvertNumericList<int>(m_ListString.Value);
+                List<int> list = Converter.ConvertNumericList<int>(m_ListString.Value);
                 var v = new ObjList();
                 for (int i = 0; i < list.Count; ++i) {
                     v.Add(list[i]);
@@ -1227,7 +1227,7 @@ namespace StoryScript.CommonValues
         {
             if (m_ListString.HaveValue) {
                 m_HaveValue = true;
-                List<float> list = GameLibrary.Converter.ConvertNumericList<float>(m_ListString.Value);
+                List<float> list = Converter.ConvertNumericList<float>(m_ListString.Value);
                 var v = new ObjList();
                 for (int i = 0; i < list.Count; ++i) {
                     v.Add(list[i]);
@@ -1282,7 +1282,7 @@ namespace StoryScript.CommonValues
         {
             if (m_ListString.HaveValue) {
                 m_HaveValue = true;
-                var list = GameLibrary.Converter.ConvertVector2DList(m_ListString.Value);
+                var list = Converter.ConvertVector2DList(m_ListString.Value);
                 var v = new ObjList();
                 for (int i = 0; i < list.Count; ++i) {
                     v.Add(list[i]);
@@ -1337,7 +1337,7 @@ namespace StoryScript.CommonValues
         {
             if (m_ListString.HaveValue) {
                 m_HaveValue = true;
-                var list = GameLibrary.Converter.ConvertVector3DList(m_ListString.Value);
+                var list = Converter.ConvertVector3DList(m_ListString.Value);
                 var v = new ObjList();
                 for (int i = 0; i < list.Count; ++i) {
                     v.Add(list[i]);
@@ -1604,7 +1604,7 @@ namespace StoryScript.CommonValues
                 m_HaveValue = true;
                 IList listValue = m_ListValue.Value;
                 int ct = listValue.Count;
-                int ix = GameLibrary.Helper.Random.Next(ct);
+                int ix = StoryHelper.Random.Next(ct);
                 if (ix >= 0 && ix < ct) {
                     m_Value = BoxedValue.FromObject(listValue[ix]);
                 } else if (ct > 0) {
@@ -1866,8 +1866,8 @@ namespace StoryScript.CommonValues
                 m_HaveValue = true;
                 float r = m_Radius.Value;
                 Vector3 pt = m_Pt.Value;
-                float deltaX = (GameLibrary.Helper.Random.NextFloat() - 0.5f) * r;
-                float deltaZ = (GameLibrary.Helper.Random.NextFloat() - 0.5f) * r;
+                float deltaX = (StoryHelper.Random.NextFloat() - 0.5f) * r;
+                float deltaZ = (StoryHelper.Random.NextFloat() - 0.5f) * r;
                 m_Value = new Vector3(pt.x + deltaX, pt.y, pt.z + deltaZ);
             }
         }
@@ -1923,8 +1923,8 @@ namespace StoryScript.CommonValues
                 m_HaveValue = true;
                 float r = m_Radius.Value;
                 Vector2 pt = m_Pt.Value;
-                float deltaX = (GameLibrary.Helper.Random.NextFloat() - 0.5f) * r;
-                float deltaZ = (GameLibrary.Helper.Random.NextFloat() - 0.5f) * r;
+                float deltaX = (StoryHelper.Random.NextFloat() - 0.5f) * r;
+                float deltaZ = (StoryHelper.Random.NextFloat() - 0.5f) * r;
                 m_Value = new Vector2(pt.x + deltaX, pt.y + deltaZ);
             }
         }
