@@ -3,15 +3,15 @@ using System;
 
 namespace StoryScript
 {
-    public enum Log_Type
+    public enum StoryLogType
     {
-        LT_Debug,
-        LT_Info,
-        LT_Warn,
-        LT_Error,
-        LT_Assert,
+        Debug,
+        Info,
+        Warn,
+        Error,
+        Assert,
     }
-    public delegate void LogSystemOutputDelegation(Log_Type type, string msg);
+    public delegate void LogSystemOutputDelegation(StoryLogType type, string msg);
 
     public class LogSystem
     {
@@ -25,7 +25,7 @@ namespace StoryScript
             if (!StoryConfigManager.Instance.IsDevice || StoryConfigManager.Instance.IsDebug) {
                 format = "Time:" + DateTime.Now.ToString("HH-mm-ss-fff:") + format;
                 string str = string.Format("[Debug]:" + format, args);
-                Output(Log_Type.LT_Debug, str);
+                Output(StoryLogType.Debug, str);
             }
 #endif
         }
@@ -36,7 +36,7 @@ namespace StoryScript
                 return;
             if (!StoryConfigManager.Instance.IsDevice || StoryConfigManager.Instance.IsDevelopment || StoryConfigManager.Instance.IsDebug) {
                 string str = string.Format("[Info]:" + format, args);
-                Output(Log_Type.LT_Info, str);
+                Output(StoryLogType.Info, str);
             }
         }
         [System.Diagnostics.Conditional("ENABLE_ERROR_LOG")]
@@ -47,7 +47,7 @@ namespace StoryScript
             if (!StoryConfigManager.Instance.IsDevice || StoryConfigManager.Instance.IsDevelopment || StoryConfigManager.Instance.IsDebug) {
                 format = "Time:" + DateTime.Now.ToString("HH-mm-ss-fff:") + format;
                 string str = string.Format("[Warn]:" + format, args);
-                Output(Log_Type.LT_Warn, str);
+                Output(StoryLogType.Warn, str);
             }
         }
         [System.Diagnostics.Conditional("ENABLE_ERROR_LOG")]
@@ -58,7 +58,7 @@ namespace StoryScript
             if (!StoryConfigManager.Instance.IsDevice || StoryConfigManager.Instance.IsDevelopment || StoryConfigManager.Instance.IsDebug) {
                 format = "Time:" + DateTime.Now.ToString("HH-mm-ss-fff:") + format;
                 string str = string.Format("[Error]:" + format, args);
-                Output(Log_Type.LT_Error, str);
+                Output(StoryLogType.Error, str);
             }
         }
         [System.Diagnostics.Conditional("ENABLE_LOG")]
@@ -70,7 +70,7 @@ namespace StoryScript
                 if (!check) {
                     format = "Time:" + DateTime.Now.ToString("HH-mm-ss-fff:") + format;
                     string str = string.Format("[Assert]:" + format, args);
-                    Output(Log_Type.LT_Assert, str);
+                    Output(StoryLogType.Assert, str);
                 }
             }
         }
@@ -79,11 +79,11 @@ namespace StoryScript
             if (!StoryConfigManager.Instance.LoggerEnabled)
                 return;
             if (!StoryConfigManager.Instance.IsDevice || StoryConfigManager.Instance.IsDevelopment || StoryConfigManager.Instance.IsDebug) {
-                Output(Log_Type.LT_Info, msg);
+                Output(StoryLogType.Info, msg);
             }
         }
 
-        private static void Output(Log_Type type, string msg)
+        private static void Output(StoryLogType type, string msg)
         {
             if (null != OnOutput) {
                 OnOutput(type, msg);

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GameLibrary
+namespace StoryScript
 {
   public enum StoryCommandGroupDefine
   {

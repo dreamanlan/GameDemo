@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using GameLibrary;
+using StoryScript;
 
 namespace StoryScript
 {

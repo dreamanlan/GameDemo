@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-using GameLibrary;
+using StoryScript;
 namespace StoryScript
 {
     public static class CustomCommandValueParser

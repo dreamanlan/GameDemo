@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using GameLibrary;
+using StoryScript;
 namespace StoryScript.CommonValues
 {
     internal sealed class TimeValue : IStoryValue

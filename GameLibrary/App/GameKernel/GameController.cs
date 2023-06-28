@@ -27,20 +27,20 @@ namespace GameLibrary
             GlobalVariables.Instance.IsDebug = false;
             StoryConfigManager.Instance.IsDebug = false;
 
-            Action<Log_Type, string> onLog = (Log_Type type, string msg) => {
+            Action<GameLogType, string> onLog = (GameLogType type, string msg) => {
 #if DEBUG
                 if (System.Threading.Thread.CurrentThread.ManagedThreadId == m_MainThreadId) {
-                    if (type == Log_Type.LT_Warn) {
+                    if (type == GameLogType.Warn) {
                         Utility.GfxLog("{0}", msg);
-                    } else if (type == Log_Type.LT_Error) {
+                    } else if (type == GameLogType.Error) {
                         Utility.GfxErrorLog("{0}", msg);
                     }
                 }
 #endif
                 m_Logger.Log("{0}", msg);
             };
-            LogSystem.OnOutput = (Log_Type type, string msg) => onLog(type, msg);
-            StoryScript.LogSystem.OnOutput = (StoryScript.Log_Type type, string msg) => onLog((Log_Type)type, msg);
+            LogSystem.OnOutput = (GameLogType type, string msg) => onLog(type, msg);
+            StoryScript.LogSystem.OnOutput = (StoryScript.StoryLogType type, string msg) => onLog((GameLogType)type, msg);
         }
         public void InitGame()
         {
