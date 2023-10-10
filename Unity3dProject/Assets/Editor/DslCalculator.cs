@@ -8815,9 +8815,11 @@ namespace DslExpression
         public void LoadDsl(IList<Dsl.ISyntaxComponent> statements, List<IExpression> exps)
         {
             foreach (Dsl.ISyntaxComponent comp in statements) {
-                var exp = Load(comp);
-                if (null != exp) {
-                    exps.Add(exp);
+                if (comp.IsValid()) {
+                    var exp = Load(comp);
+                    if (null != exp) {
+                        exps.Add(exp);
+                    }
                 }
             }
         }
