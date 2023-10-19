@@ -8930,7 +8930,7 @@ namespace DslExpression
             RecycleCalculatorValueList(args);
             return r;
         }
-        public CalculatorValue Calc(string func, List<CalculatorValue> args)
+        public CalculatorValue Calc(string func, IList<CalculatorValue> args)
         {
             CalculatorValue ret = 0;
             FuncInfo funcInfo;
@@ -8992,7 +8992,7 @@ namespace DslExpression
             }
             return ret;
         }
-        private CalculatorValue Calc<T>(List<CalculatorValue> args, T funcContext, FuncInfo funcInfo) where T : class
+        private CalculatorValue Calc<T>(IList<CalculatorValue> args, T funcContext, FuncInfo funcInfo) where T : class
         {
             LocalStackPush(args, funcContext, funcInfo);
             try {
@@ -9402,7 +9402,7 @@ namespace DslExpression
             }
         }
 
-        private void LocalStackPush<T>(List<CalculatorValue> args, T funcContext, FuncInfo funcInfo) where T : class
+        private void LocalStackPush<T>(IList<CalculatorValue> args, T funcContext, FuncInfo funcInfo) where T : class
         {
             var si = StackInfo.New();
             if (null != args) {

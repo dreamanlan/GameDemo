@@ -1,0 +1,17 @@
+D:\GitHub\GameDemo\GameLibrary\App\GameCore\bin\Debug\Common.dll
+D:\GitHub\GameDemo\GameLibrary\App\GameCore\bin\Debug\Dsl.dll
+D:\GitHub\GameDemo\GameLibrary\App\GameCore\bin\Debug\LitJson.dll
+D:\GitHub\GameDemo\GameLibrary\App\GameCore\bin\Debug\StoryScript.dll
+D:\GitHub\GameDemo\GameLibrary\App\GameCore\bin\Debug\UnityEngine.dll
+D:\GitHub\GameDemo\GameLibrary\App\GameCore\bin\Debug\UnityEngine.UI.dll
+D:\GitHub\GameDemo\GameLibrary\App\GameCore\bin\Debug\UnityEditor.dll
+D:\GitHub\GameDemo\GameLibrary\App\GameCore\bin\Debug\Common.pdb
+D:\GitHub\GameDemo\GameLibrary\App\GameCore\bin\Debug\StoryScript.pdb
+D:\GitHub\GameDemo\GameLibrary\App\GameCore\bin\Debug\Dsl.pdb
+D:\GitHub\GameDemo\GameLibrary\App\GameCore\obj\Debug\GameCore.csproj.AssemblyReference.cache
+D:\GitHub\GameDemo\GameLibrary\App\GameCore\obj\Debug\GameCore.csproj.CoreCompileInputs.cache
+D:\GitHub\GameDemo\GameLibrary\App\GameCore\obj\Debug\GameCore.csproj.CopyComplete
+D:\GitHub\GameDemo\GameLibrary\App\GameCore\bin\Debug\GameCore.dll
+D:\GitHub\GameDemo\GameLibrary\App\GameCore\bin\Debug\GameCore.pdb
+D:\GitHub\GameDemo\GameLibrary\App\GameCore\obj\Debug\GameCore.dll
+D:\GitHub\GameDemo\GameLibrary\App\GameCore\obj\Debug\GameCore.pdb

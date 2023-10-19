@@ -1,0 +1,17 @@
+D:\GitHub\GameDemo\GameLibrary\App\GameKernel\bin\Debug\GameKernel.dll
+D:\GitHub\GameDemo\GameLibrary\App\GameKernel\bin\Debug\GameKernel.pdb
+D:\GitHub\GameDemo\GameLibrary\App\GameKernel\bin\Debug\Common.dll
+D:\GitHub\GameDemo\GameLibrary\App\GameKernel\bin\Debug\Dsl.dll
+D:\GitHub\GameDemo\GameLibrary\App\GameKernel\bin\Debug\LitJson.dll
+D:\GitHub\GameDemo\GameLibrary\App\GameKernel\bin\Debug\StoryScript.dll
+D:\GitHub\GameDemo\GameLibrary\App\GameKernel\bin\Debug\UnityEngine.dll
+D:\GitHub\GameDemo\GameLibrary\App\GameKernel\bin\Debug\UnityEngine.UI.dll
+D:\GitHub\GameDemo\GameLibrary\App\GameKernel\bin\Debug\UnityEditor.dll
+D:\GitHub\GameDemo\GameLibrary\App\GameKernel\bin\Debug\Common.pdb
+D:\GitHub\GameDemo\GameLibrary\App\GameKernel\bin\Debug\StoryScript.pdb
+D:\GitHub\GameDemo\GameLibrary\App\GameKernel\bin\Debug\Dsl.pdb
+D:\GitHub\GameDemo\GameLibrary\App\GameKernel\obj\Debug\GameKernel.csproj.AssemblyReference.cache
+D:\GitHub\GameDemo\GameLibrary\App\GameKernel\obj\Debug\GameKernel.csproj.CoreCompileInputs.cache
+D:\GitHub\GameDemo\GameLibrary\App\GameKernel\obj\Debug\GameKernel.csproj.CopyComplete
+D:\GitHub\GameDemo\GameLibrary\App\GameKernel\obj\Debug\GameKernel.dll
+D:\GitHub\GameDemo\GameLibrary\App\GameKernel\obj\Debug\GameKernel.pdb

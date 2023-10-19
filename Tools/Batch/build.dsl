@@ -94,9 +94,9 @@ script(main)
         call("setcolor");
     };
 
-    cd(rootdir+"/GameLibrary/App/GameKernel/bin/%cfg%");
+    cd(rootdir+"/GameLibrary/App/GameCore/bin/%cfg%");
     echo("curdir:{0}",pwd());
-    looplist(listfiles(rootdir+"/GameLibrary/App/GameKernel/bin/%cfg%","*.dll")){
+    looplist(listfiles(rootdir+"/GameLibrary/App/GameCore/bin/%cfg%/netstandard2.1","*.dll")){
         $filename = getfilename($$);
         $targetPath = plugindir+"/"+$filename;
         copyfile($$, $targetPath);
@@ -108,12 +108,12 @@ script(main)
         };
         //echo("copy {0} to {1}", $$, $targetPath);
     };
-    copydir(rootdir+"/GameLibrary/App/GameKernel/bin/%cfg%", plugindir, "*.mdb");
+    copydir(rootdir+"/GameLibrary/App/GameCore/bin/%cfg%/netstandard2.1", plugindir, "*.mdb");
 
-    deletefile(plugindir+"/UnityEngine.dll");
-    deletefile(plugindir+"/UnityEngine.UI.dll");
-    deletefile(plugindir+"/UnityEngine.Timeline.dll");
-    deletefile(plugindir+"/UnityEditor.dll");
+    looplist(listfiles(plugindir,"Unity*.dll")){
+        deletefile($$);
+    };
+    deletefile(plugindir+"/netstandard.dll");
     cd(rootdir);
 
     if($var0){
