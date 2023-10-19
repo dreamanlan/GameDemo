@@ -9,7 +9,7 @@
     ".NETStandard,Version=v2.1/": {
       "StoryScript/1.0.0": {
         "dependencies": {
-          "Dsl": "1.0.0.0",
+          "Dsl": "0.0.0.0",
           "LitJson": "1.0.0.0",
           "UnityEngine": "0.0.0.0"
         },
@@ -17,11 +17,11 @@
           "StoryScript.dll": {}
         }
       },
-      "Dsl/1.0.0.0": {
+      "Dsl/0.0.0.0": {
         "runtime": {
           "Dsl.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
           }
         }
       },
@@ -49,7 +49,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Dsl/1.0.0.0": {
+    "Dsl/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

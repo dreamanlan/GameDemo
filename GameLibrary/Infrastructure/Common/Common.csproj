@@ -4,6 +4,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>CsLibrary</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>False</GenerateTargetFrameworkAttribute>
     <AssemblyTitle>Common</AssemblyTitle>
     <Company>Microsoft</Company>
     <Product>Common</Product>

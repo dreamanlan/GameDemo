@@ -4,6 +4,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Library</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>False</GenerateTargetFrameworkAttribute>
     <AssemblyTitle>StoryScript</AssemblyTitle>
     <Company>Microsoft</Company>
     <Product>StoryScript</Product>

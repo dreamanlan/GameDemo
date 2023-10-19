@@ -4,6 +4,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>GameLibrary</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>False</GenerateTargetFrameworkAttribute>
     <AssemblyTitle>GameCore</AssemblyTitle>
     <Company>Microsoft</Company>
     <Product>GameCore</Product>
