@@ -8343,7 +8343,7 @@ namespace DslExpression
             }
         }
     }
-#if NOT_USED
+#if USE_GM_STORY
     internal class StoryVarExp : SimpleExpressionBase
     {
         protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
@@ -8354,22 +8354,22 @@ namespace DslExpression
                 if (operands.Count >= 2) {
                     var val = operands[1];
                     if (!string.IsNullOrEmpty(name)) {
-                        var instance = GameLibrary.GmCommands.ClientGmStorySystem.Instance.GetStory("main");
+                        var instance = GmCommands.ClientGmStorySystem.Instance.GetStory("main");
                         if (null == instance) {
                             string txt = "script(main){onmessage(\"start\"){};};";
-                            GameLibrary.GmCommands.ClientGmStorySystem.Instance.LoadStoryText(Encoding.UTF8.GetBytes(txt));
-                            instance = GameLibrary.GmCommands.ClientGmStorySystem.Instance.GetStory("main");
+                            GmCommands.ClientGmStorySystem.Instance.LoadStoryText(Encoding.UTF8.GetBytes(txt));
+                            instance = GmCommands.ClientGmStorySystem.Instance.GetStory("main");
                         }
                         instance.SetVariable(name, BoxedValue.FromObject(val.GetObject()));
                         ret = val;
                     }
                 }
                 else {
-                    var instance = GameLibrary.GmCommands.ClientGmStorySystem.Instance.GetStory("main");
+                    var instance = GmCommands.ClientGmStorySystem.Instance.GetStory("main");
                     if (null == instance) {
                         string txt = "script(main){onmessage(\"start\"){};};";
-                        GameLibrary.GmCommands.ClientGmStorySystem.Instance.LoadStoryText(Encoding.UTF8.GetBytes(txt));
-                        instance = GameLibrary.GmCommands.ClientGmStorySystem.Instance.GetStory("main");
+                        GmCommands.ClientGmStorySystem.Instance.LoadStoryText(Encoding.UTF8.GetBytes(txt));
+                        instance = GmCommands.ClientGmStorySystem.Instance.GetStory("main");
                     }
                     BoxedValue bv;
                     instance.TryGetVariable(name, out bv);
@@ -8383,12 +8383,12 @@ namespace DslExpression
     {
         protected override CalculatorValue DoCalc()
         {
-            var instance = GameLibrary.GmCommands.ClientGmStorySystem.Instance.GetStory("main");
+            var instance = GmCommands.ClientGmStorySystem.Instance.GetStory("main");
             if (null == instance) {
                 string txt = "script(main){onmessage(\"start\"){};};";
-                GameLibrary.GmCommands.ClientGmStorySystem.Instance.LoadStoryText(Encoding.UTF8.GetBytes(txt));
-                GameLibrary.GmCommands.ClientGmStorySystem.Instance.StartStory("main");
-                instance = GameLibrary.GmCommands.ClientGmStorySystem.Instance.GetStory("main");
+                GmCommands.ClientGmStorySystem.Instance.LoadStoryText(Encoding.UTF8.GetBytes(txt));
+                GmCommands.ClientGmStorySystem.Instance.StartStory("main");
+                instance = GmCommands.ClientGmStorySystem.Instance.GetStory("main");
             }
             var handler = instance.GetMessageHandler("start");
             object ret = null;
@@ -8417,11 +8417,11 @@ namespace DslExpression
     {
         protected override CalculatorValue DoCalc()
         {
-            var instance = GameLibrary.GmCommands.ClientGmStorySystem.Instance.GetStory("main");
+            var instance = GmCommands.ClientGmStorySystem.Instance.GetStory("main");
             if (null == instance) {
                 string txt = "script(main){onmessage(\"start\"){};};";
-                GameLibrary.GmCommands.ClientGmStorySystem.Instance.LoadStoryText(Encoding.UTF8.GetBytes(txt));
-                instance = GameLibrary.GmCommands.ClientGmStorySystem.Instance.GetStory("main");
+                GmCommands.ClientGmStorySystem.Instance.LoadStoryText(Encoding.UTF8.GetBytes(txt));
+                instance = GmCommands.ClientGmStorySystem.Instance.GetStory("main");
             }
             var handler = instance.GetMessageHandler("start");
             foreach (var cmd in m_Commands) {
@@ -8728,7 +8728,7 @@ namespace DslExpression
             Register("savefolderpanel", new ExpressionFactoryHelper<SaveFolderPanelExp>());
             Register("displaydialog", new ExpressionFactoryHelper<DisplayDialogExp>());
             Register("calcmd5", new ExpressionFactoryHelper<CalcMd5Exp>());
-#if NOT_USED
+#if USE_GM_STORY
             Register("storyvar", new ExpressionFactoryHelper<StoryVarExp>());
             Register("storyvalue", new ExpressionFactoryHelper<StoryValueExp>());
             Register("storycommand", new ExpressionFactoryHelper<StoryCommandExp>());
