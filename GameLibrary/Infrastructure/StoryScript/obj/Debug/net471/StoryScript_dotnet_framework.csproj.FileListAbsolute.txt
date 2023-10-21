@@ -1,0 +1,3 @@
+D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\net471\StoryScript_dotnet_framework.csproj.AssemblyReference.cache
+D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\net471\StoryScript_dotnet_framework.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\net471\StoryScript_dotnet_framework.csproj.CoreCompileInputs.cache
