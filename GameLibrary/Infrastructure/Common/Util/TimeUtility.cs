@@ -62,7 +62,7 @@ namespace GameLibrary
 
         public static DateTime GetDateTimeBySecond(int timeStamp)// timestamp单位秒
         {
-            DateTime dtStart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
+            DateTime dtStart = TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1), TimeZoneInfo.Local);
             long lTime = ((long)timeStamp * 10000000);
             TimeSpan toNow = new TimeSpan(lTime);
             DateTime targetDt = dtStart.Add(toNow);

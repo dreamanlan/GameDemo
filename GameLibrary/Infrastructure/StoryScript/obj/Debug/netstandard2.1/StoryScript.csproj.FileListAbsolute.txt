@@ -1,6 +1,3 @@
-D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\netstandard2.1\StoryScript.csproj.AssemblyReference.cache
-D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\netstandard2.1\StoryScript.GeneratedMSBuildEditorConfig.editorconfig
-D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\netstandard2.1\StoryScript.csproj.CoreCompileInputs.cache
 D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\bin\Debug\netstandard2.1\StoryScript.deps.json
 D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\bin\Debug\netstandard2.1\StoryScript.dll
 D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\bin\Debug\netstandard2.1\StoryScript.pdb
@@ -8,6 +5,9 @@ D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\bin\Debug\netstandard2
 D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\bin\Debug\netstandard2.1\LitJson.dll
 D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\bin\Debug\netstandard2.1\UnityEngine.dll
 D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\bin\Debug\netstandard2.1\Dsl.pdb
+D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\netstandard2.1\StoryScript.csproj.AssemblyReference.cache
+D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\netstandard2.1\StoryScript.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\netstandard2.1\StoryScript.csproj.CoreCompileInputs.cache
 D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\netstandard2.1\StoryScript.csproj.CopyComplete
 D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\netstandard2.1\StoryScript.dll
 D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\netstandard2.1\StoryScript.pdb

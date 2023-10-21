@@ -6,13 +6,13 @@ using System.Diagnostics;
 namespace StoryScript.CommonCommands
 {
     /// <summary>
-    /// dotnetexec(obj,method,arg1,arg2,...);
+    /// dotnetcall(obj,method,arg1,arg2,...);
     /// </summary>
-    internal sealed class DotnetExecCommand : AbstractStoryCommand
+    internal sealed class DotnetCallCommand : AbstractStoryCommand
     {
         protected override IStoryCommand CloneCommand()
         {
-            DotnetExecCommand cmd = new DotnetExecCommand();
+            DotnetCallCommand cmd = new DotnetCallCommand();
             cmd.m_Object = m_Object.Clone();
             cmd.m_Method = m_Method.Clone();
             for (int i = 0; i < m_Args.Count; i++) {
@@ -54,7 +54,7 @@ namespace StoryScript.CommonCommands
                                 Converter.CastArgsForCall(t, method, flags, args);
                                 t.InvokeMember(method, flags, null, null, args);
                             } catch (Exception ex) {
-                                LogSystem.Warn("DotnetExec {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
+                                LogSystem.Warn("DotnetCall {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
                             }
                         } else {
                             t = obj.GetType();
@@ -64,7 +64,7 @@ namespace StoryScript.CommonCommands
                                     Converter.CastArgsForCall(t, method, flags, args);
                                     t.InvokeMember(method, flags, null, obj, args);
                                 } catch (Exception ex) {
-                                    LogSystem.Warn("DotnetExec {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
+                                    LogSystem.Warn("DotnetCall {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
                                 }
                             }
                         }
@@ -177,11 +177,11 @@ namespace StoryScript.CommonCommands
     /// <summary>
     /// collectionexec(obj,method,arg1,arg2,...);
     /// </summary>
-    internal sealed class CollectionExecCommand : AbstractStoryCommand
+    internal sealed class CollectionCallCommand : AbstractStoryCommand
     {
         protected override IStoryCommand CloneCommand()
         {
-            CollectionExecCommand cmd = new CollectionExecCommand();
+            CollectionCallCommand cmd = new CollectionCallCommand();
             cmd.m_Object = m_Object.Clone();
             cmd.m_Method = m_Method.Clone();
             for (int i = 0; i < m_Args.Count; i++) {
