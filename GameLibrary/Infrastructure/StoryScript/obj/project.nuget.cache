@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TdDESGIWQISIbN1MBrIxv80jZ4BmVAFVFGOCihxduTzzveRsI43OSX+AhWowFOlvXvFtQZWGRqSA38KUB01T2Q==",
+  "dgSpecHash": "gOzc13eKTbOyvx1AkkS5bt3YmDPwYngDDQqrEpgenQFJFUfz8pMS8fE7Mvd+gRFJgbUZKqutpkcAviYcVOvORg==",
   "success": true,
-  "projectFilePath": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript_dotnet_framework.csproj",
+  "projectFilePath": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

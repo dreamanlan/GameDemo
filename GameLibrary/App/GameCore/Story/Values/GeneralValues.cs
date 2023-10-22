@@ -1410,7 +1410,7 @@ namespace GameLibrary.Story.Values
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class GetScriptTypeValue : IStoryValue
+    internal sealed class GetUserTypeValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1424,7 +1424,7 @@ namespace GameLibrary.Story.Values
         }
         public IStoryValue Clone()
         {
-            GetScriptTypeValue val = new GetScriptTypeValue();
+            GetUserTypeValue val = new GetUserTypeValue();
             val.m_TypeName = m_TypeName.Clone();
             val.m_HaveValue = m_HaveValue;
             val.m_Value = m_Value;

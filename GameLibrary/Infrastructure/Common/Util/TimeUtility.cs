@@ -69,7 +69,6 @@ namespace GameLibrary
             return targetDt;
         }
 
-
         private static long s_AverageRoundtripTime = 0;
         private static long s_GfxTime = 0;
         private static long s_GfxRealTime = 0;

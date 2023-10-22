@@ -109,7 +109,7 @@ namespace GameLibrary.Story
             StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "getchild", new StoryValueFactoryHelper<Story.Values.GetChildValue>());
             StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "getunitytype", new StoryValueFactoryHelper<Story.Values.GetUnityTypeValue>());
             StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "getunityuitype", new StoryValueFactoryHelper<Story.Values.GetUnityUiTypeValue>());
-            StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "getscripttype", new StoryValueFactoryHelper<Story.Values.GetScriptTypeValue>());
+            StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "getusertype", new StoryValueFactoryHelper<Story.Values.GetUserTypeValue>());
 
             StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "getentityinfo", new StoryValueFactoryHelper<Story.Values.GetEntityInfoValue>());
             StoryValueManager.Instance.RegisterValueFactory(StoryValueGroupDefine.GFX, "getentityview", new StoryValueFactoryHelper<Story.Values.GetEntityViewValue>());
