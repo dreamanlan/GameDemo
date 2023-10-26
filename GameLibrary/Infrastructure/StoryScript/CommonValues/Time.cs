@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using StoryScript;
 namespace StoryScript.CommonValues
 {
-    internal sealed class TimeValue : IStoryValue
+    public sealed class TimeValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {

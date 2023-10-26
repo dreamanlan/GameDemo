@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Dsl;
 using StoryScript;
 using UnityEngine;
 namespace StoryScript.CommonValues
@@ -52,7 +53,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class EvalValue : IStoryValue
+    public sealed class EvalValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -116,7 +117,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class NamespaceValue : IStoryValue
+    public sealed class NamespaceValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -160,7 +161,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class StoryIdValue : IStoryValue
+    public sealed class StoryIdValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -202,7 +203,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class MessageIdValue : IStoryValue
+    public sealed class MessageIdValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -244,7 +245,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class CountCommandValue : IStoryValue
+    public sealed class CountCommandValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -310,7 +311,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class CountHandlerCommandValue : IStoryValue
+    public sealed class CountHandlerCommandValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -352,7 +353,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class PropGetValue : IStoryValue
+    public sealed class PropGetValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -467,7 +468,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class RandomIntValue : IStoryValue
+    public sealed class RandomIntValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -522,7 +523,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class RandomFloatValue : IStoryValue
+    public sealed class RandomFloatValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -570,7 +571,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class Vector2Value : IStoryValue
+    public sealed class Vector2Value : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -626,7 +627,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class Vector3Value : IStoryValue
+    public sealed class Vector3Value : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -684,7 +685,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class Vector4Value : IStoryValue
+    public sealed class Vector4Value : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -746,7 +747,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class QuaternionValue : IStoryValue
+    public sealed class QuaternionValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -808,7 +809,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class EularValue : IStoryValue
+    public sealed class EularValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -866,7 +867,228 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class Vector2DistanceValue : IStoryValue
+    public sealed class ColorValue : IStoryValue
+    {
+        private IStoryValue<float> m_X = new StoryValue<float>();
+
+        private IStoryValue<float> m_Y = new StoryValue<float>();
+
+        private IStoryValue<float> m_Z = new StoryValue<float>();
+
+        private IStoryValue<float> m_W = new StoryValue<float>();
+
+        private bool m_HaveValue;
+
+        private BoxedValue m_Value;
+
+        public bool HaveValue => m_HaveValue;
+
+        public BoxedValue Value => m_Value;
+
+        public void InitFromDsl(ISyntaxComponent param)
+        {
+            if (param is FunctionData functionData && functionData.GetParamNum() == 4) {
+                m_X.InitFromDsl(functionData.GetParam(0));
+                m_Y.InitFromDsl(functionData.GetParam(1));
+                m_Z.InitFromDsl(functionData.GetParam(2));
+                m_W.InitFromDsl(functionData.GetParam(3));
+                TryUpdateValue();
+            }
+        }
+
+        public IStoryValue Clone()
+        {
+            ColorValue colorValue = new ColorValue();
+            colorValue.m_X = m_X.Clone();
+            colorValue.m_Y = m_Y.Clone();
+            colorValue.m_Z = m_Z.Clone();
+            colorValue.m_W = m_W.Clone();
+            colorValue.m_HaveValue = m_HaveValue;
+            colorValue.m_Value = m_Value;
+            return colorValue;
+        }
+
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+            m_X.Evaluate(instance, handler, iterator, args);
+            m_Y.Evaluate(instance, handler, iterator, args);
+            m_Z.Evaluate(instance, handler, iterator, args);
+            m_W.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue();
+        }
+
+        private void TryUpdateValue()
+        {
+            if (m_X.HaveValue && m_Y.HaveValue && m_Z.HaveValue && m_W.HaveValue) {
+                m_HaveValue = true;
+                m_Value = new UnityEngine.Color(m_X.Value, m_Y.Value, m_Z.Value, m_W.Value);
+            }
+        }
+    }
+    public sealed class Color32Value : IStoryValue
+    {
+        private IStoryValue<byte> m_X = new StoryValue<byte>();
+
+        private IStoryValue<byte> m_Y = new StoryValue<byte>();
+
+        private IStoryValue<byte> m_Z = new StoryValue<byte>();
+
+        private IStoryValue<byte> m_W = new StoryValue<byte>();
+
+        private bool m_HaveValue;
+
+        private BoxedValue m_Value;
+
+        public bool HaveValue => m_HaveValue;
+
+        public BoxedValue Value => m_Value;
+
+        public void InitFromDsl(ISyntaxComponent param)
+        {
+            if (param is FunctionData functionData && functionData.GetParamNum() == 4) {
+                m_X.InitFromDsl(functionData.GetParam(0));
+                m_Y.InitFromDsl(functionData.GetParam(1));
+                m_Z.InitFromDsl(functionData.GetParam(2));
+                m_W.InitFromDsl(functionData.GetParam(3));
+                TryUpdateValue();
+            }
+        }
+
+        public IStoryValue Clone()
+        {
+            Color32Value colorValue = new Color32Value();
+            colorValue.m_X = m_X.Clone();
+            colorValue.m_Y = m_Y.Clone();
+            colorValue.m_Z = m_Z.Clone();
+            colorValue.m_W = m_W.Clone();
+            colorValue.m_HaveValue = m_HaveValue;
+            colorValue.m_Value = m_Value;
+            return colorValue;
+        }
+
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+            m_X.Evaluate(instance, handler, iterator, args);
+            m_Y.Evaluate(instance, handler, iterator, args);
+            m_Z.Evaluate(instance, handler, iterator, args);
+            m_W.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue();
+        }
+
+        private void TryUpdateValue()
+        {
+            if (m_X.HaveValue && m_Y.HaveValue && m_Z.HaveValue && m_W.HaveValue) {
+                m_HaveValue = true;
+                m_Value = new UnityEngine.Color32(m_X.Value, m_Y.Value, m_Z.Value, m_W.Value);
+            }
+        }
+    }
+    public sealed class Vector2IntValue : IStoryValue
+    {
+        private IStoryValue<int> m_X = new StoryValue<int>();
+
+        private IStoryValue<int> m_Y = new StoryValue<int>();
+
+        private bool m_HaveValue;
+
+        private BoxedValue m_Value;
+
+        public bool HaveValue => m_HaveValue;
+
+        public BoxedValue Value => m_Value;
+
+        public void InitFromDsl(ISyntaxComponent param)
+        {
+            if (param is FunctionData functionData && functionData.GetParamNum() == 2) {
+                m_X.InitFromDsl(functionData.GetParam(0));
+                m_Y.InitFromDsl(functionData.GetParam(1));
+                TryUpdateValue();
+            }
+        }
+
+        public IStoryValue Clone()
+        {
+            Vector2IntValue vector2Value = new Vector2IntValue();
+            vector2Value.m_X = m_X.Clone();
+            vector2Value.m_Y = m_Y.Clone();
+            vector2Value.m_HaveValue = m_HaveValue;
+            vector2Value.m_Value = m_Value;
+            return vector2Value;
+        }
+
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+            m_X.Evaluate(instance, handler, iterator, args);
+            m_Y.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue();
+        }
+
+        private void TryUpdateValue()
+        {
+            if (m_X.HaveValue && m_Y.HaveValue) {
+                m_HaveValue = true;
+                m_Value = BoxedValue.FromObject(new UnityEngine.Vector2Int(m_X.Value, m_Y.Value));
+            }
+        }
+    }
+    public sealed class Vector3IntValue : IStoryValue
+    {
+        private IStoryValue<int> m_X = new StoryValue<int>();
+
+        private IStoryValue<int> m_Y = new StoryValue<int>();
+
+        private IStoryValue<int> m_Z = new StoryValue<int>();
+
+        private bool m_HaveValue;
+
+        private BoxedValue m_Value;
+
+        public bool HaveValue => m_HaveValue;
+
+        public BoxedValue Value => m_Value;
+
+        public void InitFromDsl(ISyntaxComponent param)
+        {
+            if (param is FunctionData functionData && functionData.GetParamNum() == 3) {
+                m_X.InitFromDsl(functionData.GetParam(0));
+                m_Y.InitFromDsl(functionData.GetParam(1));
+                m_Z.InitFromDsl(functionData.GetParam(2));
+                TryUpdateValue();
+            }
+        }
+
+        public IStoryValue Clone()
+        {
+            Vector3IntValue vector3Value = new Vector3IntValue();
+            vector3Value.m_X = m_X.Clone();
+            vector3Value.m_Y = m_Y.Clone();
+            vector3Value.m_Z = m_Z.Clone();
+            vector3Value.m_HaveValue = m_HaveValue;
+            vector3Value.m_Value = m_Value;
+            return vector3Value;
+        }
+
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+            m_X.Evaluate(instance, handler, iterator, args);
+            m_Y.Evaluate(instance, handler, iterator, args);
+            m_Z.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue();
+        }
+
+        private void TryUpdateValue()
+        {
+            if (m_X.HaveValue && m_Y.HaveValue && m_Z.HaveValue) {
+                m_HaveValue = true;
+                m_Value = BoxedValue.FromObject(new UnityEngine.Vector3Int(m_X.Value, m_Y.Value, m_Z.Value));
+            }
+        }
+    }
+    public sealed class Vector2DistanceValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -920,7 +1142,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class Vector3DistanceValue : IStoryValue
+    public sealed class Vector3DistanceValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -974,7 +1196,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class Vector2To3Value : IStoryValue
+    public sealed class Vector2To3Value : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1024,7 +1246,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class Vector3To2Value : IStoryValue
+    public sealed class Vector3To2Value : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1074,7 +1296,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class StringListValue : IStoryValue
+    public sealed class StringListValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1129,7 +1351,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class IntListValue : IStoryValue
+    public sealed class IntListValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1184,7 +1406,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class FloatListValue : IStoryValue
+    public sealed class FloatListValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1239,7 +1461,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class Vector2ListValue : IStoryValue
+    public sealed class Vector2ListValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1294,7 +1516,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class Vector3ListValue : IStoryValue
+    public sealed class Vector3ListValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1349,7 +1571,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class ArrayValue : IStoryValue
+    public sealed class ArrayValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1418,7 +1640,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class ToArrayValue : IStoryValue
+    public sealed class ToArrayValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1478,7 +1700,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class ListValue : IStoryValue
+    public sealed class ListValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1549,7 +1771,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class RandomFromListValue : IStoryValue
+    public sealed class RandomFromListValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1622,7 +1844,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class ListGetValue : IStoryValue
+    public sealed class ListGetValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1703,7 +1925,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class ListSizeValue : IStoryValue
+    public sealed class ListSizeValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1755,7 +1977,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class ListIndexOfValue : IStoryValue
+    public sealed class ListIndexOfValue : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1819,7 +2041,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class RandVector3Value : IStoryValue
+    public sealed class RandVector3Value : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -1876,7 +2098,7 @@ namespace StoryScript.CommonValues
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class RandVector2Value : IStoryValue
+    public sealed class RandVector2Value : IStoryValue
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
