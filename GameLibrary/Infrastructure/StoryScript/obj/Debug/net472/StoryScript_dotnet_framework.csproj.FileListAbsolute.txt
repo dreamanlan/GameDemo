@@ -10,3 +10,15 @@ D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\net472\Story
 D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\net472\StoryScript_dotnet_framework.csproj.CopyComplete
 D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\net472\StoryScript.dll
 D:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\net472\StoryScript.pdb
+F:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\bin\Debug\net472\StoryScript.dll
+F:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\bin\Debug\net472\StoryScript.pdb
+F:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\bin\Debug\net472\Dsl.dll
+F:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\bin\Debug\net472\LitJson.dll
+F:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\bin\Debug\net472\UnityEngine.dll
+F:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\bin\Debug\net472\Dsl.pdb
+F:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\net472\StoryScript_dotnet_framework.csproj.AssemblyReference.cache
+F:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\net472\StoryScript_dotnet_framework.GeneratedMSBuildEditorConfig.editorconfig
+F:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\net472\StoryScript_dotnet_framework.csproj.CoreCompileInputs.cache
+F:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\net472\StoryScript_dotnet_framework.csproj.CopyComplete
+F:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\net472\StoryScript.dll
+F:\GitHub\GameDemo\GameLibrary\Infrastructure\StoryScript\obj\Debug\net472\StoryScript.pdb
