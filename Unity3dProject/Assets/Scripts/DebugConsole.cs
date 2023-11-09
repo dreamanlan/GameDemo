@@ -1,10 +1,7 @@
-#define DEBUG_CONSOLE
-
 #if (UNITY_IOS || UNITY_ANDROID) && !UNITY_EDITOR
 #define MOBILE
 #endif
 
-using GameLibrary;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,7 +10,6 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-#if DEBUG_CONSOLE
 public class DebugConsole : MonoBehaviour
 {
     readonly string VERSION = "3.0";
@@ -35,47 +31,6 @@ public class DebugConsole : MonoBehaviour
     public Color systemColor = Message.systemColor;
     public Color inputColor = Message.inputColor;
     public Color outputColor = Message.outputColor;
-    
-    /// <summary>
-    /// Used to check (or toggle) the open state of the console.
-    /// </summary>
-    public static bool IsOpen
-    {
-        get { return DebugConsole.Instance._isOpen; }
-        set { DebugConsole.Instance._isOpen = value; }
-    }
-
-    public static bool IsLastHitUi
-    {
-        get { return DebugConsole.Instance._isLastHitUi; }
-        set { DebugConsole.Instance._isLastHitUi = value; }
-    }
-
-    /// <summary>
-    /// Static instance of the console.
-    ///
-    /// When you want to access the console without a direct
-    /// reference (which you do in mose cases), use DebugConsole.Instance and the required
-    /// GameObject initialization will be done for you.
-    /// </summary>
-    static DebugConsole Instance
-    {
-        get
-        {
-            if (_instance == null) {
-                _instance = FindObjectOfType(typeof(DebugConsole)) as DebugConsole;
-
-                if (_instance != null) {
-                    return _instance;
-                }
-
-                GameObject console = new GameObject("__Debug Console__");
-                _instance = console.AddComponent<DebugConsole>();
-            }
-
-            return _instance;
-        }
-    }
 
     /// <summary>
     /// Key to press to toggle the visibility of the console.
@@ -95,7 +50,7 @@ public class DebugConsole : MonoBehaviour
     Rect _fakeDragRect;
     bool dragging = false;
 #if UNITY_EDITOR
-  Vector2 prevMousePos;
+    Vector2 prevMousePos;
 #endif
 #endif
 
@@ -105,7 +60,6 @@ public class DebugConsole : MonoBehaviour
     Matrix4x4 restoreMatrix = Matrix4x4.identity;
     bool _scaled = false;
     bool _isOpen;
-    bool _isLastHitUi;
     StringBuilder _displayString = new StringBuilder();
     string filter;
     bool dirty;
@@ -412,23 +366,40 @@ public class DebugConsole : MonoBehaviour
         this.RegisterCommandCallback("/?", CMDHelp);
     }
 
-    public void Show() {
+    private void ShowImpl() {
         this.enabled = true;
         _isOpen = true;
         filter = "";
     }
 
-    public void Hide() {
+    private void HideImpl() {
         _isOpen = false;
         this.enabled = false;
     }
 
-    [Conditional("DEBUG_CONSOLE"),
-     Conditional("UNITY_EDITOR"),
+    [Conditional("UNITY_EDITOR"),
      Conditional("DEVELOPMENT_BUILD")]
     void OnGUI()
     {
         var evt = Event.current;
+
+        // 创建一个自定义的GUI皮肤
+        GUISkin customSkin = GUI.skin;
+
+        // 设置按钮的大小
+        customSkin.button.fixedHeight = 24;
+        customSkin.button.fontSize = 14;
+
+        // 设置滚动条的宽度
+        customSkin.verticalScrollbar.fixedWidth = 20;
+        customSkin.horizontalScrollbar.fixedHeight = 20;
+
+        // 设置滚动条滑块的大小
+        customSkin.verticalScrollbarThumb.fixedWidth = 20;
+        customSkin.horizontalScrollbarThumb.fixedHeight = 20;
+
+        // 应用自定义皮肤
+        GUI.skin = customSkin;
 
         if (_scaled) {
             restoreMatrix = GUI.matrix;
@@ -599,143 +570,12 @@ public class DebugConsole : MonoBehaviour
     {
         StopAllCoroutines();
     }
-#region StaticAccessors
-
-    /// <summary>
-    /// Prints a message string to the console.
-    /// </summary>
-    /// <param name="message">Message to print.</param>
-    public static object Log(object message)
-    {
-        DebugConsole.Instance.LogMessage(Message.Log(message));
-
-        return message;
-    }
-
-    public static object LogFormat(string format, params object[] args)
-    {
-        return Log(string.Format(format, args));
-    }
-
-    /// <summary>
-    /// Prints a message string to the console.
-    /// </summary>
-    /// <param name="message">Message to print.</param>
-    /// <param name="messageType">The MessageType of the message. Used to provide
-    /// formatting in order to distinguish between message types.</param>
-    public static object Log(object message, MessageType messageType)
-    {
-        DebugConsole.Instance.LogMessage(new Message(message, messageType));
-
-        return message;
-    }
-
-    /// <summary>
-    /// Prints a message string to the console.
-    /// </summary>
-    /// <param name="message">Message to print.</param>
-    /// <param name="displayColor">The text color to use when displaying the message.</param>
-    public static object Log(object message, Color displayColor)
-    {
-        DebugConsole.Instance.LogMessage(new Message(message, displayColor));
-
-        return message;
-    }
-
-    /// <summary>
-    /// Prints a message string to the console.
-    /// </summary>
-    /// <param name="message">Messate to print.</param>
-    /// <param name="messageType">The MessageType of the message. Used to provide
-    /// formatting in order to distinguish between message types.</param>
-    /// <param name="displayColor">The color to use when displaying the message.</param>
-    /// <param name="useCustomColor">Flag indicating if the displayColor value should be used or
-    /// if the default color for the message type should be used instead.</param>
-    public static object Log(object message, MessageType messageType, Color displayColor)
-    {
-        DebugConsole.Instance.LogMessage(new Message(message, messageType, displayColor));
-
-        return message;
-    }
-
-    /// <summary>
-    /// Prints a message string to the console using the "Warning" message type formatting.
-    /// </summary>
-    /// <param name="message">Message to print.</param>
-    public static object LogWarning(object message)
-    {
-        DebugConsole.Instance.LogMessage(Message.Warning(message));
-
-        return message;
-    }
-
-    /// <summary>
-    /// Prints a message string to the console using the "Error" message type formatting.
-    /// </summary>
-    /// <param name="message">Message to print.</param>
-    public static object LogError(object message)
-    {
-        DebugConsole.Instance.LogMessage(Message.Error(message));
-
-        return message;
-    }
-
-    /// <summary>
-    /// Clears all console output.
-    /// </summary>
-    [Conditional("DEBUG_CONSOLE"),
-     Conditional("UNITY_EDITOR"),
-     Conditional("DEVELOPMENT_BUILD")]
-    public static void Clear()
-    {
-        DebugConsole.Instance.ClearLog();
-    }
-
-    /// <summary>
-    /// Execute a console command directly from code.
-    /// </summary>
-    /// <param name="commandString">The command line you want to execute. For example: "sys"</param>
-    [Conditional("DEBUG_CONSOLE"),
-     Conditional("UNITY_EDITOR"),
-     Conditional("DEVELOPMENT_BUILD")]
-    public static void Execute(string commandString)
-    {
-        DebugConsole.Instance.EvalInputString(commandString);
-    }
-
-    /// <summary>
-    /// Registers a debug command that is "fired" when the specified command string is entered.
-    /// </summary>
-    /// <param name="commandString">The string that represents the command. For example: "FOV"</param>
-    /// <param name="commandCallback">The method/function to call with the commandString is entered.
-    /// For example: "SetFOV"</param>
-    [Conditional("DEBUG_CONSOLE"),
-     Conditional("UNITY_EDITOR"),
-     Conditional("DEVELOPMENT_BUILD")]
-    public static void RegisterCommand(string commandString, DebugCommand commandCallback)
-    {
-        DebugConsole.Instance.RegisterCommandCallback(commandString, commandCallback);
-    }
-
-    /// <summary>
-    /// Removes a previously-registered debug command.
-    /// </summary>
-    /// <param name="commandString">The string that represents the command.</param>
-    [Conditional("DEBUG_CONSOLE"),
-     Conditional("UNITY_EDITOR"),
-     Conditional("DEVELOPMENT_BUILD")]
-    public static void UnRegisterCommand(string commandString)
-    {
-        DebugConsole.Instance.UnRegisterCommandCallback(commandString);
-    }
-
-#endregion
 #region Console commands
 
     //==== Built-in example DebugCommand handlers ====
     object CMDClose(params string[] args)
     {
-        Hide();
+        HideImpl();
 
         return "closed";
     }
@@ -996,8 +836,7 @@ public class DebugConsole : MonoBehaviour
 
 #endregion
 #region InternalFunctionality
-    [Conditional("DEBUG_CONSOLE"),
-     Conditional("UNITY_EDITOR"),
+    [Conditional("UNITY_EDITOR"),
      Conditional("DEVELOPMENT_BUILD")]
     void LogMessage(Message msg)
     {
@@ -1073,55 +912,154 @@ public class DebugConsole : MonoBehaviour
             //LogMessage(Message.Output(string.Format("*** Unknown Command: {0} ***", cmd)));
         }
     }
+
+    #endregion
+
+    #region StaticAccessors
+
+    /// <summary>
+    /// Prints a message string to the console.
+    /// </summary>
+    /// <param name="message">Message to print.</param>
+    public static object Log(object message)
+    {
+        _instance?.LogMessage(Message.Log(message));
+
+        return message;
+    }
+
+    public static object LogFormat(string format, params object[] args)
+    {
+        return Log(string.Format(format, args));
+    }
+
+    /// <summary>
+    /// Prints a message string to the console.
+    /// </summary>
+    /// <param name="message">Message to print.</param>
+    /// <param name="messageType">The MessageType of the message. Used to provide
+    /// formatting in order to distinguish between message types.</param>
+    public static object Log(object message, MessageType messageType)
+    {
+        _instance?.LogMessage(new Message(message, messageType));
+
+        return message;
+    }
+
+    /// <summary>
+    /// Prints a message string to the console.
+    /// </summary>
+    /// <param name="message">Message to print.</param>
+    /// <param name="displayColor">The text color to use when displaying the message.</param>
+    public static object Log(object message, Color displayColor)
+    {
+        _instance?.LogMessage(new Message(message, displayColor));
+
+        return message;
+    }
+
+    /// <summary>
+    /// Prints a message string to the console.
+    /// </summary>
+    /// <param name="message">Messate to print.</param>
+    /// <param name="messageType">The MessageType of the message. Used to provide
+    /// formatting in order to distinguish between message types.</param>
+    /// <param name="displayColor">The color to use when displaying the message.</param>
+    /// <param name="useCustomColor">Flag indicating if the displayColor value should be used or
+    /// if the default color for the message type should be used instead.</param>
+    public static object Log(object message, MessageType messageType, Color displayColor)
+    {
+        _instance?.LogMessage(new Message(message, messageType, displayColor));
+
+        return message;
+    }
+
+    /// <summary>
+    /// Prints a message string to the console using the "Warning" message type formatting.
+    /// </summary>
+    /// <param name="message">Message to print.</param>
+    public static object LogWarning(object message)
+    {
+        _instance?.LogMessage(Message.Warning(message));
+
+        return message;
+    }
+
+    /// <summary>
+    /// Prints a message string to the console using the "Error" message type formatting.
+    /// </summary>
+    /// <param name="message">Message to print.</param>
+    public static object LogError(object message)
+    {
+        _instance?.LogMessage(Message.Error(message));
+
+        return message;
+    }
+
+    /// <summary>
+    /// Clears all console output.
+    /// </summary>
+    [Conditional("UNITY_EDITOR"),
+     Conditional("DEVELOPMENT_BUILD")]
+    public static void Clear()
+    {
+        _instance?.ClearLog();
+    }
+
+    /// <summary>
+    /// Execute a console command directly from code.
+    /// </summary>
+    /// <param name="commandString">The command line you want to execute. For example: "sys"</param>
+    [Conditional("UNITY_EDITOR"),
+     Conditional("DEVELOPMENT_BUILD")]
+    public static void Execute(string commandString)
+    {
+        _instance?.EvalInputString(commandString);
+    }
+
+    /// <summary>
+    /// Registers a debug command that is "fired" when the specified command string is entered.
+    /// </summary>
+    /// <param name="commandString">The string that represents the command. For example: "FOV"</param>
+    /// <param name="commandCallback">The method/function to call with the commandString is entered.
+    /// For example: "SetFOV"</param>
+    [Conditional("UNITY_EDITOR"),
+     Conditional("DEVELOPMENT_BUILD")]
+    public static void RegisterCommand(string commandString, DebugCommand commandCallback)
+    {
+        _instance?.RegisterCommandCallback(commandString, commandCallback);
+    }
+
+    /// <summary>
+    /// Removes a previously-registered debug command.
+    /// </summary>
+    /// <param name="commandString">The string that represents the command.</param>
+    [Conditional("UNITY_EDITOR"),
+     Conditional("DEVELOPMENT_BUILD")]
+    public static void UnRegisterCommand(string commandString)
+    {
+        _instance?.UnRegisterCommandCallback(commandString);
+    }
+
+    public static bool IsOpen
+    {
+        get {
+            bool result = (bool)(_instance?._isOpen);
+            return result;
+        }
+    }
+    [Conditional("UNITY_EDITOR"),
+     Conditional("DEVELOPMENT_BUILD")]
+    public static void Show()
+    {
+        _instance?.ShowImpl();
+    }
+    [Conditional("UNITY_EDITOR"),
+     Conditional("DEVELOPMENT_BUILD")]
+    public static void Hide()
+    {
+        _instance?.HideImpl();
+    }
+
     #endregion
 }
-#else
-public static class DebugConsole {
-  public static bool IsOpen;  
-  public static KeyCode toggleKey;
-  public delegate object DebugCommand(params string[] args);
-
-  public static object Log(object message) {
-    return message;
-  }
-
-  public static object LogFormat(string format, params object[] args) {
-    return string.Format(format, args);
-  }
-
-  public static object LogWarning(object message) {
-    return message;
-  }
-
-  public static object LogError(object message) {
-    return message;
-  }
-
-  public static object Log(object message, object messageType) {
-    return message;
-  }
-
-  public static object Log(object message, Color displayColor) {
-    return message;
-  }
-
-  public static object Log(object message, object messageType, Color displayColor) {
-    return message;
-  }
-
-  public static void Clear() {
-  }
-
-  public static void RegisterCommand(string commandString, DebugCommand commandCallback) {
-  }
-
-  public static void UnRegisterCommand(string commandString) {
-  }
-
-  public static void RegisterWatchVar(object watchVar) {
-  }
-
-  public static void UnRegisterWatchVar(string name) {
-  }
-}
-#endif
