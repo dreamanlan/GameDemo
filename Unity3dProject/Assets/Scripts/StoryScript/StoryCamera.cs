@@ -5,7 +5,27 @@ using GameLibrary;
 
 public class StoryCamera : MonoBehaviour
 {
-    internal void Awake()
+    public bool m_IsFollowYaw = true;
+    // The distance in the x-z plane to the target
+    public float m_Distance = 7.0f;
+    // the height we want the camera to be above the target
+    public float m_Height = 6.0f;
+    public float m_FixedYaw = 0;
+    public Vector3 m_CenterOffset = Vector3.zero;
+    public float m_DistanceOnMaxSpeed = 50;
+    public float m_DistanceOnMinSpeed = 0.5f;
+    public float m_MaxSpeed = 50;
+    public float m_MinSpeed = 20;
+    public float m_Power = 1;
+    public float m_CameraFollowSpeed = 10.0f;
+    public float m_MinHeight = 0.5f;
+    public float m_MaxHeight = 64.0f;
+    public float m_MinDistance = 1.0f;
+    public float m_MaxDistance = 128.0f;
+    public float m_RestoreYawInterval = 2.0f;
+    public float m_RestoreYawPerTick = 1.5f;
+
+    void Awake()
     {
         try {
             m_TerrainLayerMask = 1 << LayerMask.NameToLayer("Terrain");
@@ -23,8 +43,8 @@ public class StoryCamera : MonoBehaviour
                 enabled = false;
             }
             ComputeSpeedFactor();
-            m_OrigMaxSpeedDistance = m_MaxSpeedDistance;
-            m_OrigMinSpeedDistance = m_MinSpeedDistance;
+            m_OrigDistanceOnMaxSpeed = m_DistanceOnMaxSpeed;
+            m_OrigDistanceOnMinSpeed = m_DistanceOnMinSpeed;
             m_OrigMaxSpeed = m_MaxSpeed;
             m_OrigMinSpeed = m_MinSpeed;
             m_OrigPower = m_Power;
@@ -32,7 +52,8 @@ public class StoryCamera : MonoBehaviour
             m_OrigHeight = Height;
             m_OrigDistance = Distance;
             m_CurDistance = Distance;
-        } catch (System.Exception ex) {
+        }
+        catch (System.Exception ex) {
             LogSystem.Error("Exception {0}\n{1}", ex.Message, ex.StackTrace);
         }
     }
@@ -46,7 +67,8 @@ public class StoryCamera : MonoBehaviour
                 Apply();
                 //CheckCollision();
             }
-        } catch (System.Exception ex) {
+        }
+        catch (System.Exception ex) {
             LogSystem.Error("MainCamera.LateUpdate throw exception {0}\n{1}", ex.Message, ex.StackTrace);
         }
     }
@@ -159,7 +181,8 @@ public class StoryCamera : MonoBehaviour
             float h = 0;
             if (pos.y > tpos.y) {
                 h = pos.y - delta - tpos.y;
-            } else {
+            }
+            else {
                 h = pos.y + delta - tpos.y;
             }
 
@@ -219,7 +242,8 @@ public class StoryCamera : MonoBehaviour
         float lag = (float)System.Convert.ChangeType(args[1], typeof(float)) / 1000.0f;
         if (dist > 0) {
             Distance = dist;
-        } else {
+        }
+        else {
             Distance = m_OrigDistance;
         }
         m_DistanceSmoothLag = lag;
@@ -279,8 +303,8 @@ public class StoryCamera : MonoBehaviour
         float maxspeed = (float)System.Convert.ChangeType(args[2], typeof(float));
         float minspeed = (float)System.Convert.ChangeType(args[3], typeof(float));
         int power = (int)System.Convert.ChangeType(args[4], typeof(int));
-        m_MaxSpeedDistance = maxdistance;
-        m_MinSpeedDistance = mindistance;
+        m_DistanceOnMaxSpeed = maxdistance;
+        m_DistanceOnMinSpeed = mindistance;
         m_MaxSpeed = maxspeed;
         m_MinSpeed = minspeed;
         m_Power = power;
@@ -288,8 +312,8 @@ public class StoryCamera : MonoBehaviour
     }
     private void ResetFollowSpeed()
     {
-        m_MaxSpeedDistance = m_OrigMaxSpeedDistance;
-        m_MinSpeedDistance = m_OrigMinSpeedDistance;
+        m_DistanceOnMaxSpeed = m_OrigDistanceOnMaxSpeed;
+        m_DistanceOnMinSpeed = m_OrigDistanceOnMinSpeed;
         m_MaxSpeed = m_OrigMaxSpeed;
         m_MinSpeed = m_OrigMinSpeed;
         m_Power = m_OrigPower;
@@ -322,7 +346,8 @@ public class StoryCamera : MonoBehaviour
                 m_FixedYaw += m_RestoreYawPerTick;
                 if (m_FixedYaw > 360)
                     m_FixedYaw = 0;
-            } else if (m_FixedYaw > Geometry.c_FloatPrecision) {
+            }
+            else if (m_FixedYaw > float.Epsilon) {
                 m_FixedYaw -= m_RestoreYawPerTick;
                 if (m_FixedYaw < 0)
                     m_FixedYaw = 0;
@@ -347,7 +372,7 @@ public class StoryCamera : MonoBehaviour
     }
     private void SetUpPosition()
     {
-        if (Time.deltaTime < Geometry.c_FloatPrecision) {
+        if (Time.deltaTime < float.Epsilon) {
             return;
         }
         AdjustSpeedAndMoveTarget();
@@ -449,7 +474,8 @@ public class StoryCamera : MonoBehaviour
         if (motion.magnitude >= dist) {
             m_CurTargetPos = m_TargetPos;
             m_CameraSpeed = dist / Time.deltaTime;
-        } else {
+        }
+        else {
             m_CurTargetPos += motion;
         }
     }
@@ -460,10 +486,12 @@ public class StoryCamera : MonoBehaviour
         if (m_NeedLookat) {
             if (!Geometry.IsSameFloat(currentHeight, m_TargetHeight) || !Geometry.IsSameFloat(m_CurDistance, Distance)) {
                 m_CameraTransform.LookAt(centerPos, Vector3.up);
-            } else {
+            }
+            else {
                 m_NeedLookat = false;
             }
-        } else {
+        }
+        else {
             // Now it's getting hairy. The devil is in the details here, the big issue is jumping of course.
             // * When jumping up and down we don't want to center the guy in screen space.
             //  This is important to give a feel for how high you jump and avoiding large camera movements.
@@ -502,7 +530,8 @@ public class StoryCamera : MonoBehaviour
             float extraLookAngle = heightToAngle * (centerRayPos.y - centerPos.y);
             if (extraLookAngle < centerToTopAngle) {
                 extraLookAngle = 0;
-            } else {
+            }
+            else {
                 extraLookAngle = extraLookAngle - centerToTopAngle;
                 m_CameraTransform.rotation *= Quaternion.Euler(-extraLookAngle, 0, 0);
             }
@@ -520,10 +549,10 @@ public class StoryCamera : MonoBehaviour
     private float GetCurSpeed(float distance)
     {
         float result = m_MinSpeed;
-        if (distance > m_MaxSpeedDistance) {
+        if (distance > m_DistanceOnMaxSpeed) {
             return m_MaxSpeed;
         }
-        if (distance < m_MinSpeedDistance) {
+        if (distance < m_DistanceOnMinSpeed) {
             return m_MinSpeed;
         }
         result = m_FactorA * Mathf.Pow(distance, m_Power) + m_FactorB;
@@ -533,13 +562,14 @@ public class StoryCamera : MonoBehaviour
     {
         //a*min_distance^n + b = min_speed
         //a*max_distance^n + b = max_speed
-        float denominator = Mathf.Pow(m_MaxSpeedDistance, m_Power) - Mathf.Pow(m_MinSpeedDistance, m_Power);
-        if (denominator > Geometry.c_FloatPrecision) {
+        float denominator = Mathf.Pow(m_DistanceOnMaxSpeed, m_Power) - Mathf.Pow(m_DistanceOnMinSpeed, m_Power);
+        if (denominator > float.Epsilon) {
             m_FactorA = (m_MaxSpeed - m_MinSpeed) / denominator;
-        } else {
+        }
+        else {
             m_FactorA = 0;
         }
-        m_FactorB = m_MinSpeed - m_FactorA * Mathf.Pow(m_MinSpeedDistance, m_Power);
+        m_FactorB = m_MinSpeed - m_FactorA * Mathf.Pow(m_DistanceOnMinSpeed, m_Power);
     }
     private float AngleDistance(float a, float b)
     {
@@ -551,13 +581,19 @@ public class StoryCamera : MonoBehaviour
     private float FixedYaw
     {
         get { return m_FixedYaw; }
-        set { m_FixedYaw = value; m_LastUpdateYawTime = Time.time; }
+        set {
+            m_FixedYaw = value;
+            while (m_FixedYaw < 0) {
+                m_FixedYaw += 360;
+            }
+            m_FixedYaw %= 360;
+            m_LastUpdateYawTime = Time.time;
+        }
     }
     private float Height
     {
         get { return m_Height; }
-        set
-        {
+        set {
             m_Height = value;
             if (m_Height < m_MinHeight)
                 m_Height = m_MinHeight;
@@ -577,27 +613,6 @@ public class StoryCamera : MonoBehaviour
         }
     }
 
-    public bool m_IsFollowYaw = true;
-    // The distance in the x-z plane to the target
-    public float m_Distance = 7.0f;
-    // the height we want the camera to be above the target
-    public float m_Height = 6.0f;
-    public float m_FixedYaw = 0;
-    public Vector3 m_CenterOffset = Vector3.zero;
-    public float m_MaxSpeedDistance = 50;
-    public float m_MinSpeedDistance = 0.5f;
-    public float m_MaxSpeed = 50;
-    public float m_MinSpeed = 20;
-    public float m_Power = 1;
-    public float m_CameraFollowSpeed = 10.0f;
-    public float m_CameraSpeed;
-    public float m_MinHeight = 0.5f;
-    public float m_MaxHeight = 64.0f;
-    public float m_MinDistance = 1.0f;
-    public float m_MaxDistance = 128.0f;
-    public float m_RestoreYawInterval = 2.0f;
-    public float m_RestoreYawPerTick = 1.5f;
-
     private bool m_ControlByOtherScript = false;
     private bool m_NeedLookat = false;
 
@@ -607,11 +622,12 @@ public class StoryCamera : MonoBehaviour
     private Vector3 m_CurTargetPos;
     private Vector3 m_TargetPos;
     private float m_CurDistance;
+    private float m_CameraSpeed;
 
     private float m_FactorA;
     private float m_FactorB;
-    private float m_OrigMaxSpeedDistance;
-    private float m_OrigMinSpeedDistance;
+    private float m_OrigDistanceOnMaxSpeed;
+    private float m_OrigDistanceOnMinSpeed;
     private float m_OrigMaxSpeed;
     private float m_OrigMinSpeed;
     private float m_OrigPower;
@@ -619,7 +635,7 @@ public class StoryCamera : MonoBehaviour
     private float m_OrigDistance;
 
     private float m_HeightSmoothLag = 0.3f;
-    private float m_DistanceSmoothLag = 3.0f;
+    private float m_DistanceSmoothLag = 0.5f;
     private float m_AngularSmoothLag = 0.3f;
     private float m_AngularMaxSpeed = 360.0f;
     private float m_SnapSmoothLag = 0.2f;
