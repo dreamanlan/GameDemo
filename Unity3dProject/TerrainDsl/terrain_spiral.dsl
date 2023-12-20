@@ -9,7 +9,7 @@ height
 {
   $x=arg(0);
   $y=arg(1);
-  height = clamp(0,0.01,rndfloat(0,1))+samplered("img", $x/2, $y/2)/500.0;
+  height = clamp(rndfloat(0,1),0,0.01)+samplered("img", $x/2, $y/2)/500.0;
   /*
   if(height>0.1 && rndint(0,100)<5){
     addtree(0,$x/128,height,$y/128,0,1,1,0x00ff00,0xff0000);
@@ -34,6 +34,8 @@ alphamap
 {
   $x=arg(0);
   $y=arg(1);
+  $h = getheight($x, $y);
+  clearalpha();
   setalpha(0, sin($x/180.0));
   setalpha(1, cos($y/180.0));
 }

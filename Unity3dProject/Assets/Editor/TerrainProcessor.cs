@@ -342,6 +342,7 @@ internal static class TerrainEditUtility
             calc.Register("getalphamap", new DslExpression.ExpressionFactoryHelper<GetAlphamapExp>());
             calc.Register("getalpha", new DslExpression.ExpressionFactoryHelper<GetAlphaExp>());
             calc.Register("setalpha", new DslExpression.ExpressionFactoryHelper<SetAlphaExp>());
+            calc.Register("clearalpha", new DslExpression.ExpressionFactoryHelper<ClearAlphaExp>());
             calc.Register("getdetail", new DslExpression.ExpressionFactoryHelper<GetDetailExp>());
             calc.Register("samplered", new DslExpression.ExpressionFactoryHelper<SampleRedExp>());
             calc.Register("samplegreen", new DslExpression.ExpressionFactoryHelper<SampleGreenExp>());
@@ -673,7 +674,10 @@ internal static class TerrainEditUtility
         AppendLine(sb, "{0}{{", GetIndent(indent));
         ++indent;
         foreach(var tl in data.terrainLayers) {
-            AppendLine(sb, "{0}terrainlayer(texture(\"{1}\", {2}, {3}), normalmap{4}, tilesize({5}), tileoffset({6}), specular({7}), metallic({8}), smoothness({9}));", GetIndent(indent), tl.diffuseTexture.name, tl.diffuseTexture.width, tl.diffuseTexture.height, null != tl.normalMapTexture ? string.Format("(\"{1}\", {2}, {3})", tl.normalMapTexture.name, tl.normalMapTexture.width, tl.normalMapTexture.height) : "()", tl.tileSize, tl.tileOffset, tl.specular, tl.metallic, tl.smoothness);
+            AppendLine(sb, "{0}terrainlayer(texture(\"{1}\", {2}, {3}), normalmap{4}, tilesize({5}), tileoffset({6}), specular({7}), metallic({8}), smoothness({9}));", GetIndent(indent),
+                tl.diffuseTexture.name, tl.diffuseTexture.width, tl.diffuseTexture.height, 
+                null != tl.normalMapTexture ? string.Format("(\"{0}\", {1}, {2})", tl.normalMapTexture.name, tl.normalMapTexture.width, tl.normalMapTexture.height) : "()",
+                tl.tileSize, tl.tileOffset, tl.specular, tl.metallic, tl.smoothness);
         }
         --indent;
         AppendLine(sb, "{0}}};", GetIndent(indent));
@@ -906,6 +910,20 @@ internal class SetAlphaExp : DslExpression.SimpleExpressionBase
             var v = operands[1].GetDouble();
             datas[ix] = (float)v;
             r = v;
+        }
+        return r;
+    }
+}
+internal class ClearAlphaExp : DslExpression.SimpleExpressionBase
+{
+    protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+    {
+        int r = 0;
+        var datas = Calculator.GetGlobalVariable("alphas").As<float[]>();
+        for(int ix = 0; ix < datas.Length; ++ix) {
+            if (datas[ix] > float.Epsilon)
+                ++r;
+            datas[ix] = 0;
         }
         return r;
     }
