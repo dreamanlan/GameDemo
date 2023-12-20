@@ -34,7 +34,7 @@ alphamap
 {
   $x=arg(0);
   $y=arg(1);
-  $h = getheight($x, $y);
+  $h = getheight($y, $x);
   clearalpha();
   setalpha(0, sin($x/180.0));
   setalpha(1, cos($y/180.0));
