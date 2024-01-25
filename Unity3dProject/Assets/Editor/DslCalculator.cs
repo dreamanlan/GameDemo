@@ -542,7 +542,8 @@ namespace DslExpression
                 return Type == c_CharType;
             }
         }
-        public bool IsSignedInteger {
+        public bool IsSignedInteger
+        {
             get {
                 switch (Type) {
                     case c_SByteType:
@@ -555,7 +556,8 @@ namespace DslExpression
                 }
             }
         }
-        public bool IsUnsignedInteger {
+        public bool IsUnsignedInteger
+        {
             get {
                 switch (Type) {
                     case c_ByteType:
@@ -845,7 +847,7 @@ namespace DslExpression
                 return CalculatorValueConverter.From<T>(ToDecimal());
             else if (t == typeof(CalculatorValue))
                 return CalculatorValueConverter.From<T>(this);
-            else if(t == typeof(object))
+            else if (t == typeof(object))
                 return CalculatorValueConverter.From<T>(ToObject());
             else
                 return CalculatorValueConverter.CastTo<T>(ToObject());
@@ -2154,7 +2156,7 @@ namespace DslExpression
                 if (m_VarIx < int.MaxValue) {
                     ret = Calculator.GetGlobalVaraibleByIndex(m_VarIx);
                 }
-                else if(Calculator.TryGetGlobalVariable(m_VarId, out var val)) {
+                else if (Calculator.TryGetGlobalVariable(m_VarId, out var val)) {
                     ret = val;
                 }
                 else {
@@ -3145,6 +3147,46 @@ namespace DslExpression
         {
             decimal v1 = m_Op1.Calc().GetDecimal();
             CalculatorValue v = v1;
+            return v;
+        }
+        protected override bool Load(IList<IExpression> exps)
+        {
+            m_Op1 = exps[0];
+            return true;
+        }
+
+        private IExpression m_Op1;
+    }
+    internal sealed class UtofExp : AbstractExpression
+    {
+        protected override CalculatorValue DoCalc()
+        {
+            uint v1 = m_Op1.Calc().GetUInt();
+            float v2 = 0;
+            unsafe {
+                v2 = *(float*)&v1;
+            }
+            CalculatorValue v = v2;
+            return v;
+        }
+        protected override bool Load(IList<IExpression> exps)
+        {
+            m_Op1 = exps[0];
+            return true;
+        }
+
+        private IExpression m_Op1;
+    }
+    internal sealed class FtouExp : AbstractExpression
+    {
+        protected override CalculatorValue DoCalc()
+        {
+            float v1 = m_Op1.Calc().GetFloat();
+            uint v2 = 0;
+            unsafe {
+                v2 = *(uint*)&v1;
+            }
+            CalculatorValue v = v2;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -8861,10 +8903,12 @@ namespace DslExpression
             Register("float", new ExpressionFactoryHelper<FloatExp>());
             Register("double", new ExpressionFactoryHelper<DoubleExp>());
             Register("decimal", new ExpressionFactoryHelper<DecimalExp>());
+            Register("ftou", new ExpressionFactoryHelper<FtouExp>());
+            Register("utof", new ExpressionFactoryHelper<UtofExp>());
             Register("lerp", new ExpressionFactoryHelper<LerpExp>());
             Register("lerpunclamped", new ExpressionFactoryHelper<LerpUnclampedExp>());
             Register("lerpangle", new ExpressionFactoryHelper<LerpAngleExp>());
-			Register("smoothstep", new ExpressionFactoryHelper<SmoothStepExp>());
+            Register("smoothstep", new ExpressionFactoryHelper<SmoothStepExp>());
             Register("clamp01", new ExpressionFactoryHelper<Clamp01Exp>());
             Register("clamp", new ExpressionFactoryHelper<ClampExp>());
             Register("approximately", new ExpressionFactoryHelper<ApproximatelyExp>());
@@ -9014,8 +9058,8 @@ namespace DslExpression
             Register("getextension", new ExpressionFactoryHelper<GetExtensionExp>());
             Register("getdirectoryname", new ExpressionFactoryHelper<GetDirectoryNameExp>());
             Register("combinepath", new ExpressionFactoryHelper<CombinePathExp>());
-            Register("changeextension", new ExpressionFactoryHelper<ChangeExtensionExp>());            
-			Register("quotepath", new ExpressionFactoryHelper<QuotePathExp>());
+            Register("changeextension", new ExpressionFactoryHelper<ChangeExtensionExp>());
+            Register("quotepath", new ExpressionFactoryHelper<QuotePathExp>());
             Register("debugbreak", new ExpressionFactoryHelper<DebugBreakExp>());
             Register("debuglog", new ExpressionFactoryHelper<DebugLogExp>());
             Register("debugwarning", new ExpressionFactoryHelper<DebugWarningExp>());
@@ -9560,7 +9604,7 @@ namespace DslExpression
                                         if (member == "orderby" || member == "orderbydesc" || member == "where" || member == "top") {
                                             apiName = "linq";
                                         }
-                                        else if(innerParamClass == (int)Dsl.FunctionData.ParamClassEnum.PARAM_CLASS_PERIOD) {
+                                        else if (innerParamClass == (int)Dsl.FunctionData.ParamClassEnum.PARAM_CLASS_PERIOD) {
                                             apiName = "dotnetcall";
                                         }
                                         else {
@@ -9593,7 +9637,7 @@ namespace DslExpression
                                   paramClass == (int)Dsl.FunctionData.ParamClassEnum.PARAM_CLASS_BRACKET) {
                                     //obj.property or obj[property] or obj.(property) or obj.[property] or obj.{property} -> dotnetget(obj,property)
                                     Dsl.FunctionData newCall = new Dsl.FunctionData();
-                                    if(paramClass == (int)Dsl.FunctionData.ParamClassEnum.PARAM_CLASS_PERIOD)
+                                    if (paramClass == (int)Dsl.FunctionData.ParamClassEnum.PARAM_CLASS_PERIOD)
                                         newCall.Name = new Dsl.ValueData("dotnetget", Dsl.ValueData.ID_TOKEN);
                                     else
                                         newCall.Name = new Dsl.ValueData("collectionget", Dsl.ValueData.ID_TOKEN);
