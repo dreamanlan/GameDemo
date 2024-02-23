@@ -11,7 +11,7 @@ namespace StoryScript
     UI,
     NUM
   }
-  public enum StoryValueGroupDefine
+  public enum StoryFunctionGroupDefine
   {
     BG = 0,
     GM,

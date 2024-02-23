@@ -84,6 +84,14 @@ namespace GameLibrary
         }
         #endregion
 
+        public SortedList<string, string> CommandDocs
+        {
+            get { return m_CommandDocs; }
+        }
+        public SortedList<string, string> FunctionDocs
+        {
+            get { return m_FunctionDocs; }
+        }
         public BlackBoard BlackBoard
         {
             get { return m_BlackBoard; }
@@ -117,6 +125,9 @@ namespace GameLibrary
             ClientStorySystem.Instance.StartStory("scene_main");
 
             m_BlackBoard.Reset();
+
+            m_CommandDocs = StoryScript.StoryCommandManager.Instance.GenCommandDocs();
+            m_FunctionDocs = StoryScript.StoryFunctionManager.Instance.GenFunctionDocs();
         }
         public void Release()
         {
@@ -461,7 +472,9 @@ namespace GameLibrary
                 OnAiDestroy(npc);
             }
         }
-      
+
+        private SortedList<string, string> m_CommandDocs;
+        private SortedList<string, string> m_FunctionDocs;
         private string m_LocalGmFile = string.Empty;
         private BlackBoard m_BlackBoard = new BlackBoard();
         private ClientAsyncActionProcessor m_AsyncActionProcessor = new ClientAsyncActionProcessor();

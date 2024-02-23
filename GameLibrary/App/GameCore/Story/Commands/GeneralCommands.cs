@@ -39,13 +39,13 @@ namespace GameLibrary.Story.Commands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryValue<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryValue<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_DslFiles.Add(val);
             }
             return true;
         }
-        private List<IStoryValue<string>> m_DslFiles = new List<IStoryValue<string>>();
+        private List<IStoryFunction<string>> m_DslFiles = new List<IStoryFunction<string>>();
     }
     /// <summary>
     /// startstory(story_id);
@@ -102,8 +102,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<string> m_StoryId = new StoryValue<string>();
-        private IStoryValue<int> m_Multiple = new StoryValue<int>();
+        private IStoryFunction<string> m_StoryId = new StoryValue<string>();
+        private IStoryFunction<int> m_Multiple = new StoryValue<int>();
     }
     /// <summary>
     /// stopstory(story_id);
@@ -156,8 +156,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<string> m_StoryId = new StoryValue<string>();
-        private IStoryValue<int> m_Multiple = new StoryValue<int>();
+        private IStoryFunction<string> m_StoryId = new StoryValue<string>();
+        private IStoryFunction<int> m_Multiple = new StoryValue<int>();
     }
     /// <summary>
     /// waitstory(storyid1,storyid2,...)[set(var,val)timeoutset(timeout,var,val)];
@@ -232,7 +232,7 @@ namespace GameLibrary.Story.Commands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryValue<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryValue<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_StoryIds.Add(val);
             }
@@ -294,13 +294,13 @@ namespace GameLibrary.Story.Commands
                 m_TimeoutSetVal.InitFromDsl(callData.GetParam(2));
             }
         }
-        private List<IStoryValue<string>> m_StoryIds = new List<IStoryValue<string>>();
-        private IStoryValue<string> m_SetVar = new StoryValue<string>();
-        private IStoryValue m_SetVal = new StoryValue();
-        private IStoryValue<int> m_TimeoutVal = new StoryValue<int>();
-        private IStoryValue<string> m_TimeoutSetVar = new StoryValue<string>();
-        private IStoryValue m_TimeoutSetVal = new StoryValue();
-        private IStoryValue<int> m_Multiple = new StoryValue<int>();
+        private List<IStoryFunction<string>> m_StoryIds = new List<IStoryFunction<string>>();
+        private IStoryFunction<string> m_SetVar = new StoryValue<string>();
+        private IStoryFunction m_SetVal = new StoryValue();
+        private IStoryFunction<int> m_TimeoutVal = new StoryValue<int>();
+        private IStoryFunction<string> m_TimeoutSetVar = new StoryValue<string>();
+        private IStoryFunction m_TimeoutSetVal = new StoryValue();
+        private IStoryFunction<int> m_Multiple = new StoryValue<int>();
         private bool m_HaveMultiple = false;
         private bool m_HaveSet = false;
         private int m_CurTime = 0;
@@ -347,7 +347,7 @@ namespace GameLibrary.Story.Commands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryValue<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryValue<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_StoryIds.Add(val);
             }
@@ -368,8 +368,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private List<IStoryValue<string>> m_StoryIds = new List<IStoryValue<string>>();
-        private IStoryValue<int> m_Multiple = new StoryValue<int>();
+        private List<IStoryFunction<string>> m_StoryIds = new List<IStoryFunction<string>>();
+        private IStoryFunction<int> m_Multiple = new StoryValue<int>();
     }
     /// <summary>
     /// resumestory(storyid1,storyid2,...);
@@ -413,7 +413,7 @@ namespace GameLibrary.Story.Commands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryValue<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryValue<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_StoryIds.Add(val);
             }
@@ -434,8 +434,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private List<IStoryValue<string>> m_StoryIds = new List<IStoryValue<string>>();
-        private IStoryValue<int> m_Multiple = new StoryValue<int>();
+        private List<IStoryFunction<string>> m_StoryIds = new List<IStoryFunction<string>>();
+        private IStoryFunction<int> m_Multiple = new StoryValue<int>();
     }
     /// <summary>
     /// firemessage(msgid,arg1,arg2,...);
@@ -451,7 +451,7 @@ namespace GameLibrary.Story.Commands
             FireMessageCommand cmd = new FireMessageCommand(m_IsConcurrent);
             cmd.m_MsgId = m_MsgId.Clone();
             for (int i = 0; i < m_MsgArgs.Count; ++i) {
-                IStoryValue val = m_MsgArgs[i];
+                IStoryFunction val = m_MsgArgs[i];
                 cmd.m_MsgArgs.Add(val.Clone());
             }
             return cmd;
@@ -464,7 +464,7 @@ namespace GameLibrary.Story.Commands
         {
             m_MsgId.Evaluate(instance, handler, iterator, args);
             for (int i = 0; i < m_MsgArgs.Count; ++i) {
-                IStoryValue val = m_MsgArgs[i];
+                IStoryFunction val = m_MsgArgs[i];
                 val.Evaluate(instance, handler, iterator, args);
             }
         }
@@ -474,7 +474,7 @@ namespace GameLibrary.Story.Commands
             string msgId = m_MsgId.Value;
             BoxedValueList args = ClientStorySystem.Instance.NewBoxedValueList();
             for (int i = 0; i < m_MsgArgs.Count; ++i) {
-                IStoryValue val = m_MsgArgs[i];
+                IStoryFunction val = m_MsgArgs[i];
                 args.Add(val.Value);
             }
             if(m_IsConcurrent)
@@ -497,8 +497,8 @@ namespace GameLibrary.Story.Commands
             return true;
         }
 
-        private IStoryValue<string> m_MsgId = new StoryValue<string>();
-        private List<IStoryValue> m_MsgArgs = new List<IStoryValue>();
+        private IStoryFunction<string> m_MsgId = new StoryValue<string>();
+        private List<IStoryFunction> m_MsgArgs = new List<IStoryFunction>();
         private bool m_IsConcurrent = false;
     }
     internal sealed class FireMessageCommandFactory : IStoryCommandFactory
@@ -590,7 +590,7 @@ namespace GameLibrary.Story.Commands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryValue<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryValue<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgIds.Add(val);
             }
@@ -628,12 +628,12 @@ namespace GameLibrary.Story.Commands
                 m_TimeoutSetVal.InitFromDsl(callData.GetParam(2));
             }
         }
-        private List<IStoryValue<string>> m_MsgIds = new List<IStoryValue<string>>();
-        private IStoryValue<string> m_SetVar = new StoryValue<string>();
-        private IStoryValue m_SetVal = new StoryValue();
-        private IStoryValue<int> m_TimeoutVal = new StoryValue<int>();
-        private IStoryValue<string> m_TimeoutSetVar = new StoryValue<string>();
-        private IStoryValue m_TimeoutSetVal = new StoryValue();
+        private List<IStoryFunction<string>> m_MsgIds = new List<IStoryFunction<string>>();
+        private IStoryFunction<string> m_SetVar = new StoryValue<string>();
+        private IStoryFunction m_SetVal = new StoryValue();
+        private IStoryFunction<int> m_TimeoutVal = new StoryValue<int>();
+        private IStoryFunction<string> m_TimeoutSetVar = new StoryValue<string>();
+        private IStoryFunction m_TimeoutSetVal = new StoryValue();
         private bool m_HaveSet = false;
         private int m_CurTime = 0;
         private long m_StartTime = 0;
@@ -704,7 +704,7 @@ namespace GameLibrary.Story.Commands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryValue<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryValue<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgIds.Add(val);
             }
@@ -742,12 +742,12 @@ namespace GameLibrary.Story.Commands
                 m_TimeoutSetVal.InitFromDsl(callData.GetParam(2));
             }
         }
-        private List<IStoryValue<string>> m_MsgIds = new List<IStoryValue<string>>();
-        private IStoryValue<string> m_SetVar = new StoryValue<string>();
-        private IStoryValue m_SetVal = new StoryValue();
-        private IStoryValue<int> m_TimeoutVal = new StoryValue<int>();
-        private IStoryValue<string> m_TimeoutSetVar = new StoryValue<string>();
-        private IStoryValue m_TimeoutSetVal = new StoryValue();
+        private List<IStoryFunction<string>> m_MsgIds = new List<IStoryFunction<string>>();
+        private IStoryFunction<string> m_SetVar = new StoryValue<string>();
+        private IStoryFunction m_SetVal = new StoryValue();
+        private IStoryFunction<int> m_TimeoutVal = new StoryValue<int>();
+        private IStoryFunction<string> m_TimeoutSetVar = new StoryValue<string>();
+        private IStoryFunction m_TimeoutSetVal = new StoryValue();
         private bool m_HaveSet = false;
         private int m_CurTime = 0;
     }
@@ -785,13 +785,13 @@ namespace GameLibrary.Story.Commands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryValue<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryValue<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgIds.Add(val);
             }
             return true;
         }
-        private List<IStoryValue<string>> m_MsgIds = new List<IStoryValue<string>>();
+        private List<IStoryFunction<string>> m_MsgIds = new List<IStoryFunction<string>>();
     }
     /// <summary>
     /// resumeallmessagehandler(msgid1,msgid2,...);
@@ -827,13 +827,13 @@ namespace GameLibrary.Story.Commands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryValue<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryValue<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgIds.Add(val);
             }
             return true;
         }
-        private List<IStoryValue<string>> m_MsgIds = new List<IStoryValue<string>>();
+        private List<IStoryFunction<string>> m_MsgIds = new List<IStoryFunction<string>>();
     }
     /// <summary>
     /// sendaimessage(objid,msg,arg1,arg2,...);
@@ -846,7 +846,7 @@ namespace GameLibrary.Story.Commands
             cmd.m_ObjId = m_ObjId.Clone();
             cmd.m_Msg = m_Msg.Clone();
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
+                IStoryFunction val = m_Args[i];
                 cmd.m_Args.Add(val.Clone());
             }
             return cmd;
@@ -856,7 +856,7 @@ namespace GameLibrary.Story.Commands
             m_ObjId.Evaluate(instance, handler, iterator, args);
             m_Msg.Evaluate(instance, handler, iterator, args);
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
+                IStoryFunction val = m_Args[i];
                 val.Evaluate(instance, handler, iterator, args);
             }
         }
@@ -869,7 +869,7 @@ namespace GameLibrary.Story.Commands
             if (null != entity) {
                 BoxedValueList args = entity.GetAiStateInfo().NewBoxedValueList();
                 for (int i = 0; i < m_Args.Count; ++i) {
-                    IStoryValue val = m_Args[i];
+                    IStoryFunction val = m_Args[i];
                     args.Add(val.Value);
                 }
                 entity.GetAiStateInfo().SendMessage(msg, args);
@@ -890,9 +890,9 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue<string> m_Msg = new StoryValue<string>();
-        private List<IStoryValue> m_Args = new List<IStoryValue>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<string> m_Msg = new StoryValue<string>();
+        private List<IStoryFunction> m_Args = new List<IStoryFunction>();
     }
     /// <summary>
     /// sendaiconcurrentmessage(objid,msg,arg1,arg2,...);
@@ -905,7 +905,7 @@ namespace GameLibrary.Story.Commands
             cmd.m_ObjId = m_ObjId.Clone();
             cmd.m_Msg = m_Msg.Clone();
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
+                IStoryFunction val = m_Args[i];
                 cmd.m_Args.Add(val.Clone());
             }
             return cmd;
@@ -915,7 +915,7 @@ namespace GameLibrary.Story.Commands
             m_ObjId.Evaluate(instance, handler, iterator, args);
             m_Msg.Evaluate(instance, handler, iterator, args);
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
+                IStoryFunction val = m_Args[i];
                 val.Evaluate(instance, handler, iterator, args);
             }
         }
@@ -928,7 +928,7 @@ namespace GameLibrary.Story.Commands
             if (null != entity) {
                 BoxedValueList args = entity.GetAiStateInfo().NewBoxedValueList();
                 for (int i = 0; i < m_Args.Count; ++i) {
-                    IStoryValue val = m_Args[i];
+                    IStoryFunction val = m_Args[i];
                     args.Add(val.Value);
                 }
                 entity.GetAiStateInfo().SendConcurrentMessage(msg, args);
@@ -949,9 +949,9 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue<string> m_Msg = new StoryValue<string>();
-        private List<IStoryValue> m_Args = new List<IStoryValue>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<string> m_Msg = new StoryValue<string>();
+        private List<IStoryFunction> m_Args = new List<IStoryFunction>();
     }
     /// <summary>
     /// sendainamespacedmessage(objid,msg,arg1,arg2,...);
@@ -964,7 +964,7 @@ namespace GameLibrary.Story.Commands
             cmd.m_ObjId = m_ObjId.Clone();
             cmd.m_Msg = m_Msg.Clone();
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
+                IStoryFunction val = m_Args[i];
                 cmd.m_Args.Add(val.Clone());
             }
             return cmd;
@@ -974,7 +974,7 @@ namespace GameLibrary.Story.Commands
             m_ObjId.Evaluate(instance, handler, iterator, args);
             m_Msg.Evaluate(instance, handler, iterator, args);
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
+                IStoryFunction val = m_Args[i];
                 val.Evaluate(instance, handler, iterator, args);
             }
         }
@@ -987,7 +987,7 @@ namespace GameLibrary.Story.Commands
             if (null != entity) {
                 BoxedValueList args = entity.GetAiStateInfo().NewBoxedValueList();
                 for (int i = 0; i < m_Args.Count; ++i) {
-                    IStoryValue val = m_Args[i];
+                    IStoryFunction val = m_Args[i];
                     args.Add(val.Value);
                 }
                 entity.GetAiStateInfo().SendNamespacedMessage(msg, args);
@@ -1008,9 +1008,9 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue<string> m_Msg = new StoryValue<string>();
-        private List<IStoryValue> m_Args = new List<IStoryValue>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<string> m_Msg = new StoryValue<string>();
+        private List<IStoryFunction> m_Args = new List<IStoryFunction>();
     }
     /// <summary>
     /// sendaiconcurrentnamespacedmessage(objid,msg,arg1,arg2,...);
@@ -1023,7 +1023,7 @@ namespace GameLibrary.Story.Commands
             cmd.m_ObjId = m_ObjId.Clone();
             cmd.m_Msg = m_Msg.Clone();
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
+                IStoryFunction val = m_Args[i];
                 cmd.m_Args.Add(val.Clone());
             }
             return cmd;
@@ -1033,7 +1033,7 @@ namespace GameLibrary.Story.Commands
             m_ObjId.Evaluate(instance, handler, iterator, args);
             m_Msg.Evaluate(instance, handler, iterator, args);
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
+                IStoryFunction val = m_Args[i];
                 val.Evaluate(instance, handler, iterator, args);
             }
         }
@@ -1046,7 +1046,7 @@ namespace GameLibrary.Story.Commands
             if (null != entity) {
                 BoxedValueList args = entity.GetAiStateInfo().NewBoxedValueList();
                 for (int i = 0; i < m_Args.Count; ++i) {
-                    IStoryValue val = m_Args[i];
+                    IStoryFunction val = m_Args[i];
                     args.Add(val.Value);
                 }
                 entity.GetAiStateInfo().SendConcurrentNamespacedMessage(msg, args);
@@ -1067,9 +1067,9 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue<string> m_Msg = new StoryValue<string>();
-        private List<IStoryValue> m_Args = new List<IStoryValue>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<string> m_Msg = new StoryValue<string>();
+        private List<IStoryFunction> m_Args = new List<IStoryFunction>();
     }
     /// <summary>
     /// publishevent(ev_name,group,arg1,arg2,...);
@@ -1082,7 +1082,7 @@ namespace GameLibrary.Story.Commands
             cmd.m_EventName = m_EventName.Clone();
             cmd.m_Group = m_Group.Clone();
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
+                IStoryFunction val = m_Args[i];
                 cmd.m_Args.Add(val.Clone());
             }
             return cmd;
@@ -1092,7 +1092,7 @@ namespace GameLibrary.Story.Commands
             m_EventName.Evaluate(instance, handler, iterator, args);
             m_Group.Evaluate(instance, handler, iterator, args);
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
+                IStoryFunction val = m_Args[i];
                 val.Evaluate(instance, handler, iterator, args);
             }
         }
@@ -1103,7 +1103,7 @@ namespace GameLibrary.Story.Commands
             string group = m_Group.Value;
             ArrayList arglist = new ArrayList();
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
+                IStoryFunction val = m_Args[i];
                 arglist.Add(val.Value.GetObject());
             }
             object[] args = arglist.ToArray();
@@ -1124,9 +1124,9 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<string> m_EventName = new StoryValue<string>();
-        private IStoryValue<string> m_Group = new StoryValue<string>();
-        private List<IStoryValue> m_Args = new List<IStoryValue>();
+        private IStoryFunction<string> m_EventName = new StoryValue<string>();
+        private IStoryFunction<string> m_Group = new StoryValue<string>();
+        private List<IStoryFunction> m_Args = new List<IStoryFunction>();
     }
     /// <summary>
     /// sendmessage(objname,msg,arg1,arg2,...);
@@ -1139,7 +1139,7 @@ namespace GameLibrary.Story.Commands
             cmd.m_ObjName = m_ObjName.Clone();
             cmd.m_Msg = m_Msg.Clone();
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
+                IStoryFunction val = m_Args[i];
                 cmd.m_Args.Add(val.Clone());
             }
             return cmd;
@@ -1149,7 +1149,7 @@ namespace GameLibrary.Story.Commands
             m_ObjName.Evaluate(instance, handler, iterator, args);
             m_Msg.Evaluate(instance, handler, iterator, args);
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
+                IStoryFunction val = m_Args[i];
                 val.Evaluate(instance, handler, iterator, args);
             }
         }
@@ -1160,7 +1160,7 @@ namespace GameLibrary.Story.Commands
             string msg = m_Msg.Value;
             ArrayList arglist = new ArrayList();
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
+                IStoryFunction val = m_Args[i];
                 arglist.Add(val.Value.GetObject());
             }
             object[] args = arglist.ToArray();
@@ -1186,9 +1186,9 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<string> m_ObjName = new StoryValue<string>();
-        private IStoryValue<string> m_Msg = new StoryValue<string>();
-        private List<IStoryValue> m_Args = new List<IStoryValue>();
+        private IStoryFunction<string> m_ObjName = new StoryValue<string>();
+        private IStoryFunction<string> m_Msg = new StoryValue<string>();
+        private List<IStoryFunction> m_Args = new List<IStoryFunction>();
     }
     /// <summary>
     /// sendmessagewithtag(tagname,msg,arg1,arg2,...);
@@ -1201,7 +1201,7 @@ namespace GameLibrary.Story.Commands
             cmd.m_ObjTag = m_ObjTag.Clone();
             cmd.m_Msg = m_Msg.Clone();
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
+                IStoryFunction val = m_Args[i];
                 cmd.m_Args.Add(val.Clone());
             }
             return cmd;
@@ -1211,7 +1211,7 @@ namespace GameLibrary.Story.Commands
             m_ObjTag.Evaluate(instance, handler, iterator, args);
             m_Msg.Evaluate(instance, handler, iterator, args);
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
+                IStoryFunction val = m_Args[i];
                 val.Evaluate(instance, handler, iterator, args);
             }
         }
@@ -1222,7 +1222,7 @@ namespace GameLibrary.Story.Commands
             string msg = m_Msg.Value;
             ArrayList arglist = new ArrayList();
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
+                IStoryFunction val = m_Args[i];
                 arglist.Add(val.Value.GetObject());
             }
             object[] args = arglist.ToArray();
@@ -1248,9 +1248,9 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<string> m_ObjTag = new StoryValue<string>();
-        private IStoryValue<string> m_Msg = new StoryValue<string>();
-        private List<IStoryValue> m_Args = new List<IStoryValue>();
+        private IStoryFunction<string> m_ObjTag = new StoryValue<string>();
+        private IStoryFunction<string> m_Msg = new StoryValue<string>();
+        private List<IStoryFunction> m_Args = new List<IStoryFunction>();
     }
     /// <summary>
     /// sendmessagewithgameobject(gameobject,msg,arg1,arg2,...);
@@ -1263,7 +1263,7 @@ namespace GameLibrary.Story.Commands
             cmd.m_Object = m_Object.Clone();
             cmd.m_Msg = m_Msg.Clone();
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
+                IStoryFunction val = m_Args[i];
                 cmd.m_Args.Add(val.Clone());
             }
             return cmd;
@@ -1273,7 +1273,7 @@ namespace GameLibrary.Story.Commands
             m_Object.Evaluate(instance, handler, iterator, args);
             m_Msg.Evaluate(instance, handler, iterator, args);
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
+                IStoryFunction val = m_Args[i];
                 val.Evaluate(instance, handler, iterator, args);
             }
         }
@@ -1294,7 +1294,7 @@ namespace GameLibrary.Story.Commands
                 string msg = m_Msg.Value;
                 ArrayList arglist = new ArrayList();
                 for (int i = 0; i < m_Args.Count; ++i) {
-                    IStoryValue val = m_Args[i];
+                    IStoryFunction val = m_Args[i];
                     arglist.Add(val.Value.GetObject());
                 }
                 object[] args = arglist.ToArray();
@@ -1321,9 +1321,9 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue m_Object = new StoryValue();
-        private IStoryValue<string> m_Msg = new StoryValue<string>();
-        private List<IStoryValue> m_Args = new List<IStoryValue>();
+        private IStoryFunction m_Object = new StoryValue();
+        private IStoryFunction<string> m_Msg = new StoryValue<string>();
+        private List<IStoryFunction> m_Args = new List<IStoryFunction>();
     }
     /// <summary>
     /// sendscriptmessage(msg,arg1,arg2,...);
@@ -1335,7 +1335,7 @@ namespace GameLibrary.Story.Commands
             SendScriptMessageCommand cmd = new SendScriptMessageCommand();
             cmd.m_Msg = m_Msg.Clone();
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
+                IStoryFunction val = m_Args[i];
                 cmd.m_Args.Add(val.Clone());
             }
             return cmd;
@@ -1344,7 +1344,7 @@ namespace GameLibrary.Story.Commands
         {
             m_Msg.Evaluate(instance, handler, iterator, args);
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
+                IStoryFunction val = m_Args[i];
                 val.Evaluate(instance, handler, iterator, args);
             }
         }
@@ -1354,7 +1354,7 @@ namespace GameLibrary.Story.Commands
             string msg = m_Msg.Value;
             ArrayList arglist = new ArrayList();
             for (int i = 0; i < m_Args.Count; ++i) {
-                IStoryValue val = m_Args[i];
+                IStoryFunction val = m_Args[i];
                 arglist.Add(val.Value.GetObject());
             }
             object[] args = arglist.ToArray();
@@ -1380,8 +1380,8 @@ namespace GameLibrary.Story.Commands
             return true;
         }
 
-        private IStoryValue<string> m_Msg = new StoryValue<string>();
-        private List<IStoryValue> m_Args = new List<IStoryValue>();
+        private IStoryFunction<string> m_Msg = new StoryValue<string>();
+        private List<IStoryFunction> m_Args = new List<IStoryFunction>();
     }
     /// <summary>
     /// creategameobject(name, prefab[, parent])[obj("varname")]{
@@ -1612,17 +1612,17 @@ namespace GameLibrary.Story.Commands
             }
         }
 
-        private IStoryValue<string> m_Name = new StoryValue<string>();
-        private IStoryValue<string> m_Prefab = new StoryValue<string>();
-        private IStoryValue m_Parent = new StoryValue();
+        private IStoryFunction<string> m_Name = new StoryValue<string>();
+        private IStoryFunction<string> m_Prefab = new StoryValue<string>();
+        private IStoryFunction m_Parent = new StoryValue();
         private bool m_HaveParent = false;
         private bool m_HaveObj = false;
-        private IStoryValue<string> m_ObjVarName = new StoryValue<string>();
-        private IStoryValue<UnityEngine.Vector3> m_Position = new StoryValue<UnityEngine.Vector3>();
-        private IStoryValue<UnityEngine.Vector3> m_Rotation = new StoryValue<UnityEngine.Vector3>();
-        private IStoryValue<UnityEngine.Vector3> m_Scale = new StoryValue<UnityEngine.Vector3>();
-        private List<IStoryValue<string>> m_DisableComponents = new List<IStoryValue<string>>();
-        private List<IStoryValue<string>> m_RemoveComponents = new List<IStoryValue<string>>();
+        private IStoryFunction<string> m_ObjVarName = new StoryValue<string>();
+        private IStoryFunction<UnityEngine.Vector3> m_Position = new StoryValue<UnityEngine.Vector3>();
+        private IStoryFunction<UnityEngine.Vector3> m_Rotation = new StoryValue<UnityEngine.Vector3>();
+        private IStoryFunction<UnityEngine.Vector3> m_Scale = new StoryValue<UnityEngine.Vector3>();
+        private List<IStoryFunction<string>> m_DisableComponents = new List<IStoryFunction<string>>();
+        private List<IStoryFunction<string>> m_RemoveComponents = new List<IStoryFunction<string>>();
     }
     /// <summary>
     /// settransform(name, world_or_local){
@@ -1759,11 +1759,11 @@ namespace GameLibrary.Story.Commands
             }
         }
 
-        private IStoryValue m_ObjPath = new StoryValue();
-        private IStoryValue<int> m_LocalOrWorld = new StoryValue<int>();
-        private IStoryValue<UnityEngine.Vector3> m_Position = new StoryValue<UnityEngine.Vector3>();
-        private IStoryValue<UnityEngine.Vector3> m_Rotation = new StoryValue<UnityEngine.Vector3>();
-        private IStoryValue<UnityEngine.Vector3> m_Scale = new StoryValue<UnityEngine.Vector3>();
+        private IStoryFunction m_ObjPath = new StoryValue();
+        private IStoryFunction<int> m_LocalOrWorld = new StoryValue<int>();
+        private IStoryFunction<UnityEngine.Vector3> m_Position = new StoryValue<UnityEngine.Vector3>();
+        private IStoryFunction<UnityEngine.Vector3> m_Rotation = new StoryValue<UnityEngine.Vector3>();
+        private IStoryFunction<UnityEngine.Vector3> m_Scale = new StoryValue<UnityEngine.Vector3>();
 
         private bool m_Handled = false;
         private UnityEngine.GameObject m_Object = null;
@@ -1908,11 +1908,11 @@ namespace GameLibrary.Story.Commands
             }
         }
 
-        private IStoryValue m_ObjPath = new StoryValue();
-        private IStoryValue<int> m_LocalOrWorld = new StoryValue<int>();
-        private IStoryValue<UnityEngine.Vector3> m_Position = new StoryValue<UnityEngine.Vector3>();
-        private IStoryValue<UnityEngine.Vector3> m_Rotation = new StoryValue<UnityEngine.Vector3>();
-        private IStoryValue<UnityEngine.Vector3> m_Scale = new StoryValue<UnityEngine.Vector3>();
+        private IStoryFunction m_ObjPath = new StoryValue();
+        private IStoryFunction<int> m_LocalOrWorld = new StoryValue<int>();
+        private IStoryFunction<UnityEngine.Vector3> m_Position = new StoryValue<UnityEngine.Vector3>();
+        private IStoryFunction<UnityEngine.Vector3> m_Rotation = new StoryValue<UnityEngine.Vector3>();
+        private IStoryFunction<UnityEngine.Vector3> m_Scale = new StoryValue<UnityEngine.Vector3>();
 
         private bool m_Handled = false;
         private UnityEngine.GameObject m_Object = null;
@@ -1966,7 +1966,7 @@ namespace GameLibrary.Story.Commands
             return true;
         }
 
-        private IStoryValue m_ObjPath = new StoryValue();
+        private IStoryFunction m_ObjPath = new StoryValue();
     }
     /// <summary>
     /// autorecycle(obj, 1_or_0);
@@ -2023,8 +2023,8 @@ namespace GameLibrary.Story.Commands
             return true;
         }
 
-        private IStoryValue m_ObjPath = new StoryValue();
-        private IStoryValue<int> m_Enable = new StoryValue<int>();
+        private IStoryFunction m_ObjPath = new StoryValue();
+        private IStoryFunction<int> m_Enable = new StoryValue<int>();
     }
     /// <summary>
     /// setparent(objpath,parent,stay_world_pos);
@@ -2136,9 +2136,9 @@ namespace GameLibrary.Story.Commands
             return true;
         }
 
-        private IStoryValue m_ObjPath = new StoryValue();
-        private IStoryValue m_Parent = new StoryValue();
-        private IStoryValue<int> m_StayWorldPos = new StoryValue<int>();
+        private IStoryFunction m_ObjPath = new StoryValue();
+        private IStoryFunction m_Parent = new StoryValue();
+        private IStoryFunction<int> m_StayWorldPos = new StoryValue<int>();
 
         private bool m_Handled = false;
         private UnityEngine.GameObject m_Object = null;
@@ -2216,8 +2216,8 @@ namespace GameLibrary.Story.Commands
             return true;
         }
 
-        private IStoryValue m_ObjPath = new StoryValue();
-        private IStoryValue<int> m_Active = new StoryValue<int>();
+        private IStoryFunction m_ObjPath = new StoryValue();
+        private IStoryFunction<int> m_Active = new StoryValue<int>();
 
         private bool m_Handled = false;
         private UnityEngine.GameObject m_Object = null;
@@ -2302,8 +2302,8 @@ namespace GameLibrary.Story.Commands
             return true;
         }
 
-        private IStoryValue m_ObjPath = new StoryValue();
-        private IStoryValue<int> m_Visible = new StoryValue<int>();
+        private IStoryFunction m_ObjPath = new StoryValue();
+        private IStoryFunction<int> m_Visible = new StoryValue<int>();
 
         private bool m_Handled = false;
         private UnityEngine.GameObject m_Object = null;
@@ -2396,10 +2396,10 @@ namespace GameLibrary.Story.Commands
                 m_HaveObj = true;
             }
         }
-        private IStoryValue m_ObjPath = new StoryValue();
-        private IStoryValue m_ComponentType = new StoryValue();
+        private IStoryFunction m_ObjPath = new StoryValue();
+        private IStoryFunction m_ComponentType = new StoryValue();
         private bool m_HaveObj = false;
-        private IStoryValue<string> m_ObjVarName = new StoryValue<string>();
+        private IStoryFunction<string> m_ObjVarName = new StoryValue<string>();
     }
     /// <summary>
     /// removecomponent(objpath,type);
@@ -2463,8 +2463,8 @@ namespace GameLibrary.Story.Commands
             return true;
         }
 
-        private IStoryValue m_ObjPath = new StoryValue();
-        private IStoryValue m_ComponentType = new StoryValue();
+        private IStoryFunction m_ObjPath = new StoryValue();
+        private IStoryFunction m_ComponentType = new StoryValue();
     }
     /// <summary>
     /// loadui(name, prefab, dslfile);
@@ -2543,10 +2543,10 @@ namespace GameLibrary.Story.Commands
             return true;
         }
 
-        private IStoryValue<string> m_Name = new StoryValue<string>();
-        private IStoryValue<string> m_Prefab = new StoryValue<string>();
-        private IStoryValue<string> m_DslFile = new StoryValue<string>();
-        private IStoryValue<int> m_DontDestroyOld = new StoryValue<int>();
+        private IStoryFunction<string> m_Name = new StoryValue<string>();
+        private IStoryFunction<string> m_Prefab = new StoryValue<string>();
+        private IStoryFunction<string> m_DslFile = new StoryValue<string>();
+        private IStoryFunction<int> m_DontDestroyOld = new StoryValue<int>();
     }
     /// <summary>
     /// bindui(gameobject){
@@ -2763,8 +2763,8 @@ namespace GameLibrary.Story.Commands
         }
         private class VarInfo
         {
-            internal IStoryValue<string> m_VarName = null;
-            internal IStoryValue<string> m_ControlPath = null;
+            internal IStoryFunction<string> m_VarName = null;
+            internal IStoryFunction<string> m_ControlPath = null;
             internal VarInfo()
             {
                 m_VarName = new StoryValue<string>();
@@ -2778,9 +2778,9 @@ namespace GameLibrary.Story.Commands
         }
         private class EventInfo
         {
-            internal IStoryValue<string> m_Event = null;
-            internal IStoryValue<string> m_Tag = null;
-            internal IStoryValue<string> m_Path = null;
+            internal IStoryFunction<string> m_Event = null;
+            internal IStoryFunction<string> m_Tag = null;
+            internal IStoryFunction<string> m_Path = null;
             internal EventInfo()
             {
                 m_Event = new StoryValue<string>();
@@ -2794,19 +2794,19 @@ namespace GameLibrary.Story.Commands
                 m_Path = other.m_Path.Clone();
             }
         }
-        private IStoryValue m_Obj = new StoryValue();
+        private IStoryFunction m_Obj = new StoryValue();
         private List<VarInfo> m_VarInfos = new List<VarInfo>();
-        internal List<IStoryValue<string>> m_Inputs = new List<IStoryValue<string>>();
-        internal List<IStoryValue<string>> m_Toggles = new List<IStoryValue<string>>();
-        internal List<IStoryValue<string>> m_Sliders = new List<IStoryValue<string>>();
-        internal List<IStoryValue<string>> m_DropDowns = new List<IStoryValue<string>>();
+        internal List<IStoryFunction<string>> m_Inputs = new List<IStoryFunction<string>>();
+        internal List<IStoryFunction<string>> m_Toggles = new List<IStoryFunction<string>>();
+        internal List<IStoryFunction<string>> m_Sliders = new List<IStoryFunction<string>>();
+        internal List<IStoryFunction<string>> m_DropDowns = new List<IStoryFunction<string>>();
         private List<EventInfo> m_EventInfos = new List<EventInfo>();
 
-        private static void LoadPaths(List<IStoryValue<string>> List, Dsl.FunctionData callData)
+        private static void LoadPaths(List<IStoryFunction<string>> List, Dsl.FunctionData callData)
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryValue<string> path = new StoryValue<string>();
+                IStoryFunction<string> path = new StoryValue<string>();
                 path.InitFromDsl(callData.GetParam(i));
                 List.Add(path);
             }
@@ -2887,7 +2887,7 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<string> m_Url = new StoryValue<string>();
+        private IStoryFunction<string> m_Url = new StoryValue<string>();
     }
     /// <summary>
     /// quit();
@@ -2945,7 +2945,7 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<string> m_TargetScene = new StoryValue<string>();
+        private IStoryFunction<string> m_TargetScene = new StoryValue<string>();
     }
     /// <summary>
     /// highlightprompt(info);
@@ -2978,7 +2978,7 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<string> m_Info = new StoryValue<string>();
+        private IStoryFunction<string> m_Info = new StoryValue<string>();
     }
     /// <summary>
     /// setactorscale(name,value);
@@ -3018,8 +3018,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue m_Value = new StoryValue();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction m_Value = new StoryValue();
     }
     /// <summary>
     /// gameobjectanimation(obj, anim[, normalized_time]);
@@ -3092,9 +3092,9 @@ namespace GameLibrary.Story.Commands
             return true;
         }
         private int m_ParamNum = 0;
-        private IStoryValue m_ObjPath = new StoryValue();
-        private IStoryValue<string> m_Anim = new StoryValue<string>();
-        private IStoryValue<float> m_Time = new StoryValue<float>();
+        private IStoryFunction m_ObjPath = new StoryValue();
+        private IStoryFunction<string> m_Anim = new StoryValue<string>();
+        private IStoryFunction<float> m_Time = new StoryValue<float>();
     }
     /// <summary>
     /// gameobjectanimationparam(obj)
@@ -3212,8 +3212,8 @@ namespace GameLibrary.Story.Commands
         private class ParamInfo
         {
             internal string Type;
-            internal IStoryValue<string> Key;
-            internal IStoryValue Value;
+            internal IStoryFunction<string> Key;
+            internal IStoryFunction Value;
             internal ParamInfo()
             {
                 Init();
@@ -3238,7 +3238,7 @@ namespace GameLibrary.Story.Commands
                 Value = new StoryValue();
             }
         }
-        private IStoryValue m_ObjPath = new StoryValue();
+        private IStoryFunction m_ObjPath = new StoryValue();
         private List<ParamInfo> m_Params = new List<ParamInfo>();
     }
     /// <summary>
@@ -3300,9 +3300,9 @@ namespace GameLibrary.Story.Commands
             return true;
         }
         private int m_ParamNum = 0;
-        private IStoryValue<string> m_StoryId = new StoryValue<string>();
-        private IStoryValue<string> m_Namespace = new StoryValue<string>();
-        private IStoryValue<string> m_Name = new StoryValue<string>();
-        private IStoryValue m_Val = new StoryValue();
+        private IStoryFunction<string> m_StoryId = new StoryValue<string>();
+        private IStoryFunction<string> m_Namespace = new StoryValue<string>();
+        private IStoryFunction<string> m_Name = new StoryValue<string>();
+        private IStoryFunction m_Val = new StoryValue();
     }
 }

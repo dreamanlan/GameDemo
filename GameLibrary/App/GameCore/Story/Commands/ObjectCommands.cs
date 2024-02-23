@@ -59,9 +59,9 @@ namespace GameLibrary.Story.Commands
             return true;
         }
 
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue<float> m_Dir = new StoryValue<float>();
-        private IStoryValue<int> m_Immediately = new StoryValue<int>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<float> m_Dir = new StoryValue<float>();
+        private IStoryFunction<int> m_Immediately = new StoryValue<int>();
     }
     /// <summary>
     /// objmove(obj_id, vector3(x,y,z)[, event]);
@@ -122,9 +122,9 @@ namespace GameLibrary.Story.Commands
             return true;
         }
 
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue<Vector3> m_Pos = new StoryValue<Vector3>();
-        private IStoryValue<string> m_Event = new StoryValue<string>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<Vector3> m_Pos = new StoryValue<Vector3>();
+        private IStoryFunction<string> m_Event = new StoryValue<string>();
     }
     /// <summary>
     /// objmovewithwaypoints(obj_id, vector3list("1 2 3 4 5 6")[, event]);
@@ -189,9 +189,9 @@ namespace GameLibrary.Story.Commands
             return true;
         }
 
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue<List<object>> m_WayPoints = new StoryValue<List<object>>();
-        private IStoryValue<string> m_Event = new StoryValue<string>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<List<object>> m_WayPoints = new StoryValue<List<object>>();
+        private IStoryFunction<string> m_Event = new StoryValue<string>();
     }
     /// <summary>
     /// objstop(obj_id);
@@ -236,7 +236,7 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
     }
     /// <summary>
     /// objattack(npc_obj_id[,target_obj_id]);
@@ -283,8 +283,8 @@ namespace GameLibrary.Story.Commands
             return true;
         }
         private int m_ParamNum = 0;
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue<int> m_TargetObjId = new StoryValue<int>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<int> m_TargetObjId = new StoryValue<int>();
     }
     /// <summary>
     /// objenableai(obj_id, 1_or_0);
@@ -325,8 +325,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue<int> m_Enable = new StoryValue<int>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<int> m_Enable = new StoryValue<int>();
     }
     /// <summary>
     /// objsetai(objid,ai_logic_id,stringlist("param1 param2 param3 ..."));
@@ -380,9 +380,9 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue<string> m_AiLogic = new StoryValue<string>();
-        private IStoryValue<IEnumerable> m_AiParams = new StoryValue<IEnumerable>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<string> m_AiLogic = new StoryValue<string>();
+        private IStoryFunction<IEnumerable> m_AiParams = new StoryValue<IEnumerable>();
     }
     /// <summary>
     /// objsetaitarget(objid,targetid);
@@ -422,8 +422,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue<int> m_TargetId = new StoryValue<int>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<int> m_TargetId = new StoryValue<int>();
     }
     /// <summary>
     /// objanimation(obj_id, anim[, normalized_time]);
@@ -476,9 +476,9 @@ namespace GameLibrary.Story.Commands
             return true;
         }
         private int m_ParamNum = 0;
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue<string> m_Anim = new StoryValue<string>();
-        private IStoryValue<float> m_Time = new StoryValue<float>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<string> m_Anim = new StoryValue<string>();
+        private IStoryFunction<float> m_Time = new StoryValue<float>();
     }
     /// <summary>
     /// objanimationparam(obj_id)
@@ -583,8 +583,8 @@ namespace GameLibrary.Story.Commands
         private class ParamInfo
         {
             internal string Type;
-            internal IStoryValue<string> Key;
-            internal IStoryValue Value;
+            internal IStoryFunction<string> Key;
+            internal IStoryFunction Value;
             internal ParamInfo()
             {
                 Init();
@@ -609,7 +609,7 @@ namespace GameLibrary.Story.Commands
                 Value = new StoryValue();
             }
         }
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
         private List<ParamInfo> m_Params = new List<ParamInfo>();
     }
     /// <summary>
@@ -649,8 +649,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue<int> m_Value = new StoryValue<int>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<int> m_Value = new StoryValue<int>();
     }
     /// <summary>
     /// setmaxhp(objid,value);
@@ -689,8 +689,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue<int> m_Value = new StoryValue<int>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<int> m_Value = new StoryValue<int>();
     }
     /// <summary>
     /// setenergy(objid,value);
@@ -729,8 +729,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue<int> m_Value = new StoryValue<int>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<int> m_Value = new StoryValue<int>();
     }
     /// <summary>
     /// setmaxenergy(objid,value);
@@ -769,8 +769,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue<int> m_Value = new StoryValue<int>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<int> m_Value = new StoryValue<int>();
     }
     /// <summary>
     /// setspeed(objid,value);
@@ -809,8 +809,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue<float> m_Value = new StoryValue<float>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<float> m_Value = new StoryValue<float>();
     }
     /// <summary>
     /// setlevel(objid,value);
@@ -849,8 +849,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue<int> m_Value = new StoryValue<int>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<int> m_Value = new StoryValue<int>();
     }
     /// <summary>
     /// setexp(objid,value);
@@ -889,8 +889,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue<int> m_Value = new StoryValue<int>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<int> m_Value = new StoryValue<int>();
     }
     /// <summary>
     /// setattr(objid,attrid,value);
@@ -937,9 +937,9 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue<int> m_AttrId = new StoryValue<int>();
-        private IStoryValue m_Value = new StoryValue();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<int> m_AttrId = new StoryValue<int>();
+        private IStoryFunction m_Value = new StoryValue();
     }
     /// <summary>
     /// markcontrolbystory(objid,true_or_false);
@@ -978,8 +978,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue<string> m_Value = new StoryValue<string>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<string> m_Value = new StoryValue<string>();
     }
     /// <summary>
     /// setunitid(obj_id, dir);
@@ -1021,8 +1021,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue<int> m_UnitId = new StoryValue<int>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<int> m_UnitId = new StoryValue<int>();
     }
     /// <summary>
     /// objsetcamp(objid,camp_id);
@@ -1063,7 +1063,7 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue<int> m_CampId = new StoryValue<int>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<int> m_CampId = new StoryValue<int>();
     }
 }

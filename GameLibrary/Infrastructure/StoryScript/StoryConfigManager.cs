@@ -237,8 +237,8 @@ namespace StoryScript
                         LogSystem.Error("[LoadStory] Unknown story keyword '{0}'", id);
                     }
                 }
-                CustomCommandValueParser.FirstParse(cmdOrValList);
-                CustomCommandValueParser.FinalParse(cmdOrValList);
+                CustomCommandFunctionParser.FirstParse(cmdOrValList);
+                CustomCommandFunctionParser.FinalParse(cmdOrValList);
                 
                 Dictionary<string, StoryInstance> storyInstances;
                 if (!m_StoryInstances.TryGetValue(sceneId, out storyInstances)) {

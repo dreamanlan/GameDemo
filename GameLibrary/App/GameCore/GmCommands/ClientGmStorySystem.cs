@@ -17,15 +17,15 @@ namespace GameLibrary.GmCommands
         public void Init()
         {
             //注册Gm命令
-            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "setmaxeffect", new StoryCommandFactoryHelper<SetMaxEffectCommand>());
-            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "setdebug", new StoryCommandFactoryHelper<SetDebugCommand>());
-            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "editorbreak", new StoryCommandFactoryHelper<EditorBreakCommand>());
-            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "debugbreak", new StoryCommandFactoryHelper<DebugBreakCommand>());
-            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "pausegame", new StoryCommandFactoryHelper<PauseGameCommand>());
+            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "setmaxeffect", "setmaxeffect command", new StoryCommandFactoryHelper<SetMaxEffectCommand>());
+            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "setdebug", "setdebug command", new StoryCommandFactoryHelper<SetDebugCommand>());
+            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "editorbreak", "editorbreak command", new StoryCommandFactoryHelper<EditorBreakCommand>());
+            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "debugbreak", "debugbreak command", new StoryCommandFactoryHelper<DebugBreakCommand>());
+            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "pausegame", "pausegame command", new StoryCommandFactoryHelper<PauseGameCommand>());
 
-            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "allocmemory", new StoryCommandFactoryHelper<AllocMemoryCommand>());
-            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "freememory", new StoryCommandFactoryHelper<FreeMemoryCommand>());
-            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "consumecpu", new StoryCommandFactoryHelper<ConsumeCpuCommand>());
+            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "allocmemory", "allocmemory command", new StoryCommandFactoryHelper<AllocMemoryCommand>());
+            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "freememory", "freememory function", new StoryCommandFactoryHelper<FreeMemoryCommand>());
+            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "consumecpu", "consumecpu function", new StoryCommandFactoryHelper<ConsumeCpuCommand>());
             
             //注册值与函数处理
 

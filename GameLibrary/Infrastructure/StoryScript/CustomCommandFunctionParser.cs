@@ -5,7 +5,7 @@ using System.IO;
 using StoryScript;
 namespace StoryScript
 {
-    public static class CustomCommandValueParser
+    public static class CustomCommandFunctionParser
     {
         public static Dsl.DslFile LoadStory(string file)
         {
@@ -119,6 +119,7 @@ namespace StoryScript
         {
             string id = dslInfo.GetId();
             if (id == "command") {
+                string doc = string.Empty;
                 StoryScript.CommonCommands.CompositeCommand cmd = new CommonCommands.CompositeCommand();
                 cmd.InitSharedData();
                 var first = dslInfo as Dsl.FunctionData;
@@ -155,6 +156,9 @@ namespace StoryScript
                                     }
                                 }
                             }
+                            else if (fid == "doc") {
+                                doc = cd.GetParamId(0);
+                            }
                             else if (fid == "body") {
                             }
                             else {
@@ -164,10 +168,11 @@ namespace StoryScript
                     }
                 }
                 //注册
-                StoryCommandManager.Instance.RegisterCommandFactory(cmd.Name, new CommonCommands.CompositeCommandFactory(cmd), true);
+                StoryCommandManager.Instance.RegisterCommandFactory(cmd.Name, doc, new CommonCommands.CompositeCommandFactory(cmd), true);
             }
-            else if (id == "value") {
-                StoryScript.CommonValues.CompositeValue val = new CommonValues.CompositeValue();
+            else if (id == "function") {
+                string doc = string.Empty;
+                StoryScript.CommonFunctions.CompositeValue val = new CommonFunctions.CompositeValue();
                 val.InitSharedData();
                 var first = dslInfo as Dsl.FunctionData;
                 if (null != first) {
@@ -207,6 +212,9 @@ namespace StoryScript
                                     }
                                 }
                             }
+                            else if (fid == "doc") {
+                                doc = cd.GetParamId(0);
+                            }
                             else if (fid == "body") {
                             }
                             else {
@@ -216,7 +224,7 @@ namespace StoryScript
                     }
                 }
                 //注册
-                StoryValueManager.Instance.RegisterValueFactory(val.Name, new CommonValues.CompositeValueFactory(val), true);
+                StoryFunctionManager.Instance.RegisterFunctionFactory(val.Name, doc, new CommonFunctions.CompositeValueFactory(val), true);
             }
         }
         public static void FinalParse(Dsl.ISyntaxComponent dslInfo)
@@ -274,7 +282,7 @@ namespace StoryScript
                     LogSystem.Error("Can't find command {0}'s factory", name);
                 }
             }
-            else if (id == "value") {
+            else if (id == "function") {
                 string name = string.Empty;
                 var first = dslInfo as Dsl.FunctionData;
                 var statement = dslInfo as Dsl.StatementData;
@@ -293,9 +301,9 @@ namespace StoryScript
                     }
                 }
 
-                IStoryValueFactory factory = StoryValueManager.Instance.FindFactory(name);
+                IStoryFunctionFactory factory = StoryFunctionManager.Instance.FindFactory(name);
                 if (null != factory) {
-                    StoryScript.CommonValues.CompositeValue val = factory.Build() as StoryScript.CommonValues.CompositeValue;
+                    StoryScript.CommonFunctions.CompositeValue val = factory.Build() as StoryScript.CommonFunctions.CompositeValue;
                     val.InitialCommands.Clear();
 
                     Dsl.FunctionData bodyFunc = null;

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using StoryScript;
 using GameLibrary;
 using UnityEngine;
-namespace GameLibrary.Story.Values
+namespace GameLibrary.Story.Functions
 {
-    internal sealed class NpcGetNpcTypeValue : IStoryValue
+    internal sealed class NpcGetNpcTypeFunction : IStoryFunction
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -14,9 +14,9 @@ namespace GameLibrary.Story.Values
                 m_UnitId.InitFromDsl(callData.GetParam(0));
             }
         }
-        public IStoryValue Clone()
+        public IStoryFunction Clone()
         {
-            NpcGetNpcTypeValue val = new NpcGetNpcTypeValue();
+            NpcGetNpcTypeFunction val = new NpcGetNpcTypeFunction();
             val.m_UnitId = m_UnitId.Clone();
             val.m_HaveValue = m_HaveValue;
             val.m_Value = m_Value;
@@ -55,11 +55,11 @@ namespace GameLibrary.Story.Values
                 }
             }
         }
-        private IStoryValue<int> m_UnitId = new StoryValue<int>();
+        private IStoryFunction<int> m_UnitId = new StoryValue<int>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    internal sealed class NpcGetAiParamValue : IStoryValue
+    internal sealed class NpcGetAiParamFunction : IStoryFunction
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -69,9 +69,9 @@ namespace GameLibrary.Story.Values
                 m_Index.InitFromDsl(callData.GetParam(1));
             }
         }
-        public IStoryValue Clone()
+        public IStoryFunction Clone()
         {
-            NpcGetAiParamValue val = new NpcGetAiParamValue();
+            NpcGetAiParamFunction val = new NpcGetAiParamFunction();
             val.m_UnitId = m_UnitId.Clone();
             val.m_Index = m_Index.Clone();
             val.m_HaveValue = m_HaveValue;
@@ -119,8 +119,8 @@ namespace GameLibrary.Story.Values
             }
         }
 
-        private IStoryValue<int> m_UnitId = new StoryValue<int>();
-        private IStoryValue<int> m_Index = new StoryValue<int>();
+        private IStoryFunction<int> m_UnitId = new StoryValue<int>();
+        private IStoryFunction<int> m_Index = new StoryValue<int>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }

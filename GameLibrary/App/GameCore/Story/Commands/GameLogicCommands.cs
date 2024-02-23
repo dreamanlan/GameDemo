@@ -65,8 +65,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<string> m_AttrName = new StoryValue<string>();
-        private IStoryValue m_Value = new StoryValue();
+        private IStoryFunction<string> m_AttrName = new StoryValue<string>();
+        private IStoryFunction m_Value = new StoryValue();
     }
     /// <summary>
     /// setstoryskipped(0_or_1[, delay_time]);
@@ -113,8 +113,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<int> m_StorySkipped = new StoryValue<int>();
-        private IStoryValue<int> m_DelayedTime = new StoryValue<int>();
+        private IStoryFunction<int> m_StorySkipped = new StoryValue<int>();
+        private IStoryFunction<int> m_DelayedTime = new StoryValue<int>();
         private int m_CurTime = 0;
     }
     /// <summary>
@@ -162,8 +162,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryValue<int> m_StorySpeedup = new StoryValue<int>();
-        private IStoryValue<int> m_DelayedTime = new StoryValue<int>();
+        private IStoryFunction<int> m_StorySpeedup = new StoryValue<int>();
+        private IStoryFunction<int> m_DelayedTime = new StoryValue<int>();
         private int m_CurTime = 0;
     }
     /// <summary>
@@ -218,8 +218,8 @@ namespace GameLibrary.Story.Commands
             return true;
         }
         private int m_ParamNum = 0;
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
-        private IStoryValue<int> m_LeaderId = new StoryValue<int>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<int> m_LeaderId = new StoryValue<int>();
     }
     /// <summary>
     /// bornfinish(objid);
@@ -259,7 +259,7 @@ namespace GameLibrary.Story.Commands
             return true;
         }
         private int m_ParamNum = 0;
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
     }
     /// <summary>
     /// deadfinish(objid);
@@ -299,7 +299,7 @@ namespace GameLibrary.Story.Commands
             return true;
         }
         private int m_ParamNum = 0;
-        private IStoryValue<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
     }
 
 
