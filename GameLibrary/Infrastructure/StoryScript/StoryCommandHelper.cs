@@ -5,8 +5,8 @@ namespace StoryScript
     /// <summary>
     /// 简单的函数值基类，简化实现IStoryValue需要写的代码行数(当前值类只支持FunctionData样式)
     /// </summary>
-    public abstract class SimpleStoryValueBase<SubClassType, ValueParamType> : IStoryFunction
-        where SubClassType : SimpleStoryValueBase<SubClassType, ValueParamType>, new()
+    public abstract class SimpleStoryFunctionBase<SubClassType, ValueParamType> : IStoryFunction
+        where SubClassType : SimpleStoryFunctionBase<SubClassType, ValueParamType>, new()
         where ValueParamType : IStoryValueParam, new()
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)

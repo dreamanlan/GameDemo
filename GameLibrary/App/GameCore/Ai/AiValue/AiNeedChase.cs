@@ -6,7 +6,7 @@ using System.Text;
 using GameLibrary;
 using StoryScript;
 
-internal class AiNeedChase : SimpleStoryValueBase<AiNeedChase, StoryValueParam<int, float>>
+internal class AiNeedChase : SimpleStoryFunctionBase<AiNeedChase, StoryValueParam<int, float>>
 {
     protected override void UpdateValue(StoryInstance instance, StoryValueParam<int, float> _params, StoryValueResult result)
     {

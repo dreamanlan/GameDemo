@@ -6,7 +6,7 @@ using System.Text;
 using GameLibrary;
 using StoryScript;
 
-internal class AiGetTarget : SimpleStoryValueBase<AiGetTarget, StoryValueParam<int>>
+internal class AiGetTarget : SimpleStoryFunctionBase<AiGetTarget, StoryValueParam<int>>
 {
     protected override void UpdateValue(StoryInstance instance, StoryValueParam<int> _params, StoryValueResult result)
     {

@@ -6,7 +6,7 @@ using System.Text;
 using GameLibrary;
 using StoryScript;
 
-internal class AiSelectTarget : SimpleStoryValueBase<AiSelectTarget, StoryValueParam<int, float>>
+internal class AiSelectTarget : SimpleStoryFunctionBase<AiSelectTarget, StoryValueParam<int, float>>
 {
     protected override void UpdateValue(StoryInstance instance, StoryValueParam<int, float> _params, StoryValueResult result)
     {
