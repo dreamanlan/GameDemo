@@ -45,6 +45,7 @@ F:\GitHub\GameDemo\GameLibrary\App\GameCore\bin\Debug\netstandard2.1\Dsl.pdb
 F:\GitHub\GameDemo\GameLibrary\App\GameCore\obj\Debug\netstandard2.1\GameCore.csproj.AssemblyReference.cache
 F:\GitHub\GameDemo\GameLibrary\App\GameCore\obj\Debug\netstandard2.1\GameCore.GeneratedMSBuildEditorConfig.editorconfig
 F:\GitHub\GameDemo\GameLibrary\App\GameCore\obj\Debug\netstandard2.1\GameCore.csproj.CoreCompileInputs.cache
-F:\GitHub\GameDemo\GameLibrary\App\GameCore\obj\Debug\netstandard2.1\GameCore.csproj.CopyComplete
 F:\GitHub\GameDemo\GameLibrary\App\GameCore\obj\Debug\netstandard2.1\GameCore.dll
 F:\GitHub\GameDemo\GameLibrary\App\GameCore\obj\Debug\netstandard2.1\GameCore.pdb
+F:\GitHub\GameDemo\GameLibrary\App\GameCore\obj\Debug\netstandard2.1\GameCore.sourcelink.json
+F:\GitHub\GameDemo\GameLibrary\App\GameCore\obj\Debug\netstandard2.1\GameCore.csproj.Up2Date
