@@ -3914,7 +3914,7 @@ namespace DslExpression
         }
         protected override bool Load(Dsl.StatementData statementData)
         {
-            //简化语法if(exp) func(args);语法的处理
+            //the handling of the simple syntax 'if(exp) func(args);'.
             int funcNum = statementData.GetFunctionNum();
             if (funcNum == 2) {
                 var first = statementData.First.AsFunction;
@@ -3938,7 +3938,7 @@ namespace DslExpression
                     return true;
                 }
             }
-            //标准if语句的处理
+            //the handling of the standard if syntax
             foreach (var fd in statementData.Functions) {
                 var fData = fd.AsFunction;
                 if (fData.GetId() == "if" || fData.GetId() == "elseif" || fData.GetId() == "elif") {
@@ -4032,7 +4032,7 @@ namespace DslExpression
         }
         protected override bool Load(Dsl.StatementData statementData)
         {
-            //简化语法while(exp) func(args);语法的处理
+            //the handling of the simple syntax 'while(exp) func(args);'
             if (statementData.GetFunctionNum() == 2) {
                 var first = statementData.First.AsFunction;
                 var second = statementData.Second.AsFunction;
@@ -4101,7 +4101,7 @@ namespace DslExpression
         }
         protected override bool Load(Dsl.StatementData statementData)
         {
-            //简化语法loop(exp) func(args);语法的处理
+            //the handling of the simple syntax 'loop(exp) func(args);'
             if (statementData.GetFunctionNum() == 2) {
                 var first = statementData.First.AsFunction;
                 var second = statementData.Second.AsFunction;
@@ -4174,7 +4174,7 @@ namespace DslExpression
         }
         protected override bool Load(Dsl.StatementData statementData)
         {
-            //简化语法looplist(exp) func(args);语法的处理
+            //the handling of the simple syntax 'looplist(exp) func(args);'
             if (statementData.GetFunctionNum() == 2) {
                 var first = statementData.First.AsFunction;
                 var second = statementData.Second.AsFunction;
@@ -4251,7 +4251,7 @@ namespace DslExpression
         }
         protected override bool Load(Dsl.StatementData statementData)
         {
-            //简化语法foreach(exp1,exp2,...) func(args);语法的处理
+            //the handling of the simple syntax 'foreach(exp1,exp2,...) func(args);'
             if (statementData.GetFunctionNum() == 2) {
                 var first = statementData.First.AsFunction;
                 var second = statementData.Second.AsFunction;
@@ -6605,7 +6605,7 @@ namespace DslExpression
             return r;
         }
     }
-    //stack与queue共用peek函数
+    //The stack and queue share the same peek function.
     internal class PeekExp : SimpleExpressionBase
     {
         protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
@@ -7063,7 +7063,7 @@ namespace DslExpression
                 if (null != path && path.Length > 0) {
                     path = Environment.ExpandEnvironmentVariables(path).Trim();
                     if (Environment.OSVersion.Platform == PlatformID.Win32NT) {
-                        //windows上文件名可以包含单引号，只能用双引号来引用路径
+                        //On Windows, file names can contain single quotes, but paths must be quoted using double quotes.
                         string delim = "\"";
                         if (onlyNeeded) {
                             char first = path[0];
@@ -9702,7 +9702,7 @@ namespace DslExpression
                     string id = valueData.GetId();
                     var p = Create(id);
                     if (null != p) {
-                        //将无参数名字转换为无参函数调用
+                        //Convert a parameterless name into a parameterless function call.
                         Dsl.FunctionData fd = new Dsl.FunctionData();
                         fd.Name.CopyFrom(valueData);
                         fd.SetParenthesisParamClass();
@@ -9762,14 +9762,14 @@ namespace DslExpression
                             }
                         }
                         else if (!callData.HaveParam()) {
-                            //退化
+                            //degeneration
                             valueData = callData.Name;
                             return Load(valueData);
                         }
                         else {
                             int paramClass = callData.GetParamClass();
                             string op = callData.GetId();
-                            if (op == "=") {//赋值
+                            if (op == "=") {//assignment
                                 Dsl.FunctionData innerCall = callData.GetParam(0) as Dsl.FunctionData;
                                 if (null != innerCall) {
                                     //obj.property = val -> dotnetset(obj, property, val)
@@ -9887,7 +9887,7 @@ namespace DslExpression
                             }
                         }
                         else if (!funcData.HaveExternScript()) {
-                            //退化
+                            //degeneration
                             valueData = funcData.Name;
                             return Load(valueData);
                         }
@@ -9905,7 +9905,7 @@ namespace DslExpression
                 if (null != stData) {
                     Dsl.ValueData first = stData.First.AsValue;
                     if (null != first) {
-                        //将命令行语法转换为函数调用语法
+                        //Convert command line syntax into function call syntax.
                         Dsl.FunctionData fd = new Dsl.FunctionData();
                         fd.Name = first;
                         for (int argi = 1; argi < stData.GetFunctionNum(); ++argi) {
