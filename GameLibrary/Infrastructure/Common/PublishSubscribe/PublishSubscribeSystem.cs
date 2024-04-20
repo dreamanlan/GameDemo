@@ -83,7 +83,7 @@ namespace GameLibrary
                             subscribers_.Remove(group);
                     } else if (list.Count > 0) {
                         if (list.Count > 1) {
-                            //拷贝到临时列表，防止重入操作修改list
+                            //Copy to a temporary list to prevent re-entry operations from modifying the list
                             var temp = new List<Delegate>();
                             temp.AddRange(list);
                             for (int i = 0; i < temp.Count; ++i) {

@@ -19,7 +19,7 @@ namespace GameLibrary
         MaxCount,
     }
     /// <summary>
-    /// 资源管理器，提供资源缓存重用机制。
+    /// Resource manager, providing a resource cache reuse mechanism
     /// </summary>
     public class ResourceSystem
     {

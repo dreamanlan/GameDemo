@@ -105,7 +105,7 @@ namespace GameLibrary.Story.Commands
                 data.IsFinish = false;
                 data.Event = eventName;
                 aiInfo.TargetPosition = pos;
-                aiInfo.Time = 1000;//下一帧即触发移动
+                aiInfo.Time = 1000;//Movement is triggered on the next frame
                 aiInfo.ChangeToState((int)PredefinedAiStateId.MoveCommand);
             }
             return false;
@@ -172,7 +172,7 @@ namespace GameLibrary.Story.Commands
                 data.IsFinish = false;
                 data.Event = eventName;
                 aiInfo.TargetPosition = waypoints[0];
-                aiInfo.Time = 1000;//下一帧即触发移动
+                aiInfo.Time = 1000;//Movement is triggered on the next frame
                 aiInfo.ChangeToState((int)PredefinedAiStateId.MoveCommand);
             }
             return false;

@@ -11,7 +11,7 @@ namespace GameLibrary.Story
     {
         public void Init()
         {
-            //注册剧情命令
+            //register story command
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GFX, "preload", "preload command", new StoryCommandFactoryHelper<Story.Commands.PreloadCommand>());
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GFX, "startstory", "startstory command", new StoryCommandFactoryHelper<Story.Commands.StartStoryCommand>());
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GFX, "stopstory", "stopstory command", new StoryCommandFactoryHelper<Story.Commands.StopStoryCommand>());
@@ -93,7 +93,7 @@ namespace GameLibrary.Story
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GFX, "bornfinish", "bornfinish command", new StoryCommandFactoryHelper<Story.Commands.BornFinishCommand>());
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GFX, "deadfinish", "deadfinish command", new StoryCommandFactoryHelper<Story.Commands.DeadFinishCommand>());
 
-            //注册值与函数处理
+            //register value and function
             StoryFunctionManager.Instance.RegisterFunctionFactory(StoryFunctionGroupDefine.GFX, "gettime", "gettime function", new StoryFunctionFactoryHelper<Story.Functions.GetTimeFunction>());
             StoryFunctionManager.Instance.RegisterFunctionFactory(StoryFunctionGroupDefine.GFX, "gettimescale", "gettimescale function", new StoryFunctionFactoryHelper<Story.Functions.GetTimeScaleFunction>());
             StoryFunctionManager.Instance.RegisterFunctionFactory(StoryFunctionGroupDefine.GFX, "isactive", "isactive function", new StoryFunctionFactoryHelper<Story.Functions.IsActiveFunction>());

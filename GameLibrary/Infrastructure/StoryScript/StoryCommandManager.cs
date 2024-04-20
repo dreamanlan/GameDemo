@@ -6,7 +6,8 @@ using StoryScript;
 namespace StoryScript
 {
     /// <summary>
-    /// 这个类不加锁，约束条件：所有命令注册必须在程序启动时完成。
+    /// This class does not lock, constraint:
+    /// all commands registration must be completed when the program starts.
     /// </summary>
     public sealed class StoryCommandManager
     {
@@ -269,7 +270,7 @@ namespace StoryScript
                 m_GroupedCommandFactories[i] = new Dictionary<string, IStoryCommandFactory>();
                 m_GroupedCommandDocs[i] = new SortedList<string, string>();
             }
-            //注册通用命令
+            //register common command
             RegisterCommandFactory("=", "assignment operator", new StoryCommandFactoryHelper<CommonCommands.AssignCommand>());
             RegisterCommandFactory("assign", "assign(var, val) command", new StoryCommandFactoryHelper<CommonCommands.AssignCommand>());
             RegisterCommandFactory("inc", "inc(var, val) command", new StoryCommandFactoryHelper<CommonCommands.IncCommand>());
@@ -339,7 +340,7 @@ namespace StoryScript
             RegisterCommandFactory("clearcmdsubsts", "clearcmdsubsts() command", new StoryCommandFactoryHelper<CommonCommands.ClearCmdSubstsCommand>());
             RegisterCommandFactory("substfunc", "substfunc(id,substId) command", new StoryCommandFactoryHelper<CommonCommands.SubstFuncCommand>());
             RegisterCommandFactory("clearfuncsubsts", "clearfuncsubsts() command", new StoryCommandFactoryHelper<CommonCommands.ClearFuncSubstsCommand>());
-            //注册通用值与内部函数
+            //register value or internal function
             //object
             StoryFunctionManager.Instance.RegisterFunctionFactory("eval", "eval(exp1,exp2,...) function", new StoryFunctionFactoryHelper<CommonFunctions.EvalFunction>());
             StoryFunctionManager.Instance.RegisterFunctionFactory("namespace", "namespace() function", new StoryFunctionFactoryHelper<CommonFunctions.NamespaceFunction>());

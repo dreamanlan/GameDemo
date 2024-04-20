@@ -230,11 +230,11 @@ namespace GameLibrary
         private MovementStateInfo m_MovementStateInfo = new MovementStateInfo();
         private EntityManager m_EntityManager = null;
 
-        //阵营可为Friendly、Hostile、Blue、Red
-        //Friendly 全部友好
-        //Hostile 全部敌对(同阵营友好)
-        //Blue 与Hostile与Red敌对
-        //Red 与Hostile与Blue敌对
+        //Camp:Friendly、Hostile、Blue、Red
+        //Friendly: friendly to everyone
+        //Hostile: hostile to everyone (but friendly to same camp)
+        //Blue and Hostile: hostile to Red
+        //Red and Hostile: hostile to Blue
         public static CharacterRelation GetRelation(EntityInfo pObj_A, EntityInfo pObj_B)
         {
             if (pObj_A == null || pObj_B == null) {

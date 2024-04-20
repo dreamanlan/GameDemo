@@ -12,12 +12,12 @@ namespace GameLibrary
         Red,
     }
 
-    // 关系
+    // relationship
     public enum CharacterRelation : int
     {
         RELATION_INVALID = 0,
-        RELATION_ENEMY,				// 敌对
-        RELATION_FRIEND,			// 友好
+        RELATION_ENEMY,				// hostility
+        RELATION_FRIEND,			// friendly
     }
 
     public enum CharacterPropertyEnum : int

@@ -391,12 +391,12 @@ namespace GameLibrary
             for (LinkedListNode<EntityInfo> linkNode = m_EntityManager.Entities.FirstNode; null != linkNode; linkNode = linkNode.Next) {
                 EntityInfo info = linkNode.Value;
 
-                // 清空AI target。
+                // clear AI target。
                 EntityInfo target = GetEntityById(info.GetAiStateInfo().Target);
                 if (target == null || target.IsDead() || info.GetAiStateInfo().Target == info.GetId()) {
                     info.GetAiStateInfo().Target = 0;
                 }
-                //出生与死亡处理
+                //Birth and Death Processing
                 if (info.IsBorning) {
                     info.SetAIEnable(true);
                     if (null != info.GetAiStateInfo().AiStoryInstanceInfo) {

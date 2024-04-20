@@ -36,7 +36,8 @@ namespace GameLibrary
         {
             return m_LinkNodeDictionary.ContainsKey(id);
         }
-        ///这里不考虑重复，外界调用时保证（性能考虑）
+        ///Duplication is not considered here, it is guaranteed when called from the outside
+        ///(performance considerations)
         public void AddFirst(int id, EntityInfo obj)
         {
             LinkedListNode<EntityInfo> linkNode = m_Objects.AddFirst(obj);
@@ -174,7 +175,8 @@ namespace GameLibrary
         {
             return m_LinkNodeDictionary.ContainsKey(guid);
         }
-        ///这里不考虑重复，外界调用时保证（性能考虑）
+        ///Duplication is not considered here, it is guaranteed when called from the outside
+        ///(performance considerations)
         public void AddFirst(ulong guid, EntityInfo obj)
         {
             LinkedListNode<EntityInfo> linkNode = m_Objects.AddFirst(obj);

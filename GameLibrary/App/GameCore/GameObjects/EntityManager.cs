@@ -295,7 +295,7 @@ namespace GameLibrary
         private const int c_StartId_Client = 2000;
         private int m_NextInfoId = c_StartId;
 
-        //额外列表，提高查找性能
+        //Additional lists to improve search performance
         private EntityInfoDictionary[] m_TypedEntities = new EntityInfoDictionary[(int)EntityTypeEnum.MaxTypeNum];
         private EntityInfoDictionary m_MarkedEntities = new EntityInfoDictionary();
     }

@@ -5,18 +5,20 @@ using StoryScript;
 namespace GameLibrary.GmCommands
 {
     /// <summary>
-    /// Gm剧情系统是在游戏剧情系统之上添加GM命令构成的特殊剧情系统。游戏剧情系统添加的命令与值都可以在Gm剧情脚本里使用（反之亦然）
+    /// The Gm plot system is a special plot system composed of GM commands added to the game plot system.
+    /// The commands and values added by the game plot system can be used in the Gm plot script (and vice versa)
     /// </summary>
     /// <remarks>
-    /// 1、在剧情系统中注册的命令与值是共享的，亦即Gm剧情系统注册的Gm命令与值在正常剧情脚本里也可以使用！
-    /// （在发布时此系统应该从客户端移除。）
-    /// 2、剧情脚本与Gm剧情脚本不是一套体系，互不相干。
+    /// 1. The commands and values registered in the plot system are shared, that is, the Gm commands and
+    /// values registered in the Gm plot system can also be used in normal plot scripts!
+    /// (This system should be removed from the client when publishing.)
+    /// 2. The plot script and the Gm plot script are not a system and have nothing to do with each other.
     /// </remarks>
     public sealed class ClientGmStorySystem
     {
         public void Init()
         {
-            //注册Gm命令
+            //register Gm command
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "setmaxeffect", "setmaxeffect command", new StoryCommandFactoryHelper<SetMaxEffectCommand>());
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "setdebug", "setdebug command", new StoryCommandFactoryHelper<SetDebugCommand>());
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "editorbreak", "editorbreak command", new StoryCommandFactoryHelper<EditorBreakCommand>());
@@ -27,7 +29,7 @@ namespace GameLibrary.GmCommands
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "freememory", "freememory function", new StoryCommandFactoryHelper<FreeMemoryCommand>());
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "consumecpu", "consumecpu function", new StoryCommandFactoryHelper<ConsumeCpuCommand>());
             
-            //注册值与函数处理
+            //register value and function
 
         }
 

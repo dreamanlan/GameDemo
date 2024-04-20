@@ -43,7 +43,7 @@ public class Game : MonoBehaviour
         GameControler.Instance.TickGame();
         
 #if UNITY_EDITOR_WIN
-        //Pause按键暂停
+        //Pause key
         if (Input.GetKeyDown(KeyCode.Pause)) {
             Debug.Break();
         }

@@ -60,7 +60,7 @@ namespace GameLibrary
             }
         }
 
-        public static DateTime GetDateTimeBySecond(int timeStamp)// timestamp单位秒
+        public static DateTime GetDateTimeBySecond(int timeStamp)// timestamp unit:seconds
         {
             DateTime dtStart = TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1), TimeZoneInfo.Local);
             long lTime = ((long)timeStamp * 10000000);

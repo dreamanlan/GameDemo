@@ -13,7 +13,7 @@ namespace GameLibrary
     public sealed class GameControler
     {
         //----------------------------------------------------------------------
-        // 标准接口
+        // standard interface
         //----------------------------------------------------------------------
         public bool IsInited
         {
