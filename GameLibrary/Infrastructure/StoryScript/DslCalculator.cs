@@ -10,1801 +10,21 @@ using System.Security.Cryptography;
 using System.Runtime.InteropServices;
 using System.Linq;
 using UnityEngine;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-using GameLibrary;
 
-#if UNITY_EDITOR || UNITY_STANDALONE_WIN
 #region interpreter
 #pragma warning disable 8600,8601,8602,8603,8604,8618,8619,8620,8625
 namespace DslExpression
 {
-    public static class CalculatorValueConverter
+    public class BoxedValueListPool
     {
-        public static CalculatorValue ToCalculatorValue<T>(T v)
-        {
-            var from = s_FromVariantValue as FromGenericDelegation<CalculatorValue, T>;
-            if (null != from)
-                return from(v);
-            return CalculatorValue.NullObject;
-        }
-        public static object ToObject<T>(T v)
-        {
-            var from = s_FromObject as FromGenericDelegation<object, T>;
-            if (null != from)
-                return from(v);
-            return null;
-        }
-        public static string ToString<T>(T v)
-        {
-            var from = s_FromString as FromGenericDelegation<string, T>;
-            if (null != from)
-                return from(v);
-            return null;
-        }
-        public static bool ToBool<T>(T v)
-        {
-            var from = s_FromBool as FromGenericDelegation<bool, T>;
-            if (null != from)
-                return from(v);
-            return false;
-        }
-        public static char ToChar<T>(T v)
-        {
-            var from = s_FromChar as FromGenericDelegation<char, T>;
-            if (null != from)
-                return from(v);
-            return (char)0;
-        }
-        public static sbyte ToSByte<T>(T v)
-        {
-            var from = s_FromSByte as FromGenericDelegation<sbyte, T>;
-            if (null != from)
-                return from(v);
-            return 0;
-        }
-        public static short ToShort<T>(T v)
-        {
-            var from = s_FromShort as FromGenericDelegation<short, T>;
-            if (null != from)
-                return from(v);
-            return 0;
-        }
-        public static int ToInt<T>(T v)
-        {
-            var from = s_FromInt as FromGenericDelegation<int, T>;
-            if (null != from)
-                return from(v);
-            return 0;
-        }
-        public static long ToLong<T>(T v)
-        {
-            var from = s_FromLong as FromGenericDelegation<long, T>;
-            if (null != from)
-                return from(v);
-            return 0;
-        }
-        public static byte ToByte<T>(T v)
-        {
-            var from = s_FromByte as FromGenericDelegation<byte, T>;
-            if (null != from)
-                return from(v);
-            return 0;
-        }
-        public static ushort ToUShort<T>(T v)
-        {
-            var from = s_FromUShort as FromGenericDelegation<ushort, T>;
-            if (null != from)
-                return from(v);
-            return 0;
-        }
-        public static uint ToUInt<T>(T v)
-        {
-            var from = s_FromUInt as FromGenericDelegation<uint, T>;
-            if (null != from)
-                return from(v);
-            return 0;
-        }
-        public static ulong ToULong<T>(T v)
-        {
-            var from = s_FromULong as FromGenericDelegation<ulong, T>;
-            if (null != from)
-                return from(v);
-            return 0;
-        }
-        public static float ToFloat<T>(T v)
-        {
-            var from = s_FromFloat as FromGenericDelegation<float, T>;
-            if (null != from)
-                return from(v);
-            return 0;
-        }
-        public static double ToDouble<T>(T v)
-        {
-            var from = s_FromDouble as FromGenericDelegation<double, T>;
-            if (null != from)
-                return from(v);
-            return 0;
-        }
-        public static decimal ToDecimal<T>(T v)
-        {
-            var from = s_FromDecimal as FromGenericDelegation<decimal, T>;
-            if (null != from)
-                return from(v);
-            return 0;
-        }
-
-        public static T From<T>(CalculatorValue v)
-        {
-            var from = s_FromVariantValue as FromGenericDelegation<T, CalculatorValue>;
-            if (null != from)
-                return from(v);
-            return default(T);
-        }
-        public static T From<T>(object v)
-        {
-            var from = s_FromObject as FromGenericDelegation<T, object>;
-            if (null != from)
-                return from(v);
-            return default(T);
-        }
-        public static T From<T>(string v)
-        {
-            var from = s_FromString as FromGenericDelegation<T, string>;
-            if (null != from)
-                return from(v);
-            return default(T);
-        }
-        public static T From<T>(bool v)
-        {
-            var from = s_FromBool as FromGenericDelegation<T, bool>;
-            if (null != from)
-                return from(v);
-            return default(T);
-        }
-        public static T From<T>(char v)
-        {
-            var from = s_FromChar as FromGenericDelegation<T, char>;
-            if (null != from)
-                return from(v);
-            return default(T);
-        }
-        public static T From<T>(sbyte v)
-        {
-            var from = s_FromSByte as FromGenericDelegation<T, sbyte>;
-            if (null != from)
-                return from(v);
-            return default(T);
-        }
-        public static T From<T>(short v)
-        {
-            var from = s_FromShort as FromGenericDelegation<T, short>;
-            if (null != from)
-                return from(v);
-            return default(T);
-        }
-        public static T From<T>(int v)
-        {
-            var from = s_FromInt as FromGenericDelegation<T, int>;
-            if (null != from)
-                return from(v);
-            return default(T);
-        }
-        public static T From<T>(long v)
-        {
-            var from = s_FromLong as FromGenericDelegation<T, long>;
-            if (null != from)
-                return from(v);
-            return default(T);
-        }
-        public static T From<T>(byte v)
-        {
-            var from = s_FromByte as FromGenericDelegation<T, byte>;
-            if (null != from)
-                return from(v);
-            return default(T);
-        }
-        public static T From<T>(ushort v)
-        {
-            var from = s_FromUShort as FromGenericDelegation<T, ushort>;
-            if (null != from)
-                return from(v);
-            return default(T);
-        }
-        public static T From<T>(uint v)
-        {
-            var from = s_FromUInt as FromGenericDelegation<T, uint>;
-            if (null != from)
-                return from(v);
-            return default(T);
-        }
-        public static T From<T>(ulong v)
-        {
-            var from = s_FromULong as FromGenericDelegation<T, ulong>;
-            if (null != from)
-                return from(v);
-            return default(T);
-        }
-        public static T From<T>(float v)
-        {
-            var from = s_FromFloat as FromGenericDelegation<T, float>;
-            if (null != from)
-                return from(v);
-            return default(T);
-        }
-        public static T From<T>(double v)
-        {
-            var from = s_FromDouble as FromGenericDelegation<T, double>;
-            if (null != from)
-                return from(v);
-            return default(T);
-        }
-        public static T From<T>(decimal v)
-        {
-            var from = s_FromDecimal as FromGenericDelegation<T, decimal>;
-            if (null != from)
-                return from(v);
-            return default(T);
-        }
-
-        internal static T CastTo<T>(object obj)
-        {
-            if (obj is T) {
-                return (T)obj;
-            }
-            else {
-                try {
-                    return (T)Convert.ChangeType(obj, typeof(T));
-                }
-                catch {
-                    return default(T);
-                }
-            }
-        }
-
-        private delegate R FromGenericDelegation<R, T>(T v);
-        private static FromGenericDelegation<CalculatorValue, CalculatorValue> s_FromVariantValue = FromHelper<CalculatorValue>;
-        private static FromGenericDelegation<bool, bool> s_FromBool = FromHelper<bool>;
-        private static FromGenericDelegation<char, char> s_FromChar = FromHelper<char>;
-        private static FromGenericDelegation<sbyte, sbyte> s_FromSByte = FromHelper<sbyte>;
-        private static FromGenericDelegation<short, short> s_FromShort = FromHelper<short>;
-        private static FromGenericDelegation<int, int> s_FromInt = FromHelper<int>;
-        private static FromGenericDelegation<long, long> s_FromLong = FromHelper<long>;
-        private static FromGenericDelegation<byte, byte> s_FromByte = FromHelper<byte>;
-        private static FromGenericDelegation<ushort, ushort> s_FromUShort = FromHelper<ushort>;
-        private static FromGenericDelegation<uint, uint> s_FromUInt = FromHelper<uint>;
-        private static FromGenericDelegation<ulong, ulong> s_FromULong = FromHelper<ulong>;
-        private static FromGenericDelegation<float, float> s_FromFloat = FromHelper<float>;
-        private static FromGenericDelegation<double, double> s_FromDouble = FromHelper<double>;
-        private static FromGenericDelegation<decimal, decimal> s_FromDecimal = FromHelper<decimal>;
-        private static FromGenericDelegation<string, string> s_FromString = FromHelper<string>;
-        private static FromGenericDelegation<object, object> s_FromObject = FromHelper<object>;
-        private static T FromHelper<T>(T v)
-        {
-            return v;
-        }
-    }
-    public struct CalculatorValue
-    {
-        public const int c_ObjectType = 0;
-        public const int c_StringType = 1;
-        public const int c_BoolType = 2;
-        public const int c_CharType = 3;
-        public const int c_SByteType = 4;
-        public const int c_ShortType = 5;
-        public const int c_IntType = 6;
-        public const int c_LongType = 7;
-        public const int c_ByteType = 8;
-        public const int c_UShortType = 9;
-        public const int c_UIntType = 10;
-        public const int c_ULongType = 11;
-        public const int c_FloatType = 12;
-        public const int c_DoubleType = 13;
-        public const int c_DecimalType = 14;
-
-        [StructLayout(LayoutKind.Explicit)]
-        public struct UnionValue
-        {
-            [FieldOffset(0)]
-            public bool BoolVal;
-            [FieldOffset(0)]
-            public char CharVal;
-            [FieldOffset(0)]
-            public sbyte SByteVal;
-            [FieldOffset(0)]
-            public short ShortVal;
-            [FieldOffset(0)]
-            public int IntVal;
-            [FieldOffset(0)]
-            public long LongVal;
-            [FieldOffset(0)]
-            public byte ByteVal;
-            [FieldOffset(0)]
-            public ushort UShortVal;
-            [FieldOffset(0)]
-            public uint UIntVal;
-            [FieldOffset(0)]
-            public ulong ULongVal;
-            [FieldOffset(0)]
-            public float FloatVal;
-            [FieldOffset(0)]
-            public double DoubleVal;
-            [FieldOffset(0)]
-            public decimal DecimalVal;
-        }
-
-        public string StringVal
-        {
-            get { return ObjectVal as string; }
-            set { ObjectVal = value; }
-        }
-        public int Type;
-        public object ObjectVal;
-        public UnionValue Union;
-
-        public static implicit operator CalculatorValue(string v)
-        {
-            return CalculatorValue.From(v);
-        }
-        public static implicit operator string(CalculatorValue v)
-        {
-            return v.GetString();
-        }
-        public static implicit operator CalculatorValue(bool v)
-        {
-            return CalculatorValue.From(v);
-        }
-        public static implicit operator bool(CalculatorValue v)
-        {
-            return v.GetBool();
-        }
-        public static implicit operator CalculatorValue(char v)
-        {
-            return CalculatorValue.From(v);
-        }
-        public static implicit operator char(CalculatorValue v)
-        {
-            return v.GetChar();
-        }
-        public static implicit operator CalculatorValue(sbyte v)
-        {
-            return CalculatorValue.From(v);
-        }
-        public static implicit operator sbyte(CalculatorValue v)
-        {
-            return v.GetSByte();
-        }
-        public static implicit operator CalculatorValue(short v)
-        {
-            return CalculatorValue.From(v);
-        }
-        public static implicit operator short(CalculatorValue v)
-        {
-            return v.GetShort();
-        }
-        public static implicit operator CalculatorValue(int v)
-        {
-            return CalculatorValue.From(v);
-        }
-        public static implicit operator int(CalculatorValue v)
-        {
-            return v.GetInt();
-        }
-        public static implicit operator CalculatorValue(long v)
-        {
-            return CalculatorValue.From(v);
-        }
-        public static implicit operator long(CalculatorValue v)
-        {
-            return v.GetLong();
-        }
-        public static implicit operator CalculatorValue(byte v)
-        {
-            return CalculatorValue.From(v);
-        }
-        public static implicit operator byte(CalculatorValue v)
-        {
-            return v.GetByte();
-        }
-        public static implicit operator CalculatorValue(ushort v)
-        {
-            return CalculatorValue.From(v);
-        }
-        public static implicit operator ushort(CalculatorValue v)
-        {
-            return v.GetUShort();
-        }
-        public static implicit operator CalculatorValue(uint v)
-        {
-            return CalculatorValue.From(v);
-        }
-        public static implicit operator uint(CalculatorValue v)
-        {
-            return v.GetUInt();
-        }
-        public static implicit operator CalculatorValue(ulong v)
-        {
-            return CalculatorValue.From(v);
-        }
-        public static implicit operator ulong(CalculatorValue v)
-        {
-            return v.GetULong();
-        }
-        public static implicit operator CalculatorValue(float v)
-        {
-            return CalculatorValue.From(v);
-        }
-        public static implicit operator float(CalculatorValue v)
-        {
-            return v.GetFloat();
-        }
-        public static implicit operator CalculatorValue(double v)
-        {
-            return CalculatorValue.From(v);
-        }
-        public static implicit operator double(CalculatorValue v)
-        {
-            return v.GetDouble();
-        }
-        public static implicit operator CalculatorValue(decimal v)
-        {
-            return CalculatorValue.From(v);
-        }
-        public static implicit operator decimal(CalculatorValue v)
-        {
-            return v.GetDecimal();
-        }
-
-        public static implicit operator CalculatorValue(Type v)
-        {
-            return CalculatorValue.FromObject(v);
-        }
-        public static implicit operator Type(CalculatorValue v)
-        {
-            return v.ObjectVal as Type;
-        }
-        public static implicit operator CalculatorValue(ArrayList v)
-        {
-            return CalculatorValue.FromObject(v);
-        }
-        public static implicit operator ArrayList(CalculatorValue v)
-        {
-            return v.ObjectVal as ArrayList;
-        }
-
-        public string GetTypeName()
-        {
-            switch (Type) {
-                case c_ObjectType:
-                    return "object";
-                case c_StringType:
-                    return "string";
-                case c_BoolType:
-                    return "bool";
-                case c_CharType:
-                    return "char";
-                case c_SByteType:
-                    return "sbyte";
-                case c_ShortType:
-                    return "short";
-                case c_IntType:
-                    return "int";
-                case c_LongType:
-                    return "long";
-                case c_ByteType:
-                    return "byte";
-                case c_UShortType:
-                    return "ushort";
-                case c_UIntType:
-                    return "uint";
-                case c_ULongType:
-                    return "ulong";
-                case c_FloatType:
-                    return "float";
-                case c_DoubleType:
-                    return "double";
-                case c_DecimalType:
-                    return "decimal";
-                default:
-                    return "Unknown";
-            }
-        }
-
-        public bool IsNullObject
-        {
-            get { return Type == c_ObjectType && ObjectVal == null; }
-        }
-        public bool IsNullOrEmptyString
-        {
-            get { return Type == c_StringType && string.IsNullOrEmpty(StringVal); }
-        }
-        public bool IsObject
-        {
-            get {
-                return Type == c_ObjectType;
-            }
-        }
-        public bool IsString
-        {
-            get {
-                return Type == c_StringType;
-            }
-        }
-        public bool IsBoolean
-        {
-            get {
-                return Type == c_BoolType;
-            }
-        }
-        public bool IsChar
-        {
-            get {
-                return Type == c_CharType;
-            }
-        }
-        public bool IsSignedInteger
-        {
-            get {
-                switch (Type) {
-                    case c_SByteType:
-                    case c_ShortType:
-                    case c_IntType:
-                    case c_LongType:
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-        }
-        public bool IsUnsignedInteger
-        {
-            get {
-                switch (Type) {
-                    case c_ByteType:
-                    case c_UShortType:
-                    case c_UIntType:
-                    case c_ULongType:
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-        }
-        public bool IsInteger
-        {
-            get {
-                switch (Type) {
-                    case c_SByteType:
-                    case c_ShortType:
-                    case c_IntType:
-                    case c_LongType:
-                    case c_ByteType:
-                    case c_UShortType:
-                    case c_UIntType:
-                    case c_ULongType:
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-        }
-        public bool IsNumber
-        {
-            get {
-                return Type == c_FloatType || Type == c_DoubleType || Type == c_DecimalType;
-            }
-        }
-        public string AsString
-        {
-            get {
-                return IsString ? StringVal : (IsObject ? ObjectVal as string : null);
-            }
-        }
-        public T As<T>() where T : class
-        {
-            return IsObject || IsString ? ObjectVal as T : null;
-        }
-        public object As(Type t)
-        {
-            if (null == ObjectVal) {
-                return null;
-            }
-            else if (IsObject || IsString) {
-                Type st = ObjectVal.GetType();
-                if (t.IsAssignableFrom(st) || st.IsSubclassOf(t))
-                    return ObjectVal;
-                else
-                    return null;
-            }
-            else {
-                return null;
-            }
-        }
-
-        public void SetNullObject()
-        {
-            Type = c_ObjectType;
-            ObjectVal = null;
-        }
-        public void SetNullString()
-        {
-            Type = c_StringType;
-            StringVal = null;
-        }
-        public void SetEmptyString()
-        {
-            Type = c_StringType;
-            StringVal = string.Empty;
-        }
-
-        public void Set(bool v)
-        {
-            Type = c_BoolType;
-            Union.BoolVal = v;
-        }
-        public void Set(char v)
-        {
-            Type = c_CharType;
-            Union.CharVal = v;
-        }
-        public void Set(sbyte v)
-        {
-            Type = c_SByteType;
-            Union.SByteVal = v;
-        }
-        public void Set(short v)
-        {
-            Type = c_ShortType;
-            Union.ShortVal = v;
-        }
-        public void Set(int v)
-        {
-            Type = c_IntType;
-            Union.IntVal = v;
-        }
-        public void Set(long v)
-        {
-            Type = c_LongType;
-            Union.LongVal = v;
-        }
-        public void Set(byte v)
-        {
-            Type = c_ByteType;
-            Union.ByteVal = v;
-        }
-        public void Set(ushort v)
-        {
-            Type = c_UShortType;
-            Union.UShortVal = v;
-        }
-        public void Set(uint v)
-        {
-            Type = c_UIntType;
-            Union.UIntVal = v;
-        }
-        public void Set(ulong v)
-        {
-            Type = c_ULongType;
-            Union.ULongVal = v;
-        }
-        public void Set(float v)
-        {
-            Type = c_FloatType;
-            Union.FloatVal = v;
-        }
-        public void Set(double v)
-        {
-            Type = c_DoubleType;
-            Union.DoubleVal = v;
-        }
-        public void Set(decimal v)
-        {
-            Type = c_DecimalType;
-            Union.DecimalVal = v;
-        }
-        public void Set(string v)
-        {
-            Type = c_StringType;
-            StringVal = v;
-        }
-        public void SetObject(object val)
-        {
-            if (null == val) {
-                SetWithObjectType(val);
-                return;
-            }
-            Type t = val.GetType();
-            if (t == typeof(string))
-                Set((string)val);
-            else if (t == typeof(bool))
-                Set((bool)val);
-            else if (t == typeof(char))
-                Set((char)val);
-            else if (t == typeof(sbyte))
-                Set((sbyte)val);
-            else if (t == typeof(short))
-                Set((short)val);
-            else if (t == typeof(int))
-                Set((int)val);
-            else if (t == typeof(long))
-                Set((long)val);
-            else if (t == typeof(byte))
-                Set((byte)val);
-            else if (t == typeof(ushort))
-                Set((ushort)val);
-            else if (t == typeof(uint))
-                Set((uint)val);
-            else if (t == typeof(ulong))
-                Set((ulong)val);
-            else if (t == typeof(float))
-                Set((float)val);
-            else if (t == typeof(double))
-                Set((double)val);
-            else if (t == typeof(decimal))
-                Set((decimal)val);
-            else if (t == typeof(CalculatorValue))
-                this = (CalculatorValue)val;
-            else
-                SetWithObjectType(val);
-        }
-        public void SetWithObjectType(object val)
-        {
-            Type = c_ObjectType;
-            ObjectVal = val;
-        }
-
-        public bool GetBool()
-        {
-            return ToBool();
-        }
-        public char GetChar()
-        {
-            return ToChar();
-        }
-        public sbyte GetSByte()
-        {
-            return ToSByte();
-        }
-        public short GetShort()
-        {
-            return ToShort();
-        }
-        public int GetInt()
-        {
-            return ToInt();
-        }
-        public long GetLong()
-        {
-            return ToLong();
-        }
-        public byte GetByte()
-        {
-            return ToByte();
-        }
-        public ushort GetUShort()
-        {
-            return ToUShort();
-        }
-        public uint GetUInt()
-        {
-            return ToUInt();
-        }
-        public ulong GetULong()
-        {
-            return ToULong();
-        }
-        public float GetFloat()
-        {
-            return ToFloat();
-        }
-        public double GetDouble()
-        {
-            return ToDouble();
-        }
-        public decimal GetDecimal()
-        {
-            return ToDecimal();
-        }
-        public string GetString()
-        {
-            return ToString();
-        }
-        public object GetObject()
-        {
-            return ToObject();
-        }
-
-        public T CastTo<T>()
-        {
-            Type t = typeof(T);
-            if (t == typeof(string))
-                return CalculatorValueConverter.From<T>(ToString());
-            else if (t == typeof(bool))
-                return CalculatorValueConverter.From<T>(ToBool());
-            else if (t == typeof(char))
-                return CalculatorValueConverter.From<T>(ToChar());
-            else if (t == typeof(sbyte))
-                return CalculatorValueConverter.From<T>(ToSByte());
-            else if (t == typeof(short))
-                return CalculatorValueConverter.From<T>(ToShort());
-            else if (t == typeof(int))
-                return CalculatorValueConverter.From<T>(ToInt());
-            else if (t == typeof(long))
-                return CalculatorValueConverter.From<T>(ToLong());
-            else if (t == typeof(byte))
-                return CalculatorValueConverter.From<T>(ToByte());
-            else if (t == typeof(ushort))
-                return CalculatorValueConverter.From<T>(ToUShort());
-            else if (t == typeof(uint))
-                return CalculatorValueConverter.From<T>(ToUInt());
-            else if (t == typeof(ulong))
-                return CalculatorValueConverter.From<T>(ToULong());
-            else if (t == typeof(float))
-                return CalculatorValueConverter.From<T>(ToFloat());
-            else if (t == typeof(double))
-                return CalculatorValueConverter.From<T>(ToDouble());
-            else if (t == typeof(decimal))
-                return CalculatorValueConverter.From<T>(ToDecimal());
-            else if (t == typeof(CalculatorValue))
-                return CalculatorValueConverter.From<T>(this);
-            else if (t == typeof(object))
-                return CalculatorValueConverter.From<T>(ToObject());
-            else
-                return CalculatorValueConverter.CastTo<T>(ToObject());
-        }
-        public object CastTo(Type t)
-        {
-            if (t == typeof(string))
-                return ToString();
-            else if (t == typeof(bool))
-                return ToBool();
-            else if (t == typeof(char))
-                return ToChar();
-            else if (t == typeof(sbyte))
-                return ToSByte();
-            else if (t == typeof(short))
-                return ToShort();
-            else if (t == typeof(int))
-                return ToInt();
-            else if (t == typeof(long))
-                return ToLong();
-            else if (t == typeof(byte))
-                return ToByte();
-            else if (t == typeof(ushort))
-                return ToUShort();
-            else if (t == typeof(uint))
-                return ToUInt();
-            else if (t == typeof(ulong))
-                return ToULong();
-            else if (t == typeof(float))
-                return ToFloat();
-            else if (t == typeof(double))
-                return ToDouble();
-            else if (t == typeof(decimal))
-                return ToDecimal();
-            else if (t == typeof(CalculatorValue))
-                return this;
-            else if (t == typeof(object))
-                return ToObject();
-            else
-                return Convert.ChangeType(ToObject(), t);
-        }
-        public void GenericSet<T>(T val)
-        {
-            Type t = typeof(T);
-            if (t == typeof(string))
-                Set(CalculatorValueConverter.ToString<T>(val));
-            else if (t == typeof(bool))
-                Set(CalculatorValueConverter.ToBool<T>(val));
-            else if (t == typeof(char))
-                Set(CalculatorValueConverter.ToChar<T>(val));
-            else if (t == typeof(sbyte))
-                Set(CalculatorValueConverter.ToSByte<T>(val));
-            else if (t == typeof(short))
-                Set(CalculatorValueConverter.ToShort<T>(val));
-            else if (t == typeof(int))
-                Set(CalculatorValueConverter.ToInt<T>(val));
-            else if (t == typeof(long))
-                Set(CalculatorValueConverter.ToLong<T>(val));
-            else if (t == typeof(byte))
-                Set(CalculatorValueConverter.ToByte<T>(val));
-            else if (t == typeof(ushort))
-                Set(CalculatorValueConverter.ToUShort<T>(val));
-            else if (t == typeof(uint))
-                Set(CalculatorValueConverter.ToUInt<T>(val));
-            else if (t == typeof(ulong))
-                Set(CalculatorValueConverter.ToULong<T>(val));
-            else if (t == typeof(float))
-                Set(CalculatorValueConverter.ToFloat<T>(val));
-            else if (t == typeof(double))
-                Set(CalculatorValueConverter.ToDouble<T>(val));
-            else if (t == typeof(decimal))
-                Set(CalculatorValueConverter.ToDecimal<T>(val));
-            else if (t == typeof(CalculatorValue))
-                this = CalculatorValueConverter.ToCalculatorValue<T>(val);
-            else if (t == typeof(object))
-                SetWithObjectType(CalculatorValueConverter.ToObject<T>(val));
-            else
-                SetWithObjectType(val);
-        }
-        public void GenericSet(Type t, object val)
-        {
-            if (null == val) {
-                if (t == typeof(string))
-                    Set((string)val);
-                else
-                    SetWithObjectType(val);
-                return;
-            }
-            t = val.GetType();
-            if (t == typeof(string))
-                Set((string)val);
-            else if (t == typeof(bool))
-                Set((bool)val);
-            else if (t == typeof(char))
-                Set((char)val);
-            else if (t == typeof(sbyte))
-                Set((sbyte)val);
-            else if (t == typeof(short))
-                Set((short)val);
-            else if (t == typeof(int))
-                Set((int)val);
-            else if (t == typeof(long))
-                Set((long)val);
-            else if (t == typeof(byte))
-                Set((byte)val);
-            else if (t == typeof(ushort))
-                Set((ushort)val);
-            else if (t == typeof(uint))
-                Set((uint)val);
-            else if (t == typeof(ulong))
-                Set((ulong)val);
-            else if (t == typeof(float))
-                Set((float)val);
-            else if (t == typeof(double))
-                Set((double)val);
-            else if (t == typeof(decimal))
-                Set((decimal)val);
-            else if (t == typeof(CalculatorValue))
-                this = (CalculatorValue)val;
-            else
-                SetWithObjectType(val);
-        }
-
-        public void CopyFrom(CalculatorValue other)
-        {
-            Type = other.Type;
-            switch (Type) {
-                case c_ObjectType:
-                    ObjectVal = other.ObjectVal;
-                    break;
-                case c_StringType:
-                    StringVal = other.StringVal;
-                    break;
-                case c_BoolType:
-                    Union.BoolVal = other.Union.BoolVal;
-                    break;
-                case c_CharType:
-                    Union.CharVal = other.Union.CharVal;
-                    break;
-                case c_SByteType:
-                    Union.SByteVal = other.Union.SByteVal;
-                    break;
-                case c_ShortType:
-                    Union.ShortVal = other.Union.ShortVal;
-                    break;
-                case c_IntType:
-                    Union.IntVal = other.Union.IntVal;
-                    break;
-                case c_LongType:
-                    Union.LongVal = other.Union.LongVal;
-                    break;
-                case c_ByteType:
-                    Union.ByteVal = other.Union.ByteVal;
-                    break;
-                case c_UShortType:
-                    Union.UShortVal = other.Union.UShortVal;
-                    break;
-                case c_UIntType:
-                    Union.UIntVal = other.Union.UIntVal;
-                    break;
-                case c_ULongType:
-                    Union.ULongVal = other.Union.ULongVal;
-                    break;
-                case c_FloatType:
-                    Union.FloatVal = other.Union.FloatVal;
-                    break;
-                case c_DoubleType:
-                    Union.DoubleVal = other.Union.DoubleVal;
-                    break;
-                case c_DecimalType:
-                    Union.DecimalVal = other.Union.DecimalVal;
-                    break;
-            }
-        }
-        public override string ToString()
-        {
-            switch (Type) {
-                case c_ObjectType:
-                    return null != ObjectVal ? ObjectVal.ToString() : string.Empty;
-                case c_StringType:
-                    return null != StringVal ? StringVal : string.Empty;
-                case c_BoolType:
-                    return Union.BoolVal.ToString();
-                case c_CharType:
-                    return Union.CharVal.ToString();
-                case c_SByteType:
-                    return Union.SByteVal.ToString();
-                case c_ShortType:
-                    return Union.ShortVal.ToString();
-                case c_IntType:
-                    return Union.IntVal.ToString();
-                case c_LongType:
-                    return Union.LongVal.ToString();
-                case c_ByteType:
-                    return Union.ByteVal.ToString();
-                case c_UShortType:
-                    return Union.UShortVal.ToString();
-                case c_UIntType:
-                    return Union.UIntVal.ToString();
-                case c_ULongType:
-                    return Union.ULongVal.ToString();
-                case c_FloatType:
-                    return FloatToString(Union.FloatVal);
-                case c_DoubleType:
-                    return DoubleToString(Union.DoubleVal);
-                case c_DecimalType:
-                    return DecimalToString(Union.DecimalVal);
-            }
-            return string.Empty;
-        }
-
-        private object ToObject()
-        {
-            switch (Type) {
-                case c_ObjectType:
-                case c_StringType:
-                    return ObjectVal;
-                case c_BoolType:
-                    return Union.BoolVal;
-                case c_CharType:
-                    return Union.CharVal;
-                case c_SByteType:
-                    return Union.SByteVal;
-                case c_ShortType:
-                    return Union.ShortVal;
-                case c_IntType:
-                    return Union.IntVal;
-                case c_LongType:
-                    return Union.LongVal;
-                case c_ByteType:
-                    return Union.ByteVal;
-                case c_UShortType:
-                    return Union.UShortVal;
-                case c_UIntType:
-                    return Union.UIntVal;
-                case c_ULongType:
-                    return Union.ULongVal;
-                case c_FloatType:
-                    return Union.FloatVal;
-                case c_DoubleType:
-                    return Union.DoubleVal;
-                case c_DecimalType:
-                    return Union.DecimalVal;
-            }
-            return null;
-        }
-        private bool ToBool()
-        {
-            switch (Type) {
-                case c_StringType:
-                    if (null != StringVal) {
-                        long v;
-                        long.TryParse(StringVal, out v);
-                        return v != 0;
-                    }
-                    else {
-                        return false;
-                    }
-                case c_ObjectType:
-                    if (null != ObjectVal) {
-                        if (ObjectVal is bool) {
-                            return (bool)ObjectVal;
-                        }
-                        else {
-                            long v = CalculatorValueConverter.CastTo<long>(ObjectVal);
-                            return v != 0;
-                        }
-                    }
-                    else {
-                        return false;
-                    }
-                case c_BoolType:
-                    return Union.BoolVal;
-                case c_CharType:
-                    return Union.CharVal != 0;
-                case c_SByteType:
-                    return Union.SByteVal != 0;
-                case c_ShortType:
-                    return Union.ShortVal != 0;
-                case c_IntType:
-                    return Union.IntVal != 0;
-                case c_LongType:
-                    return Union.LongVal != 0;
-                case c_ByteType:
-                    return Union.ByteVal != 0;
-                case c_UShortType:
-                    return Union.UShortVal != 0;
-                case c_UIntType:
-                    return Union.UIntVal != 0;
-                case c_ULongType:
-                    return Union.ULongVal != 0;
-                case c_FloatType:
-                    return Union.FloatVal != 0;
-                case c_DoubleType:
-                    return Union.DoubleVal != 0;
-                case c_DecimalType:
-                    return Union.DecimalVal != 0;
-            }
-            return false;
-        }
-        private char ToChar()
-        {
-            switch (Type) {
-                case c_StringType:
-                    if (null != StringVal && StringVal.Length > 0) {
-                        return StringVal[0];
-                    }
-                    else {
-                        return '\0';
-                    }
-                case c_ObjectType:
-                    if (null != ObjectVal) {
-                        if (ObjectVal is char) {
-                            return (char)ObjectVal;
-                        }
-                        else {
-                            char v = CalculatorValueConverter.CastTo<char>(ObjectVal);
-                            return v;
-                        }
-                    }
-                    else {
-                        return '\0';
-                    }
-                case c_BoolType:
-                    return Union.BoolVal ? '\x01' : '\0';
-                case c_CharType:
-                    return Union.CharVal;
-                case c_SByteType:
-                    return (char)Union.SByteVal;
-                case c_ShortType:
-                    return (char)Union.ShortVal;
-                case c_IntType:
-                    return (char)Union.IntVal;
-                case c_LongType:
-                    return (char)Union.LongVal;
-                case c_ByteType:
-                    return (char)Union.ByteVal;
-                case c_UShortType:
-                    return (char)Union.UShortVal;
-                case c_UIntType:
-                    return (char)Union.UIntVal;
-                case c_ULongType:
-                    return (char)Union.ULongVal;
-                case c_FloatType:
-                    return (char)(int)Union.FloatVal;
-                case c_DoubleType:
-                    return (char)(long)Union.DoubleVal;
-                case c_DecimalType:
-                    return (char)(int)Union.DecimalVal;
-            }
-            return '\0';
-        }
-        private sbyte ToSByte()
-        {
-            sbyte v = 0;
-            switch (Type) {
-                case c_BoolType:
-                    return (sbyte)(Union.BoolVal ? 1 : 0);
-                case c_CharType:
-                    return (sbyte)Union.CharVal;
-                case c_SByteType:
-                    return Union.SByteVal;
-                case c_ShortType:
-                    return (sbyte)Union.ShortVal;
-                case c_IntType:
-                    return (sbyte)Union.IntVal;
-                case c_LongType:
-                    return (sbyte)Union.LongVal;
-                case c_ByteType:
-                    return (sbyte)Union.ByteVal;
-                case c_UShortType:
-                    return (sbyte)Union.UShortVal;
-                case c_UIntType:
-                    return (sbyte)Union.UIntVal;
-                case c_ULongType:
-                    return (sbyte)Union.ULongVal;
-                case c_FloatType:
-                    return (sbyte)Union.FloatVal;
-                case c_DoubleType:
-                    return (sbyte)Union.DoubleVal;
-                case c_DecimalType:
-                    return (sbyte)Union.DecimalVal;
-                case c_StringType:
-                    if (null != StringVal) {
-                        sbyte.TryParse(StringVal, out v);
-                    }
-                    return v;
-                case c_ObjectType:
-                    if (null != ObjectVal) {
-                        v = CalculatorValueConverter.CastTo<sbyte>(ObjectVal);
-                    }
-                    return v;
-            }
-            return v;
-        }
-        private short ToShort()
-        {
-            short v = 0;
-            switch (Type) {
-                case c_BoolType:
-                    return (short)(Union.BoolVal ? 1 : 0);
-                case c_CharType:
-                    return (short)Union.CharVal;
-                case c_SByteType:
-                    return Union.SByteVal;
-                case c_ShortType:
-                    return Union.ShortVal;
-                case c_IntType:
-                    return (short)Union.IntVal;
-                case c_LongType:
-                    return (short)Union.LongVal;
-                case c_ByteType:
-                    return Union.ByteVal;
-                case c_UShortType:
-                    return (short)Union.UShortVal;
-                case c_UIntType:
-                    return (short)Union.UIntVal;
-                case c_ULongType:
-                    return (short)Union.ULongVal;
-                case c_FloatType:
-                    return (short)Union.FloatVal;
-                case c_DoubleType:
-                    return (short)Union.DoubleVal;
-                case c_DecimalType:
-                    return (short)Union.DecimalVal;
-                case c_StringType:
-                    if (null != StringVal) {
-                        short.TryParse(StringVal, out v);
-                    }
-                    return v;
-                case c_ObjectType:
-                    if (null != ObjectVal) {
-                        v = CalculatorValueConverter.CastTo<short>(ObjectVal);
-                    }
-                    return v;
-            }
-            return v;
-        }
-        private int ToInt()
-        {
-            int v = 0;
-            switch (Type) {
-                case c_BoolType:
-                    return Union.BoolVal ? 1 : 0;
-                case c_CharType:
-                    return Union.CharVal;
-                case c_SByteType:
-                    return Union.SByteVal;
-                case c_ShortType:
-                    return Union.ShortVal;
-                case c_IntType:
-                    return Union.IntVal;
-                case c_LongType:
-                    return (int)Union.LongVal;
-                case c_ByteType:
-                    return Union.ByteVal;
-                case c_UShortType:
-                    return Union.UShortVal;
-                case c_UIntType:
-                    return (int)Union.UIntVal;
-                case c_ULongType:
-                    return (int)Union.ULongVal;
-                case c_FloatType:
-                    return (int)Union.FloatVal;
-                case c_DoubleType:
-                    return (int)Union.DoubleVal;
-                case c_DecimalType:
-                    return (int)Union.DecimalVal;
-                case c_StringType:
-                    if (null != StringVal) {
-                        int.TryParse(StringVal, out v);
-                    }
-                    return v;
-                case c_ObjectType:
-                    if (null != ObjectVal) {
-                        v = CalculatorValueConverter.CastTo<int>(ObjectVal);
-                    }
-                    return v;
-            }
-            return v;
-        }
-        private long ToLong()
-        {
-            long v = 0;
-            switch (Type) {
-                case c_BoolType:
-                    return Union.BoolVal ? 1 : 0;
-                case c_CharType:
-                    return Union.CharVal;
-                case c_SByteType:
-                    return Union.SByteVal;
-                case c_ShortType:
-                    return Union.ShortVal;
-                case c_IntType:
-                    return Union.IntVal;
-                case c_LongType:
-                    return Union.LongVal;
-                case c_ByteType:
-                    return Union.ByteVal;
-                case c_UShortType:
-                    return Union.UShortVal;
-                case c_UIntType:
-                    return Union.UIntVal;
-                case c_ULongType:
-                    return (long)Union.ULongVal;
-                case c_FloatType:
-                    return (long)Union.FloatVal;
-                case c_DoubleType:
-                    return (long)Union.DoubleVal;
-                case c_DecimalType:
-                    return (long)Union.DecimalVal;
-                case c_StringType:
-                    if (null != StringVal) {
-                        long.TryParse(StringVal, out v);
-                    }
-                    return v;
-                case c_ObjectType:
-                    if (null != ObjectVal) {
-                        v = CalculatorValueConverter.CastTo<long>(ObjectVal);
-                    }
-                    return v;
-            }
-            return v;
-        }
-        private byte ToByte()
-        {
-            byte v = 0;
-            switch (Type) {
-                case c_BoolType:
-                    return (byte)(Union.BoolVal ? 1 : 0);
-                case c_CharType:
-                    return (byte)Union.CharVal;
-                case c_SByteType:
-                    return (byte)Union.SByteVal;
-                case c_ShortType:
-                    return (byte)Union.ShortVal;
-                case c_IntType:
-                    return (byte)Union.IntVal;
-                case c_LongType:
-                    return (byte)Union.LongVal;
-                case c_ByteType:
-                    return Union.ByteVal;
-                case c_UShortType:
-                    return (byte)Union.UShortVal;
-                case c_UIntType:
-                    return (byte)Union.UIntVal;
-                case c_ULongType:
-                    return (byte)Union.ULongVal;
-                case c_FloatType:
-                    return (byte)Union.FloatVal;
-                case c_DoubleType:
-                    return (byte)Union.DoubleVal;
-                case c_DecimalType:
-                    return (byte)Union.DecimalVal;
-                case c_StringType:
-                    if (null != StringVal) {
-                        byte.TryParse(StringVal, out v);
-                    }
-                    return v;
-                case c_ObjectType:
-                    if (null != ObjectVal) {
-                        v = CalculatorValueConverter.CastTo<byte>(ObjectVal);
-                    }
-                    return v;
-            }
-            return v;
-        }
-        private ushort ToUShort()
-        {
-            ushort v = 0;
-            switch (Type) {
-                case c_BoolType:
-                    return (ushort)(Union.BoolVal ? 1 : 0);
-                case c_CharType:
-                    return Union.CharVal;
-                case c_SByteType:
-                    return (ushort)Union.SByteVal;
-                case c_ShortType:
-                    return (ushort)Union.ShortVal;
-                case c_IntType:
-                    return (ushort)Union.IntVal;
-                case c_LongType:
-                    return (ushort)Union.LongVal;
-                case c_ByteType:
-                    return Union.ByteVal;
-                case c_UShortType:
-                    return Union.UShortVal;
-                case c_UIntType:
-                    return (ushort)Union.UIntVal;
-                case c_ULongType:
-                    return (ushort)Union.ULongVal;
-                case c_FloatType:
-                    return (ushort)Union.FloatVal;
-                case c_DoubleType:
-                    return (ushort)Union.DoubleVal;
-                case c_DecimalType:
-                    return (ushort)Union.DecimalVal;
-                case c_StringType:
-                    if (null != StringVal) {
-                        ushort.TryParse(StringVal, out v);
-                    }
-                    return v;
-                case c_ObjectType:
-                    if (null != ObjectVal) {
-                        v = CalculatorValueConverter.CastTo<ushort>(ObjectVal);
-                    }
-                    return v;
-            }
-            return v;
-        }
-        private uint ToUInt()
-        {
-            uint v = 0;
-            switch (Type) {
-                case c_BoolType:
-                    return (uint)(Union.BoolVal ? 1 : 0);
-                case c_CharType:
-                    return Union.CharVal;
-                case c_SByteType:
-                    return (uint)Union.SByteVal;
-                case c_ShortType:
-                    return (uint)Union.ShortVal;
-                case c_IntType:
-                    return (uint)Union.IntVal;
-                case c_LongType:
-                    return (uint)Union.LongVal;
-                case c_ByteType:
-                    return Union.ByteVal;
-                case c_UShortType:
-                    return Union.UShortVal;
-                case c_UIntType:
-                    return Union.UIntVal;
-                case c_ULongType:
-                    return (uint)Union.ULongVal;
-                case c_FloatType:
-                    return (uint)Union.FloatVal;
-                case c_DoubleType:
-                    return (uint)Union.DoubleVal;
-                case c_DecimalType:
-                    return (uint)Union.DecimalVal;
-                case c_StringType:
-                    if (null != StringVal) {
-                        uint.TryParse(StringVal, out v);
-                    }
-                    return v;
-                case c_ObjectType:
-                    if (null != ObjectVal) {
-                        v = CalculatorValueConverter.CastTo<uint>(ObjectVal);
-                    }
-                    return v;
-            }
-            return v;
-        }
-        private ulong ToULong()
-        {
-            ulong v = 0;
-            switch (Type) {
-                case c_BoolType:
-                    return (ulong)(Union.BoolVal ? 1 : 0);
-                case c_CharType:
-                    return (ulong)Union.CharVal;
-                case c_SByteType:
-                    return (ulong)Union.SByteVal;
-                case c_ShortType:
-                    return (ulong)Union.ShortVal;
-                case c_IntType:
-                    return (ulong)Union.IntVal;
-                case c_LongType:
-                    return (ulong)Union.LongVal;
-                case c_ByteType:
-                    return Union.ByteVal;
-                case c_UShortType:
-                    return Union.UShortVal;
-                case c_UIntType:
-                    return Union.UIntVal;
-                case c_ULongType:
-                    return Union.ULongVal;
-                case c_FloatType:
-                    return (ulong)Union.FloatVal;
-                case c_DoubleType:
-                    return (ulong)Union.DoubleVal;
-                case c_DecimalType:
-                    return (ulong)Union.DecimalVal;
-                case c_StringType:
-                    if (null != StringVal) {
-                        ulong.TryParse(StringVal, out v);
-                    }
-                    return v;
-                case c_ObjectType:
-                    if (null != ObjectVal) {
-                        v = CalculatorValueConverter.CastTo<ulong>(ObjectVal);
-                    }
-                    return v;
-            }
-            return v;
-        }
-        private float ToFloat()
-        {
-            float v = 0;
-            switch (Type) {
-                case c_BoolType:
-                    return Union.BoolVal ? 1 : 0;
-                case c_CharType:
-                    return Union.CharVal;
-                case c_SByteType:
-                    return Union.SByteVal;
-                case c_ShortType:
-                    return Union.ShortVal;
-                case c_IntType:
-                    return Union.IntVal;
-                case c_LongType:
-                    return Union.LongVal;
-                case c_ByteType:
-                    return Union.ByteVal;
-                case c_UShortType:
-                    return Union.UShortVal;
-                case c_UIntType:
-                    return Union.UIntVal;
-                case c_ULongType:
-                    return Union.ULongVal;
-                case c_FloatType:
-                    return Union.FloatVal;
-                case c_DoubleType:
-                    return (float)Union.DoubleVal;
-                case c_DecimalType:
-                    return (float)Union.DecimalVal;
-                case c_StringType:
-                    if (null != StringVal) {
-                        float.TryParse(StringVal, out v);
-                    }
-                    return v;
-                case c_ObjectType:
-                    if (null != ObjectVal) {
-                        v = CalculatorValueConverter.CastTo<float>(ObjectVal);
-                    }
-                    return v;
-            }
-            return v;
-        }
-        private double ToDouble()
-        {
-            double v = 0;
-            switch (Type) {
-                case c_BoolType:
-                    return Union.BoolVal ? 1 : 0;
-                case c_CharType:
-                    return Union.CharVal;
-                case c_SByteType:
-                    return Union.SByteVal;
-                case c_ShortType:
-                    return Union.ShortVal;
-                case c_IntType:
-                    return Union.IntVal;
-                case c_LongType:
-                    return Union.LongVal;
-                case c_ByteType:
-                    return Union.ByteVal;
-                case c_UShortType:
-                    return Union.UShortVal;
-                case c_UIntType:
-                    return Union.UIntVal;
-                case c_ULongType:
-                    return Union.ULongVal;
-                case c_FloatType:
-                    return Union.FloatVal;
-                case c_DoubleType:
-                    return Union.DoubleVal;
-                case c_DecimalType:
-                    return (double)Union.DecimalVal;
-                case c_StringType:
-                    if (null != StringVal) {
-                        double.TryParse(StringVal, out v);
-                    }
-                    return v;
-                case c_ObjectType:
-                    if (null != ObjectVal) {
-                        v = CalculatorValueConverter.CastTo<double>(ObjectVal);
-                    }
-                    return v;
-            }
-            return v;
-        }
-        private decimal ToDecimal()
-        {
-            decimal v = 0;
-            switch (Type) {
-                case c_BoolType:
-                    return Union.BoolVal ? 1 : 0;
-                case c_CharType:
-                    return Union.CharVal;
-                case c_SByteType:
-                    return Union.SByteVal;
-                case c_ShortType:
-                    return Union.ShortVal;
-                case c_IntType:
-                    return Union.IntVal;
-                case c_LongType:
-                    return Union.LongVal;
-                case c_ByteType:
-                    return Union.ByteVal;
-                case c_UShortType:
-                    return Union.UShortVal;
-                case c_UIntType:
-                    return Union.UIntVal;
-                case c_ULongType:
-                    return Union.ULongVal;
-                case c_FloatType:
-                    return (decimal)Union.FloatVal;
-                case c_DoubleType:
-                    return (decimal)Union.DoubleVal;
-                case c_DecimalType:
-                    return Union.DecimalVal;
-                case c_StringType:
-                    if (null != StringVal) {
-                        decimal.TryParse(StringVal, out v);
-                    }
-                    return v;
-                case c_ObjectType:
-                    if (null != ObjectVal) {
-                        v = CalculatorValueConverter.CastTo<decimal>(ObjectVal);
-                    }
-                    return v;
-            }
-            return v;
-        }
-
-        public static CalculatorValue From(bool v)
-        {
-            CalculatorValue bv = new CalculatorValue();
-            bv.Set(v);
-            return bv;
-        }
-        public static CalculatorValue From(sbyte v)
-        {
-            CalculatorValue bv = new CalculatorValue();
-            bv.Set(v);
-            return bv;
-        }
-        public static CalculatorValue From(short v)
-        {
-            CalculatorValue bv = new CalculatorValue();
-            bv.Set(v);
-            return bv;
-        }
-        public static CalculatorValue From(int v)
-        {
-            CalculatorValue bv = new CalculatorValue();
-            bv.Set(v);
-            return bv;
-        }
-        public static CalculatorValue From(long v)
-        {
-            CalculatorValue bv = new CalculatorValue();
-            bv.Set(v);
-            return bv;
-        }
-        public static CalculatorValue From(byte v)
-        {
-            CalculatorValue bv = new CalculatorValue();
-            bv.Set(v);
-            return bv;
-        }
-        public static CalculatorValue From(ushort v)
-        {
-            CalculatorValue bv = new CalculatorValue();
-            bv.Set(v);
-            return bv;
-        }
-        public static CalculatorValue From(uint v)
-        {
-            CalculatorValue bv = new CalculatorValue();
-            bv.Set(v);
-            return bv;
-        }
-        public static CalculatorValue From(ulong v)
-        {
-            CalculatorValue bv = new CalculatorValue();
-            bv.Set(v);
-            return bv;
-        }
-        public static CalculatorValue From(float v)
-        {
-            CalculatorValue bv = new CalculatorValue();
-            bv.Set(v);
-            return bv;
-        }
-        public static CalculatorValue From(double v)
-        {
-            CalculatorValue bv = new CalculatorValue();
-            bv.Set(v);
-            return bv;
-        }
-        public static CalculatorValue From(decimal v)
-        {
-            CalculatorValue bv = new CalculatorValue();
-            bv.Set(v);
-            return bv;
-        }
-        public static CalculatorValue From(string v)
-        {
-            CalculatorValue bv = new CalculatorValue();
-            bv.Set(v);
-            return bv;
-        }
-        public static CalculatorValue FromObject(object v)
-        {
-            CalculatorValue bv = new CalculatorValue();
-            bv.SetObject(v);
-            return bv;
-        }
-
-        public static CalculatorValue NullObject
-        {
-            get { return s_NullObject; }
-        }
-        public static CalculatorValue EmptyString
-        {
-            get { return s_EmptyString; }
-        }
-        private static CalculatorValue s_NullObject = CalculatorValue.FromObject(null);
-        private static CalculatorValue s_EmptyString = CalculatorValue.From(string.Empty);
-
-        private static string FloatToString(float v)
-        {
-            if (v > -1e28 && v < 1e28)
-                return v.ToString(s_FloatFormat);
-            else
-                return string.Format("{0}", v);
-        }
-        private static string DecimalToString(decimal v)
-        {
-            if (v > (decimal)-1e28 && v < (decimal)1e28)
-                return v.ToString(s_FloatFormat);
-            else
-                return string.Format("{0}", v);
-        }
-        private static string DoubleToString(double v)
-        {
-            if (v > -1e28 && v < 1e28)
-                return v.ToString(s_DoubleFormat);
-            else
-                return string.Format("{0}", v);
-        }
-        private static string s_FloatFormat = "###########################0.00#####";
-        private static string s_DoubleFormat = "###########################0.00##############";
-    }
-    public class CalculatorValueListPool
-    {
-        public List<CalculatorValue> Alloc()
+        public List<BoxedValue> Alloc()
         {
             if (m_Pool.Count > 0)
                 return m_Pool.Dequeue();
             else
-                return new List<CalculatorValue>();
+                return new List<BoxedValue>();
         }
-        public void Recycle(List<CalculatorValue> list)
+        public void Recycle(List<BoxedValue> list)
         {
             if (null != list) {
                 m_Pool.Enqueue(list);
@@ -1814,23 +34,23 @@ namespace DslExpression
         {
             m_Pool.Clear();
         }
-        public CalculatorValueListPool(int initCapacity)
+        public BoxedValueListPool(int initCapacity)
         {
-            m_Pool = new Queue<List<CalculatorValue>>(initCapacity);
+            m_Pool = new Queue<List<BoxedValue>>(initCapacity);
         }
 
-        private Queue<List<CalculatorValue>> m_Pool = null;
+        private Queue<List<BoxedValue>> m_Pool = null;
     }
     public interface IObjectDispatch
     {
         int GetDispatchId(string name);
-        CalculatorValue GetProperty(int dispId);
-        void SetProperty(int dispId, CalculatorValue val);
-        CalculatorValue InvokeMethod(int dispId, List<CalculatorValue> args);
+        BoxedValue GetProperty(int dispId);
+        void SetProperty(int dispId, BoxedValue val);
+        BoxedValue InvokeMethod(int dispId, List<BoxedValue> args);
     }
     public interface IExpression
     {
-        CalculatorValue Calc();
+        BoxedValue Calc();
         bool Load(Dsl.ISyntaxComponent dsl, DslCalculator calculator);
     }
     public interface IExpressionFactory
@@ -1846,9 +66,9 @@ namespace DslExpression
     }
     public abstract class AbstractExpression : IExpression
     {
-        public CalculatorValue Calc()
+        public BoxedValue Calc()
         {
-            CalculatorValue ret = CalculatorValue.NullObject;
+            BoxedValue ret = BoxedValue.NullObject;
             try {
                 ret = DoCalc();
             }
@@ -1904,7 +124,7 @@ namespace DslExpression
         protected virtual bool Load(IList<IExpression> exps) { return false; }
         protected virtual bool Load(Dsl.FunctionData funcData) { return false; }
         protected virtual bool Load(Dsl.StatementData statementData) { return false; }
-        protected abstract CalculatorValue DoCalc();
+        protected abstract BoxedValue DoCalc();
 
         protected DslCalculator Calculator
         {
@@ -1979,8 +199,8 @@ namespace DslExpression
         }
         protected static T CastTo<T>(object obj)
         {
-            if (obj is CalculatorValue) {
-                return ((CalculatorValue)obj).CastTo<T>();
+            if (obj is BoxedValue) {
+                return ((BoxedValue)obj).CastTo<T>();
             }
             else if (obj is T) {
                 return (T)obj;
@@ -2002,8 +222,8 @@ namespace DslExpression
             if (null == obj)
                 return null;
             Type st = obj.GetType();
-            if (obj is CalculatorValue) {
-                return ((CalculatorValue)obj).CastTo(t);
+            if (obj is BoxedValue) {
+                return ((BoxedValue)obj).CastTo(t);
             }
             else if (t.IsAssignableFrom(st) || st.IsSubclassOf(t)) {
                 return obj;
@@ -2020,7 +240,7 @@ namespace DslExpression
                 }
             }
         }
-        protected static Encoding GetEncoding(CalculatorValue v)
+        protected static Encoding GetEncoding(BoxedValue v)
         {
             var name = v.AsString;
             if (null != name) {
@@ -2034,15 +254,15 @@ namespace DslExpression
                 return Encoding.UTF8;
             }
         }
-        public static bool TryParseNumeric(string str, out DslExpression.CalculatorValue val)
+        public static bool TryParseNumeric(string str, out BoxedValue val)
         {
             string type = string.Empty;
             return TryParseNumeric(str, ref type, out val);
         }
-        public static bool TryParseNumeric(string str, ref string type, out DslExpression.CalculatorValue val)
+        public static bool TryParseNumeric(string str, ref string type, out BoxedValue val)
         {
             bool ret = false;
-            val = DslExpression.CalculatorValue.NullObject;
+            val = BoxedValue.NullObject;
             if (str.Length > 2 && str[0] == '0' && str[1] == 'x') {
                 char c = str[str.Length - 1];
                 if (c == 'u' || c == 'U') {
@@ -2148,7 +368,7 @@ namespace DslExpression
     }
     public abstract class SimpleExpressionBase : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             var operands = Calculator.NewCalculatorValueList();
             for (int i = 0; i < m_Exps.Count; ++i) {
@@ -2164,15 +384,15 @@ namespace DslExpression
             m_Exps = exps;
             return true;
         }
-        protected abstract CalculatorValue OnCalc(IList<CalculatorValue> operands);
+        protected abstract BoxedValue OnCalc(IList<BoxedValue> operands);
 
         private IList<IExpression> m_Exps = null;
     }
     internal sealed class ArgsGet : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            CalculatorValue ret = CalculatorValue.FromObject(Calculator.Arguments);
+            BoxedValue ret = BoxedValue.FromObject(Calculator.Arguments);
             return ret;
         }
         protected override bool Load(Dsl.FunctionData callData)
@@ -2182,9 +402,9 @@ namespace DslExpression
     }
     internal sealed class ArgGet : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             var ix = m_ArgIndex.Calc().GetInt();
             var args = Calculator.Arguments;
             if (ix >= 0 && ix < args.Count) {
@@ -2202,10 +422,10 @@ namespace DslExpression
     }
     internal sealed class ArgNumGet : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             var ret = Calculator.Arguments.Count;
-            return CalculatorValue.From(ret);
+            return BoxedValue.From(ret);
         }
         protected override bool Load(Dsl.FunctionData callData)
         {
@@ -2214,9 +434,9 @@ namespace DslExpression
     }
     internal sealed class GlobalVarSet : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            CalculatorValue v = m_Op.Calc();
+            BoxedValue v = m_Op.Calc();
             if (m_VarIx < int.MaxValue) {
                 Calculator.SetGlobalVaraibleByIndex(m_VarIx, v);
             }
@@ -2249,9 +469,9 @@ namespace DslExpression
     }
     internal sealed class GlobalVarGet : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             if (m_VarId == "break") {
                 Calculator.RunState = RunStateEnum.Break;
                 return ret;
@@ -2291,9 +511,9 @@ namespace DslExpression
     }
     internal sealed class LocalVarSet : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            CalculatorValue v = m_Op.Calc();
+            BoxedValue v = m_Op.Calc();
             if (m_VarIx < int.MaxValue) {
                 Calculator.SetLocalVaraibleByIndex(m_VarIx, v);
             }
@@ -2318,9 +538,9 @@ namespace DslExpression
     }
     internal sealed class LocalVarGet : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             if (m_VarIx < int.MaxValue) {
                 ret = Calculator.GetLocalVaraibleByIndex(m_VarIx);
             }
@@ -2346,9 +566,9 @@ namespace DslExpression
     }
     internal sealed class ConstGet : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            CalculatorValue v = m_Val;
+            BoxedValue v = m_Val;
             return v;
         }
         protected override bool Load(Dsl.ValueData valData)
@@ -2374,11 +594,11 @@ namespace DslExpression
             return true;
         }
 
-        private CalculatorValue m_Val;
+        private BoxedValue m_Val;
     }
     internal sealed class FunctionCall : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             var args = Calculator.NewCalculatorValueList();
             foreach (var arg in m_Args) {
@@ -2407,11 +627,11 @@ namespace DslExpression
     }
     internal sealed class AddExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             var v1 = m_Op1.Calc();
             var v2 = m_Op2.Calc();
-            CalculatorValue v;
+            BoxedValue v;
             if (v1.IsString || v2.IsString) {
                 v = v1.ToString() + v2.ToString();
             }
@@ -2432,11 +652,11 @@ namespace DslExpression
     }
     internal sealed class SubExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             var v1 = m_Op1.Calc();
             var v2 = m_Op2.Calc();
-            CalculatorValue v = v1.GetDouble() - v2.GetDouble();
+            BoxedValue v = v1.GetDouble() - v2.GetDouble();
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2451,11 +671,11 @@ namespace DslExpression
     }
     internal sealed class MulExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             var v1 = m_Op1.Calc();
             var v2 = m_Op2.Calc();
-            CalculatorValue v = v1.GetDouble() * v2.GetDouble();
+            BoxedValue v = v1.GetDouble() * v2.GetDouble();
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2470,11 +690,11 @@ namespace DslExpression
     }
     internal sealed class DivExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             var v1 = m_Op1.Calc();
             var v2 = m_Op2.Calc();
-            CalculatorValue v = v1.GetDouble() / v2.GetDouble();
+            BoxedValue v = v1.GetDouble() / v2.GetDouble();
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2489,11 +709,11 @@ namespace DslExpression
     }
     internal sealed class ModExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             var v1 = m_Op1.Calc();
             var v2 = m_Op2.Calc();
-            CalculatorValue v = v1.GetDouble() % v2.GetDouble();
+            BoxedValue v = v1.GetDouble() % v2.GetDouble();
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2508,11 +728,11 @@ namespace DslExpression
     }
     internal sealed class BitAndExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             var v1 = m_Op1.Calc();
             var v2 = m_Op2.Calc();
-            CalculatorValue v = v1.GetLong() & v2.GetLong();
+            BoxedValue v = v1.GetLong() & v2.GetLong();
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2527,11 +747,11 @@ namespace DslExpression
     }
     internal sealed class BitOrExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             var v1 = m_Op1.Calc();
             var v2 = m_Op2.Calc();
-            CalculatorValue v = v1.GetLong() | v2.GetLong();
+            BoxedValue v = v1.GetLong() | v2.GetLong();
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2546,11 +766,11 @@ namespace DslExpression
     }
     internal sealed class BitXorExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             var v1 = m_Op1.Calc();
             var v2 = m_Op2.Calc();
-            CalculatorValue v = v1.GetLong() ^ v2.GetLong();
+            BoxedValue v = v1.GetLong() ^ v2.GetLong();
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2565,10 +785,10 @@ namespace DslExpression
     }
     internal sealed class BitNotExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             var v1 = m_Op1.Calc();
-            CalculatorValue v = ~v1.GetLong();
+            BoxedValue v = ~v1.GetLong();
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2581,11 +801,11 @@ namespace DslExpression
     }
     internal sealed class LShiftExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             var v1 = m_Op1.Calc();
             var v2 = m_Op2.Calc();
-            CalculatorValue v = v1.GetLong() << v2.GetInt();
+            BoxedValue v = v1.GetLong() << v2.GetInt();
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2600,11 +820,11 @@ namespace DslExpression
     }
     internal sealed class RShiftExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             var v1 = m_Op1.Calc();
             var v2 = m_Op2.Calc();
-            CalculatorValue v = v1.GetLong() >> v2.GetInt();
+            BoxedValue v = v1.GetLong() >> v2.GetInt();
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2619,11 +839,11 @@ namespace DslExpression
     }
     internal sealed class MaxExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
             double v2 = m_Op2.Calc().GetDouble();
-            CalculatorValue v = v1 >= v2 ? v1 : v2;
+            BoxedValue v = v1 >= v2 ? v1 : v2;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2638,11 +858,11 @@ namespace DslExpression
     }
     internal sealed class MinExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
             double v2 = m_Op2.Calc().GetDouble();
-            CalculatorValue v = v1 <= v2 ? v1 : v2;
+            BoxedValue v = v1 <= v2 ? v1 : v2;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2657,10 +877,10 @@ namespace DslExpression
     }
     internal sealed class AbsExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op.Calc().GetDouble();
-            CalculatorValue v = v1 >= 0 ? v1 : -v1;
+            BoxedValue v = v1 >= 0 ? v1 : -v1;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2673,10 +893,10 @@ namespace DslExpression
     }
     internal sealed class SinExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op.Calc().GetDouble();
-            CalculatorValue v = (double)Mathf.Sin((float)v1);
+            BoxedValue v = (double)Mathf.Sin((float)v1);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2689,10 +909,10 @@ namespace DslExpression
     }
     internal sealed class CosExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op.Calc().GetDouble();
-            CalculatorValue v = (double)Mathf.Cos((float)v1);
+            BoxedValue v = (double)Mathf.Cos((float)v1);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2705,10 +925,10 @@ namespace DslExpression
     }
     internal sealed class TanExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op.Calc().GetDouble();
-            CalculatorValue v = (double)Mathf.Tan((float)v1);
+            BoxedValue v = (double)Mathf.Tan((float)v1);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2721,10 +941,10 @@ namespace DslExpression
     }
     internal sealed class AsinExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op.Calc().GetDouble();
-            CalculatorValue v = (double)Mathf.Asin((float)v1);
+            BoxedValue v = (double)Mathf.Asin((float)v1);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2737,10 +957,10 @@ namespace DslExpression
     }
     internal sealed class AcosExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op.Calc().GetDouble();
-            CalculatorValue v = (double)Mathf.Acos((float)v1);
+            BoxedValue v = (double)Mathf.Acos((float)v1);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2753,10 +973,10 @@ namespace DslExpression
     }
     internal sealed class AtanExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op.Calc().GetDouble();
-            CalculatorValue v = (double)Mathf.Atan((float)v1);
+            BoxedValue v = (double)Mathf.Atan((float)v1);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2769,11 +989,11 @@ namespace DslExpression
     }
     internal sealed class Atan2Exp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
             double v2 = m_Op2.Calc().GetDouble();
-            CalculatorValue v = (double)Mathf.Atan2((float)v1, (float)v2);
+            BoxedValue v = (double)Mathf.Atan2((float)v1, (float)v2);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2788,10 +1008,10 @@ namespace DslExpression
     }
     internal sealed class SinhExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op.Calc().GetDouble();
-            CalculatorValue v = Math.Sinh(v1);
+            BoxedValue v = Math.Sinh(v1);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2804,10 +1024,10 @@ namespace DslExpression
     }
     internal sealed class CoshExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op.Calc().GetDouble();
-            CalculatorValue v = Math.Cosh(v1);
+            BoxedValue v = Math.Cosh(v1);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2820,10 +1040,10 @@ namespace DslExpression
     }
     internal sealed class TanhExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op.Calc().GetDouble();
-            CalculatorValue v = Math.Tanh(v1);
+            BoxedValue v = Math.Tanh(v1);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2836,11 +1056,11 @@ namespace DslExpression
     }
     internal sealed class RndIntExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             long v1 = m_Op1.Calc().GetLong();
             long v2 = m_Op2.Calc().GetLong();
-            CalculatorValue v = (long)UnityEngine.Random.Range((int)v1, (int)v2);
+            BoxedValue v = (long)UnityEngine.Random.Range((int)v1, (int)v2);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2855,11 +1075,11 @@ namespace DslExpression
     }
     internal sealed class RndFloatExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
             double v2 = m_Op2.Calc().GetDouble();
-            CalculatorValue v = (double)UnityEngine.Random.Range((float)v1, (float)v2);
+            BoxedValue v = (double)UnityEngine.Random.Range((float)v1, (float)v2);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2874,11 +1094,11 @@ namespace DslExpression
     }
     internal sealed class PowExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
             double v2 = m_Op2.Calc().GetDouble();
-            CalculatorValue v = Math.Pow(v1, v2);
+            BoxedValue v = Math.Pow(v1, v2);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2893,10 +1113,10 @@ namespace DslExpression
     }
     internal sealed class SqrtExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
-            CalculatorValue v = Math.Sqrt(v1);
+            BoxedValue v = Math.Sqrt(v1);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2909,10 +1129,10 @@ namespace DslExpression
     }
     internal sealed class ExpExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
-            CalculatorValue v = Math.Exp(v1);
+            BoxedValue v = Math.Exp(v1);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2925,10 +1145,10 @@ namespace DslExpression
     }
     internal sealed class Exp2Exp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
-            CalculatorValue v = Math.Pow(2, v1);
+            BoxedValue v = Math.Pow(2, v1);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2941,16 +1161,16 @@ namespace DslExpression
     }
     internal sealed class LogExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
             if (m_ArgNum == 1) {
-                CalculatorValue v = Math.Log(v1);
+                BoxedValue v = Math.Log(v1);
                 return v;
             }
             else {
                 double v2 = m_Op2.Calc().GetDouble();
-                CalculatorValue v = Math.Log(v1, v2);
+                BoxedValue v = Math.Log(v1, v2);
                 return v;
             }
         }
@@ -2970,10 +1190,10 @@ namespace DslExpression
     }
     internal sealed class Log2Exp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
-            CalculatorValue v = Math.Log(v1)/Math.Log(2);
+            BoxedValue v = Math.Log(v1)/Math.Log(2);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -2986,10 +1206,10 @@ namespace DslExpression
     }
     internal sealed class Log10Exp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
-            CalculatorValue v = Math.Log10(v1);
+            BoxedValue v = Math.Log10(v1);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3002,10 +1222,10 @@ namespace DslExpression
     }
     internal sealed class FloorExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
-            CalculatorValue v = Math.Floor(v1);
+            BoxedValue v = Math.Floor(v1);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3018,10 +1238,10 @@ namespace DslExpression
     }
     internal sealed class CeilExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
-            CalculatorValue v = Math.Ceiling(v1);
+            BoxedValue v = Math.Ceiling(v1);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3034,10 +1254,10 @@ namespace DslExpression
     }
     internal sealed class RoundExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
-            CalculatorValue v = Math.Round(v1);
+            BoxedValue v = Math.Round(v1);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3050,10 +1270,10 @@ namespace DslExpression
     }
     internal sealed class FloorToIntExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
-            CalculatorValue v = (int)Math.Floor(v1);
+            BoxedValue v = (int)Math.Floor(v1);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3066,10 +1286,10 @@ namespace DslExpression
     }
     internal sealed class CeilToIntExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
-            CalculatorValue v = (int)Math.Ceiling(v1);
+            BoxedValue v = (int)Math.Ceiling(v1);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3082,10 +1302,10 @@ namespace DslExpression
     }
     internal sealed class RoundToIntExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
-            CalculatorValue v = (int)Math.Round(v1);
+            BoxedValue v = (int)Math.Round(v1);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3098,10 +1318,10 @@ namespace DslExpression
     }
     internal sealed class BoolExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             bool v1 = m_Op1.Calc().GetBool();
-            CalculatorValue v = v1;
+            BoxedValue v = v1;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3114,10 +1334,10 @@ namespace DslExpression
     }
     internal sealed class SByteExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             sbyte v1 = m_Op1.Calc().GetSByte();
-            CalculatorValue v = v1;
+            BoxedValue v = v1;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3130,10 +1350,10 @@ namespace DslExpression
     }
     internal sealed class ByteExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             byte v1 = m_Op1.Calc().GetByte();
-            CalculatorValue v = v1;
+            BoxedValue v = v1;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3146,10 +1366,10 @@ namespace DslExpression
     }
     internal sealed class CharExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             char v1 = m_Op1.Calc().GetChar();
-            CalculatorValue v = v1;
+            BoxedValue v = v1;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3162,10 +1382,10 @@ namespace DslExpression
     }
     internal sealed class ShortExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             short v1 = m_Op1.Calc().GetShort();
-            CalculatorValue v = v1;
+            BoxedValue v = v1;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3178,10 +1398,10 @@ namespace DslExpression
     }
     internal sealed class UShortExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             ushort v1 = m_Op1.Calc().GetUShort();
-            CalculatorValue v = v1;
+            BoxedValue v = v1;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3194,10 +1414,10 @@ namespace DslExpression
     }
     internal sealed class IntExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             int v1 = m_Op1.Calc().GetInt();
-            CalculatorValue v = v1;
+            BoxedValue v = v1;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3210,10 +1430,10 @@ namespace DslExpression
     }
     internal sealed class UIntExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             uint v1 = m_Op1.Calc().GetUInt();
-            CalculatorValue v = v1;
+            BoxedValue v = v1;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3226,10 +1446,10 @@ namespace DslExpression
     }
     internal sealed class LongExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             long v1 = m_Op1.Calc().GetLong();
-            CalculatorValue v = v1;
+            BoxedValue v = v1;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3242,10 +1462,10 @@ namespace DslExpression
     }
     internal sealed class ULongExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             ulong v1 = m_Op1.Calc().GetULong();
-            CalculatorValue v = v1;
+            BoxedValue v = v1;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3258,10 +1478,10 @@ namespace DslExpression
     }
     internal sealed class FloatExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             float v1 = m_Op1.Calc().GetFloat();
-            CalculatorValue v = v1;
+            BoxedValue v = v1;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3274,10 +1494,10 @@ namespace DslExpression
     }
     internal sealed class DoubleExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
-            CalculatorValue v = v1;
+            BoxedValue v = v1;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3290,10 +1510,10 @@ namespace DslExpression
     }
     internal sealed class DecimalExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             decimal v1 = m_Op1.Calc().GetDecimal();
-            CalculatorValue v = v1;
+            BoxedValue v = v1;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3306,14 +1526,14 @@ namespace DslExpression
     }
     internal sealed class ItofExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             int v1 = m_Op1.Calc().GetInt();
             float v2 = 0;
             unsafe {
                 v2 = *(float*)&v1;
             }
-            CalculatorValue v = v2;
+            BoxedValue v = v2;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3326,14 +1546,14 @@ namespace DslExpression
     }
     internal sealed class FtoiExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             float v1 = m_Op1.Calc().GetFloat();
             int v2 = 0;
             unsafe {
                 v2 = *(int*)&v1;
             }
-            CalculatorValue v = v2;
+            BoxedValue v = v2;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3346,14 +1566,14 @@ namespace DslExpression
     }
     internal sealed class UtofExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             uint v1 = m_Op1.Calc().GetUInt();
             float v2 = 0;
             unsafe {
                 v2 = *(float*)&v1;
             }
-            CalculatorValue v = v2;
+            BoxedValue v = v2;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3366,14 +1586,14 @@ namespace DslExpression
     }
     internal sealed class FtouExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             float v1 = m_Op1.Calc().GetFloat();
             uint v2 = 0;
             unsafe {
                 v2 = *(uint*)&v1;
             }
-            CalculatorValue v = v2;
+            BoxedValue v = v2;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3386,14 +1606,14 @@ namespace DslExpression
     }
     internal sealed class LtodExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             long v1 = m_Op1.Calc().GetLong();
             double v2 = 0;
             unsafe {
                 v2 = *(double*)&v1;
             }
-            CalculatorValue v = v2;
+            BoxedValue v = v2;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3406,14 +1626,14 @@ namespace DslExpression
     }
     internal sealed class DtolExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
             long v2 = 0;
             unsafe {
                 v2 = *(long*)&v1;
             }
-            CalculatorValue v = v2;
+            BoxedValue v = v2;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3426,14 +1646,14 @@ namespace DslExpression
     }
     internal sealed class UtodExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             ulong v1 = m_Op1.Calc().GetULong();
             double v2 = 0;
             unsafe {
                 v2 = *(double*)&v1;
             }
-            CalculatorValue v = v2;
+            BoxedValue v = v2;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3446,14 +1666,14 @@ namespace DslExpression
     }
     internal sealed class DtouExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
             ulong v2 = 0;
             unsafe {
                 v2 = *(ulong*)&v1;
             }
-            CalculatorValue v = v2;
+            BoxedValue v = v2;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3466,12 +1686,12 @@ namespace DslExpression
     }
     internal sealed class LerpExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
             double v2 = m_Op2.Calc().GetDouble();
             double v3 = m_Op3.Calc().GetDouble();
-            CalculatorValue v = (double)Mathf.Lerp((float)v1, (float)v2, (float)v3);
+            BoxedValue v = (double)Mathf.Lerp((float)v1, (float)v2, (float)v3);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3488,12 +1708,12 @@ namespace DslExpression
     }
     internal sealed class LerpUnclampedExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
             double v2 = m_Op2.Calc().GetDouble();
             double v3 = m_Op3.Calc().GetDouble();
-            CalculatorValue v = (double)Mathf.LerpUnclamped((float)v1, (float)v2, (float)v3);
+            BoxedValue v = (double)Mathf.LerpUnclamped((float)v1, (float)v2, (float)v3);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3510,12 +1730,12 @@ namespace DslExpression
     }
     internal sealed class LerpAngleExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
             double v2 = m_Op2.Calc().GetDouble();
             double v3 = m_Op3.Calc().GetDouble();
-            CalculatorValue v = (double)Mathf.LerpAngle((float)v1, (float)v2, (float)v3);
+            BoxedValue v = (double)Mathf.LerpAngle((float)v1, (float)v2, (float)v3);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3532,12 +1752,12 @@ namespace DslExpression
     }
     internal sealed class SmoothStepExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double from = m_Op1.Calc().GetDouble();
             double to = m_Op2.Calc().GetDouble();
             double t = m_Op3.Calc().GetDouble();
-            CalculatorValue v = (double)Mathf.SmoothStep((float)from, (float)to, (float)t);
+            BoxedValue v = (double)Mathf.SmoothStep((float)from, (float)to, (float)t);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3554,10 +1774,10 @@ namespace DslExpression
     }
     internal sealed class Clamp01Exp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op.Calc().GetDouble();
-            CalculatorValue v = (double)Mathf.Clamp01((float)v1);
+            BoxedValue v = (double)Mathf.Clamp01((float)v1);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3570,12 +1790,12 @@ namespace DslExpression
     }
     internal sealed class ClampExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
             double v2 = m_Op2.Calc().GetDouble();
             double v3 = m_Op3.Calc().GetDouble();
-            CalculatorValue v;
+            BoxedValue v;
             if (v2 <= v3) {
                 if (v1 < v2)
                     v = v2;
@@ -3608,11 +1828,11 @@ namespace DslExpression
     }
     internal sealed class ApproximatelyExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             float v1 = m_Op1.Calc().GetFloat();
             float v2 = m_Op2.Calc().GetFloat();
-            CalculatorValue v = Mathf.Approximately(v1, v2) ? 1 : 0;
+            BoxedValue v = Mathf.Approximately(v1, v2) ? 1 : 0;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3627,7 +1847,7 @@ namespace DslExpression
     }
     internal sealed class IsPowerOfTwoExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             int v1 = m_Op1.Calc().GetInt();
             int v = Mathf.IsPowerOfTwo(v1) ? 1 : 0;
@@ -3643,7 +1863,7 @@ namespace DslExpression
     }
     internal sealed class ClosestPowerOfTwoExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             int v1 = m_Op1.Calc().GetInt();
             int v = Mathf.ClosestPowerOfTwo(v1);
@@ -3659,7 +1879,7 @@ namespace DslExpression
     }
     internal sealed class NextPowerOfTwoExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             int v1 = m_Op1.Calc().GetInt();
             int v = Mathf.NextPowerOfTwo(v1);
@@ -3675,13 +1895,13 @@ namespace DslExpression
     }
     internal sealed class DistExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             float x1 = (float)m_Op1.Calc().GetDouble();
             float y1 = (float)m_Op2.Calc().GetDouble();
             float x2 = (float)m_Op3.Calc().GetDouble();
             float y2 = (float)m_Op4.Calc().GetDouble();
-            CalculatorValue v = Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+            BoxedValue v = Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3700,13 +1920,13 @@ namespace DslExpression
     }
     internal sealed class DistSqrExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             float x1 = (float)m_Op1.Calc().GetDouble();
             float y1 = (float)m_Op2.Calc().GetDouble();
             float x2 = (float)m_Op3.Calc().GetDouble();
             float y2 = (float)m_Op4.Calc().GetDouble();
-            CalculatorValue v = (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1);
+            BoxedValue v = (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1);
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3725,11 +1945,11 @@ namespace DslExpression
     }
     internal sealed class GreatExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
             double v2 = m_Op2.Calc().GetDouble();
-            CalculatorValue v = v1 > v2 ? 1 : 0;
+            BoxedValue v = v1 > v2 ? 1 : 0;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3744,11 +1964,11 @@ namespace DslExpression
     }
     internal sealed class GreatEqualExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
             double v2 = m_Op2.Calc().GetDouble();
-            CalculatorValue v = v1 >= v2 ? 1 : 0;
+            BoxedValue v = v1 >= v2 ? 1 : 0;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3763,11 +1983,11 @@ namespace DslExpression
     }
     internal sealed class LessExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
             double v2 = m_Op2.Calc().GetDouble();
-            CalculatorValue v = v1 < v2 ? 1 : 0;
+            BoxedValue v = v1 < v2 ? 1 : 0;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3782,11 +2002,11 @@ namespace DslExpression
     }
     internal sealed class LessEqualExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             double v1 = m_Op1.Calc().GetDouble();
             double v2 = m_Op2.Calc().GetDouble();
-            CalculatorValue v = v1 <= v2 ? 1 : 0;
+            BoxedValue v = v1 <= v2 ? 1 : 0;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3801,11 +2021,11 @@ namespace DslExpression
     }
     internal sealed class EqualExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             var v1 = m_Op1.Calc();
             var v2 = m_Op2.Calc();
-            CalculatorValue v = v1.ToString() == v2.ToString() ? 1 : 0;
+            BoxedValue v = v1.ToString() == v2.ToString() ? 1 : 0;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3820,11 +2040,11 @@ namespace DslExpression
     }
     internal sealed class NotEqualExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             var v1 = m_Op1.Calc();
             var v2 = m_Op2.Calc();
-            CalculatorValue v = v1.ToString() != v2.ToString() ? 1 : 0;
+            BoxedValue v = v1.ToString() != v2.ToString() ? 1 : 0;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3839,11 +2059,11 @@ namespace DslExpression
     }
     internal sealed class AndExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             long v1 = m_Op1.Calc().GetLong();
             long v2 = 0;
-            CalculatorValue v = v1 != 0 && (v2 = m_Op2.Calc().GetLong()) != 0 ? 1 : 0;
+            BoxedValue v = v1 != 0 && (v2 = m_Op2.Calc().GetLong()) != 0 ? 1 : 0;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3858,11 +2078,11 @@ namespace DslExpression
     }
     internal sealed class OrExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             long v1 = m_Op1.Calc().GetLong();
             long v2 = 0;
-            CalculatorValue v = v1 != 0 || (v2 = m_Op2.Calc().GetLong()) != 0 ? 1 : 0;
+            BoxedValue v = v1 != 0 || (v2 = m_Op2.Calc().GetLong()) != 0 ? 1 : 0;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3877,10 +2097,10 @@ namespace DslExpression
     }
     internal sealed class NotExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             long val = m_Op.Calc().GetLong();
-            CalculatorValue v = val == 0 ? 1 : 0;
+            BoxedValue v = val == 0 ? 1 : 0;
             return v;
         }
         protected override bool Load(IList<IExpression> exps)
@@ -3893,12 +2113,12 @@ namespace DslExpression
     }
     internal sealed class CondExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             var v1 = m_Op1.Calc();
-            var v2 = CalculatorValue.NullObject;
-            CalculatorValue v3 = CalculatorValue.NullObject;
-            CalculatorValue v = v1.GetLong() != 0 ? v2 = m_Op2.Calc() : v3 = m_Op3.Calc();
+            var v2 = BoxedValue.NullObject;
+            BoxedValue v3 = BoxedValue.NullObject;
+            BoxedValue v = v1.GetLong() != 0 ? v2 = m_Op2.Calc() : v3 = m_Op3.Calc();
             return v;
         }
         protected override bool Load(Dsl.StatementData statementData)
@@ -3926,9 +2146,9 @@ namespace DslExpression
     }
     internal sealed class IfExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            CalculatorValue v = 0;
+            BoxedValue v = 0;
             for (int ix = 0; ix < m_Clauses.Count; ++ix) {
                 var clause = m_Clauses[ix];
                 if (null != clause.Condition) {
@@ -4050,9 +2270,9 @@ namespace DslExpression
     }
     internal sealed class WhileExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            CalculatorValue v = 0;
+            BoxedValue v = 0;
             for (; ; ) {
                 var condVal = m_Condition.Calc();
                 if (condVal.GetLong() != 0) {
@@ -4122,9 +2342,9 @@ namespace DslExpression
     }
     internal sealed class LoopExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            CalculatorValue v = 0;
+            BoxedValue v = 0;
             var count = m_Count.Calc();
             long ct = count.GetLong();
             for (int i = 0; i < ct; ++i) {
@@ -4191,15 +2411,15 @@ namespace DslExpression
     }
     internal sealed class LoopListExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            CalculatorValue v = 0;
+            BoxedValue v = 0;
             var list = m_List.Calc();
             IEnumerable obj = list.As<IEnumerable>();
             if (null != obj) {
                 IEnumerator enumer = obj.GetEnumerator();
                 while (enumer.MoveNext()) {
-                    var val = CalculatorValue.FromObject(enumer.Current);
+                    var val = BoxedValue.FromObject(enumer.Current);
                     Calculator.SetVariable("$$", val);
                     for (int index = 0; index < m_Expressions.Count; ++index) {
                         v = m_Expressions[index].Calc();
@@ -4264,9 +2484,9 @@ namespace DslExpression
     }
     internal sealed class ForeachExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            CalculatorValue v = 0;
+            BoxedValue v = 0;
             List<object> list = new List<object>();
             for (int ix = 0; ix < m_Elements.Count; ++ix) {
                 object val = m_Elements[ix].Calc().GetObject();
@@ -4274,7 +2494,7 @@ namespace DslExpression
             }
             IEnumerator enumer = list.GetEnumerator();
             while (enumer.MoveNext()) {
-                var val = CalculatorValue.FromObject(enumer.Current);
+                var val = BoxedValue.FromObject(enumer.Current);
                 Calculator.SetVariable("$$", val);
                 for (int index = 0; index < m_Expressions.Count; ++index) {
                     v = m_Expressions[index].Calc();
@@ -4344,9 +2564,9 @@ namespace DslExpression
     }
     internal sealed class ParenthesisExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            CalculatorValue v = 0;
+            BoxedValue v = 0;
             for (int ix = 0; ix < m_Expressions.Count; ++ix) {
                 var exp = m_Expressions[ix];
                 v = exp.Calc();
@@ -4366,9 +2586,9 @@ namespace DslExpression
     }
     internal sealed class FormatExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            CalculatorValue v = 0;
+            BoxedValue v = 0;
             string fmt = string.Empty;
             ArrayList al = new ArrayList();
             for (int ix = 0; ix < m_Expressions.Count; ++ix) {
@@ -4395,9 +2615,9 @@ namespace DslExpression
     }
     internal sealed class GetTypeAssemblyNameExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             if (m_Expressions.Count >= 1) {
                 var obj = m_Expressions[0].Calc();
                 try {
@@ -4422,9 +2642,9 @@ namespace DslExpression
     }
     internal sealed class GetTypeFullNameExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             if (m_Expressions.Count >= 1) {
                 var obj = m_Expressions[0].Calc();
                 try {
@@ -4449,9 +2669,9 @@ namespace DslExpression
     }
     internal sealed class GetTypeNameExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             if (m_Expressions.Count >= 1) {
                 var obj = m_Expressions[0].Calc();
                 try {
@@ -4476,9 +2696,9 @@ namespace DslExpression
     }
     internal sealed class GetTypeExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             if (m_Expressions.Count >= 1) {
                 string type = m_Expressions[0].Calc().AsString;
                 try {
@@ -4499,7 +2719,7 @@ namespace DslExpression
                         Calculator.Log("null == Type.GetType({0})", type);
                     }
                     else {
-                        ret = CalculatorValue.FromObject(r);
+                        ret = BoxedValue.FromObject(r);
                     }
                 }
                 catch (Exception ex) {
@@ -4521,9 +2741,9 @@ namespace DslExpression
     }
     internal sealed class ChangeTypeExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             if (m_Expressions.Count >= 2) {
                 var obj = m_Expressions[0].Calc();
                 string type = m_Expressions[1].Calc().AsString;
@@ -4581,7 +2801,7 @@ namespace DslExpression
                                 t = Type.GetType(type);
                             }
                             if (null != t) {
-                                ret = CalculatorValue.FromObject(CastTo(t, str));
+                                ret = BoxedValue.FromObject(CastTo(t, str));
                             }
                             else {
                                 Calculator.Log("null == Type.GetType({0})", type);
@@ -4640,7 +2860,7 @@ namespace DslExpression
                                 t = Type.GetType(type);
                             }
                             if (null != t) {
-                                ret = CalculatorValue.FromObject(obj.CastTo(t));
+                                ret = BoxedValue.FromObject(obj.CastTo(t));
                             }
                             else {
                                 Calculator.Log("null == Type.GetType({0})", type);
@@ -4667,9 +2887,9 @@ namespace DslExpression
     }
     internal sealed class ParseEnumExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             if (m_Expressions.Count >= 2) {
                 string type = m_Expressions[0].Calc().AsString;
                 string val = m_Expressions[1].Calc().AsString;
@@ -4688,7 +2908,7 @@ namespace DslExpression
                         t = Type.GetType(type);
                     }
                     if (null != t) {
-                        ret = CalculatorValue.FromObject(Enum.Parse(t, val, true));
+                        ret = BoxedValue.FromObject(Enum.Parse(t, val, true));
                     }
                     else {
                         Calculator.Log("null == Type.GetType({0})", type);
@@ -4713,12 +2933,12 @@ namespace DslExpression
     }
     internal sealed class DotnetCallExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             object obj = null;
             string method = null;
-            List<CalculatorValue> args = null;
+            List<BoxedValue> args = null;
             ArrayList arglist = null;
             IObjectDispatch disp = null;
             for (int ix = 0; ix < m_Expressions.Count; ++ix) {
@@ -4760,7 +2980,7 @@ namespace DslExpression
                     if (null != dict && dict.Contains(method) && dict[method] is Delegate) {
                         var d = dict[method] as Delegate;
                         if (null != d) {
-                            ret = CalculatorValue.FromObject(d.DynamicInvoke(_args));
+                            ret = BoxedValue.FromObject(d.DynamicInvoke(_args));
                         }
                     }
                     else {
@@ -4769,7 +2989,7 @@ namespace DslExpression
                             try {
                                 BindingFlags flags = BindingFlags.Static | BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.NonPublic;
                                 CastArgsForCall(t, method, flags, _args);
-                                ret = CalculatorValue.FromObject(t.InvokeMember(method, flags, null, null, _args));
+                                ret = BoxedValue.FromObject(t.InvokeMember(method, flags, null, null, _args));
                             }
                             catch (Exception ex) {
                                 Calculator.Log("InvokeMember {0} Exception:{1}\n{2}", method, ex.Message, ex.StackTrace);
@@ -4781,7 +3001,7 @@ namespace DslExpression
                                 try {
                                     BindingFlags flags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.NonPublic;
                                     CastArgsForCall(t, method, flags, _args);
-                                    ret = CalculatorValue.FromObject(t.InvokeMember(method, flags, null, obj, _args));
+                                    ret = BoxedValue.FromObject(t.InvokeMember(method, flags, null, obj, _args));
                                 }
                                 catch (Exception ex) {
                                     Calculator.Log("InvokeMember {0} Exception:{1}\n{2}", method, ex.Message, ex.StackTrace);
@@ -4807,12 +3027,12 @@ namespace DslExpression
     }
     internal sealed class DotnetSetExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             object obj = null;
             string method = null;
-            CalculatorValue argv = CalculatorValue.NullObject;
+            BoxedValue argv = BoxedValue.NullObject;
             ArrayList arglist = null;
             IObjectDispatch disp = null;
             for (int ix = 0; ix < m_Expressions.Count; ++ix) {
@@ -4856,7 +3076,7 @@ namespace DslExpression
                             try {
                                 BindingFlags flags = BindingFlags.Static | BindingFlags.SetField | BindingFlags.SetProperty | BindingFlags.Public | BindingFlags.NonPublic;
                                 CastArgsForSet(t, method, flags, _args);
-                                ret = CalculatorValue.FromObject(t.InvokeMember(method, flags, null, null, _args));
+                                ret = BoxedValue.FromObject(t.InvokeMember(method, flags, null, null, _args));
                             }
                             catch (Exception ex) {
                                 Calculator.Log("InvokeMember {0} Exception:{1}\n{2}", method, ex.Message, ex.StackTrace);
@@ -4868,7 +3088,7 @@ namespace DslExpression
                                 try {
                                     BindingFlags flags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.SetField | BindingFlags.SetProperty | BindingFlags.Public | BindingFlags.NonPublic;
                                     CastArgsForSet(t, method, flags, _args);
-                                    ret = CalculatorValue.FromObject(t.InvokeMember(method, flags, null, obj, _args));
+                                    ret = BoxedValue.FromObject(t.InvokeMember(method, flags, null, obj, _args));
                                 }
                                 catch (Exception ex) {
                                     Calculator.Log("InvokeMember {0} Exception:{1}\n{2}", method, ex.Message, ex.StackTrace);
@@ -4894,9 +3114,9 @@ namespace DslExpression
     }
     internal sealed class DotnetGetExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             object obj = null;
             string method = null;
             ArrayList arglist = null;
@@ -4935,7 +3155,7 @@ namespace DslExpression
                     object[] _args = arglist.ToArray();
                     IDictionary dict = obj as IDictionary;
                     if (null != dict && dict.Contains(method)) {
-                        ret = CalculatorValue.FromObject(dict[method]);
+                        ret = BoxedValue.FromObject(dict[method]);
                     }
                     else {
                         Type t = obj as Type;
@@ -4943,7 +3163,7 @@ namespace DslExpression
                             try {
                                 BindingFlags flags = BindingFlags.Static | BindingFlags.GetField | BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.NonPublic;
                                 CastArgsForGet(t, method, flags, _args);
-                                ret = CalculatorValue.FromObject(t.InvokeMember(method, flags, null, null, _args));
+                                ret = BoxedValue.FromObject(t.InvokeMember(method, flags, null, null, _args));
                             }
                             catch (Exception ex) {
                                 Calculator.Log("InvokeMember {0} Exception:{1}\n{2}", method, ex.Message, ex.StackTrace);
@@ -4955,7 +3175,7 @@ namespace DslExpression
                                 try {
                                     BindingFlags flags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.GetField | BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.NonPublic;
                                     CastArgsForGet(t, method, flags, _args);
-                                    ret = CalculatorValue.FromObject(t.InvokeMember(method, flags, null, obj, _args));
+                                    ret = BoxedValue.FromObject(t.InvokeMember(method, flags, null, obj, _args));
                                 }
                                 catch (Exception ex) {
                                     Calculator.Log("InvokeMember {0} Exception:{1}\n{2}", method, ex.Message, ex.StackTrace);
@@ -4981,9 +3201,9 @@ namespace DslExpression
     }
     internal sealed class CollectionCallExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             object obj = null;
             object methodObj = null;
             ArrayList arglist = new ArrayList();
@@ -5006,7 +3226,7 @@ namespace DslExpression
                 if (null != dict && dict.Contains(methodObj)) {
                     var d = dict[methodObj] as Delegate;
                     if (null != d) {
-                        ret = CalculatorValue.FromObject(d.DynamicInvoke(_args));
+                        ret = BoxedValue.FromObject(d.DynamicInvoke(_args));
                     }
                 }
                 else {
@@ -5016,7 +3236,7 @@ namespace DslExpression
                         if (index >= 0 && index < list.Count) {
                             var d = list[index] as Delegate;
                             if (null != d) {
-                                ret = CalculatorValue.FromObject(d.DynamicInvoke(_args));
+                                ret = BoxedValue.FromObject(d.DynamicInvoke(_args));
                             }
                         }
                     }
@@ -5030,7 +3250,7 @@ namespace DslExpression
                             }
                             var d = e.Current as Delegate;
                             if (null != d) {
-                                ret = CalculatorValue.FromObject(d.DynamicInvoke(_args));
+                                ret = BoxedValue.FromObject(d.DynamicInvoke(_args));
                             }
                         }
                     }
@@ -5051,9 +3271,9 @@ namespace DslExpression
     }
     internal sealed class CollectionSetExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             object obj = null;
             object methodObj = null;
             object arg = null;
@@ -5101,9 +3321,9 @@ namespace DslExpression
     }
     internal sealed class CollectionGetExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             object obj = null;
             object methodObj = null;
             for (int ix = 0; ix < m_Expressions.Count; ++ix) {
@@ -5122,7 +3342,7 @@ namespace DslExpression
             if (null != obj && null != methodObj) {
                 IDictionary dict = obj as IDictionary;
                 if (null != dict && dict.Contains(methodObj)) {
-                    ret = CalculatorValue.FromObject(dict[methodObj]);
+                    ret = BoxedValue.FromObject(dict[methodObj]);
                 }
                 else {
                     IList list = obj as IList;
@@ -5130,7 +3350,7 @@ namespace DslExpression
                         int index = (int)methodObj;
                         if (index >= 0 && index < list.Count) {
                             var d = list[index];
-                            ret = CalculatorValue.FromObject(d);
+                            ret = BoxedValue.FromObject(d);
                         }
                     }
                     else {
@@ -5141,7 +3361,7 @@ namespace DslExpression
                             for (int i = 0; i <= index; ++i) {
                                 e.MoveNext();
                             }
-                            ret = CalculatorValue.FromObject(e.Current);
+                            ret = BoxedValue.FromObject(e.Current);
                         }
                     }
                 }
@@ -5161,9 +3381,9 @@ namespace DslExpression
     }
     internal sealed class LinqExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            CalculatorValue v = 0;
+            BoxedValue v = 0;
             var list = m_List.Calc().GetObject();
             var method = m_Method.Calc().GetString();
             IEnumerable obj = list as IEnumerable;
@@ -5173,17 +3393,17 @@ namespace DslExpression
                     List<object> results = new List<object>();
                     IEnumerator enumer = obj.GetEnumerator();
                     while (enumer.MoveNext()) {
-                        var val = CalculatorValue.FromObject(enumer.Current);
+                        var val = BoxedValue.FromObject(enumer.Current);
                         results.Add(val);
                     }
                     results.Sort((object o1, object o2) => {
-                        Calculator.SetVariable("$$", CalculatorValue.FromObject(o1));
-                        var r1 = CalculatorValue.NullObject;
+                        Calculator.SetVariable("$$", BoxedValue.FromObject(o1));
+                        var r1 = BoxedValue.NullObject;
                         for (int index = 0; index < m_Expressions.Count; ++index) {
                             r1 = m_Expressions[index].Calc();
                         }
-                        Calculator.SetVariable("$$", CalculatorValue.FromObject(o2));
-                        var r2 = CalculatorValue.NullObject;
+                        Calculator.SetVariable("$$", BoxedValue.FromObject(o2));
+                        var r2 = BoxedValue.NullObject;
                         for (int index = 0; index < m_Expressions.Count; ++index) {
                             r2 = m_Expressions[index].Calc();
                         }
@@ -5200,16 +3420,16 @@ namespace DslExpression
                             r = -r;
                         return r;
                     });
-                    v = CalculatorValue.FromObject(results);
+                    v = BoxedValue.FromObject(results);
                 }
                 else if (method == "where") {
                     List<object> results = new List<object>();
                     IEnumerator enumer = obj.GetEnumerator();
                     while (enumer.MoveNext()) {
-                        var val = CalculatorValue.FromObject(enumer.Current);
+                        var val = BoxedValue.FromObject(enumer.Current);
 
                         Calculator.SetVariable("$$", val);
-                        CalculatorValue r = CalculatorValue.NullObject;
+                        BoxedValue r = BoxedValue.NullObject;
                         for (int index = 0; index < m_Expressions.Count; ++index) {
                             r = m_Expressions[index].Calc();
                         }
@@ -5217,10 +3437,10 @@ namespace DslExpression
                             results.Add(val);
                         }
                     }
-                    v = CalculatorValue.FromObject(results);
+                    v = BoxedValue.FromObject(results);
                 }
                 else if (method == "top") {
-                    CalculatorValue r = CalculatorValue.NullObject;
+                    BoxedValue r = BoxedValue.NullObject;
                     for (int index = 0; index < m_Expressions.Count; ++index) {
                         r = m_Expressions[index].Calc();
                     }
@@ -5228,13 +3448,13 @@ namespace DslExpression
                     List<object> results = new List<object>();
                     IEnumerator enumer = obj.GetEnumerator();
                     while (enumer.MoveNext()) {
-                        var val = CalculatorValue.FromObject(enumer.Current);
+                        var val = BoxedValue.FromObject(enumer.Current);
                         if (ct > 0) {
                             results.Add(val);
                             --ct;
                         }
                     }
-                    v = CalculatorValue.FromObject(results);
+                    v = BoxedValue.FromObject(results);
                 }
             }
             return v;
@@ -5258,9 +3478,9 @@ namespace DslExpression
     }
     internal sealed class IsNullExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             if (m_Expressions.Count >= 1) {
                 var obj = m_Expressions[0].Calc();
                 UnityEngine.Object uo = obj.As<UnityEngine.Object>();
@@ -5284,13 +3504,13 @@ namespace DslExpression
     }
     internal class DotnetLoadExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 string path = operands[0].AsString;
                 if (!string.IsNullOrEmpty(path) && File.Exists(path)) {
-                    r = CalculatorValue.FromObject(Assembly.LoadFile(path));
+                    r = BoxedValue.FromObject(Assembly.LoadFile(path));
                 }
             }
             return r;
@@ -5298,9 +3518,9 @@ namespace DslExpression
     }
     internal class DotnetNewExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 2) {
                 var assem = operands[0].As<Assembly>();
                 string typeName = operands[1].AsString;
@@ -5309,236 +3529,17 @@ namespace DslExpression
                     for (int i = 2; i < operands.Count; ++i) {
                         al.Add(operands[i].GetObject());
                     }
-                    r = CalculatorValue.FromObject(assem.CreateInstance(typeName, false, BindingFlags.CreateInstance, null, al.ToArray(), System.Globalization.CultureInfo.CurrentCulture, null));
+                    r = BoxedValue.FromObject(assem.CreateInstance(typeName, false, BindingFlags.CreateInstance, null, al.ToArray(), System.Globalization.CultureInfo.CurrentCulture, null));
                 }
             }
-            return r;
-        }
-    }
-    internal class AssetPath2GUIDExp : SimpleExpressionBase
-    {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
-        {
-            string r = string.Empty;
-#if UNITY_EDITOR
-            if (operands.Count >= 1) {
-                var assetPath = operands[0].AsString;
-                if (null != assetPath) {
-                    r = AssetDatabase.AssetPathToGUID(assetPath);
-                }
-            }
-#endif
-            return r;
-        }
-    }
-    internal class GUID2AssetPathExp : SimpleExpressionBase
-    {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
-        {
-            string r = string.Empty;
-#if UNITY_EDITOR
-            if (operands.Count >= 1) {
-                var guid = operands[0].AsString;
-                if (null != guid) {
-                    r = AssetDatabase.GUIDToAssetPath(guid);
-                }
-            }
-#endif
-            return r;
-        }
-    }
-    internal class GetAssetPathExp : SimpleExpressionBase
-    {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
-        {
-            string r = null;
-#if UNITY_EDITOR
-            if (operands.Count >= 1) {
-                var obj = operands[0].As<UnityEngine.Object>();
-                if (null != obj) {
-                    var pobj = PrefabUtility.GetCorrespondingObjectFromSource(obj);
-                    if (null != pobj)
-                        r = AssetDatabase.GetAssetPath(pobj);
-                    else
-                        r = AssetDatabase.GetAssetPath(obj);
-                }
-            }
-#endif
-            return r;
-        }
-    }
-    internal class GetGuidAndLocalFileIdentifierExp : SimpleExpressionBase
-    {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
-        {
-            var r = CalculatorValue.NullObject;
-#if UNITY_EDITOR
-            if (operands.Count >= 1) {
-                var obj = operands[0].As<UnityEngine.Object>();
-                if (null != obj) {
-                    var pobj = PrefabUtility.GetCorrespondingObjectFromSource(obj);
-                    if (null == pobj)
-                        pobj = obj;
-                    string guid = string.Empty;
-                    long localId = 0;
-                    if (AssetDatabase.TryGetGUIDAndLocalFileIdentifier(pobj, out guid, out localId)) {
-                        r = CalculatorValue.FromObject(new KeyValuePair<string, long>(guid, localId));
-                    }
-                }
-            }
-#endif
-            return r;
-        }
-    }
-    internal class GetDependenciesExp : SimpleExpressionBase
-    {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
-        {
-            string[] ret = null;
-#if UNITY_EDITOR
-            if (operands.Count >= 1) {
-                var list = new List<string>();
-                for (int i = 0; i < operands.Count; ++i) {
-                    var str = operands[i].AsString;
-                    if (null != str) {
-                        list.Add(str);
-                    }
-                    else {
-                        var strList = operands[i].As<IList>();
-                        if (null != strList) {
-                            foreach (var strObj in strList) {
-                                var tempStr = strObj as string;
-                                if (null != tempStr)
-                                    list.Add(tempStr);
-                            }
-                        }
-                    }
-                }
-                if (list.Count == 1) {
-                    ret = AssetDatabase.GetDependencies(list[0]);
-                }
-                else if (list.Count > 1) {
-                    ret = AssetDatabase.GetDependencies(list.ToArray());
-                }
-            }
-#endif
-            return CalculatorValue.FromObject(ret);
-        }
-    }
-    internal class GetAssetImporterExp : SimpleExpressionBase
-    {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
-        {
-            CalculatorValue r = CalculatorValue.NullObject;
-#if UNITY_EDITOR
-            if (operands.Count >= 1) {
-                var path = operands[0].AsString;
-                if (null != path) {
-                    r = CalculatorValue.FromObject(AssetImporter.GetAtPath(path));
-                }
-            }
-#endif
-            return r;
-        }
-    }
-    internal class LoadAssetExp : SimpleExpressionBase
-    {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
-        {
-            var r = CalculatorValue.NullObject;
-#if UNITY_EDITOR
-            if (operands.Count >= 1) {
-                var path = operands[0].AsString;
-                if (null != path) {
-                    r = CalculatorValue.FromObject(AssetDatabase.LoadMainAssetAtPath(path));
-                }
-            }
-#endif
-            return r;
-        }
-    }
-    internal class UnloadAssetExp : SimpleExpressionBase
-    {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
-        {
-            if (operands.Count >= 1) {
-                var obj = operands[0].As<UnityEngine.Object>();
-                if (null != obj) {
-                    Resources.UnloadAsset(obj);
-                }
-            }
-            return CalculatorValue.NullObject;
-        }
-    }
-    internal class GetPrefabTypeExp : SimpleExpressionBase
-    {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
-        {
-            var r = CalculatorValue.NullObject;
-#if UNITY_EDITOR
-            if (operands.Count >= 1) {
-                var obj = operands[0].As<UnityEngine.Object>();
-                if (null != obj) {
-                    r = CalculatorValue.FromObject(PrefabUtility.GetPrefabAssetType(obj));
-                }
-            }
-#endif
-            return r;
-        }
-    }
-    internal class GetPrefabStatusExp : SimpleExpressionBase
-    {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
-        {
-            var r = CalculatorValue.NullObject;
-#if UNITY_EDITOR
-            if (operands.Count >= 1) {
-                var obj = operands[0].As<UnityEngine.Object>();
-                if (null != obj) {
-                    r = CalculatorValue.FromObject(PrefabUtility.GetPrefabInstanceStatus(obj));
-                }
-            }
-#endif
-            return r;
-        }
-    }
-    internal class GetPrefabObjectExp : SimpleExpressionBase
-    {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
-        {
-            var r = CalculatorValue.NullObject;
-#if UNITY_EDITOR
-            if (operands.Count >= 1) {
-                var obj = operands[0].As<UnityEngine.Object>();
-                if (null != obj) {
-                    r = CalculatorValue.FromObject(PrefabUtility.GetPrefabInstanceHandle(obj));
-                }
-            }
-#endif
-            return r;
-        }
-    }
-    internal class GetPrefabParentExp : SimpleExpressionBase
-    {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
-        {
-            var r = CalculatorValue.NullObject;
-#if UNITY_EDITOR
-            if (operands.Count >= 1) {
-                var obj = operands[0].As<UnityEngine.Object>();
-                if (null != obj) {
-                    r = CalculatorValue.FromObject(PrefabUtility.GetCorrespondingObjectFromSource(obj));
-                }
-            }
-#endif
             return r;
         }
     }
     internal class DestroyObjectExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            var r = CalculatorValue.NullObject;
+            var r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var obj = operands[0].As<UnityEngine.Object>();
                 bool modifyAsset = false;
@@ -5555,9 +3556,9 @@ namespace DslExpression
     }
     internal class GetComponentExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            var r = CalculatorValue.NullObject;
+            var r = BoxedValue.NullObject;
             if (operands.Count >= 2) {
                 var obj = operands[0].As<GameObject>();
                 var type = operands[1].AsString;
@@ -5570,7 +3571,7 @@ namespace DslExpression
                         t = Type.GetType(type + ", Assembly-CSharp");
                     }
                     if (null != t) {
-                        r = CalculatorValue.FromObject(obj.GetComponent(t));
+                        r = BoxedValue.FromObject(obj.GetComponent(t));
                     }
                 }
             }
@@ -5579,9 +3580,9 @@ namespace DslExpression
     }
     internal class GetComponentsExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            var r = CalculatorValue.NullObject;
+            var r = BoxedValue.NullObject;
             if (operands.Count >= 2) {
                 var obj = operands[0].As<GameObject>();
                 var type = operands[1].AsString;
@@ -5594,7 +3595,7 @@ namespace DslExpression
                         t = Type.GetType(type + ", Assembly-CSharp");
                     }
                     if (null != t) {
-                        r = CalculatorValue.FromObject(obj.GetComponents(t));
+                        r = BoxedValue.FromObject(obj.GetComponents(t));
                     }
                 }
             }
@@ -5603,9 +3604,9 @@ namespace DslExpression
     }
     internal class GetComponentInChildrenExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            var r = CalculatorValue.NullObject;
+            var r = BoxedValue.NullObject;
             if (operands.Count >= 2) {
                 var obj = operands[0].As<GameObject>();
                 var type = operands[1].AsString;
@@ -5618,7 +3619,7 @@ namespace DslExpression
                         t = Type.GetType(type + ", Assembly-CSharp");
                     }
                     if (null != t) {
-                        r = CalculatorValue.FromObject(obj.GetComponentInChildren(t));
+                        r = BoxedValue.FromObject(obj.GetComponentInChildren(t));
                     }
                 }
             }
@@ -5627,9 +3628,9 @@ namespace DslExpression
     }
     internal class GetComponentsInChildrenExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            var r = CalculatorValue.NullObject;
+            var r = BoxedValue.NullObject;
             if (operands.Count >= 2) {
                 var obj = operands[0].As<GameObject>();
                 var type = operands[1].AsString;
@@ -5642,7 +3643,7 @@ namespace DslExpression
                         t = Type.GetType(type + ", Assembly-CSharp");
                     }
                     if (null != t) {
-                        r = CalculatorValue.FromObject(obj.GetComponentsInChildren(t));
+                        r = BoxedValue.FromObject(obj.GetComponentsInChildren(t));
                     }
                 }
             }
@@ -5651,20 +3652,20 @@ namespace DslExpression
     }
     internal class NewStringBuilderExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 0) {
-                r = CalculatorValue.FromObject(new StringBuilder());
+                r = BoxedValue.FromObject(new StringBuilder());
             }
             return r;
         }
     }
     internal class AppendFormatExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 2) {
                 var sb = operands[0].As<StringBuilder>();
                 string fmt = string.Empty;
@@ -5677,7 +3678,7 @@ namespace DslExpression
                 }
                 if (null != sb && !string.IsNullOrEmpty(fmt)) {
                     sb.AppendFormat(fmt, al.ToArray());
-                    r = CalculatorValue.FromObject(sb);
+                    r = BoxedValue.FromObject(sb);
                 }
             }
             return r;
@@ -5685,9 +3686,9 @@ namespace DslExpression
     }
     internal class AppendLineFormatExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var sb = operands[0].As<StringBuilder>();
                 string fmt = string.Empty;
@@ -5706,7 +3707,7 @@ namespace DslExpression
                         sb.AppendFormat(fmt, al.ToArray());
                         sb.AppendLine();
                     }
-                    r = CalculatorValue.FromObject(sb);
+                    r = BoxedValue.FromObject(sb);
                 }
             }
             return r;
@@ -5714,9 +3715,9 @@ namespace DslExpression
     }
     internal class StringBuilderToStringExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var sb = operands[0].As<StringBuilder>();
                 if (null != sb) {
@@ -5728,9 +3729,9 @@ namespace DslExpression
     }
     internal class StringJoinExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 2) {
                 var sep = operands[0].AsString;
                 var list = operands[1].As<IList>();
@@ -5747,9 +3748,9 @@ namespace DslExpression
     }
     internal class StringSplitExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 2) {
                 var str = operands[0].AsString;
                 var seps = operands[1].As<IList>();
@@ -5764,7 +3765,7 @@ namespace DslExpression
                             cs[i] = '\0';
                         }
                     }
-                    r = CalculatorValue.FromObject(str.Split(cs));
+                    r = BoxedValue.FromObject(str.Split(cs));
                 }
             }
             return r;
@@ -5772,9 +3773,9 @@ namespace DslExpression
     }
     internal class StringTrimExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var str = operands[0].AsString;
                 r = str.Trim();
@@ -5784,9 +3785,9 @@ namespace DslExpression
     }
     internal class StringTrimStartExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var str = operands[0].AsString;
                 r = str.TrimStart();
@@ -5796,9 +3797,9 @@ namespace DslExpression
     }
     internal class StringTrimEndExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var str = operands[0].AsString;
                 r = str.TrimEnd();
@@ -5808,9 +3809,9 @@ namespace DslExpression
     }
     internal class StringToLowerExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var str = operands[0].AsString;
                 r = str.ToLower();
@@ -5820,9 +3821,9 @@ namespace DslExpression
     }
     internal class StringToUpperExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var str = operands[0].AsString;
                 r = str.ToUpper();
@@ -5832,9 +3833,9 @@ namespace DslExpression
     }
     internal class StringReplaceExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 3) {
                 var str = operands[0].AsString;
                 var key = operands[1].AsString;
@@ -5846,9 +3847,9 @@ namespace DslExpression
     }
     internal class StringReplaceCharExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 3) {
                 var str = operands[0].AsString;
                 var key = operands[1].AsString;
@@ -5862,7 +3863,7 @@ namespace DslExpression
     }
     internal class MakeStringExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             List<char> chars = new List<char>();
             for (int i = 0; i < operands.Count; ++i) {
@@ -5885,7 +3886,7 @@ namespace DslExpression
     }
     internal class StringContainsExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             bool r = false;
             if (operands.Count >= 2) {
@@ -5914,7 +3915,7 @@ namespace DslExpression
     }
     internal class StringNotContainsExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             bool r = false;
             if (operands.Count >= 2) {
@@ -5943,7 +3944,7 @@ namespace DslExpression
     }
     internal class StringContainsAnyExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             bool r = false;
             if (operands.Count >= 2) {
@@ -5982,7 +3983,7 @@ namespace DslExpression
     }
     internal class StringNotContainsAnyExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             bool r = false;
             if (operands.Count >= 2) {
@@ -6021,9 +4022,9 @@ namespace DslExpression
     }
     internal class Str2IntExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var str = operands[0].AsString;
                 int v;
@@ -6036,9 +4037,9 @@ namespace DslExpression
     }
     internal class Str2UintExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var str = operands[0].AsString;
                 uint v;
@@ -6051,9 +4052,9 @@ namespace DslExpression
     }
     internal class Str2LongExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var str = operands[0].AsString;
                 long v;
@@ -6066,9 +4067,9 @@ namespace DslExpression
     }
     internal class Str2UlongExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var str = operands[0].AsString;
                 ulong v;
@@ -6081,9 +4082,9 @@ namespace DslExpression
     }
     internal class Str2FloatExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var str = operands[0].AsString;
                 float v;
@@ -6096,9 +4097,9 @@ namespace DslExpression
     }
     internal class Str2DoubleExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var str = operands[0].AsString;
                 double v;
@@ -6111,9 +4112,9 @@ namespace DslExpression
     }
     internal class Hex2IntExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var str = operands[0].AsString;
                 int v;
@@ -6126,9 +4127,9 @@ namespace DslExpression
     }
     internal class Hex2UintExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var str = operands[0].AsString;
                 uint v;
@@ -6141,9 +4142,9 @@ namespace DslExpression
     }
     internal class Hex2LongExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var str = operands[0].AsString;
                 long v;
@@ -6156,9 +4157,9 @@ namespace DslExpression
     }
     internal class Hex2UlongExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var str = operands[0].AsString;
                 ulong v;
@@ -6171,9 +4172,9 @@ namespace DslExpression
     }
     internal class DatetimeStrExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var fmt = operands[0].AsString;
                 r = DateTime.Now.ToString(fmt);
@@ -6186,41 +4187,41 @@ namespace DslExpression
     }
     internal class LongDateStrExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            var r = CalculatorValue.FromObject(DateTime.Now.ToLongDateString());
+            var r = BoxedValue.FromObject(DateTime.Now.ToLongDateString());
             return r;
         }
     }
     internal class LongTimeStrExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            var r = CalculatorValue.FromObject(DateTime.Now.ToShortDateString());
+            var r = BoxedValue.FromObject(DateTime.Now.ToShortDateString());
             return r;
         }
     }
     internal class ShortDateStrExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            var r = CalculatorValue.FromObject(DateTime.Now.ToShortDateString());
+            var r = BoxedValue.FromObject(DateTime.Now.ToShortDateString());
             return r;
         }
     }
     internal class ShortTimeStrExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            var r = CalculatorValue.FromObject(DateTime.Now.ToShortTimeString());
+            var r = BoxedValue.FromObject(DateTime.Now.ToShortTimeString());
             return r;
         }
     }
     internal class IsNullOrEmptyExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var str = operands[0].AsString;
                 r = string.IsNullOrEmpty(str);
@@ -6230,20 +4231,20 @@ namespace DslExpression
     }
     internal class ArrayExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             object[] r = new object[operands.Count];
             for (int i = 0; i < operands.Count; ++i) {
                 r[i] = operands[i].GetObject();
             }
-            return CalculatorValue.FromObject(r);
+            return BoxedValue.FromObject(r);
         }
     }
     internal class ToArrayExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var list = operands[0];
                 IEnumerable obj = list.As<IEnumerable>();
@@ -6251,10 +4252,10 @@ namespace DslExpression
                     ArrayList al = new ArrayList();
                     IEnumerator enumer = obj.GetEnumerator();
                     while (enumer.MoveNext()) {
-                        var val = CalculatorValue.FromObject(enumer.Current);
+                        var val = BoxedValue.FromObject(enumer.Current);
                         al.Add(val);
                     }
-                    r = CalculatorValue.FromObject(al.ToArray());
+                    r = BoxedValue.FromObject(al.ToArray());
                 }
             }
             return r;
@@ -6262,9 +4263,9 @@ namespace DslExpression
     }
     internal class ListSizeExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var list = operands[0].As<IList>();
                 if (null != list) {
@@ -6276,9 +4277,9 @@ namespace DslExpression
     }
     internal class ListExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             ArrayList al = new ArrayList();
             for (int i = 0; i < operands.Count; ++i) {
                 al.Add(operands[i].GetObject());
@@ -6289,19 +4290,19 @@ namespace DslExpression
     }
     internal class ListGetExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 2) {
                 var list = operands[0].As<IList>();
                 var index = operands[1].GetInt();
-                var defVal = CalculatorValue.NullObject;
+                var defVal = BoxedValue.NullObject;
                 if (operands.Count >= 3) {
                     defVal = operands[2];
                 }
                 if (null != list) {
                     if (index >= 0 && index < list.Count) {
-                        r = CalculatorValue.FromObject(list[index]);
+                        r = BoxedValue.FromObject(list[index]);
                     }
                     else {
                         r = defVal;
@@ -6313,9 +4314,9 @@ namespace DslExpression
     }
     internal class ListSetExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 3) {
                 var list = operands[0].As<IList>();
                 var index = operands[1].GetInt();
@@ -6331,9 +4332,9 @@ namespace DslExpression
     }
     internal class ListIndexOfExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 2) {
                 var list = operands[0].As<IList>();
                 object val = operands[1];
@@ -6346,9 +4347,9 @@ namespace DslExpression
     }
     internal class ListAddExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 2) {
                 var list = operands[0].As<IList>();
                 object val = operands[1];
@@ -6361,9 +4362,9 @@ namespace DslExpression
     }
     internal class ListRemoveExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 2) {
                 var list = operands[0].As<IList>();
                 object val = operands[1];
@@ -6376,9 +4377,9 @@ namespace DslExpression
     }
     internal class ListInsertExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 3) {
                 var list = operands[0].As<IList>();
                 var index = operands[1].GetInt();
@@ -6392,9 +4393,9 @@ namespace DslExpression
     }
     internal class ListRemoveAtExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 2) {
                 var list = operands[0].As<IList>();
                 var index = operands[1].GetInt();
@@ -6407,9 +4408,9 @@ namespace DslExpression
     }
     internal class ListClearExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var list = operands[0].As<IList>();
                 if (null != list) {
@@ -6421,9 +4422,9 @@ namespace DslExpression
     }
     internal class ListSplitExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 2) {
                 var enumer = operands[0].As<IEnumerable>();
                 var ct = operands[1].GetInt();
@@ -6456,9 +4457,9 @@ namespace DslExpression
     }
     internal class HashtableSizeExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var dict = operands[0].As<IDictionary>();
                 if (null != dict) {
@@ -6470,16 +4471,16 @@ namespace DslExpression
     }
     internal class HashtableExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             Hashtable dict = new Hashtable();
             for (int i = 0; i < m_Expressions.Count - 1; i += 2) {
                 var key = m_Expressions[i].Calc().GetObject();
                 var val = m_Expressions[i + 1].Calc().GetObject();
                 dict.Add(key, val);
             }
-            r = CalculatorValue.FromObject(dict);
+            r = BoxedValue.FromObject(dict);
             return r;
         }
         protected override bool Load(Dsl.FunctionData funcData)
@@ -6500,18 +4501,18 @@ namespace DslExpression
     }
     internal class HashtableGetExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 2) {
                 var dict = operands[0].As<IDictionary>();
                 var index = operands[1].GetObject();
-                var defVal = CalculatorValue.NullObject;
+                var defVal = BoxedValue.NullObject;
                 if (operands.Count >= 3) {
                     defVal = operands[2];
                 }
                 if (null != dict && dict.Contains(index)) {
-                    r = CalculatorValue.FromObject(dict[index]);
+                    r = BoxedValue.FromObject(dict[index]);
                 }
                 else {
                     r = defVal;
@@ -6522,9 +4523,9 @@ namespace DslExpression
     }
     internal class HashtableSetExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 3) {
                 var dict = operands[0].As<IDictionary>();
                 var index = operands[1].GetObject();
@@ -6538,9 +4539,9 @@ namespace DslExpression
     }
     internal class HashtableAddExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 3) {
                 var dict = operands[0].As<IDictionary>();
                 object key = operands[1];
@@ -6554,9 +4555,9 @@ namespace DslExpression
     }
     internal class HashtableRemoveExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 2) {
                 var dict = operands[0].As<IDictionary>();
                 object key = operands[1];
@@ -6569,9 +4570,9 @@ namespace DslExpression
     }
     internal class HashtableClearExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var dict = operands[0].As<IDictionary>();
                 if (null != dict) {
@@ -6583,9 +4584,9 @@ namespace DslExpression
     }
     internal class HashtableKeysExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var dict = operands[0].As<IDictionary>();
                 if (null != dict) {
@@ -6599,9 +4600,9 @@ namespace DslExpression
     }
     internal class HashtableValuesExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var dict = operands[0].As<IDictionary>();
                 if (null != dict) {
@@ -6615,9 +4616,9 @@ namespace DslExpression
     }
     internal class ListHashtableExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var dict = operands[0].As<IDictionary>();
                 if (null != dict) {
@@ -6633,9 +4634,9 @@ namespace DslExpression
     }
     internal class HashtableSplitExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 2) {
                 var dict = operands[0].As<IDictionary>();
                 var ct = operands[1].GetInt();
@@ -6669,17 +4670,17 @@ namespace DslExpression
     //The stack and queue share the same peek function.
     internal class PeekExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var stack = operands[0].As<Stack<object>>();
                 var queue = operands[0].As<Queue<object>>();
                 if (null != stack) {
-                    r = CalculatorValue.FromObject(stack.Peek());
+                    r = BoxedValue.FromObject(stack.Peek());
                 }
                 else if (null != queue) {
-                    r = CalculatorValue.FromObject(queue.Peek());
+                    r = BoxedValue.FromObject(queue.Peek());
                 }
             }
             return r;
@@ -6687,7 +4688,7 @@ namespace DslExpression
     }
     internal class StackSizeExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             int r = 0;
             if (operands.Count >= 1) {
@@ -6701,22 +4702,22 @@ namespace DslExpression
     }
     internal class StackExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             var stack = new Stack<object>();
             for (int i = 0; i < operands.Count; ++i) {
                 stack.Push(operands[i].GetObject());
             }
-            r = CalculatorValue.FromObject(stack);
+            r = BoxedValue.FromObject(stack);
             return r;
         }
     }
     internal class PushExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 2) {
                 var stack = operands[0].As<Stack<object>>();
                 var val = operands[1];
@@ -6729,13 +4730,13 @@ namespace DslExpression
     }
     internal class PopExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var stack = operands[0].As<Stack<object>>();
                 if (null != stack) {
-                    r = CalculatorValue.FromObject(stack.Pop());
+                    r = BoxedValue.FromObject(stack.Pop());
                 }
             }
             return r;
@@ -6743,9 +4744,9 @@ namespace DslExpression
     }
     internal class StackClearExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var stack = operands[0].As<Stack<object>>();
                 if (null != stack) {
@@ -6757,7 +4758,7 @@ namespace DslExpression
     }
     internal class QueueSizeExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             int r = 0;
             if (operands.Count >= 1) {
@@ -6771,22 +4772,22 @@ namespace DslExpression
     }
     internal class QueueExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             var queue = new Queue<object>();
             for (int i = 0; i < operands.Count; ++i) {
                 queue.Enqueue(operands[i].GetObject());
             }
-            r = CalculatorValue.FromObject(queue);
+            r = BoxedValue.FromObject(queue);
             return r;
         }
     }
     internal class EnqueueExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 2) {
                 var queue = operands[0].As<Queue<object>>();
                 var val = operands[1];
@@ -6799,13 +4800,13 @@ namespace DslExpression
     }
     internal class DequeueExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var queue = operands[0].As<Queue<object>>();
                 if (null != queue) {
-                    r = CalculatorValue.FromObject(queue.Dequeue());
+                    r = BoxedValue.FromObject(queue.Dequeue());
                 }
             }
             return r;
@@ -6813,9 +4814,9 @@ namespace DslExpression
     }
     internal class QueueClearExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var queue = operands[0].As<Queue<object>>();
                 if (null != queue) {
@@ -6827,9 +4828,9 @@ namespace DslExpression
     }
     internal class SetEnvironmentExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             if (operands.Count >= 2) {
                 var key = operands[0].AsString;
                 var val = operands[1].AsString;
@@ -6841,7 +4842,7 @@ namespace DslExpression
     }
     internal class GetEnvironmentExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             string ret = string.Empty;
             if (operands.Count >= 1) {
@@ -6853,7 +4854,7 @@ namespace DslExpression
     }
     internal class ExpandEnvironmentsExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             string ret = string.Empty;
             if (operands.Count >= 1) {
@@ -6865,14 +4866,14 @@ namespace DslExpression
     }
     internal class EnvironmentsExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            return CalculatorValue.FromObject(Environment.GetEnvironmentVariables());
+            return BoxedValue.FromObject(Environment.GetEnvironmentVariables());
         }
     }
     internal class SetCurrentDirectoryExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             string ret = string.Empty;
             if (operands.Count >= 1) {
@@ -6885,21 +4886,21 @@ namespace DslExpression
     }
     internal class GetCurrentDirectoryExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             return Environment.CurrentDirectory;
         }
     }
     internal class CommandLineExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             return Environment.CommandLine;
         }
     }
     internal class CommandLineArgsExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             if (operands.Count >= 1) {
                 string name = operands[0].AsString;
@@ -6913,34 +4914,34 @@ namespace DslExpression
                 return string.Empty;
             }
             else {
-                return CalculatorValue.FromObject(Environment.GetCommandLineArgs());
+                return BoxedValue.FromObject(Environment.GetCommandLineArgs());
             }
         }
     }
     internal class OsExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             return Environment.OSVersion.VersionString;
         }
     }
     internal class OsPlatformExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             return Environment.OSVersion.Platform.ToString();
         }
     }
     internal class OsVersionExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             return Environment.OSVersion.Version.ToString();
         }
     }
     internal class GetFullPathExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             string ret = string.Empty;
             if (operands.Count >= 1) {
@@ -6955,7 +4956,7 @@ namespace DslExpression
     }
     internal class GetPathRootExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             string ret = string.Empty;
             if (operands.Count >= 1) {
@@ -6970,28 +4971,28 @@ namespace DslExpression
     }
     internal class GetRandomFileNameExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             return Path.GetRandomFileName();
         }
     }
     internal class GetTempFileNameExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             return Path.GetTempFileName();
         }
     }
     internal class GetTempPathExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             return Path.GetTempPath();
         }
     }
     internal class HasExtensionExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             bool ret = false;
             if (operands.Count >= 1) {
@@ -7006,7 +5007,7 @@ namespace DslExpression
     }
     internal class IsPathRootedExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             bool ret = false;
             if (operands.Count >= 1) {
@@ -7021,9 +5022,9 @@ namespace DslExpression
     }
     internal class GetFileNameExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var path = operands[0].AsString;
                 if (null != path) {
@@ -7036,9 +5037,9 @@ namespace DslExpression
     }
     internal class GetFileNameWithoutExtensionExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var path = operands[0].AsString;
                 if (null != path) {
@@ -7051,9 +5052,9 @@ namespace DslExpression
     }
     internal class GetExtensionExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var path = operands[0].AsString;
                 if (null != path) {
@@ -7066,9 +5067,9 @@ namespace DslExpression
     }
     internal class GetDirectoryNameExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var path = operands[0].AsString;
                 if (null != path) {
@@ -7081,9 +5082,9 @@ namespace DslExpression
     }
     internal class CombinePathExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 2) {
                 var path1 = operands[0].AsString;
                 var path2 = operands[1].AsString;
@@ -7098,9 +5099,9 @@ namespace DslExpression
     }
     internal class ChangeExtensionExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 2) {
                 var path = operands[0].AsString;
                 var ext = operands[1].AsString;
@@ -7114,9 +5115,9 @@ namespace DslExpression
     }
     internal class QuotePathExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var path = operands[0].AsString;
                 bool onlyNeeded = operands.Count >= 2 ? operands[1].GetBool() : true;
@@ -7177,9 +5178,9 @@ namespace DslExpression
     }
     internal class DebugBreakExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            var r = CalculatorValue.NullObject;
+            var r = BoxedValue.NullObject;
             if (operands.Count >= 0) {
                 Debug.Break();
             }
@@ -7188,9 +5189,9 @@ namespace DslExpression
     }
     internal class DebugLogExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var obj = operands[0];
                 if (obj.IsString) {
@@ -7215,9 +5216,9 @@ namespace DslExpression
     }
     internal class DebugWarningExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            var r = CalculatorValue.NullObject;
+            var r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var fmt = operands[0].AsString;
                 ArrayList al = new ArrayList();
@@ -7231,9 +5232,9 @@ namespace DslExpression
     }
     internal class DebugErrorExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            var r = CalculatorValue.NullObject;
+            var r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var fmt = operands[0].AsString;
                 ArrayList al = new ArrayList();
@@ -7247,17 +5248,17 @@ namespace DslExpression
     }
     internal class CallStackExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             var r = System.Environment.StackTrace;
-            return CalculatorValue.FromObject(r);
+            return BoxedValue.FromObject(r);
         }
     }
     internal class CallExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var func = operands[0].AsString;
                 if (null != func) {
@@ -7274,10 +5275,10 @@ namespace DslExpression
     }
     internal class ReturnExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             Calculator.RunState = RunStateEnum.Return;
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 r = operands[0];
             }
@@ -7286,7 +5287,7 @@ namespace DslExpression
     }
     internal class RedirectExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             Calculator.RunState = RunStateEnum.Redirect;
             if (operands.Count >= 1) {
@@ -7295,16 +5296,16 @@ namespace DslExpression
                     var arg = operands[i].ToString();
                     args.Add(arg);
                 }
-                return CalculatorValue.FromObject(args);
+                return BoxedValue.FromObject(args);
             }
-            return CalculatorValue.NullObject;
+            return BoxedValue.NullObject;
         }
     }
     internal class DirectoryExistExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var dir = operands[0].AsString;
                 dir = Environment.ExpandEnvironmentVariables(dir);
@@ -7315,9 +5316,9 @@ namespace DslExpression
     }
     internal class FileExistExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var file = operands[0].AsString;
                 file = Environment.ExpandEnvironmentVariables(file);
@@ -7328,9 +5329,9 @@ namespace DslExpression
     }
     internal class ListDirectoriesExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var baseDir = operands[0].AsString;
                 baseDir = Environment.ExpandEnvironmentVariables(baseDir);
@@ -7361,7 +5362,7 @@ namespace DslExpression
                         var list = Directory.GetDirectories(baseDir, filter, SearchOption.TopDirectoryOnly);
                         fullList.AddRange(list);
                     }
-                    ret = CalculatorValue.FromObject(fullList);
+                    ret = BoxedValue.FromObject(fullList);
                 }
             }
             return ret;
@@ -7369,9 +5370,9 @@ namespace DslExpression
     }
     internal class ListFilesExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var baseDir = operands[0].AsString;
                 baseDir = Environment.ExpandEnvironmentVariables(baseDir);
@@ -7402,7 +5403,7 @@ namespace DslExpression
                         var list = Directory.GetFiles(baseDir, filter, SearchOption.TopDirectoryOnly);
                         fullList.AddRange(list);
                     }
-                    ret = CalculatorValue.FromObject(fullList);
+                    ret = BoxedValue.FromObject(fullList);
                 }
             }
             return ret;
@@ -7410,9 +5411,9 @@ namespace DslExpression
     }
     internal class ListAllDirectoriesExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var baseDir = operands[0].AsString;
                 baseDir = Environment.ExpandEnvironmentVariables(baseDir);
@@ -7443,7 +5444,7 @@ namespace DslExpression
                         var list = Directory.GetDirectories(baseDir, filter, SearchOption.AllDirectories);
                         fullList.AddRange(list);
                     }
-                    ret = CalculatorValue.FromObject(fullList);
+                    ret = BoxedValue.FromObject(fullList);
                 }
             }
             return ret;
@@ -7451,9 +5452,9 @@ namespace DslExpression
     }
     internal class ListAllFilesExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var baseDir = operands[0].AsString;
                 baseDir = Environment.ExpandEnvironmentVariables(baseDir);
@@ -7484,7 +5485,7 @@ namespace DslExpression
                         var list = Directory.GetFiles(baseDir, filter, SearchOption.AllDirectories);
                         fullList.AddRange(list);
                     }
-                    ret = CalculatorValue.FromObject(fullList);
+                    ret = BoxedValue.FromObject(fullList);
                 }
             }
             return ret;
@@ -7492,7 +5493,7 @@ namespace DslExpression
     }
     internal class CreateDirectoryExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             bool ret = false;
             if (operands.Count >= 1) {
@@ -7509,7 +5510,7 @@ namespace DslExpression
     }
     internal class CopyDirectoryExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             int ct = 0;
             if (operands.Count >= 2) {
@@ -7584,7 +5585,7 @@ namespace DslExpression
     }
     internal class MoveDirectoryExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             bool ret = false;
             if (operands.Count >= 2) {
@@ -7606,7 +5607,7 @@ namespace DslExpression
     }
     internal class DeleteDirectoryExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             bool ret = false;
             if (operands.Count >= 1) {
@@ -7623,7 +5624,7 @@ namespace DslExpression
     }
     internal class CopyFileExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             bool ret = false;
             if (operands.Count >= 2) {
@@ -7646,7 +5647,7 @@ namespace DslExpression
     }
     internal class CopyFilesExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             int ct = 0;
             if (operands.Count >= 2) {
@@ -7706,7 +5707,7 @@ namespace DslExpression
     }
     internal class MoveFileExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             bool ret = false;
             if (operands.Count >= 2) {
@@ -7732,7 +5733,7 @@ namespace DslExpression
     }
     internal class DeleteFileExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             bool ret = false;
             if (operands.Count >= 1) {
@@ -7749,7 +5750,7 @@ namespace DslExpression
     }
     internal class DeleteFilesExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             int ct = 0;
             if (operands.Count >= 1) {
@@ -7790,7 +5791,7 @@ namespace DslExpression
     }
     internal class DeleteAllFilesExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             int ct = 0;
             if (operands.Count >= 1) {
@@ -7831,14 +5832,14 @@ namespace DslExpression
     }
     internal class GetFileInfoExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var file = operands[0].AsString;
                 file = Environment.ExpandEnvironmentVariables(file);
                 if (File.Exists(file)) {
-                    ret = CalculatorValue.FromObject(new FileInfo(file));
+                    ret = BoxedValue.FromObject(new FileInfo(file));
                 }
             }
             return ret;
@@ -7846,14 +5847,14 @@ namespace DslExpression
     }
     internal class GetDirectoryInfoExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var file = operands[0].AsString;
                 file = Environment.ExpandEnvironmentVariables(file);
                 if (Directory.Exists(file)) {
-                    ret = CalculatorValue.FromObject(new DirectoryInfo(file));
+                    ret = BoxedValue.FromObject(new DirectoryInfo(file));
                 }
             }
             return ret;
@@ -7861,27 +5862,27 @@ namespace DslExpression
     }
     internal class GetDriveInfoExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var drive = operands[0].AsString;
-                ret = CalculatorValue.FromObject(new DriveInfo(drive));
+                ret = BoxedValue.FromObject(new DriveInfo(drive));
             }
             return ret;
         }
     }
     internal class GetDrivesInfoExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             var ret = DriveInfo.GetDrives();
-            return CalculatorValue.FromObject(ret);
+            return BoxedValue.FromObject(ret);
         }
     }
     internal class ReadAllLinesExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             if (operands.Count >= 1) {
                 string path = operands[0].AsString;
@@ -7892,15 +5893,15 @@ namespace DslExpression
                         var v = operands[1];
                         encoding = GetEncoding(v);
                     }
-                    return CalculatorValue.FromObject(File.ReadAllLines(path, encoding));
+                    return BoxedValue.FromObject(File.ReadAllLines(path, encoding));
                 }
             }
-            return CalculatorValue.FromObject(new string[0]);
+            return BoxedValue.FromObject(new string[0]);
         }
     }
     internal class WriteAllLinesExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             if (operands.Count >= 2) {
                 string path = operands[0].AsString;
@@ -7925,7 +5926,7 @@ namespace DslExpression
     }
     internal class ReadAllTextExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             if (operands.Count >= 1) {
                 string path = operands[0].AsString;
@@ -7939,12 +5940,12 @@ namespace DslExpression
                     return File.ReadAllText(path, encoding);
                 }
             }
-            return CalculatorValue.NullObject;
+            return BoxedValue.NullObject;
         }
     }
     internal class WriteAllTextExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             if (operands.Count >= 2) {
                 string path = operands[0].AsString;
@@ -7965,7 +5966,7 @@ namespace DslExpression
     }
     internal class CommandExp : AbstractExpression
     {
-        protected override CalculatorValue DoCalc()
+        protected override BoxedValue DoCalc()
         {
             int exitCode = 0;
             MemoryStream ims = null, oms = null;
@@ -8249,9 +6250,9 @@ namespace DslExpression
             bool redirectToConsole = false;
             StringBuilder outputBuilder = null;
             StringBuilder errorBuilder = null;
-            var output = CalculatorValue.NullObject;
+            var output = BoxedValue.NullObject;
             int outputIx = -1;
-            var error = CalculatorValue.NullObject;
+            var error = BoxedValue.NullObject;
             int errorIx = -1;
             if (null != cfg.m_Output) {
                 var v = cfg.m_Output.Calc();
@@ -8430,9 +6431,9 @@ namespace DslExpression
                 bool redirectToConsole = false;
                 StringBuilder outputBuilder = null;
                 StringBuilder errorBuilder = null;
-                var output = CalculatorValue.NullObject;
+                var output = BoxedValue.NullObject;
                 int outputIx = -1;
-                var error = CalculatorValue.NullObject;
+                var error = BoxedValue.NullObject;
                 int errorIx = -1;
                 if (null != cfg.m_Output) {
                     var v = cfg.m_Output.Calc();
@@ -8567,7 +6568,7 @@ namespace DslExpression
     }
     internal class KillExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             int ret = 0;
             if (operands.Count >= 1) {
@@ -8603,12 +6604,12 @@ namespace DslExpression
 
                 }
             }
-            return CalculatorValue.From(ret);
+            return BoxedValue.From(ret);
         }
     }
     internal class KillMeExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             int ret = 0;
             var p = System.Diagnostics.Process.GetCurrentProcess();
@@ -8626,7 +6627,7 @@ namespace DslExpression
     }
     internal class GetCurrentProcessIdExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             int ret = 0;
             var p = System.Diagnostics.Process.GetCurrentProcess();
@@ -8638,7 +6639,7 @@ namespace DslExpression
     }
     internal class ListProcessesExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             IList<System.Diagnostics.Process> ret = null;
             var ps = System.Diagnostics.Process.GetProcesses();
@@ -8666,15 +6667,15 @@ namespace DslExpression
             else {
                 ret = ps;
             }
-            return CalculatorValue.FromObject(ret);
+            return BoxedValue.FromObject(ret);
 
         }
     }
     internal class WaitExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            var ret = CalculatorValue.NullObject;
+            var ret = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var time = operands[0].GetInt();
                 System.Threading.Thread.Sleep(time);
@@ -8685,7 +6686,7 @@ namespace DslExpression
     }
     internal class WaitAllExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             var tasks = DslCalculator.Tasks;
             int timeout = -1;
@@ -8698,12 +6699,12 @@ namespace DslExpression
                     results.Add(task.Result);
                 }
             }
-            return CalculatorValue.FromObject(results);
+            return BoxedValue.FromObject(results);
         }
     }
     internal class WaitStartIntervalExp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             if (operands.Count >= 1) {
                 var v = operands[0];
@@ -8715,240 +6716,11 @@ namespace DslExpression
         }
     }
 
-    internal class DisplayProgressBarExp : SimpleExpressionBase
-    {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
-        {
-#if UNITY_EDITOR
-            if (operands.Count >= 3) {
-                var title = operands[0].AsString;
-                var text = operands[1].AsString;
-                var progress = operands[2].GetFloat();
-                if (null != title && null != text) {
-                    EditorUtility.DisplayProgressBar(title, text, progress);
-                }
-            }
-#endif
-            return true;
-        }
-    }
-    internal class DisplayCancelableProgressBarExp : SimpleExpressionBase
-    {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
-        {
-            bool ret = false;
-#if UNITY_EDITOR
-            if (operands.Count >= 3) {
-                var title = operands[0].AsString;
-                var text = operands[1].AsString;
-                var progress = operands[2].GetFloat();
-                if (null != title && null != text) {
-                    ret = EditorUtility.DisplayCancelableProgressBar(title, text, progress);
-                }
-            }
-#endif
-            return ret;
-        }
-    }
-    internal class ClearProgressBarExp : SimpleExpressionBase
-    {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
-        {
-#if UNITY_EDITOR
-            EditorUtility.ClearProgressBar();
-#endif
-            return true;
-        }
-    }
-    internal class OpenWithDefaultAppExp : SimpleExpressionBase
-    {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
-        {
-#if UNITY_EDITOR
-            if (operands.Count >= 1) {
-                string file = operands[0].AsString;
-                if (!string.IsNullOrEmpty(file)) {
-                    EditorUtility.OpenWithDefaultApp(file);
-                }
-            }
-#endif
-            return CalculatorValue.NullObject;
-        }
-    }
-    internal class OpenFolderPanelExp : SimpleExpressionBase
-    {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
-        {
-#if UNITY_EDITOR
-            string ret = null;
-            if (operands.Count >= 3) {
-                string title = operands[0].AsString;
-                string dir = operands[1].AsString;
-                string def = operands[2].AsString;
-                if (null != title && null != dir && null != def) {
-                    ret = EditorUtility.OpenFolderPanel(title, dir, def);
-                }
-            }
-            return ret;
-#else
-            return CalculatorValue.NullObject;
-#endif
-        }
-    }
-    internal class OpenFilePanelExp : SimpleExpressionBase
-    {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
-        {
-#if UNITY_EDITOR
-            string ret = null;
-            if (operands.Count >= 3) {
-                string title = operands[0].AsString;
-                string dir = operands[1].AsString;
-                string ext = operands[2].AsString;
-                if (null != title && null != dir && null != ext) {
-                    ret = EditorUtility.OpenFilePanel(title, dir, ext);
-                }
-            }
-            return ret;
-#else
-            return CalculatorValue.NullObject;
-#endif
-        }
-    }
-    internal class OpenFilePanelWithFiltersExp : SimpleExpressionBase
-    {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
-        {
-#if UNITY_EDITOR
-            string ret = null;
-            if (operands.Count >= 3) {
-                string title = operands[0].AsString;
-                string dir = operands[1].AsString;
-                List<string> filters = new List<string>();
-                for (int i = 2; i < operands.Count; ++i) {
-                    string filter = operands[i].AsString;
-                    if (!string.IsNullOrEmpty(filter)) {
-                        filters.Add(filter);
-                    }
-                }
-                if (null != title && null != dir) {
-                    ret = EditorUtility.OpenFilePanelWithFilters(title, dir, filters.ToArray());
-                }
-            }
-            return ret;
-#else
-            return CalculatorValue.NullObject;
-#endif
-        }
-    }
-    internal class SaveFilePanelExp : SimpleExpressionBase
-    {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
-        {
-#if UNITY_EDITOR
-            string ret = null;
-            if (operands.Count >= 4) {
-                string title = operands[0].AsString;
-                string dir = operands[1].AsString;
-                string def = operands[2].AsString;
-                string ext = operands[3].AsString;
-                if (null != title && null != dir && null != def && null != ext) {
-                    ret = EditorUtility.SaveFilePanel(title, dir, def, ext);
-                }
-            }
-            return ret;
-#else
-            return CalculatorValue.NullObject;
-#endif
-        }
-    }
-    internal class SaveFilePanelInProjectExp : SimpleExpressionBase
-    {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
-        {
-#if UNITY_EDITOR
-            string ret = null;
-            if (operands.Count >= 4) {
-                string title = operands[0].AsString;
-                string def = operands[1].AsString;
-                string ext = operands[2].AsString;
-                string msg = operands[3].AsString;
-                string path = string.Empty;
-                if (operands.Count >= 5) {
-                    path = operands[4].AsString;
-                }
-                if (null != title && null != def && null != ext && null != msg) {
-                    if (!string.IsNullOrEmpty(path)) {
-                        ret = EditorUtility.SaveFilePanelInProject(title, def, ext, msg, path);
-                    }
-                    else {
-                        ret = EditorUtility.SaveFilePanelInProject(title, def, ext, msg);
-                    }
-                }
-            }
-            return ret;
-#else
-            return CalculatorValue.NullObject;
-#endif
-        }
-    }
-    internal class SaveFolderPanelExp : SimpleExpressionBase
-    {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
-        {
-#if UNITY_EDITOR
-            string ret = null;
-            if (operands.Count >= 3) {
-                string title = operands[0].AsString;
-                string dir = operands[1].AsString;
-                string def = operands[2].AsString;
-                if (null != title && null != dir && null != def) {
-                    ret = EditorUtility.SaveFolderPanel(title, dir, def);
-                }
-            }
-            return ret;
-#else
-            return CalculatorValue.NullObject;
-#endif
-        }
-    }
-    internal class DisplayDialogExp : SimpleExpressionBase
-    {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
-        {
-#if UNITY_EDITOR
-            int ret = -1;
-            if (operands.Count >= 3) {
-                string title = operands[0].AsString;
-                string msg = operands[1].AsString;
-                string ok = operands[2].AsString;
-                if (null != title && null != msg && null != ok) {
-                    if (operands.Count >= 4) {
-                        string cancel = operands[3].AsString;
-                        if (operands.Count >= 5) {
-                            string alt = operands[4].AsString;
-                            ret = EditorUtility.DisplayDialogComplex(title, msg, ok, cancel, alt);
-                        }
-                        else {
-                            ret = EditorUtility.DisplayDialog(title, msg, ok, cancel) ? 1 : 0;
-                        }
-                    }
-                    else {
-                        ret = EditorUtility.DisplayDialog(title, msg, ok) ? 1 : 0;
-                    }
-                }
-            }
-            return ret;
-#else
-            return -1;
-#endif
-        }
-    }
     internal class CalcMd5Exp : SimpleExpressionBase
     {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            CalculatorValue r = CalculatorValue.NullObject;
+            BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var file = operands[0].AsString;
                 if (null != file) {
@@ -8977,109 +6749,6 @@ namespace DslExpression
             }
         }
     }
-#if USE_GM_STORY
-    internal class StoryVarExp : SimpleExpressionBase
-    {
-        protected override CalculatorValue OnCalc(IList<CalculatorValue> operands)
-        {
-            var ret = CalculatorValue.NullObject;
-            if (operands.Count >= 1) {
-                string name = operands[0].AsString;
-                if (operands.Count >= 2) {
-                    var val = operands[1];
-                    if (!string.IsNullOrEmpty(name)) {
-                        var instance = GmCommands.ClientGmStorySystem.Instance.GetStory("main");
-                        if (null == instance) {
-                            string txt = "script(main){onmessage(\"start\"){};};";
-                            GmCommands.ClientGmStorySystem.Instance.LoadStoryText(Encoding.UTF8.GetBytes(txt));
-                            instance = GmCommands.ClientGmStorySystem.Instance.GetStory("main");
-                        }
-                        instance.SetVariable(name, BoxedValue.FromObject(val.GetObject()));
-                        ret = val;
-                    }
-                }
-                else {
-                    var instance = GmCommands.ClientGmStorySystem.Instance.GetStory("main");
-                    if (null == instance) {
-                        string txt = "script(main){onmessage(\"start\"){};};";
-                        GmCommands.ClientGmStorySystem.Instance.LoadStoryText(Encoding.UTF8.GetBytes(txt));
-                        instance = GmCommands.ClientGmStorySystem.Instance.GetStory("main");
-                    }
-                    BoxedValue bv;
-                    instance.TryGetVariable(name, out bv);
-                    ret = CalculatorValue.FromObject(bv.GetObject());
-                }
-            }
-            return ret;
-        }
-    }
-    internal class StoryValueExp : AbstractExpression
-    {
-        protected override CalculatorValue DoCalc()
-        {
-            var instance = GmCommands.ClientGmStorySystem.Instance.GetStory("main");
-            if (null == instance) {
-                string txt = "script(main){onmessage(\"start\"){};};";
-                GmCommands.ClientGmStorySystem.Instance.LoadStoryText(Encoding.UTF8.GetBytes(txt));
-                GmCommands.ClientGmStorySystem.Instance.StartStory("main");
-                instance = GmCommands.ClientGmStorySystem.Instance.GetStory("main");
-            }
-            var handler = instance.GetMessageHandler("start");
-            object ret = null;
-            foreach (var exp in m_Values) {
-                exp.Evaluate(instance, handler, BoxedValue.NullObject, null);
-                if (exp.HaveValue) {
-                    ret = exp.Value.GetObject();
-                }
-            }
-            return CalculatorValue.FromObject(ret);
-        }
-        protected override bool Load(Dsl.FunctionData callData)
-        {
-            int num = callData.GetParamNum();
-            for (int ix = 0; ix < num; ++ix) {
-                Dsl.ISyntaxComponent param = callData.GetParam(ix);
-                var exp = StoryScript.StoryFunctionManager.Instance.CreateFunction(param);
-                m_Values.Add(exp);
-            }
-            return true;
-        }
-
-        private List<StoryScript.IStoryFunction> m_Values = new List<StoryScript.IStoryFunction>();
-    }
-    internal class StoryCommandExp : AbstractExpression
-    {
-        protected override CalculatorValue DoCalc()
-        {
-            var instance = GmCommands.ClientGmStorySystem.Instance.GetStory("main");
-            if (null == instance) {
-                string txt = "script(main){onmessage(\"start\"){};};";
-                GmCommands.ClientGmStorySystem.Instance.LoadStoryText(Encoding.UTF8.GetBytes(txt));
-                instance = GmCommands.ClientGmStorySystem.Instance.GetStory("main");
-            }
-            var handler = instance.GetMessageHandler("start");
-            foreach (var cmd in m_Commands) {
-                cmd.Reset();
-            }
-            foreach (var cmd in m_Commands) {
-                cmd.Execute(instance, handler, 0, BoxedValue.NullObject, null);
-            }
-            return CalculatorValue.NullObject;
-        }
-        protected override bool Load(Dsl.FunctionData callData)
-        {
-            int num = callData.GetParamNum();
-            for (int ix = 0; ix < num; ++ix) {
-                Dsl.ISyntaxComponent param = callData.GetParam(ix);
-                var cmd = StoryScript.StoryCommandManager.Instance.CreateCommand(param);
-                m_Commands.Add(cmd);
-            }
-            return true;
-        }
-
-        private List<StoryScript.IStoryCommand> m_Commands = new List<StoryScript.IStoryCommand>();
-    }
-#endif
     public enum RunStateEnum
     {
         Normal = 0,
@@ -9090,8 +6759,8 @@ namespace DslExpression
     }
     public sealed class DslCalculator
     {
-        public delegate bool TryGetVariableDelegation(string v, out CalculatorValue result);
-        public delegate bool TrySetVariableDelegation(string v, ref CalculatorValue result);
+        public delegate bool TryGetVariableDelegation(string v, out BoxedValue result);
+        public delegate bool TrySetVariableDelegation(string v, ref BoxedValue result);
         public delegate bool LoadFailbackDelegation(Dsl.ISyntaxComponent comp, DslCalculator calculator, out IExpression expression);
         public class FuncInfo
         {
@@ -9225,18 +6894,6 @@ namespace DslExpression
             Register("isnull", "isnull(obj) api", new ExpressionFactoryHelper<IsNullExp>());
             Register("dotnetload", "dotnetload(dll_path) api", new ExpressionFactoryHelper<DotnetLoadExp>());
             Register("dotnetnew", "dotnetnew(assembly,type_name,arg1,arg2,...) api", new ExpressionFactoryHelper<DotnetNewExp>());
-            Register("assetpath2guid", "assetpath2guid(asset_path) api", new ExpressionFactoryHelper<AssetPath2GUIDExp>());
-            Register("guid2assetpath", "guid2assetpath(guid) api", new ExpressionFactoryHelper<GUID2AssetPathExp>());
-            Register("getassetpath", "getassetpath(obj) api", new ExpressionFactoryHelper<GetAssetPathExp>());
-            Register("getguidandfileid", "getguidandfileid(obj) api, return KeyValuaPair<string,long>", new ExpressionFactoryHelper<GetGuidAndLocalFileIdentifierExp>());
-            Register("getdependencies", "getdependencies(list_or_str1,list_or_str2,...) api, return string[]", new ExpressionFactoryHelper<GetDependenciesExp>());
-            Register("getassetimporter", "getassetimporter(path) api", new ExpressionFactoryHelper<GetAssetImporterExp>());
-            Register("loadasset", "loadasset(asset_path) api", new ExpressionFactoryHelper<LoadAssetExp>());
-            Register("unloadasset", "unloadasset(obj) api", new ExpressionFactoryHelper<UnloadAssetExp>());
-            Register("getprefabtype", "getprefabtype(obj) api", new ExpressionFactoryHelper<GetPrefabTypeExp>());
-            Register("getprefabstatus", "getprefabstatus(obj) api", new ExpressionFactoryHelper<GetPrefabStatusExp>());
-            Register("getprefabobject", "getprefabobject(obj) api", new ExpressionFactoryHelper<GetPrefabObjectExp>());
-            Register("getprefabparent", "getprefabparent(obj) api", new ExpressionFactoryHelper<GetPrefabParentExp>());
             Register("destroyobject", "destroyobject(obj[,bool_modify_asset]) api", new ExpressionFactoryHelper<DestroyObjectExp>());
             Register("getcomponent", "getcomponent(obj,type) api", new ExpressionFactoryHelper<GetComponentExp>());
             Register("getcomponents", "getcomponents(obj,type) api", new ExpressionFactoryHelper<GetComponentsExp>());
@@ -9378,24 +7035,7 @@ namespace DslExpression
             Register("wait", "wait(time) api", new ExpressionFactoryHelper<WaitExp>());
             Register("waitall", "waitall([timeout]) api, wait all task to exit", new ExpressionFactoryHelper<WaitAllExp>());
             Register("waitstartinterval", "waitstartinterval(time) or waitstartinterval() api, used in Task.Wait for process/command", new ExpressionFactoryHelper<WaitStartIntervalExp>());
-
-            Register("displayprogressbar", "displayprogressbar(title,text,progress) api", new ExpressionFactoryHelper<DisplayProgressBarExp>());
-            Register("displaycancelableprogressbar", "displaycancelableprogressbar(title,text,progress) api", new ExpressionFactoryHelper<DisplayCancelableProgressBarExp>());
-            Register("clearprogressbar", "clearprogressbar() api", new ExpressionFactoryHelper<ClearProgressBarExp>());
-            Register("openwithdefaultapp", "openwithdefaultapp(file) api", new ExpressionFactoryHelper<OpenWithDefaultAppExp>());
-            Register("openfilepanel", "openfilepanel(title,dir,ext) api", new ExpressionFactoryHelper<OpenFilePanelExp>());
-            Register("openfilepanelwithfilters", "openfilepanelwithfilters(title,dir,filter1,filter2,...) api", new ExpressionFactoryHelper<OpenFilePanelWithFiltersExp>());
-            Register("openfolderpanel", "openfolderpanel(title,dir,def) api", new ExpressionFactoryHelper<OpenFolderPanelExp>());
-            Register("savefilepanel", "savefilepanel(title,dir,def,ext) api", new ExpressionFactoryHelper<SaveFilePanelExp>());
-            Register("savefilepanelinproject", "savefilepanelinproject(title,def,ext,msg[,path]) api", new ExpressionFactoryHelper<SaveFilePanelInProjectExp>());
-            Register("savefolderpanel", "savefolderpanel(title,dir,def) api", new ExpressionFactoryHelper<SaveFolderPanelExp>());
-            Register("displaydialog", "displaydialog(title,msg,ok[,cancel[,alt]]) api", new ExpressionFactoryHelper<DisplayDialogExp>());
             Register("calcmd5", "calcmd5(file) api", new ExpressionFactoryHelper<CalcMd5Exp>());
-#if USE_GM_STORY
-            Register("storyvar", "storyvar(name,val) or storyvar(name) api", new ExpressionFactoryHelper<StoryVarExp>());
-            Register("storyvalue", "storyvalue(code1,code2,...) api", new ExpressionFactoryHelper<StoryValueExp>());
-            Register("storycommand", "storycommand(code1,code2,...) api", new ExpressionFactoryHelper<StoryCommandExp>());
-#endif
         }
         public void Register(string name, string doc, IExpressionFactory factory)
         {
@@ -9436,11 +7076,11 @@ namespace DslExpression
         {
             int index;
             if (m_NamedGlobalVariableIndexes.TryGetValue(v, out index)) {
-                SetGlobalVaraibleByIndex(index, CalculatorValue.NullObject);
+                SetGlobalVaraibleByIndex(index, BoxedValue.NullObject);
                 m_NamedGlobalVariableIndexes.Remove(v);
             }
         }
-        public bool TryGetGlobalVariable(string v, out CalculatorValue result)
+        public bool TryGetGlobalVariable(string v, out BoxedValue result)
         {
             if (null != OnTryGetVariable && OnTryGetVariable(v, out result)) {
                 return true;
@@ -9450,17 +7090,17 @@ namespace DslExpression
                 return true;
             }
             else {
-                result = CalculatorValue.NullObject;
+                result = BoxedValue.NullObject;
                 return false;
             }
         }
-        public CalculatorValue GetGlobalVariable(string v)
+        public BoxedValue GetGlobalVariable(string v)
         {
-            CalculatorValue result;
+            BoxedValue result;
             TryGetGlobalVariable(v, out result);
             return result;
         }
-        public void SetGlobalVariable(string v, CalculatorValue val)
+        public void SetGlobalVariable(string v, BoxedValue val)
         {
             if (null != OnTrySetVariable && OnTrySetVariable(v, ref val)) {
 
@@ -9560,23 +7200,23 @@ namespace DslExpression
                 }
             }
         }
-        public List<CalculatorValue> NewCalculatorValueList()
+        public List<BoxedValue> NewCalculatorValueList()
         {
             return m_Pool.Alloc();
         }
-        public void RecycleCalculatorValueList(List<CalculatorValue> list)
+        public void RecycleCalculatorValueList(List<BoxedValue> list)
         {
             list.Clear();
             m_Pool.Recycle(list);
         }
-        public CalculatorValue Calc(string func)
+        public BoxedValue Calc(string func)
         {
             var args = NewCalculatorValueList();
             var r = Calc(func, args);
             RecycleCalculatorValueList(args);
             return r;
         }
-        public CalculatorValue Calc(string func, CalculatorValue arg1)
+        public BoxedValue Calc(string func, BoxedValue arg1)
         {
             var args = NewCalculatorValueList();
             args.Add(arg1);
@@ -9584,7 +7224,7 @@ namespace DslExpression
             RecycleCalculatorValueList(args);
             return r;
         }
-        public CalculatorValue Calc(string func, CalculatorValue arg1, CalculatorValue arg2)
+        public BoxedValue Calc(string func, BoxedValue arg1, BoxedValue arg2)
         {
             var args = NewCalculatorValueList();
             args.Add(arg1);
@@ -9593,7 +7233,7 @@ namespace DslExpression
             RecycleCalculatorValueList(args);
             return r;
         }
-        public CalculatorValue Calc(string func, CalculatorValue arg1, CalculatorValue arg2, CalculatorValue arg3)
+        public BoxedValue Calc(string func, BoxedValue arg1, BoxedValue arg2, BoxedValue arg3)
         {
             var args = NewCalculatorValueList();
             args.Add(arg1);
@@ -9603,9 +7243,9 @@ namespace DslExpression
             RecycleCalculatorValueList(args);
             return r;
         }
-        public CalculatorValue Calc(string func, IList<CalculatorValue> args)
+        public BoxedValue Calc(string func, IList<BoxedValue> args)
         {
-            CalculatorValue ret = 0;
+            BoxedValue ret = 0;
             FuncInfo funcInfo;
             if (m_Funcs.TryGetValue(func, out funcInfo)) {
                 ret = Calc<object>(args, null, funcInfo);
@@ -9614,13 +7254,13 @@ namespace DslExpression
         }
         ///funcContext is recorded on the stack and its members can be accessed through custom apis (see parsing of no-argument variables in 'Load')  
         ///it's like args, but with a fixed parameter name and is mainly used to invoke snippets of code.
-        public CalculatorValue Calc<T>(T funcContext, FuncInfo funcInfo) where T : class
+        public BoxedValue Calc<T>(T funcContext, FuncInfo funcInfo) where T : class
         {
             return Calc(null, funcContext, funcInfo);
         }
-        public CalculatorValue CalcInCurrentContext(IList<IExpression> exps)
+        public BoxedValue CalcInCurrentContext(IList<IExpression> exps)
         {
-            CalculatorValue ret = 0;
+            BoxedValue ret = 0;
             for (int i = 0; i < exps.Count; ++i) {
                 var exp = exps[i];
                 try {
@@ -9665,7 +7305,7 @@ namespace DslExpression
             }
             return ret;
         }
-        private CalculatorValue Calc<T>(IList<CalculatorValue> args, T funcContext, FuncInfo funcInfo) where T : class
+        private BoxedValue Calc<T>(IList<BoxedValue> args, T funcContext, FuncInfo funcInfo) where T : class
         {
             LocalStackPush(args, funcContext, funcInfo);
             try {
@@ -9700,14 +7340,14 @@ namespace DslExpression
             var stackInfo = m_Stack.Peek();
             return stackInfo.FuncContext as T;
         }
-        public IList<CalculatorValue> Arguments
+        public IList<BoxedValue> Arguments
         {
             get {
                 var stackInfo = m_Stack.Peek();
                 return stackInfo.Args;
             }
         }
-        public bool TryGetVariable(string v, out CalculatorValue result)
+        public bool TryGetVariable(string v, out BoxedValue result)
         {
             bool ret = false;
             if (v.Length > 0) {
@@ -9722,13 +7362,13 @@ namespace DslExpression
                 }
             }
             else {
-                result = CalculatorValue.NullObject;
+                result = BoxedValue.NullObject;
             }
             return ret;
         }
-        public CalculatorValue GetVariable(string v)
+        public BoxedValue GetVariable(string v)
         {
-            CalculatorValue result = CalculatorValue.NullObject;
+            BoxedValue result = BoxedValue.NullObject;
             if (v.Length > 0) {
                 if (v[0] == '@') {
                     result = GetGlobalVariable(v);
@@ -9742,7 +7382,7 @@ namespace DslExpression
             }
             return result;
         }
-        public void SetVariable(string v, CalculatorValue val)
+        public void SetVariable(string v, BoxedValue val)
         {
             if (v.Length > 0) {
                 if (v[0] == '@') {
@@ -10003,7 +7643,7 @@ namespace DslExpression
             else if (!m_NamedGlobalVariableIndexes.TryGetValue(name, out ix)) {
                 ix = m_NamedGlobalVariableIndexes.Count;
                 m_NamedGlobalVariableIndexes.Add(name, ix);
-                m_GlobalVariables.Add(CalculatorValue.NullObject);
+                m_GlobalVariables.Add(BoxedValue.NullObject);
             }
             return ix;
         }
@@ -10013,7 +7653,7 @@ namespace DslExpression
             if (!LocalVariableIndexes.TryGetValue(name, out ix)) {
                 ix = LocalVariableIndexes.Count;
                 LocalVariableIndexes.Add(name, ix);
-                LocalVariables.Add(CalculatorValue.NullObject);
+                LocalVariables.Add(BoxedValue.NullObject);
             }
             return ix;
         }
@@ -10033,11 +7673,11 @@ namespace DslExpression
             }
             return ix;
         }
-        internal CalculatorValue GetGlobalVaraibleByIndex(int ix)
+        internal BoxedValue GetGlobalVaraibleByIndex(int ix)
         {
             return m_GlobalVariables[ix];
         }
-        internal CalculatorValue GetLocalVaraibleByIndex(int ix)
+        internal BoxedValue GetLocalVaraibleByIndex(int ix)
         {
             if (ix >= 0) {
                 return LocalVariables[ix];
@@ -10047,14 +7687,14 @@ namespace DslExpression
                 if (argIx >= 0 && argIx < Arguments.Count)
                     return Arguments[argIx];
                 else
-                    return CalculatorValue.NullObject;
+                    return BoxedValue.NullObject;
             }
         }
-        internal void SetGlobalVaraibleByIndex(int ix, CalculatorValue val)
+        internal void SetGlobalVaraibleByIndex(int ix, BoxedValue val)
         {
             m_GlobalVariables[ix] = val;
         }
-        internal void SetLocalVaraibleByIndex(int ix, CalculatorValue val)
+        internal void SetLocalVaraibleByIndex(int ix, BoxedValue val)
         {
             if (ix >= 0) {
                 LocalVariables[ix] = val;
@@ -10066,7 +7706,7 @@ namespace DslExpression
             }
         }
 
-        private void LocalStackPush<T>(IList<CalculatorValue> args, T funcContext, FuncInfo funcInfo) where T : class
+        private void LocalStackPush<T>(IList<BoxedValue> args, T funcContext, FuncInfo funcInfo) where T : class
         {
             var si = StackInfo.New();
             if (null != args) {
@@ -10112,7 +7752,7 @@ namespace DslExpression
             }
         }
 
-        private bool TryGetLocalVariable(string v, out CalculatorValue result)
+        private bool TryGetLocalVariable(string v, out BoxedValue result)
         {
             int index;
             if (LocalVariableIndexes.TryGetValue(v, out index)) {
@@ -10120,18 +7760,18 @@ namespace DslExpression
                 return true;
             }
             else {
-                result = CalculatorValue.NullObject;
+                result = BoxedValue.NullObject;
                 return false;
             }
         }
 
-        private CalculatorValue GetLocalVariable(string v)
+        private BoxedValue GetLocalVariable(string v)
         {
-            CalculatorValue result;
+            BoxedValue result;
             TryGetLocalVariable(v, out result);
             return result;
         }
-        private void SetLocalVariable(string v, CalculatorValue val)
+        private void SetLocalVariable(string v, BoxedValue val)
         {
             int index;
             if (LocalVariableIndexes.TryGetValue(v, out index)) {
@@ -10150,7 +7790,7 @@ namespace DslExpression
                 return stackInfo.FuncInfo.LocalVarIndexes;
             }
         }
-        private List<CalculatorValue> LocalVariables
+        private List<BoxedValue> LocalVariables
         {
             get {
                 var stackInfo = m_Stack.Peek();
@@ -10162,8 +7802,8 @@ namespace DslExpression
         {
             internal FuncInfo FuncInfo = null;
             internal object FuncContext = null;
-            internal List<CalculatorValue> Args = new List<CalculatorValue>();
-            internal List<CalculatorValue> LocalVars = new List<CalculatorValue>();
+            internal List<BoxedValue> Args = new List<BoxedValue>();
+            internal List<BoxedValue> LocalVars = new List<BoxedValue>();
 
             internal void Init(FuncInfo funcInfo, object funcContext)
             {
@@ -10171,7 +7811,7 @@ namespace DslExpression
                 FuncContext = funcContext;
                 LocalVars.Capacity = funcInfo.LocalVarIndexes.Count;
                 for (int ix = 0; ix < funcInfo.LocalVarIndexes.Count; ++ix) {
-                    LocalVars.Add(CalculatorValue.NullObject);
+                    LocalVars.Add(BoxedValue.NullObject);
                 }
             }
             internal void Recycle()
@@ -10195,10 +7835,10 @@ namespace DslExpression
         private Dictionary<string, FuncInfo> m_Funcs = new Dictionary<string, FuncInfo>();
         private Stack<StackInfo> m_Stack = new Stack<StackInfo>();
         private Dictionary<string, int> m_NamedGlobalVariableIndexes = new Dictionary<string, int>();
-        private List<CalculatorValue> m_GlobalVariables = new List<CalculatorValue>();
+        private List<BoxedValue> m_GlobalVariables = new List<BoxedValue>();
         private Dictionary<string, IExpressionFactory> m_ApiFactories = new Dictionary<string, IExpressionFactory>();
         private SortedList<string, string> m_ApiDocs = new SortedList<string, string>();
-        private CalculatorValueListPool m_Pool = new CalculatorValueListPool(16);
+        private BoxedValueListPool m_Pool = new BoxedValueListPool(16);
 
         internal static int CheckStartInterval
         {
@@ -10445,4 +8085,3 @@ namespace DslExpression
 }
 #pragma warning restore 8600,8601,8602,8603,8604,8618,8619,8620,8625
 #endregion
-#endif

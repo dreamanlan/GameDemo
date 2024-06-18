@@ -1,12 +1,36 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|f:\\github\\gamedemo\\gamelibrary\\infrastructure\\storyscript\\storyscript_dotnet_framework.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:storyscript_dotnet_framework.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StoryScript_dotnet_framework",
+              "DocumentMoniker": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript_dotnet_framework.csproj",
+              "RelativeDocumentMoniker": "StoryScript_dotnet_framework.csproj",
+              "ToolTip": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript_dotnet_framework.csproj",
+              "RelativeToolTip": "StoryScript_dotnet_framework.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-06-18T11:40:21.088Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

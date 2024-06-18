@@ -11,7 +11,8 @@ namespace StoryScript
     /// </summary>
     public sealed class StoryCommandManager
     {
-        public const int c_MaxCommandGroupNum = (int)StoryCommandGroupDefine.NUM;
+        public delegate bool CreateFailbackDelegation(Dsl.ISyntaxComponent comp, out IStoryCommand expression);
+        public CreateFailbackDelegation OnCreateFailback;
         public int AllocLocalInfoIndex()
         {
             int index = m_NextLocalInfoIndex;
@@ -200,7 +201,7 @@ namespace StoryScript
                             throw new Exception(msg, ex);
                         }
                     }
-                    else {
+                    else if (null == OnCreateFailback || !OnCreateFailback(commandConfig, out command)) {
 #if DEBUG
                         string err = string.Format("[LoadStory] CreateCommand failed, line:{0} command:{1}[{2}]", commandConfig.GetLine(), type, commandConfig.ToScriptString(false));
                         LogSystem.Error("{0}", err);
@@ -245,6 +246,7 @@ namespace StoryScript
                 m_Substitutes.Clear();
             }
         }
+
         private IStoryCommandFactory GetFactory(string type)
         {
             IStoryCommandFactory factory;
@@ -450,6 +452,7 @@ namespace StoryScript
         private Dictionary<string, string> m_Substitutes = new Dictionary<string, string>();
         private int m_NextLocalInfoIndex = 0;
 
+        public const int c_MaxCommandGroupNum = (int)StoryCommandGroupDefine.NUM;
         public static ulong ThreadCommandGroupsMask
         {
             get { return s_ThreadCommandGroupsMask; }

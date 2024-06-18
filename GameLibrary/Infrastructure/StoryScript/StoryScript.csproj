@@ -14,6 +14,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DefineConstants>TRACE;DEBUG;ENABLE_ERROR_LOG;ENABLE_LOG</DefineConstants>
