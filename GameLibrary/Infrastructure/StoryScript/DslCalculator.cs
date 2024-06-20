@@ -7862,9 +7862,8 @@ namespace DslExpression
         private Dictionary<string, IExpressionFactory> m_ApiFactories = new Dictionary<string, IExpressionFactory>();
         private SortedList<string, string> m_ApiDocs = new SortedList<string, string>();
         private BoxedValueListPool m_Pool = new BoxedValueListPool(16);
-
         private List<FunctionCall> m_FuncCalls = new List<FunctionCall>();
-
+		
         internal static int CheckStartInterval
         {
             get { return s_CheckStartInterval; }
