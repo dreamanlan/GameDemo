@@ -16,7 +16,7 @@ namespace StoryScript
     public class LogSystem
     {
         public static LogSystemOutputDelegation OnOutput;
-        [System.Diagnostics.Conditional("ENABLE_LOG")]
+        [System.Diagnostics.Conditional("DEVELOPMENT_BUILD")]
         public static void Debug(string format, params object[] args)
         {
 #if DEBUG
@@ -29,7 +29,7 @@ namespace StoryScript
             }
 #endif
         }
-        [System.Diagnostics.Conditional("ENABLE_LOG")]
+        [System.Diagnostics.Conditional("DEVELOPMENT_BUILD")]
         public static void Info(string format, params object[] args)
         {
             if (!StoryConfigManager.Instance.LoggerEnabled)
@@ -39,7 +39,6 @@ namespace StoryScript
                 Output(StoryLogType.Info, str);
             }
         }
-        [System.Diagnostics.Conditional("ENABLE_ERROR_LOG")]
         public static void Warn(string format, params object[] args)
         {
             if (!StoryConfigManager.Instance.LoggerEnabled)
@@ -50,7 +49,6 @@ namespace StoryScript
                 Output(StoryLogType.Warn, str);
             }
         }
-        [System.Diagnostics.Conditional("ENABLE_ERROR_LOG")]
         public static void Error(string format, params object[] args)
         {
             if (!StoryConfigManager.Instance.LoggerEnabled)
@@ -61,7 +59,7 @@ namespace StoryScript
                 Output(StoryLogType.Error, str);
             }
         }
-        [System.Diagnostics.Conditional("ENABLE_LOG")]
+        [System.Diagnostics.Conditional("DEVELOPMENT_BUILD")]
         public static void Assert(bool check, string format, params object[] args)
         {
             if (!StoryConfigManager.Instance.LoggerEnabled)
