@@ -24,6 +24,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\StoryScript\StoryScript.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="UnityEngine">
       <HintPath>..\..\ExternLibrary\UnityEngine.dll</HintPath>
     </Reference>

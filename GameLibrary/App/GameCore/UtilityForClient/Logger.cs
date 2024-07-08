@@ -24,7 +24,7 @@ namespace GameLibrary
 #else
             m_LogQueue.Enqueue(msg);
             if (m_LogQueue.Count >= c_FlushCount) {
-                m_LastFlushTime = TimeUtility.GetLocalMilliseconds();
+                m_LastFlushTime = StoryScript.TimeUtility.GetLocalMilliseconds();
 
                 RequestFlush();
             }
@@ -47,7 +47,7 @@ namespace GameLibrary
         public void Tick()
         {
 #if !USE_DISK_LOG
-            long curTime = TimeUtility.GetLocalMilliseconds();
+            long curTime = StoryScript.TimeUtility.GetLocalMilliseconds();
             if (m_LastFlushTime + 10000 < curTime) {
                 m_LastFlushTime = curTime;
 

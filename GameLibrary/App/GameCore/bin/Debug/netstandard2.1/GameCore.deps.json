@@ -28,6 +28,9 @@
         }
       },
       "Common/1.0.0": {
+        "dependencies": {
+          "StoryScript": "1.0.0"
+        },
         "runtime": {
           "Common.dll": {}
         }

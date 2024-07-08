@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:istoryfunction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|f:\\github\\gamedemo\\gamelibrary\\infrastructure\\storyscript\\util\\converter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\util\\converter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:util\\converter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -34,8 +34,7 @@
               "RelativeToolTip": "Util\\Converter.cs",
               "ViewState": "AQIAAJYBAAAAAAAAAAAkwI4BAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T07:12:12.658Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-06T07:12:12.658Z"
             },
             {
               "$type": "Document",
@@ -45,7 +44,7 @@
               "RelativeDocumentMoniker": "IStoryFunction.cs",
               "ToolTip": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\IStoryFunction.cs",
               "RelativeToolTip": "IStoryFunction.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAALAAAAAeAAAA",
+              "ViewState": "AQIAABoAAAAAAAAAAADwv7AAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-06T07:00:05.133Z",
               "EditorCaption": ""
@@ -60,8 +59,7 @@
               "RelativeToolTip": "StoryValueHelper.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-27T10:54:08.11Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-27T10:54:08.11Z"
             }
           ]
         }

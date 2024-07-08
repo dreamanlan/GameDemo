@@ -105,198 +105,198 @@ namespace GameLibrary
         private Delegate BuildDelegate(Type t1, MyAction<object> action)
         {
             return (MyAction<object>)((object p1) => {
-                var a1 = Helper.ConvertTo(p1, t1);
+                var a1 = StoryScript.Converter.CastTo(t1, p1);
                 action(a1);
             });
         }
         private Delegate BuildDelegate(Type t1, Type t2, MyAction<object, object> action)
         {
             return (MyAction<object, object>)((object p1, object p2) => {
-                var a1 = Helper.ConvertTo(p1, t1);
-                var a2 = Helper.ConvertTo(p2, t2);
+                var a1 = StoryScript.Converter.CastTo(t1, p1);
+                var a2 = StoryScript.Converter.CastTo(t2, p2);
                 action(a1, a2);
             });
         }
         private Delegate BuildDelegate(Type t1, Type t2, Type t3, MyAction<object, object, object> action)
         {
             return (MyAction<object, object, object>)((object p1, object p2, object p3) => {
-                var a1 = Helper.ConvertTo(p1, t1);
-                var a2 = Helper.ConvertTo(p2, t2);
-                var a3 = Helper.ConvertTo(p3, t3);
+                var a1 = StoryScript.Converter.CastTo(t1, p1);;
+                var a2 = StoryScript.Converter.CastTo(t2, p2);;
+                var a3 = StoryScript.Converter.CastTo(t3, p3);;
                 action(a1, a2, a3);
             });
         }
         private Delegate BuildDelegate(Type t1, Type t2, Type t3, Type t4, MyAction<object, object, object, object> action)
         {
             return (MyAction<object, object, object, object>)((object p1, object p2, object p3, object p4) => {
-                var a1 = Helper.ConvertTo(p1, t1);
-                var a2 = Helper.ConvertTo(p2, t2);
-                var a3 = Helper.ConvertTo(p3, t3);
-                var a4 = Helper.ConvertTo(p4, t4);
+                var a1 = StoryScript.Converter.CastTo(t1, p1);;
+                var a2 = StoryScript.Converter.CastTo(t2, p2);;
+                var a3 = StoryScript.Converter.CastTo(t3, p3);;
+                var a4 = StoryScript.Converter.CastTo(t4, p4);;
                 action(a1, a2, a3, a4);
             });
         }
         private Delegate BuildDelegate(Type t1, Type t2, Type t3, Type t4, Type t5, MyAction<object, object, object, object, object> action)
         {
             return (MyAction<object, object, object, object, object>)((object p1, object p2, object p3, object p4, object p5) => {
-                var a1 = Helper.ConvertTo(p1, t1);
-                var a2 = Helper.ConvertTo(p2, t2);
-                var a3 = Helper.ConvertTo(p3, t3);
-                var a4 = Helper.ConvertTo(p4, t4);
-                var a5 = Helper.ConvertTo(p5, t5);
+                var a1 = StoryScript.Converter.CastTo(t1, p1);;
+                var a2 = StoryScript.Converter.CastTo(t2, p2);;
+                var a3 = StoryScript.Converter.CastTo(t3, p3);;
+                var a4 = StoryScript.Converter.CastTo(t4, p4);;
+                var a5 = StoryScript.Converter.CastTo(t5, p5);
                 action(a1, a2, a3, a4, a5);
             });
         }
         private Delegate BuildDelegate(Type t1, Type t2, Type t3, Type t4, Type t5, Type t6, MyAction<object, object, object, object, object, object> action)
         {
             return (MyAction<object, object, object, object, object, object>)((object p1, object p2, object p3, object p4, object p5, object p6) => {
-                var a1 = Helper.ConvertTo(p1, t1);
-                var a2 = Helper.ConvertTo(p2, t2);
-                var a3 = Helper.ConvertTo(p3, t3);
-                var a4 = Helper.ConvertTo(p4, t4);
-                var a5 = Helper.ConvertTo(p5, t5);
-                var a6 = Helper.ConvertTo(p6, t6);
+                var a1 = StoryScript.Converter.CastTo(t1, p1);;
+                var a2 = StoryScript.Converter.CastTo(t2, p2);;
+                var a3 = StoryScript.Converter.CastTo(t3, p3);;
+                var a4 = StoryScript.Converter.CastTo(t4, p4);;
+                var a5 = StoryScript.Converter.CastTo(t5, p5);
+                var a6 = StoryScript.Converter.CastTo(t6, p6);
                 action(a1, a2, a3, a4, a5, a6);
             });
         }
         private Delegate BuildDelegate(Type t1, Type t2, Type t3, Type t4, Type t5, Type t6, Type t7, MyAction<object, object, object, object, object, object, object> action)
         {
             return (MyAction<object, object, object, object, object, object, object>)((object p1, object p2, object p3, object p4, object p5, object p6, object p7) => {
-                var a1 = Helper.ConvertTo(p1, t1);
-                var a2 = Helper.ConvertTo(p2, t2);
-                var a3 = Helper.ConvertTo(p3, t3);
-                var a4 = Helper.ConvertTo(p4, t4);
-                var a5 = Helper.ConvertTo(p5, t5);
-                var a6 = Helper.ConvertTo(p6, t6);
-                var a7 = Helper.ConvertTo(p7, t7);
+                var a1 = StoryScript.Converter.CastTo(t1, p1);;
+                var a2 = StoryScript.Converter.CastTo(t2, p2);;
+                var a3 = StoryScript.Converter.CastTo(t3, p3);;
+                var a4 = StoryScript.Converter.CastTo(t4, p4);;
+                var a5 = StoryScript.Converter.CastTo(t5, p5);
+                var a6 = StoryScript.Converter.CastTo(t6, p6);
+                var a7 = StoryScript.Converter.CastTo(t7, p7);
                 action(a1, a2, a3, a4, a5, a6, a7);
             });
         }
         private Delegate BuildDelegate(Type t1, Type t2, Type t3, Type t4, Type t5, Type t6, Type t7, Type t8, MyAction<object, object, object, object, object, object, object, object> action)
         {
             return (MyAction<object, object, object, object, object, object, object, object>)((object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8) => {
-                var a1 = Helper.ConvertTo(p1, t1);
-                var a2 = Helper.ConvertTo(p2, t2);
-                var a3 = Helper.ConvertTo(p3, t3);
-                var a4 = Helper.ConvertTo(p4, t4);
-                var a5 = Helper.ConvertTo(p5, t5);
-                var a6 = Helper.ConvertTo(p6, t6);
-                var a7 = Helper.ConvertTo(p7, t7);
-                var a8 = Helper.ConvertTo(p8, t8);
+                var a1 = StoryScript.Converter.CastTo(t1, p1);;
+                var a2 = StoryScript.Converter.CastTo(t2, p2);;
+                var a3 = StoryScript.Converter.CastTo(t3, p3);;
+                var a4 = StoryScript.Converter.CastTo(t4, p4);;
+                var a5 = StoryScript.Converter.CastTo(t5, p5);
+                var a6 = StoryScript.Converter.CastTo(t6, p6);
+                var a7 = StoryScript.Converter.CastTo(t7, p7);
+                var a8 = StoryScript.Converter.CastTo(t8, p8);
                 action(a1, a2, a3, a4, a5, a6, a7, a8);
             });
         }
         private Delegate BuildDelegate(Type t1, Type t2, Type t3, Type t4, Type t5, Type t6, Type t7, Type t8, Type t9, MyAction<object, object, object, object, object, object, object, object, object> action)
         {
             return (MyAction<object, object, object, object, object, object, object, object, object>)((object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8, object p9) => {
-                var a1 = Helper.ConvertTo(p1, t1);
-                var a2 = Helper.ConvertTo(p2, t2);
-                var a3 = Helper.ConvertTo(p3, t3);
-                var a4 = Helper.ConvertTo(p4, t4);
-                var a5 = Helper.ConvertTo(p5, t5);
-                var a6 = Helper.ConvertTo(p6, t6);
-                var a7 = Helper.ConvertTo(p7, t7);
-                var a8 = Helper.ConvertTo(p8, t8);
-                var a9 = Helper.ConvertTo(p9, t9);
+                var a1 = StoryScript.Converter.CastTo(t1, p1);;
+                var a2 = StoryScript.Converter.CastTo(t2, p2);;
+                var a3 = StoryScript.Converter.CastTo(t3, p3);;
+                var a4 = StoryScript.Converter.CastTo(t4, p4);;
+                var a5 = StoryScript.Converter.CastTo(t5, p5);
+                var a6 = StoryScript.Converter.CastTo(t6, p6);
+                var a7 = StoryScript.Converter.CastTo(t7, p7);
+                var a8 = StoryScript.Converter.CastTo(t8, p8);
+                var a9 = StoryScript.Converter.CastTo(t9, p9);
                 action(a1, a2, a3, a4, a5, a6, a7, a8, a9);
             });
         }
         private Delegate BuildDelegate<T1>(MyAction<T1> action)
         {
             return (MyAction<object>)((object p1) => {
-                var a1 = (T1)Helper.ConvertTo(p1, typeof(T1));
+                var a1 = (T1)StoryScript.Converter.CastTo(typeof(T1), p1);
                 action(a1);
             });
         }
         private Delegate BuildDelegate<T1,T2>(MyAction<T1,T2> action)
         {
             return (MyAction<object,object>)((object p1,object p2) => {
-                var a1 = (T1)Helper.ConvertTo(p1, typeof(T1));
-                var a2 = (T2)Helper.ConvertTo(p2, typeof(T2));
+                var a1 = (T1)StoryScript.Converter.CastTo(typeof(T1), p1);
+                var a2 = (T2)StoryScript.Converter.CastTo(typeof(T2), p2);
                 action(a1,a2);
             });
         }
         private Delegate BuildDelegate<T1, T2, T3>(MyAction<T1, T2, T3> action)
         {
             return (MyAction<object, object, object>)((object p1, object p2, object p3) => {
-                var a1 = (T1)Helper.ConvertTo(p1, typeof(T1));
-                var a2 = (T2)Helper.ConvertTo(p2, typeof(T2));
-                var a3 = (T3)Helper.ConvertTo(p3, typeof(T3));
+                var a1 = (T1)StoryScript.Converter.CastTo(typeof(T1), p1);
+                var a2 = (T2)StoryScript.Converter.CastTo(typeof(T2), p2);
+                var a3 = (T3)StoryScript.Converter.CastTo(typeof(T3), p3);
                 action(a1, a2, a3);
             });
         }
         private Delegate BuildDelegate<T1, T2, T3, T4>(MyAction<T1, T2, T3, T4> action)
         {
             return (MyAction<object, object, object, object>)((object p1, object p2, object p3, object p4) => {
-                var a1 = (T1)Helper.ConvertTo(p1, typeof(T1));
-                var a2 = (T2)Helper.ConvertTo(p2, typeof(T2));
-                var a3 = (T3)Helper.ConvertTo(p3, typeof(T3));
-                var a4 = (T4)Helper.ConvertTo(p4, typeof(T4));
+                var a1 = (T1)StoryScript.Converter.CastTo(typeof(T1), p1);
+                var a2 = (T2)StoryScript.Converter.CastTo(typeof(T2), p2);
+                var a3 = (T3)StoryScript.Converter.CastTo(typeof(T3), p3);
+                var a4 = (T4)StoryScript.Converter.CastTo(typeof(T4), p4);
                 action(a1, a2, a3, a4);
             });
         }
         private Delegate BuildDelegate<T1, T2, T3, T4, T5>(MyAction<T1, T2, T3, T4, T5> action)
         {
             return (MyAction<object, object, object, object, object>)((object p1, object p2, object p3, object p4, object p5) => {
-                var a1 = (T1)Helper.ConvertTo(p1, typeof(T1));
-                var a2 = (T2)Helper.ConvertTo(p2, typeof(T2));
-                var a3 = (T3)Helper.ConvertTo(p3, typeof(T3));
-                var a4 = (T4)Helper.ConvertTo(p4, typeof(T4));
-                var a5 = (T5)Helper.ConvertTo(p5, typeof(T5));
+                var a1 = (T1)StoryScript.Converter.CastTo(typeof(T1), p1);
+                var a2 = (T2)StoryScript.Converter.CastTo(typeof(T2), p2);
+                var a3 = (T3)StoryScript.Converter.CastTo(typeof(T3), p3);
+                var a4 = (T4)StoryScript.Converter.CastTo(typeof(T4), p4);
+                var a5 = (T5)StoryScript.Converter.CastTo(typeof(T5), p5);
                 action(a1, a2, a3, a4, a5);
             });
         }
         private Delegate BuildDelegate<T1, T2, T3, T4, T5, T6>(MyAction<T1, T2, T3, T4, T5, T6> action)
         {
             return (MyAction<object, object, object, object, object, object>)((object p1, object p2, object p3, object p4, object p5, object p6) => {
-                var a1 = (T1)Helper.ConvertTo(p1, typeof(T1));
-                var a2 = (T2)Helper.ConvertTo(p2, typeof(T2));
-                var a3 = (T3)Helper.ConvertTo(p3, typeof(T3));
-                var a4 = (T4)Helper.ConvertTo(p4, typeof(T4));
-                var a5 = (T5)Helper.ConvertTo(p5, typeof(T5));
-                var a6 = (T6)Helper.ConvertTo(p6, typeof(T6));
+                var a1 = (T1)StoryScript.Converter.CastTo(typeof(T1), p1);
+                var a2 = (T2)StoryScript.Converter.CastTo(typeof(T2), p2);
+                var a3 = (T3)StoryScript.Converter.CastTo(typeof(T3), p3);
+                var a4 = (T4)StoryScript.Converter.CastTo(typeof(T4), p4);
+                var a5 = (T5)StoryScript.Converter.CastTo(typeof(T5), p5);
+                var a6 = (T6)StoryScript.Converter.CastTo(typeof(T6), p6);
                 action(a1, a2, a3, a4, a5, a6);
             });
         }
         private Delegate BuildDelegate<T1, T2, T3, T4, T5, T6, T7>(MyAction<T1, T2, T3, T4, T5, T6, T7> action)
         {
             return (MyAction<object, object, object, object, object, object, object>)((object p1, object p2, object p3, object p4, object p5, object p6, object p7) => {
-                var a1 = (T1)Helper.ConvertTo(p1, typeof(T1));
-                var a2 = (T2)Helper.ConvertTo(p2, typeof(T2));
-                var a3 = (T3)Helper.ConvertTo(p3, typeof(T3));
-                var a4 = (T4)Helper.ConvertTo(p4, typeof(T4));
-                var a5 = (T5)Helper.ConvertTo(p5, typeof(T5));
-                var a6 = (T6)Helper.ConvertTo(p6, typeof(T6));
-                var a7 = (T7)Helper.ConvertTo(p7, typeof(T7));
+                var a1 = (T1)StoryScript.Converter.CastTo(typeof(T1), p1);
+                var a2 = (T2)StoryScript.Converter.CastTo(typeof(T2), p2);
+                var a3 = (T3)StoryScript.Converter.CastTo(typeof(T3), p3);
+                var a4 = (T4)StoryScript.Converter.CastTo(typeof(T4), p4);
+                var a5 = (T5)StoryScript.Converter.CastTo(typeof(T5), p5);
+                var a6 = (T6)StoryScript.Converter.CastTo(typeof(T6), p6);
+                var a7 = (T7)StoryScript.Converter.CastTo(typeof(T7), p7);
                 action(a1, a2, a3, a4, a5, a6, a7);
             });
         }
         private Delegate BuildDelegate<T1, T2, T3, T4, T5, T6, T7, T8>(MyAction<T1, T2, T3, T4, T5, T6, T7, T8> action)
         {
             return (MyAction<object, object, object, object, object, object, object, object>)((object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8) => {
-                var a1 = (T1)Helper.ConvertTo(p1, typeof(T1));
-                var a2 = (T2)Helper.ConvertTo(p2, typeof(T2));
-                var a3 = (T3)Helper.ConvertTo(p3, typeof(T3));
-                var a4 = (T4)Helper.ConvertTo(p4, typeof(T4));
-                var a5 = (T5)Helper.ConvertTo(p5, typeof(T5));
-                var a6 = (T6)Helper.ConvertTo(p6, typeof(T6));
-                var a7 = (T7)Helper.ConvertTo(p7, typeof(T7));
-                var a8 = (T8)Helper.ConvertTo(p8, typeof(T8));
+                var a1 = (T1)StoryScript.Converter.CastTo(typeof(T1), p1);
+                var a2 = (T2)StoryScript.Converter.CastTo(typeof(T2), p2);
+                var a3 = (T3)StoryScript.Converter.CastTo(typeof(T3), p3);
+                var a4 = (T4)StoryScript.Converter.CastTo(typeof(T4), p4);
+                var a5 = (T5)StoryScript.Converter.CastTo(typeof(T5), p5);
+                var a6 = (T6)StoryScript.Converter.CastTo(typeof(T6), p6);
+                var a7 = (T7)StoryScript.Converter.CastTo(typeof(T7), p7);
+                var a8 = (T8)StoryScript.Converter.CastTo(typeof(T8), p8);
                 action(a1, a2, a3, a4, a5, a6, a7, a8);
             });
         }
         private Delegate BuildDelegate<T1, T2, T3, T4, T5, T6, T7, T8, T9>(MyAction<T1, T2, T3, T4, T5, T6, T7, T8, T9> action)
         {
             return (MyAction<object, object, object, object, object, object, object, object, object>)((object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8, object p9) => {
-                var a1 = (T1)Helper.ConvertTo(p1, typeof(T1));
-                var a2 = (T2)Helper.ConvertTo(p2, typeof(T2));
-                var a3 = (T3)Helper.ConvertTo(p3, typeof(T3));
-                var a4 = (T4)Helper.ConvertTo(p4, typeof(T4));
-                var a5 = (T5)Helper.ConvertTo(p5, typeof(T5));
-                var a6 = (T6)Helper.ConvertTo(p6, typeof(T6));
-                var a7 = (T7)Helper.ConvertTo(p7, typeof(T7));
-                var a8 = (T8)Helper.ConvertTo(p8, typeof(T8));
-                var a9 = (T9)Helper.ConvertTo(p9, typeof(T9));
+                var a1 = (T1)StoryScript.Converter.CastTo(typeof(T1), p1);
+                var a2 = (T2)StoryScript.Converter.CastTo(typeof(T2), p2);
+                var a3 = (T3)StoryScript.Converter.CastTo(typeof(T3), p3);
+                var a4 = (T4)StoryScript.Converter.CastTo(typeof(T4), p4);
+                var a5 = (T5)StoryScript.Converter.CastTo(typeof(T5), p5);
+                var a6 = (T6)StoryScript.Converter.CastTo(typeof(T6), p6);
+                var a7 = (T7)StoryScript.Converter.CastTo(typeof(T7), p7);
+                var a8 = (T8)StoryScript.Converter.CastTo(typeof(T8), p8);
+                var a9 = (T9)StoryScript.Converter.CastTo(typeof(T9), p9);
                 action(a1, a2, a3, a4, a5, a6, a7, a8,a9);
             });
         }

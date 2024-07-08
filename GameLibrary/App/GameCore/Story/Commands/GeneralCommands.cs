@@ -556,7 +556,7 @@ namespace GameLibrary.Story.Commands
         protected override bool ExecCommand(StoryInstance instance, StoryMessageHandler handler, long delta)
         {
             if (m_StartTime <= 0) {
-                long startTime = GameLibrary.TimeUtility.GetLocalMilliseconds();
+                long startTime = TimeUtility.GetLocalMilliseconds();
                 m_StartTime = startTime;
             }
             bool triggered = false;

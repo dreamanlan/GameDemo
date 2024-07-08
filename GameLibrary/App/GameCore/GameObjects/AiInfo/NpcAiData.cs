@@ -65,7 +65,7 @@ namespace GameLibrary
         }
         internal bool WaitManualOperation()
         {
-            return m_LastManualOperationTime + m_WaitManualOperationTime > TimeUtility.GetLocalMilliseconds();
+            return m_LastManualOperationTime + m_WaitManualOperationTime > StoryScript.TimeUtility.GetLocalMilliseconds();
         }
 
         private int m_LockTargetId = 0;
