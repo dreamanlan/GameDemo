@@ -45,6 +45,7 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+.vs
 
 GameLibrary/App/GameKernel/bin
 GameLibrary/App/GameKernel/obj
@@ -75,6 +76,7 @@ Unity3dProject/Assets/Plugins/game/*.pdb
 Unity3dProject/Library
 Unity3dProject/obj
 Unity3dProject/Temp
+Unity3dProject/Logs
 Unity3dProject/*.csproj
 Unity3dProject/*.sln
 Unity3dProject/*.suo
