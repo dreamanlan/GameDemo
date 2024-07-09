@@ -20,7 +20,7 @@ using GameLibrary.GmCommands;
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN
 #region interpreter
 #pragma warning disable 8600,8601,8602,8603,8604,8618,8619,8620,8625
-namespace DslExpression
+namespace StoryScript.DslExpression
 {
     internal class AssetPath2GUIDExp : SimpleExpressionBase
     {
