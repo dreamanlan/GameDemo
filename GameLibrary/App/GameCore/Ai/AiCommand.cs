@@ -45,7 +45,7 @@ internal static class AiCommand
         if (null != npcView)
             npcView.StopMove();
     }
-    public static void AiSendStoryMessage(EntityInfo npc, string msgId, BoxedValueList args)
+    public static void AiSendStoryMessage(EntityInfo npc, string msgId, StoryScript.BoxedValueList args)
     {
         ClientStorySystem.Instance.SendMessage(msgId, args);
     }

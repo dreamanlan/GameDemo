@@ -10,10 +10,11 @@ using System.Security.Cryptography;
 using System.Runtime.InteropServices;
 using System.Linq;
 using UnityEngine;
+using StoryScript;
 
 #region interpreter
 #pragma warning disable 8600,8601,8602,8603,8604,8618,8619,8620,8625
-namespace DslExpression
+namespace StoryScript.DslExpression
 {
     public class BoxedValueListPool
     {
@@ -5306,7 +5307,7 @@ namespace DslExpression
             return BoxedValue.NullObject;
         }
     }
-    internal class DirectoryExistExp : SimpleExpressionBase
+    internal sealed class DirectoryExistExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -5319,7 +5320,7 @@ namespace DslExpression
             return ret;
         }
     }
-    internal class FileExistExp : SimpleExpressionBase
+    internal sealed class FileExistExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -5332,7 +5333,7 @@ namespace DslExpression
             return ret;
         }
     }
-    internal class ListDirectoriesExp : SimpleExpressionBase
+    internal sealed class ListDirectoriesExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -5373,7 +5374,7 @@ namespace DslExpression
             return ret;
         }
     }
-    internal class ListFilesExp : SimpleExpressionBase
+    internal sealed class ListFilesExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -5414,7 +5415,7 @@ namespace DslExpression
             return ret;
         }
     }
-    internal class ListAllDirectoriesExp : SimpleExpressionBase
+    internal sealed class ListAllDirectoriesExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -5455,7 +5456,7 @@ namespace DslExpression
             return ret;
         }
     }
-    internal class ListAllFilesExp : SimpleExpressionBase
+    internal sealed class ListAllFilesExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -5496,7 +5497,7 @@ namespace DslExpression
             return ret;
         }
     }
-    internal class CreateDirectoryExp : SimpleExpressionBase
+    internal sealed class CreateDirectoryExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -5513,7 +5514,7 @@ namespace DslExpression
             return ret;
         }
     }
-    internal class CopyDirectoryExp : SimpleExpressionBase
+    internal sealed class CopyDirectoryExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -5588,7 +5589,7 @@ namespace DslExpression
             }
         }
     }
-    internal class MoveDirectoryExp : SimpleExpressionBase
+    internal sealed class MoveDirectoryExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -5610,7 +5611,7 @@ namespace DslExpression
             return ret;
         }
     }
-    internal class DeleteDirectoryExp : SimpleExpressionBase
+    internal sealed class DeleteDirectoryExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -5627,7 +5628,7 @@ namespace DslExpression
             return ret;
         }
     }
-    internal class CopyFileExp : SimpleExpressionBase
+    internal sealed class CopyFileExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -5650,7 +5651,7 @@ namespace DslExpression
             return ret;
         }
     }
-    internal class CopyFilesExp : SimpleExpressionBase
+    internal sealed class CopyFilesExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -5710,7 +5711,7 @@ namespace DslExpression
             }
         }
     }
-    internal class MoveFileExp : SimpleExpressionBase
+    internal sealed class MoveFileExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -5736,7 +5737,7 @@ namespace DslExpression
             return ret;
         }
     }
-    internal class DeleteFileExp : SimpleExpressionBase
+    internal sealed class DeleteFileExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -5753,7 +5754,7 @@ namespace DslExpression
             return ret;
         }
     }
-    internal class DeleteFilesExp : SimpleExpressionBase
+    internal sealed class DeleteFilesExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -5794,7 +5795,7 @@ namespace DslExpression
             return ct;
         }
     }
-    internal class DeleteAllFilesExp : SimpleExpressionBase
+    internal sealed class DeleteAllFilesExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -5835,7 +5836,7 @@ namespace DslExpression
             return ct;
         }
     }
-    internal class GetFileInfoExp : SimpleExpressionBase
+    internal sealed class GetFileInfoExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -5850,7 +5851,7 @@ namespace DslExpression
             return ret;
         }
     }
-    internal class GetDirectoryInfoExp : SimpleExpressionBase
+    internal sealed class GetDirectoryInfoExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -5865,7 +5866,7 @@ namespace DslExpression
             return ret;
         }
     }
-    internal class GetDriveInfoExp : SimpleExpressionBase
+    internal sealed class GetDriveInfoExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -5877,7 +5878,7 @@ namespace DslExpression
             return ret;
         }
     }
-    internal class GetDrivesInfoExp : SimpleExpressionBase
+    internal sealed class GetDrivesInfoExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -5885,7 +5886,7 @@ namespace DslExpression
             return BoxedValue.FromObject(ret);
         }
     }
-    internal class ReadAllLinesExp : SimpleExpressionBase
+    internal sealed class ReadAllLinesExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -5904,7 +5905,7 @@ namespace DslExpression
             return BoxedValue.FromObject(new string[0]);
         }
     }
-    internal class WriteAllLinesExp : SimpleExpressionBase
+    internal sealed class WriteAllLinesExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -5929,7 +5930,7 @@ namespace DslExpression
             return false;
         }
     }
-    internal class ReadAllTextExp : SimpleExpressionBase
+    internal sealed class ReadAllTextExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -5948,7 +5949,7 @@ namespace DslExpression
             return BoxedValue.NullObject;
         }
     }
-    internal class WriteAllTextExp : SimpleExpressionBase
+    internal sealed class WriteAllTextExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -5969,7 +5970,7 @@ namespace DslExpression
             return false;
         }
     }
-    internal class CommandExp : AbstractExpression
+    internal sealed class CommandExp : AbstractExpression
     {
         protected override BoxedValue DoCalc()
         {
@@ -6042,7 +6043,7 @@ namespace DslExpression
                                 cmd.m_ErrorOptArg = opt;
                             }
                             else {
-                                Debug.LogWarningFormat("[syntax error] {0} line:{1}", cd.ToScriptString(false), cd.GetLine());
+                                Calculator.Log("[syntax error] {0} line:{1}", cd.ToScriptString(false), cd.GetLine());
                             }
                         }
                         else if (num >= 1) {
@@ -6100,15 +6101,15 @@ namespace DslExpression
                                 cmd.m_Encoding = exp;
                             }
                             else {
-                                Debug.LogWarningFormat("[syntax error] {0} line:{1}", cd.ToScriptString(false), cd.GetLine());
+                                Calculator.Log("[syntax error] {0} line:{1}", cd.ToScriptString(false), cd.GetLine());
                             }
                         }
                         else {
-                            Debug.LogWarningFormat("[syntax error] {0} line:{1}", cd.ToScriptString(false), cd.GetLine());
+                            Calculator.Log("[syntax error] {0} line:{1}", cd.ToScriptString(false), cd.GetLine());
                         }
                     }
                     else {
-                        Debug.LogErrorFormat("[syntax error] {0} line:{1}", comp.ToScriptString(false), comp.GetLine());
+                        Calculator.Log("[syntax error] {0} line:{1}", comp.ToScriptString(false), comp.GetLine());
                     }
                 }
             }
@@ -6117,8 +6118,15 @@ namespace DslExpression
         protected override bool Load(Dsl.StatementData statementData)
         {
             for (int i = 0; i < statementData.GetFunctionNum(); ++i) {
-                var funcData = statementData.GetFunction(i).AsFunction;
-                Load(funcData);
+                var func = statementData.GetFunction(i);
+                var vd = func.AsValue;
+                if (null != vd) {
+                    Load(vd);
+                }
+                else {
+                    var fd = func.AsFunction;
+                    Load(fd);
+                }
             }
             return true;
         }
@@ -6143,17 +6151,17 @@ namespace DslExpression
                     }
                 }
                 else {
-                    Debug.LogErrorFormat("[syntax error] {0} line:{1}", callData.ToScriptString(false), callData.GetLine());
+                    Calculator.Log("[syntax error] {0} line:{1}", callData.ToScriptString(false), callData.GetLine());
                 }
             }
             else if (id == "command") {
                 int num = callData.GetParamNum();
                 if (num > 0) {
-                    Debug.LogErrorFormat("[syntax error] {0} line:{1}", callData.ToScriptString(false), callData.GetLine());
+                    Calculator.Log("[syntax error] {0} line:{1}", callData.ToScriptString(false), callData.GetLine());
                 }
             }
             else {
-                Debug.LogErrorFormat("[syntax error] {0} line:{1}", callData.ToScriptString(false), callData.GetLine());
+                Calculator.Log("[syntax error] {0} line:{1}", callData.ToScriptString(false), callData.GetLine());
             }
             return true;
         }
@@ -6571,7 +6579,7 @@ namespace DslExpression
 
         private List<CommandConfig> m_CommandConfigs = new List<CommandConfig>();
     }
-    internal class KillExp : SimpleExpressionBase
+    internal sealed class KillExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -6612,7 +6620,7 @@ namespace DslExpression
             return BoxedValue.From(ret);
         }
     }
-    internal class KillMeExp : SimpleExpressionBase
+    internal sealed class KillMeExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -6630,7 +6638,7 @@ namespace DslExpression
             return ret;
         }
     }
-    internal class GetCurrentProcessIdExp : SimpleExpressionBase
+    internal sealed class GetCurrentProcessIdExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -6642,7 +6650,7 @@ namespace DslExpression
             return ret;
         }
     }
-    internal class ListProcessesExp : SimpleExpressionBase
+    internal sealed class ListProcessesExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -6673,10 +6681,9 @@ namespace DslExpression
                 ret = ps;
             }
             return BoxedValue.FromObject(ret);
-
         }
     }
-    internal class WaitExp : SimpleExpressionBase
+    internal sealed class WaitExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -6689,7 +6696,7 @@ namespace DslExpression
             return ret;
         }
     }
-    internal class WaitAllExp : SimpleExpressionBase
+    internal sealed class WaitAllExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -6707,7 +6714,7 @@ namespace DslExpression
             return BoxedValue.FromObject(results);
         }
     }
-    internal class WaitStartIntervalExp : SimpleExpressionBase
+    internal sealed class WaitStartIntervalExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -7850,7 +7857,7 @@ namespace DslExpression
             {
                 return s_Pool.Alloc();
             }
-            private static StoryScript.SimpleObjectPool<StackInfo> s_Pool = new StoryScript.SimpleObjectPool<StackInfo>();
+            private static SimpleObjectPool<StackInfo> s_Pool = new SimpleObjectPool<StackInfo>();
         }
 
         private bool m_Inited = false;
@@ -7890,7 +7897,7 @@ namespace DslExpression
         }
         private static int NewProcessTask(string fileName, string args, ProcessStartOption option, Stream istream, Stream ostream, IList<string> input, StringBuilder output, StringBuilder error, bool redirectToConsole, Encoding encoding)
         {
-            //For cross-platform compatibility, process-specific environment variables are not used
+            //Considering cross-platform compatibility, do not use specific process environment variables.
             try {
                 System.Diagnostics.Process p = new System.Diagnostics.Process();
                 var psi = p.StartInfo;
@@ -7900,23 +7907,25 @@ namespace DslExpression
                 if (null != option.Verb) {
                     psi.Verb = option.Verb;
                 }
-                if (null != option.Domain) {
-                    psi.Domain = option.Domain;
-                }
                 if (null != option.UserName) {
                     psi.UserName = option.UserName;
                 }
-                if (null != option.Password) {
-                    unsafe {
-                        fixed (char* pchar = option.Password.ToCharArray()) {
-                            psi.Password = new System.Security.SecureString(pchar, option.Password.Length);
+                if (Environment.OSVersion.Platform == PlatformID.Win32NT) {
+                    if (null != option.Domain) {
+                        psi.Domain = option.Domain;
+                    }
+                    if (null != option.Password) {
+                        unsafe {
+                            fixed (char* pchar = option.Password.ToCharArray()) {
+                                psi.Password = new System.Security.SecureString(pchar, option.Password.Length);
+                            }
                         }
                     }
+                    if (null != option.PasswordInClearText) {
+                        psi.PasswordInClearText = option.PasswordInClearText;
+                    }
+                    psi.LoadUserProfile = option.LoadUserProfile;
                 }
-                if (null != option.PasswordInClearText) {
-                    psi.PasswordInClearText = option.PasswordInClearText;
-                }
-                psi.LoadUserProfile = option.LoadUserProfile;
                 psi.WindowStyle = option.WindowStyle;
                 psi.CreateNoWindow = !option.NewWindow;
                 psi.ErrorDialog = option.ErrorDialog;
@@ -8032,7 +8041,7 @@ namespace DslExpression
             }
         }
 
-        internal class ProcessStartOption
+        internal sealed class ProcessStartOption
         {
             internal bool UseShellExecute = false;
             internal string Verb = null;
@@ -8046,6 +8055,7 @@ namespace DslExpression
             internal bool ErrorDialog = false;
             internal string WorkingDirectory = Environment.CurrentDirectory;
         }
+
         private static List<Task<int>> s_Tasks = new List<Task<int>>();
         private static int s_CheckStartInterval = 500;
     }
