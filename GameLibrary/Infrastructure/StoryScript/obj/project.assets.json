@@ -1,11 +1,11 @@
 {
   "version": 3,
   "targets": {
-    ".NETFramework,Version=v4.7.2": {}
+    ".NETStandard,Version=v2.1": {}
   },
   "libraries": {},
   "projectFileDependencyGroups": {
-    ".NETFramework,Version=v4.7.2": []
+    ".NETStandard,Version=v2.1": []
   },
   "packageFolders": {
     "C:\\Users\\dreamanlan\\.nuget\\packages\\": {},
@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript_dotnet_framework.csproj",
+      "projectUniqueName": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript.csproj",
       "projectName": "StoryScript",
-      "projectPath": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript_dotnet_framework.csproj",
+      "projectPath": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript.csproj",
       "packagesPath": "C:\\Users\\dreamanlan\\.nuget\\packages\\",
       "outputPath": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\obj\\",
       "projectStyle": "PackageReference",
@@ -29,15 +29,15 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net472"
+        "netstandard2.1"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net472": {
-          "targetAlias": "net472",
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
           "projectReferences": {}
         }
       },
@@ -53,8 +53,24 @@
       }
     },
     "frameworks": {
-      "net472": {
-        "targetAlias": "net472",
+      "netstandard2.1": {
+        "targetAlias": "netstandard2.1",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "NETStandard.Library": {
+            "privateAssets": "all"
+          }
+        },
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
       }
     }
