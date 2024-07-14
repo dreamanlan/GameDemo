@@ -50,7 +50,7 @@ namespace StoryScript.CommonCommands
                         Type t = obj as Type;
                         if (null != t) {
                             try {
-                                BindingFlags flags = BindingFlags.Static | BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.NonPublic;
+                                BindingFlags flags = BindingFlags.Static | BindingFlags.InvokeMethod | BindingFlags.FlattenHierarchy | BindingFlags.Public | BindingFlags.NonPublic;
                                 Converter.CastArgsForCall(t, method, flags, args);
                                 t.InvokeMember(method, flags, null, null, args);
                             } catch (Exception ex) {
@@ -60,7 +60,7 @@ namespace StoryScript.CommonCommands
                             t = obj.GetType();
                             if (null != t) {
                                 try {
-                                    BindingFlags flags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.NonPublic;
+                                    BindingFlags flags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.InvokeMethod | BindingFlags.FlattenHierarchy | BindingFlags.Public | BindingFlags.NonPublic;
                                     Converter.CastArgsForCall(t, method, flags, args);
                                     t.InvokeMember(method, flags, null, obj, args);
                                 } catch (Exception ex) {
@@ -127,13 +127,13 @@ namespace StoryScript.CommonCommands
             if (null != obj) {
                 if (null != method) {
                     IDictionary dict = obj as IDictionary;
-                    if (null != dict && null == obj.GetType().GetMethod(method, BindingFlags.Instance | BindingFlags.Static | BindingFlags.SetField | BindingFlags.SetProperty | BindingFlags.Public | BindingFlags.NonPublic)) {
+                    if (null != dict && null == obj.GetType().GetMethod(method, BindingFlags.Instance | BindingFlags.Static | BindingFlags.SetField | BindingFlags.SetProperty | BindingFlags.FlattenHierarchy | BindingFlags.Public | BindingFlags.NonPublic)) {
                         dict[method] = args[0];
                     } else {
                         Type t = obj as Type;
                         if (null != t) {
                             try {
-                                BindingFlags flags = BindingFlags.Static | BindingFlags.SetField | BindingFlags.SetProperty | BindingFlags.Public | BindingFlags.NonPublic;
+                                BindingFlags flags = BindingFlags.Static | BindingFlags.SetField | BindingFlags.SetProperty | BindingFlags.FlattenHierarchy | BindingFlags.Public | BindingFlags.NonPublic;
                                 Converter.CastArgsForSet(t, method, flags, args);
                                 t.InvokeMember(method, flags, null, null, args);
                             } catch (Exception ex) {
@@ -143,7 +143,7 @@ namespace StoryScript.CommonCommands
                             t = obj.GetType();
                             if (null != t) {
                                 try {
-                                    BindingFlags flags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.SetField | BindingFlags.SetProperty | BindingFlags.Public | BindingFlags.NonPublic;
+                                    BindingFlags flags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.SetField | BindingFlags.SetProperty | BindingFlags.FlattenHierarchy | BindingFlags.Public | BindingFlags.NonPublic;
                                     Converter.CastArgsForSet(t, method, flags, args);
                                     t.InvokeMember(method, flags, null, obj, args);
                                 } catch (Exception ex) {
