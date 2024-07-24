@@ -7864,7 +7864,7 @@ namespace StoryScript.DslExpression
         private SortedList<string, string> m_ApiDocs = new SortedList<string, string>();
         private BoxedValueListPool m_Pool = new BoxedValueListPool(16);
         private List<FunctionCall> m_FuncCalls = new List<FunctionCall>();
-		
+
         internal static int CheckStartInterval
         {
             get { return s_CheckStartInterval; }
@@ -7873,6 +7873,16 @@ namespace StoryScript.DslExpression
         internal static List<Task<int>> Tasks
         {
             get { return s_Tasks; }
+        }
+        public static void CleanupCompletedTasks()
+        {
+            for (int ix = s_Tasks.Count - 1; ix >= 0; --ix) {
+                var task = s_Tasks[ix];
+                if (task.IsCompleted) {
+                    s_Tasks.RemoveAt(ix);
+                    task.Dispose();
+                }
+            }
         }
         internal static int NewProcess(bool noWait, string fileName, string args, ProcessStartOption option, Stream istream, Stream ostream, IList<string> input, StringBuilder output, StringBuilder error, bool redirectToConsole, Encoding encoding)
         {
