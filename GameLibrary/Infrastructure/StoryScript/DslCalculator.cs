@@ -6721,8 +6721,15 @@ namespace StoryScript.DslExpression
             return DslCalculator.CheckStartInterval;
         }
     }
-
-    internal class CalcMd5Exp : SimpleExpressionBase
+    internal sealed class CleanupCompletedTasksExp : SimpleExpressionBase
+    {
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        {
+            DslCalculator.CleanupCompletedTasks();
+            return BoxedValue.NullObject;
+        }
+    }
+    internal sealed class CalcMd5Exp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -7041,6 +7048,7 @@ namespace StoryScript.DslExpression
             Register("wait", "wait(time) api", new ExpressionFactoryHelper<WaitExp>());
             Register("waitall", "waitall([timeout]) api, wait all task to exit", new ExpressionFactoryHelper<WaitAllExp>());
             Register("waitstartinterval", "waitstartinterval(time) or waitstartinterval() api, used in Task.Wait for process/command", new ExpressionFactoryHelper<WaitStartIntervalExp>());
+            Register("cleanupcompletedtasks", "cleanupcompletedtasks() api", new ExpressionFactoryHelper<CleanupCompletedTasksExp>());
             Register("calcmd5", "calcmd5(file) api", new ExpressionFactoryHelper<CalcMd5Exp>());
         }
         public void Register(string name, string doc, IExpressionFactory factory)
@@ -7865,12 +7873,12 @@ namespace StoryScript.DslExpression
         private BoxedValueListPool m_Pool = new BoxedValueListPool(16);
         private List<FunctionCall> m_FuncCalls = new List<FunctionCall>();
 
-        internal static int CheckStartInterval
+        public static int CheckStartInterval
         {
             get { return s_CheckStartInterval; }
             set { s_CheckStartInterval = value; }
         }
-        internal static List<Task<int>> Tasks
+        public static List<Task<int>> Tasks
         {
             get { return s_Tasks; }
         }
