@@ -6729,6 +6729,13 @@ namespace StoryScript.DslExpression
             return BoxedValue.NullObject;
         }
     }
+    internal sealed class GetTaskCountExp : SimpleExpressionBase
+    {
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        {
+            return DslCalculator.Tasks.Count;
+        }
+    }
     internal sealed class CalcMd5Exp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
@@ -7049,6 +7056,7 @@ namespace StoryScript.DslExpression
             Register("waitall", "waitall([timeout]) api, wait all task to exit", new ExpressionFactoryHelper<WaitAllExp>());
             Register("waitstartinterval", "waitstartinterval(time) or waitstartinterval() api, used in Task.Wait for process/command", new ExpressionFactoryHelper<WaitStartIntervalExp>());
             Register("cleanupcompletedtasks", "cleanupcompletedtasks() api", new ExpressionFactoryHelper<CleanupCompletedTasksExp>());
+            Register("gettaskcount", "gettaskcount() api", new ExpressionFactoryHelper<GetTaskCountExp>());
             Register("calcmd5", "calcmd5(file) api", new ExpressionFactoryHelper<CalcMd5Exp>());
         }
         public void Register(string name, string doc, IExpressionFactory factory)
