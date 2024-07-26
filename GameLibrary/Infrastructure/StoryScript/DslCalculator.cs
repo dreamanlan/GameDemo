@@ -14,6 +14,16 @@ using StoryScript;
 
 #region interpreter
 #pragma warning disable 8600,8601,8602,8603,8604,8618,8619,8620,8625
+namespace StoryScript
+{
+    public interface IObjectDispatch
+    {
+        int GetDispatchId(string name);
+        BoxedValue GetProperty(int dispId);
+        void SetProperty(int dispId, BoxedValue val);
+        BoxedValue InvokeMethod(int dispId, List<BoxedValue> args);
+    }
+}
 namespace StoryScript.DslExpression
 {
     public class BoxedValueListPool
@@ -41,13 +51,6 @@ namespace StoryScript.DslExpression
         }
 
         private Queue<List<BoxedValue>> m_Pool = null;
-    }
-    public interface IObjectDispatch
-    {
-        int GetDispatchId(string name);
-        BoxedValue GetProperty(int dispId);
-        void SetProperty(int dispId, BoxedValue val);
-        BoxedValue InvokeMethod(int dispId, List<BoxedValue> args);
     }
     public interface IExpression
     {
@@ -1242,7 +1245,7 @@ namespace StoryScript.DslExpression
 
         private IExpression m_Op1;
     }
-    internal sealed class CeilExp : AbstractExpression
+    internal sealed class CeilingExp : AbstractExpression
     {
         protected override BoxedValue DoCalc()
         {
@@ -1290,7 +1293,7 @@ namespace StoryScript.DslExpression
 
         private IExpression m_Op1;
     }
-    internal sealed class CeilToIntExp : AbstractExpression
+    internal sealed class CeilingToIntExp : AbstractExpression
     {
         protected override BoxedValue DoCalc()
         {
@@ -3656,6 +3659,29 @@ namespace StoryScript.DslExpression
             return r;
         }
     }
+    internal class SubstringExp : SimpleExpressionBase
+    {
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        {
+            BoxedValue r = BoxedValue.NullObject;
+            if (operands.Count >= 1) {
+                string str = operands[0].GetString();
+                if (null != str) {
+                    int start = 0;
+                    int len = str.Length;
+                    if (operands.Count >= 2) {
+                        start = operands[1].GetInt();
+                        len -= start;
+                    }
+                    if (operands.Count >= 3) {
+                        len = operands[2].GetInt();
+                    }
+                    r = str.Substring(start, len);
+                }
+            }
+            return r;
+        }
+    }
     internal class NewStringBuilderExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
@@ -3690,7 +3716,7 @@ namespace StoryScript.DslExpression
             return r;
         }
     }
-    internal class AppendLineFormatExp : SimpleExpressionBase
+    internal class AppendFormatLineExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
@@ -3760,7 +3786,7 @@ namespace StoryScript.DslExpression
             if (operands.Count >= 2) {
                 var str = operands[0].AsString;
                 var seps = operands[1].As<IList>();
-                if (!string.IsNullOrEmpty(str) && null != seps) {
+                if (null != str && null != seps) {
                     char[] cs = new char[seps.Count];
                     for (int i = 0; i < seps.Count; ++i) {
                         string sep = seps[i].ToString();
@@ -6844,10 +6870,10 @@ namespace StoryScript.DslExpression
             Register("log2", "log2(v) api", new ExpressionFactoryHelper<Log2Exp>());
             Register("log10", "log10(v) api", new ExpressionFactoryHelper<Log10Exp>());
             Register("floor", "floor(v) api", new ExpressionFactoryHelper<FloorExp>());
-            Register("ceil", "ceil(v) api", new ExpressionFactoryHelper<CeilExp>());
+            Register("ceiling", "ceiling(v) api", new ExpressionFactoryHelper<CeilingExp>());
             Register("round", "round(v) api", new ExpressionFactoryHelper<RoundExp>());
             Register("floortoint", "floortoint(v) api", new ExpressionFactoryHelper<FloorToIntExp>());
-            Register("ceiltoint", "ceiltoint(v) api", new ExpressionFactoryHelper<CeilToIntExp>());
+            Register("ceilingtoint", "ceilingtoint(v) api", new ExpressionFactoryHelper<CeilingToIntExp>());
             Register("roundtoint", "roundtoint(v) api", new ExpressionFactoryHelper<RoundToIntExp>());
             Register("bool", "bool(v) api", new ExpressionFactoryHelper<BoolExp>());
             Register("sbyte", "sbyte(v) api", new ExpressionFactoryHelper<SByteExp>());
@@ -6870,7 +6896,7 @@ namespace StoryScript.DslExpression
             Register("ltod", "ltod(v) api", new ExpressionFactoryHelper<LtodExp>());
             Register("dtou", "dtou(v) api", new ExpressionFactoryHelper<DtouExp>());
             Register("utod", "utod(v) api", new ExpressionFactoryHelper<UtodExp>());
-            Register("lerp", "lerp(v) api", new ExpressionFactoryHelper<LerpExp>());
+            Register("lerp", "lerp(a,b,t) api", new ExpressionFactoryHelper<LerpExp>());
             Register("lerpunclamped", "lerpunclamped(a,b,t) api", new ExpressionFactoryHelper<LerpUnclampedExp>());
             Register("lerpangle", "lerpangle(a,b,t) api", new ExpressionFactoryHelper<LerpAngleExp>());
             Register("smoothstep", "smoothstep(from,to,t) api", new ExpressionFactoryHelper<SmoothStepExp>());
@@ -6919,9 +6945,10 @@ namespace StoryScript.DslExpression
             Register("getcomponents", "getcomponents(obj,type) api", new ExpressionFactoryHelper<GetComponentsExp>());
             Register("getcomponentinchildren", "getcomponentinchildren(obj,type) api", new ExpressionFactoryHelper<GetComponentInChildrenExp>());
             Register("getcomponentsinchildren", "getcomponentsinchildren(obj,type) api", new ExpressionFactoryHelper<GetComponentsInChildrenExp>());
+            Register("substring", "substring(str[,start,len]) function", new ExpressionFactoryHelper<SubstringExp>());
             Register("newstringbuilder", "newstringbuilder() api", new ExpressionFactoryHelper<NewStringBuilderExp>());
             Register("appendformat", "appendformat(sb,fmt,arg1,arg2,...) api", new ExpressionFactoryHelper<AppendFormatExp>());
-            Register("appendlineformat", "appendlineformat(sb,fmt,arg1,arg2,...) api", new ExpressionFactoryHelper<AppendLineFormatExp>());
+            Register("appendformatline", "appendformatline(sb,fmt,arg1,arg2,...) api", new ExpressionFactoryHelper<AppendFormatLineExp>());
             Register("stringbuilder_tostring", "stringbuilder_tostring(sb)", new ExpressionFactoryHelper<StringBuilderToStringExp>());
             Register("stringjoin", "stringjoin(sep,list) api", new ExpressionFactoryHelper<StringJoinExp>());
             Register("stringsplit", "stringsplit(str,sep_list) api", new ExpressionFactoryHelper<StringSplitExp>());

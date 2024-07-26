@@ -46,7 +46,7 @@ namespace StoryScript.CommonFunctions
         {
             get { return m_OptArgs; }
         }
-        public IList<StoryScript.IStoryCommand> InitialCommands
+        public IList<IStoryCommand> InitialCommands
         {
             get { return m_InitialCommands; }
         }

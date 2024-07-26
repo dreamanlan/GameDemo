@@ -5,6 +5,174 @@ using System.Reflection;
 using System.Diagnostics;
 namespace StoryScript.CommonFunctions
 {
+    public sealed class GetTypeAssemblyNameFunction : IStoryFunction
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.FunctionData callData = param as Dsl.FunctionData;
+            if (null != callData) {
+                int num = callData.GetParamNum();
+                if (num > 0) {
+                    m_Obj.InitFromDsl(callData.GetParam(0));
+                }
+            }
+        }
+        public IStoryFunction Clone()
+        {
+            GetTypeAssemblyNameFunction val = new GetTypeAssemblyNameFunction();
+            val.m_Obj = m_Obj.Clone();
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+            m_Obj.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue();
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public BoxedValue Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+
+        private void TryUpdateValue()
+        {
+            if (m_Obj.HaveValue) {
+                m_HaveValue = true;
+                var obj = m_Obj.Value.GetObject();
+                if (null != obj) {
+                    m_Value = BoxedValue.FromObject(obj.GetType().AssemblyQualifiedName);
+                }
+                else {
+                    m_Value = "(null)";
+                }
+            }
+        }
+        private IStoryFunction m_Obj = new StoryValue();
+        private bool m_HaveValue;
+        private BoxedValue m_Value;
+    }
+    public sealed class GetTypeFullNameFunction : IStoryFunction
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.FunctionData callData = param as Dsl.FunctionData;
+            if (null != callData) {
+                int num = callData.GetParamNum();
+                if (num > 0) {
+                    m_Obj.InitFromDsl(callData.GetParam(0));
+                }
+            }
+        }
+        public IStoryFunction Clone()
+        {
+            GetTypeFullNameFunction val = new GetTypeFullNameFunction();
+            val.m_Obj = m_Obj.Clone();
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+            m_Obj.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue();
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public BoxedValue Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+
+        private void TryUpdateValue()
+        {
+            if (m_Obj.HaveValue) {
+                m_HaveValue = true;
+                var obj = m_Obj.Value.GetObject();
+                if (null != obj) {
+                    m_Value = BoxedValue.FromObject(obj.GetType().FullName);
+                }
+                else {
+                    m_Value = "(null)";
+                }
+            }
+        }
+        private IStoryFunction m_Obj = new StoryValue();
+        private bool m_HaveValue;
+        private BoxedValue m_Value;
+    }
+    public sealed class GetTypeNameFunction : IStoryFunction
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.FunctionData callData = param as Dsl.FunctionData;
+            if (null != callData) {
+                int num = callData.GetParamNum();
+                if (num > 0) {
+                    m_Obj.InitFromDsl(callData.GetParam(0));
+                }
+            }
+        }
+        public IStoryFunction Clone()
+        {
+            GetTypeNameFunction val = new GetTypeNameFunction();
+            val.m_Obj = m_Obj.Clone();
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+            m_Obj.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue();
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public BoxedValue Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+
+        private void TryUpdateValue()
+        {
+            if (m_Obj.HaveValue) {
+                m_HaveValue = true;
+                var obj = m_Obj.Value.GetObject();
+                if (null != obj) {
+                    m_Value = BoxedValue.FromObject(obj.GetType().Name);
+                }
+                else {
+                    m_Value = "(null)";
+                }
+            }
+        }
+        private IStoryFunction m_Obj = new StoryValue();
+        private bool m_HaveValue;
+        private BoxedValue m_Value;
+    }
     public sealed class GetTypeFunction : IStoryFunction
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
@@ -97,7 +265,7 @@ namespace StoryScript.CommonFunctions
             for (int i = 0; i < m_Args.Count; i++) {
                 m_Args[i].Evaluate(instance, handler, iterator, args);
             }
-            TryUpdateValue();
+            TryUpdateValue(instance);
         }
         public bool HaveValue
         {
@@ -112,7 +280,7 @@ namespace StoryScript.CommonFunctions
             }
         }
 
-        private void TryUpdateValue()
+        private void TryUpdateValue(StoryInstance instance)
         {
             bool canCalc = true;
             if (!m_Object.HaveValue || !m_Method.HaveValue) {
@@ -130,46 +298,68 @@ namespace StoryScript.CommonFunctions
                 m_HaveValue = true;
                 m_Value = BoxedValue.NullObject;
                 object obj = m_Object.Value.GetObject();
+                var disp = obj as IObjectDispatch;
+                BoxedValueList dispArgs = null;
+                ArrayList arglist = null;
                 var methodObj = m_Method.Value;
                 string method = methodObj.IsString ? methodObj.StringVal : null;
-                ArrayList arglist = new ArrayList();
-                for (int i = 0; i < m_Args.Count; i++) {
-                    arglist.Add(m_Args[i].Value.GetObject());
+                if (null != disp) {
+                    dispArgs = instance.NewBoxedValueList();
+                    for (int i = 0; i < m_Args.Count; i++) {
+                        arglist.Add(m_Args[i].Value);
+                    }
                 }
-                object[] args = arglist.ToArray();
+                else {
+                    arglist = new ArrayList();
+                    for (int i = 0; i < m_Args.Count; i++) {
+                        arglist.Add(m_Args[i].Value.GetObject());
+                    }
+                }
                 if (null != obj) {
                     if (null != method) {
-                        IDictionary dict = obj as IDictionary;
-                        if (null != dict && dict.Contains(method) && dict[method] is Delegate) {
-                            var d = dict[method] as Delegate;
-                            if (null != d) {
-                                m_Value = BoxedValue.FromObject(d.DynamicInvoke(args));
+                        if (null != disp) {
+                            if (m_DispId < 0) {
+                                m_DispId = disp.GetDispatchId(method);
                             }
+                            if (m_DispId >= 0) {
+                                m_Value = disp.InvokeMethod(m_DispId, dispArgs);
+                            }
+                            instance.RecycleBoxedValueList(dispArgs);
                         }
                         else {
-                            Type t = obj as Type;
-                            if (null != t) {
-                                try {
-                                    BindingFlags flags = BindingFlags.Static | BindingFlags.InvokeMethod | BindingFlags.FlattenHierarchy | BindingFlags.Public | BindingFlags.NonPublic;
-                                    Converter.CastArgsForCall(t, method, flags, args);
-                                    m_Value = BoxedValue.FromObject(t.InvokeMember(method, flags, null, null, args));
-                                }
-                                catch (Exception ex) {
-                                    LogSystem.Warn("DotnetCall {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
-                                    m_Value = BoxedValue.NullObject;
+                            object[] args = arglist.ToArray();
+                            IDictionary dict = obj as IDictionary;
+                            if (null != dict && dict.Contains(method) && dict[method] is Delegate) {
+                                var d = dict[method] as Delegate;
+                                if (null != d) {
+                                    m_Value = BoxedValue.FromObject(d.DynamicInvoke(args));
                                 }
                             }
                             else {
-                                t = obj.GetType();
+                                Type t = obj as Type;
                                 if (null != t) {
                                     try {
-                                        BindingFlags flags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.InvokeMethod | BindingFlags.FlattenHierarchy | BindingFlags.Public | BindingFlags.NonPublic;
+                                        BindingFlags flags = BindingFlags.Static | BindingFlags.InvokeMethod | BindingFlags.FlattenHierarchy | BindingFlags.Public | BindingFlags.NonPublic;
                                         Converter.CastArgsForCall(t, method, flags, args);
-                                        m_Value = BoxedValue.FromObject(t.InvokeMember(method, flags, null, obj, args));
+                                        m_Value = BoxedValue.FromObject(t.InvokeMember(method, flags, null, null, args));
                                     }
                                     catch (Exception ex) {
                                         LogSystem.Warn("DotnetCall {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
                                         m_Value = BoxedValue.NullObject;
+                                    }
+                                }
+                                else {
+                                    t = obj.GetType();
+                                    if (null != t) {
+                                        try {
+                                            BindingFlags flags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.InvokeMethod | BindingFlags.FlattenHierarchy | BindingFlags.Public | BindingFlags.NonPublic;
+                                            Converter.CastArgsForCall(t, method, flags, args);
+                                            m_Value = BoxedValue.FromObject(t.InvokeMember(method, flags, null, obj, args));
+                                        }
+                                        catch (Exception ex) {
+                                            LogSystem.Warn("DotnetCall {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
+                                            m_Value = BoxedValue.NullObject;
+                                        }
                                     }
                                 }
                             }
@@ -183,6 +373,7 @@ namespace StoryScript.CommonFunctions
         private List<IStoryFunction> m_Args = new List<IStoryFunction>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
+        private int m_DispId = -1;
     }
     public sealed class DotnetGetFunction : IStoryFunction
     {
@@ -255,6 +446,7 @@ namespace StoryScript.CommonFunctions
                 m_HaveValue = true;
                 m_Value = BoxedValue.NullObject;
                 object obj = m_Object.Value.GetObject();
+                IObjectDispatch disp = obj as IObjectDispatch;
                 var methodObj = m_Method.Value;
                 string method = methodObj.IsString ? methodObj.StringVal : null;
                 ArrayList arglist = new ArrayList();
@@ -264,34 +456,44 @@ namespace StoryScript.CommonFunctions
                 object[] args = arglist.ToArray();
                 if (null != obj) {
                     if (null != method) {
-                        IDictionary dict = obj as IDictionary;
-                        if (null != dict && dict.Contains(method)) {
-                            m_Value = BoxedValue.FromObject(dict[method]);
+                        if (null != disp) {
+                            if (m_DispId < 0) {
+                                m_DispId = disp.GetDispatchId(method);
+                            }
+                            if (m_DispId >= 0) {
+                                m_Value = disp.GetProperty(m_DispId);
+                            }
                         }
                         else {
-                            Type t = obj as Type;
-                            if (null != t) {
-                                try {
-                                    BindingFlags flags = BindingFlags.Static | BindingFlags.GetField | BindingFlags.GetProperty | BindingFlags.FlattenHierarchy | BindingFlags.Public | BindingFlags.NonPublic;
-                                    Converter.CastArgsForGet(t, method, flags, args);
-                                    m_Value = BoxedValue.FromObject(t.InvokeMember(method, flags, null, null, args));
-                                }
-                                catch (Exception ex) {
-                                    LogSystem.Warn("DotnetGet {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
-                                    m_Value = BoxedValue.NullObject;
-                                }
+                            IDictionary dict = obj as IDictionary;
+                            if (null != dict && dict.Contains(method)) {
+                                m_Value = BoxedValue.FromObject(dict[method]);
                             }
                             else {
-                                t = obj.GetType();
+                                Type t = obj as Type;
                                 if (null != t) {
                                     try {
-                                        BindingFlags flags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.GetField | BindingFlags.GetProperty | BindingFlags.FlattenHierarchy | BindingFlags.Public | BindingFlags.NonPublic;
+                                        BindingFlags flags = BindingFlags.Static | BindingFlags.GetField | BindingFlags.GetProperty | BindingFlags.FlattenHierarchy | BindingFlags.Public | BindingFlags.NonPublic;
                                         Converter.CastArgsForGet(t, method, flags, args);
-                                        m_Value = BoxedValue.FromObject(t.InvokeMember(method, flags, null, obj, args));
+                                        m_Value = BoxedValue.FromObject(t.InvokeMember(method, flags, null, null, args));
                                     }
                                     catch (Exception ex) {
                                         LogSystem.Warn("DotnetGet {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
                                         m_Value = BoxedValue.NullObject;
+                                    }
+                                }
+                                else {
+                                    t = obj.GetType();
+                                    if (null != t) {
+                                        try {
+                                            BindingFlags flags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.GetField | BindingFlags.GetProperty | BindingFlags.FlattenHierarchy | BindingFlags.Public | BindingFlags.NonPublic;
+                                            Converter.CastArgsForGet(t, method, flags, args);
+                                            m_Value = BoxedValue.FromObject(t.InvokeMember(method, flags, null, obj, args));
+                                        }
+                                        catch (Exception ex) {
+                                            LogSystem.Warn("DotnetGet {0}.{1} Exception:{2}\n{3}", t.Name, method, ex.Message, ex.StackTrace);
+                                            m_Value = BoxedValue.NullObject;
+                                        }
                                     }
                                 }
                             }
@@ -305,6 +507,7 @@ namespace StoryScript.CommonFunctions
         private List<IStoryFunction> m_Args = new List<IStoryFunction>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
+        private int m_DispId = -1;
     }
     public sealed class CollectionCallFunction : IStoryFunction
     {
