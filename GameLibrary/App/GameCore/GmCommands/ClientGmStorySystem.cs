@@ -23,7 +23,6 @@ namespace GameLibrary.GmCommands
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "setdebug", "setdebug command", new StoryCommandFactoryHelper<SetDebugCommand>());
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "editorbreak", "editorbreak command", new StoryCommandFactoryHelper<EditorBreakCommand>());
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "debugbreak", "debugbreak command", new StoryCommandFactoryHelper<DebugBreakCommand>());
-            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "pausegame", "pausegame command", new StoryCommandFactoryHelper<PauseGameCommand>());
 
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "allocmemory", "allocmemory command", new StoryCommandFactoryHelper<AllocMemoryCommand>());
             StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "freememory", "freememory function", new StoryCommandFactoryHelper<FreeMemoryCommand>());

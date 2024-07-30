@@ -16,15 +16,6 @@ namespace GameLibrary
             get { return m_IsDebug; }
             set { m_IsDebug = value; }
         }
-        public bool LoggerEnabled
-        {
-            get { return m_LoggerEnabled; }
-            set { m_LoggerEnabled = value; }
-        }
-        public bool IsEditor {
-            get { return m_IsEditor; }
-            set { m_IsEditor = value; }
-        }
         public bool IsDevelopment
         {
             get { return m_IsDevelopment; }
@@ -35,15 +26,10 @@ namespace GameLibrary
             get { return m_IsDevice; }
             set { m_IsDevice = value; }
         }
-        public bool IsIphone6
+        public bool LoggerEnabled
         {
-            get { return m_IsIphone6; }
-            set { m_IsIphone6 = value; }
-        }
-        public bool IsPaused
-        {
-            get { return m_IsPaused; }
-            set { m_IsPaused = value; }
+            get { return m_LoggerEnabled; }
+            set { m_LoggerEnabled = value; }
         }
 
         private GlobalVariables()
@@ -51,11 +37,8 @@ namespace GameLibrary
         }
 
         private bool m_IsDebug = false;
-        private bool m_IsEditor = false;
         private bool m_IsDevelopment = false;
         private bool m_IsDevice = false;
-        private bool m_IsIphone6 = false;
-        private bool m_IsPaused = false;
         private bool m_LoggerEnabled = true;
 
         public static GlobalVariables Instance

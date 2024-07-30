@@ -49,15 +49,6 @@ namespace GameLibrary.GmCommands
             return false;
         }
     }
-    internal class PauseGameCommand : SimpleStoryCommandBase<PauseGameCommand, StoryValueParam<int>>
-    {
-        protected override bool ExecCommand(StoryInstance instance, StoryValueParam<int> _params, long delta)
-        {
-            int val = _params.Param1Value;
-            GameControler.Instance.PauseGame(val != 0);
-            return false;
-        }
-    }
     //---------------------------------------------------------------------------------------------------------------
     internal class AllocMemoryCommand : SimpleStoryCommandBase<AllocMemoryCommand, StoryValueParam<string, int>>
     {

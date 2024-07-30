@@ -57,13 +57,6 @@ public class Game : MonoBehaviour
         GameControler.Instance.Release();
     }
 
-    void OnApplicationPause(bool pause)
-    {
-        if (!m_IsInited)
-            return;
-        GameControler.Instance.PauseGame(pause);
-    }
-
     public static void InitFilePath()
     {
         string persistentDataPath = Application.persistentDataPath;
@@ -102,7 +95,6 @@ public class Game : MonoBehaviour
 #endif
 
 #if UNITY_EDITOR
-        GlobalVariables.Instance.IsEditor = true;
         GlobalVariables.Instance.IsDevice = false;
         StoryScript.StoryConfigManager.Instance.IsDevice = false;
 #elif UNITY_ANDROID || UNITY_IOS

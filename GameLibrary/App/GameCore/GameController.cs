@@ -47,10 +47,6 @@ namespace GameLibrary
             Utility.GfxLog("GameControler.InitGame");
             SceneSystem.Instance.Init();
         }
-        public void PauseGame(bool isPause)
-        {
-            GlobalVariables.Instance.IsPaused = isPause;
-        }
         public void Release()
         {
             Utility.GfxLog("GameControler.Release");
@@ -63,9 +59,7 @@ namespace GameLibrary
                 UnityEngine.Profiling.Profiler.BeginSample("GameController.TickGame");
                 TimeUtility.UpdateGfxTime(UnityEngine.Time.time, UnityEngine.Time.realtimeSinceStartup, UnityEngine.Time.timeScale);
                 StoryScript.TimeUtility.UpdateGfxTime(UnityEngine.Time.time, UnityEngine.Time.realtimeSinceStartup, UnityEngine.Time.timeScale);
-                if (!GlobalVariables.Instance.IsPaused) {
-                    SceneSystem.Instance.Tick();
-                }
+                SceneSystem.Instance.Tick();
                 SceneSystem.Instance.GmTick();
                 m_Logger.Tick();
             } finally {

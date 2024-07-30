@@ -8,50 +8,6 @@ namespace StoryScript
 {
     public sealed class StoryHelper
     {
-        public static T ConvertTo<T>(object obj)
-        {
-            if (obj is T) {
-                return (T)obj;
-            } else {
-                try {
-                    return (T)Convert.ChangeType(obj, typeof(T));
-                }
-                catch (OverflowException) {
-                    return (T)Convert.ChangeType(obj.ToString(), typeof(T));
-                }
-                catch {
-                    return default(T);
-                }
-            }
-        }
-        public static object ConvertTo(object obj, Type type)
-        {
-            if(obj == null) { 
-                return null;
-            }
-            if (type.IsAssignableFrom(obj.GetType()) || obj.GetType().IsSubclassOf(type)) {
-                return obj;
-            } else {
-                try {
-                    return Convert.ChangeType(obj, type);
-                }
-                catch (OverflowException) {
-                    return Convert.ChangeType(obj.ToString(), type);
-                }
-                catch {
-                    return null;
-                }
-            }
-        }        
-        public static bool IsSameFloat(float arg0, float arg1)
-        {
-            return Math.Abs(arg0 - arg1) < c_Precision;
-        }
-        public static bool IsSameVector3(UnityEngine.Vector3 arg0, UnityEngine.Vector3 arg1)
-        {
-            return IsSameFloat(arg0.x, arg1.x) && IsSameFloat(arg0.y, arg1.y) && IsSameFloat(arg0.z, arg1.z);
-        }
-
         public static void LogCallStack()
         {
             LogCallStack(true);
@@ -70,16 +26,6 @@ namespace StoryScript
                 sb.AppendFormat("\t=> exception:{0} stack:{1}", ex.Message, ex.StackTrace);
                 sb.AppendLine();
             }
-        }
-        public static string RemoveExtension(string filePath)
-        {
-            if (Path.HasExtension(filePath)) {
-                var dir = Path.GetDirectoryName(filePath);
-                var name = Path.GetFileNameWithoutExtension(filePath);
-                filePath = Path.Combine(dir, name);
-                filePath = filePath.Replace('\\', '/');
-            }
-            return filePath;
         }
 
         public sealed class Random

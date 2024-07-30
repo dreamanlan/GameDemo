@@ -14,11 +14,6 @@ namespace StoryScript
             get { return m_IsDebug; }
             set { m_IsDebug = value; }
         }
-        public bool LoggerEnabled
-        {
-            get { return m_LoggerEnabled; }
-            set { m_LoggerEnabled = value; }
-        }
         public bool IsDevelopment
         {
             get { return m_IsDevelopment; }
@@ -28,6 +23,11 @@ namespace StoryScript
         {
             get { return m_IsDevice; }
             set { m_IsDevice = value; }
+        }
+        public bool LoggerEnabled
+        {
+            get { return m_LoggerEnabled; }
+            set { m_LoggerEnabled = value; }
         }
         public bool StoryEditorOpen
         {
