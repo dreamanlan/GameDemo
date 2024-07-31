@@ -368,7 +368,7 @@ namespace StoryScript.CommonFunctions
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    public sealed class IsNullOperator : IStoryFunction
+    public sealed class IsNullFunction : IStoryFunction
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -382,7 +382,7 @@ namespace StoryScript.CommonFunctions
         }
         public IStoryFunction Clone()
         {
-            IsNullOperator val = new IsNullOperator();
+            IsNullFunction val = new IsNullFunction();
             val.m_X = m_X.Clone();
             val.m_HaveValue = m_HaveValue;
             val.m_Value = m_Value;
@@ -417,7 +417,7 @@ namespace StoryScript.CommonFunctions
                         m_Value = null == uobj;
                     }
                     else {
-                        m_Value = object.Equals(null, valX.ObjectVal);
+                        m_Value = valX.IsNullObject;
                     }
                 }
                 else {

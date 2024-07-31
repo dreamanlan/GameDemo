@@ -345,6 +345,8 @@ namespace StoryScript
             RegisterCommandFactory("clearfuncsubsts", "clearfuncsubsts() command", new StoryCommandFactoryHelper<CommonCommands.ClearFuncSubstsCommand>());
             //register value or internal function
             //object
+            StoryFunctionManager.Instance.RegisterFunctionFactory("null", "null() function", new StoryFunctionFactoryHelper<CommonFunctions.NullValue>());
+            StoryFunctionManager.Instance.RegisterFunctionFactory("equalsnull", "equalsnull(obj) function", new StoryFunctionFactoryHelper<CommonFunctions.EqualsNullFunction>());
             StoryFunctionManager.Instance.RegisterFunctionFactory("eval", "eval(exp1,exp2,...) function", new StoryFunctionFactoryHelper<CommonFunctions.EvalFunction>());
             StoryFunctionManager.Instance.RegisterFunctionFactory("namespace", "namespace() function", new StoryFunctionFactoryHelper<CommonFunctions.NamespaceFunction>());
             StoryFunctionManager.Instance.RegisterFunctionFactory("storyid", "storyid() function", new StoryFunctionFactoryHelper<CommonFunctions.StoryIdFunction>());
@@ -473,7 +475,7 @@ namespace StoryScript
             StoryFunctionManager.Instance.RegisterFunctionFactory("changetype", "changetype(obj,type_obj_or_str) function", new StoryFunctionFactoryHelper<CommonFunctions.ChangeTypeFunction>());
             StoryFunctionManager.Instance.RegisterFunctionFactory("parseenum", "parseenum(type_obj_or_str,enum_val) function", new StoryFunctionFactoryHelper<CommonFunctions.ParseEnumFunction>());
             StoryFunctionManager.Instance.RegisterFunctionFactory("linq", "linq(obj,method,arg1,arg2,...) function", new StoryFunctionFactoryHelper<CommonFunctions.LinqFunction>());
-            StoryFunctionManager.Instance.RegisterFunctionFactory("isnull", "isnull(obj) function", new StoryFunctionFactoryHelper<CommonFunctions.IsNullOperator>());
+            StoryFunctionManager.Instance.RegisterFunctionFactory("isnull", "isnull(obj) function", new StoryFunctionFactoryHelper<CommonFunctions.IsNullFunction>());
             StoryFunctionManager.Instance.RegisterFunctionFactory("substring", "substring(str[,start,len]) function", new StoryFunctionFactoryHelper<CommonFunctions.SubstringFunction>());
             StoryFunctionManager.Instance.RegisterFunctionFactory("newstringbuilder", "newstringbuilder() api", new StoryFunctionFactoryHelper<CommonFunctions.NewStringBuilderFunction>());
             StoryFunctionManager.Instance.RegisterFunctionFactory("stringbuilder_tostring", "stringbuilder_tostring(sb)", new StoryFunctionFactoryHelper<CommonFunctions.StringBuilderToStringFunction>());
