@@ -2280,14 +2280,18 @@ namespace GameLibrary.Story.Commands
                     return true;
                 }
             } else if (null != m_Object) {
-                var renderer = m_Object.GetComponentInChildren<UnityEngine.Renderer>();
-                if (null != renderer) {
-                    if (visible != 0 && renderer.isVisible || visible == 0 && !renderer.isVisible) {
-                        return false;
-                    } else {
-                        renderer.enabled = visible != 0;
-                        return false;
+                var renderers = m_Object.GetComponentsInChildren<UnityEngine.Renderer>();
+                if (null != renderers) {
+                    for (int i = 0; i < renderers.Length; ++i) {
+                        var renderer = renderers[i];
+                        if (visible != 0 && renderer.isVisible || visible == 0 && !renderer.isVisible) {
+                            continue;
+                        }
+                        else {
+                            renderer.enabled = visible != 0;
+                        }
                     }
+                    return false;
                 }
             }
             return false;
