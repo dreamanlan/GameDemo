@@ -370,7 +370,6 @@ namespace StoryScript.CommonFunctions
             }
             if (canCalc) {
                 m_HaveValue = true;
-                bool r = true;
                 var chars = new List<char>();
                 for (int i = 0; i < m_Args.Count; ++i) {
                     var v = m_Args[i].Value;
