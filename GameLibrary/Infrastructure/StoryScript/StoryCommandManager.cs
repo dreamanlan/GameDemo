@@ -353,7 +353,7 @@ namespace StoryScript
             StoryFunctionManager.Instance.RegisterFunctionFactory("messageid", "messageid() function", new StoryFunctionFactoryHelper<CommonFunctions.MessageIdFunction>());
             StoryFunctionManager.Instance.RegisterFunctionFactory("countcommand", "countcommand(level) function", new StoryFunctionFactoryHelper<CommonFunctions.CountCommandFunction>());
             StoryFunctionManager.Instance.RegisterFunctionFactory("counthandlercommand", "counthandlercommand() function", new StoryFunctionFactoryHelper<CommonFunctions.CountHandlerCommandFunction>());
-            StoryFunctionManager.Instance.RegisterFunctionFactory("propget", "propget(name[,defval] function", new StoryFunctionFactoryHelper<CommonFunctions.PropGetFunction>());
+            StoryFunctionManager.Instance.RegisterFunctionFactory("propget", "propget(name[,defval]) function", new StoryFunctionFactoryHelper<CommonFunctions.PropGetFunction>());
             StoryFunctionManager.Instance.RegisterFunctionFactory("vector2", "vector2(x,y) function", new StoryFunctionFactoryHelper<CommonFunctions.Vector2Function>());
             StoryFunctionManager.Instance.RegisterFunctionFactory("vector3", "vector3(x,y,z) function", new StoryFunctionFactoryHelper<CommonFunctions.Vector3Function>());
             StoryFunctionManager.Instance.RegisterFunctionFactory("vector4", "vector4(x,y,z,w) function", new StoryFunctionFactoryHelper<CommonFunctions.Vector4Function>());
