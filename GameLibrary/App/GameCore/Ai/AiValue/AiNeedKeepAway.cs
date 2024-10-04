@@ -6,9 +6,9 @@ using System.Text;
 using GameLibrary;
 using StoryScript;
 
-internal class AiNeedKeepAway : SimpleStoryFunctionBase<AiNeedKeepAway, StoryValueParam<int, float, float>>
+internal class AiNeedKeepAway : SimpleStoryFunctionBase<AiNeedKeepAway, StoryFunctionParam<int, float, float>>
 {
-    protected override void UpdateValue(StoryInstance instance, StoryValueParam<int, float, float> _params, StoryValueResult result)
+    protected override void UpdateValue(StoryInstance instance, StoryFunctionParam<int, float, float> _params, StoryFunctionResult result)
     {
         int objId = _params.Param1Value;
         float skillDist = _params.Param2Value;

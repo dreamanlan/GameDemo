@@ -65,8 +65,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryFunction<string> m_AttrName = new StoryValue<string>();
-        private IStoryFunction m_Value = new StoryValue();
+        private IStoryFunction<string> m_AttrName = new StoryFunction<string>();
+        private IStoryFunction m_Value = new StoryFunction();
     }
     /// <summary>
     /// setstoryskipped(0_or_1[, delay_time]);
@@ -95,7 +95,7 @@ namespace GameLibrary.Story.Commands
             int curTime = m_CurTime;
             m_CurTime += (int)delta;
             int val = m_DelayedTime.Value;
-            if (curTime <= val && val <= StoryValueHelper.c_MaxWaitCommandTime) {
+            if (curTime <= val && val <= StoryFunctionHelper.c_MaxWaitCommandTime) {
                 return true;
             } else {
                 StoryConfigManager.Instance.IsStorySkipped = state != 0;
@@ -113,8 +113,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryFunction<int> m_StorySkipped = new StoryValue<int>();
-        private IStoryFunction<int> m_DelayedTime = new StoryValue<int>();
+        private IStoryFunction<int> m_StorySkipped = new StoryFunction<int>();
+        private IStoryFunction<int> m_DelayedTime = new StoryFunction<int>();
         private int m_CurTime = 0;
     }
     /// <summary>
@@ -144,7 +144,7 @@ namespace GameLibrary.Story.Commands
             int curTime = m_CurTime;
             m_CurTime += (int)delta;
             int val = m_DelayedTime.Value;
-            if (curTime <= val && val <= StoryValueHelper.c_MaxWaitCommandTime) {
+            if (curTime <= val && val <= StoryFunctionHelper.c_MaxWaitCommandTime) {
                 return true;
             } else {
                 StoryConfigManager.Instance.IsStorySpeedup = state != 0;
@@ -162,8 +162,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryFunction<int> m_StorySpeedup = new StoryValue<int>();
-        private IStoryFunction<int> m_DelayedTime = new StoryValue<int>();
+        private IStoryFunction<int> m_StorySpeedup = new StoryFunction<int>();
+        private IStoryFunction<int> m_DelayedTime = new StoryFunction<int>();
         private int m_CurTime = 0;
     }
     /// <summary>
@@ -218,8 +218,8 @@ namespace GameLibrary.Story.Commands
             return true;
         }
         private int m_ParamNum = 0;
-        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
-        private IStoryFunction<int> m_LeaderId = new StoryValue<int>();
+        private IStoryFunction<int> m_ObjId = new StoryFunction<int>();
+        private IStoryFunction<int> m_LeaderId = new StoryFunction<int>();
     }
     /// <summary>
     /// bornfinish(objid);
@@ -259,7 +259,7 @@ namespace GameLibrary.Story.Commands
             return true;
         }
         private int m_ParamNum = 0;
-        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<int> m_ObjId = new StoryFunction<int>();
     }
     /// <summary>
     /// deadfinish(objid);
@@ -299,7 +299,7 @@ namespace GameLibrary.Story.Commands
             return true;
         }
         private int m_ParamNum = 0;
-        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<int> m_ObjId = new StoryFunction<int>();
     }
 
 

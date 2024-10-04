@@ -39,7 +39,7 @@ namespace GameLibrary.Story.Commands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryFunction<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryFunction<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_DslFiles.Add(val);
             }
@@ -102,8 +102,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryFunction<string> m_StoryId = new StoryValue<string>();
-        private IStoryFunction<int> m_Multiple = new StoryValue<int>();
+        private IStoryFunction<string> m_StoryId = new StoryFunction<string>();
+        private IStoryFunction<int> m_Multiple = new StoryFunction<int>();
     }
     /// <summary>
     /// stopstory(story_id);
@@ -156,8 +156,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryFunction<string> m_StoryId = new StoryValue<string>();
-        private IStoryFunction<int> m_Multiple = new StoryValue<int>();
+        private IStoryFunction<string> m_StoryId = new StoryFunction<string>();
+        private IStoryFunction<int> m_Multiple = new StoryFunction<int>();
     }
     /// <summary>
     /// waitstory(storyid1,storyid2,...)[set(var,val)timeoutset(timeout,var,val)];
@@ -232,7 +232,7 @@ namespace GameLibrary.Story.Commands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryFunction<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryFunction<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_StoryIds.Add(val);
             }
@@ -295,12 +295,12 @@ namespace GameLibrary.Story.Commands
             }
         }
         private List<IStoryFunction<string>> m_StoryIds = new List<IStoryFunction<string>>();
-        private IStoryFunction<string> m_SetVar = new StoryValue<string>();
-        private IStoryFunction m_SetVal = new StoryValue();
-        private IStoryFunction<int> m_TimeoutVal = new StoryValue<int>();
-        private IStoryFunction<string> m_TimeoutSetVar = new StoryValue<string>();
-        private IStoryFunction m_TimeoutSetVal = new StoryValue();
-        private IStoryFunction<int> m_Multiple = new StoryValue<int>();
+        private IStoryFunction<string> m_SetVar = new StoryFunction<string>();
+        private IStoryFunction m_SetVal = new StoryFunction();
+        private IStoryFunction<int> m_TimeoutVal = new StoryFunction<int>();
+        private IStoryFunction<string> m_TimeoutSetVar = new StoryFunction<string>();
+        private IStoryFunction m_TimeoutSetVal = new StoryFunction();
+        private IStoryFunction<int> m_Multiple = new StoryFunction<int>();
         private bool m_HaveMultiple = false;
         private bool m_HaveSet = false;
         private int m_CurTime = 0;
@@ -347,7 +347,7 @@ namespace GameLibrary.Story.Commands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryFunction<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryFunction<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_StoryIds.Add(val);
             }
@@ -369,7 +369,7 @@ namespace GameLibrary.Story.Commands
             return true;
         }
         private List<IStoryFunction<string>> m_StoryIds = new List<IStoryFunction<string>>();
-        private IStoryFunction<int> m_Multiple = new StoryValue<int>();
+        private IStoryFunction<int> m_Multiple = new StoryFunction<int>();
     }
     /// <summary>
     /// resumestory(storyid1,storyid2,...);
@@ -413,7 +413,7 @@ namespace GameLibrary.Story.Commands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryFunction<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryFunction<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_StoryIds.Add(val);
             }
@@ -435,7 +435,7 @@ namespace GameLibrary.Story.Commands
             return true;
         }
         private List<IStoryFunction<string>> m_StoryIds = new List<IStoryFunction<string>>();
-        private IStoryFunction<int> m_Multiple = new StoryValue<int>();
+        private IStoryFunction<int> m_Multiple = new StoryFunction<int>();
     }
     /// <summary>
     /// firemessage(msgid,arg1,arg2,...);
@@ -490,14 +490,14 @@ namespace GameLibrary.Story.Commands
                 m_MsgId.InitFromDsl(callData.GetParam(0));
             }
             for (int i = 1; i < callData.GetParamNum(); ++i) {
-                StoryValue val = new StoryValue();
+                StoryFunction val = new StoryFunction();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgArgs.Add(val);
             }
             return true;
         }
 
-        private IStoryFunction<string> m_MsgId = new StoryValue<string>();
+        private IStoryFunction<string> m_MsgId = new StoryFunction<string>();
         private List<IStoryFunction> m_MsgArgs = new List<IStoryFunction>();
         private bool m_IsConcurrent = false;
     }
@@ -590,7 +590,7 @@ namespace GameLibrary.Story.Commands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryFunction<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryFunction<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgIds.Add(val);
             }
@@ -629,11 +629,11 @@ namespace GameLibrary.Story.Commands
             }
         }
         private List<IStoryFunction<string>> m_MsgIds = new List<IStoryFunction<string>>();
-        private IStoryFunction<string> m_SetVar = new StoryValue<string>();
-        private IStoryFunction m_SetVal = new StoryValue();
-        private IStoryFunction<int> m_TimeoutVal = new StoryValue<int>();
-        private IStoryFunction<string> m_TimeoutSetVar = new StoryValue<string>();
-        private IStoryFunction m_TimeoutSetVal = new StoryValue();
+        private IStoryFunction<string> m_SetVar = new StoryFunction<string>();
+        private IStoryFunction m_SetVal = new StoryFunction();
+        private IStoryFunction<int> m_TimeoutVal = new StoryFunction<int>();
+        private IStoryFunction<string> m_TimeoutSetVar = new StoryFunction<string>();
+        private IStoryFunction m_TimeoutSetVal = new StoryFunction();
         private bool m_HaveSet = false;
         private int m_CurTime = 0;
         private long m_StartTime = 0;
@@ -704,7 +704,7 @@ namespace GameLibrary.Story.Commands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryFunction<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryFunction<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgIds.Add(val);
             }
@@ -743,11 +743,11 @@ namespace GameLibrary.Story.Commands
             }
         }
         private List<IStoryFunction<string>> m_MsgIds = new List<IStoryFunction<string>>();
-        private IStoryFunction<string> m_SetVar = new StoryValue<string>();
-        private IStoryFunction m_SetVal = new StoryValue();
-        private IStoryFunction<int> m_TimeoutVal = new StoryValue<int>();
-        private IStoryFunction<string> m_TimeoutSetVar = new StoryValue<string>();
-        private IStoryFunction m_TimeoutSetVal = new StoryValue();
+        private IStoryFunction<string> m_SetVar = new StoryFunction<string>();
+        private IStoryFunction m_SetVal = new StoryFunction();
+        private IStoryFunction<int> m_TimeoutVal = new StoryFunction<int>();
+        private IStoryFunction<string> m_TimeoutSetVar = new StoryFunction<string>();
+        private IStoryFunction m_TimeoutSetVal = new StoryFunction();
         private bool m_HaveSet = false;
         private int m_CurTime = 0;
     }
@@ -785,7 +785,7 @@ namespace GameLibrary.Story.Commands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryFunction<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryFunction<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgIds.Add(val);
             }
@@ -827,7 +827,7 @@ namespace GameLibrary.Story.Commands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryFunction<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryFunction<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgIds.Add(val);
             }
@@ -884,14 +884,14 @@ namespace GameLibrary.Story.Commands
                 m_Msg.InitFromDsl(callData.GetParam(1));
             }
             for (int i = 2; i < callData.GetParamNum(); ++i) {
-                StoryValue val = new StoryValue();
+                StoryFunction val = new StoryFunction();
                 val.InitFromDsl(callData.GetParam(i));
                 m_Args.Add(val);
             }
             return true;
         }
-        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
-        private IStoryFunction<string> m_Msg = new StoryValue<string>();
+        private IStoryFunction<int> m_ObjId = new StoryFunction<int>();
+        private IStoryFunction<string> m_Msg = new StoryFunction<string>();
         private List<IStoryFunction> m_Args = new List<IStoryFunction>();
     }
     /// <summary>
@@ -943,14 +943,14 @@ namespace GameLibrary.Story.Commands
                 m_Msg.InitFromDsl(callData.GetParam(1));
             }
             for (int i = 2; i < callData.GetParamNum(); ++i) {
-                StoryValue val = new StoryValue();
+                StoryFunction val = new StoryFunction();
                 val.InitFromDsl(callData.GetParam(i));
                 m_Args.Add(val);
             }
             return true;
         }
-        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
-        private IStoryFunction<string> m_Msg = new StoryValue<string>();
+        private IStoryFunction<int> m_ObjId = new StoryFunction<int>();
+        private IStoryFunction<string> m_Msg = new StoryFunction<string>();
         private List<IStoryFunction> m_Args = new List<IStoryFunction>();
     }
     /// <summary>
@@ -1002,14 +1002,14 @@ namespace GameLibrary.Story.Commands
                 m_Msg.InitFromDsl(callData.GetParam(1));
             }
             for (int i = 2; i < callData.GetParamNum(); ++i) {
-                StoryValue val = new StoryValue();
+                StoryFunction val = new StoryFunction();
                 val.InitFromDsl(callData.GetParam(i));
                 m_Args.Add(val);
             }
             return true;
         }
-        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
-        private IStoryFunction<string> m_Msg = new StoryValue<string>();
+        private IStoryFunction<int> m_ObjId = new StoryFunction<int>();
+        private IStoryFunction<string> m_Msg = new StoryFunction<string>();
         private List<IStoryFunction> m_Args = new List<IStoryFunction>();
     }
     /// <summary>
@@ -1061,14 +1061,14 @@ namespace GameLibrary.Story.Commands
                 m_Msg.InitFromDsl(callData.GetParam(1));
             }
             for (int i = 2; i < callData.GetParamNum(); ++i) {
-                StoryValue val = new StoryValue();
+                StoryFunction val = new StoryFunction();
                 val.InitFromDsl(callData.GetParam(i));
                 m_Args.Add(val);
             }
             return true;
         }
-        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
-        private IStoryFunction<string> m_Msg = new StoryValue<string>();
+        private IStoryFunction<int> m_ObjId = new StoryFunction<int>();
+        private IStoryFunction<string> m_Msg = new StoryFunction<string>();
         private List<IStoryFunction> m_Args = new List<IStoryFunction>();
     }
     /// <summary>
@@ -1118,14 +1118,14 @@ namespace GameLibrary.Story.Commands
                 m_Group.InitFromDsl(callData.GetParam(1));
             }
             for (int i = 2; i < callData.GetParamNum(); ++i) {
-                StoryValue val = new StoryValue();
+                StoryFunction val = new StoryFunction();
                 val.InitFromDsl(callData.GetParam(i));
                 m_Args.Add(val);
             }
             return true;
         }
-        private IStoryFunction<string> m_EventName = new StoryValue<string>();
-        private IStoryFunction<string> m_Group = new StoryValue<string>();
+        private IStoryFunction<string> m_EventName = new StoryFunction<string>();
+        private IStoryFunction<string> m_Group = new StoryFunction<string>();
         private List<IStoryFunction> m_Args = new List<IStoryFunction>();
     }
     /// <summary>
@@ -1180,14 +1180,14 @@ namespace GameLibrary.Story.Commands
                 m_Msg.InitFromDsl(callData.GetParam(1));
             }
             for (int i = 2; i < callData.GetParamNum(); ++i) {
-                StoryValue val = new StoryValue();
+                StoryFunction val = new StoryFunction();
                 val.InitFromDsl(callData.GetParam(i));
                 m_Args.Add(val);
             }
             return true;
         }
-        private IStoryFunction<string> m_ObjName = new StoryValue<string>();
-        private IStoryFunction<string> m_Msg = new StoryValue<string>();
+        private IStoryFunction<string> m_ObjName = new StoryFunction<string>();
+        private IStoryFunction<string> m_Msg = new StoryFunction<string>();
         private List<IStoryFunction> m_Args = new List<IStoryFunction>();
     }
     /// <summary>
@@ -1242,14 +1242,14 @@ namespace GameLibrary.Story.Commands
                 m_Msg.InitFromDsl(callData.GetParam(1));
             }
             for (int i = 2; i < callData.GetParamNum(); ++i) {
-                StoryValue val = new StoryValue();
+                StoryFunction val = new StoryFunction();
                 val.InitFromDsl(callData.GetParam(i));
                 m_Args.Add(val);
             }
             return true;
         }
-        private IStoryFunction<string> m_ObjTag = new StoryValue<string>();
-        private IStoryFunction<string> m_Msg = new StoryValue<string>();
+        private IStoryFunction<string> m_ObjTag = new StoryFunction<string>();
+        private IStoryFunction<string> m_Msg = new StoryFunction<string>();
         private List<IStoryFunction> m_Args = new List<IStoryFunction>();
     }
     /// <summary>
@@ -1315,14 +1315,14 @@ namespace GameLibrary.Story.Commands
                 m_Msg.InitFromDsl(callData.GetParam(1));
             }
             for (int i = 2; i < callData.GetParamNum(); ++i) {
-                StoryValue val = new StoryValue();
+                StoryFunction val = new StoryFunction();
                 val.InitFromDsl(callData.GetParam(i));
                 m_Args.Add(val);
             }
             return true;
         }
-        private IStoryFunction m_Object = new StoryValue();
-        private IStoryFunction<string> m_Msg = new StoryValue<string>();
+        private IStoryFunction m_Object = new StoryFunction();
+        private IStoryFunction<string> m_Msg = new StoryFunction<string>();
         private List<IStoryFunction> m_Args = new List<IStoryFunction>();
     }
     /// <summary>
@@ -1373,14 +1373,14 @@ namespace GameLibrary.Story.Commands
                 m_Msg.InitFromDsl(callData.GetParam(0));
             }
             for (int i = 1; i < callData.GetParamNum(); ++i) {
-                StoryValue val = new StoryValue();
+                StoryFunction val = new StoryFunction();
                 val.InitFromDsl(callData.GetParam(i));
                 m_Args.Add(val);
             }
             return true;
         }
 
-        private IStoryFunction<string> m_Msg = new StoryValue<string>();
+        private IStoryFunction<string> m_Msg = new StoryFunction<string>();
         private List<IStoryFunction> m_Args = new List<IStoryFunction>();
     }
     /// <summary>
@@ -1599,28 +1599,28 @@ namespace GameLibrary.Story.Commands
                     m_Scale.InitFromDsl(callData.GetParam(0));
             } else if (id == "disable") {
                 for (int i = 0; i < callData.GetParamNum(); ++i) {
-                    var p = new StoryValue<string>();
+                    var p = new StoryFunction<string>();
                     p.InitFromDsl(callData.GetParam(i));
                     m_DisableComponents.Add(p);
                 }
             } else if (id == "remove") {
                 for (int i = 0; i < callData.GetParamNum(); ++i) {
-                    var p = new StoryValue<string>();
+                    var p = new StoryFunction<string>();
                     p.InitFromDsl(callData.GetParam(i));
                     m_RemoveComponents.Add(p);
                 }
             }
         }
 
-        private IStoryFunction<string> m_Name = new StoryValue<string>();
-        private IStoryFunction<string> m_Prefab = new StoryValue<string>();
-        private IStoryFunction m_Parent = new StoryValue();
+        private IStoryFunction<string> m_Name = new StoryFunction<string>();
+        private IStoryFunction<string> m_Prefab = new StoryFunction<string>();
+        private IStoryFunction m_Parent = new StoryFunction();
         private bool m_HaveParent = false;
         private bool m_HaveObj = false;
-        private IStoryFunction<string> m_ObjVarName = new StoryValue<string>();
-        private IStoryFunction<UnityEngine.Vector3> m_Position = new StoryValue<UnityEngine.Vector3>();
-        private IStoryFunction<UnityEngine.Vector3> m_Rotation = new StoryValue<UnityEngine.Vector3>();
-        private IStoryFunction<UnityEngine.Vector3> m_Scale = new StoryValue<UnityEngine.Vector3>();
+        private IStoryFunction<string> m_ObjVarName = new StoryFunction<string>();
+        private IStoryFunction<UnityEngine.Vector3> m_Position = new StoryFunction<UnityEngine.Vector3>();
+        private IStoryFunction<UnityEngine.Vector3> m_Rotation = new StoryFunction<UnityEngine.Vector3>();
+        private IStoryFunction<UnityEngine.Vector3> m_Scale = new StoryFunction<UnityEngine.Vector3>();
         private List<IStoryFunction<string>> m_DisableComponents = new List<IStoryFunction<string>>();
         private List<IStoryFunction<string>> m_RemoveComponents = new List<IStoryFunction<string>>();
     }
@@ -1759,11 +1759,11 @@ namespace GameLibrary.Story.Commands
             }
         }
 
-        private IStoryFunction m_ObjPath = new StoryValue();
-        private IStoryFunction<int> m_LocalOrWorld = new StoryValue<int>();
-        private IStoryFunction<UnityEngine.Vector3> m_Position = new StoryValue<UnityEngine.Vector3>();
-        private IStoryFunction<UnityEngine.Vector3> m_Rotation = new StoryValue<UnityEngine.Vector3>();
-        private IStoryFunction<UnityEngine.Vector3> m_Scale = new StoryValue<UnityEngine.Vector3>();
+        private IStoryFunction m_ObjPath = new StoryFunction();
+        private IStoryFunction<int> m_LocalOrWorld = new StoryFunction<int>();
+        private IStoryFunction<UnityEngine.Vector3> m_Position = new StoryFunction<UnityEngine.Vector3>();
+        private IStoryFunction<UnityEngine.Vector3> m_Rotation = new StoryFunction<UnityEngine.Vector3>();
+        private IStoryFunction<UnityEngine.Vector3> m_Scale = new StoryFunction<UnityEngine.Vector3>();
 
         private bool m_Handled = false;
         private UnityEngine.GameObject m_Object = null;
@@ -1908,11 +1908,11 @@ namespace GameLibrary.Story.Commands
             }
         }
 
-        private IStoryFunction m_ObjPath = new StoryValue();
-        private IStoryFunction<int> m_LocalOrWorld = new StoryValue<int>();
-        private IStoryFunction<UnityEngine.Vector3> m_Position = new StoryValue<UnityEngine.Vector3>();
-        private IStoryFunction<UnityEngine.Vector3> m_Rotation = new StoryValue<UnityEngine.Vector3>();
-        private IStoryFunction<UnityEngine.Vector3> m_Scale = new StoryValue<UnityEngine.Vector3>();
+        private IStoryFunction m_ObjPath = new StoryFunction();
+        private IStoryFunction<int> m_LocalOrWorld = new StoryFunction<int>();
+        private IStoryFunction<UnityEngine.Vector3> m_Position = new StoryFunction<UnityEngine.Vector3>();
+        private IStoryFunction<UnityEngine.Vector3> m_Rotation = new StoryFunction<UnityEngine.Vector3>();
+        private IStoryFunction<UnityEngine.Vector3> m_Scale = new StoryFunction<UnityEngine.Vector3>();
 
         private bool m_Handled = false;
         private UnityEngine.GameObject m_Object = null;
@@ -1966,7 +1966,7 @@ namespace GameLibrary.Story.Commands
             return true;
         }
 
-        private IStoryFunction m_ObjPath = new StoryValue();
+        private IStoryFunction m_ObjPath = new StoryFunction();
     }
     /// <summary>
     /// autorecycle(obj, 1_or_0);
@@ -2023,8 +2023,8 @@ namespace GameLibrary.Story.Commands
             return true;
         }
 
-        private IStoryFunction m_ObjPath = new StoryValue();
-        private IStoryFunction<int> m_Enable = new StoryValue<int>();
+        private IStoryFunction m_ObjPath = new StoryFunction();
+        private IStoryFunction<int> m_Enable = new StoryFunction<int>();
     }
     /// <summary>
     /// setparent(objpath,parent,stay_world_pos);
@@ -2136,9 +2136,9 @@ namespace GameLibrary.Story.Commands
             return true;
         }
 
-        private IStoryFunction m_ObjPath = new StoryValue();
-        private IStoryFunction m_Parent = new StoryValue();
-        private IStoryFunction<int> m_StayWorldPos = new StoryValue<int>();
+        private IStoryFunction m_ObjPath = new StoryFunction();
+        private IStoryFunction m_Parent = new StoryFunction();
+        private IStoryFunction<int> m_StayWorldPos = new StoryFunction<int>();
 
         private bool m_Handled = false;
         private UnityEngine.GameObject m_Object = null;
@@ -2216,8 +2216,8 @@ namespace GameLibrary.Story.Commands
             return true;
         }
 
-        private IStoryFunction m_ObjPath = new StoryValue();
-        private IStoryFunction<int> m_Active = new StoryValue<int>();
+        private IStoryFunction m_ObjPath = new StoryFunction();
+        private IStoryFunction<int> m_Active = new StoryFunction<int>();
 
         private bool m_Handled = false;
         private UnityEngine.GameObject m_Object = null;
@@ -2306,8 +2306,8 @@ namespace GameLibrary.Story.Commands
             return true;
         }
 
-        private IStoryFunction m_ObjPath = new StoryValue();
-        private IStoryFunction<int> m_Visible = new StoryValue<int>();
+        private IStoryFunction m_ObjPath = new StoryFunction();
+        private IStoryFunction<int> m_Visible = new StoryFunction<int>();
 
         private bool m_Handled = false;
         private UnityEngine.GameObject m_Object = null;
@@ -2400,10 +2400,10 @@ namespace GameLibrary.Story.Commands
                 m_HaveObj = true;
             }
         }
-        private IStoryFunction m_ObjPath = new StoryValue();
-        private IStoryFunction m_ComponentType = new StoryValue();
+        private IStoryFunction m_ObjPath = new StoryFunction();
+        private IStoryFunction m_ComponentType = new StoryFunction();
         private bool m_HaveObj = false;
-        private IStoryFunction<string> m_ObjVarName = new StoryValue<string>();
+        private IStoryFunction<string> m_ObjVarName = new StoryFunction<string>();
     }
     /// <summary>
     /// removecomponent(objpath,type);
@@ -2467,8 +2467,8 @@ namespace GameLibrary.Story.Commands
             return true;
         }
 
-        private IStoryFunction m_ObjPath = new StoryValue();
-        private IStoryFunction m_ComponentType = new StoryValue();
+        private IStoryFunction m_ObjPath = new StoryFunction();
+        private IStoryFunction m_ComponentType = new StoryFunction();
     }
     /// <summary>
     /// loadui(name, prefab, dslfile);
@@ -2547,10 +2547,10 @@ namespace GameLibrary.Story.Commands
             return true;
         }
 
-        private IStoryFunction<string> m_Name = new StoryValue<string>();
-        private IStoryFunction<string> m_Prefab = new StoryValue<string>();
-        private IStoryFunction<string> m_DslFile = new StoryValue<string>();
-        private IStoryFunction<int> m_DontDestroyOld = new StoryValue<int>();
+        private IStoryFunction<string> m_Name = new StoryFunction<string>();
+        private IStoryFunction<string> m_Prefab = new StoryFunction<string>();
+        private IStoryFunction<string> m_DslFile = new StoryFunction<string>();
+        private IStoryFunction<int> m_DontDestroyOld = new StoryFunction<int>();
     }
     /// <summary>
     /// bindui(gameobject){
@@ -2771,8 +2771,8 @@ namespace GameLibrary.Story.Commands
             internal IStoryFunction<string> m_ControlPath = null;
             internal VarInfo()
             {
-                m_VarName = new StoryValue<string>();
-                m_ControlPath = new StoryValue<string>();
+                m_VarName = new StoryFunction<string>();
+                m_ControlPath = new StoryFunction<string>();
             }
             internal VarInfo(VarInfo other)
             {
@@ -2787,9 +2787,9 @@ namespace GameLibrary.Story.Commands
             internal IStoryFunction<string> m_Path = null;
             internal EventInfo()
             {
-                m_Event = new StoryValue<string>();
-                m_Tag = new StoryValue<string>();
-                m_Path = new StoryValue<string>();
+                m_Event = new StoryFunction<string>();
+                m_Tag = new StoryFunction<string>();
+                m_Path = new StoryFunction<string>();
             }
             internal EventInfo(EventInfo other)
             {
@@ -2798,7 +2798,7 @@ namespace GameLibrary.Story.Commands
                 m_Path = other.m_Path.Clone();
             }
         }
-        private IStoryFunction m_Obj = new StoryValue();
+        private IStoryFunction m_Obj = new StoryFunction();
         private List<VarInfo> m_VarInfos = new List<VarInfo>();
         internal List<IStoryFunction<string>> m_Inputs = new List<IStoryFunction<string>>();
         internal List<IStoryFunction<string>> m_Toggles = new List<IStoryFunction<string>>();
@@ -2810,7 +2810,7 @@ namespace GameLibrary.Story.Commands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryFunction<string> path = new StoryValue<string>();
+                IStoryFunction<string> path = new StoryFunction<string>();
                 path.InitFromDsl(callData.GetParam(i));
                 List.Add(path);
             }
@@ -2891,7 +2891,7 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryFunction<string> m_Url = new StoryValue<string>();
+        private IStoryFunction<string> m_Url = new StoryFunction<string>();
     }
     /// <summary>
     /// quit();
@@ -2949,7 +2949,7 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryFunction<string> m_TargetScene = new StoryValue<string>();
+        private IStoryFunction<string> m_TargetScene = new StoryFunction<string>();
     }
     /// <summary>
     /// highlightprompt(info);
@@ -2982,7 +2982,7 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryFunction<string> m_Info = new StoryValue<string>();
+        private IStoryFunction<string> m_Info = new StoryFunction<string>();
     }
     /// <summary>
     /// setactorscale(name,value);
@@ -3022,8 +3022,8 @@ namespace GameLibrary.Story.Commands
             }
             return true;
         }
-        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
-        private IStoryFunction m_Value = new StoryValue();
+        private IStoryFunction<int> m_ObjId = new StoryFunction<int>();
+        private IStoryFunction m_Value = new StoryFunction();
     }
     /// <summary>
     /// gameobjectanimation(obj, anim[, normalized_time]);
@@ -3096,9 +3096,9 @@ namespace GameLibrary.Story.Commands
             return true;
         }
         private int m_ParamNum = 0;
-        private IStoryFunction m_ObjPath = new StoryValue();
-        private IStoryFunction<string> m_Anim = new StoryValue<string>();
-        private IStoryFunction<float> m_Time = new StoryValue<float>();
+        private IStoryFunction m_ObjPath = new StoryFunction();
+        private IStoryFunction<string> m_Anim = new StoryFunction<string>();
+        private IStoryFunction<float> m_Time = new StoryFunction<float>();
     }
     /// <summary>
     /// gameobjectanimationparam(obj)
@@ -3238,11 +3238,11 @@ namespace GameLibrary.Story.Commands
             private void Init()
             {
                 Type = string.Empty;
-                Key = new StoryValue<string>();
-                Value = new StoryValue();
+                Key = new StoryFunction<string>();
+                Value = new StoryFunction();
             }
         }
-        private IStoryFunction m_ObjPath = new StoryValue();
+        private IStoryFunction m_ObjPath = new StoryFunction();
         private List<ParamInfo> m_Params = new List<ParamInfo>();
     }
     /// <summary>
@@ -3304,9 +3304,9 @@ namespace GameLibrary.Story.Commands
             return true;
         }
         private int m_ParamNum = 0;
-        private IStoryFunction<string> m_StoryId = new StoryValue<string>();
-        private IStoryFunction<string> m_Namespace = new StoryValue<string>();
-        private IStoryFunction<string> m_Name = new StoryValue<string>();
-        private IStoryFunction m_Val = new StoryValue();
+        private IStoryFunction<string> m_StoryId = new StoryFunction<string>();
+        private IStoryFunction<string> m_Namespace = new StoryFunction<string>();
+        private IStoryFunction<string> m_Name = new StoryFunction<string>();
+        private IStoryFunction m_Val = new StoryFunction();
     }
 }

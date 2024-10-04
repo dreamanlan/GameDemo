@@ -26,7 +26,7 @@ namespace StoryScript.CommonFunctions
     /// accessible. The Evaluate interface has only one set of parameters, which limits the form of custom commands and
     /// values to Function style at most and should not support Statement style.
     /// </remarks>
-    public sealed class CompositeValue : IStoryFunction
+    public sealed class CompositeFunction : IStoryFunction
     {
         public string Name
         {
@@ -66,7 +66,7 @@ namespace StoryScript.CommonFunctions
         }
         public IStoryFunction Clone()
         {
-            CompositeValue val = new CompositeValue();
+            CompositeFunction val = new CompositeFunction();
             val.m_LoadedArgs = m_LoadedArgs;
             val.m_LoadedOptArgs = m_LoadedOptArgs;
             val.m_Name = m_Name;
@@ -152,7 +152,7 @@ namespace StoryScript.CommonFunctions
                     var fcd = comp as Dsl.FunctionData;
                     if (null != fcd) {
                         var key = fcd.GetId();
-                        StoryValue val = new StoryValue();
+                        StoryFunction val = new StoryFunction();
                         val.InitFromDsl(fcd.GetParam(0));
                         m_LoadedOptArgs[key] = val;
                     }
@@ -163,13 +163,13 @@ namespace StoryScript.CommonFunctions
         {
             m_LoadedOptArgs = new Dictionary<string, IStoryFunction>();
             foreach (var pair in m_OptArgs) {
-                StoryValue val = new StoryValue();
+                StoryFunction val = new StoryFunction();
                 val.InitFromDsl(pair.Value);
                 m_LoadedOptArgs.Add(pair.Key, val);
             }
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                StoryValue val = new StoryValue();
+                StoryFunction val = new StoryFunction();
                 val.InitFromDsl(callData.GetParam(i));
                 m_LoadedArgs.Add(val);
             }
@@ -229,11 +229,11 @@ namespace StoryScript.CommonFunctions
         {
             return m_Val.Clone();
         }
-        internal CompositeValueFactory(CompositeValue val)
+        internal CompositeValueFactory(CompositeFunction val)
         {
             m_Val = val;
         }
-        private CompositeValue m_Val;
+        private CompositeFunction m_Val;
     }
     public sealed class GetCmdSubstFunction : IStoryFunction
     {
@@ -286,7 +286,7 @@ namespace StoryScript.CommonFunctions
             }
         }
 
-        private IStoryFunction<string> m_Id = new StoryValue<string>();
+        private IStoryFunction<string> m_Id = new StoryFunction<string>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -341,7 +341,7 @@ namespace StoryScript.CommonFunctions
             }
         }
 
-        private IStoryFunction<string> m_Id = new StoryValue<string>();
+        private IStoryFunction<string> m_Id = new StoryFunction<string>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }

@@ -108,17 +108,17 @@ internal class AiQuery : IStoryFunction
     {
         string id = callData.GetId();
         if (id == "select") {
-            m_Select = new StoryValue();
+            m_Select = new StoryFunction();
             m_Select.InitFromDsl(callData.GetParam(0));
         } else if (id == "from") {
-            m_From = new StoryValue();
+            m_From = new StoryFunction();
             m_From.InitFromDsl(callData.GetParam(0));
         } else if (id == "where") {
-            m_Where = new StoryValue();
+            m_Where = new StoryFunction();
             m_Where.InitFromDsl(callData.GetParam(0));
         } else if (id == "orderby") {
             for (int i = 0; i < callData.GetParamNum(); ++i) {
-                StoryValue v = new StoryValue();
+                StoryFunction v = new StoryFunction();
                 v.InitFromDsl(callData.GetParam(i));
                 m_OrderBy.Add(v);
             }

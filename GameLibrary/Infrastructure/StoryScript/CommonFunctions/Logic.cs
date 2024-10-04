@@ -68,8 +68,8 @@ namespace StoryScript.CommonFunctions
                 m_Value = ((x != 0 && y != 0) ? 1 : 0);
             }
         }
-        private IStoryFunction m_X = new StoryValue();
-        private IStoryFunction m_Y = new StoryValue();
+        private IStoryFunction m_X = new StoryFunction();
+        private IStoryFunction m_Y = new StoryFunction();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -138,8 +138,8 @@ namespace StoryScript.CommonFunctions
                 m_Value = ((x != 0 || y != 0) ? 1 : 0);
             }
         }
-        private IStoryFunction m_X = new StoryValue();
-        private IStoryFunction m_Y = new StoryValue();
+        private IStoryFunction m_X = new StoryFunction();
+        private IStoryFunction m_Y = new StoryFunction();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -192,7 +192,7 @@ namespace StoryScript.CommonFunctions
                 m_Value = (x == 0 ? 1 : 0);
             }
         }
-        private IStoryFunction m_X = new StoryValue();
+        private IStoryFunction m_X = new StoryFunction();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -258,9 +258,9 @@ namespace StoryScript.CommonFunctions
                 m_Value = v;
             }
         }
-        private IStoryFunction m_Op1 = new StoryValue();
-        private IStoryFunction m_Op2 = new StoryValue();
-        private IStoryFunction m_Op3 = new StoryValue();
+        private IStoryFunction m_Op1 = new StoryFunction();
+        private IStoryFunction m_Op2 = new StoryFunction();
+        private IStoryFunction m_Op3 = new StoryFunction();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }

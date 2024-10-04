@@ -3,11 +3,39 @@
   "WorkspaceRootPath": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|f:\\github\\gamedemo\\gamelibrary\\infrastructure\\storyscript\\storycommandmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|f:\\github\\gamedemo\\gamelibrary\\infrastructure\\storyscript\\storyfunctionhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:storyfunctionhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\istoryfunction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:istoryfunction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\storycommandhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:storycommandhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\istorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:istorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\storyinstance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:storyinstance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\commonfunctions\\composite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:commonfunctions\\composite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\commonfunctions\\generalfunctions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:commonfunctions\\generalfunctions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\storycommandmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:storycommandmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|f:\\github\\gamedemo\\gamelibrary\\infrastructure\\storyscript\\storyfunctionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\storyfunctionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:storyfunctionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -18,11 +46,96 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "StoryCommandHelper.cs",
+              "DocumentMoniker": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryCommandHelper.cs",
+              "RelativeDocumentMoniker": "StoryCommandHelper.cs",
+              "ToolTip": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryCommandHelper.cs",
+              "RelativeToolTip": "StoryCommandHelper.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAB5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-04T14:49:44.701Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IStoryCommand.cs",
+              "DocumentMoniker": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\IStoryCommand.cs",
+              "RelativeDocumentMoniker": "IStoryCommand.cs",
+              "ToolTip": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\IStoryCommand.cs",
+              "RelativeToolTip": "IStoryCommand.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAABTAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-04T14:48:44.449Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "StoryInstance.cs",
+              "DocumentMoniker": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryInstance.cs",
+              "RelativeDocumentMoniker": "StoryInstance.cs",
+              "ToolTip": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryInstance.cs",
+              "RelativeToolTip": "StoryInstance.cs",
+              "ViewState": "AQIAAM0AAAAAAAAAAAAUwN0AAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-04T14:23:26.457Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "IStoryFunction.cs",
+              "DocumentMoniker": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\IStoryFunction.cs",
+              "RelativeDocumentMoniker": "IStoryFunction.cs",
+              "ToolTip": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\IStoryFunction.cs",
+              "RelativeToolTip": "IStoryFunction.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-04T14:22:55.137Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Composite.cs",
+              "DocumentMoniker": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\CommonFunctions\\Composite.cs",
+              "RelativeDocumentMoniker": "CommonFunctions\\Composite.cs",
+              "ToolTip": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\CommonFunctions\\Composite.cs",
+              "RelativeToolTip": "CommonFunctions\\Composite.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-04T14:22:02.401Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GeneralFunctions.cs",
+              "DocumentMoniker": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\CommonFunctions\\GeneralFunctions.cs",
+              "RelativeDocumentMoniker": "CommonFunctions\\GeneralFunctions.cs",
+              "ToolTip": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\CommonFunctions\\GeneralFunctions.cs",
+              "RelativeToolTip": "CommonFunctions\\GeneralFunctions.cs",
+              "ViewState": "AQIAADkAAAAAAAAAAAAAAAkAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-04T14:21:15.976Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StoryFunctionHelper.cs",
+              "DocumentMoniker": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryFunctionHelper.cs",
+              "RelativeDocumentMoniker": "StoryFunctionHelper.cs",
+              "ToolTip": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryFunctionHelper.cs",
+              "RelativeToolTip": "StoryFunctionHelper.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAwH8AAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-04T14:20:52.531Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "StoryFunctionManager.cs",
               "DocumentMoniker": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryFunctionManager.cs",
               "RelativeDocumentMoniker": "StoryFunctionManager.cs",
@@ -30,12 +143,11 @@
               "RelativeToolTip": "StoryFunctionManager.cs",
               "ViewState": "AQIAALcAAAAAAAAAAAAAAMgAAABmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-26T02:13:55.348Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-26T02:13:55.348Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "StoryCommandManager.cs",
               "DocumentMoniker": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryCommandManager.cs",
               "RelativeDocumentMoniker": "StoryCommandManager.cs",
@@ -43,8 +155,7 @@
               "RelativeToolTip": "StoryCommandManager.cs",
               "ViewState": "AQIAABkBAAAAAAAAAAAAACkBAAB2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-26T02:02:55.051Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-26T02:02:55.051Z"
             }
           ]
         }

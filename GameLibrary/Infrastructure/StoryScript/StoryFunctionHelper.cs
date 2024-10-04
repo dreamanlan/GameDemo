@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 namespace StoryScript
 {
-    public static class StoryValueHelper
+    public static class StoryFunctionHelper
     {
         public const int c_MaxWaitCommandTime = 3600000;
         public static T CastTo<T>(object obj)
@@ -15,11 +15,11 @@ namespace StoryScript
             return Converter.CastTo(t, obj);
         }
     }
-    public sealed class StoryValueResult
+    public sealed class StoryFunctionResult
     {
-        public StoryValueResult Clone()
+        public StoryFunctionResult Clone()
         {
-            StoryValueResult val = new StoryValueResult();
+            StoryFunctionResult val = new StoryFunctionResult();
             val.m_HaveValue = m_HaveValue;
             val.m_Value = m_Value;
             return val;
@@ -46,14 +46,14 @@ namespace StoryScript
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    public interface IStoryValueParam
+    public interface IStoryFunctionParam
     {
         Dsl.FunctionData InitFromDsl(Dsl.ISyntaxComponent param, int startIndex, bool enableComments);
-        IStoryValueParam Clone();
+        IStoryFunctionParam Clone();
         void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args);
         bool HaveValue { get; }
     }
-    public sealed class StoryValueParam : IStoryValueParam
+    public sealed class StoryFunctionParam : IStoryFunctionParam
     {
         public Dsl.FunctionData InitFromDsl(Dsl.ISyntaxComponent param, int startIndex, bool enableComments)
         {
@@ -71,9 +71,9 @@ namespace StoryScript
             }
             return ret;
         }
-        public IStoryValueParam Clone()
+        public IStoryFunctionParam Clone()
         {
-            StoryValueParam val = new StoryValueParam();
+            StoryFunctionParam val = new StoryFunctionParam();
             return val;
         }
         public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
@@ -83,7 +83,7 @@ namespace StoryScript
             get { return true; }
         }
     }
-    public sealed class StoryValueParam<P1> : IStoryValueParam
+    public sealed class StoryFunctionParam<P1> : IStoryFunctionParam
     {
         public Dsl.FunctionData InitFromDsl(Dsl.ISyntaxComponent param, int startIndex, bool enableComments)
         {
@@ -106,9 +106,9 @@ namespace StoryScript
             }
             return ret;
         }
-        public IStoryValueParam Clone()
+        public IStoryFunctionParam Clone()
         {
-            StoryValueParam<P1> val = new StoryValueParam<P1>();
+            StoryFunctionParam<P1> val = new StoryFunctionParam<P1>();
             val.m_P1 = m_P1.Clone();
             return val;
         }
@@ -125,9 +125,9 @@ namespace StoryScript
         {
             get { return m_P1.Value; }
         }
-        private IStoryFunction<P1> m_P1 = new StoryValue<P1>();
+        private IStoryFunction<P1> m_P1 = new StoryFunction<P1>();
     }
-    public sealed class StoryValueParam<P1, P2> : IStoryValueParam
+    public sealed class StoryFunctionParam<P1, P2> : IStoryFunctionParam
     {
         public Dsl.FunctionData InitFromDsl(Dsl.ISyntaxComponent param, int startIndex, bool enableComments)
         {
@@ -151,9 +151,9 @@ namespace StoryScript
             }
             return ret;
         }
-        public IStoryValueParam Clone()
+        public IStoryFunctionParam Clone()
         {
-            StoryValueParam<P1, P2> val = new StoryValueParam<P1, P2>();
+            StoryFunctionParam<P1, P2> val = new StoryFunctionParam<P1, P2>();
             val.m_P1 = m_P1.Clone();
             val.m_P2 = m_P2.Clone();
             return val;
@@ -176,10 +176,10 @@ namespace StoryScript
         {
             get { return m_P2.Value; }
         }
-        private IStoryFunction<P1> m_P1 = new StoryValue<P1>();
-        private IStoryFunction<P2> m_P2 = new StoryValue<P2>();
+        private IStoryFunction<P1> m_P1 = new StoryFunction<P1>();
+        private IStoryFunction<P2> m_P2 = new StoryFunction<P2>();
     }
-    public sealed class StoryValueParam<P1, P2, P3> : IStoryValueParam
+    public sealed class StoryFunctionParam<P1, P2, P3> : IStoryFunctionParam
     {
         public Dsl.FunctionData InitFromDsl(Dsl.ISyntaxComponent param, int startIndex, bool enableComments)
         {
@@ -204,9 +204,9 @@ namespace StoryScript
             }
             return ret;
         }
-        public IStoryValueParam Clone()
+        public IStoryFunctionParam Clone()
         {
-            StoryValueParam<P1, P2, P3> val = new StoryValueParam<P1, P2, P3>();
+            StoryFunctionParam<P1, P2, P3> val = new StoryFunctionParam<P1, P2, P3>();
             val.m_P1 = m_P1.Clone();
             val.m_P2 = m_P2.Clone();
             val.m_P3 = m_P3.Clone();
@@ -235,11 +235,11 @@ namespace StoryScript
         {
             get { return m_P3.Value; }
         }
-        private IStoryFunction<P1> m_P1 = new StoryValue<P1>();
-        private IStoryFunction<P2> m_P2 = new StoryValue<P2>();
-        private IStoryFunction<P3> m_P3 = new StoryValue<P3>();
+        private IStoryFunction<P1> m_P1 = new StoryFunction<P1>();
+        private IStoryFunction<P2> m_P2 = new StoryFunction<P2>();
+        private IStoryFunction<P3> m_P3 = new StoryFunction<P3>();
     }
-    public sealed class StoryValueParam<P1, P2, P3, P4> : IStoryValueParam
+    public sealed class StoryFunctionParam<P1, P2, P3, P4> : IStoryFunctionParam
     {
         public Dsl.FunctionData InitFromDsl(Dsl.ISyntaxComponent param, int startIndex, bool enableComments)
         {
@@ -265,9 +265,9 @@ namespace StoryScript
             }
             return ret;
         }
-        public IStoryValueParam Clone()
+        public IStoryFunctionParam Clone()
         {
-            StoryValueParam<P1, P2, P3, P4> val = new StoryValueParam<P1, P2, P3, P4>();
+            StoryFunctionParam<P1, P2, P3, P4> val = new StoryFunctionParam<P1, P2, P3, P4>();
             val.m_P1 = m_P1.Clone();
             val.m_P2 = m_P2.Clone();
             val.m_P3 = m_P3.Clone();
@@ -302,12 +302,12 @@ namespace StoryScript
         {
             get { return m_P4.Value; }
         }
-        private IStoryFunction<P1> m_P1 = new StoryValue<P1>();
-        private IStoryFunction<P2> m_P2 = new StoryValue<P2>();
-        private IStoryFunction<P3> m_P3 = new StoryValue<P3>();
-        private IStoryFunction<P4> m_P4 = new StoryValue<P4>();
+        private IStoryFunction<P1> m_P1 = new StoryFunction<P1>();
+        private IStoryFunction<P2> m_P2 = new StoryFunction<P2>();
+        private IStoryFunction<P3> m_P3 = new StoryFunction<P3>();
+        private IStoryFunction<P4> m_P4 = new StoryFunction<P4>();
     }
-    public sealed class StoryValueParam<P1, P2, P3, P4, P5> : IStoryValueParam
+    public sealed class StoryFunctionParam<P1, P2, P3, P4, P5> : IStoryFunctionParam
     {
         public Dsl.FunctionData InitFromDsl(Dsl.ISyntaxComponent param, int startIndex, bool enableComments)
         {
@@ -334,9 +334,9 @@ namespace StoryScript
             }
             return ret;
         }
-        public IStoryValueParam Clone()
+        public IStoryFunctionParam Clone()
         {
-            StoryValueParam<P1, P2, P3, P4, P5> val = new StoryValueParam<P1, P2, P3, P4, P5>();
+            StoryFunctionParam<P1, P2, P3, P4, P5> val = new StoryFunctionParam<P1, P2, P3, P4, P5>();
             val.m_P1 = m_P1.Clone();
             val.m_P2 = m_P2.Clone();
             val.m_P3 = m_P3.Clone();
@@ -377,13 +377,13 @@ namespace StoryScript
         {
             get { return m_P5.Value; }
         }
-        private IStoryFunction<P1> m_P1 = new StoryValue<P1>();
-        private IStoryFunction<P2> m_P2 = new StoryValue<P2>();
-        private IStoryFunction<P3> m_P3 = new StoryValue<P3>();
-        private IStoryFunction<P4> m_P4 = new StoryValue<P4>();
-        private IStoryFunction<P5> m_P5 = new StoryValue<P5>();
+        private IStoryFunction<P1> m_P1 = new StoryFunction<P1>();
+        private IStoryFunction<P2> m_P2 = new StoryFunction<P2>();
+        private IStoryFunction<P3> m_P3 = new StoryFunction<P3>();
+        private IStoryFunction<P4> m_P4 = new StoryFunction<P4>();
+        private IStoryFunction<P5> m_P5 = new StoryFunction<P5>();
     }
-    public sealed class StoryValueParam<P1, P2, P3, P4, P5, P6> : IStoryValueParam
+    public sealed class StoryFunctionParam<P1, P2, P3, P4, P5, P6> : IStoryFunctionParam
     {
         public Dsl.FunctionData InitFromDsl(Dsl.ISyntaxComponent param, int startIndex, bool enableComments)
         {
@@ -411,9 +411,9 @@ namespace StoryScript
             }
             return ret;
         }
-        public IStoryValueParam Clone()
+        public IStoryFunctionParam Clone()
         {
-            StoryValueParam<P1, P2, P3, P4, P5, P6> val = new StoryValueParam<P1, P2, P3, P4, P5, P6>();
+            StoryFunctionParam<P1, P2, P3, P4, P5, P6> val = new StoryFunctionParam<P1, P2, P3, P4, P5, P6>();
             val.m_P1 = m_P1.Clone();
             val.m_P2 = m_P2.Clone();
             val.m_P3 = m_P3.Clone();
@@ -460,14 +460,14 @@ namespace StoryScript
         {
             get { return m_P6.Value; }
         }
-        private IStoryFunction<P1> m_P1 = new StoryValue<P1>();
-        private IStoryFunction<P2> m_P2 = new StoryValue<P2>();
-        private IStoryFunction<P3> m_P3 = new StoryValue<P3>();
-        private IStoryFunction<P4> m_P4 = new StoryValue<P4>();
-        private IStoryFunction<P5> m_P5 = new StoryValue<P5>();
-        private IStoryFunction<P6> m_P6 = new StoryValue<P6>();
+        private IStoryFunction<P1> m_P1 = new StoryFunction<P1>();
+        private IStoryFunction<P2> m_P2 = new StoryFunction<P2>();
+        private IStoryFunction<P3> m_P3 = new StoryFunction<P3>();
+        private IStoryFunction<P4> m_P4 = new StoryFunction<P4>();
+        private IStoryFunction<P5> m_P5 = new StoryFunction<P5>();
+        private IStoryFunction<P6> m_P6 = new StoryFunction<P6>();
     }
-    public sealed class StoryValueParam<P1, P2, P3, P4, P5, P6, P7> : IStoryValueParam
+    public sealed class StoryFunctionParam<P1, P2, P3, P4, P5, P6, P7> : IStoryFunctionParam
     {
         public Dsl.FunctionData InitFromDsl(Dsl.ISyntaxComponent param, int startIndex, bool enableComments)
         {
@@ -496,9 +496,9 @@ namespace StoryScript
             }
             return ret;
         }
-        public IStoryValueParam Clone()
+        public IStoryFunctionParam Clone()
         {
-            StoryValueParam<P1, P2, P3, P4, P5, P6, P7> val = new StoryValueParam<P1, P2, P3, P4, P5, P6, P7>();
+            StoryFunctionParam<P1, P2, P3, P4, P5, P6, P7> val = new StoryFunctionParam<P1, P2, P3, P4, P5, P6, P7>();
             val.m_P1 = m_P1.Clone();
             val.m_P2 = m_P2.Clone();
             val.m_P3 = m_P3.Clone();
@@ -551,15 +551,15 @@ namespace StoryScript
         {
             get { return m_P7.Value; }
         }
-        private IStoryFunction<P1> m_P1 = new StoryValue<P1>();
-        private IStoryFunction<P2> m_P2 = new StoryValue<P2>();
-        private IStoryFunction<P3> m_P3 = new StoryValue<P3>();
-        private IStoryFunction<P4> m_P4 = new StoryValue<P4>();
-        private IStoryFunction<P5> m_P5 = new StoryValue<P5>();
-        private IStoryFunction<P6> m_P6 = new StoryValue<P6>();
-        private IStoryFunction<P7> m_P7 = new StoryValue<P7>();
+        private IStoryFunction<P1> m_P1 = new StoryFunction<P1>();
+        private IStoryFunction<P2> m_P2 = new StoryFunction<P2>();
+        private IStoryFunction<P3> m_P3 = new StoryFunction<P3>();
+        private IStoryFunction<P4> m_P4 = new StoryFunction<P4>();
+        private IStoryFunction<P5> m_P5 = new StoryFunction<P5>();
+        private IStoryFunction<P6> m_P6 = new StoryFunction<P6>();
+        private IStoryFunction<P7> m_P7 = new StoryFunction<P7>();
     }
-    public sealed class StoryValueParam<P1, P2, P3, P4, P5, P6, P7, P8> : IStoryValueParam
+    public sealed class StoryFunctionParam<P1, P2, P3, P4, P5, P6, P7, P8> : IStoryFunctionParam
     {
         public Dsl.FunctionData InitFromDsl(Dsl.ISyntaxComponent param, int startIndex, bool enableComments)
         {
@@ -589,9 +589,9 @@ namespace StoryScript
             }
             return ret;
         }
-        public IStoryValueParam Clone()
+        public IStoryFunctionParam Clone()
         {
-            StoryValueParam<P1, P2, P3, P4, P5, P6, P7, P8> val = new StoryValueParam<P1, P2, P3, P4, P5, P6, P7, P8>();
+            StoryFunctionParam<P1, P2, P3, P4, P5, P6, P7, P8> val = new StoryFunctionParam<P1, P2, P3, P4, P5, P6, P7, P8>();
             val.m_P1 = m_P1.Clone();
             val.m_P2 = m_P2.Clone();
             val.m_P3 = m_P3.Clone();
@@ -650,16 +650,16 @@ namespace StoryScript
         {
             get { return m_P8.Value; }
         }
-        private IStoryFunction<P1> m_P1 = new StoryValue<P1>();
-        private IStoryFunction<P2> m_P2 = new StoryValue<P2>();
-        private IStoryFunction<P3> m_P3 = new StoryValue<P3>();
-        private IStoryFunction<P4> m_P4 = new StoryValue<P4>();
-        private IStoryFunction<P5> m_P5 = new StoryValue<P5>();
-        private IStoryFunction<P6> m_P6 = new StoryValue<P6>();
-        private IStoryFunction<P7> m_P7 = new StoryValue<P7>();
-        private IStoryFunction<P8> m_P8 = new StoryValue<P8>();
+        private IStoryFunction<P1> m_P1 = new StoryFunction<P1>();
+        private IStoryFunction<P2> m_P2 = new StoryFunction<P2>();
+        private IStoryFunction<P3> m_P3 = new StoryFunction<P3>();
+        private IStoryFunction<P4> m_P4 = new StoryFunction<P4>();
+        private IStoryFunction<P5> m_P5 = new StoryFunction<P5>();
+        private IStoryFunction<P6> m_P6 = new StoryFunction<P6>();
+        private IStoryFunction<P7> m_P7 = new StoryFunction<P7>();
+        private IStoryFunction<P8> m_P8 = new StoryFunction<P8>();
     }
-    public sealed class StoryValueParams<P> : IStoryValueParam
+    public sealed class StoryFunctionParams<P> : IStoryFunctionParam
     {
         public Dsl.FunctionData InitFromDsl(Dsl.ISyntaxComponent param, int startIndex, bool enableComments)
         {
@@ -679,7 +679,7 @@ namespace StoryScript
             }
             if (null != callData) {
                 for (int i = startIndex; i < callData.GetParamNum(); ++i) {
-                    StoryValue<P> val = new StoryValue<P>();
+                    StoryFunction<P> val = new StoryFunction<P>();
                     val.InitFromDsl(callData.GetParam(i));
                     m_Args.Add(val);
                     m_Values.Add(default(P));
@@ -687,9 +687,9 @@ namespace StoryScript
             }
             return ret;
         }
-        public IStoryValueParam Clone()
+        public IStoryFunctionParam Clone()
         {
-            StoryValueParams<P> val = new StoryValueParams<P>();
+            StoryFunctionParams<P> val = new StoryFunctionParams<P>();
             for (int i = 0; i < m_Args.Count; ++i) {
                 IStoryFunction<P> arg = m_Args[i];
                 val.m_Args.Add(arg.Clone());
@@ -732,7 +732,7 @@ namespace StoryScript
         private List<IStoryFunction<P>> m_Args = new List<IStoryFunction<P>>();
         private List<P> m_Values = new List<P>();
     }
-    public sealed class StoryValueParams : IStoryValueParam
+    public sealed class StoryFunctionParams : IStoryFunctionParam
     {
         public Dsl.FunctionData InitFromDsl(Dsl.ISyntaxComponent param, int startIndex, bool enableComments)
         {
@@ -752,7 +752,7 @@ namespace StoryScript
             }
             if (null != callData) {
                 for (int i = startIndex; i < callData.GetParamNum(); ++i) {
-                    StoryValue val = new StoryValue();
+                    StoryFunction val = new StoryFunction();
                     val.InitFromDsl(callData.GetParam(i));
                     m_Args.Add(val);
                     m_Values.Add(BoxedValue.NullObject);
@@ -760,9 +760,9 @@ namespace StoryScript
             }
             return ret;
         }
-        public IStoryValueParam Clone()
+        public IStoryFunctionParam Clone()
         {
-            StoryValueParams val = new StoryValueParams();
+            StoryFunctionParams val = new StoryFunctionParams();
             for (int i = 0; i < m_Args.Count; ++i) {
                 IStoryFunction arg = m_Args[i];
                 val.m_Args.Add(arg.Clone());

@@ -7,10 +7,10 @@ using UnityEngine;
 namespace StoryScript.CommonFunctions
 {
     /// <summary>
-    /// Dummy value, used to register functions that
+    /// Dummy function, used to register functions that
     /// have no corresponding implementation (registration is required for parsing).
     /// </summary>
-    public sealed class DummyValue : IStoryFunction
+    public sealed class DummyFunction : IStoryFunction
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -20,7 +20,7 @@ namespace StoryScript.CommonFunctions
         }
         public IStoryFunction Clone()
         {
-            DummyValue val = new DummyValue();
+            DummyFunction val = new DummyFunction();
             val.m_HaveValue = m_HaveValue;
             val.m_Value = m_Value;
             return val;
@@ -148,7 +148,7 @@ namespace StoryScript.CommonFunctions
                 }
             }
         }
-        private IStoryFunction m_X = new StoryValue();
+        private IStoryFunction m_X = new StoryFunction();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -159,7 +159,7 @@ namespace StoryScript.CommonFunctions
             Dsl.FunctionData callData = param as Dsl.FunctionData;
             if (null != callData) {
                 for (int i = 0; i < callData.GetParamNum(); ++i) {
-                    StoryValue val = new StoryValue();
+                    StoryFunction val = new StoryFunction();
                     val.InitFromDsl(callData.GetParam(i));
                     m_Args.Add(val);
                 }
@@ -406,7 +406,7 @@ namespace StoryScript.CommonFunctions
             }
         }
         private int m_ParamNum = 0;
-        private IStoryFunction<int> m_Level = new StoryValue<int>();
+        private IStoryFunction<int> m_Level = new StoryFunction<int>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -562,8 +562,8 @@ namespace StoryScript.CommonFunctions
         }
 
         private int m_ParamNum = 0;
-        private IStoryFunction<string> m_VarName = new StoryValue<string>();
-        private IStoryFunction m_DefaultValue = new StoryValue();
+        private IStoryFunction<string> m_VarName = new StoryFunction<string>();
+        private IStoryFunction m_DefaultValue = new StoryFunction();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -617,8 +617,8 @@ namespace StoryScript.CommonFunctions
                 m_Value = StoryHelper.Random.Next(min, max);
             }
         }
-        private IStoryFunction<int> m_Min = new StoryValue<int>();
-        private IStoryFunction<int> m_Max = new StoryValue<int>();
+        private IStoryFunction<int> m_Min = new StoryFunction<int>();
+        private IStoryFunction<int> m_Max = new StoryFunction<int>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -719,8 +719,8 @@ namespace StoryScript.CommonFunctions
                 m_Value = new Vector2(m_X.Value, m_Y.Value);
             }
         }
-        private IStoryFunction<float> m_X = new StoryValue<float>();
-        private IStoryFunction<float> m_Y = new StoryValue<float>();
+        private IStoryFunction<float> m_X = new StoryFunction<float>();
+        private IStoryFunction<float> m_Y = new StoryFunction<float>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -776,9 +776,9 @@ namespace StoryScript.CommonFunctions
                 m_Value = new Vector3(m_X.Value, m_Y.Value, m_Z.Value);
             }
         }
-        private IStoryFunction<float> m_X = new StoryValue<float>();
-        private IStoryFunction<float> m_Y = new StoryValue<float>();
-        private IStoryFunction<float> m_Z = new StoryValue<float>();
+        private IStoryFunction<float> m_X = new StoryFunction<float>();
+        private IStoryFunction<float> m_Y = new StoryFunction<float>();
+        private IStoryFunction<float> m_Z = new StoryFunction<float>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -837,10 +837,10 @@ namespace StoryScript.CommonFunctions
                 m_Value = new Vector4(m_X.Value, m_Y.Value, m_Z.Value, m_W.Value);
             }
         }
-        private IStoryFunction<float> m_X = new StoryValue<float>();
-        private IStoryFunction<float> m_Y = new StoryValue<float>();
-        private IStoryFunction<float> m_Z = new StoryValue<float>();
-        private IStoryFunction<float> m_W = new StoryValue<float>();
+        private IStoryFunction<float> m_X = new StoryFunction<float>();
+        private IStoryFunction<float> m_Y = new StoryFunction<float>();
+        private IStoryFunction<float> m_Z = new StoryFunction<float>();
+        private IStoryFunction<float> m_W = new StoryFunction<float>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -899,10 +899,10 @@ namespace StoryScript.CommonFunctions
                 m_Value = new Quaternion(m_X.Value, m_Y.Value, m_Z.Value, m_W.Value);
             }
         }
-        private IStoryFunction<float> m_X = new StoryValue<float>();
-        private IStoryFunction<float> m_Y = new StoryValue<float>();
-        private IStoryFunction<float> m_Z = new StoryValue<float>();
-        private IStoryFunction<float> m_W = new StoryValue<float>();
+        private IStoryFunction<float> m_X = new StoryFunction<float>();
+        private IStoryFunction<float> m_Y = new StoryFunction<float>();
+        private IStoryFunction<float> m_Z = new StoryFunction<float>();
+        private IStoryFunction<float> m_W = new StoryFunction<float>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -958,21 +958,21 @@ namespace StoryScript.CommonFunctions
                 m_Value = Quaternion.Euler(m_X.Value, m_Y.Value, m_Z.Value);
             }
         }
-        private IStoryFunction<float> m_X = new StoryValue<float>();
-        private IStoryFunction<float> m_Y = new StoryValue<float>();
-        private IStoryFunction<float> m_Z = new StoryValue<float>();
+        private IStoryFunction<float> m_X = new StoryFunction<float>();
+        private IStoryFunction<float> m_Y = new StoryFunction<float>();
+        private IStoryFunction<float> m_Z = new StoryFunction<float>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
     public sealed class ColorFunction : IStoryFunction
     {
-        private IStoryFunction<float> m_X = new StoryValue<float>();
+        private IStoryFunction<float> m_X = new StoryFunction<float>();
 
-        private IStoryFunction<float> m_Y = new StoryValue<float>();
+        private IStoryFunction<float> m_Y = new StoryFunction<float>();
 
-        private IStoryFunction<float> m_Z = new StoryValue<float>();
+        private IStoryFunction<float> m_Z = new StoryFunction<float>();
 
-        private IStoryFunction<float> m_W = new StoryValue<float>();
+        private IStoryFunction<float> m_W = new StoryFunction<float>();
 
         private bool m_HaveValue;
 
@@ -1025,13 +1025,13 @@ namespace StoryScript.CommonFunctions
     }
     public sealed class Color32Function : IStoryFunction
     {
-        private IStoryFunction<byte> m_X = new StoryValue<byte>();
+        private IStoryFunction<byte> m_X = new StoryFunction<byte>();
 
-        private IStoryFunction<byte> m_Y = new StoryValue<byte>();
+        private IStoryFunction<byte> m_Y = new StoryFunction<byte>();
 
-        private IStoryFunction<byte> m_Z = new StoryValue<byte>();
+        private IStoryFunction<byte> m_Z = new StoryFunction<byte>();
 
-        private IStoryFunction<byte> m_W = new StoryValue<byte>();
+        private IStoryFunction<byte> m_W = new StoryFunction<byte>();
 
         private bool m_HaveValue;
 
@@ -1084,9 +1084,9 @@ namespace StoryScript.CommonFunctions
     }
     public sealed class Vector2IntFunction : IStoryFunction
     {
-        private IStoryFunction<int> m_X = new StoryValue<int>();
+        private IStoryFunction<int> m_X = new StoryFunction<int>();
 
-        private IStoryFunction<int> m_Y = new StoryValue<int>();
+        private IStoryFunction<int> m_Y = new StoryFunction<int>();
 
         private bool m_HaveValue;
 
@@ -1133,11 +1133,11 @@ namespace StoryScript.CommonFunctions
     }
     public sealed class Vector3IntFunction : IStoryFunction
     {
-        private IStoryFunction<int> m_X = new StoryValue<int>();
+        private IStoryFunction<int> m_X = new StoryFunction<int>();
 
-        private IStoryFunction<int> m_Y = new StoryValue<int>();
+        private IStoryFunction<int> m_Y = new StoryFunction<int>();
 
-        private IStoryFunction<int> m_Z = new StoryValue<int>();
+        private IStoryFunction<int> m_Z = new StoryFunction<int>();
 
         private bool m_HaveValue;
 
@@ -1234,8 +1234,8 @@ namespace StoryScript.CommonFunctions
                 m_Value = (m_Pt1.Value - m_Pt2.Value).magnitude;
             }
         }
-        private IStoryFunction<Vector2> m_Pt1 = new StoryValue<Vector2>();
-        private IStoryFunction<Vector2> m_Pt2 = new StoryValue<Vector2>();
+        private IStoryFunction<Vector2> m_Pt1 = new StoryFunction<Vector2>();
+        private IStoryFunction<Vector2> m_Pt2 = new StoryFunction<Vector2>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -1288,8 +1288,8 @@ namespace StoryScript.CommonFunctions
                 m_Value = (m_Pt1.Value - m_Pt2.Value).magnitude;
             }
         }
-        private IStoryFunction<Vector3> m_Pt1 = new StoryValue<Vector3>();
-        private IStoryFunction<Vector3> m_Pt2 = new StoryValue<Vector3>();
+        private IStoryFunction<Vector3> m_Pt1 = new StoryFunction<Vector3>();
+        private IStoryFunction<Vector3> m_Pt2 = new StoryFunction<Vector3>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -1339,7 +1339,7 @@ namespace StoryScript.CommonFunctions
                 m_Value = new Vector3(m_Pt.Value.x, 0, m_Pt.Value.y);
             }
         }
-        private IStoryFunction<Vector2> m_Pt = new StoryValue<Vector2>();
+        private IStoryFunction<Vector2> m_Pt = new StoryFunction<Vector2>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -1389,7 +1389,7 @@ namespace StoryScript.CommonFunctions
                 m_Value = new Vector2(m_Pt.Value.x, m_Pt.Value.z);
             }
         }
-        private IStoryFunction<Vector3> m_Pt = new StoryValue<Vector3>();
+        private IStoryFunction<Vector3> m_Pt = new StoryFunction<Vector3>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -1444,7 +1444,7 @@ namespace StoryScript.CommonFunctions
                 m_Value = BoxedValue.FromObject(v);
             }
         }
-        private IStoryFunction<string> m_ListString = new StoryValue<string>();
+        private IStoryFunction<string> m_ListString = new StoryFunction<string>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -1499,7 +1499,7 @@ namespace StoryScript.CommonFunctions
                 m_Value = BoxedValue.FromObject(v);
             }
         }
-        private IStoryFunction<string> m_ListString = new StoryValue<string>();
+        private IStoryFunction<string> m_ListString = new StoryFunction<string>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -1554,7 +1554,7 @@ namespace StoryScript.CommonFunctions
                 m_Value = BoxedValue.FromObject(v);
             }
         }
-        private IStoryFunction<string> m_ListString = new StoryValue<string>();
+        private IStoryFunction<string> m_ListString = new StoryFunction<string>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -1609,7 +1609,7 @@ namespace StoryScript.CommonFunctions
                 m_Value = BoxedValue.FromObject(v);
             }
         }
-        private IStoryFunction<string> m_ListString = new StoryValue<string>();
+        private IStoryFunction<string> m_ListString = new StoryFunction<string>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -1664,7 +1664,7 @@ namespace StoryScript.CommonFunctions
                 m_Value = BoxedValue.FromObject(v);
             }
         }
-        private IStoryFunction<string> m_ListString = new StoryValue<string>();
+        private IStoryFunction<string> m_ListString = new StoryFunction<string>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -1677,7 +1677,7 @@ namespace StoryScript.CommonFunctions
 
                 for (int i = 0; i < callData.GetParamNum(); ++i) {
                     Dsl.ISyntaxComponent arg = callData.GetParam(i);
-                    StoryValue val = new StoryValue();
+                    StoryFunction val = new StoryFunction();
                     val.InitFromDsl(arg);
                     m_List.Add(val);
                 }
@@ -1793,7 +1793,7 @@ namespace StoryScript.CommonFunctions
                 }
             }
         }
-        private IStoryFunction m_ListValue = new StoryValue();
+        private IStoryFunction m_ListValue = new StoryFunction();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -1806,7 +1806,7 @@ namespace StoryScript.CommonFunctions
 
                 for (int i = 0; i < callData.GetParamNum(); ++i) {
                     Dsl.ISyntaxComponent arg = callData.GetParam(i);
-                    StoryValue val = new StoryValue();
+                    StoryFunction val = new StoryFunction();
                     val.InitFromDsl(arg);
                     m_List.Add(val);
                 }
@@ -1936,8 +1936,8 @@ namespace StoryScript.CommonFunctions
             }
         }
         private int m_ParamNum = 0;
-        private IStoryFunction<IList> m_ListValue = new StoryValue<IList>();
-        private IStoryFunction m_DefaultValue = new StoryValue();
+        private IStoryFunction<IList> m_ListValue = new StoryFunction<IList>();
+        private IStoryFunction m_DefaultValue = new StoryFunction();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -2016,9 +2016,9 @@ namespace StoryScript.CommonFunctions
             }
         }
         private int m_ParamNum = 0;
-        private IStoryFunction<IList> m_ListValue = new StoryValue<IList>();
-        private IStoryFunction<int> m_IndexValue = new StoryValue<int>();
-        private IStoryFunction m_DefaultValue = new StoryValue();
+        private IStoryFunction<IList> m_ListValue = new StoryFunction<IList>();
+        private IStoryFunction<int> m_IndexValue = new StoryFunction<int>();
+        private IStoryFunction m_DefaultValue = new StoryFunction();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -2070,7 +2070,7 @@ namespace StoryScript.CommonFunctions
                 m_Value = ct;
             }
         }
-        private IStoryFunction<IList> m_ListValue = new StoryValue<IList>();
+        private IStoryFunction<IList> m_ListValue = new StoryFunction<IList>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -2133,8 +2133,8 @@ namespace StoryScript.CommonFunctions
             }
         }
         private int m_ParamNum = 0;
-        private IStoryFunction<IList> m_ListValue = new StoryValue<IList>();
-        private IStoryFunction m_IndexOfValue = new StoryValue();
+        private IStoryFunction<IList> m_ListValue = new StoryFunction<IList>();
+        private IStoryFunction m_IndexOfValue = new StoryFunction();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -2190,8 +2190,8 @@ namespace StoryScript.CommonFunctions
                 m_Value = new Vector3(pt.x + deltaX, pt.y, pt.z + deltaZ);
             }
         }
-        private IStoryFunction<Vector3> m_Pt = new StoryValue<Vector3>();
-        private IStoryFunction<float> m_Radius = new StoryValue<float>();
+        private IStoryFunction<Vector3> m_Pt = new StoryFunction<Vector3>();
+        private IStoryFunction<float> m_Radius = new StoryFunction<float>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -2247,8 +2247,8 @@ namespace StoryScript.CommonFunctions
                 m_Value = new Vector2(pt.x + deltaX, pt.y + deltaZ);
             }
         }
-        private IStoryFunction<Vector2> m_Pt = new StoryValue<Vector2>();
-        private IStoryFunction<float> m_Radius = new StoryValue<float>();
+        private IStoryFunction<Vector2> m_Pt = new StoryFunction<Vector2>();
+        private IStoryFunction<float> m_Radius = new StoryFunction<float>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }

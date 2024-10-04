@@ -60,13 +60,13 @@ namespace StoryScript.CommonCommands
                 m_MsgId.InitFromDsl(callData.GetParam(0));
             }
             for (int i = 1; i < num; ++i) {
-                StoryValue val = new StoryValue();
+                StoryFunction val = new StoryFunction();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgArgs.Add(val);
             }
             return true;
         }
-        private IStoryFunction<string> m_MsgId = new StoryValue<string>();
+        private IStoryFunction<string> m_MsgId = new StoryFunction<string>();
         private List<IStoryFunction> m_MsgArgs = new List<IStoryFunction>();
         private bool m_IsConcurrent = false;
     }
@@ -132,13 +132,13 @@ namespace StoryScript.CommonCommands
                 m_MsgId.InitFromDsl(callData.GetParam(0));
             }
             for (int i = 1; i < num; ++i) {
-                StoryValue val = new StoryValue();
+                StoryFunction val = new StoryFunction();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgArgs.Add(val);
             }
             return true;
         }
-        private IStoryFunction<string> m_MsgId = new StoryValue<string>();
+        private IStoryFunction<string> m_MsgId = new StoryFunction<string>();
         private List<IStoryFunction> m_MsgArgs = new List<IStoryFunction>();
         private bool m_IsConcurrent = false;
     }
@@ -188,7 +188,7 @@ namespace StoryScript.CommonCommands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryFunction<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryFunction<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgIds.Add(val);
             }
@@ -270,7 +270,7 @@ namespace StoryScript.CommonCommands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryFunction<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryFunction<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgIds.Add(val);
             }
@@ -309,11 +309,11 @@ namespace StoryScript.CommonCommands
             }
         }
         private List<IStoryFunction<string>> m_MsgIds = new List<IStoryFunction<string>>();
-        private IStoryFunction<string> m_SetVar = new StoryValue<string>();
-        private IStoryFunction m_SetVal = new StoryValue();
-        private IStoryFunction<int> m_TimeoutVal = new StoryValue<int>();
-        private IStoryFunction<string> m_TimeoutSetVar = new StoryValue<string>();
-        private IStoryFunction m_TimeoutSetVal = new StoryValue();
+        private IStoryFunction<string> m_SetVar = new StoryFunction<string>();
+        private IStoryFunction m_SetVal = new StoryFunction();
+        private IStoryFunction<int> m_TimeoutVal = new StoryFunction<int>();
+        private IStoryFunction<string> m_TimeoutSetVar = new StoryFunction<string>();
+        private IStoryFunction m_TimeoutSetVal = new StoryFunction();
         private bool m_HaveSet = false;
         private int m_CurTime = 0;
         private long m_StartTime = 0;
@@ -383,7 +383,7 @@ namespace StoryScript.CommonCommands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryFunction<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryFunction<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgIds.Add(val);
             }
@@ -422,11 +422,11 @@ namespace StoryScript.CommonCommands
             }
         }
         private List<IStoryFunction<string>> m_MsgIds = new List<IStoryFunction<string>>();
-        private IStoryFunction<string> m_SetVar = new StoryValue<string>();
-        private IStoryFunction m_SetVal = new StoryValue();
-        private IStoryFunction<int> m_TimeoutVal = new StoryValue<int>();
-        private IStoryFunction<string> m_TimeoutSetVar = new StoryValue<string>();
-        private IStoryFunction m_TimeoutSetVal = new StoryValue();
+        private IStoryFunction<string> m_SetVar = new StoryFunction<string>();
+        private IStoryFunction m_SetVal = new StoryFunction();
+        private IStoryFunction<int> m_TimeoutVal = new StoryFunction<int>();
+        private IStoryFunction<string> m_TimeoutSetVar = new StoryFunction<string>();
+        private IStoryFunction m_TimeoutSetVal = new StoryFunction();
         private bool m_HaveSet = false;
         private int m_CurTime = 0;
     }
@@ -504,7 +504,7 @@ namespace StoryScript.CommonCommands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryFunction<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryFunction<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgIds.Add(val);
             }
@@ -543,11 +543,11 @@ namespace StoryScript.CommonCommands
             }
         }
         private List<IStoryFunction<string>> m_MsgIds = new List<IStoryFunction<string>>();
-        private IStoryFunction<string> m_SetVar = new StoryValue<string>();
-        private IStoryFunction m_SetVal = new StoryValue();
-        private IStoryFunction<int> m_TimeoutVal = new StoryValue<int>();
-        private IStoryFunction<string> m_TimeoutSetVar = new StoryValue<string>();
-        private IStoryFunction m_TimeoutSetVal = new StoryValue();
+        private IStoryFunction<string> m_SetVar = new StoryFunction<string>();
+        private IStoryFunction m_SetVal = new StoryFunction();
+        private IStoryFunction<int> m_TimeoutVal = new StoryFunction<int>();
+        private IStoryFunction<string> m_TimeoutSetVar = new StoryFunction<string>();
+        private IStoryFunction m_TimeoutSetVal = new StoryFunction();
         private bool m_HaveSet = false;
         private int m_CurTime = 0;
         private long m_StartTime = 0;
@@ -617,7 +617,7 @@ namespace StoryScript.CommonCommands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryFunction<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryFunction<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgIds.Add(val);
             }
@@ -656,11 +656,11 @@ namespace StoryScript.CommonCommands
             }
         }
         private List<IStoryFunction<string>> m_MsgIds = new List<IStoryFunction<string>>();
-        private IStoryFunction<string> m_SetVar = new StoryValue<string>();
-        private IStoryFunction m_SetVal = new StoryValue();
-        private IStoryFunction<int> m_TimeoutVal = new StoryValue<int>();
-        private IStoryFunction<string> m_TimeoutSetVar = new StoryValue<string>();
-        private IStoryFunction m_TimeoutSetVal = new StoryValue();
+        private IStoryFunction<string> m_SetVar = new StoryFunction<string>();
+        private IStoryFunction m_SetVal = new StoryFunction();
+        private IStoryFunction<int> m_TimeoutVal = new StoryFunction<int>();
+        private IStoryFunction<string> m_TimeoutSetVar = new StoryFunction<string>();
+        private IStoryFunction m_TimeoutSetVal = new StoryFunction();
         private bool m_HaveSet = false;
         private int m_CurTime = 0;
     }
@@ -697,7 +697,7 @@ namespace StoryScript.CommonCommands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryFunction<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryFunction<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgIds.Add(val);
             }
@@ -738,7 +738,7 @@ namespace StoryScript.CommonCommands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryFunction<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryFunction<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgIds.Add(val);
             }
@@ -795,13 +795,13 @@ namespace StoryScript.CommonCommands
                 m_MsgId.InitFromDsl(callData.GetParam(0));
             }
             for (int i = 1; i < num; ++i) {
-                StoryValue val = new StoryValue();
+                StoryFunction val = new StoryFunction();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgArgs.Add(val);
             }
             return true;
         }
-        private IStoryFunction<string> m_MsgId = new StoryValue<string>();
+        private IStoryFunction<string> m_MsgId = new StoryFunction<string>();
         private List<IStoryFunction> m_MsgArgs = new List<IStoryFunction>();
         private bool m_IsConcurrent = false;
     }
@@ -871,13 +871,13 @@ namespace StoryScript.CommonCommands
                 m_MsgId.InitFromDsl(callData.GetParam(0));
             }
             for (int i = 1; i < num; ++i) {
-                StoryValue val = new StoryValue();
+                StoryFunction val = new StoryFunction();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgArgs.Add(val);
             }
             return true;
         }
-        private IStoryFunction<string> m_MsgId = new StoryValue<string>();
+        private IStoryFunction<string> m_MsgId = new StoryFunction<string>();
         private List<IStoryFunction> m_MsgArgs = new List<IStoryFunction>();
         private bool m_IsConcurrent = false;
     }
@@ -934,7 +934,7 @@ namespace StoryScript.CommonCommands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryFunction<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryFunction<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgIds.Add(val);
             }
@@ -1026,7 +1026,7 @@ namespace StoryScript.CommonCommands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryFunction<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryFunction<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgIds.Add(val);
             }
@@ -1065,11 +1065,11 @@ namespace StoryScript.CommonCommands
             }
         }
         private List<IStoryFunction<string>> m_MsgIds = new List<IStoryFunction<string>>();
-        private IStoryFunction<string> m_SetVar = new StoryValue<string>();
-        private IStoryFunction m_SetVal = new StoryValue();
-        private IStoryFunction<int> m_TimeoutVal = new StoryValue<int>();
-        private IStoryFunction<string> m_TimeoutSetVar = new StoryValue<string>();
-        private IStoryFunction m_TimeoutSetVal = new StoryValue();
+        private IStoryFunction<string> m_SetVar = new StoryFunction<string>();
+        private IStoryFunction m_SetVal = new StoryFunction();
+        private IStoryFunction<int> m_TimeoutVal = new StoryFunction<int>();
+        private IStoryFunction<string> m_TimeoutSetVar = new StoryFunction<string>();
+        private IStoryFunction m_TimeoutSetVal = new StoryFunction();
         private bool m_HaveSet = false;
         private int m_CurTime = 0;
         private long m_StartTime = 0;
@@ -1145,7 +1145,7 @@ namespace StoryScript.CommonCommands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryFunction<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryFunction<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgIds.Add(val);
             }
@@ -1184,11 +1184,11 @@ namespace StoryScript.CommonCommands
             }
         }
         private List<IStoryFunction<string>> m_MsgIds = new List<IStoryFunction<string>>();
-        private IStoryFunction<string> m_SetVar = new StoryValue<string>();
-        private IStoryFunction m_SetVal = new StoryValue();
-        private IStoryFunction<int> m_TimeoutVal = new StoryValue<int>();
-        private IStoryFunction<string> m_TimeoutSetVar = new StoryValue<string>();
-        private IStoryFunction m_TimeoutSetVal = new StoryValue();
+        private IStoryFunction<string> m_SetVar = new StoryFunction<string>();
+        private IStoryFunction m_SetVal = new StoryFunction();
+        private IStoryFunction<int> m_TimeoutVal = new StoryFunction<int>();
+        private IStoryFunction<string> m_TimeoutSetVar = new StoryFunction<string>();
+        private IStoryFunction m_TimeoutSetVal = new StoryFunction();
         private bool m_HaveSet = false;
         private int m_CurTime = 0;
     }
@@ -1277,7 +1277,7 @@ namespace StoryScript.CommonCommands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryFunction<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryFunction<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgIds.Add(val);
             }
@@ -1316,11 +1316,11 @@ namespace StoryScript.CommonCommands
             }
         }
         private List<IStoryFunction<string>> m_MsgIds = new List<IStoryFunction<string>>();
-        private IStoryFunction<string> m_SetVar = new StoryValue<string>();
-        private IStoryFunction m_SetVal = new StoryValue();
-        private IStoryFunction<int> m_TimeoutVal = new StoryValue<int>();
-        private IStoryFunction<string> m_TimeoutSetVar = new StoryValue<string>();
-        private IStoryFunction m_TimeoutSetVal = new StoryValue();
+        private IStoryFunction<string> m_SetVar = new StoryFunction<string>();
+        private IStoryFunction m_SetVal = new StoryFunction();
+        private IStoryFunction<int> m_TimeoutVal = new StoryFunction<int>();
+        private IStoryFunction<string> m_TimeoutSetVar = new StoryFunction<string>();
+        private IStoryFunction m_TimeoutSetVal = new StoryFunction();
         private bool m_HaveSet = false;
         private int m_CurTime = 0;
         private long m_StartTime = 0;
@@ -1397,7 +1397,7 @@ namespace StoryScript.CommonCommands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryFunction<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryFunction<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgIds.Add(val);
             }
@@ -1436,11 +1436,11 @@ namespace StoryScript.CommonCommands
             }
         }
         private List<IStoryFunction<string>> m_MsgIds = new List<IStoryFunction<string>>();
-        private IStoryFunction<string> m_SetVar = new StoryValue<string>();
-        private IStoryFunction m_SetVal = new StoryValue();
-        private IStoryFunction<int> m_TimeoutVal = new StoryValue<int>();
-        private IStoryFunction<string> m_TimeoutSetVar = new StoryValue<string>();
-        private IStoryFunction m_TimeoutSetVal = new StoryValue();
+        private IStoryFunction<string> m_SetVar = new StoryFunction<string>();
+        private IStoryFunction m_SetVal = new StoryFunction();
+        private IStoryFunction<int> m_TimeoutVal = new StoryFunction<int>();
+        private IStoryFunction<string> m_TimeoutSetVar = new StoryFunction<string>();
+        private IStoryFunction m_TimeoutSetVal = new StoryFunction();
         private bool m_HaveSet = false;
         private int m_CurTime = 0;
     }
@@ -1484,7 +1484,7 @@ namespace StoryScript.CommonCommands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryFunction<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryFunction<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgIds.Add(val);
             }
@@ -1532,7 +1532,7 @@ namespace StoryScript.CommonCommands
         {
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                IStoryFunction<string> val = new StoryValue<string>();
+                IStoryFunction<string> val = new StoryFunction<string>();
                 val.InitFromDsl(callData.GetParam(i));
                 m_MsgIds.Add(val);
             }

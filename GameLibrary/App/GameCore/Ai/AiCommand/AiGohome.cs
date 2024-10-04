@@ -5,14 +5,14 @@ using System.Text;
 using GameLibrary;
 using StoryScript;
 
-internal class AiGohome : SimpleStoryCommandBase<AiGohome, StoryValueParam<int>>
+internal class AiGohome : SimpleStoryCommandBase<AiGohome, StoryFunctionParam<int>>
 {
     protected override void ResetState()
     {
         m_ParamReaded = false;
     }
 
-    protected override bool ExecCommand(StoryInstance instance, StoryValueParam<int> _params, long delta)
+    protected override bool ExecCommand(StoryInstance instance, StoryFunctionParam<int> _params, long delta)
     {
         if (!m_ParamReaded) {
             m_ParamReaded = true;

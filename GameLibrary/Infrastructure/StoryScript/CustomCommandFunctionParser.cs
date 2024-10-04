@@ -172,7 +172,7 @@ namespace StoryScript
             }
             else if (id == "function") {
                 string doc = string.Empty;
-                StoryScript.CommonFunctions.CompositeValue val = new CommonFunctions.CompositeValue();
+                StoryScript.CommonFunctions.CompositeFunction val = new CommonFunctions.CompositeFunction();
                 val.InitSharedData();
                 var first = dslInfo as Dsl.FunctionData;
                 if (null != first) {
@@ -303,7 +303,7 @@ namespace StoryScript
 
                 IStoryFunctionFactory factory = StoryFunctionManager.Instance.FindFactory(name);
                 if (null != factory) {
-                    StoryScript.CommonFunctions.CompositeValue val = factory.Build() as StoryScript.CommonFunctions.CompositeValue;
+                    StoryScript.CommonFunctions.CompositeFunction val = factory.Build() as StoryScript.CommonFunctions.CompositeFunction;
                     val.InitialCommands.Clear();
 
                     Dsl.FunctionData bodyFunc = null;

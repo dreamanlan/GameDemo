@@ -3,12 +3,12 @@ using System.Collections.Generic;
 namespace StoryScript
 {
     /// <summary>
-    /// A simple function value base class that simplifies the number of lines of code needed to implement IStoryValue
+    /// A simple function value base class that simplifies the number of lines of code needed to implement IStoryFunction
     /// (current value classes only support the FunctionData style)
     /// </summary>
     public abstract class SimpleStoryFunctionBase<SubClassType, ValueParamType> : IStoryFunction
         where SubClassType : SimpleStoryFunctionBase<SubClassType, ValueParamType>, new()
-        where ValueParamType : IStoryValueParam, new()
+        where ValueParamType : IStoryFunctionParam, new()
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
         {
@@ -44,15 +44,15 @@ namespace StoryScript
             }
         }
         protected virtual void CopyFields(SubClassType other) { }
-        protected abstract void UpdateValue(StoryInstance instance, ValueParamType _params, StoryValueResult result);
+        protected abstract void UpdateValue(StoryInstance instance, ValueParamType _params, StoryFunctionResult result);
         private void TryUpdateValue(StoryInstance instance)
         {
             if (m_Params.HaveValue) {
                 UpdateValue(instance, (ValueParamType)m_Params, m_Result);
             }
         }
-        private IStoryValueParam m_Params = new ValueParamType();
-        private StoryValueResult m_Result = new StoryValueResult();
+        private IStoryFunctionParam m_Params = new ValueParamType();
+        private StoryFunctionResult m_Result = new StoryFunctionResult();
     }
     /// <summary>
     /// A simple command base class that simplifies the number of lines of code needed
@@ -60,7 +60,7 @@ namespace StoryScript
     /// </summary>
     public abstract class SimpleStoryCommandBase<SubClassType, ValueParamType> : IStoryCommand
         where SubClassType : SimpleStoryCommandBase<SubClassType, ValueParamType>, new()
-        where ValueParamType : IStoryValueParam, new()
+        where ValueParamType : IStoryFunctionParam, new()
     {
         public bool Init(Dsl.ISyntaxComponent config)
         {
@@ -153,7 +153,7 @@ namespace StoryScript
             return false;
         }
         private bool m_LastExecResult = false;
-        private IStoryValueParam m_Params = new ValueParamType();
+        private IStoryFunctionParam m_Params = new ValueParamType();
         private Dsl.FunctionData m_Comments;
         private Dsl.ISyntaxComponent m_Config;
         private string m_Id;

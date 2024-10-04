@@ -173,7 +173,7 @@ namespace StoryScript.CommonCommands
                     var fcd = comp as Dsl.FunctionData;
                     if (null != fcd) {
                         var key = fcd.GetId();
-                        StoryValue val = new StoryValue();
+                        StoryFunction val = new StoryFunction();
                         val.InitFromDsl(fcd.GetParam(0));
                         m_LoadedOptArgs[key] = val;
                     }
@@ -185,14 +185,14 @@ namespace StoryScript.CommonCommands
         {
             m_LoadedOptArgs = new Dictionary<string, IStoryFunction>();
             foreach (var pair in m_OptArgs) {
-                StoryValue val = new StoryValue();
+                StoryFunction val = new StoryFunction();
                 val.InitFromDsl(pair.Value);
                 m_LoadedOptArgs.Add(pair.Key, val);
             }
             m_LoadedArgs = new List<IStoryFunction>();
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i) {
-                StoryValue val = new StoryValue();
+                StoryFunction val = new StoryFunction();
                 val.InitFromDsl(callData.GetParam(i));
                 m_LoadedArgs.Add(val);
             }
@@ -327,8 +327,8 @@ namespace StoryScript.CommonCommands
             }
             return true;
         }
-        private IStoryFunction<string> m_Id = new StoryValue<string>();
-        private IStoryFunction<string> m_SubstId = new StoryValue<string>();
+        private IStoryFunction<string> m_Id = new StoryFunction<string>();
+        private IStoryFunction<string> m_SubstId = new StoryFunction<string>();
     }
     /// <summary>
     /// clearcmdsubsts();
@@ -392,8 +392,8 @@ namespace StoryScript.CommonCommands
             }
             return true;
         }
-        private IStoryFunction<string> m_Id = new StoryValue<string>();
-        private IStoryFunction<string> m_SubstId = new StoryValue<string>();
+        private IStoryFunction<string> m_Id = new StoryFunction<string>();
+        private IStoryFunction<string> m_SubstId = new StoryFunction<string>();
     }
     /// <summary>
     /// clearfuncsubsts();

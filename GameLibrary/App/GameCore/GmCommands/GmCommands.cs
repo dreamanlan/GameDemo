@@ -5,9 +5,9 @@ using StoryScript;
 namespace GameLibrary.GmCommands
 {
     //---------------------------------------------------------------------------------------------------------------
-    internal class SetMaxEffectCommand : SimpleStoryCommandBase<SetMaxEffectCommand, StoryValueParam<int, int>>
+    internal class SetMaxEffectCommand : SimpleStoryCommandBase<SetMaxEffectCommand, StoryFunctionParam<int, int>>
     {
-        protected override bool ExecCommand(StoryInstance instance, StoryValueParam<int, int> _params, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryFunctionParam<int, int> _params, long delta)
         {
             int v1 = _params.Param1Value;
             int v2 = _params.Param2Value;
@@ -23,9 +23,9 @@ namespace GameLibrary.GmCommands
             return false;
         }
     }
-    internal class SetDebugCommand : SimpleStoryCommandBase<SetDebugCommand, StoryValueParam<int>>
+    internal class SetDebugCommand : SimpleStoryCommandBase<SetDebugCommand, StoryFunctionParam<int>>
     {
-        protected override bool ExecCommand(StoryInstance instance, StoryValueParam<int> _params, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryFunctionParam<int> _params, long delta)
         {
             int val = _params.Param1Value;
             GlobalVariables.Instance.IsDebug = val != 0;
@@ -33,26 +33,26 @@ namespace GameLibrary.GmCommands
             return false;
         }
     }
-    internal class EditorBreakCommand : SimpleStoryCommandBase<EditorBreakCommand, StoryValueParam>
+    internal class EditorBreakCommand : SimpleStoryCommandBase<EditorBreakCommand, StoryFunctionParam>
     {
-        protected override bool ExecCommand(StoryInstance instance, StoryValueParam _params, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryFunctionParam _params, long delta)
         {
             UnityEngine.Debug.Break();
             return false;
         }
     }
-    internal class DebugBreakCommand : SimpleStoryCommandBase<DebugBreakCommand, StoryValueParam>
+    internal class DebugBreakCommand : SimpleStoryCommandBase<DebugBreakCommand, StoryFunctionParam>
     {
-        protected override bool ExecCommand(StoryInstance instance, StoryValueParam _params, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryFunctionParam _params, long delta)
         {
             UnityEngine.Debug.DebugBreak();
             return false;
         }
     }
     //---------------------------------------------------------------------------------------------------------------
-    internal class AllocMemoryCommand : SimpleStoryCommandBase<AllocMemoryCommand, StoryValueParam<string, int>>
+    internal class AllocMemoryCommand : SimpleStoryCommandBase<AllocMemoryCommand, StoryFunctionParam<string, int>>
     {
-        protected override bool ExecCommand(StoryInstance instance, StoryValueParam<string, int> _params, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryFunctionParam<string, int> _params, long delta)
         {
             string key = _params.Param1Value;
             int size = _params.Param2Value;
@@ -65,9 +65,9 @@ namespace GameLibrary.GmCommands
             return false;
         }
     }
-    internal class FreeMemoryCommand : SimpleStoryCommandBase<FreeMemoryCommand, StoryValueParam<string>>
+    internal class FreeMemoryCommand : SimpleStoryCommandBase<FreeMemoryCommand, StoryFunctionParam<string>>
     {
-        protected override bool ExecCommand(StoryInstance instance, StoryValueParam<string> _params, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryFunctionParam<string> _params, long delta)
         {
             string key = _params.Param1Value;
             if (instance.GlobalVariables.ContainsKey(key)) {
@@ -79,9 +79,9 @@ namespace GameLibrary.GmCommands
             return false;
         }
     }
-    internal class ConsumeCpuCommand : SimpleStoryCommandBase<ConsumeCpuCommand, StoryValueParam<int>>
+    internal class ConsumeCpuCommand : SimpleStoryCommandBase<ConsumeCpuCommand, StoryFunctionParam<int>>
     {
-        protected override bool ExecCommand(StoryInstance instance, StoryValueParam<int> _params, long delta)
+        protected override bool ExecCommand(StoryInstance instance, StoryFunctionParam<int> _params, long delta)
         {
             int time = _params.Param1Value;
             long startTime = TimeUtility.GetElapsedTimeUs();

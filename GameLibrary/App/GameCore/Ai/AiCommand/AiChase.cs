@@ -6,14 +6,14 @@ using System.Text;
 using GameLibrary;
 using StoryScript;
 
-internal class AiChase : SimpleStoryCommandBase<AiChase, StoryValueParam<int, float>>
+internal class AiChase : SimpleStoryCommandBase<AiChase, StoryFunctionParam<int, float>>
 {
     protected override void ResetState()
     {
         m_ChaseStarted = false;
     }
 
-    protected override bool ExecCommand(StoryInstance instance, StoryValueParam<int, float> _params, long delta)
+    protected override bool ExecCommand(StoryInstance instance, StoryFunctionParam<int, float> _params, long delta)
     {
         if (!m_ChaseStarted) {
             m_ChaseStarted = true;

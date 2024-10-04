@@ -74,8 +74,8 @@ namespace GameLibrary.Story.Functions
             }
         }
         private int m_ParamNum = 0;
-        private IStoryFunction<string> m_AttrName = new StoryValue<string>();
-        private IStoryFunction m_DefaultValue = new StoryValue();
+        private IStoryFunction<string> m_AttrName = new StoryFunction<string>();
+        private IStoryFunction m_DefaultValue = new StoryFunction();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -223,9 +223,9 @@ namespace GameLibrary.Story.Functions
             }
         }
 
-        private IStoryFunction<int> m_Type = new StoryValue<int>();
-        private IStoryFunction<Vector3> m_Pos = new StoryValue<Vector3>();
-        private IStoryFunction<float> m_Range = new StoryValue<float>();
+        private IStoryFunction<int> m_Type = new StoryFunction<int>();
+        private IStoryFunction<Vector3> m_Pos = new StoryFunction<Vector3>();
+        private IStoryFunction<float> m_Range = new StoryFunction<float>();
         private int m_ParamNum;
         private bool m_HaveValue;
         private BoxedValue m_Value;
@@ -294,9 +294,9 @@ namespace GameLibrary.Story.Functions
             }
         }
 
-        private IStoryFunction<int> m_Type = new StoryValue<int>();
-        private IStoryFunction<Vector3> m_Pos = new StoryValue<Vector3>();
-        private IStoryFunction<float> m_Range = new StoryValue<float>();
+        private IStoryFunction<int> m_Type = new StoryFunction<int>();
+        private IStoryFunction<Vector3> m_Pos = new StoryFunction<Vector3>();
+        private IStoryFunction<float> m_Range = new StoryFunction<float>();
         private int m_ParamNum;
         private bool m_HaveValue;
         private BoxedValue m_Value;
@@ -361,8 +361,8 @@ namespace GameLibrary.Story.Functions
             }
         }
 
-        private IStoryFunction<Vector3> m_Pos = new StoryValue<Vector3>();
-        private IStoryFunction<float> m_Range = new StoryValue<float>();
+        private IStoryFunction<Vector3> m_Pos = new StoryFunction<Vector3>();
+        private IStoryFunction<float> m_Range = new StoryFunction<float>();
         private int m_ParamNum;
         private bool m_HaveValue;
         private BoxedValue m_Value;
@@ -423,8 +423,8 @@ namespace GameLibrary.Story.Functions
             }
         }
 
-        private IStoryFunction<int> m_Camp = new StoryValue<int>();
-        private IStoryFunction<int> m_Relation = new StoryValue<int>();
+        private IStoryFunction<int> m_Camp = new StoryFunction<int>();
+        private IStoryFunction<int> m_Relation = new StoryFunction<int>();
         private int m_ParamNum;
         private bool m_HaveValue;
         private BoxedValue m_Value;
@@ -485,8 +485,8 @@ namespace GameLibrary.Story.Functions
             }
         }
 
-        private IStoryFunction<int> m_Camp = new StoryValue<int>();
-        private IStoryFunction<int> m_Relation = new StoryValue<int>();
+        private IStoryFunction<int> m_Camp = new StoryFunction<int>();
+        private IStoryFunction<int> m_Relation = new StoryFunction<int>();
         private int m_ParamNum;
         private bool m_HaveValue;
         private BoxedValue m_Value;
@@ -539,7 +539,7 @@ namespace GameLibrary.Story.Functions
             m_Value = Path.GetFileName(path);
         }
 
-        private IStoryFunction<string> m_Path = new StoryValue<string>();
+        private IStoryFunction<string> m_Path = new StoryFunction<string>();
         private int m_ParamNum;
         private bool m_HaveValue;
         private BoxedValue m_Value;
@@ -592,7 +592,7 @@ namespace GameLibrary.Story.Functions
             m_Value = Path.GetDirectoryName(path);
         }
 
-        private IStoryFunction<string> m_Path = new StoryValue<string>();
+        private IStoryFunction<string> m_Path = new StoryFunction<string>();
         private int m_ParamNum;
         private bool m_HaveValue;
         private BoxedValue m_Value;
@@ -645,7 +645,7 @@ namespace GameLibrary.Story.Functions
             m_Value = Path.GetExtension(path);
         }
 
-        private IStoryFunction<string> m_Path = new StoryValue<string>();
+        private IStoryFunction<string> m_Path = new StoryFunction<string>();
         private int m_ParamNum;
         private bool m_HaveValue;
         private BoxedValue m_Value;
@@ -702,8 +702,8 @@ namespace GameLibrary.Story.Functions
             m_Value = Path.Combine(path1, path2);
         }
 
-        private IStoryFunction<string> m_Path1 = new StoryValue<string>();
-        private IStoryFunction<string> m_Path2 = new StoryValue<string>();
+        private IStoryFunction<string> m_Path1 = new StoryFunction<string>();
+        private IStoryFunction<string> m_Path2 = new StoryFunction<string>();
         private int m_ParamNum;
         private bool m_HaveValue;
         private BoxedValue m_Value;

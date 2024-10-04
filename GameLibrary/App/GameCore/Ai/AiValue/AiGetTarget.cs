@@ -6,9 +6,9 @@ using System.Text;
 using GameLibrary;
 using StoryScript;
 
-internal class AiGetTarget : SimpleStoryFunctionBase<AiGetTarget, StoryValueParam<int>>
+internal class AiGetTarget : SimpleStoryFunctionBase<AiGetTarget, StoryFunctionParam<int>>
 {
-    protected override void UpdateValue(StoryInstance instance, StoryValueParam<int> _params, StoryValueResult result)
+    protected override void UpdateValue(StoryInstance instance, StoryFunctionParam<int> _params, StoryFunctionResult result)
     {
         int objId = _params.Param1Value;
         EntityInfo npc = SceneSystem.Instance.GetEntityById(objId);

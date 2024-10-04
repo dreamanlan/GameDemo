@@ -55,7 +55,7 @@ namespace GameLibrary.Story.Functions
                 }
             }
         }
-        private IStoryFunction<int> m_UnitId = new StoryValue<int>();
+        private IStoryFunction<int> m_UnitId = new StoryFunction<int>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -119,8 +119,8 @@ namespace GameLibrary.Story.Functions
             }
         }
 
-        private IStoryFunction<int> m_UnitId = new StoryValue<int>();
-        private IStoryFunction<int> m_Index = new StoryValue<int>();
+        private IStoryFunction<int> m_UnitId = new StoryFunction<int>();
+        private IStoryFunction<int> m_Index = new StoryFunction<int>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }

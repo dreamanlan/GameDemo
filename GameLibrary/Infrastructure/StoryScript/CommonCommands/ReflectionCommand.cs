@@ -107,14 +107,14 @@ namespace StoryScript.CommonCommands
                 m_Method.InitFromDsl(callData.GetParam(1));
             }
             for (int i = 2; i < callData.GetParamNum(); ++i) {
-                StoryValue val = new StoryValue();
+                StoryFunction val = new StoryFunction();
                 val.InitFromDsl(callData.GetParam(i));
                 m_Args.Add(val);
             }
             return true;
         }
-        private IStoryFunction m_Object = new StoryValue();
-        private IStoryFunction m_Method = new StoryValue();
+        private IStoryFunction m_Object = new StoryFunction();
+        private IStoryFunction m_Method = new StoryFunction();
         private List<IStoryFunction> m_Args = new List<IStoryFunction>();
         private int m_DispId = -1;
     }
@@ -209,14 +209,14 @@ namespace StoryScript.CommonCommands
                 m_Method.InitFromDsl(callData.GetParam(1));
             }
             for (int i = 2; i < callData.GetParamNum(); ++i) {
-                StoryValue val = new StoryValue();
+                StoryFunction val = new StoryFunction();
                 val.InitFromDsl(callData.GetParam(i));
                 m_Args.Add(val);
             }
             return true;
         }
-        private IStoryFunction m_Object = new StoryValue();
-        private IStoryFunction m_Method = new StoryValue();
+        private IStoryFunction m_Object = new StoryFunction();
+        private IStoryFunction m_Method = new StoryFunction();
         private List<IStoryFunction> m_Args = new List<IStoryFunction>();
         private int m_DispId = -1;
     }
@@ -286,14 +286,14 @@ namespace StoryScript.CommonCommands
                 m_Method.InitFromDsl(callData.GetParam(1));
             }
             for (int i = 2; i < callData.GetParamNum(); ++i) {
-                StoryValue val = new StoryValue();
+                StoryFunction val = new StoryFunction();
                 val.InitFromDsl(callData.GetParam(i));
                 m_Args.Add(val);
             }
             return true;
         }
-        private IStoryFunction m_Object = new StoryValue();
-        private IStoryFunction m_Method = new StoryValue();
+        private IStoryFunction m_Object = new StoryFunction();
+        private IStoryFunction m_Method = new StoryFunction();
         private List<IStoryFunction> m_Args = new List<IStoryFunction>();
     }
     /// <summary>
@@ -354,14 +354,14 @@ namespace StoryScript.CommonCommands
                 m_Method.InitFromDsl(callData.GetParam(1));
             }
             for (int i = 2; i < callData.GetParamNum(); ++i) {
-                StoryValue val = new StoryValue();
+                StoryFunction val = new StoryFunction();
                 val.InitFromDsl(callData.GetParam(i));
                 m_Args.Add(val);
             }
             return true;
         }
-        private IStoryFunction m_Object = new StoryValue();
-        private IStoryFunction m_Method = new StoryValue();
+        private IStoryFunction m_Object = new StoryFunction();
+        private IStoryFunction m_Method = new StoryFunction();
         private List<IStoryFunction> m_Args = new List<IStoryFunction>();
     }
 }

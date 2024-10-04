@@ -6,14 +6,14 @@ using System.Text;
 using GameLibrary;
 using StoryScript;
 
-internal class AiKeepAway : SimpleStoryCommandBase<AiKeepAway, StoryValueParam<int, float, float>>
+internal class AiKeepAway : SimpleStoryCommandBase<AiKeepAway, StoryFunctionParam<int, float, float>>
 {
     protected override void ResetState()
     {
         m_KeepAwayStarted = false;
     }
 
-    protected override bool ExecCommand(StoryInstance instance, StoryValueParam<int, float, float> _params, long delta)
+    protected override bool ExecCommand(StoryInstance instance, StoryFunctionParam<int, float, float> _params, long delta)
     {
         if (!m_KeepAwayStarted) {
             m_KeepAwayStarted = true;

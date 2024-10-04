@@ -208,7 +208,7 @@ namespace GameLibrary.Story.Functions
                 }
             }
         }
-        private IStoryFunction m_ObjPath = new StoryValue();
+        private IStoryFunction m_ObjPath = new StoryFunction();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -283,7 +283,7 @@ namespace GameLibrary.Story.Functions
                 }
             }
         }
-        private IStoryFunction m_ObjPath = new StoryValue();
+        private IStoryFunction m_ObjPath = new StoryFunction();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -358,7 +358,7 @@ namespace GameLibrary.Story.Functions
                 }
             }
         }
-        private IStoryFunction m_ObjPath = new StoryValue();
+        private IStoryFunction m_ObjPath = new StoryFunction();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -440,8 +440,8 @@ namespace GameLibrary.Story.Functions
                 }
             }
         }
-        private IStoryFunction m_ObjPath = new StoryValue();
-        private IStoryFunction m_ComponentType = new StoryValue();
+        private IStoryFunction m_ObjPath = new StoryFunction();
+        private IStoryFunction m_ComponentType = new StoryFunction();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -544,9 +544,9 @@ namespace GameLibrary.Story.Functions
         }
 
         private int m_ParamNum = 0;
-        private IStoryFunction m_ObjPath = new StoryValue();
-        private IStoryFunction m_ComponentType = new StoryValue();
-        private IStoryFunction<int> m_IncludeInactive = new StoryValue<int>();
+        private IStoryFunction m_ObjPath = new StoryFunction();
+        private IStoryFunction m_ComponentType = new StoryFunction();
+        private IStoryFunction<int> m_IncludeInactive = new StoryFunction<int>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -648,9 +648,9 @@ namespace GameLibrary.Story.Functions
         }
 
         private int m_ParamNum = 0;
-        private IStoryFunction m_ObjPath = new StoryValue();
-        private IStoryFunction m_ComponentType = new StoryValue();
-        private IStoryFunction<int> m_IncludeInactive = new StoryValue<int>();
+        private IStoryFunction m_ObjPath = new StoryFunction();
+        private IStoryFunction m_ComponentType = new StoryFunction();
+        private IStoryFunction<int> m_IncludeInactive = new StoryFunction<int>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -744,8 +744,8 @@ namespace GameLibrary.Story.Functions
                 }
             }
         }
-        private IStoryFunction m_ObjPath = new StoryValue();
-        private IStoryFunction m_ComponentType = new StoryValue();
+        private IStoryFunction m_ObjPath = new StoryFunction();
+        private IStoryFunction m_ComponentType = new StoryFunction();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -854,9 +854,9 @@ namespace GameLibrary.Story.Functions
         }
 
         private int m_ParamNum = 0;
-        private IStoryFunction m_ObjPath = new StoryValue();
-        private IStoryFunction m_ComponentType = new StoryValue();
-        private IStoryFunction<int> m_IncludeInactive = new StoryValue<int>();
+        private IStoryFunction m_ObjPath = new StoryFunction();
+        private IStoryFunction m_ComponentType = new StoryFunction();
+        private IStoryFunction<int> m_IncludeInactive = new StoryFunction<int>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -965,9 +965,9 @@ namespace GameLibrary.Story.Functions
         }
 
         private int m_ParamNum = 0;
-        private IStoryFunction m_ObjPath = new StoryValue();
-        private IStoryFunction m_ComponentType = new StoryValue();
-        private IStoryFunction<int> m_IncludeInactive = new StoryValue<int>();
+        private IStoryFunction m_ObjPath = new StoryFunction();
+        private IStoryFunction m_ComponentType = new StoryFunction();
+        private IStoryFunction<int> m_IncludeInactive = new StoryFunction<int>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -1104,20 +1104,20 @@ namespace GameLibrary.Story.Functions
             string id = callData.GetId();
             if (id == "disable") {
                 for (int i = 0; i < callData.GetParamNum(); ++i) {
-                    var p = new StoryValue<string>();
+                    var p = new StoryFunction<string>();
                     p.InitFromDsl(callData.GetParam(i));
                     m_DisableComponents.Add(p);
                 }
             } else if (id == "remove") {
                 for (int i = 0; i < callData.GetParamNum(); ++i) {
-                    var p = new StoryValue<string>();
+                    var p = new StoryFunction<string>();
                     p.InitFromDsl(callData.GetParam(i));
                     m_RemoveComponents.Add(p);
                 }
             }
         }
 
-        private IStoryFunction m_ObjPath = new StoryValue();
+        private IStoryFunction m_ObjPath = new StoryFunction();
         private List<IStoryFunction<string>> m_DisableComponents = new List<IStoryFunction<string>>();
         private List<IStoryFunction<string>> m_RemoveComponents = new List<IStoryFunction<string>>();
         private bool m_HaveValue;
@@ -1198,7 +1198,7 @@ namespace GameLibrary.Story.Functions
                 }
             }
         }
-        private IStoryFunction m_ObjPath = new StoryValue();
+        private IStoryFunction m_ObjPath = new StoryFunction();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -1293,8 +1293,8 @@ namespace GameLibrary.Story.Functions
             }
         }
 
-        private IStoryFunction m_ObjPath = new StoryValue();
-        private IStoryFunction<string> m_ChildPath = new StoryValue<string>();
+        private IStoryFunction m_ObjPath = new StoryFunction();
+        private IStoryFunction<string> m_ChildPath = new StoryFunction<string>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -1358,7 +1358,7 @@ namespace GameLibrary.Story.Functions
                 }
             }
         }
-        private IStoryFunction<string> m_TypeName = new StoryValue<string>();
+        private IStoryFunction<string> m_TypeName = new StoryFunction<string>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -1422,7 +1422,7 @@ namespace GameLibrary.Story.Functions
                 }
             }
         }
-        private IStoryFunction<string> m_TypeName = new StoryValue<string>();
+        private IStoryFunction<string> m_TypeName = new StoryFunction<string>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -1484,7 +1484,7 @@ namespace GameLibrary.Story.Functions
                 }
             }
         }
-        private IStoryFunction<string> m_TypeName = new StoryValue<string>();
+        private IStoryFunction<string> m_TypeName = new StoryFunction<string>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -1533,7 +1533,7 @@ namespace GameLibrary.Story.Functions
                 m_Value = BoxedValue.FromObject(SceneSystem.Instance.GetEntityById(objId));
             }
         }
-        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<int> m_ObjId = new StoryFunction<int>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -1582,7 +1582,7 @@ namespace GameLibrary.Story.Functions
                 m_Value = BoxedValue.FromObject(SceneSystem.Instance.GetEntityViewById(objId));
             }
         }
-        private IStoryFunction<int> m_ObjId = new StoryValue<int>();
+        private IStoryFunction<int> m_ObjId = new StoryFunction<int>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -1773,8 +1773,8 @@ namespace GameLibrary.Story.Functions
         }
 
         private int m_ParamNum = 0;
-        private IStoryFunction<string> m_StoryId = new StoryValue<string>();
-        private IStoryFunction<string> m_Namespace = new StoryValue<string>();
+        private IStoryFunction<string> m_StoryId = new StoryFunction<string>();
+        private IStoryFunction<string> m_Namespace = new StoryFunction<string>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -1846,9 +1846,9 @@ namespace GameLibrary.Story.Functions
         }
 
         private int m_ParamNum = 0;
-        private IStoryFunction<string> m_StoryId = new StoryValue<string>();
-        private IStoryFunction<string> m_Namespace = new StoryValue<string>();
-        private IStoryFunction<string> m_Name = new StoryValue<string>();
+        private IStoryFunction<string> m_StoryId = new StoryFunction<string>();
+        private IStoryFunction<string> m_Namespace = new StoryFunction<string>();
+        private IStoryFunction<string> m_Name = new StoryFunction<string>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -1900,7 +1900,7 @@ namespace GameLibrary.Story.Functions
             }
         }
 
-        private IStoryFunction<float> m_Degree = new StoryValue<float>();
+        private IStoryFunction<float> m_Degree = new StoryFunction<float>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -1952,7 +1952,7 @@ namespace GameLibrary.Story.Functions
             }
         }
 
-        private IStoryFunction<float> m_Radian = new StoryValue<float>();
+        private IStoryFunction<float> m_Radian = new StoryFunction<float>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }

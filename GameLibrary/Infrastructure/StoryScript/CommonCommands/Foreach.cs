@@ -94,7 +94,7 @@ namespace StoryScript.CommonCommands
                 Dsl.FunctionData callData = functionData.LowerOrderFunction;
                 for (int i = 0; i < callData.GetParamNum(); ++i) {
                     Dsl.ISyntaxComponent param = callData.GetParam(i);
-                    StoryValue val = new StoryValue();
+                    StoryFunction val = new StoryFunction();
                     val.InitFromDsl(param);
                     m_LoadedIterators.Add(val);
                 }
@@ -254,7 +254,7 @@ namespace StoryScript.CommonCommands
         }
 
         private int m_LocalInfoIndex;
-        private IStoryFunction<IEnumerable> m_LoadedList = new StoryValue<IEnumerable>();
+        private IStoryFunction<IEnumerable> m_LoadedList = new StoryFunction<IEnumerable>();
         private List<IStoryCommand> m_LoadedCommands = new List<IStoryCommand>();
     }
     /// <summary>
@@ -374,7 +374,7 @@ namespace StoryScript.CommonCommands
         }
 
         private int m_LocalInfoIndex;
-        private IStoryFunction<int> m_LoadedCount = new StoryValue<int>();
+        private IStoryFunction<int> m_LoadedCount = new StoryFunction<int>();
         private List<IStoryCommand> m_LoadedCommands = new List<IStoryCommand>();
     }
 }
