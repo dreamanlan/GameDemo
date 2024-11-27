@@ -64,9 +64,16 @@ namespace StoryScript.CommonFunctions
                     m_Value = x + y;
                 } else {
                     if (valX.IsInteger && valY.IsInteger) {
-                        int x = valX.GetInt();
-                        int y = valY.GetInt();
-                        m_Value = x + y;
+                        if (valX.IsUnsignedInteger && valY.IsUnsignedInteger) {
+                            ulong x = valX.GetULong();
+                            ulong y = valY.GetULong();
+                            m_Value = x + y;
+                        }
+                        else {
+                            long x = valX.GetLong();
+                            long y = valY.GetLong();
+                            m_Value = x + y;
+                        }
                     } else {
                         double x = valX.GetDouble();
                         double y = valY.GetDouble();
@@ -136,9 +143,16 @@ namespace StoryScript.CommonFunctions
                 var valX = m_X.Value;
                 var valY = m_Y.Value;
                 if (valX.IsInteger && valY.IsInteger) {
-                    int x = valX.GetInt();
-                    int y = valY.GetInt();
-                    m_Value = x - y;
+                    if (valX.IsUnsignedInteger && valY.IsUnsignedInteger) {
+                        ulong x = valX.GetULong();
+                        ulong y = valY.GetULong();
+                        m_Value = x - y;
+                    }
+                    else {
+                        long x = valX.GetLong();
+                        long y = valY.GetLong();
+                        m_Value = x - y;
+                    }
                 } else {
                     double x = valX.GetDouble();
                     double y = valY.GetDouble();
@@ -202,9 +216,16 @@ namespace StoryScript.CommonFunctions
                 var valX = m_X.Value;
                 var valY = m_Y.Value;
                 if (valX.IsInteger && valY.IsInteger) {
-                    int x = valX.GetInt();
-                    int y = valY.GetInt();
-                    m_Value = x * y;
+                    if (valX.IsUnsignedInteger && valY.IsUnsignedInteger) {
+                        ulong x = valX.GetULong();
+                        ulong y = valY.GetULong();
+                        m_Value = x * y;
+                    }
+                    else {
+                        long x = valX.GetLong();
+                        long y = valY.GetLong();
+                        m_Value = x * y;
+                    }
                 } else {
                     double x = valX.GetDouble();
                     double y = valY.GetDouble();
@@ -268,9 +289,16 @@ namespace StoryScript.CommonFunctions
                 var valX = m_X.Value;
                 var valY = m_Y.Value;
                 if (valX.IsInteger && valY.IsInteger) {
-                    int x = valX.GetInt();
-                    int y = valY.GetInt();
-                    m_Value = x / y;
+                    if (valX.IsUnsignedInteger && valY.IsUnsignedInteger) {
+                        ulong x = valX.GetULong();
+                        ulong y = valY.GetULong();
+                        m_Value = x / y;
+                    }
+                    else {
+                        long x = valX.GetLong();
+                        long y = valY.GetLong();
+                        m_Value = x / y;
+                    }
                 } else {
                     double x = valX.GetDouble();
                     double y = valY.GetDouble();
@@ -334,9 +362,16 @@ namespace StoryScript.CommonFunctions
                 var valX = m_X.Value;
                 var valY = m_Y.Value;
                 if (valX.IsInteger && valY.IsInteger) {
-                    int x = valX.GetInt();
-                    int y = valY.GetInt();
-                    m_Value = x % y;
+                    if (valX.IsUnsignedInteger && valY.IsUnsignedInteger) {
+                        ulong x = valX.GetULong();
+                        ulong y = valY.GetULong();
+                        m_Value = x % y;
+                    }
+                    else {
+                        long x = valX.GetLong();
+                        long y = valY.GetLong();
+                        m_Value = x % y;
+                    }
                 } else {
                     double x = valX.GetDouble();
                     double y = valY.GetDouble();
@@ -397,9 +432,14 @@ namespace StoryScript.CommonFunctions
                 m_HaveValue = true;
                 var valX = m_X.Value;
                 var valY = m_Y.Value;
-                if (valX.IsInteger && valY.IsInteger) {
+                if (valX.IsUnsignedInteger && valY.IsUnsignedInteger) {
                     ulong x = valX.GetULong();
                     ulong y = valY.GetULong();
+                    m_Value = x & y;
+                }
+                else {
+                    long x = valX.GetLong();
+                    long y = valY.GetLong();
                     m_Value = x & y;
                 }
             }
@@ -457,9 +497,14 @@ namespace StoryScript.CommonFunctions
                 m_HaveValue = true;
                 var valX = m_X.Value;
                 var valY = m_Y.Value;
-                if (valX.IsInteger && valY.IsInteger) {
+                if (valX.IsUnsignedInteger && valY.IsUnsignedInteger) {
                     ulong x = valX.GetULong();
                     ulong y = valY.GetULong();
+                    m_Value = x | y;
+                }
+                else {
+                    long x = valX.GetLong();
+                    long y = valY.GetLong();
                     m_Value = x | y;
                 }
             }
@@ -517,9 +562,14 @@ namespace StoryScript.CommonFunctions
                 m_HaveValue = true;
                 var valX = m_X.Value;
                 var valY = m_Y.Value;
-                if (valX.IsInteger && valY.IsInteger) {
+                if (valX.IsUnsignedInteger && valY.IsUnsignedInteger) {
                     ulong x = valX.GetULong();
                     ulong y = valY.GetULong();
+                    m_Value = x ^ y;
+                }
+                else {
+                    long x = valX.GetLong();
+                    long y = valY.GetLong();
                     m_Value = x ^ y;
                 }
             }
@@ -573,8 +623,12 @@ namespace StoryScript.CommonFunctions
             if (m_X.HaveValue) {
                 m_HaveValue = true;
                 var valX = m_X.Value;
-                if (valX.IsInteger) {
+                if (valX.IsUnsignedInteger) {
                     ulong x = valX.GetULong();
+                    m_Value = ~x;
+                }
+                else {
+                    long x = valX.GetLong();
                     m_Value = ~x;
                 }
             }
@@ -631,8 +685,13 @@ namespace StoryScript.CommonFunctions
                 m_HaveValue = true;
                 var valX = m_X.Value;
                 var valY = m_Y.Value;
-                if (valX.IsInteger && valY.IsInteger) {
+                if (valX.IsUnsignedInteger) {
                     ulong x = valX.GetULong();
+                    int y = valY.GetInt();
+                    m_Value = x << y;
+                }
+                else {
+                    long x = valX.GetLong();
                     int y = valY.GetInt();
                     m_Value = x << y;
                 }
@@ -691,8 +750,13 @@ namespace StoryScript.CommonFunctions
                 m_HaveValue = true;
                 var valX = m_X.Value;
                 var valY = m_Y.Value;
-                if (valX.IsInteger && valY.IsInteger) {
+                if (valX.IsUnsignedInteger) {
                     ulong x = valX.GetULong();
+                    int y = valY.GetInt();
+                    m_Value = x >> y;
+                }
+                else {
+                    long x = valX.GetLong();
                     int y = valY.GetInt();
                     m_Value = x >> y;
                 }
@@ -750,7 +814,7 @@ namespace StoryScript.CommonFunctions
                 m_HaveValue = true;
                 var valX = m_X.Value;
                 if (valX.IsInteger) {
-                    int x = valX.GetInt();
+                    long x = valX.GetLong();
                     m_Value = Math.Abs(x);
                 } else {
                     double x = valX.GetDouble();
@@ -3967,10 +4031,14 @@ namespace StoryScript.CommonFunctions
 
         private void TryUpdateValue()
         {
+            bool isUInt = true;
             bool isInt = true;
             bool canCalc = true;
             for (int i = 0; i < m_List.Count; i++) {
                 if (m_List[i].HaveValue) {
+                    if (!(m_List[i].Value.IsUnsignedInteger)) {
+                        isUInt = false;
+                    }
                     if (!(m_List[i].Value.IsInteger)) {
                         isInt = false;
                     }
@@ -3981,10 +4049,19 @@ namespace StoryScript.CommonFunctions
             }
             if (canCalc) {
                 m_HaveValue = true;
-                if (isInt) {
-                    int minV = int.MaxValue;
+                if (isUInt) {
+                    ulong minV = ulong.MaxValue;
                     for (int i = 0; i < m_List.Count; i++) {
-                        int v = m_List[i].Value;
+                        ulong v = m_List[i].Value;
+                        if (minV > v)
+                            minV = v;
+                    }
+                    m_Value = minV;
+                }
+                else if (isInt) {
+                    long minV = long.MaxValue;
+                    for (int i = 0; i < m_List.Count; i++) {
+                        long v = m_List[i].Value;
                         if (minV > v)
                             minV = v;
                     }
@@ -4055,10 +4132,14 @@ namespace StoryScript.CommonFunctions
 
         private void TryUpdateValue()
         {
+            bool isUInt = true;
             bool isInt = true;
             bool canCalc = true;
             for (int i = 0; i < m_List.Count; i++) {
                 if (m_List[i].HaveValue) {
+                    if (!(m_List[i].Value.IsUnsignedInteger)) {
+                        isUInt = false;
+                    }
                     if (!(m_List[i].Value.IsInteger)) {
                         isInt = false;
                     }
@@ -4069,10 +4150,19 @@ namespace StoryScript.CommonFunctions
             }
             if (canCalc) {
                 m_HaveValue = true;
-                if (isInt) {
-                    int maxV = int.MinValue;
+                if (isUInt) {
+                    ulong maxV = ulong.MinValue;
                     for (int i = 0; i < m_List.Count; i++) {
-                        int v = m_List[i].Value;
+                        ulong v = m_List[i].Value;
+                        if (maxV < v)
+                            maxV = v;
+                    }
+                    m_Value = maxV;
+                }
+                else if (isInt) {
+                    long maxV = long.MinValue;
+                    for (int i = 0; i < m_List.Count; i++) {
+                        long v = m_List[i].Value;
                         if (maxV < v)
                             maxV = v;
                     }
