@@ -2188,7 +2188,7 @@ namespace StoryScript.DslExpression
             }
             else {
                 //error
-                Calculator.Log("DslCalculator error, {0} line {1}", statementData.ToScriptString(false), statementData.GetLine());
+                Calculator.Log("DslCalculator error, {0} line {1}", statementData.ToScriptString(false, Dsl.DelimiterInfo.Default), statementData.GetLine());
             }
             return true;
         }
@@ -2242,7 +2242,7 @@ namespace StoryScript.DslExpression
             }
             else {
                 //error
-                Calculator.Log("DslCalculator error, {0} line {1}", funcData.ToScriptString(false), funcData.GetLine());
+                Calculator.Log("DslCalculator error, {0} line {1}", funcData.ToScriptString(false, Dsl.DelimiterInfo.Default), funcData.GetLine());
             }
             return true;
         }
@@ -2264,7 +2264,7 @@ namespace StoryScript.DslExpression
                     }
                     else {
                         //error
-                        Calculator.Log("DslCalculator error, {0} line {1}", first.ToScriptString(false), first.GetLine());
+                        Calculator.Log("DslCalculator error, {0} line {1}", first.ToScriptString(false, Dsl.DelimiterInfo.Default), first.GetLine());
                     }
                     IExpression subExp = Calculator.Load(second);
                     item.Expressions.Add(subExp);
@@ -2283,7 +2283,7 @@ namespace StoryScript.DslExpression
                     }
                     else {
                         //error
-                        Calculator.Log("DslCalculator error, {0} line {1}", fData.ToScriptString(false), fData.GetLine());
+                        Calculator.Log("DslCalculator error, {0} line {1}", fData.ToScriptString(false, Dsl.DelimiterInfo.Default), fData.GetLine());
                     }
                     for (int ix = 0; ix < fData.GetParamNum(); ++ix) {
                         IExpression subExp = Calculator.Load(fData.GetParam(ix));
@@ -2294,7 +2294,7 @@ namespace StoryScript.DslExpression
                 else if (fData.GetId() == "else") {
                     if (fData != statementData.Last) {
                         //error
-                        Calculator.Log("DslCalculator error, {0} line {1}", fData.ToScriptString(false), fData.GetLine());
+                        Calculator.Log("DslCalculator error, {0} line {1}", fData.ToScriptString(false, Dsl.DelimiterInfo.Default), fData.GetLine());
                     }
                     else {
                         IfExp.Clause item = new IfExp.Clause();
@@ -2307,7 +2307,7 @@ namespace StoryScript.DslExpression
                 }
                 else {
                     //error
-                    Calculator.Log("DslCalculator error, {0} line {1}", fData.ToScriptString(false), fData.GetLine());
+                    Calculator.Log("DslCalculator error, {0} line {1}", fData.ToScriptString(false, Dsl.DelimiterInfo.Default), fData.GetLine());
                 }
             }
             return true;
@@ -2360,7 +2360,7 @@ namespace StoryScript.DslExpression
             }
             else {
                 //error
-                Calculator.Log("DslCalculator error, {0} line {1}", funcData.ToScriptString(false), funcData.GetLine());
+                Calculator.Log("DslCalculator error, {0} line {1}", funcData.ToScriptString(false, Dsl.DelimiterInfo.Default), funcData.GetLine());
             }
             return true;
         }
@@ -2380,7 +2380,7 @@ namespace StoryScript.DslExpression
                     }
                     else {
                         //error
-                        Calculator.Log("DslCalculator error, {0} line {1}", first.ToScriptString(false), first.GetLine());
+                        Calculator.Log("DslCalculator error, {0} line {1}", first.ToScriptString(false, Dsl.DelimiterInfo.Default), first.GetLine());
                     }
                     IExpression subExp = Calculator.Load(second);
                     m_Expressions.Add(subExp);
@@ -2429,7 +2429,7 @@ namespace StoryScript.DslExpression
             }
             else {
                 //error
-                Calculator.Log("DslCalculator error, {0} line {1}", funcData.ToScriptString(false), funcData.GetLine());
+                Calculator.Log("DslCalculator error, {0} line {1}", funcData.ToScriptString(false, Dsl.DelimiterInfo.Default), funcData.GetLine());
             }
             return true;
         }
@@ -2449,7 +2449,7 @@ namespace StoryScript.DslExpression
                     }
                     else {
                         //error
-                        Calculator.Log("DslCalculator error, {0} line {1}", first.ToScriptString(false), first.GetLine());
+                        Calculator.Log("DslCalculator error, {0} line {1}", first.ToScriptString(false, Dsl.DelimiterInfo.Default), first.GetLine());
                     }
                     IExpression subExp = Calculator.Load(second);
                     m_Expressions.Add(subExp);
@@ -2502,7 +2502,7 @@ namespace StoryScript.DslExpression
             }
             else {
                 //error
-                Calculator.Log("DslCalculator error, {0} line {1}", funcData.ToScriptString(false), funcData.GetLine());
+                Calculator.Log("DslCalculator error, {0} line {1}", funcData.ToScriptString(false, Dsl.DelimiterInfo.Default), funcData.GetLine());
             }
             return true;
         }
@@ -2522,7 +2522,7 @@ namespace StoryScript.DslExpression
                     }
                     else {
                         //error
-                        Calculator.Log("DslCalculator error, {0} line {1}", first.ToScriptString(false), first.GetLine());
+                        Calculator.Log("DslCalculator error, {0} line {1}", first.ToScriptString(false, Dsl.DelimiterInfo.Default), first.GetLine());
                     }
                     IExpression subExp = Calculator.Load(second);
                     m_Expressions.Add(subExp);
@@ -2602,7 +2602,7 @@ namespace StoryScript.DslExpression
                     }
                     else {
                         //error
-                        Calculator.Log("DslCalculator error, {0} line {1}", first.ToScriptString(false), first.GetLine());
+                        Calculator.Log("DslCalculator error, {0} line {1}", first.ToScriptString(false, Dsl.DelimiterInfo.Default), first.GetLine());
                     }
                     IExpression subExp = Calculator.Load(second);
                     m_Expressions.Add(subExp);
@@ -6147,7 +6147,7 @@ namespace StoryScript.DslExpression
                                 cmd.m_ErrorOptArg = opt;
                             }
                             else {
-                                Calculator.Log("[syntax error] {0} line:{1}", cd.ToScriptString(false), cd.GetLine());
+                                Calculator.Log("[syntax error] {0} line:{1}", cd.ToScriptString(false, Dsl.DelimiterInfo.Default), cd.GetLine());
                             }
                         }
                         else if (num >= 1) {
@@ -6205,15 +6205,15 @@ namespace StoryScript.DslExpression
                                 cmd.m_Encoding = exp;
                             }
                             else {
-                                Calculator.Log("[syntax error] {0} line:{1}", cd.ToScriptString(false), cd.GetLine());
+                                Calculator.Log("[syntax error] {0} line:{1}", cd.ToScriptString(false, Dsl.DelimiterInfo.Default), cd.GetLine());
                             }
                         }
                         else {
-                            Calculator.Log("[syntax error] {0} line:{1}", cd.ToScriptString(false), cd.GetLine());
+                            Calculator.Log("[syntax error] {0} line:{1}", cd.ToScriptString(false, Dsl.DelimiterInfo.Default), cd.GetLine());
                         }
                     }
                     else {
-                        Calculator.Log("[syntax error] {0} line:{1}", comp.ToScriptString(false), comp.GetLine());
+                        Calculator.Log("[syntax error] {0} line:{1}", comp.ToScriptString(false, Dsl.DelimiterInfo.Default), comp.GetLine());
                     }
                 }
             }
@@ -6255,17 +6255,17 @@ namespace StoryScript.DslExpression
                     }
                 }
                 else {
-                    Calculator.Log("[syntax error] {0} line:{1}", callData.ToScriptString(false), callData.GetLine());
+                    Calculator.Log("[syntax error] {0} line:{1}", callData.ToScriptString(false, Dsl.DelimiterInfo.Default), callData.GetLine());
                 }
             }
             else if (id == "command") {
                 int num = callData.GetParamNum();
                 if (num > 0) {
-                    Calculator.Log("[syntax error] {0} line:{1}", callData.ToScriptString(false), callData.GetLine());
+                    Calculator.Log("[syntax error] {0} line:{1}", callData.ToScriptString(false, Dsl.DelimiterInfo.Default), callData.GetLine());
                 }
             }
             else {
-                Calculator.Log("[syntax error] {0} line:{1}", callData.ToScriptString(false), callData.GetLine());
+                Calculator.Log("[syntax error] {0} line:{1}", callData.ToScriptString(false, Dsl.DelimiterInfo.Default), callData.GetLine());
             }
             return true;
         }
@@ -7327,7 +7327,7 @@ namespace StoryScript.DslExpression
             foreach(var func in m_FuncCalls) {
                 if (!m_Funcs.ContainsKey(func.FuncName)) {
                     //error
-                    Log("DslCalculator error, unknown func '{0}', {1} line {2}", func.FuncName, func.SyntaxComponent.ToScriptString(false), func.SyntaxComponent.GetLine());
+                    Log("DslCalculator error, unknown func '{0}', {1} line {2}", func.FuncName, func.SyntaxComponent.ToScriptString(false, Dsl.DelimiterInfo.Default), func.SyntaxComponent.GetLine());
                 }
             }
         }
@@ -7547,7 +7547,7 @@ namespace StoryScript.DslExpression
                         fd.SetParenthesisParamClass();
                         if (!p.Load(fd, this)) {
                             //error
-                            Log("DslCalculator error, {0} line {1}", comp.ToScriptString(false), comp.GetLine());
+                            Log("DslCalculator error, {0} line {1}", comp.ToScriptString(false, Dsl.DelimiterInfo.Default), comp.GetLine());
                         }
                         return p;
                     }
@@ -7648,7 +7648,7 @@ namespace StoryScript.DslExpression
                                 }
                                 else {
                                     //error
-                                    Log("DslCalculator error, {0} line {1}", callData.ToScriptString(false), callData.GetLine());
+                                    Log("DslCalculator error, {0} line {1}", callData.ToScriptString(false, Dsl.DelimiterInfo.Default), callData.GetLine());
                                 }
                                 return exp;
                             }
@@ -7744,7 +7744,7 @@ namespace StoryScript.DslExpression
                     }
                     else {
                         //error
-                        Log("DslCalculator error, {0} line {1}", comp.ToScriptString(false), comp.GetLine());
+                        Log("DslCalculator error, {0} line {1}", comp.ToScriptString(false, Dsl.DelimiterInfo.Default), comp.GetLine());
                     }
                 }
             }
@@ -7755,14 +7755,14 @@ namespace StoryScript.DslExpression
                     if (DslSyntaxTransformer.TryTransformCommandLineLikeSyntax(stData, out var fd)) {
                         if (!ret.Load(fd, this)) {
                             //error
-                            Log("DslCalculator error, {0} line {1}", comp.ToScriptString(false), comp.GetLine());
+                            Log("DslCalculator error, {0} line {1}", comp.ToScriptString(false, Dsl.DelimiterInfo.Default), comp.GetLine());
                         }
                         return ret;
                     }
                 }
                 if (!ret.Load(comp, this)) {
                     //error
-                    Log("DslCalculator error, {0} line {1}", comp.ToScriptString(false), comp.GetLine());
+                    Log("DslCalculator error, {0} line {1}", comp.ToScriptString(false, Dsl.DelimiterInfo.Default), comp.GetLine());
                 }
             }
             return ret;

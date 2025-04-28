@@ -60,7 +60,7 @@
               "RelativeDocumentMoniker": "DslCalculator.cs",
               "ToolTip": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\DslCalculator.cs",
               "RelativeToolTip": "DslCalculator.cs",
-              "ViewState": "AgIAAI4dAAAAAAAAAAAgwJsdAAB/AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-21T02:32:11.14Z",
               "EditorCaption": ""
@@ -147,8 +147,7 @@
               "RelativeToolTip": "StoryFunctionHelper.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAH8AAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T14:20:52.531Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-04T14:20:52.531Z"
             },
             {
               "$type": "Document",
@@ -160,8 +159,7 @@
               "RelativeToolTip": "StoryFunctionManager.cs",
               "ViewState": "AQIAALcAAAAAAAAAAAAAAMgAAABmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-26T02:13:55.348Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-26T02:13:55.348Z"
             },
             {
               "$type": "Document",
@@ -173,8 +171,7 @@
               "RelativeToolTip": "StoryCommandManager.cs",
               "ViewState": "AQIAABkBAAAAAAAAAAAAACkBAAB2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-26T02:02:55.051Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-26T02:02:55.051Z"
             }
           ]
         }
