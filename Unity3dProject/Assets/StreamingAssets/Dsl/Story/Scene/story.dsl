@@ -78,7 +78,7 @@
 		@scoreUi.text = ""+@score;
 		$g = vector3(0,-(@totalCount*9.8)/@leftCount,0);
 		getunitytype("Physics").gravity = $g;
-		@gravityUi.text = ""+$g.y;
+		@gravityUi.text = ""+$g.Value.y;
 
 		addcomponent(unitid2objid(1001), "StoryObject,Assembly-CSharp");
 		addcomponent(unitid2objid(1002), "StoryObject,Assembly-CSharp");
@@ -122,7 +122,7 @@
 	{
 		sendmessagewithgameobject($obj1, "PlaySound", 1);
 		$pt = getposition($obj1, 0);
-		if($pt.y < -20){
+		if($pt.Value.y < -20){
 			log("please check obj {0} {1} {2} <= {3} {4} {5}", $obj1.name, $pt, time(), $pt1, $pt2, changetype($time*1000,"long"));
 			//editorbreak();
 		};
@@ -164,7 +164,7 @@
 		};
 		$g = vector3(0,-(@totalCount*9.8)/@leftCount,0);
 		getunitytype("Physics").gravity = $g;
-		@gravityUi.text = ""+$g.y;
+		@gravityUi.text = ""+$g.Value.y;
 	};
 	onmessage("baozha")args($pt, $cobj)
 	{

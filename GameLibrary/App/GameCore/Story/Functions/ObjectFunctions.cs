@@ -190,10 +190,10 @@ namespace GameLibrary.Story.Functions
                         pt = obj.transform.localPosition;
                     else
                         pt = obj.transform.position;
-                    m_Value = pt;
+                    m_Value = (Vector3Obj)pt;
                 }
                 else {
-                    m_Value = Vector3.zero;
+                    m_Value = (Vector3Obj)Vector3.zero;
                 }
             }
         }
@@ -530,10 +530,10 @@ namespace GameLibrary.Story.Functions
                         pt = obj.transform.localEulerAngles;
                     else
                         pt = obj.transform.eulerAngles;
-                    m_Value = pt;
+                    m_Value = (Vector3Obj)pt;
                 }
                 else {
-                    m_Value = Vector3.zero;
+                    m_Value = (Vector3Obj)Vector3.zero;
                 }
             }
         }
@@ -860,10 +860,10 @@ namespace GameLibrary.Story.Functions
                 if (null != obj) {
                     Vector3 pt;
                     pt = obj.transform.localScale;
-                    m_Value = pt;
+                    m_Value = (Vector3Obj)pt;
                 }
                 else {
-                    m_Value = new Vector3(1, 1, 1);
+                    m_Value = (Vector3Obj)new Vector3(1, 1, 1);
                 }
             }
         }
@@ -1806,17 +1806,17 @@ namespace GameLibrary.Story.Functions
                     Vector2 targetPos = new Vector2(target.GetMovementStateInfo().PositionX, target.GetMovementStateInfo().PositionZ);
                     float radian = Geometry.GetYRadian(srcPos, targetPos);
                     Vector2 newPos = srcPos + Geometry.GetRotate(new Vector2(offset.x, offset.z), radian);
-                    m_Value = new Vector3(newPos.x, y + offset.y, newPos.y);
+                    m_Value = (Vector3Obj)new Vector3(newPos.x, y + offset.y, newPos.y);
                 }
                 else if (null != obj && null != gobj) {
                     Vector2 srcPos = new Vector2(obj.GetMovementStateInfo().PositionX, obj.GetMovementStateInfo().PositionZ);
                     float y = obj.GetMovementStateInfo().PositionY;
                     float radian = Geometry.DegreeToRadian(gobj.transform.localEulerAngles.y);
                     Vector2 newPos = srcPos + Geometry.GetRotate(new Vector2(offset.x, offset.z), radian);
-                    m_Value = new Vector3(newPos.x, y + offset.y, newPos.y);
+                    m_Value = (Vector3Obj)new Vector3(newPos.x, y + offset.y, newPos.y);
                 }
                 else {
-                    m_Value = Vector3.zero;
+                    m_Value = (Vector3Obj)Vector3.zero;
                 }
             }
         }

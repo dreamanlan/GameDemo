@@ -6,6 +6,15 @@ using StoryScript;
 using UnityEngine;
 namespace StoryScript.CommonFunctions
 {
+    using TupleValue1 = Tuple<BoxedValue>;
+    using TupleValue2 = Tuple<BoxedValue, BoxedValue>;
+    using TupleValue3 = Tuple<BoxedValue, BoxedValue, BoxedValue>;
+    using TupleValue4 = Tuple<BoxedValue, BoxedValue, BoxedValue, BoxedValue>;
+    using TupleValue5 = Tuple<BoxedValue, BoxedValue, BoxedValue, BoxedValue, BoxedValue>;
+    using TupleValue6 = Tuple<BoxedValue, BoxedValue, BoxedValue, BoxedValue, BoxedValue, BoxedValue>;
+    using TupleValue7 = Tuple<BoxedValue, BoxedValue, BoxedValue, BoxedValue, BoxedValue, BoxedValue, BoxedValue>;
+    using TupleValue8 = Tuple<BoxedValue, BoxedValue, BoxedValue, BoxedValue, BoxedValue, BoxedValue, BoxedValue, Tuple<BoxedValue>>;
+
     /// <summary>
     /// Dummy function, used to register functions that
     /// have no corresponding implementation (registration is required for parsing).
@@ -51,6 +60,141 @@ namespace StoryScript.CommonFunctions
             m_Value = 0;
         }
 
+        private bool m_HaveValue;
+        private BoxedValue m_Value;
+    }
+    public sealed class TupleFunction : IStoryFunction
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.FunctionData callData = param as Dsl.FunctionData;
+            if (null != callData) {
+                int num = callData.GetParamNum();
+                for (int i = 0; i < num; ++i) {
+                    StoryFunction val = new StoryFunction();
+                    val.InitFromDsl(callData.GetParam(i));
+                    m_Args.Add(val);
+                }
+                TryUpdateValue();
+            }
+        }
+        public IStoryFunction Clone()
+        {
+            TupleFunction val = new TupleFunction();
+            for (int i = 0; i < m_Args.Count; i++) {
+                val.m_Args.Add(m_Args[i].Clone());
+            }
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+            for (int i = 0; i < m_Args.Count; i++) {
+                m_Args[i].Evaluate(instance, handler, iterator, args);
+            }
+            TryUpdateValue();
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public BoxedValue Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+
+        private void TryUpdateValue()
+        {
+            bool canCalc = true;
+            for (int i = 0; i < m_Args.Count; i++) {
+                if (!m_Args[i].HaveValue) {
+                    canCalc = false;
+                    break;
+                }
+            }
+            if (canCalc) {
+                m_HaveValue = true;
+                int num = m_Args.Count;
+                if (num == 0) {
+                    m_Value = BoxedValue.NullObject;
+                }
+                else {
+                    m_Value = PackValues(0);
+                }
+            }
+        }
+        private BoxedValue PackValues(int start)
+        {
+            const int c_MaxTupleElementNum = 8;
+            BoxedValue v1 = BoxedValue.NullObject, v2 = BoxedValue.NullObject, v3 = BoxedValue.NullObject, v4 = BoxedValue.NullObject, v5 = BoxedValue.NullObject, v6 = BoxedValue.NullObject, v7 = BoxedValue.NullObject, v8 = BoxedValue.NullObject;
+            int totalNum = m_Args.Count;
+            int num = totalNum - start;
+            for (int ix = 0; ix < num && ix < c_MaxTupleElementNum; ++ix) {
+                var exp = m_Args[start + ix];
+                switch (ix) {
+                    case 0:
+                        v1 = exp.Value;
+                        if (num == 1) {
+                            return new TupleValue1(v1);
+                        }
+                        break;
+                    case 1:
+                        v2 = exp.Value;
+                        if (num == 2) {
+                            return new TupleValue2(v1, v2);
+                        }
+                        break;
+                    case 2:
+                        v3 = exp.Value;
+                        if (num == 3) {
+                            return new TupleValue3(v1, v2, v3);
+                        }
+                        break;
+                    case 3:
+                        v4 = exp.Value;
+                        if (num == 4) {
+                            return new TupleValue4(v1, v2, v3, v4);
+                        }
+                        break;
+                    case 4:
+                        v5 = exp.Value;
+                        if (num == 5) {
+                            return new TupleValue5(v1, v2, v3, v4, v5);
+                        }
+                        break;
+                    case 5:
+                        v6 = exp.Value;
+                        if (num == 6) {
+                            return new TupleValue6(v1, v2, v3, v4, v5, v6);
+                        }
+                        break;
+                    case 6:
+                        v7 = exp.Value;
+                        if (num == 7) {
+                            return new TupleValue7(v1, v2, v3, v4, v5, v6, v7);
+                        }
+                        break;
+                    case 7:
+                        if (num == 8) {
+                            v8 = exp.Value;
+                            return new TupleValue8(v1, v2, v3, v4, v5, v6, v7, Tuple.Create(v8));
+                        }
+                        else {
+                            var tuple = PackValues(start + 7);
+                            return new TupleValue8(v1, v2, v3, v4, v5, v6, v7, Tuple.Create(tuple));
+                        }
+                }
+            }
+            return BoxedValue.NullObject;
+        }
+
+        private List<IStoryFunction> m_Args = new List<IStoryFunction>();
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
@@ -668,731 +812,6 @@ namespace StoryScript.CommonFunctions
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
-    public sealed class Vector2Function : IStoryFunction
-    {
-        public void InitFromDsl(Dsl.ISyntaxComponent param)
-        {
-            Dsl.FunctionData callData = param as Dsl.FunctionData;
-            if (null != callData && callData.GetParamNum() == 2) {
-                m_X.InitFromDsl(callData.GetParam(0));
-                m_Y.InitFromDsl(callData.GetParam(1));
-                TryUpdateValue();
-            }
-        }
-        public IStoryFunction Clone()
-        {
-            Vector2Function val = new Vector2Function();
-            val.m_X = m_X.Clone();
-            val.m_Y = m_Y.Clone();
-            val.m_HaveValue = m_HaveValue;
-            val.m_Value = m_Value;
-            return val;
-        }
-        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
-        {
-            m_HaveValue = false;
-
-            m_X.Evaluate(instance, handler, iterator, args);
-            m_Y.Evaluate(instance, handler, iterator, args);
-
-            TryUpdateValue();
-        }
-        public bool HaveValue
-        {
-            get
-            {
-                return m_HaveValue;
-            }
-        }
-        public BoxedValue Value
-        {
-            get
-            {
-                return m_Value;
-            }
-        }
-
-        private void TryUpdateValue()
-        {
-            if (m_X.HaveValue && m_Y.HaveValue) {
-                m_HaveValue = true;
-                m_Value = new Vector2(m_X.Value, m_Y.Value);
-            }
-        }
-        private IStoryFunction<float> m_X = new StoryFunction<float>();
-        private IStoryFunction<float> m_Y = new StoryFunction<float>();
-        private bool m_HaveValue;
-        private BoxedValue m_Value;
-    }
-    public sealed class Vector3Function : IStoryFunction
-    {
-        public void InitFromDsl(Dsl.ISyntaxComponent param)
-        {
-            Dsl.FunctionData callData = param as Dsl.FunctionData;
-            if (null != callData && callData.GetParamNum() == 3) {
-                m_X.InitFromDsl(callData.GetParam(0));
-                m_Y.InitFromDsl(callData.GetParam(1));
-                m_Z.InitFromDsl(callData.GetParam(2));
-                TryUpdateValue();
-            }
-        }
-        public IStoryFunction Clone()
-        {
-            Vector3Function val = new Vector3Function();
-            val.m_X = m_X.Clone();
-            val.m_Y = m_Y.Clone();
-            val.m_Z = m_Z.Clone();
-            val.m_HaveValue = m_HaveValue;
-            val.m_Value = m_Value;
-            return val;
-        }
-        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
-        {
-            m_HaveValue = false;
-            m_X.Evaluate(instance, handler, iterator, args);
-            m_Y.Evaluate(instance, handler, iterator, args);
-            m_Z.Evaluate(instance, handler, iterator, args);
-            TryUpdateValue();
-        }
-        public bool HaveValue
-        {
-            get
-            {
-                return m_HaveValue;
-            }
-        }
-        public BoxedValue Value
-        {
-            get
-            {
-                return m_Value;
-            }
-        }
-
-        private void TryUpdateValue()
-        {
-            if (m_X.HaveValue && m_Y.HaveValue && m_Z.HaveValue) {
-                m_HaveValue = true;
-                m_Value = new Vector3(m_X.Value, m_Y.Value, m_Z.Value);
-            }
-        }
-        private IStoryFunction<float> m_X = new StoryFunction<float>();
-        private IStoryFunction<float> m_Y = new StoryFunction<float>();
-        private IStoryFunction<float> m_Z = new StoryFunction<float>();
-        private bool m_HaveValue;
-        private BoxedValue m_Value;
-    }
-    public sealed class Vector4Function : IStoryFunction
-    {
-        public void InitFromDsl(Dsl.ISyntaxComponent param)
-        {
-            Dsl.FunctionData callData = param as Dsl.FunctionData;
-            if (null != callData && callData.GetParamNum() == 4) {
-                m_X.InitFromDsl(callData.GetParam(0));
-                m_Y.InitFromDsl(callData.GetParam(1));
-                m_Z.InitFromDsl(callData.GetParam(2));
-                m_W.InitFromDsl(callData.GetParam(3));
-                TryUpdateValue();
-            }
-        }
-        public IStoryFunction Clone()
-        {
-            Vector4Function val = new Vector4Function();
-            val.m_X = m_X.Clone();
-            val.m_Y = m_Y.Clone();
-            val.m_Z = m_Z.Clone();
-            val.m_W = m_W.Clone();
-            val.m_HaveValue = m_HaveValue;
-            val.m_Value = m_Value;
-            return val;
-        }
-        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
-        {
-            m_HaveValue = false;
-            m_X.Evaluate(instance, handler, iterator, args);
-            m_Y.Evaluate(instance, handler, iterator, args);
-            m_Z.Evaluate(instance, handler, iterator, args);
-            m_W.Evaluate(instance, handler, iterator, args);
-            TryUpdateValue();
-        }
-        public bool HaveValue
-        {
-            get
-            {
-                return m_HaveValue;
-            }
-        }
-        public BoxedValue Value
-        {
-            get
-            {
-                return m_Value;
-            }
-        }
-
-        private void TryUpdateValue()
-        {
-            if (m_X.HaveValue && m_Y.HaveValue && m_Z.HaveValue && m_W.HaveValue) {
-                m_HaveValue = true;
-                m_Value = new Vector4(m_X.Value, m_Y.Value, m_Z.Value, m_W.Value);
-            }
-        }
-        private IStoryFunction<float> m_X = new StoryFunction<float>();
-        private IStoryFunction<float> m_Y = new StoryFunction<float>();
-        private IStoryFunction<float> m_Z = new StoryFunction<float>();
-        private IStoryFunction<float> m_W = new StoryFunction<float>();
-        private bool m_HaveValue;
-        private BoxedValue m_Value;
-    }
-    public sealed class QuaternionFunction : IStoryFunction
-    {
-        public void InitFromDsl(Dsl.ISyntaxComponent param)
-        {
-            Dsl.FunctionData callData = param as Dsl.FunctionData;
-            if (null != callData && callData.GetParamNum() == 4) {
-                m_X.InitFromDsl(callData.GetParam(0));
-                m_Y.InitFromDsl(callData.GetParam(1));
-                m_Z.InitFromDsl(callData.GetParam(2));
-                m_W.InitFromDsl(callData.GetParam(3));
-                TryUpdateValue();
-            }
-        }
-        public IStoryFunction Clone()
-        {
-            QuaternionFunction val = new QuaternionFunction();
-            val.m_X = m_X.Clone();
-            val.m_Y = m_Y.Clone();
-            val.m_Z = m_Z.Clone();
-            val.m_W = m_W.Clone();
-            val.m_HaveValue = m_HaveValue;
-            val.m_Value = m_Value;
-            return val;
-        }
-        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
-        {
-            m_HaveValue = false;
-            m_X.Evaluate(instance, handler, iterator, args);
-            m_Y.Evaluate(instance, handler, iterator, args);
-            m_Z.Evaluate(instance, handler, iterator, args);
-            m_W.Evaluate(instance, handler, iterator, args);
-            TryUpdateValue();
-        }
-        public bool HaveValue
-        {
-            get
-            {
-                return m_HaveValue;
-            }
-        }
-        public BoxedValue Value
-        {
-            get
-            {
-                return m_Value;
-            }
-        }
-
-        private void TryUpdateValue()
-        {
-            if (m_X.HaveValue && m_Y.HaveValue && m_Z.HaveValue && m_W.HaveValue) {
-                m_HaveValue = true;
-                m_Value = new Quaternion(m_X.Value, m_Y.Value, m_Z.Value, m_W.Value);
-            }
-        }
-        private IStoryFunction<float> m_X = new StoryFunction<float>();
-        private IStoryFunction<float> m_Y = new StoryFunction<float>();
-        private IStoryFunction<float> m_Z = new StoryFunction<float>();
-        private IStoryFunction<float> m_W = new StoryFunction<float>();
-        private bool m_HaveValue;
-        private BoxedValue m_Value;
-    }
-    public sealed class EularFunction : IStoryFunction
-    {
-        public void InitFromDsl(Dsl.ISyntaxComponent param)
-        {
-            Dsl.FunctionData callData = param as Dsl.FunctionData;
-            if (null != callData && callData.GetParamNum() == 3) {
-                m_X.InitFromDsl(callData.GetParam(0));
-                m_Y.InitFromDsl(callData.GetParam(1));
-                m_Z.InitFromDsl(callData.GetParam(2));
-                TryUpdateValue();
-            }
-        }
-        public IStoryFunction Clone()
-        {
-            EularFunction val = new EularFunction();
-            val.m_X = m_X.Clone();
-            val.m_Y = m_Y.Clone();
-            val.m_Z = m_Z.Clone();
-            val.m_HaveValue = m_HaveValue;
-            val.m_Value = m_Value;
-            return val;
-        }
-        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
-        {
-            m_HaveValue = false;
-            m_X.Evaluate(instance, handler, iterator, args);
-            m_Y.Evaluate(instance, handler, iterator, args);
-            m_Z.Evaluate(instance, handler, iterator, args);
-            TryUpdateValue();
-        }
-        public bool HaveValue
-        {
-            get
-            {
-                return m_HaveValue;
-            }
-        }
-        public BoxedValue Value
-        {
-            get
-            {
-                return m_Value;
-            }
-        }
-
-        private void TryUpdateValue()
-        {
-            if (m_X.HaveValue && m_Y.HaveValue && m_Z.HaveValue) {
-                m_HaveValue = true;
-                m_Value = Quaternion.Euler(m_X.Value, m_Y.Value, m_Z.Value);
-            }
-        }
-        private IStoryFunction<float> m_X = new StoryFunction<float>();
-        private IStoryFunction<float> m_Y = new StoryFunction<float>();
-        private IStoryFunction<float> m_Z = new StoryFunction<float>();
-        private bool m_HaveValue;
-        private BoxedValue m_Value;
-    }
-    public sealed class ColorFunction : IStoryFunction
-    {
-        private IStoryFunction<float> m_X = new StoryFunction<float>();
-
-        private IStoryFunction<float> m_Y = new StoryFunction<float>();
-
-        private IStoryFunction<float> m_Z = new StoryFunction<float>();
-
-        private IStoryFunction<float> m_W = new StoryFunction<float>();
-
-        private bool m_HaveValue;
-
-        private BoxedValue m_Value;
-
-        public bool HaveValue => m_HaveValue;
-
-        public BoxedValue Value => m_Value;
-
-        public void InitFromDsl(ISyntaxComponent param)
-        {
-            if (param is FunctionData functionData && functionData.GetParamNum() == 4) {
-                m_X.InitFromDsl(functionData.GetParam(0));
-                m_Y.InitFromDsl(functionData.GetParam(1));
-                m_Z.InitFromDsl(functionData.GetParam(2));
-                m_W.InitFromDsl(functionData.GetParam(3));
-                TryUpdateValue();
-            }
-        }
-
-        public IStoryFunction Clone()
-        {
-            ColorFunction colorValue = new ColorFunction();
-            colorValue.m_X = m_X.Clone();
-            colorValue.m_Y = m_Y.Clone();
-            colorValue.m_Z = m_Z.Clone();
-            colorValue.m_W = m_W.Clone();
-            colorValue.m_HaveValue = m_HaveValue;
-            colorValue.m_Value = m_Value;
-            return colorValue;
-        }
-
-        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
-        {
-            m_HaveValue = false;
-            m_X.Evaluate(instance, handler, iterator, args);
-            m_Y.Evaluate(instance, handler, iterator, args);
-            m_Z.Evaluate(instance, handler, iterator, args);
-            m_W.Evaluate(instance, handler, iterator, args);
-            TryUpdateValue();
-        }
-
-        private void TryUpdateValue()
-        {
-            if (m_X.HaveValue && m_Y.HaveValue && m_Z.HaveValue && m_W.HaveValue) {
-                m_HaveValue = true;
-                m_Value = new UnityEngine.Color(m_X.Value, m_Y.Value, m_Z.Value, m_W.Value);
-            }
-        }
-    }
-    public sealed class Color32Function : IStoryFunction
-    {
-        private IStoryFunction<byte> m_X = new StoryFunction<byte>();
-
-        private IStoryFunction<byte> m_Y = new StoryFunction<byte>();
-
-        private IStoryFunction<byte> m_Z = new StoryFunction<byte>();
-
-        private IStoryFunction<byte> m_W = new StoryFunction<byte>();
-
-        private bool m_HaveValue;
-
-        private BoxedValue m_Value;
-
-        public bool HaveValue => m_HaveValue;
-
-        public BoxedValue Value => m_Value;
-
-        public void InitFromDsl(ISyntaxComponent param)
-        {
-            if (param is FunctionData functionData && functionData.GetParamNum() == 4) {
-                m_X.InitFromDsl(functionData.GetParam(0));
-                m_Y.InitFromDsl(functionData.GetParam(1));
-                m_Z.InitFromDsl(functionData.GetParam(2));
-                m_W.InitFromDsl(functionData.GetParam(3));
-                TryUpdateValue();
-            }
-        }
-
-        public IStoryFunction Clone()
-        {
-            Color32Function colorValue = new Color32Function();
-            colorValue.m_X = m_X.Clone();
-            colorValue.m_Y = m_Y.Clone();
-            colorValue.m_Z = m_Z.Clone();
-            colorValue.m_W = m_W.Clone();
-            colorValue.m_HaveValue = m_HaveValue;
-            colorValue.m_Value = m_Value;
-            return colorValue;
-        }
-
-        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
-        {
-            m_HaveValue = false;
-            m_X.Evaluate(instance, handler, iterator, args);
-            m_Y.Evaluate(instance, handler, iterator, args);
-            m_Z.Evaluate(instance, handler, iterator, args);
-            m_W.Evaluate(instance, handler, iterator, args);
-            TryUpdateValue();
-        }
-
-        private void TryUpdateValue()
-        {
-            if (m_X.HaveValue && m_Y.HaveValue && m_Z.HaveValue && m_W.HaveValue) {
-                m_HaveValue = true;
-                m_Value = new UnityEngine.Color32(m_X.Value, m_Y.Value, m_Z.Value, m_W.Value);
-            }
-        }
-    }
-    public sealed class Vector2IntFunction : IStoryFunction
-    {
-        private IStoryFunction<int> m_X = new StoryFunction<int>();
-
-        private IStoryFunction<int> m_Y = new StoryFunction<int>();
-
-        private bool m_HaveValue;
-
-        private BoxedValue m_Value;
-
-        public bool HaveValue => m_HaveValue;
-
-        public BoxedValue Value => m_Value;
-
-        public void InitFromDsl(ISyntaxComponent param)
-        {
-            if (param is FunctionData functionData && functionData.GetParamNum() == 2) {
-                m_X.InitFromDsl(functionData.GetParam(0));
-                m_Y.InitFromDsl(functionData.GetParam(1));
-                TryUpdateValue();
-            }
-        }
-
-        public IStoryFunction Clone()
-        {
-            Vector2IntFunction vector2Value = new Vector2IntFunction();
-            vector2Value.m_X = m_X.Clone();
-            vector2Value.m_Y = m_Y.Clone();
-            vector2Value.m_HaveValue = m_HaveValue;
-            vector2Value.m_Value = m_Value;
-            return vector2Value;
-        }
-
-        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
-        {
-            m_HaveValue = false;
-            m_X.Evaluate(instance, handler, iterator, args);
-            m_Y.Evaluate(instance, handler, iterator, args);
-            TryUpdateValue();
-        }
-
-        private void TryUpdateValue()
-        {
-            if (m_X.HaveValue && m_Y.HaveValue) {
-                m_HaveValue = true;
-                m_Value = BoxedValue.FromObject(new UnityEngine.Vector2Int(m_X.Value, m_Y.Value));
-            }
-        }
-    }
-    public sealed class Vector3IntFunction : IStoryFunction
-    {
-        private IStoryFunction<int> m_X = new StoryFunction<int>();
-
-        private IStoryFunction<int> m_Y = new StoryFunction<int>();
-
-        private IStoryFunction<int> m_Z = new StoryFunction<int>();
-
-        private bool m_HaveValue;
-
-        private BoxedValue m_Value;
-
-        public bool HaveValue => m_HaveValue;
-
-        public BoxedValue Value => m_Value;
-
-        public void InitFromDsl(ISyntaxComponent param)
-        {
-            if (param is FunctionData functionData && functionData.GetParamNum() == 3) {
-                m_X.InitFromDsl(functionData.GetParam(0));
-                m_Y.InitFromDsl(functionData.GetParam(1));
-                m_Z.InitFromDsl(functionData.GetParam(2));
-                TryUpdateValue();
-            }
-        }
-
-        public IStoryFunction Clone()
-        {
-            Vector3IntFunction vector3Value = new Vector3IntFunction();
-            vector3Value.m_X = m_X.Clone();
-            vector3Value.m_Y = m_Y.Clone();
-            vector3Value.m_Z = m_Z.Clone();
-            vector3Value.m_HaveValue = m_HaveValue;
-            vector3Value.m_Value = m_Value;
-            return vector3Value;
-        }
-
-        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
-        {
-            m_HaveValue = false;
-            m_X.Evaluate(instance, handler, iterator, args);
-            m_Y.Evaluate(instance, handler, iterator, args);
-            m_Z.Evaluate(instance, handler, iterator, args);
-            TryUpdateValue();
-        }
-
-        private void TryUpdateValue()
-        {
-            if (m_X.HaveValue && m_Y.HaveValue && m_Z.HaveValue) {
-                m_HaveValue = true;
-                m_Value = BoxedValue.FromObject(new UnityEngine.Vector3Int(m_X.Value, m_Y.Value, m_Z.Value));
-            }
-        }
-    }
-    public sealed class Vector2DistanceFunction : IStoryFunction
-    {
-        public void InitFromDsl(Dsl.ISyntaxComponent param)
-        {
-            Dsl.FunctionData callData = param as Dsl.FunctionData;
-            if (null != callData && callData.GetParamNum() == 2) {
-                m_Pt1.InitFromDsl(callData.GetParam(0));
-                m_Pt2.InitFromDsl(callData.GetParam(1));
-                TryUpdateValue();
-            }
-        }
-        public IStoryFunction Clone()
-        {
-            Vector2DistanceFunction val = new Vector2DistanceFunction();
-            val.m_Pt1 = m_Pt1.Clone();
-            val.m_Pt2 = m_Pt2.Clone();
-            val.m_HaveValue = m_HaveValue;
-            val.m_Value = m_Value;
-            return val;
-        }
-        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
-        {
-            m_HaveValue = false;
-            m_Pt1.Evaluate(instance, handler, iterator, args);
-            m_Pt2.Evaluate(instance, handler, iterator, args);
-            TryUpdateValue();
-        }
-        public bool HaveValue
-        {
-            get
-            {
-                return m_HaveValue;
-            }
-        }
-        public BoxedValue Value
-        {
-            get
-            {
-                return m_Value;
-            }
-        }
-
-        private void TryUpdateValue()
-        {
-            if (m_Pt1.HaveValue && m_Pt2.HaveValue) {
-                m_HaveValue = true;
-                m_Value = (m_Pt1.Value - m_Pt2.Value).magnitude;
-            }
-        }
-        private IStoryFunction<Vector2> m_Pt1 = new StoryFunction<Vector2>();
-        private IStoryFunction<Vector2> m_Pt2 = new StoryFunction<Vector2>();
-        private bool m_HaveValue;
-        private BoxedValue m_Value;
-    }
-    public sealed class Vector3DistanceFunction : IStoryFunction
-    {
-        public void InitFromDsl(Dsl.ISyntaxComponent param)
-        {
-            Dsl.FunctionData callData = param as Dsl.FunctionData;
-            if (null != callData && callData.GetParamNum() == 2) {
-                m_Pt1.InitFromDsl(callData.GetParam(0));
-                m_Pt2.InitFromDsl(callData.GetParam(1));
-                TryUpdateValue();
-            }
-        }
-        public IStoryFunction Clone()
-        {
-            Vector3DistanceFunction val = new Vector3DistanceFunction();
-            val.m_Pt1 = m_Pt1.Clone();
-            val.m_Pt2 = m_Pt2.Clone();
-            val.m_HaveValue = m_HaveValue;
-            val.m_Value = m_Value;
-            return val;
-        }
-        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
-        {
-            m_HaveValue = false;
-            m_Pt1.Evaluate(instance, handler, iterator, args);
-            m_Pt2.Evaluate(instance, handler, iterator, args);
-            TryUpdateValue();
-        }
-        public bool HaveValue
-        {
-            get
-            {
-                return m_HaveValue;
-            }
-        }
-        public BoxedValue Value
-        {
-            get
-            {
-                return m_Value;
-            }
-        }
-
-        private void TryUpdateValue()
-        {
-            if (m_Pt1.HaveValue && m_Pt2.HaveValue) {
-                m_HaveValue = true;
-                m_Value = (m_Pt1.Value - m_Pt2.Value).magnitude;
-            }
-        }
-        private IStoryFunction<Vector3> m_Pt1 = new StoryFunction<Vector3>();
-        private IStoryFunction<Vector3> m_Pt2 = new StoryFunction<Vector3>();
-        private bool m_HaveValue;
-        private BoxedValue m_Value;
-    }
-    public sealed class Vector2To3Function : IStoryFunction
-    {
-        public void InitFromDsl(Dsl.ISyntaxComponent param)
-        {
-            Dsl.FunctionData callData = param as Dsl.FunctionData;
-            if (null != callData && callData.GetParamNum() == 1) {
-                m_Pt.InitFromDsl(callData.GetParam(0));
-                TryUpdateValue();
-            }
-        }
-        public IStoryFunction Clone()
-        {
-            Vector2To3Function val = new Vector2To3Function();
-            val.m_Pt = m_Pt.Clone();
-            val.m_HaveValue = m_HaveValue;
-            val.m_Value = m_Value;
-            return val;
-        }
-        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
-        {
-            m_HaveValue = false;
-            m_Pt.Evaluate(instance, handler, iterator, args);
-            TryUpdateValue();
-        }
-        public bool HaveValue
-        {
-            get
-            {
-                return m_HaveValue;
-            }
-        }
-        public BoxedValue Value
-        {
-            get
-            {
-                return m_Value;
-            }
-        }
-
-        private void TryUpdateValue()
-        {
-            if (m_Pt.HaveValue) {
-                m_HaveValue = true;
-                m_Value = new Vector3(m_Pt.Value.x, 0, m_Pt.Value.y);
-            }
-        }
-        private IStoryFunction<Vector2> m_Pt = new StoryFunction<Vector2>();
-        private bool m_HaveValue;
-        private BoxedValue m_Value;
-    }
-    public sealed class Vector3To2Function : IStoryFunction
-    {
-        public void InitFromDsl(Dsl.ISyntaxComponent param)
-        {
-            Dsl.FunctionData callData = param as Dsl.FunctionData;
-            if (null != callData && callData.GetParamNum() == 1) {
-                m_Pt.InitFromDsl(callData.GetParam(0));
-                TryUpdateValue();
-            }
-        }
-        public IStoryFunction Clone()
-        {
-            Vector3To2Function val = new Vector3To2Function();
-            val.m_Pt = m_Pt.Clone();
-            val.m_HaveValue = m_HaveValue;
-            val.m_Value = m_Value;
-            return val;
-        }
-        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
-        {
-            m_HaveValue = false;
-            m_Pt.Evaluate(instance, handler, iterator, args);
-            TryUpdateValue();
-        }
-        public bool HaveValue
-        {
-            get
-            {
-                return m_HaveValue;
-            }
-        }
-        public BoxedValue Value
-        {
-            get
-            {
-                return m_Value;
-            }
-        }
-
-        private void TryUpdateValue()
-        {
-            if (m_Pt.HaveValue) {
-                m_HaveValue = true;
-                m_Value = new Vector2(m_Pt.Value.x, m_Pt.Value.z);
-            }
-        }
-        private IStoryFunction<Vector3> m_Pt = new StoryFunction<Vector3>();
-        private bool m_HaveValue;
-        private BoxedValue m_Value;
-    }
     public sealed class StringListFunction : IStoryFunction
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
@@ -1547,116 +966,6 @@ namespace StoryScript.CommonFunctions
             if (m_ListString.HaveValue) {
                 m_HaveValue = true;
                 List<float> list = Converter.ConvertNumericList<float>(m_ListString.Value);
-                var v = new ObjList();
-                for (int i = 0; i < list.Count; ++i) {
-                    v.Add(list[i]);
-                }
-                m_Value = BoxedValue.FromObject(v);
-            }
-        }
-        private IStoryFunction<string> m_ListString = new StoryFunction<string>();
-        private bool m_HaveValue;
-        private BoxedValue m_Value;
-    }
-    public sealed class Vector2ListFunction : IStoryFunction
-    {
-        public void InitFromDsl(Dsl.ISyntaxComponent param)
-        {
-            Dsl.FunctionData callData = param as Dsl.FunctionData;
-            if (null != callData && callData.GetParamNum() == 1) {
-                m_ListString.InitFromDsl(callData.GetParam(0));
-                TryUpdateValue();
-            }
-        }
-        public IStoryFunction Clone()
-        {
-            Vector2ListFunction val = new Vector2ListFunction();
-            val.m_ListString = m_ListString.Clone();
-            val.m_HaveValue = m_HaveValue;
-            val.m_Value = m_Value;
-            return val;
-        }
-        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
-        {
-            m_HaveValue = false;
-            m_ListString.Evaluate(instance, handler, iterator, args);
-            TryUpdateValue();
-        }
-        public bool HaveValue
-        {
-            get
-            {
-                return m_HaveValue;
-            }
-        }
-        public BoxedValue Value
-        {
-            get
-            {
-                return m_Value;
-            }
-        }
-
-        private void TryUpdateValue()
-        {
-            if (m_ListString.HaveValue) {
-                m_HaveValue = true;
-                var list = Converter.ConvertVector2DList(m_ListString.Value);
-                var v = new ObjList();
-                for (int i = 0; i < list.Count; ++i) {
-                    v.Add(list[i]);
-                }
-                m_Value = BoxedValue.FromObject(v);
-            }
-        }
-        private IStoryFunction<string> m_ListString = new StoryFunction<string>();
-        private bool m_HaveValue;
-        private BoxedValue m_Value;
-    }
-    public sealed class Vector3ListFunction : IStoryFunction
-    {
-        public void InitFromDsl(Dsl.ISyntaxComponent param)
-        {
-            Dsl.FunctionData callData = param as Dsl.FunctionData;
-            if (null != callData && callData.GetParamNum() == 1) {
-                m_ListString.InitFromDsl(callData.GetParam(0));
-                TryUpdateValue();
-            }
-        }
-        public IStoryFunction Clone()
-        {
-            Vector3ListFunction val = new Vector3ListFunction();
-            val.m_ListString = m_ListString.Clone();
-            val.m_HaveValue = m_HaveValue;
-            val.m_Value = m_Value;
-            return val;
-        }
-        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
-        {
-            m_HaveValue = false;
-            m_ListString.Evaluate(instance, handler, iterator, args);
-            TryUpdateValue();
-        }
-        public bool HaveValue
-        {
-            get
-            {
-                return m_HaveValue;
-            }
-        }
-        public BoxedValue Value
-        {
-            get
-            {
-                return m_Value;
-            }
-        }
-
-        private void TryUpdateValue()
-        {
-            if (m_ListString.HaveValue) {
-                m_HaveValue = true;
-                var list = Converter.ConvertVector3DList(m_ListString.Value);
                 var v = new ObjList();
                 for (int i = 0; i < list.Count; ++i) {
                     v.Add(list[i]);
@@ -2138,6 +1447,824 @@ namespace StoryScript.CommonFunctions
         private bool m_HaveValue;
         private BoxedValue m_Value;
     }
+    public sealed class Vector2Function : IStoryFunction
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.FunctionData callData = param as Dsl.FunctionData;
+            if (null != callData && callData.GetParamNum() == 2) {
+                m_X.InitFromDsl(callData.GetParam(0));
+                m_Y.InitFromDsl(callData.GetParam(1));
+                TryUpdateValue();
+            }
+        }
+        public IStoryFunction Clone()
+        {
+            Vector2Function val = new Vector2Function();
+            val.m_X = m_X.Clone();
+            val.m_Y = m_Y.Clone();
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+
+            m_X.Evaluate(instance, handler, iterator, args);
+            m_Y.Evaluate(instance, handler, iterator, args);
+
+            TryUpdateValue();
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public BoxedValue Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+
+        private void TryUpdateValue()
+        {
+            if (m_X.HaveValue && m_Y.HaveValue) {
+                m_HaveValue = true;
+                m_Value = (Vector2Obj)new Vector2(m_X.Value, m_Y.Value);
+            }
+        }
+        private IStoryFunction<float> m_X = new StoryFunction<float>();
+        private IStoryFunction<float> m_Y = new StoryFunction<float>();
+        private bool m_HaveValue;
+        private BoxedValue m_Value;
+    }
+    public sealed class Vector3Function : IStoryFunction
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.FunctionData callData = param as Dsl.FunctionData;
+            if (null != callData && callData.GetParamNum() == 3) {
+                m_X.InitFromDsl(callData.GetParam(0));
+                m_Y.InitFromDsl(callData.GetParam(1));
+                m_Z.InitFromDsl(callData.GetParam(2));
+                TryUpdateValue();
+            }
+        }
+        public IStoryFunction Clone()
+        {
+            Vector3Function val = new Vector3Function();
+            val.m_X = m_X.Clone();
+            val.m_Y = m_Y.Clone();
+            val.m_Z = m_Z.Clone();
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+            m_X.Evaluate(instance, handler, iterator, args);
+            m_Y.Evaluate(instance, handler, iterator, args);
+            m_Z.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue();
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public BoxedValue Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+
+        private void TryUpdateValue()
+        {
+            if (m_X.HaveValue && m_Y.HaveValue && m_Z.HaveValue) {
+                m_HaveValue = true;
+                m_Value = (Vector3Obj)new Vector3(m_X.Value, m_Y.Value, m_Z.Value);
+            }
+        }
+        private IStoryFunction<float> m_X = new StoryFunction<float>();
+        private IStoryFunction<float> m_Y = new StoryFunction<float>();
+        private IStoryFunction<float> m_Z = new StoryFunction<float>();
+        private bool m_HaveValue;
+        private BoxedValue m_Value;
+    }
+    public sealed class Vector4Function : IStoryFunction
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.FunctionData callData = param as Dsl.FunctionData;
+            if (null != callData && callData.GetParamNum() == 4) {
+                m_X.InitFromDsl(callData.GetParam(0));
+                m_Y.InitFromDsl(callData.GetParam(1));
+                m_Z.InitFromDsl(callData.GetParam(2));
+                m_W.InitFromDsl(callData.GetParam(3));
+                TryUpdateValue();
+            }
+        }
+        public IStoryFunction Clone()
+        {
+            Vector4Function val = new Vector4Function();
+            val.m_X = m_X.Clone();
+            val.m_Y = m_Y.Clone();
+            val.m_Z = m_Z.Clone();
+            val.m_W = m_W.Clone();
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+            m_X.Evaluate(instance, handler, iterator, args);
+            m_Y.Evaluate(instance, handler, iterator, args);
+            m_Z.Evaluate(instance, handler, iterator, args);
+            m_W.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue();
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public BoxedValue Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+
+        private void TryUpdateValue()
+        {
+            if (m_X.HaveValue && m_Y.HaveValue && m_Z.HaveValue && m_W.HaveValue) {
+                m_HaveValue = true;
+                m_Value = (Vector4Obj)new Vector4(m_X.Value, m_Y.Value, m_Z.Value, m_W.Value);
+            }
+        }
+        private IStoryFunction<float> m_X = new StoryFunction<float>();
+        private IStoryFunction<float> m_Y = new StoryFunction<float>();
+        private IStoryFunction<float> m_Z = new StoryFunction<float>();
+        private IStoryFunction<float> m_W = new StoryFunction<float>();
+        private bool m_HaveValue;
+        private BoxedValue m_Value;
+    }
+    public sealed class QuaternionFunction : IStoryFunction
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.FunctionData callData = param as Dsl.FunctionData;
+            if (null != callData && callData.GetParamNum() == 4) {
+                m_X.InitFromDsl(callData.GetParam(0));
+                m_Y.InitFromDsl(callData.GetParam(1));
+                m_Z.InitFromDsl(callData.GetParam(2));
+                m_W.InitFromDsl(callData.GetParam(3));
+                TryUpdateValue();
+            }
+        }
+        public IStoryFunction Clone()
+        {
+            QuaternionFunction val = new QuaternionFunction();
+            val.m_X = m_X.Clone();
+            val.m_Y = m_Y.Clone();
+            val.m_Z = m_Z.Clone();
+            val.m_W = m_W.Clone();
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+            m_X.Evaluate(instance, handler, iterator, args);
+            m_Y.Evaluate(instance, handler, iterator, args);
+            m_Z.Evaluate(instance, handler, iterator, args);
+            m_W.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue();
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public BoxedValue Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+
+        private void TryUpdateValue()
+        {
+            if (m_X.HaveValue && m_Y.HaveValue && m_Z.HaveValue && m_W.HaveValue) {
+                m_HaveValue = true;
+                m_Value = (QuaternionObj)new Quaternion(m_X.Value, m_Y.Value, m_Z.Value, m_W.Value);
+            }
+        }
+        private IStoryFunction<float> m_X = new StoryFunction<float>();
+        private IStoryFunction<float> m_Y = new StoryFunction<float>();
+        private IStoryFunction<float> m_Z = new StoryFunction<float>();
+        private IStoryFunction<float> m_W = new StoryFunction<float>();
+        private bool m_HaveValue;
+        private BoxedValue m_Value;
+    }
+    public sealed class EularFunction : IStoryFunction
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.FunctionData callData = param as Dsl.FunctionData;
+            if (null != callData && callData.GetParamNum() == 3) {
+                m_X.InitFromDsl(callData.GetParam(0));
+                m_Y.InitFromDsl(callData.GetParam(1));
+                m_Z.InitFromDsl(callData.GetParam(2));
+                TryUpdateValue();
+            }
+        }
+        public IStoryFunction Clone()
+        {
+            EularFunction val = new EularFunction();
+            val.m_X = m_X.Clone();
+            val.m_Y = m_Y.Clone();
+            val.m_Z = m_Z.Clone();
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+            m_X.Evaluate(instance, handler, iterator, args);
+            m_Y.Evaluate(instance, handler, iterator, args);
+            m_Z.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue();
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public BoxedValue Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+
+        private void TryUpdateValue()
+        {
+            if (m_X.HaveValue && m_Y.HaveValue && m_Z.HaveValue) {
+                m_HaveValue = true;
+                var q = Quaternion.Euler(m_X.Value, m_Y.Value, m_Z.Value);
+                m_Value = (QuaternionObj)q;
+            }
+        }
+        private IStoryFunction<float> m_X = new StoryFunction<float>();
+        private IStoryFunction<float> m_Y = new StoryFunction<float>();
+        private IStoryFunction<float> m_Z = new StoryFunction<float>();
+        private bool m_HaveValue;
+        private BoxedValue m_Value;
+    }
+    public sealed class ColorFunction : IStoryFunction
+    {
+        private IStoryFunction<float> m_X = new StoryFunction<float>();
+
+        private IStoryFunction<float> m_Y = new StoryFunction<float>();
+
+        private IStoryFunction<float> m_Z = new StoryFunction<float>();
+
+        private IStoryFunction<float> m_W = new StoryFunction<float>();
+
+        private bool m_HaveValue;
+
+        private BoxedValue m_Value;
+
+        public bool HaveValue => m_HaveValue;
+
+        public BoxedValue Value => m_Value;
+
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            if (param is Dsl.FunctionData functionData && functionData.GetParamNum() == 4) {
+                m_X.InitFromDsl(functionData.GetParam(0));
+                m_Y.InitFromDsl(functionData.GetParam(1));
+                m_Z.InitFromDsl(functionData.GetParam(2));
+                m_W.InitFromDsl(functionData.GetParam(3));
+                TryUpdateValue();
+            }
+        }
+
+        public IStoryFunction Clone()
+        {
+            ColorFunction colorValue = new ColorFunction();
+            colorValue.m_X = m_X.Clone();
+            colorValue.m_Y = m_Y.Clone();
+            colorValue.m_Z = m_Z.Clone();
+            colorValue.m_W = m_W.Clone();
+            colorValue.m_HaveValue = m_HaveValue;
+            colorValue.m_Value = m_Value;
+            return colorValue;
+        }
+
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+            m_X.Evaluate(instance, handler, iterator, args);
+            m_Y.Evaluate(instance, handler, iterator, args);
+            m_Z.Evaluate(instance, handler, iterator, args);
+            m_W.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue();
+        }
+
+        private void TryUpdateValue()
+        {
+            if (m_X.HaveValue && m_Y.HaveValue && m_Z.HaveValue && m_W.HaveValue) {
+                m_HaveValue = true;
+                m_Value = (ColorObj)new Color(m_X.Value, m_Y.Value, m_Z.Value, m_W.Value);
+            }
+        }
+    }
+    public sealed class Color32Function : IStoryFunction
+    {
+        private IStoryFunction<byte> m_X = new StoryFunction<byte>();
+
+        private IStoryFunction<byte> m_Y = new StoryFunction<byte>();
+
+        private IStoryFunction<byte> m_Z = new StoryFunction<byte>();
+
+        private IStoryFunction<byte> m_W = new StoryFunction<byte>();
+
+        private bool m_HaveValue;
+
+        private BoxedValue m_Value;
+
+        public bool HaveValue => m_HaveValue;
+
+        public BoxedValue Value => m_Value;
+
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            if (param is Dsl.FunctionData functionData && functionData.GetParamNum() == 4) {
+                m_X.InitFromDsl(functionData.GetParam(0));
+                m_Y.InitFromDsl(functionData.GetParam(1));
+                m_Z.InitFromDsl(functionData.GetParam(2));
+                m_W.InitFromDsl(functionData.GetParam(3));
+                TryUpdateValue();
+            }
+        }
+
+        public IStoryFunction Clone()
+        {
+            Color32Function colorValue = new Color32Function();
+            colorValue.m_X = m_X.Clone();
+            colorValue.m_Y = m_Y.Clone();
+            colorValue.m_Z = m_Z.Clone();
+            colorValue.m_W = m_W.Clone();
+            colorValue.m_HaveValue = m_HaveValue;
+            colorValue.m_Value = m_Value;
+            return colorValue;
+        }
+
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+            m_X.Evaluate(instance, handler, iterator, args);
+            m_Y.Evaluate(instance, handler, iterator, args);
+            m_Z.Evaluate(instance, handler, iterator, args);
+            m_W.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue();
+        }
+
+        private void TryUpdateValue()
+        {
+            if (m_X.HaveValue && m_Y.HaveValue && m_Z.HaveValue && m_W.HaveValue) {
+                m_HaveValue = true;
+                m_Value = (Color32Obj)new Color32(m_X.Value, m_Y.Value, m_Z.Value, m_W.Value);
+            }
+        }
+    }
+    public sealed class Vector2IntFunction : IStoryFunction
+    {
+        private IStoryFunction<int> m_X = new StoryFunction<int>();
+
+        private IStoryFunction<int> m_Y = new StoryFunction<int>();
+
+        private bool m_HaveValue;
+
+        private BoxedValue m_Value;
+
+        public bool HaveValue => m_HaveValue;
+
+        public BoxedValue Value => m_Value;
+
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            if (param is Dsl.FunctionData functionData && functionData.GetParamNum() == 2) {
+                m_X.InitFromDsl(functionData.GetParam(0));
+                m_Y.InitFromDsl(functionData.GetParam(1));
+                TryUpdateValue();
+            }
+        }
+
+        public IStoryFunction Clone()
+        {
+            Vector2IntFunction vector2Value = new Vector2IntFunction();
+            vector2Value.m_X = m_X.Clone();
+            vector2Value.m_Y = m_Y.Clone();
+            vector2Value.m_HaveValue = m_HaveValue;
+            vector2Value.m_Value = m_Value;
+            return vector2Value;
+        }
+
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+            m_X.Evaluate(instance, handler, iterator, args);
+            m_Y.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue();
+        }
+
+        private void TryUpdateValue()
+        {
+            if (m_X.HaveValue && m_Y.HaveValue) {
+                m_HaveValue = true;
+                m_Value = (Vector2IntObj)new Vector2Int(m_X.Value, m_Y.Value);
+            }
+        }
+    }
+    public sealed class Vector3IntFunction : IStoryFunction
+    {
+        private IStoryFunction<int> m_X = new StoryFunction<int>();
+
+        private IStoryFunction<int> m_Y = new StoryFunction<int>();
+
+        private IStoryFunction<int> m_Z = new StoryFunction<int>();
+
+        private bool m_HaveValue;
+
+        private BoxedValue m_Value;
+
+        public bool HaveValue => m_HaveValue;
+
+        public BoxedValue Value => m_Value;
+
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            if (param is Dsl.FunctionData functionData && functionData.GetParamNum() == 3) {
+                m_X.InitFromDsl(functionData.GetParam(0));
+                m_Y.InitFromDsl(functionData.GetParam(1));
+                m_Z.InitFromDsl(functionData.GetParam(2));
+                TryUpdateValue();
+            }
+        }
+
+        public IStoryFunction Clone()
+        {
+            Vector3IntFunction vector3Value = new Vector3IntFunction();
+            vector3Value.m_X = m_X.Clone();
+            vector3Value.m_Y = m_Y.Clone();
+            vector3Value.m_Z = m_Z.Clone();
+            vector3Value.m_HaveValue = m_HaveValue;
+            vector3Value.m_Value = m_Value;
+            return vector3Value;
+        }
+
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+            m_X.Evaluate(instance, handler, iterator, args);
+            m_Y.Evaluate(instance, handler, iterator, args);
+            m_Z.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue();
+        }
+
+        private void TryUpdateValue()
+        {
+            if (m_X.HaveValue && m_Y.HaveValue && m_Z.HaveValue) {
+                m_HaveValue = true;
+                m_Value = (Vector3IntObj)new Vector3Int(m_X.Value, m_Y.Value, m_Z.Value);
+            }
+        }
+    }
+    public sealed class Vector2DistanceFunction : IStoryFunction
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.FunctionData callData = param as Dsl.FunctionData;
+            if (null != callData && callData.GetParamNum() == 2) {
+                m_Pt1.InitFromDsl(callData.GetParam(0));
+                m_Pt2.InitFromDsl(callData.GetParam(1));
+                TryUpdateValue();
+            }
+        }
+        public IStoryFunction Clone()
+        {
+            Vector2DistanceFunction val = new Vector2DistanceFunction();
+            val.m_Pt1 = m_Pt1.Clone();
+            val.m_Pt2 = m_Pt2.Clone();
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+            m_Pt1.Evaluate(instance, handler, iterator, args);
+            m_Pt2.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue();
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public BoxedValue Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+
+        private void TryUpdateValue()
+        {
+            if (m_Pt1.HaveValue && m_Pt2.HaveValue) {
+                m_HaveValue = true;
+                var pt1 = m_Pt1.Value;
+                var pt2 = m_Pt2.Value;
+                m_Value = (pt1 - pt2).magnitude;
+            }
+        }
+        private IStoryFunction<Vector2> m_Pt1 = new StoryFunction<Vector2>();
+        private IStoryFunction<Vector2> m_Pt2 = new StoryFunction<Vector2>();
+        private bool m_HaveValue;
+        private BoxedValue m_Value;
+    }
+    public sealed class Vector3DistanceFunction : IStoryFunction
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.FunctionData callData = param as Dsl.FunctionData;
+            if (null != callData && callData.GetParamNum() == 2) {
+                m_Pt1.InitFromDsl(callData.GetParam(0));
+                m_Pt2.InitFromDsl(callData.GetParam(1));
+                TryUpdateValue();
+            }
+        }
+        public IStoryFunction Clone()
+        {
+            Vector3DistanceFunction val = new Vector3DistanceFunction();
+            val.m_Pt1 = m_Pt1.Clone();
+            val.m_Pt2 = m_Pt2.Clone();
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+            m_Pt1.Evaluate(instance, handler, iterator, args);
+            m_Pt2.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue();
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public BoxedValue Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+
+        private void TryUpdateValue()
+        {
+            if (m_Pt1.HaveValue && m_Pt2.HaveValue) {
+                m_HaveValue = true;
+                var pt1 = m_Pt1.Value;
+                var pt2 = m_Pt2.Value;
+                m_Value = (pt1 - pt2).magnitude;
+            }
+        }
+        private IStoryFunction<Vector3> m_Pt1 = new StoryFunction<Vector3>();
+        private IStoryFunction<Vector3> m_Pt2 = new StoryFunction<Vector3>();
+        private bool m_HaveValue;
+        private BoxedValue m_Value;
+    }
+    public sealed class Vector2To3Function : IStoryFunction
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.FunctionData callData = param as Dsl.FunctionData;
+            if (null != callData && callData.GetParamNum() == 1) {
+                m_Pt.InitFromDsl(callData.GetParam(0));
+                TryUpdateValue();
+            }
+        }
+        public IStoryFunction Clone()
+        {
+            Vector2To3Function val = new Vector2To3Function();
+            val.m_Pt = m_Pt.Clone();
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+            m_Pt.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue();
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public BoxedValue Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+
+        private void TryUpdateValue()
+        {
+            if (m_Pt.HaveValue) {
+                m_HaveValue = true;
+                m_Value = BoxedValue.FromObject(new Vector3(m_Pt.Value.x, 0, m_Pt.Value.y));
+            }
+        }
+        private IStoryFunction<Vector2> m_Pt = new StoryFunction<Vector2>();
+        private bool m_HaveValue;
+        private BoxedValue m_Value;
+    }
+    public sealed class Vector3To2Function : IStoryFunction
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.FunctionData callData = param as Dsl.FunctionData;
+            if (null != callData && callData.GetParamNum() == 1) {
+                m_Pt.InitFromDsl(callData.GetParam(0));
+                TryUpdateValue();
+            }
+        }
+        public IStoryFunction Clone()
+        {
+            Vector3To2Function val = new Vector3To2Function();
+            val.m_Pt = m_Pt.Clone();
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+            m_Pt.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue();
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public BoxedValue Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+
+        private void TryUpdateValue()
+        {
+            if (m_Pt.HaveValue) {
+                m_HaveValue = true;
+                m_Value = BoxedValue.FromObject(new Vector2(m_Pt.Value.x, m_Pt.Value.y));
+            }
+        }
+        private IStoryFunction<Vector3> m_Pt = new StoryFunction<Vector3>();
+        private bool m_HaveValue;
+        private BoxedValue m_Value;
+    }
+    public sealed class Vector2ListFunction : IStoryFunction
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.FunctionData callData = param as Dsl.FunctionData;
+            if (null != callData && callData.GetParamNum() == 1) {
+                m_ListString.InitFromDsl(callData.GetParam(0));
+                TryUpdateValue();
+            }
+        }
+        public IStoryFunction Clone()
+        {
+            Vector2ListFunction val = new Vector2ListFunction();
+            val.m_ListString = m_ListString.Clone();
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+            m_ListString.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue();
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public BoxedValue Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+
+        private void TryUpdateValue()
+        {
+            if (m_ListString.HaveValue) {
+                m_HaveValue = true;
+                var list = Converter.ConvertVector2DList(m_ListString.Value);
+                var v = new ObjList();
+                for (int i = 0; i < list.Count; ++i) {
+                    v.Add(list[i]);
+                }
+                m_Value = BoxedValue.FromObject(v);
+            }
+        }
+        private IStoryFunction<string> m_ListString = new StoryFunction<string>();
+        private bool m_HaveValue;
+        private BoxedValue m_Value;
+    }
+    public sealed class Vector3ListFunction : IStoryFunction
+    {
+        public void InitFromDsl(Dsl.ISyntaxComponent param)
+        {
+            Dsl.FunctionData callData = param as Dsl.FunctionData;
+            if (null != callData && callData.GetParamNum() == 1) {
+                m_ListString.InitFromDsl(callData.GetParam(0));
+                TryUpdateValue();
+            }
+        }
+        public IStoryFunction Clone()
+        {
+            Vector3ListFunction val = new Vector3ListFunction();
+            val.m_ListString = m_ListString.Clone();
+            val.m_HaveValue = m_HaveValue;
+            val.m_Value = m_Value;
+            return val;
+        }
+        public void Evaluate(StoryInstance instance, StoryMessageHandler handler, BoxedValue iterator, BoxedValueList args)
+        {
+            m_HaveValue = false;
+            m_ListString.Evaluate(instance, handler, iterator, args);
+            TryUpdateValue();
+        }
+        public bool HaveValue
+        {
+            get {
+                return m_HaveValue;
+            }
+        }
+        public BoxedValue Value
+        {
+            get {
+                return m_Value;
+            }
+        }
+
+        private void TryUpdateValue()
+        {
+            if (m_ListString.HaveValue) {
+                m_HaveValue = true;
+                var list = Converter.ConvertVector3DList(m_ListString.Value);
+                var v = new ObjList();
+                for (int i = 0; i < list.Count; ++i) {
+                    v.Add(list[i]);
+                }
+                m_Value = BoxedValue.FromObject(v);
+            }
+        }
+        private IStoryFunction<string> m_ListString = new StoryFunction<string>();
+        private bool m_HaveValue;
+        private BoxedValue m_Value;
+    }
     public sealed class RandVector3Function : IStoryFunction
     {
         public void InitFromDsl(Dsl.ISyntaxComponent param)
@@ -2166,15 +2293,13 @@ namespace StoryScript.CommonFunctions
         }
         public bool HaveValue
         {
-            get
-            {
+            get {
                 return m_HaveValue;
             }
         }
         public BoxedValue Value
         {
-            get
-            {
+            get {
                 return m_Value;
             }
         }
@@ -2184,10 +2309,11 @@ namespace StoryScript.CommonFunctions
             if (m_Pt.HaveValue) {
                 m_HaveValue = true;
                 float r = m_Radius.Value;
-                Vector3 pt = m_Pt.Value;
+                var pt1 = m_Pt.Value;
+                Vector3 pt = pt1;
                 float deltaX = (StoryHelper.Random.NextFloat() - 0.5f) * r;
                 float deltaZ = (StoryHelper.Random.NextFloat() - 0.5f) * r;
-                m_Value = new Vector3(pt.x + deltaX, pt.y, pt.z + deltaZ);
+                m_Value = BoxedValue.FromObject(new Vector3(pt.x + deltaX, pt.y, pt.z + deltaZ));
             }
         }
         private IStoryFunction<Vector3> m_Pt = new StoryFunction<Vector3>();
@@ -2223,15 +2349,13 @@ namespace StoryScript.CommonFunctions
         }
         public bool HaveValue
         {
-            get
-            {
+            get {
                 return m_HaveValue;
             }
         }
         public BoxedValue Value
         {
-            get
-            {
+            get {
                 return m_Value;
             }
         }
@@ -2241,10 +2365,11 @@ namespace StoryScript.CommonFunctions
             if (m_Pt.HaveValue) {
                 m_HaveValue = true;
                 float r = m_Radius.Value;
-                Vector2 pt = m_Pt.Value;
+                var pt1 = m_Pt.Value;
+                Vector2 pt = pt1;
                 float deltaX = (StoryHelper.Random.NextFloat() - 0.5f) * r;
                 float deltaZ = (StoryHelper.Random.NextFloat() - 0.5f) * r;
-                m_Value = new Vector2(pt.x + deltaX, pt.y + deltaZ);
+                m_Value = BoxedValue.FromObject(new Vector2(pt.x + deltaX, pt.y + deltaZ));
             }
         }
         private IStoryFunction<Vector2> m_Pt = new StoryFunction<Vector2>();

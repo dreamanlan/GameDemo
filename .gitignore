@@ -46,6 +46,8 @@ Network Trash Folder
 Temporary Items
 .apdisk
 .vs
+.log
+.cache
 
 GameLibrary/App/GameKernel/bin
 GameLibrary/App/GameKernel/obj
@@ -71,6 +73,7 @@ GameLibrary/*.user
 GameLibrary/*.opensdf
 GameLibrary/.vs
 GameLibrary/.DS_Store
+GameLibrary/Infrastructure/StoryScript/.vs
 Unity3dProject/Assets/Plugins/game/*.mdb
 Unity3dProject/Assets/Plugins/game/*.pdb
 Unity3dProject/Library

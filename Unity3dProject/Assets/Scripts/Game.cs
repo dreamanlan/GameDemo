@@ -29,7 +29,7 @@ public class Game : MonoBehaviour
         InitFilePath();
         StartCoroutine(Startup());
 
-        Physics.gravity = new Vector3(0, 9.8f, 0);
+        Physics.gravity = new Vector3(0, -9.8f, 0);
     }
 
     void OnDestroy()

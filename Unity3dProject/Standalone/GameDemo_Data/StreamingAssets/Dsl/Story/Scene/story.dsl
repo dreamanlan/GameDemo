@@ -78,7 +78,7 @@
 		@scoreUi.text = ""+@score;
 		$g = vector3(0,-(@totalCount*9.8)/@leftCount,0);
 		getunitytype("Physics").gravity = $g;
-		@gravityUi.text = ""+$g.y;
+		@gravityUi.text = ""+$g.Value.y;
 
 		addcomponent(unitid2objid(1001), "StoryObject,Assembly-CSharp");
 		addcomponent(unitid2objid(1002), "StoryObject,Assembly-CSharp");
@@ -159,7 +159,7 @@
 		};
 		$g = vector3(0,-(@totalCount*9.8)/@leftCount,0);
 		getunitytype("Physics").gravity = $g;
-		@gravityUi.text = ""+$g.y;
+		@gravityUi.text = ""+$g.Value.y;
 	};
 	onmessage("baozha")args($pt)
 	{

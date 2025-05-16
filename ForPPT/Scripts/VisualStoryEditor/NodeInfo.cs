@@ -132,7 +132,7 @@ namespace VisualStoryTool
                         else {
                             sb.Append(id);
                             switch (paramClass) {
-                                case (int)Dsl.FunctionData.ParamClassEnum.PARAM_CLASS_PARENTHESIS:
+                                case (int)Dsl.FunctionData.ParamClassEnum.PARAM_CLASS_PARENTHESES:
                                     sb.Append("(");
                                     break;
                                 case (int)Dsl.FunctionData.ParamClassEnum.PARAM_CLASS_BRACKET:
@@ -146,7 +146,7 @@ namespace VisualStoryTool
                                 DslToStringBuilder(pcomp, sb, false, false);
                             }
                             switch (paramClass) {
-                                case (int)Dsl.FunctionData.ParamClassEnum.PARAM_CLASS_PARENTHESIS:
+                                case (int)Dsl.FunctionData.ParamClassEnum.PARAM_CLASS_PARENTHESES:
                                     sb.Append(")");
                                     break;
                                 case (int)Dsl.FunctionData.ParamClassEnum.PARAM_CLASS_BRACKET:

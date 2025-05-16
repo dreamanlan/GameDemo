@@ -3008,7 +3008,7 @@ namespace GameLibrary.Story.Commands
             var value = m_Value.Value;
             UnityEngine.GameObject obj = SceneSystem.Instance.GetGameObject(objId);
             if (null != obj) {
-                UnityEngine.Vector3 scale = value;                
+                UnityEngine.Vector3 scale = value.As<Vector3Obj>();
                 obj.transform.localScale = new UnityEngine.Vector3(scale.x, scale.y, scale.z);
             }
             return false;

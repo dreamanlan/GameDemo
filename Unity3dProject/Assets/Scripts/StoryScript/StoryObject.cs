@@ -119,7 +119,7 @@ public class StoryObject : MonoBehaviour
         if (null != args && args.Length >= 3) {
             string name = args[0] as string;
             string prefab = args[1] as string;
-            Vector3 offset = (Vector3)args[2];
+            Vector3 offset = (StoryScript.Vector3Obj)args[2];
             float duration = 0;
             if (args.Length >= 4) {
                 duration = (float)System.Convert.ChangeType(args[3], typeof(float));
@@ -155,7 +155,7 @@ public class StoryObject : MonoBehaviour
         if (null != args && args.Length >= 5) {
             string name = args[0] as string;
             string prefab = args[1] as string;
-            Vector3 offset = (Vector3)args[2];
+            Vector3 offset = (StoryScript.Vector3Obj)args[2];
             string path = args[3] as string;
             string txt = args[4] as string;
             float duration = 0;
@@ -207,9 +207,9 @@ public class StoryObject : MonoBehaviour
         args.Add(collisionInfo.gameObject);
         args.Add(collisionInfo.collider);
         var pt1 = gameObject.transform.position;
-        args.Add(pt1);
+        args.Add((StoryScript.Vector3Obj)pt1);
         var pt2 = collisionInfo.gameObject.transform.position;
-        args.Add(pt2);
+        args.Add((StoryScript.Vector3Obj)pt2);
         var time = Time.time;
         args.Add(time);
         ClientStorySystem.Instance.SendConcurrentMessage("on_collision_enter", args);
@@ -223,9 +223,9 @@ public class StoryObject : MonoBehaviour
         args.Add(collisionInfo.gameObject);
         args.Add(collisionInfo.collider);
         var pt1 = gameObject.transform.position;
-        args.Add(pt1);
+        args.Add((StoryScript.Vector3Obj)pt1);
         var pt2 = collisionInfo.gameObject.transform.position;
-        args.Add(pt2);
+        args.Add((StoryScript.Vector3Obj)pt2);
         var time = Time.time;
         args.Add(time);
         ClientStorySystem.Instance.SendConcurrentMessage("on_collision_exit", args);
@@ -239,9 +239,9 @@ public class StoryObject : MonoBehaviour
         args.Add(other.gameObject);
         args.Add(other);
         var pt1 = gameObject.transform.position;
-        args.Add(pt1);
+        args.Add((StoryScript.Vector3Obj)pt1);
         var pt2 = other.transform.position;
-        args.Add(pt2);
+        args.Add((StoryScript.Vector3Obj)pt2);
         var time = Time.time;
         args.Add(time);
         ClientStorySystem.Instance.SendConcurrentMessage("on_trigger_enter", args);
@@ -255,9 +255,9 @@ public class StoryObject : MonoBehaviour
         args.Add(other.gameObject);
         args.Add(other);
         var pt1 = gameObject.transform.position;
-        args.Add(pt1);
+        args.Add((StoryScript.Vector3Obj)pt1);
         var pt2 = other.transform.position;
-        args.Add(pt2);
+        args.Add((StoryScript.Vector3Obj)pt2);
         var time = Time.time;
         args.Add(time);
         ClientStorySystem.Instance.SendConcurrentMessage("on_trigger_exit", args);
