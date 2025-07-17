@@ -3245,6 +3245,7 @@ namespace StoryScript.DslExpression
         {
             var ret = BoxedValue.NullObject;
             object obj = null;
+            BoxedValue bvMethod = BoxedValue.NullObject;
             string method = null;
             List<BoxedValue> args = null;
             ArrayList arglist = null;
@@ -3257,6 +3258,7 @@ namespace StoryScript.DslExpression
                     disp = obj as IObjectDispatch;
                 }
                 else if (ix == 1) {
+                    bvMethod = v;
                     method = v.AsString;
                 }
                 else if (null != disp) {
@@ -3285,7 +3287,13 @@ namespace StoryScript.DslExpression
                         arglist = new ArrayList();
                     object[] _args = arglist.ToArray();
                     IDictionary dict = obj as IDictionary;
-                    if (null != dict && dict.Contains(method) && dict[method] is Delegate) {
+                    if (null != dict && dict is Dictionary<BoxedValue, BoxedValue> bvDict && bvDict.TryGetValue(bvMethod, out var val) && val.IsObject && val.ObjectVal is Delegate) {
+                        var d = val.ObjectVal as Delegate;
+                        if (null != d) {
+                            ret = BoxedValue.FromObject(d.DynamicInvoke(_args));
+                        }
+                    }
+                    else if (null != dict && dict.Contains(method) && dict[method] is Delegate) {
                         var d = dict[method] as Delegate;
                         if (null != d) {
                             ret = BoxedValue.FromObject(d.DynamicInvoke(_args));
@@ -3339,6 +3347,7 @@ namespace StoryScript.DslExpression
         {
             var ret = BoxedValue.NullObject;
             object obj = null;
+            BoxedValue bvMethod = BoxedValue.NullObject;
             string method = null;
             BoxedValue argv = BoxedValue.NullObject;
             ArrayList arglist = null;
@@ -3351,6 +3360,7 @@ namespace StoryScript.DslExpression
                     disp = obj as IObjectDispatch;
                 }
                 else if (ix == 1) {
+                    bvMethod = v;
                     method = v.AsString;
                 }
                 else if (null != disp) {
@@ -3376,7 +3386,12 @@ namespace StoryScript.DslExpression
                     object[] _args = arglist.ToArray();
                     IDictionary dict = obj as IDictionary;
                     if (null != dict && null == obj.GetType().GetMethod(method, BindingFlags.Instance | BindingFlags.Static | BindingFlags.SetField | BindingFlags.SetProperty | BindingFlags.FlattenHierarchy | BindingFlags.Public | BindingFlags.NonPublic)) {
-                        dict[method] = _args[0];
+                        if (null != dict && dict is Dictionary<BoxedValue, BoxedValue> bvDict) {
+                            bvDict[bvMethod] = BoxedValue.FromObject(_args[0]);
+                        }
+                        else {
+                            dict[method] = _args[0];
+                        }
                     }
                     else {
                         Type t = obj as Type;
@@ -3426,6 +3441,7 @@ namespace StoryScript.DslExpression
         {
             var ret = BoxedValue.NullObject;
             object obj = null;
+            BoxedValue bvMethod = BoxedValue.NullObject;
             string method = null;
             ArrayList arglist = null;
             IObjectDispatch disp = null;
@@ -3437,6 +3453,7 @@ namespace StoryScript.DslExpression
                     disp = obj as IObjectDispatch;
                 }
                 else if (ix == 1) {
+                    bvMethod = v;
                     method = v.AsString;
                 }
                 else if (null != disp) {
@@ -3462,7 +3479,10 @@ namespace StoryScript.DslExpression
                         arglist = new ArrayList();
                     object[] _args = arglist.ToArray();
                     IDictionary dict = obj as IDictionary;
-                    if (null != dict && dict.Contains(method)) {
+                    if (null != dict && dict is Dictionary<BoxedValue, BoxedValue> bvDict && bvDict.TryGetValue(bvMethod, out var val)) {
+                        ret = val;
+                    }
+                    else if (null != dict && dict.Contains(method)) {
                         ret = BoxedValue.FromObject(dict[method]);
                     }
                     else {
@@ -3513,6 +3533,7 @@ namespace StoryScript.DslExpression
         {
             var ret = BoxedValue.NullObject;
             object obj = null;
+            BoxedValue bvMethod = BoxedValue.NullObject;
             object methodObj = null;
             ArrayList arglist = new ArrayList();
             for (int ix = 0; ix < m_Expressions.Count; ++ix) {
@@ -3522,6 +3543,7 @@ namespace StoryScript.DslExpression
                     obj = v.GetObject();
                 }
                 else if (ix == 1) {
+                    bvMethod = v;
                     methodObj = v.GetObject();
                 }
                 else {
@@ -3531,7 +3553,13 @@ namespace StoryScript.DslExpression
             object[] _args = arglist.ToArray();
             if (null != obj && null != methodObj) {
                 IDictionary dict = obj as IDictionary;
-                if (null != dict && dict.Contains(methodObj)) {
+                if (null != dict && dict is Dictionary<BoxedValue, BoxedValue> bvDict && bvDict.TryGetValue(bvMethod, out var val)) {
+                    var d = val.As<Delegate>();
+                    if (null != d) {
+                        ret = BoxedValue.FromObject(d.DynamicInvoke(_args));
+                    }
+                }
+                else if (null != dict && dict.Contains(methodObj)) {
                     var d = dict[methodObj] as Delegate;
                     if (null != d) {
                         ret = BoxedValue.FromObject(d.DynamicInvoke(_args));
@@ -3583,6 +3611,7 @@ namespace StoryScript.DslExpression
         {
             var ret = BoxedValue.NullObject;
             object obj = null;
+            BoxedValue bvMethod = BoxedValue.NullObject;
             object methodObj = null;
             object arg = null;
             for (int ix = 0; ix < m_Expressions.Count; ++ix) {
@@ -3592,6 +3621,7 @@ namespace StoryScript.DslExpression
                     obj = v.GetObject();
                 }
                 else if (ix == 1) {
+                    bvMethod = v;
                     methodObj = v.GetObject();
                 }
                 else {
@@ -3601,7 +3631,10 @@ namespace StoryScript.DslExpression
             }
             if (null != obj && null != methodObj) {
                 IDictionary dict = obj as IDictionary;
-                if (null != dict && dict.Contains(methodObj)) {
+                if (null != dict && dict is Dictionary<BoxedValue, BoxedValue> bvDict) {
+                    bvDict[bvMethod] = BoxedValue.FromObject(arg);
+                }
+                else if (null != dict) {
                     dict[methodObj] = arg;
                 }
                 else {
@@ -3633,6 +3666,7 @@ namespace StoryScript.DslExpression
         {
             var ret = BoxedValue.NullObject;
             object obj = null;
+            BoxedValue bvMethod = BoxedValue.NullObject;
             object methodObj = null;
             for (int ix = 0; ix < m_Expressions.Count; ++ix) {
                 var exp = m_Expressions[ix];
@@ -3641,6 +3675,7 @@ namespace StoryScript.DslExpression
                     obj = v.GetObject();
                 }
                 else if (ix == 1) {
+                    bvMethod = v;
                     methodObj = v.GetObject();
                 }
                 else {
@@ -3649,7 +3684,10 @@ namespace StoryScript.DslExpression
             }
             if (null != obj && null != methodObj) {
                 IDictionary dict = obj as IDictionary;
-                if (null != dict && dict.Contains(methodObj)) {
+                if (null != dict && dict is Dictionary<BoxedValue, BoxedValue> bvDict && bvDict.TryGetValue(bvMethod, out var val)) {
+                    ret = val;
+                }
+                else if (null != dict && dict.Contains(methodObj)) {
                     ret = BoxedValue.FromObject(dict[methodObj]);
                 }
                 else {

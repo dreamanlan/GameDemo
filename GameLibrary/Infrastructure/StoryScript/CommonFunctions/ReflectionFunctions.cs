@@ -301,8 +301,8 @@ namespace StoryScript.CommonFunctions
                 var disp = obj as IObjectDispatch;
                 BoxedValueList dispArgs = null;
                 ArrayList arglist = null;
-                var methodObj = m_Method.Value;
-                string method = methodObj.IsString ? methodObj.StringVal : null;
+                var bvMethod = m_Method.Value;
+                string method = bvMethod.IsString ? bvMethod.StringVal : null;
                 if (null != disp) {
                     dispArgs = instance.NewBoxedValueList();
                     for (int i = 0; i < m_Args.Count; i++) {
@@ -329,7 +329,13 @@ namespace StoryScript.CommonFunctions
                         else {
                             object[] args = arglist.ToArray();
                             IDictionary dict = obj as IDictionary;
-                            if (null != dict && dict.Contains(method) && dict[method] is Delegate) {
+                            if (null != dict && dict is Dictionary<BoxedValue, BoxedValue> bvDict && bvDict.TryGetValue(bvMethod, out var val) && val.IsObject && val.ObjectVal is Delegate) {
+                                var d = val.ObjectVal as Delegate;
+                                if (null != d) {
+                                    m_Value = BoxedValue.FromObject(d.DynamicInvoke(args));
+                                }
+                            }
+                            else if (null != dict && dict.Contains(method) && dict[method] is Delegate) {
                                 var d = dict[method] as Delegate;
                                 if (null != d) {
                                     m_Value = BoxedValue.FromObject(d.DynamicInvoke(args));
@@ -447,8 +453,8 @@ namespace StoryScript.CommonFunctions
                 m_Value = BoxedValue.NullObject;
                 object obj = m_Object.Value.GetObject();
                 IObjectDispatch disp = obj as IObjectDispatch;
-                var methodObj = m_Method.Value;
-                string method = methodObj.IsString ? methodObj.StringVal : null;
+                var bvMethod = m_Method.Value;
+                string method = bvMethod.IsString ? bvMethod.StringVal : null;
                 ArrayList arglist = new ArrayList();
                 for (int i = 0; i < m_Args.Count; i++) {
                     arglist.Add(m_Args[i].Value.GetObject());
@@ -466,7 +472,10 @@ namespace StoryScript.CommonFunctions
                         }
                         else {
                             IDictionary dict = obj as IDictionary;
-                            if (null != dict && dict.Contains(method)) {
+                            if (null != dict && dict is Dictionary<BoxedValue, BoxedValue> bvDict && bvDict.TryGetValue(bvMethod, out var val)) {
+                                m_Value = val;
+                            }
+                            else if (null != dict && dict.Contains(method)) {
                                 m_Value = BoxedValue.FromObject(dict[method]);
                             }
                             else {
@@ -580,7 +589,7 @@ namespace StoryScript.CommonFunctions
                 m_HaveValue = true;
                 m_Value = BoxedValue.NullObject;
                 object obj = m_Object.Value.GetObject();
-                var methodObj = m_Method.Value;
+                var bvMethod = m_Method.Value;
                 ArrayList arglist = new ArrayList();
                 for (int i = 0; i < m_Args.Count; i++) {
                     arglist.Add(m_Args[i].Value.GetObject());
@@ -588,8 +597,14 @@ namespace StoryScript.CommonFunctions
                 object[] args = arglist.ToArray();
                 if (null != obj) {
                     IDictionary dict = obj as IDictionary;
-                    var mobj = methodObj.GetObject();
-                    if (null != dict && dict.Contains(mobj)) {
+                    var mobj = bvMethod.GetObject();
+                    if (null != dict && dict is Dictionary<BoxedValue, BoxedValue> bvDict && bvDict.TryGetValue(bvMethod, out var val)) {
+                        var d = val.As<Delegate>();
+                        if (null != d) {
+                            m_Value = BoxedValue.FromObject(d.DynamicInvoke(args));
+                        }
+                    }
+                    else if (null != dict && dict.Contains(mobj)) {
                         var d = dict[mobj] as Delegate;
                         if (null != d) {
                             m_Value = BoxedValue.FromObject(d.DynamicInvoke(args));
@@ -597,8 +612,8 @@ namespace StoryScript.CommonFunctions
                     }
                     else {
                         IEnumerable enumer = obj as IEnumerable;
-                        if (null != enumer && methodObj.IsInteger) {
-                            int index = methodObj.GetInt();
+                        if (null != enumer && bvMethod.IsInteger) {
+                            int index = bvMethod.GetInt();
                             var e = enumer.GetEnumerator();
                             for (int i = 0; i <= index; ++i) {
                                 e.MoveNext();
@@ -689,7 +704,7 @@ namespace StoryScript.CommonFunctions
                 m_HaveValue = true;
                 m_Value = BoxedValue.NullObject;
                 object obj = m_Object.Value.GetObject();
-                var methodObj = m_Method.Value;
+                var bvMethod = m_Method.Value;
                 ArrayList arglist = new ArrayList();
                 for (int i = 0; i < m_Args.Count; i++) {
                     arglist.Add(m_Args[i].Value.GetObject());
@@ -697,14 +712,17 @@ namespace StoryScript.CommonFunctions
                 object[] args = arglist.ToArray();
                 if (null != obj) {
                     IDictionary dict = obj as IDictionary;
-                    var mobj = methodObj.GetObject();
-                    if (null != dict && dict.Contains(mobj)) {
+                    var mobj = bvMethod.GetObject();
+                    if (null != dict && dict is Dictionary<BoxedValue, BoxedValue> bvDict && bvDict.TryGetValue(bvMethod, out var val)) {
+                        m_Value = val;
+                    }
+                    else if (null != dict && dict.Contains(mobj)) {
                         m_Value = BoxedValue.FromObject(dict[mobj]);
                     }
                     else {
                         IEnumerable enumer = obj as IEnumerable;
-                        if (null != enumer && methodObj.IsInteger) {
-                            int index = methodObj.GetInt();
+                        if (null != enumer && bvMethod.IsInteger) {
+                            int index = bvMethod.GetInt();
                             var e = enumer.GetEnumerator();
                             for (int i = 0; i <= index; ++i) {
                                 e.MoveNext();
