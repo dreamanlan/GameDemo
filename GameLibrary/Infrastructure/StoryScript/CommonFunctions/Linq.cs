@@ -56,21 +56,21 @@ namespace StoryScript.CommonFunctions
                     if (null != list) {
                         if (method == "orderby" || method == "orderbydesc") {
                             bool desc = method == "orderbydesc";
-                            ObjList results = new ObjList();
+                            BoxedValueList results = new BoxedValueList();
                             IEnumerator enumer = list.GetEnumerator();
                             while (enumer.MoveNext()) {
                                 object val = enumer.Current;
-                                results.Add(val);
+                                results.Add(BoxedValue.FromObject(val));
                             }
-                            results.Sort((object o1, object o2) => {
+                            results.Sort((BoxedValue o1, BoxedValue o2) => {
                                 BoxedValue r1 = BoxedValue.NullObject;
                                 for (int i = 0; i < m_Args.Count; i++) {
-                                    m_Args[i].Evaluate(instance, handler, BoxedValue.FromObject(o1), args);
+                                    m_Args[i].Evaluate(instance, handler, o1, args);
                                     r1 = m_Args[i].Value;
                                 }
                                 BoxedValue r2 = BoxedValue.NullObject;
                                 for (int i = 0; i < m_Args.Count; i++) {
-                                    m_Args[i].Evaluate(instance, handler, BoxedValue.FromObject(o2), args);
+                                    m_Args[i].Evaluate(instance, handler, o2, args);
                                     r2 = m_Args[i].Value;
                                 }
                                 string rs1 = r1.ToString();
@@ -89,7 +89,7 @@ namespace StoryScript.CommonFunctions
                             });
                             v = results;
                         } else if (method == "where") {
-                            ObjList results = new ObjList();
+                            BoxedValueList results = new BoxedValueList();
                             IEnumerator enumer = list.GetEnumerator();
                             while (enumer.MoveNext()) {
                                 object val = enumer.Current;
@@ -100,7 +100,7 @@ namespace StoryScript.CommonFunctions
                                     r = m_Args[i].Value;
                                 }
                                 if (r.GetInt() != 0) {
-                                    results.Add(val);
+                                    results.Add(BoxedValue.FromObject(val));
                                 }
                             }
                             v = results;
@@ -111,12 +111,12 @@ namespace StoryScript.CommonFunctions
                                 r = m_Args[i].Value;
                             }
                             int ct = r.GetInt();
-                            ObjList results = new ObjList();
+                            BoxedValueList results = new BoxedValueList();
                             IEnumerator enumer = list.GetEnumerator();
                             while (enumer.MoveNext()) {
                                 object val = enumer.Current;
                                 if (ct > 0) {
-                                    results.Add(val);
+                                    results.Add(BoxedValue.FromObject(val));
                                     --ct;
                                 }
                             }

@@ -79,9 +79,15 @@ namespace GameLibrary.Story.Commands
                 if (m_ParamNum > 6) {
                     List<string> ais = new List<string>();
                     IEnumerable aiParams = m_AiParams.Value;
-                    foreach (object aiParam in aiParams)
-                    {
-                        ais.Add(aiParam as string);
+                    if (aiParams is List<BoxedValue> bvAiParams) {
+                        foreach (var aiParam in bvAiParams) {
+                            ais.Add(aiParam.GetString());
+                        }
+                    }
+                    else {
+                        foreach (var aiParam in aiParams) {
+                            ais.Add(aiParam as string);
+                        }
                     }
                     objId = SceneSystem.Instance.CreateEntityWithAi(unitId, pos.x, pos.y, pos.z, dir, model, (EntityTypeEnum)entityType, m_AiLogic.Value, ais.ToArray());
                 } else {
