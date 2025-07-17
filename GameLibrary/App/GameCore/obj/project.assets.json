@@ -52,11 +52,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\GitHub\\GameDemo\\GameLibrary\\App\\GameCore\\GameCore.csproj",
+      "projectUniqueName": "D:\\GitHub\\GameDemo\\GameLibrary\\App\\GameCore\\GameCore.csproj",
       "projectName": "GameCore",
-      "projectPath": "F:\\GitHub\\GameDemo\\GameLibrary\\App\\GameCore\\GameCore.csproj",
+      "projectPath": "D:\\GitHub\\GameDemo\\GameLibrary\\App\\GameCore\\GameCore.csproj",
       "packagesPath": "C:\\Users\\dreamanlan\\.nuget\\packages\\",
-      "outputPath": "F:\\GitHub\\GameDemo\\GameLibrary\\App\\GameCore\\obj\\",
+      "outputPath": "D:\\GitHub\\GameDemo\\GameLibrary\\App\\GameCore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -77,11 +77,11 @@
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
           "projectReferences": {
-            "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\Common\\Common.csproj": {
-              "projectPath": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\Common\\Common.csproj"
+            "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\Common\\Common.csproj": {
+              "projectPath": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\Common\\Common.csproj"
             },
-            "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript.csproj": {
-              "projectPath": "F:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript.csproj"
+            "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript.csproj": {
+              "projectPath": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript.csproj"
             }
           }
         }
@@ -96,7 +96,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "netstandard2.1": {
@@ -117,7 +117,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

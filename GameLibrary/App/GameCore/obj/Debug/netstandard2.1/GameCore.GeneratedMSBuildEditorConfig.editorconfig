@@ -1,6 +1,6 @@
 is_global = true
 build_property.RootNamespace = GameLibrary
-build_property.ProjectDir = F:\GitHub\GameDemo\GameLibrary\App\GameCore\
+build_property.ProjectDir = D:\GitHub\GameDemo\GameLibrary\App\GameCore\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.CsWinRTUseWindowsUIXamlProjections = false
