@@ -37,7 +37,7 @@ namespace StoryScript.CommonCommands
                     localInfo.List[i].Evaluate(instance, handler, iterator, args);
                 }
                 for (int i = 0; i < localInfo.List.Count; i++) {
-                    localInfo.Iterators.Enqueue(localInfo.List[i].Value.GetObject());
+                    localInfo.Iterators.Enqueue(localInfo.List[i].Value);
                 }
             }
         }
@@ -127,7 +127,7 @@ namespace StoryScript.CommonCommands
 
         private sealed class LocalInfo
         {
-            internal Queue<object> Iterators = new Queue<object>();
+            internal Queue<BoxedValue> Iterators = new Queue<BoxedValue>();
             internal List<IStoryFunction> List = null;
         }
 
@@ -164,8 +164,16 @@ namespace StoryScript.CommonCommands
             var localInfo = localInfos.GetLocalInfo(m_LocalInfoIndex) as LocalInfo;
             if (localInfo.Iterators.Count <= 0) {
                 localInfo.List.Evaluate(instance, handler, iterator, args);
-                foreach (object obj in localInfo.List.Value) {
-                    localInfo.Iterators.Enqueue(obj);
+                var enumer = localInfo.List.Value;
+                if (enumer is IEnumerable<BoxedValue> bvEnumer) {
+                    foreach (BoxedValue val in bvEnumer) {
+                        localInfo.Iterators.Enqueue(val);
+                    }
+                }
+                else {
+                    foreach (object obj in enumer) {
+                        localInfo.Iterators.Enqueue(BoxedValue.FromObject(obj));
+                    }
                 }
             }
         }
@@ -249,7 +257,7 @@ namespace StoryScript.CommonCommands
 
         private sealed class LocalInfo
         {
-            internal Queue<object> Iterators = new Queue<object>();
+            internal Queue<BoxedValue> Iterators = new Queue<BoxedValue>();
             internal IStoryFunction<IEnumerable> List = null;
         }
 
