@@ -5404,7 +5404,13 @@ namespace StoryScript.DslExpression
             string ret = string.Empty;
             if (operands.Count >= 1) {
                 var dir = operands[0].AsString;
-                Environment.CurrentDirectory = Environment.ExpandEnvironmentVariables(dir);
+                string path = Environment.ExpandEnvironmentVariables(dir);
+                if (Path.IsPathRooted(path)) {
+                    Environment.CurrentDirectory = path;
+                }
+                else {
+                    Environment.CurrentDirectory = Path.Combine(Environment.CurrentDirectory, path);
+                }
                 ret = dir;
             }
             return ret;

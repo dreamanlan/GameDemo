@@ -24,10 +24,36 @@
               "RelativeDocumentMoniker": "DslCalculator.cs",
               "ToolTip": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\DslCalculator.cs",
               "RelativeToolTip": "DslCalculator.cs",
-              "ViewState": "AgIAAP4IAAAAAAAAAAApwD8KAACHAAAAAAAAAA==",
+              "ViewState": "AgIAABoVAAAAAAAAAAAswCUVAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-01T07:24:33.432Z",
               "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 1153,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{68487888-204a-11d3-87eb-00c04f7971a5}"
             }
           ]
         }
