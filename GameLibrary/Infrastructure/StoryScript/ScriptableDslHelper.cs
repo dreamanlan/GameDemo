@@ -29,7 +29,7 @@ namespace StoryScript
         {
             file.SetNameTags(NameTags);
             file.onGetToken = (ref Dsl.Common.DslAction dslAction, ref Dsl.Common.DslToken dslToken, ref string tok, ref short val, ref int line) => {
-                if (tok == "return") {
+                if (Dsl.Parser.DslConstants.IDENTIFIER_ == val && tok == "return") {
                     var oldCurTok = dslToken.getCurToken();
                     var oldLastTok = dslToken.getLastToken();
                     if (dslToken.PeekNextValidChar(0) == ';')
@@ -42,7 +42,7 @@ namespace StoryScript
                     dslToken.setLastToken(oldLastTok);
                     return true;
                 }
-                else if (tok == ")") {
+                else if (Dsl.Parser.DslConstants.RPAREN_ == val && tok == ")") {
                     if (dslAction.PeekPairTypeStack(out var tag) == Dsl.Common.PairTypeEnum.PAIR_TYPE_PARENTHESES) {
                         if (tag > 0) {
                             var oldCurTok = dslToken.getCurToken();
