@@ -7747,6 +7747,10 @@ namespace StoryScript.DslExpression
                 }
             }
         }
+        public bool TryGetFuncInfo(string func, out FuncInfo funcInfo)
+        {
+            return m_Funcs.TryGetValue(func, out funcInfo);
+        }
         public void CheckFuncXrefs()
         {
             foreach(var func in m_FuncCalls) {
