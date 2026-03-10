@@ -2947,9 +2947,14 @@ namespace StoryScript.DslExpression
         {
             var ret = BoxedValue.NullObject;
             if (m_Expressions.Count >= 1) {
-                var obj = m_Expressions[0].Calc();
+                var obj = m_Expressions[0].Calc().GetObject();
                 try {
-                    ret = obj.GetType().AssemblyQualifiedName;
+                    if (null != obj) {
+                        ret = obj.GetType().AssemblyQualifiedName;
+                    }
+                    else {
+                        ret = "(null)";
+                    }
                 }
                 catch (Exception ex) {
                     Calculator.Log("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
@@ -2974,9 +2979,14 @@ namespace StoryScript.DslExpression
         {
             var ret = BoxedValue.NullObject;
             if (m_Expressions.Count >= 1) {
-                var obj = m_Expressions[0].Calc();
+                var obj = m_Expressions[0].Calc().GetObject();
                 try {
-                    ret = obj.GetType().FullName;
+                    if (null != obj) {
+                        ret = obj.GetType().FullName;
+                    }
+                    else {
+                        ret = "(null)";
+                    }
                 }
                 catch (Exception ex) {
                     Calculator.Log("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
@@ -3001,9 +3011,14 @@ namespace StoryScript.DslExpression
         {
             var ret = BoxedValue.NullObject;
             if (m_Expressions.Count >= 1) {
-                var obj = m_Expressions[0].Calc();
+                var obj = m_Expressions[0].Calc().GetObject();
                 try {
-                    ret = obj.GetType().Name;
+                    if (null != obj) {
+                        ret = obj.GetType().Name;
+                    }
+                    else {
+                        ret = "(null)";
+                    }
                 }
                 catch (Exception ex) {
                     Calculator.Log("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
