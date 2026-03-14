@@ -3602,8 +3602,8 @@ namespace StoryScript.DslExpression
                 }
                 else {
                     IList list = obj as IList;
-                    if (null != list && methodObj is int) {
-                        int index = (int)methodObj;
+                    if (null != list && bvMethod.IsInteger) {
+                        int index = bvMethod.GetInt();
                         if (index >= 0 && index < list.Count) {
                             var d = list[index] as Delegate;
                             if (null != d) {
@@ -3613,8 +3613,8 @@ namespace StoryScript.DslExpression
                     }
                     else {
                         IEnumerable enumer = obj as IEnumerable;
-                        if (null != enumer && methodObj is int) {
-                            int index = (int)methodObj;
+                        if (null != enumer && bvMethod.IsInteger) {
+                            int index = bvMethod.GetInt();
                             var e = enumer.GetEnumerator();
                             for (int i = 0; i <= index; ++i) {
                                 e.MoveNext();
@@ -3674,8 +3674,8 @@ namespace StoryScript.DslExpression
                 }
                 else {
                     IList list = obj as IList;
-                    if (null != list && methodObj is int) {
-                        int index = (int)methodObj;
+                    if (null != list && bvMethod.IsInteger) {
+                        int index = bvMethod.GetInt();
                         if (index >= 0 && index < list.Count) {
                             list[index] = arg;
                         }
@@ -3727,8 +3727,8 @@ namespace StoryScript.DslExpression
                 }
                 else {
                     IList list = obj as IList;
-                    if (null != list && methodObj is int) {
-                        int index = (int)methodObj;
+                    if (null != list && bvMethod.IsInteger) {
+                        int index = bvMethod.GetInt();
                         if (index >= 0 && index < list.Count) {
                             var d = list[index];
                             ret = BoxedValue.FromObject(d);
@@ -3736,8 +3736,8 @@ namespace StoryScript.DslExpression
                     }
                     else {
                         IEnumerable enumer = obj as IEnumerable;
-                        if (null != enumer && methodObj is int) {
-                            int index = (int)methodObj;
+                        if (null != enumer && bvMethod.IsInteger) {
+                            int index = bvMethod.GetInt();
                             var e = enumer.GetEnumerator();
                             for (int i = 0; i <= index; ++i) {
                                 e.MoveNext();
@@ -4683,7 +4683,7 @@ namespace StoryScript.DslExpression
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
             if (operands.Count > 1)
-                throw new Exception("Expected: datetimestr(fmt) api");
+                throw new Exception("Expected: datetimestr([fmt]) api");
             BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 1) {
                 var fmt = operands[0].AsString;
@@ -5817,17 +5817,22 @@ namespace StoryScript.DslExpression
     {
         protected override BoxedValue OnCalc(IList<BoxedValue> operands)
         {
-            if (operands.Count != 2)
-                throw new Exception("Expected: combinepath(path1,path2) api");
+            if (operands.Count < 2)
+                throw new Exception("Expected: combinepath(path1,path2,...) api");
             BoxedValue r = BoxedValue.NullObject;
             if (operands.Count >= 2) {
-                var path1 = operands[0].AsString;
-                var path2 = operands[1].AsString;
-                if (null != path1 && null != path2) {
-                    path1 = Environment.ExpandEnvironmentVariables(path1);
-                    path2 = Environment.ExpandEnvironmentVariables(path2);
-                    r = Path.Combine(path1, path2);
+                List<string> list = new List<string>();
+                for (int ix = 0; ix < operands.Count; ++ix) {
+                    var v = operands[ix];
+                    var str = v.AsString;
+                    if (string.IsNullOrEmpty(str)) {
+                        throw new Exception(string.Format("Path {0} is null or empty", ix));
+                    }
+                    list.Add(str);
                 }
+                var path = Path.Combine(list.ToArray());
+                path = Environment.ExpandEnvironmentVariables(path);
+                r = path;
             }
             return r;
         }
@@ -7772,7 +7777,7 @@ namespace StoryScript.DslExpression
             Register("hex2uint", "hex2uint(str) api", new ExpressionFactoryHelper<Hex2UintExp>());
             Register("hex2long", "hex2long(str) api", new ExpressionFactoryHelper<Hex2LongExp>());
             Register("hex2ulong", "hex2ulong(str) api", new ExpressionFactoryHelper<Hex2UlongExp>());
-            Register("datetimestr", "datetimestr(fmt) api", new ExpressionFactoryHelper<DatetimeStrExp>());
+            Register("datetimestr", "datetimestr([fmt]) api", new ExpressionFactoryHelper<DatetimeStrExp>());
             Register("longdatestr", "longdatestr() api", new ExpressionFactoryHelper<LongDateStrExp>());
             Register("longtimestr", "longtimestr() api", new ExpressionFactoryHelper<LongTimeStrExp>());
             Register("shortdatestr", "shortdatestr() api", new ExpressionFactoryHelper<ShortDateStrExp>());
@@ -7837,7 +7842,7 @@ namespace StoryScript.DslExpression
             Register("getfilenamewithoutextension", "getfilenamewithoutextension(path) api", new ExpressionFactoryHelper<GetFileNameWithoutExtensionExp>());
             Register("getextension", "getextension(path) api", new ExpressionFactoryHelper<GetExtensionExp>());
             Register("getdirectoryname", "getdirectoryname(path) api", new ExpressionFactoryHelper<GetDirectoryNameExp>());
-            Register("combinepath", "combinepath(path1,path2) api", new ExpressionFactoryHelper<CombinePathExp>());
+            Register("combinepath", "combinepath(path1,path2,...) api", new ExpressionFactoryHelper<CombinePathExp>());
             Register("changeextension", "changeextension(path,ext) api", new ExpressionFactoryHelper<ChangeExtensionExp>());
             Register("quotepath", "quotepath(path[,only_needed,single_quote]) api", new ExpressionFactoryHelper<QuotePathExp>());
             Register("debugbreak", "debugbreak() api", new ExpressionFactoryHelper<DebugBreakExp>());

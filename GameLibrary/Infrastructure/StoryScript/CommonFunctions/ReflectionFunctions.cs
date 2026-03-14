@@ -611,16 +611,28 @@ namespace StoryScript.CommonFunctions
                         }
                     }
                     else {
-                        IEnumerable enumer = obj as IEnumerable;
-                        if (null != enumer && bvMethod.IsInteger) {
+                        IList list = obj as IList;
+                        if (null != list && bvMethod.IsInteger) {
                             int index = bvMethod.GetInt();
-                            var e = enumer.GetEnumerator();
-                            for (int i = 0; i <= index; ++i) {
-                                e.MoveNext();
+                            if (index >= 0 && index < list.Count) {
+                                var d = list[index] as Delegate;
+                                if (null != d) {
+                                    m_Value = BoxedValue.FromObject(d.DynamicInvoke(args));
+                                }
                             }
-                            var d = e.Current as Delegate;
-                            if (null != d) {
-                                m_Value = BoxedValue.FromObject(d.DynamicInvoke(args));
+                        }
+                        else {
+                            IEnumerable enumer = obj as IEnumerable;
+                            if (null != enumer && bvMethod.IsInteger) {
+                                int index = bvMethod.GetInt();
+                                var e = enumer.GetEnumerator();
+                                for (int i = 0; i <= index; ++i) {
+                                    e.MoveNext();
+                                }
+                                var d = e.Current as Delegate;
+                                if (null != d) {
+                                    m_Value = BoxedValue.FromObject(d.DynamicInvoke(args));
+                                }
                             }
                         }
                     }
@@ -720,14 +732,26 @@ namespace StoryScript.CommonFunctions
                         m_Value = BoxedValue.FromObject(dict[mobj]);
                     }
                     else {
-                        IEnumerable enumer = obj as IEnumerable;
-                        if (null != enumer && bvMethod.IsInteger) {
+                        IList list = obj as IList;
+                        if (null != list && bvMethod.IsInteger) {
                             int index = bvMethod.GetInt();
-                            var e = enumer.GetEnumerator();
-                            for (int i = 0; i <= index; ++i) {
-                                e.MoveNext();
+                            if (index >= 0 && index < list.Count) {
+                                var d = list[index];
+                                if (null != d) {
+                                    m_Value = BoxedValue.FromObject(d);
+                                }
                             }
-                            m_Value = BoxedValue.FromObject(e.Current);
+                        }
+                        else {
+                            IEnumerable enumer = obj as IEnumerable;
+                            if (null != enumer && bvMethod.IsInteger) {
+                                int index = bvMethod.GetInt();
+                                var e = enumer.GetEnumerator();
+                                for (int i = 0; i <= index; ++i) {
+                                    e.MoveNext();
+                                }
+                                m_Value = BoxedValue.FromObject(e.Current);
+                            }
                         }
                     }
                 }
