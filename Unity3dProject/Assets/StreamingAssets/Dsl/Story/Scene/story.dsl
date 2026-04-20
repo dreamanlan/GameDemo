@@ -14,7 +14,7 @@
 	onmessage("start")
 	{
 		//启动时默认会进行的处理，一般用来执行初始化
-		log("story_main start");
+		printf("story_main start");
 		setstoryskipped(0);
 	};
 	onmessage("start_game")
@@ -106,7 +106,7 @@
 		if(!isnull($obj)){
 			if($obj.name=="obj1201"){
 				sendmessage("StartScript", "PlayMusic", 1);
-				firemessage("show_victory");
+				//firemessage("show_victory");
 			}else{
 				sendmessagewithgameobject($obj, "EnableGravity", 1);
 				sendmessagewithgameobject($obj, "PlaySound", 0);
@@ -123,7 +123,7 @@
 		sendmessagewithgameobject($obj1, "PlaySound", 1);
 		$pt = getposition($obj1, 0);
 		if($pt.Value.y < -20){
-			log("please check obj {0} {1} {2} <= {3} {4} {5}", $obj1.name, $pt, time(), $pt1, $pt2, changetype($time*1000,"long"));
+			printf("please check obj {0} {1} {2} <= {3} {4} {5}", $obj1.name, $pt, time(), $pt1, $pt2, changetype($time*1000,"long"));
 			//editorbreak();
 		};
 		$list = findallobjids($pt,5);
@@ -131,7 +131,7 @@
 			looplist($list){
 				$objid=$$;
 				sethp($objid,gethp($objid)-100);
-				log("damage {0}", $objid);
+				printf("damage {0}", $objid);
 				sendmessagewithgameobject(getgameobject($objid),"TweenUiPrefabWithText","BlueText"+$objid,"UI/RedText",vector3(0,2,0),"","-100");
 			};
 		};
@@ -168,7 +168,7 @@
 	};
 	onmessage("baozha")args($pt, $cobj)
 	{
-		log("baozha => {0} {1} {2}", $pt, $cobj.name, getposition($cobj, 1));
+		printf("baozha => {0} {1} {2}", $pt, $cobj.name, getposition($cobj, 1));
 		creategameobject("gbaozha", "gbaozha")obj("$obj"){
 			position($pt);
 		};
@@ -177,7 +177,7 @@
 	};
 	onmessage("obj_killed")
 	{
-		log("{0} blue:{1} red:{2}", @noBuddy, countnpc(3), countnpc(4));
+		printf("{0} blue:{1} red:{2}", @noBuddy, countnpc(3), countnpc(4));
 		
 		$speed = 5+4.0*6.0/(5.0+@level)*countnpc(4)/6;
 		setspeed(getplayerid(),$speed);

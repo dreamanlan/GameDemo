@@ -49,7 +49,6 @@ script(main)
     };
 
     mono=expand("%rootdir%/Tools/mono/mono.exe");
-    pdb2mdb=expand("%rootdir%/Tools/lib/mono/4.5/pdb2mdb.exe");
     
     echo();
     looplist(listhashtable(envs())){
@@ -100,15 +99,10 @@ script(main)
         $filename = getfilename($$);
         $targetPath = plugindir+"/"+$filename;
         copyfile($$, $targetPath);
-        if(osplatform()=="Unix"){
-			process(mono, pdb2mdb + " " + $filename);
-        }else{
-            echo("{0} {1}", pdb2mdb, $filename);
-            process(mono, pdb2mdb + " " + $filename);
-        };
         //echo("copy {0} to {1}", $$, $targetPath);
     };
-    copydir(rootdir+"/GameLibrary/App/GameCore/bin/%cfg%/netstandard2.1", plugindir, "*.mdb");
+    // Note: PDB files are now embedded in DLLs (<DebugType>embedded</DebugType> in .csproj)
+    // No need to copy separate .pdb or .mdb files
 
     looplist(listfiles(plugindir,"Unity*.dll")){
         deletefile($$);

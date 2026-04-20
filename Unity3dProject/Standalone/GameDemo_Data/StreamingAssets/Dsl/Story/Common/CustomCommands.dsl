@@ -4,7 +4,7 @@
     TestCmd($a-1,$b,$c);
     storywait(1000);
   };
-  log("{0} {1} {2}",$a,$b,$c);
+  printf("{0} {1} {2}",$a,$b,$c);
 };
 command(Test)args($v)
 {
@@ -12,5 +12,5 @@ command(Test)args($v)
   storywait(1000);
   TestCmd($val,$val,$val);
   storywait(1000);
-  log("done.");
+  printf("done.");
 };

@@ -18,18 +18,8 @@ namespace GameLibrary.GmCommands
     {
         public void Init()
         {
-            //register Gm command
-            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "setmaxeffect", "setmaxeffect command", new StoryCommandFactoryHelper<SetMaxEffectCommand>());
-            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "setdebug", "setdebug command", new StoryCommandFactoryHelper<SetDebugCommand>());
-            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "editorbreak", "editorbreak command", new StoryCommandFactoryHelper<EditorBreakCommand>());
-            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "debugbreak", "debugbreak command", new StoryCommandFactoryHelper<DebugBreakCommand>());
-
-            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "allocmemory", "allocmemory command", new StoryCommandFactoryHelper<AllocMemoryCommand>());
-            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "freememory", "freememory function", new StoryCommandFactoryHelper<FreeMemoryCommand>());
-            StoryCommandManager.Instance.RegisterCommandFactory(StoryCommandGroupDefine.GM, "consumecpu", "consumecpu function", new StoryCommandFactoryHelper<ConsumeCpuCommand>());
-            
-            //register value and function
-
+            var calc = DslCalculatorHost.NewCalculator();
+            GmExpressionRegistrar.RegisterGmExpressions(calc);
         }
 
         public int ActiveStoryCount
@@ -39,13 +29,13 @@ namespace GameLibrary.GmCommands
                 return m_StoryLogicInfos.Count;
             }
         }
-        public StrBoxedValueDict GlobalVariables
+        public StrBoxedValueDict ContextVariables
         {
-            get { return m_GlobalVariables; }
+            get { return m_ContextVariables; }
         }
-        public void ClearGlobalVariables()
+        public void ClearContextVariables()
         {
-            m_GlobalVariables.Clear();
+            m_ContextVariables.Clear();
         }
         public void Reset()
         {
@@ -80,8 +70,7 @@ namespace GameLibrary.GmCommands
             if (null != inst) {
                 StopStory(storyId);
                 m_StoryLogicInfos.Add(inst);
-                inst.Context = null;
-                inst.GlobalVariables = m_GlobalVariables;
+                inst.ContextVariables = m_ContextVariables;
                 inst.Start();
 
                 LogSystem.Info("StartStory {0}", storyId);
@@ -178,7 +167,7 @@ namespace GameLibrary.GmCommands
 
         private ClientGmStorySystem() { }
 
-        private StrBoxedValueDict m_GlobalVariables = new StrBoxedValueDict();
+        private StrBoxedValueDict m_ContextVariables = new StrBoxedValueDict();
 
         private List<StoryInstance> m_StoryLogicInfos = new List<StoryInstance>();
         private Dictionary<string, StoryInstance> m_StoryInstancePool = new Dictionary<string, StoryInstance>();

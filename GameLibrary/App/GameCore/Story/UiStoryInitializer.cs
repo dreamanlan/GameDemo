@@ -13,8 +13,8 @@ namespace GameLibrary.Story
         {
             StoryInstance instance = ClientStorySystem.Instance.GetStory("main", WindowName);
             if (null != instance) {
-                instance.LocalVariables.Clear();
-                instance.LocalVariables.Add("@window", gameObject);
+                instance.InstanceVariables.Clear();
+                instance.InstanceVariables.Add("@window", gameObject);
                 ClientStorySystem.Instance.StartStory("main", WindowName);
             }
         }

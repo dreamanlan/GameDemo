@@ -14,7 +14,7 @@
 	onmessage("start")
 	{
 		//启动时默认会进行的处理，一般用来执行初始化
-		log("story_main start");
+		printf("story_main start");
 		setstoryskipped(0);
 	};
 	onmessage("start_game")
@@ -171,7 +171,7 @@
 	};
 	onmessage("obj_killed")
 	{
-		log("{0} blue:{1} red:{2}", @noBuddy, countnpc(3), countnpc(4));
+		printf("{0} blue:{1} red:{2}", @noBuddy, countnpc(3), countnpc(4));
 		
 		$speed = 5+4.0*6.0/(5.0+@level)*countnpc(4)/6;
 		setspeed(getplayerid(),$speed);

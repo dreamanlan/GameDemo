@@ -201,7 +201,6 @@ namespace StoryScript
                     existStoryInstances = new Dictionary<string, StoryInstance>();
                     m_StoryInstancePool.Add(resourceName, existStoryInstances);
                 }
-                List<Dsl.ISyntaxComponent> cmdOrValList = new List<Dsl.ISyntaxComponent>();
                 for (int i = 0; i < dataFile.DslInfos.Count; i++) {
                     var comp = dataFile.DslInfos[i];
                     string id = comp.GetId();
@@ -234,15 +233,15 @@ namespace StoryScript
                         }
                     }
                     else if (id == "command" || id == "value") {
-                        cmdOrValList.Add(comp);
+                        // Old IStoryCommand/IStoryFunction system removed
+                        // Custom commands/functions are now registered as IExpression in DslCalculator
+                        LogSystem.Warn("[LoadStory] Ignoring legacy command/value block: {0}", id);
                     }
                     else {
                         LogSystem.Error("[LoadStory] Unknown story keyword '{0}'", id);
                     }
                 }
-                CustomCommandFunctionParser.FirstParse(cmdOrValList);
-                CustomCommandFunctionParser.FinalParse(cmdOrValList);
-                
+
                 Dictionary<string, StoryInstance> storyInstances;
                 if (!m_StoryInstances.TryGetValue(sceneId, out storyInstances)) {
                     storyInstances = new Dictionary<string, StoryInstance>(existStoryInstances);

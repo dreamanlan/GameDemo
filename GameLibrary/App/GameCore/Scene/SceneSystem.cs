@@ -107,7 +107,6 @@ namespace GameLibrary
             ResourceSystem.Instance.SetGroupMaxCount((int)PredefinedResourceGroup.OtherImpactEffect, 10);
             ResourceSystem.Instance.SetGroupMaxCount((int)PredefinedResourceGroup.OtherBuffEffect, 10);
 
-            ClientStorySystem.ThreadInitMask();
             ClientGmStorySystem.Instance.Init();
             ClientStorySystem.Instance.Init();
 
@@ -126,8 +125,8 @@ namespace GameLibrary
 
             m_BlackBoard.Reset();
 
-            m_CommandDocs = StoryScript.StoryCommandManager.Instance.GenCommandDocs();
-            m_FunctionDocs = StoryScript.StoryFunctionManager.Instance.GenFunctionDocs();
+            m_CommandDocs = new SortedList<string, string>();
+            m_FunctionDocs = new SortedList<string, string>();
         }
         public void Release()
         {

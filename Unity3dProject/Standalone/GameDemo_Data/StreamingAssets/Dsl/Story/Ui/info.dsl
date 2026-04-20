@@ -28,9 +28,9 @@ script(main)
         };
         $len = $end;
         $ct = $start + 1;
-        //log("info:{0} len:{1} ct:{2}",$info,$len,$ct);
+        //printf("info:{0} len:{1} ct:{2}",$info,$len,$ct);
         while($ct<=$len && !isstoryskipped()){
-            //log("info:{0} len:{1} ct:{2} show:{3} isstoryskipped:{4}",$info,$len,$ct,substring($info,0,$ct),isstoryskipped());
+            //printf("info:{0} len:{1} ct:{2} show:{3} isstoryskipped:{4}",$info,$len,$ct,substring($info,0,$ct),isstoryskipped());
             @txt_Text.text = substring($info, 0, $ct);
             storywait($interval);
             inc($ct);

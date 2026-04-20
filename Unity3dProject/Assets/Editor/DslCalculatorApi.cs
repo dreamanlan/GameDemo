@@ -1,4 +1,4 @@
-#define USE_GM_STORY
+//#define USE_GM_STORY
 
 using System;
 using System.Collections;
@@ -748,7 +748,7 @@ namespace StoryScript.DslExpression
                     sb.Append(" removed_comps:");
                     var removeComps = PrefabUtility.GetRemovedComponents(prefab);
                     if (null != removeComps) {
-                        foreach (var mobj in removeObjs) {
+                        foreach (var mobj in removeComps) {
                             sb.AppendFormat(" {0}", mobj);
                         }
                     }
@@ -1548,109 +1548,7 @@ namespace StoryScript.DslExpression
             return 0;
         }
     }
-#if USE_GM_STORY
-    internal class StoryVarExp : SimpleExpressionBase
-    {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
-        {
-            var ret = BoxedValue.NullObject;
-            if (operands.Count >= 1) {
-                string name = operands[0].AsString;
-                if (operands.Count >= 2) {
-                    var val = operands[1];
-                    if (!string.IsNullOrEmpty(name)) {
-                        var instance = ClientGmStorySystem.Instance.GetStory("main");
-                        if (null == instance) {
-                            string txt = "script(main){onmessage(\"start\"){};};";
-                            ClientGmStorySystem.Instance.LoadStoryText(Encoding.UTF8.GetBytes(txt));
-                            instance = ClientGmStorySystem.Instance.GetStory("main");
-                        }
-                        instance.SetVariable(name, BoxedValue.FromObject(val.GetObject()));
-                        ret = val;
-                    }
-                }
-                else {
-                    var instance = ClientGmStorySystem.Instance.GetStory("main");
-                    if (null == instance) {
-                        string txt = "script(main){onmessage(\"start\"){};};";
-                        ClientGmStorySystem.Instance.LoadStoryText(Encoding.UTF8.GetBytes(txt));
-                        instance = ClientGmStorySystem.Instance.GetStory("main");
-                    }
-                    BoxedValue bv;
-                    instance.TryGetVariable(name, out bv);
-                    ret = BoxedValue.FromObject(bv.GetObject());
-                }
-            }
-            return ret;
-        }
-    }
-    internal class StoryFunctionExp : AbstractExpression
-    {
-        protected override BoxedValue DoCalc()
-        {
-            var instance = ClientGmStorySystem.Instance.GetStory("main");
-            if (null == instance) {
-                string txt = "script(main){onmessage(\"start\"){};};";
-                ClientGmStorySystem.Instance.LoadStoryText(Encoding.UTF8.GetBytes(txt));
-                ClientGmStorySystem.Instance.StartStory("main");
-                instance = ClientGmStorySystem.Instance.GetStory("main");
-            }
-            var handler = instance.GetMessageHandler("start");
-            object ret = null;
-            foreach (var exp in m_Values) {
-                exp.Evaluate(instance, handler, BoxedValue.NullObject, null);
-                if (exp.HaveValue) {
-                    ret = exp.Value.GetObject();
-                }
-            }
-            return BoxedValue.FromObject(ret);
-        }
-        protected override bool Load(Dsl.FunctionData callData)
-        {
-            int num = callData.GetParamNum();
-            for (int ix = 0; ix < num; ++ix) {
-                Dsl.ISyntaxComponent param = callData.GetParam(ix);
-                var exp = StoryScript.StoryFunctionManager.Instance.CreateFunction(param);
-                m_Values.Add(exp);
-            }
-            return true;
-        }
-
-        private List<StoryScript.IStoryFunction> m_Values = new List<StoryScript.IStoryFunction>();
-    }
-    internal class StoryCommandExp : AbstractExpression
-    {
-        protected override BoxedValue DoCalc()
-        {
-            var instance = ClientGmStorySystem.Instance.GetStory("main");
-            if (null == instance) {
-                string txt = "script(main){onmessage(\"start\"){};};";
-                ClientGmStorySystem.Instance.LoadStoryText(Encoding.UTF8.GetBytes(txt));
-                instance = ClientGmStorySystem.Instance.GetStory("main");
-            }
-            var handler = instance.GetMessageHandler("start");
-            foreach (var cmd in m_Commands) {
-                cmd.Reset();
-            }
-            foreach (var cmd in m_Commands) {
-                cmd.Execute(instance, handler, 0, BoxedValue.NullObject, null);
-            }
-            return BoxedValue.NullObject;
-        }
-        protected override bool Load(Dsl.FunctionData callData)
-        {
-            int num = callData.GetParamNum();
-            for (int ix = 0; ix < num; ++ix) {
-                Dsl.ISyntaxComponent param = callData.GetParam(ix);
-                var cmd = StoryScript.StoryCommandManager.Instance.CreateCommand(param);
-                m_Commands.Add(cmd);
-            }
-            return true;
-        }
-
-        private List<StoryScript.IStoryCommand> m_Commands = new List<StoryScript.IStoryCommand>();
-    }
-#endif
+// USE_GM_STORY section removed - old IStoryCommand/IStoryFunction system no longer exists
     public sealed class UnityEditorApi
     {
         public static void Register(DslCalculator calculator)
@@ -1703,11 +1601,6 @@ namespace StoryScript.DslExpression
             calculator.Register("displaydialog", "displaydialog(title,msg,ok[,cancel[,alt]]) api", new ExpressionFactoryHelper<DisplayDialogExp>());
             calculator.Register("hascmdarg", "hascmdarg(name) api, return (bool,string)", new ExpressionFactoryHelper<HasCmdArgExp>());
             calculator.Register("strlen", "strlen(str) api", new ExpressionFactoryHelper<StrLenExp>());
-#if USE_GM_STORY
-            calculator.Register("storyvar", "storyvar(name,val) or storyvar(name) api", new ExpressionFactoryHelper<StoryVarExp>());
-            calculator.Register("storyfunction", "storyfunction(code1,code2,...) api", new ExpressionFactoryHelper<StoryFunctionExp>());
-            calculator.Register("storycommand", "storycommand(code1,code2,...) api", new ExpressionFactoryHelper<StoryCommandExp>());
-#endif
         }
     }
 }
