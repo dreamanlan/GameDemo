@@ -99,6 +99,12 @@ namespace StoryScript
             set { m_CurrentCoroutine = value; }
         }
 
+        public object Context
+        {
+            get => m_Context;
+            set => m_Context = value;
+        }
+
         public StrBoxedValueDict ContextVariables
         {
             get { return m_ContextVariables; }
@@ -813,6 +819,7 @@ namespace StoryScript
         private SimpleObjectPool<BoxedValueList> m_BoxedValueListPool = new SimpleObjectPool<BoxedValueList>();
         private long m_CurTime = 0;
         private long m_LastTickTime = 0;
+        private object m_Context = null;
         private StrBoxedValueDict m_ContextVariables = null;
         private StrBoxedValueDict m_InstanceVariables = new StrBoxedValueDict();
         private bool m_IsDebug = false;
@@ -821,7 +828,6 @@ namespace StoryScript
         private bool m_IsTerminated = false;
         private bool m_IsPaused = false;
         private bool m_IsInTick = false;
-        private object m_Context = null;
         private CoroutineInfo m_CurrentCoroutine = null;
         private int m_MessageCount = 0;
         private int m_ConcurrentMessageCount = 0;
@@ -882,6 +888,7 @@ namespace StoryScript
         void ICollection.CopyTo(Array array, int index) => m_PropertyDict.CopyTo(array, index);
         bool ICollection.IsSynchronized => m_PropertyDict.IsSynchronized;
         object ICollection.SyncRoot => m_PropertyDict.SyncRoot;
+
         #endregion
     }
 }
