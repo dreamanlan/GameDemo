@@ -334,6 +334,7 @@ namespace StoryScript
         {
             calculator.OnTryGetVariable = TryGetVariableCallback;
             calculator.OnTrySetVariable = TrySetVariableCallback;
+            calculator.OnLog = msg => LogSystem.Error(msg);
         }
 
         private bool TryGetVariableCallback(string name, out BoxedValue val)
