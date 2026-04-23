@@ -220,9 +220,6 @@ namespace StoryScript
 #endif
             }
             LogSystem.Debug("StoryInstance.Init message handler num:{0} {1}", m_HandlerFunctionNames.Count, ret);
-            if (StoryConfigManager.Instance.IsDevice) {
-                m_Config = null;
-            }
             return ret;
         }
 
