@@ -675,7 +675,7 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// addcomponent(obj, component_type) - add component to GameObject, returns the component
+    /// addcomponent(obj, component_type)obj("varName") - add component to GameObject, returns the component
     /// </summary>
     internal sealed class AddComponentExp : AbstractExpression
     {
