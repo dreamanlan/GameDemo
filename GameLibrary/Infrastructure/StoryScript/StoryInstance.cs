@@ -70,6 +70,11 @@ namespace StoryScript
             get { return m_Config; }
         }
 
+        public DslCalculator Calculator
+        {
+            get { return m_Calculator; }
+        }
+
         public bool IsDebug
         {
             get { return m_IsDebug; }
@@ -332,6 +337,9 @@ namespace StoryScript
             calculator.OnTryGetVariable = TryGetVariableCallback;
             calculator.OnTrySetVariable = TrySetVariableCallback;
             calculator.OnLog = msg => LogSystem.Error(msg);
+            if (null != OnLoadFailback) {
+                calculator.OnLoadFailback = OnLoadFailback;
+            }
         }
 
         private bool TryGetVariableCallback(string name, out BoxedValue val)
@@ -888,5 +896,7 @@ namespace StoryScript
         object ICollection.SyncRoot => m_PropertyDict.SyncRoot;
 
         #endregion
+
+        public static DslCalculator.LoadFailbackDelegation OnLoadFailback;
     }
 }

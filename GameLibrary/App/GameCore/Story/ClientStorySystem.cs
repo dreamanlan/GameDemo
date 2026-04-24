@@ -13,11 +13,11 @@ namespace GameLibrary.Story
         public void Init()
         {
             // Register AI expressions (new IExpression system)
-            var calc = DslCalculatorHost.NewCalculator();
-            AiStoryExpressionRegistrar.RegisterAiExpressions(calc);
+            var registry = DslCalculatorHost.GetSharedApiRegistry();
+            AiStoryExpressionRegistrar.RegisterAiExpressions(registry);
 
             // Register game-specific story expressions (new IExpression system)
-            GameStoryExpressionRegistrar.RegisterGameExpressions(calc);
+            GameStoryExpressionRegistrar.RegisterGameExpressions(registry);
         }
         public void Reset()
         {

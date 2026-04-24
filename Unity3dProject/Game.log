@@ -1,201 +1,895 @@
-15-16-25-019:======GameLog Start (2026年4月22日, 15:16:25)======
-15-16-25-108:[Warn]:Time:15-16-25-107:StoryInstance queue message start
-15-16-25-596:[Warn]:Time:15-16-25-596:StoryInstance queue message start
-15-16-25-597:[Warn]:Time:15-16-25-597:story_main start
-15-16-27-600:[Warn]:Time:15-16-27-599:StoryInstance queue message start
-15-16-27-633:[Warn]:Time:15-16-27-632:StoryInstance queue message Start:loop_work
-15-19-18-018:[Warn]:Time:15-19-18-017:StoryInstance queue message Start:on_click
-15-19-18-022:[Warn]:Time:15-19-18-022:StoryInstance queue message on_start_button_click
-15-19-18-537:[Warn]:Time:15-19-18-537:StoryInstance queue message scene_loaded
-15-19-18-546:[Warn]:Time:15-19-18-546:StoryInstance queue message start_game
-15-19-18-676:[Warn]:Time:15-19-18-676:StoryInstance queue message start
-15-19-18-681:[Warn]:Time:15-19-18-681:StoryInstance queue message start
-15-19-18-685:[Warn]:Time:15-19-18-684:StoryInstance queue message start
-15-19-18-688:[Warn]:Time:15-19-18-688:StoryInstance queue message start
-15-19-18-694:[Warn]:Time:15-19-18-693:StoryInstance queue message start
-15-19-18-921:[Warn]:Time:15-19-18-921:StoryInstance queue message start
-15-19-18-928:[Warn]:Time:15-19-18-927:StoryInstance queue message start
-15-19-18-932:[Warn]:Time:15-19-18-931:StoryInstance queue message start
-15-19-18-937:[Warn]:Time:15-19-18-937:StoryInstance queue message start
-15-19-18-941:[Warn]:Time:15-19-18-941:StoryInstance queue message start
-15-19-18-945:[Warn]:Time:15-19-18-945:StoryInstance queue message start
-15-19-18-950:[Warn]:Time:15-19-18-949:StoryInstance queue message start
-15-19-18-965:[Warn]:Time:15-19-18-964:StoryInstance queue message on_born
-15-19-18-966:[Warn]:Time:15-19-18-965:StoryInstance queue message on_born
-15-19-18-967:[Warn]:Time:15-19-18-966:StoryInstance queue message on_born
-15-19-18-967:[Warn]:Time:15-19-18-967:StoryInstance queue message on_born
-15-19-18-967:[Warn]:Time:15-19-18-967:StoryInstance queue message on_born
-15-19-18-967:[Warn]:Time:15-19-18-967:StoryInstance queue message on_born
-15-19-18-967:[Warn]:Time:15-19-18-967:StoryInstance queue message on_born
-15-19-19-204:[Warn]:Time:15-19-19-203:StoryInstance queue message show_centerinfo
-15-19-22-554:[Warn]:Time:15-19-22-554:StoryInstance queue message hide_centerinfo
-15-19-22-561:[Warn]:Time:15-19-22-560:StoryInstance queue message on_hide_centerinfo
-15-19-27-046:[Warn]:Time:15-19-27-046:StoryInstance queue message move_to
-15-19-28-224:[Warn]:Time:15-19-28-224:StoryInstance queue concurrent message notify_player
-15-19-28-225:[Warn]:Time:15-19-28-224:StoryInstance queue concurrent message notify_player
-15-19-28-225:[Warn]:Time:15-19-28-225:StoryInstance queue concurrent message notify_player
-15-19-28-226:[Warn]:Time:15-19-28-225:StoryInstance queue concurrent message notify_player
-15-19-29-223:[Warn]:Time:15-19-29-223:StoryInstance queue concurrent message notify_player
-15-19-30-227:[Warn]:Time:15-19-30-227:StoryInstance queue concurrent message notify_player
-15-19-30-236:[Warn]:Time:15-19-30-235:StoryInstance queue concurrent message on_trigger_enter
-15-19-30-239:[Warn]:Time:15-19-30-238:damage 1101
-15-19-30-242:[Warn]:Time:15-19-30-242:damage 1103
-15-19-30-243:[Warn]:Time:15-19-30-242:damage 1104
-15-19-30-244:[Warn]:Time:15-19-30-244:StoryInstance queue concurrent message baozha
-15-19-30-255:[Warn]:Time:15-19-30-254:baozha => (46.00, 0.34, 60.00) obj143 (46.00, -0.06, 60.00)
-15-19-30-297:[Warn]:Time:15-19-30-296:StoryInstance queue concurrent message on_trigger_enter
-15-19-30-298:[Warn]:Time:15-19-30-298:StoryInstance queue concurrent message on_trigger_exit
-15-19-30-302:[Warn]:Time:15-19-30-301:damage 1101
-15-19-30-302:[Warn]:Time:15-19-30-302:damage 1105
-15-19-30-304:[Warn]:Time:15-19-30-303:StoryInstance queue concurrent message baozha
-15-19-30-314:[Warn]:Time:15-19-30-313:baozha => (50.00, -0.18, 58.00) obj174 (50.00, -0.18, 58.00)
-15-19-30-325:[Warn]:Time:15-19-30-325:StoryInstance queue concurrent message on_trigger_exit
-15-19-30-325:[Warn]:Time:15-19-30-325:StoryInstance queue concurrent message on_trigger_enter
-15-19-30-328:[Warn]:Time:15-19-30-327:damage 1101
-15-19-30-328:[Warn]:Time:15-19-30-328:damage 1103
-15-19-30-329:[Warn]:Time:15-19-30-329:damage 1104
-15-19-30-330:[Warn]:Time:15-19-30-329:StoryInstance queue concurrent message baozha
-15-19-30-340:[Warn]:Time:15-19-30-339:baozha => (50.00, 0.36, 63.00) obj175 (50.00, -0.05, 63.00)
-15-19-30-358:[Warn]:Time:15-19-30-357:StoryInstance queue concurrent message on_trigger_enter
-15-19-30-359:[Warn]:Time:15-19-30-358:damage 1101
-15-19-30-360:[Warn]:Time:15-19-30-359:damage 1105
-15-19-30-361:[Warn]:Time:15-19-30-360:StoryInstance queue concurrent message baozha
-15-19-30-369:[Warn]:Time:15-19-30-368:baozha => (54.00, 0.03, 59.00) obj200 (54.00, 0.03, 59.00)
-15-19-30-379:[Warn]:Time:15-19-30-379:StoryInstance queue concurrent message on_trigger_exit
-15-19-30-401:[Warn]:Time:15-19-30-400:StoryInstance queue concurrent message on_trigger_exit
-15-19-31-229:[Warn]:Time:15-19-31-229:StoryInstance queue concurrent message notify_player
-15-19-31-230:[Warn]:Time:15-19-31-230:StoryInstance queue concurrent message notify_player
-15-19-31-375:[Warn]:Time:15-19-31-374:StoryInstance queue concurrent message on_trigger_enter
-15-19-31-376:[Warn]:Time:15-19-31-375:damage 1101
-15-19-31-377:[Warn]:Time:15-19-31-376:damage 1103
-15-19-31-377:[Warn]:Time:15-19-31-377:damage 1104
-15-19-31-378:[Warn]:Time:15-19-31-377:StoryInstance queue concurrent message baozha
-15-19-31-386:[Warn]:Time:15-19-31-385:baozha => (51.00, 0.39, 71.00) obj183 (51.00, 0.39, 71.00)
-15-19-31-437:[Warn]:Time:15-19-31-437:StoryInstance queue concurrent message on_trigger_exit
-15-19-32-231:[Warn]:Time:15-19-32-230:StoryInstance queue concurrent message notify_player
-15-19-32-294:[Warn]:Time:15-19-32-294:StoryInstance queue concurrent message on_trigger_enter
-15-19-32-296:[Warn]:Time:15-19-32-295:damage 1101
-15-19-32-297:[Warn]:Time:15-19-32-296:damage 1105
-15-19-32-298:[Warn]:Time:15-19-32-297:StoryInstance queue concurrent message baozha
-15-19-32-305:[Warn]:Time:15-19-32-304:baozha => (48.00, 0.39, 73.00) obj157 (48.00, 0.39, 73.00)
-15-19-32-357:[Warn]:Time:15-19-32-356:StoryInstance queue concurrent message on_trigger_exit
-15-19-33-274:[Warn]:Time:15-19-33-274:StoryInstance queue concurrent message on_trigger_enter
-15-19-33-275:[Warn]:Time:15-19-33-274:StoryInstance queue concurrent message on_trigger_enter
-15-19-33-276:[Warn]:Time:15-19-33-275:damage 1100
-15-19-33-277:[Warn]:Time:15-19-33-276:damage 1101
-15-19-33-278:[Warn]:Time:15-19-33-277:damage 1104
-15-19-33-279:[Warn]:Time:15-19-33-278:damage 1103
-15-19-33-279:[Warn]:Time:15-19-33-279:damage 1106
-15-19-33-280:[Warn]:Time:15-19-33-279:StoryInstance queue concurrent message baozha
-15-19-33-280:[Warn]:Time:15-19-33-280:damage 1101
-15-19-33-281:[Warn]:Time:15-19-33-281:damage 1105
-15-19-33-282:[Warn]:Time:15-19-33-282:damage 1104
-15-19-33-283:[Warn]:Time:15-19-33-283:damage 1103
-15-19-33-284:[Warn]:Time:15-19-33-284:damage 1106
-15-19-33-285:[Warn]:Time:15-19-33-284:StoryInstance queue concurrent message baozha
-15-19-33-294:[Warn]:Time:15-19-33-293:baozha => (51.00, 0.29, 81.00) obj184 (51.00, 0.29, 81.00)
-15-19-33-294:[Warn]:Time:15-19-33-294:baozha => (47.00, 0.16, 83.00) obj148 (47.00, 0.16, 83.00)
-15-19-33-321:[Warn]:Time:15-19-33-321:StoryInstance queue concurrent message on_trigger_exit
-15-19-33-340:[Warn]:Time:15-19-33-339:StoryInstance queue concurrent message on_trigger_exit
-15-19-34-240:[Warn]:Time:15-19-34-239:StoryInstance queue concurrent message on_trigger_enter
-15-19-34-240:[Warn]:Time:15-19-34-240:damage 1101
-15-19-34-241:[Warn]:Time:15-19-34-241:damage 1100
-15-19-34-242:[Warn]:Time:15-19-34-242:StoryInstance queue concurrent message baozha
-15-19-34-250:[Warn]:Time:15-19-34-249:baozha => (46.00, 0.42, 92.00) obj144 (46.00, 0.42, 92.00)
-15-19-34-299:[Warn]:Time:15-19-34-298:StoryInstance queue concurrent message on_trigger_exit
-15-21-05-143:[Warn]:Time:15-21-05-142:StoryInstance queue message move_to
-15-21-06-641:[Warn]:Time:15-21-06-641:StoryInstance queue message move_to
-15-21-08-702:[Warn]:Time:15-21-08-701:StoryInstance queue message move_to
-15-21-09-037:[Warn]:Time:15-21-09-036:StoryInstance queue message move_to
-15-21-10-552:[Warn]:Time:15-21-10-551:StoryInstance queue concurrent message notify_player
-15-21-10-552:[Warn]:Time:15-21-10-552:StoryInstance queue concurrent message notify_player
-15-21-11-554:[Warn]:Time:15-21-11-553:StoryInstance queue concurrent message notify_player
-15-21-11-555:[Warn]:Time:15-21-11-554:StoryInstance queue concurrent message notify_player
-15-21-11-555:[Warn]:Time:15-21-11-555:StoryInstance queue concurrent message notify_player
-15-21-12-558:[Warn]:Time:15-21-12-557:StoryInstance queue concurrent message notify_player
-15-21-12-558:[Warn]:Time:15-21-12-558:StoryInstance queue concurrent message notify_player
-15-21-12-638:[Warn]:Time:15-21-12-637:StoryInstance queue concurrent message on_trigger_enter
-15-21-12-639:[Warn]:Time:15-21-12-639:damage 1101
-15-21-12-640:[Warn]:Time:15-21-12-640:damage 1106
-15-21-12-641:[Warn]:Time:15-21-12-640:StoryInstance queue concurrent message baozha
-15-21-12-648:[Warn]:Time:15-21-12-648:baozha => (55.00, 0.28, 97.00) obj212 (55.00, 0.28, 97.00)
-15-21-12-699:[Warn]:Time:15-21-12-698:StoryInstance queue concurrent message on_trigger_exit
-15-21-12-780:[Warn]:Time:15-21-12-779:StoryInstance queue concurrent message on_trigger_enter
-15-21-12-781:[Warn]:Time:15-21-12-781:damage 1101
-15-21-12-783:[Warn]:Time:15-21-12-782:damage 1104
-15-21-12-784:[Warn]:Time:15-21-12-783:damage 1106
-15-21-12-785:[Warn]:Time:15-21-12-784:StoryInstance queue concurrent message baozha
-15-21-12-793:[Warn]:Time:15-21-12-792:baozha => (52.00, -0.09, 93.00) obj190 (52.00, -0.09, 93.00)
-15-21-12-820:[Warn]:Time:15-21-12-819:StoryInstance queue concurrent message on_trigger_exit
-15-21-13-620:[Warn]:Time:15-21-13-620:StoryInstance queue concurrent message on_trigger_enter
-15-21-13-621:[Warn]:Time:15-21-13-621:StoryInstance queue concurrent message on_trigger_enter
-15-21-13-622:[Warn]:Time:15-21-13-622:damage 1101
-15-21-13-623:[Warn]:Time:15-21-13-623:damage 1104
-15-21-13-624:[Warn]:Time:15-21-13-624:StoryInstance queue concurrent message baozha
-15-21-13-625:[Warn]:Time:15-21-13-624:damage 1101
-15-21-13-626:[Warn]:Time:15-21-13-625:damage 1104
-15-21-13-626:[Warn]:Time:15-21-13-626:StoryInstance queue concurrent message baozha
-15-21-13-634:[Warn]:Time:15-21-13-634:StoryInstance queue concurrent message on_trigger_enter
-15-21-13-635:[Warn]:Time:15-21-13-635:baozha => (57.00, 0.41, 100.00) obj228 (57.00, 0.00, 100.00)
-15-21-13-636:[Warn]:Time:15-21-13-636:baozha => (54.00, 0.20, 102.00) obj202 (54.00, -0.21, 102.00)
-15-21-13-637:[Warn]:Time:15-21-13-636:damage 1101
-15-21-13-638:[Warn]:Time:15-21-13-637:damage 1106
-15-21-13-638:[Warn]:Time:15-21-13-638:damage 1104
-15-21-13-639:[Warn]:Time:15-21-13-639:StoryInstance queue concurrent message baozha
-15-21-13-647:[Warn]:Time:15-21-13-646:baozha => (54.00, 0.17, 101.00) obj201 (54.00, 0.17, 101.00)
-15-21-13-656:[Warn]:Time:15-21-13-655:StoryInstance queue concurrent message on_trigger_exit
-15-21-13-682:[Warn]:Time:15-21-13-681:StoryInstance queue concurrent message on_trigger_exit
-15-21-13-682:[Warn]:Time:15-21-13-682:StoryInstance queue concurrent message on_trigger_exit
-15-21-14-560:[Warn]:Time:15-21-14-559:StoryInstance queue concurrent message notify_player
-15-21-14-560:[Warn]:Time:15-21-14-560:StoryInstance queue concurrent message notify_player
-15-21-14-560:[Warn]:Time:15-21-14-560:StoryInstance queue concurrent message notify_player
-15-21-14-561:[Warn]:Time:15-21-14-561:StoryInstance queue concurrent message notify_player
-15-21-14-578:[Warn]:Time:15-21-14-577:StoryInstance queue concurrent message on_trigger_enter
-15-21-14-579:[Warn]:Time:15-21-14-579:damage 1104
-15-21-14-580:[Warn]:Time:15-21-14-580:StoryInstance queue concurrent message baozha
-15-21-14-589:[Warn]:Time:15-21-14-588:baozha => (59.00, 0.41, 105.00) obj247 (59.00, 0.41, 105.00)
-15-21-14-637:[Warn]:Time:15-21-14-637:StoryInstance queue concurrent message on_trigger_exit
-15-21-14-800:[Warn]:Time:15-21-14-800:StoryInstance queue concurrent message on_trigger_enter
-15-21-14-802:[Warn]:Time:15-21-14-801:damage 1101
-15-21-14-803:[Warn]:Time:15-21-14-802:damage 1106
-15-21-14-803:[Warn]:Time:15-21-14-803:damage 1104
-15-21-14-804:[Warn]:Time:15-21-14-804:StoryInstance queue concurrent message baozha
-15-21-14-812:[Warn]:Time:15-21-14-811:baozha => (51.00, -0.01, 110.00) obj185 (51.00, -0.01, 110.00)
-15-21-14-839:[Warn]:Time:15-21-14-839:StoryInstance queue concurrent message on_trigger_exit
-15-21-15-562:[Warn]:Time:15-21-15-561:StoryInstance queue concurrent message notify_player
-15-21-16-476:[Warn]:Time:15-21-16-476:StoryInstance queue concurrent message on_trigger_enter
-15-21-16-477:[Warn]:Time:15-21-16-476:StoryInstance queue concurrent message on_trigger_enter
-15-21-16-479:[Warn]:Time:15-21-16-478:damage 1101
-15-21-16-479:[Warn]:Time:15-21-16-479:damage 1104
-15-21-16-481:[Warn]:Time:15-21-16-480:damage 1100
-15-21-16-481:[Warn]:Time:15-21-16-481:StoryInstance queue concurrent message baozha
-15-21-16-481:[Warn]:Time:15-21-16-481:damage 1101
-15-21-16-483:[Warn]:Time:15-21-16-482:damage 1104
-15-21-16-484:[Warn]:Time:15-21-16-483:damage 1100
-15-21-16-484:[Warn]:Time:15-21-16-484:StoryInstance queue concurrent message baozha
-15-21-16-492:[Warn]:Time:15-21-16-491:baozha => (62.00, 1.91, 128.00) obj267 (62.00, 1.91, 128.00)
-15-21-16-493:[Warn]:Time:15-21-16-492:baozha => (61.00, 2.62, 124.00) obj259 (61.00, 2.62, 124.00)
-15-21-16-517:[Warn]:Time:15-21-16-516:StoryInstance queue concurrent message on_trigger_enter
-15-21-16-518:[Warn]:Time:15-21-16-518:damage 1101
-15-21-16-519:[Warn]:Time:15-21-16-519:damage 1104
-15-21-16-520:[Warn]:Time:15-21-16-520:damage 1100
-15-21-16-521:[Warn]:Time:15-21-16-521:StoryInstance queue concurrent message baozha
-15-21-16-529:[Warn]:Time:15-21-16-528:baozha => (62.00, 1.94, 129.00) obj268 (62.00, 1.94, 129.00)
-15-21-16-555:[Warn]:Time:15-21-16-555:StoryInstance queue concurrent message on_trigger_exit
-15-21-16-595:[Warn]:Time:15-21-16-595:StoryInstance queue concurrent message on_trigger_exit
-15-21-16-637:[Warn]:Time:15-21-16-637:StoryInstance queue concurrent message on_trigger_exit
-15-21-16-675:[Warn]:Time:15-21-16-674:StoryInstance queue concurrent message on_trigger_enter
-15-21-16-676:[Warn]:Time:15-21-16-676:damage 1101
-15-21-16-677:[Warn]:Time:15-21-16-677:damage 1104
-15-21-16-678:[Warn]:Time:15-21-16-678:damage 1100
-15-21-16-679:[Warn]:Time:15-21-16-678:damage 1106
-15-21-16-679:[Warn]:Time:15-21-16-679:StoryInstance queue concurrent message baozha
-15-21-16-688:[Warn]:Time:15-21-16-687:baozha => (57.00, 0.25, 125.00) obj229 (57.00, 0.25, 125.00)
-15-21-16-739:[Warn]:Time:15-21-16-739:StoryInstance queue concurrent message on_trigger_exit
-15-21-17-740:[Warn]:Time:15-21-17-740:StoryInstance queue concurrent message on_trigger_enter
-15-21-17-741:[Warn]:Time:15-21-17-741:damage 1104
-15-21-17-742:[Warn]:Time:15-21-17-742:damage 1100
-15-21-17-743:[Warn]:Time:15-21-17-743:damage 1106
-15-21-17-744:[Warn]:Time:15-21-17-743:StoryInstance queue concurrent message baozha
-15-21-17-755:[Warn]:Time:15-21-17-754:baozha => (58.00, 0.38, 132.00) obj239 (58.00, -0.06, 132.00)
-15-21-17-794:[Warn]:Time:15-21-17-793:StoryInstance queue concurrent message on_trigger_exit
+18-58-51-715:======GameLog Start (2026年4月24日, 18:58:51)======
+18-58-51-810:[Warn]:Time:18-58-51-809:StoryInstance queue message start
+18-58-52-265:[Warn]:Time:18-58-52-263:StoryInstance queue message start
+18-58-52-267:[Warn]:Time:18-58-52-266:story_main start
+18-58-54-271:[Warn]:Time:18-58-54-269:StoryInstance queue message start
+18-58-54-310:[Warn]:Time:18-58-54-309:StoryInstance queue message Start:loop_work
+18-58-57-071:[Warn]:Time:18-58-57-070:StoryInstance queue message Start:on_click
+18-58-57-075:[Warn]:Time:18-58-57-075:StoryInstance queue message on_start_button_click
+18-58-57-614:[Warn]:Time:18-58-57-613:StoryInstance queue message scene_loaded
+18-58-57-622:[Warn]:Time:18-58-57-621:StoryInstance queue message start_game
+18-58-57-778:[Warn]:Time:18-58-57-776:StoryInstance queue message start
+18-58-57-787:[Warn]:Time:18-58-57-785:StoryInstance queue message start
+18-58-57-791:[Warn]:Time:18-58-57-791:StoryInstance queue message start
+18-58-57-797:[Warn]:Time:18-58-57-795:StoryInstance queue message start
+18-58-57-801:[Warn]:Time:18-58-57-800:StoryInstance queue message start
+18-58-58-024:[Warn]:Time:18-58-58-023:StoryInstance queue message start
+18-58-58-033:[Warn]:Time:18-58-58-032:StoryInstance queue message start
+18-58-58-040:[Warn]:Time:18-58-58-039:StoryInstance queue message start
+18-58-58-048:[Warn]:Time:18-58-58-047:StoryInstance queue message start
+18-58-58-053:[Warn]:Time:18-58-58-052:StoryInstance queue message start
+18-58-58-058:[Warn]:Time:18-58-58-057:StoryInstance queue message start
+18-58-58-064:[Warn]:Time:18-58-58-063:StoryInstance queue message start
+18-58-58-087:[Warn]:Time:18-58-58-086:StoryInstance queue message on_born
+18-58-58-088:[Warn]:Time:18-58-58-087:StoryInstance queue message on_born
+18-58-58-088:[Warn]:Time:18-58-58-088:StoryInstance queue message on_born
+18-58-58-089:[Warn]:Time:18-58-58-088:StoryInstance queue message on_born
+18-58-58-090:[Warn]:Time:18-58-58-089:StoryInstance queue message on_born
+18-58-58-090:[Warn]:Time:18-58-58-090:StoryInstance queue message on_born
+18-58-58-090:[Warn]:Time:18-58-58-090:StoryInstance queue message on_born
+18-58-58-316:[Warn]:Time:18-58-58-314:StoryInstance queue message show_centerinfo
+18-59-01-678:[Warn]:Time:18-59-01-677:StoryInstance queue message hide_centerinfo
+18-59-01-688:[Warn]:Time:18-59-01-687:StoryInstance queue message on_hide_centerinfo
+18-59-10-372:[Warn]:Time:18-59-10-370:StoryInstance queue concurrent message notify_player
+18-59-10-373:[Warn]:Time:18-59-10-372:StoryInstance queue concurrent message notify_player
+18-59-10-374:[Warn]:Time:18-59-10-373:StoryInstance queue concurrent message notify_player
+18-59-11-378:[Warn]:Time:18-59-11-376:StoryInstance queue concurrent message notify_player
+18-59-11-379:[Warn]:Time:18-59-11-378:StoryInstance queue concurrent message notify_player
+18-59-11-380:[Warn]:Time:18-59-11-379:StoryInstance queue concurrent message notify_player
+18-59-11-381:[Warn]:Time:18-59-11-380:StoryInstance queue concurrent message notify_player
+18-59-11-382:[Warn]:Time:18-59-11-382:StoryInstance queue concurrent message notify_player
+18-59-12-440:[Warn]:Time:18-59-12-439:StoryInstance queue concurrent message on_trigger_enter
+18-59-12-446:[Warn]:Time:18-59-12-446:damage 1104
+18-59-12-450:[Warn]:Time:18-59-12-448:damage 1105
+18-59-12-452:[Warn]:Time:18-59-12-451:damage 1106
+18-59-12-454:[Warn]:Time:18-59-12-453:damage 1101
+18-59-12-457:[Warn]:Time:18-59-12-455:damage 1103
+18-59-12-461:[Warn]:Time:18-59-12-458:StoryInstance queue concurrent message baozha
+18-59-12-476:[Warn]:Time:18-59-12-473:baozha => (50.00, 0.23, 58.00) obj174 (50.00, -0.18, 58.00)
+18-59-12-496:[Warn]:Time:18-59-12-495:StoryInstance queue concurrent message on_trigger_exit
+18-59-12-497:[Warn]:Time:18-59-12-496:StoryInstance queue concurrent message on_trigger_enter
+18-59-12-503:[Warn]:Time:18-59-12-501:damage 1104
+18-59-12-505:[Warn]:Time:18-59-12-504:damage 1105
+18-59-12-512:[Warn]:Time:18-59-12-510:damage 1100
+18-59-12-516:[Warn]:Time:18-59-12-514:StoryInstance queue concurrent message baozha
+18-59-12-560:[Warn]:Time:18-59-12-559:StoryInstance queue concurrent message on_trigger_enter
+18-59-12-564:[Warn]:Time:18-59-12-562:StoryInstance queue concurrent message on_trigger_exit
+18-59-12-566:[Warn]:Time:18-59-12-565:baozha => (50.00, 0.36, 63.00) obj175 (50.00, -0.90, 63.00)
+18-59-12-574:[Warn]:Time:18-59-12-573:damage 1104
+18-59-12-577:[Warn]:Time:18-59-12-575:damage 1105
+18-59-12-579:[Warn]:Time:18-59-12-578:damage 1101
+18-59-12-581:[Warn]:Time:18-59-12-580:damage 1103
+18-59-12-584:[Warn]:Time:18-59-12-582:StoryInstance queue concurrent message baozha
+18-59-12-601:[Warn]:Time:18-59-12-599:StoryInstance queue concurrent message on_trigger_exit
+18-59-12-605:[Warn]:Time:18-59-12-604:baozha => (54.00, -0.40, 59.00) obj200 (54.00, -1.26, 59.00)
+18-59-13-393:[Warn]:Time:18-59-13-391:StoryInstance queue concurrent message notify_player
+18-59-13-405:[Warn]:Time:18-59-13-404:StoryInstance queue concurrent message on_trigger_enter
+18-59-13-407:[Warn]:Time:18-59-13-406:damage 1101
+18-59-13-409:[Warn]:Time:18-59-13-408:damage 1104
+18-59-13-410:[Warn]:Time:18-59-13-410:damage 1105
+18-59-13-412:[Warn]:Time:18-59-13-411:damage 1100
+18-59-13-414:[Warn]:Time:18-59-13-412:damage 1106
+18-59-13-417:[Warn]:Time:18-59-13-416:damage 1103
+18-59-13-419:[Warn]:Time:18-59-13-418:damage 1102
+18-59-13-421:[Warn]:Time:18-59-13-420:StoryInstance queue concurrent message baozha
+18-59-13-435:[Warn]:Time:18-59-13-433:StoryInstance queue concurrent message on_trigger_enter
+18-59-13-437:[Warn]:Time:18-59-13-436:baozha => (58.00, 0.18, 64.00) obj237 (58.00, -0.22, 64.00)
+18-59-13-440:[Warn]:Time:18-59-13-439:damage 1101
+18-59-13-442:[Warn]:Time:18-59-13-441:damage 1104
+18-59-13-445:[Warn]:Time:18-59-13-444:damage 1105
+18-59-13-448:[Warn]:Time:18-59-13-446:damage 1100
+18-59-13-451:[Warn]:Time:18-59-13-449:damage 1106
+18-59-13-453:[Warn]:Time:18-59-13-452:damage 1103
+18-59-13-456:[Warn]:Time:18-59-13-454:damage 1102
+18-59-13-458:[Warn]:Time:18-59-13-457:StoryInstance queue concurrent message baozha
+18-59-13-471:[Warn]:Time:18-59-13-470:StoryInstance queue concurrent message on_trigger_exit
+18-59-13-472:[Warn]:Time:18-59-13-471:StoryInstance queue concurrent message on_trigger_exit
+18-59-13-475:[Warn]:Time:18-59-13-474:baozha => (55.00, 0.16, 64.00) obj210 (55.00, -0.65, 64.00)
+18-59-13-500:[Warn]:Time:18-59-13-499:StoryInstance queue concurrent message on_trigger_enter
+18-59-13-501:[Warn]:Time:18-59-13-500:StoryInstance queue concurrent message on_trigger_enter
+18-59-13-502:[Warn]:Time:18-59-13-501:damage 1105
+18-59-13-503:[Warn]:Time:18-59-13-503:damage 1100
+18-59-13-505:[Warn]:Time:18-59-13-504:StoryInstance queue concurrent message baozha
+18-59-13-506:[Warn]:Time:18-59-13-505:damage 1105
+18-59-13-508:[Warn]:Time:18-59-13-507:damage 1100
+18-59-13-509:[Warn]:Time:18-59-13-508:StoryInstance queue concurrent message baozha
+18-59-13-527:[Warn]:Time:18-59-13-526:StoryInstance queue concurrent message on_trigger_exit
+18-59-13-528:[Warn]:Time:18-59-13-528:StoryInstance queue concurrent message on_trigger_exit
+18-59-13-531:[Warn]:Time:18-59-13-529:baozha => (57.00, 0.13, 70.00) obj227 (57.00, -0.71, 70.00)
+18-59-13-534:[Warn]:Time:18-59-13-533:baozha => (55.00, 0.09, 70.00) obj211 (55.00, -0.75, 70.00)
+18-59-13-587:[Warn]:Time:18-59-13-586:StoryInstance queue concurrent message on_trigger_enter
+18-59-13-589:[Warn]:Time:18-59-13-588:damage 1101
+18-59-13-591:[Warn]:Time:18-59-13-590:damage 1105
+18-59-13-592:[Warn]:Time:18-59-13-591:damage 1100
+18-59-13-594:[Warn]:Time:18-59-13-593:damage 1106
+18-59-13-595:[Warn]:Time:18-59-13-594:damage 1102
+18-59-13-597:[Warn]:Time:18-59-13-596:damage 1103
+18-59-13-600:[Warn]:Time:18-59-13-599:damage 1104
+18-59-13-603:[Warn]:Time:18-59-13-601:StoryInstance queue concurrent message baozha
+18-59-13-621:[Warn]:Time:18-59-13-619:baozha => (56.00, 0.28, 65.00) obj220 (56.00, -0.15, 65.00)
+18-59-13-655:[Warn]:Time:18-59-13-654:StoryInstance queue concurrent message on_trigger_exit
+18-59-14-399:[Warn]:Time:18-59-14-398:StoryInstance queue concurrent message notify_player
+18-59-14-400:[Warn]:Time:18-59-14-399:StoryInstance queue concurrent message notify_player
+18-59-15-561:[Warn]:Time:18-59-15-560:StoryInstance queue concurrent message on_trigger_enter
+18-59-15-563:[Warn]:Time:18-59-15-562:damage 1102
+18-59-15-565:[Warn]:Time:18-59-15-564:damage 1106
+18-59-15-567:[Warn]:Time:18-59-15-566:damage 1105
+18-59-15-568:[Warn]:Time:18-59-15-567:damage 1104
+18-59-15-569:[Warn]:Time:18-59-15-568:StoryInstance queue concurrent message baozha
+18-59-15-584:[Warn]:Time:18-59-15-583:baozha => (51.00, 0.32, 71.00) obj183 (51.00, -0.11, 71.00)
+18-59-15-624:[Warn]:Time:18-59-15-623:StoryInstance queue concurrent message on_trigger_exit
+18-59-16-408:[Warn]:Time:18-59-16-407:StoryInstance queue concurrent message notify_player
+18-59-16-409:[Warn]:Time:18-59-16-408:StoryInstance queue concurrent message notify_player
+18-59-16-443:[Warn]:Time:18-59-16-442:StoryInstance queue concurrent message on_trigger_enter
+18-59-16-446:[Warn]:Time:18-59-16-444:damage 1102
+18-59-16-448:[Warn]:Time:18-59-16-446:damage 1103
+18-59-16-450:[Warn]:Time:18-59-16-449:damage 1101
+18-59-16-451:[Warn]:Time:18-59-16-451:damage 1106
+18-59-16-452:[Warn]:Time:18-59-16-452:StoryInstance queue concurrent message baozha
+18-59-16-469:[Warn]:Time:18-59-16-468:baozha => (51.00, 0.26, 81.00) obj184 (51.00, -0.14, 81.00)
+18-59-16-503:[Warn]:Time:18-59-16-501:StoryInstance queue concurrent message on_trigger_exit
+18-59-16-608:[Warn]:Time:18-59-16-606:StoryInstance queue concurrent message on_trigger_enter
+18-59-16-611:[Warn]:Time:18-59-16-609:StoryInstance queue concurrent message baozha
+18-59-16-625:[Warn]:Time:18-59-16-624:baozha => (59.00, 0.13, 80.00) obj246 (59.00, -0.31, 80.00)
+18-59-16-649:[Warn]:Time:18-59-16-648:StoryInstance queue concurrent message on_trigger_exit
+18-59-17-409:[Warn]:Time:18-59-17-407:StoryInstance queue concurrent message notify_player
+18-59-17-410:[Warn]:Time:18-59-17-409:StoryInstance queue concurrent message notify_player
+18-59-17-411:[Warn]:Time:18-59-17-410:StoryInstance queue concurrent message notify_player
+18-59-17-411:[Warn]:Time:18-59-17-411:StoryInstance queue concurrent message notify_player
+18-59-17-412:[Warn]:Time:18-59-17-411:StoryInstance queue concurrent message notify_player
+18-59-18-419:[Warn]:Time:18-59-18-417:StoryInstance queue concurrent message notify_player
+18-59-18-505:[Warn]:Time:18-59-18-503:StoryInstance queue concurrent message on_trigger_enter
+18-59-18-507:[Warn]:Time:18-59-18-505:damage 1101
+18-59-18-508:[Warn]:Time:18-59-18-508:damage 1102
+18-59-18-510:[Warn]:Time:18-59-18-509:damage 1103
+18-59-18-511:[Warn]:Time:18-59-18-510:damage 1106
+18-59-18-512:[Warn]:Time:18-59-18-512:StoryInstance queue concurrent message baozha
+18-59-18-525:[Warn]:Time:18-59-18-524:baozha => (55.00, 0.26, 97.00) obj212 (55.00, -0.15, 97.00)
+18-59-18-564:[Warn]:Time:18-59-18-563:StoryInstance queue concurrent message on_trigger_exit
+18-59-18-648:[Warn]:Time:18-59-18-647:StoryInstance queue concurrent message on_trigger_enter
+18-59-18-650:[Warn]:Time:18-59-18-649:damage 1104
+18-59-18-652:[Warn]:Time:18-59-18-651:StoryInstance queue concurrent message baozha
+18-59-18-666:[Warn]:Time:18-59-18-665:baozha => (52.00, -0.11, 93.00) obj190 (52.00, -0.55, 93.00)
+18-59-18-688:[Warn]:Time:18-59-18-687:StoryInstance queue concurrent message on_trigger_exit
+18-59-19-420:[Warn]:Time:18-59-19-419:StoryInstance queue concurrent message notify_player
+18-59-19-460:[Warn]:Time:18-59-19-459:StoryInstance queue concurrent message on_trigger_enter
+18-59-19-463:[Warn]:Time:18-59-19-461:damage 1101
+18-59-19-465:[Warn]:Time:18-59-19-464:damage 1102
+18-59-19-468:[Warn]:Time:18-59-19-466:damage 1103
+18-59-19-470:[Warn]:Time:18-59-19-469:damage 1106
+18-59-19-472:[Warn]:Time:18-59-19-471:StoryInstance queue concurrent message baozha
+18-59-19-485:[Warn]:Time:18-59-19-484:StoryInstance queue concurrent message on_trigger_enter
+18-59-19-487:[Warn]:Time:18-59-19-486:baozha => (47.00, 0.28, 105.00) obj149 (47.00, -0.13, 105.00)
+18-59-19-488:[Warn]:Time:18-59-19-487:damage 1102
+18-59-19-489:[Warn]:Time:18-59-19-489:damage 1106
+18-59-19-490:[Warn]:Time:18-59-19-490:damage 1104
+18-59-19-491:[Warn]:Time:18-59-19-491:StoryInstance queue concurrent message baozha
+18-59-19-507:[Warn]:Time:18-59-19-506:StoryInstance queue concurrent message on_trigger_enter
+18-59-19-510:[Warn]:Time:18-59-19-508:baozha => (54.00, 0.17, 102.00) obj202 (54.00, -0.24, 102.00)
+18-59-19-511:[Warn]:Time:18-59-19-510:damage 1104
+18-59-19-513:[Warn]:Time:18-59-19-512:StoryInstance queue concurrent message baozha
+18-59-19-530:[Warn]:Time:18-59-19-529:StoryInstance queue concurrent message on_trigger_exit
+18-59-19-532:[Warn]:Time:18-59-19-531:StoryInstance queue concurrent message on_trigger_exit
+18-59-19-535:[Warn]:Time:18-59-19-533:baozha => (54.00, 0.15, 101.00) obj201 (54.00, -0.26, 101.00)
+18-59-19-558:[Warn]:Time:18-59-19-557:StoryInstance queue concurrent message on_trigger_enter
+18-59-19-559:[Warn]:Time:18-59-19-558:StoryInstance queue concurrent message on_trigger_exit
+18-59-19-564:[Warn]:Time:18-59-19-562:damage 1105
+18-59-19-567:[Warn]:Time:18-59-19-565:damage 1104
+18-59-19-569:[Warn]:Time:18-59-19-567:StoryInstance queue concurrent message baozha
+18-59-19-589:[Warn]:Time:18-59-19-588:StoryInstance queue concurrent message on_trigger_enter
+18-59-19-593:[Warn]:Time:18-59-19-590:baozha => (46.00, 0.35, 98.00) obj145 (46.00, -0.50, 98.00)
+18-59-19-595:[Warn]:Time:18-59-19-593:damage 1105
+18-59-19-598:[Warn]:Time:18-59-19-596:damage 1104
+18-59-19-600:[Warn]:Time:18-59-19-598:StoryInstance queue concurrent message baozha
+18-59-19-618:[Warn]:Time:18-59-19-617:StoryInstance queue concurrent message on_trigger_exit
+18-59-19-620:[Warn]:Time:18-59-19-619:baozha => (45.00, 0.21, 98.00) obj140 (45.00, -0.22, 98.00)
+18-59-19-637:[Warn]:Time:18-59-19-636:StoryInstance queue concurrent message on_trigger_exit
+18-59-20-660:[Warn]:Time:18-59-20-658:StoryInstance queue concurrent message on_trigger_enter
+18-59-20-662:[Warn]:Time:18-59-20-660:damage 1104
+18-59-20-664:[Warn]:Time:18-59-20-663:StoryInstance queue concurrent message baozha
+18-59-20-676:[Warn]:Time:18-59-20-674:baozha => (51.00, -0.04, 110.00) obj185 (51.00, -0.04, 110.00)
+18-59-20-700:[Warn]:Time:18-59-20-699:StoryInstance queue concurrent message on_trigger_exit
+18-59-21-425:[Warn]:Time:18-59-21-424:StoryInstance queue concurrent message notify_player
+18-59-21-467:[Warn]:Time:18-59-21-466:StoryInstance queue concurrent message on_trigger_enter
+18-59-21-469:[Warn]:Time:18-59-21-468:damage 1102
+18-59-21-471:[Warn]:Time:18-59-21-470:damage 1106
+18-59-21-472:[Warn]:Time:18-59-21-471:damage 1104
+18-59-21-473:[Warn]:Time:18-59-21-472:StoryInstance queue concurrent message baozha
+18-59-21-484:[Warn]:Time:18-59-21-483:baozha => (48.00, 0.09, 118.00) obj158 (48.00, -0.32, 118.00)
+18-59-21-510:[Warn]:Time:18-59-21-509:StoryInstance queue concurrent message on_trigger_exit
+18-59-22-430:[Warn]:Time:18-59-22-429:StoryInstance queue concurrent message notify_player
+18-59-22-432:[Warn]:Time:18-59-22-430:StoryInstance queue concurrent message notify_player
+18-59-23-439:[Warn]:Time:18-59-23-438:StoryInstance queue concurrent message notify_player
+18-59-23-440:[Warn]:Time:18-59-23-439:StoryInstance queue concurrent message notify_player
+18-59-23-440:[Warn]:Time:18-59-23-440:StoryInstance queue concurrent message notify_player
+18-59-23-502:[Warn]:Time:18-59-23-501:StoryInstance queue concurrent message on_trigger_enter
+18-59-23-504:[Warn]:Time:18-59-23-503:damage 1103
+18-59-23-507:[Warn]:Time:18-59-23-505:damage 1106
+18-59-23-509:[Warn]:Time:18-59-23-508:damage 1102
+18-59-23-512:[Warn]:Time:18-59-23-511:StoryInstance queue concurrent message baozha
+18-59-23-525:[Warn]:Time:18-59-23-523:baozha => (55.00, 0.10, 136.00) obj213 (55.00, -0.31, 136.00)
+18-59-23-539:[Warn]:Time:18-59-23-538:StoryInstance queue concurrent message on_trigger_exit
+18-59-24-445:[Warn]:Time:18-59-24-443:StoryInstance queue concurrent message notify_player
+18-59-24-445:[Warn]:Time:18-59-24-445:StoryInstance queue concurrent message notify_player
+18-59-24-447:[Warn]:Time:18-59-24-446:StoryInstance queue concurrent message notify_player
+18-59-24-467:[Warn]:Time:18-59-24-465:StoryInstance queue concurrent message on_trigger_enter
+18-59-24-469:[Warn]:Time:18-59-24-468:damage 1103
+18-59-24-472:[Warn]:Time:18-59-24-470:damage 1101
+18-59-24-474:[Warn]:Time:18-59-24-473:damage 1102
+18-59-24-477:[Warn]:Time:18-59-24-475:damage 1106
+18-59-24-482:[Warn]:Time:18-59-24-480:StoryInstance queue concurrent message baozha
+18-59-24-492:[Warn]:Time:18-59-24-490:baozha => (54.00, 0.27, 145.00) obj203 (54.00, -0.14, 145.00)
+18-59-24-523:[Warn]:Time:18-59-24-521:StoryInstance queue concurrent message on_trigger_exit
+18-59-24-569:[Warn]:Time:18-59-24-567:StoryInstance queue concurrent message on_trigger_enter
+18-59-24-571:[Warn]:Time:18-59-24-570:StoryInstance queue concurrent message baozha
+18-59-24-585:[Warn]:Time:18-59-24-583:baozha => (56.00, 0.05, 150.00) obj221 (56.00, -0.38, 150.00)
+18-59-24-605:[Warn]:Time:18-59-24-604:StoryInstance queue concurrent message on_trigger_exit
+18-59-25-504:[Warn]:Time:18-59-25-503:StoryInstance queue concurrent message on_trigger_enter
+18-59-25-506:[Warn]:Time:18-59-25-505:damage 1101
+18-59-25-508:[Warn]:Time:18-59-25-507:damage 1103
+18-59-25-510:[Warn]:Time:18-59-25-509:damage 1102
+18-59-25-512:[Warn]:Time:18-59-25-511:damage 1106
+18-59-25-515:[Warn]:Time:18-59-25-513:StoryInstance queue concurrent message baozha
+18-59-25-527:[Warn]:Time:18-59-25-525:baozha => (50.00, 0.21, 160.00) obj176 (50.00, -0.20, 160.00)
+18-59-25-540:[Warn]:Time:18-59-25-538:StoryInstance queue concurrent message on_trigger_exit
+18-59-25-541:[Warn]:Time:18-59-25-540:StoryInstance queue concurrent message on_trigger_enter
+18-59-25-548:[Warn]:Time:18-59-25-545:damage 1101
+18-59-25-552:[Warn]:Time:18-59-25-550:damage 1103
+18-59-25-556:[Warn]:Time:18-59-25-553:damage 1102
+18-59-25-560:[Warn]:Time:18-59-25-557:damage 1106
+18-59-25-563:[Warn]:Time:18-59-25-562:StoryInstance queue concurrent message baozha
+18-59-25-581:[Warn]:Time:18-59-25-579:baozha => (52.00, 0.34, 155.00) obj191 (52.00, -0.08, 155.00)
+18-59-25-600:[Warn]:Time:18-59-25-599:StoryInstance queue concurrent message on_trigger_enter
+18-59-25-602:[Warn]:Time:18-59-25-601:damage 1101
+18-59-25-604:[Warn]:Time:18-59-25-603:damage 1103
+18-59-25-604:[Warn]:Time:18-59-25-604:damage 1102
+18-59-25-606:[Warn]:Time:18-59-25-605:damage 1106
+18-59-25-609:[Warn]:Time:18-59-25-608:StoryInstance queue concurrent message baozha
+18-59-25-626:[Warn]:Time:18-59-25-625:StoryInstance queue concurrent message on_trigger_exit
+18-59-25-629:[Warn]:Time:18-59-25-629:StoryInstance queue concurrent message on_trigger_exit
+18-59-25-632:[Warn]:Time:18-59-25-630:baozha => (49.00, 0.01, 154.00) obj165 (49.00, -0.85, 154.00)
+18-59-26-455:[Warn]:Time:18-59-26-453:StoryInstance queue concurrent message notify_player
+18-59-26-456:[Warn]:Time:18-59-26-455:StoryInstance queue concurrent message notify_player
+18-59-26-457:[Warn]:Time:18-59-26-456:StoryInstance queue concurrent message notify_player
+18-59-26-548:[Warn]:Time:18-59-26-547:StoryInstance queue concurrent message on_trigger_enter
+18-59-26-551:[Warn]:Time:18-59-26-549:damage 1101
+18-59-26-554:[Warn]:Time:18-59-26-552:damage 1103
+18-59-26-556:[Warn]:Time:18-59-26-555:damage 1102
+18-59-26-558:[Warn]:Time:18-59-26-557:damage 1106
+18-59-26-560:[Warn]:Time:18-59-26-559:StoryInstance queue concurrent message baozha
+18-59-26-572:[Warn]:Time:18-59-26-571:StoryInstance queue concurrent message on_trigger_enter
+18-59-26-575:[Warn]:Time:18-59-26-573:baozha => (49.00, 0.05, 163.00) obj166 (49.00, -0.37, 163.00)
+18-59-26-577:[Warn]:Time:18-59-26-575:damage 1101
+18-59-26-580:[Warn]:Time:18-59-26-578:damage 1103
+18-59-26-583:[Warn]:Time:18-59-26-581:damage 1102
+18-59-26-584:[Warn]:Time:18-59-26-584:damage 1106
+18-59-26-586:[Warn]:Time:18-59-26-585:StoryInstance queue concurrent message baozha
+18-59-26-600:[Warn]:Time:18-59-26-598:StoryInstance queue concurrent message on_trigger_exit
+18-59-26-601:[Warn]:Time:18-59-26-600:StoryInstance queue concurrent message on_trigger_enter
+18-59-26-604:[Warn]:Time:18-59-26-602:baozha => (47.00, 0.28, 167.00) obj150 (47.00, -0.57, 167.00)
+18-59-26-607:[Warn]:Time:18-59-26-606:damage 1101
+18-59-26-609:[Warn]:Time:18-59-26-608:damage 1103
+18-59-26-611:[Warn]:Time:18-59-26-610:damage 1102
+18-59-26-613:[Warn]:Time:18-59-26-612:damage 1106
+18-59-26-615:[Warn]:Time:18-59-26-614:StoryInstance queue concurrent message baozha
+18-59-26-630:[Warn]:Time:18-59-26-629:StoryInstance queue concurrent message on_trigger_exit
+18-59-26-633:[Warn]:Time:18-59-26-631:baozha => (50.00, -0.09, 162.00) obj177 (50.00, -0.52, 162.00)
+18-59-26-650:[Warn]:Time:18-59-26-649:StoryInstance queue concurrent message on_trigger_exit
+18-59-27-466:[Warn]:Time:18-59-27-465:StoryInstance queue concurrent message notify_player
+18-59-27-467:[Warn]:Time:18-59-27-466:StoryInstance queue concurrent message notify_player
+18-59-27-468:[Warn]:Time:18-59-27-467:StoryInstance queue concurrent message notify_player
+18-59-27-468:[Warn]:Time:18-59-27-468:StoryInstance queue concurrent message notify_player
+18-59-27-469:[Warn]:Time:18-59-27-468:StoryInstance queue concurrent message notify_player
+18-59-28-468:[Warn]:Time:18-59-28-467:StoryInstance queue concurrent message notify_player
+18-59-28-469:[Warn]:Time:18-59-28-468:StoryInstance queue concurrent message notify_player
+18-59-28-470:[Warn]:Time:18-59-28-469:StoryInstance queue concurrent message notify_player
+18-59-28-470:[Warn]:Time:18-59-28-470:StoryInstance queue concurrent message notify_player
+18-59-28-499:[Warn]:Time:18-59-28-498:StoryInstance queue concurrent message on_trigger_enter
+18-59-28-502:[Warn]:Time:18-59-28-500:damage 1101
+18-59-28-504:[Warn]:Time:18-59-28-503:damage 1103
+18-59-28-505:[Warn]:Time:18-59-28-504:damage 1102
+18-59-28-506:[Warn]:Time:18-59-28-505:damage 1106
+18-59-28-507:[Warn]:Time:18-59-28-506:StoryInstance queue concurrent message baozha
+18-59-28-517:[Warn]:Time:18-59-28-516:baozha => (47.00, 0.15, 180.00) obj151 (47.00, 0.15, 180.00)
+18-59-28-529:[Warn]:Time:18-59-28-528:StoryInstance queue concurrent message on_trigger_enter
+18-59-28-531:[Warn]:Time:18-59-28-530:damage 1101
+18-59-28-533:[Warn]:Time:18-59-28-532:damage 1103
+18-59-28-534:[Warn]:Time:18-59-28-534:damage 1102
+18-59-28-535:[Warn]:Time:18-59-28-535:damage 1106
+18-59-28-537:[Warn]:Time:18-59-28-536:StoryInstance queue concurrent message baozha
+18-59-28-548:[Warn]:Time:18-59-28-547:StoryInstance queue concurrent message on_trigger_exit
+18-59-28-552:[Warn]:Time:18-59-28-550:baozha => (45.00, 0.18, 179.00) obj141 (45.00, -0.23, 179.00)
+18-59-28-571:[Warn]:Time:18-59-28-570:StoryInstance queue concurrent message on_trigger_exit
+18-59-28-589:[Warn]:Time:18-59-28-588:StoryInstance queue concurrent message on_trigger_enter
+18-59-28-591:[Warn]:Time:18-59-28-590:damage 1101
+18-59-28-593:[Warn]:Time:18-59-28-592:damage 1103
+18-59-28-595:[Warn]:Time:18-59-28-594:damage 1102
+18-59-28-598:[Warn]:Time:18-59-28-597:damage 1106
+18-59-28-600:[Warn]:Time:18-59-28-599:StoryInstance queue concurrent message baozha
+18-59-28-618:[Warn]:Time:18-59-28-616:baozha => (47.00, 0.10, 183.00) obj152 (47.00, -0.33, 183.00)
+18-59-28-634:[Warn]:Time:18-59-28-633:StoryInstance queue concurrent message on_trigger_exit
+18-59-29-467:[Warn]:Time:18-59-29-466:StoryInstance queue concurrent message on_trigger_enter
+18-59-29-469:[Warn]:Time:18-59-29-467:damage 1101
+18-59-29-470:[Warn]:Time:18-59-29-469:damage 1103
+18-59-29-471:[Warn]:Time:18-59-29-470:StoryInstance queue concurrent message baozha
+18-59-29-485:[Warn]:Time:18-59-29-483:StoryInstance queue concurrent message on_trigger_enter
+18-59-29-487:[Warn]:Time:18-59-29-485:baozha => (48.00, 0.11, 195.00) obj159 (48.00, -0.29, 195.00)
+18-59-29-489:[Warn]:Time:18-59-29-488:damage 1101
+18-59-29-490:[Warn]:Time:18-59-29-490:damage 1103
+18-59-29-491:[Warn]:Time:18-59-29-490:StoryInstance queue concurrent message baozha
+18-59-29-492:[Warn]:Time:18-59-29-491:StoryInstance queue concurrent message notify_player
+18-59-29-492:[Warn]:Time:18-59-29-492:StoryInstance queue concurrent message notify_player
+18-59-29-493:[Warn]:Time:18-59-29-492:StoryInstance queue concurrent message notify_player
+18-59-29-507:[Warn]:Time:18-59-29-506:StoryInstance queue concurrent message on_trigger_exit
+18-59-29-509:[Warn]:Time:18-59-29-508:baozha => (49.00, 0.32, 193.00) obj167 (49.00, -0.08, 193.00)
+18-59-29-526:[Warn]:Time:18-59-29-525:StoryInstance queue concurrent message on_trigger_enter
+18-59-29-528:[Warn]:Time:18-59-29-527:damage 1101
+18-59-29-530:[Warn]:Time:18-59-29-529:damage 1103
+18-59-29-532:[Warn]:Time:18-59-29-531:damage 1102
+18-59-29-533:[Warn]:Time:18-59-29-532:damage 1106
+18-59-29-535:[Warn]:Time:18-59-29-534:StoryInstance queue concurrent message baozha
+18-59-29-551:[Warn]:Time:18-59-29-549:StoryInstance queue concurrent message on_trigger_exit
+18-59-29-552:[Warn]:Time:18-59-29-551:baozha => (44.00, 0.36, 188.00) obj134 (44.00, -0.05, 188.00)
+18-59-29-583:[Warn]:Time:18-59-29-582:StoryInstance queue concurrent message on_trigger_exit
+18-59-29-584:[Warn]:Time:18-59-29-583:StoryInstance queue concurrent message on_trigger_enter
+18-59-29-587:[Warn]:Time:18-59-29-586:damage 1101
+18-59-29-589:[Warn]:Time:18-59-29-588:damage 1103
+18-59-29-589:[Warn]:Time:18-59-29-589:StoryInstance queue concurrent message baozha
+18-59-29-605:[Warn]:Time:18-59-29-604:StoryInstance queue concurrent message on_trigger_enter
+18-59-29-606:[Warn]:Time:18-59-29-606:baozha => (44.00, 0.00, 196.00) obj135 (44.00, -0.43, 196.00)
+18-59-29-609:[Warn]:Time:18-59-29-608:damage 1101
+18-59-29-611:[Warn]:Time:18-59-29-610:damage 1103
+18-59-29-612:[Warn]:Time:18-59-29-611:StoryInstance queue concurrent message baozha
+18-59-29-627:[Warn]:Time:18-59-29-625:StoryInstance queue concurrent message on_trigger_exit
+18-59-29-629:[Warn]:Time:18-59-29-628:baozha => (47.00, 0.24, 196.00) obj153 (47.00, -0.19, 196.00)
+18-59-29-666:[Warn]:Time:18-59-29-665:StoryInstance queue concurrent message on_trigger_exit
+18-59-30-494:[Warn]:Time:18-59-30-493:StoryInstance queue concurrent message notify_player
+18-59-30-548:[Warn]:Time:18-59-30-547:StoryInstance queue concurrent message on_trigger_enter
+18-59-30-550:[Warn]:Time:18-59-30-549:damage 1101
+18-59-30-552:[Warn]:Time:18-59-30-551:damage 1103
+18-59-30-554:[Warn]:Time:18-59-30-553:StoryInstance queue concurrent message baozha
+18-59-30-568:[Warn]:Time:18-59-30-567:baozha => (47.00, 0.30, 202.00) obj154 (47.00, -0.12, 202.00)
+18-59-30-603:[Warn]:Time:18-59-30-602:StoryInstance queue concurrent message on_trigger_exit
+18-59-30-664:[Warn]:Time:18-59-30-663:StoryInstance queue concurrent message on_trigger_enter
+18-59-30-666:[Warn]:Time:18-59-30-665:damage 1101
+18-59-30-668:[Warn]:Time:18-59-30-667:damage 1103
+18-59-30-670:[Warn]:Time:18-59-30-669:damage 1102
+18-59-30-671:[Warn]:Time:18-59-30-670:damage 1106
+18-59-30-672:[Warn]:Time:18-59-30-671:StoryInstance queue concurrent message baozha
+18-59-30-686:[Warn]:Time:18-59-30-685:StoryInstance queue concurrent message on_trigger_enter
+18-59-30-688:[Warn]:Time:18-59-30-687:baozha => (51.00, 0.23, 199.00) obj187 (51.00, -0.21, 199.00)
+18-59-30-689:[Warn]:Time:18-59-30-688:damage 1101
+18-59-30-691:[Warn]:Time:18-59-30-690:damage 1103
+18-59-30-694:[Warn]:Time:18-59-30-692:damage 1102
+18-59-30-696:[Warn]:Time:18-59-30-695:damage 1106
+18-59-30-699:[Warn]:Time:18-59-30-697:StoryInstance queue concurrent message baozha
+18-59-30-712:[Warn]:Time:18-59-30-710:StoryInstance queue concurrent message on_trigger_exit
+18-59-30-713:[Warn]:Time:18-59-30-712:StoryInstance queue concurrent message on_trigger_enter
+18-59-30-716:[Warn]:Time:18-59-30-714:baozha => (51.00, 0.09, 201.00) obj188 (51.00, -0.35, 201.00)
+18-59-30-720:[Warn]:Time:18-59-30-719:StoryInstance queue concurrent message baozha
+18-59-30-735:[Warn]:Time:18-59-30-734:StoryInstance queue concurrent message on_trigger_exit
+18-59-30-737:[Warn]:Time:18-59-30-736:baozha => (43.00, 0.20, 201.00) obj129 (43.00, -0.25, 201.00)
+18-59-30-757:[Warn]:Time:18-59-30-756:StoryInstance queue concurrent message on_trigger_exit
+18-59-31-498:[Warn]:Time:18-59-31-496:StoryInstance queue concurrent message notify_player
+18-59-31-500:[Warn]:Time:18-59-31-498:StoryInstance queue concurrent message notify_player
+18-59-31-501:[Warn]:Time:18-59-31-500:StoryInstance queue concurrent message notify_player
+18-59-31-512:[Warn]:Time:18-59-31-512:StoryInstance queue concurrent message on_trigger_enter
+18-59-31-515:[Warn]:Time:18-59-31-513:damage 1102
+18-59-31-518:[Warn]:Time:18-59-31-517:damage 1103
+18-59-31-522:[Warn]:Time:18-59-31-520:damage 1101
+18-59-31-523:[Warn]:Time:18-59-31-522:damage 1106
+18-59-31-524:[Warn]:Time:18-59-31-524:StoryInstance queue concurrent message baozha
+18-59-31-541:[Warn]:Time:18-59-31-539:StoryInstance queue concurrent message on_trigger_enter
+18-59-31-544:[Warn]:Time:18-59-31-542:baozha => (50.00, 0.39, 208.00) obj178 (50.00, -0.42, 208.00)
+18-59-31-549:[Warn]:Time:18-59-31-547:damage 1102
+18-59-31-552:[Warn]:Time:18-59-31-551:damage 1103
+18-59-31-554:[Warn]:Time:18-59-31-553:damage 1101
+18-59-31-555:[Warn]:Time:18-59-31-555:damage 1106
+18-59-31-557:[Warn]:Time:18-59-31-556:StoryInstance queue concurrent message baozha
+18-59-31-570:[Warn]:Time:18-59-31-569:StoryInstance queue concurrent message on_trigger_exit
+18-59-31-573:[Warn]:Time:18-59-31-571:baozha => (56.00, 0.25, 205.00) obj224 (56.00, -0.16, 205.00)
+18-59-31-607:[Warn]:Time:18-59-31-606:StoryInstance queue concurrent message on_trigger_exit
+18-59-31-686:[Warn]:Time:18-59-31-685:StoryInstance queue concurrent message on_trigger_enter
+18-59-31-688:[Warn]:Time:18-59-31-687:damage 1102
+18-59-31-690:[Warn]:Time:18-59-31-689:damage 1103
+18-59-31-691:[Warn]:Time:18-59-31-690:damage 1101
+18-59-31-693:[Warn]:Time:18-59-31-692:damage 1106
+18-59-31-695:[Warn]:Time:18-59-31-694:StoryInstance queue concurrent message baozha
+18-59-31-711:[Warn]:Time:18-59-31-708:baozha => (53.00, 0.06, 209.00) obj194 (53.00, -0.38, 209.00)
+18-59-31-724:[Warn]:Time:18-59-31-723:StoryInstance queue concurrent message on_trigger_exit
+18-59-32-665:[Warn]:Time:18-59-32-664:StoryInstance queue concurrent message on_trigger_enter
+18-59-32-668:[Warn]:Time:18-59-32-666:damage 1101
+18-59-32-674:[Warn]:Time:18-59-32-672:damage 1103
+18-59-32-676:[Warn]:Time:18-59-32-674:damage 1102
+18-59-32-678:[Warn]:Time:18-59-32-677:damage 1106
+18-59-32-680:[Warn]:Time:18-59-32-679:StoryInstance queue concurrent message baozha
+18-59-32-696:[Warn]:Time:18-59-32-694:baozha => (54.00, 0.16, 216.00) obj204 (54.00, -0.28, 216.00)
+18-59-32-709:[Warn]:Time:18-59-32-708:StoryInstance queue concurrent message on_trigger_exit
+18-59-33-483:[Warn]:Time:18-59-33-482:StoryInstance queue concurrent message on_trigger_enter
+18-59-33-485:[Warn]:Time:18-59-33-484:damage 1101
+18-59-33-487:[Warn]:Time:18-59-33-486:damage 1103
+18-59-33-490:[Warn]:Time:18-59-33-488:damage 1102
+18-59-33-492:[Warn]:Time:18-59-33-491:damage 1106
+18-59-33-495:[Warn]:Time:18-59-33-493:StoryInstance queue concurrent message baozha
+18-59-33-510:[Warn]:Time:18-59-33-509:baozha => (51.00, 0.23, 222.00) obj189 (51.00, -0.17, 222.00)
+18-59-33-546:[Warn]:Time:18-59-33-545:StoryInstance queue concurrent message on_trigger_exit
+18-59-33-568:[Warn]:Time:18-59-33-567:StoryInstance queue concurrent message on_trigger_enter
+18-59-33-571:[Warn]:Time:18-59-33-569:damage 1101
+18-59-33-573:[Warn]:Time:18-59-33-572:damage 1103
+18-59-33-575:[Warn]:Time:18-59-33-574:StoryInstance queue concurrent message baozha
+18-59-33-593:[Warn]:Time:18-59-33-592:baozha => (55.00, -0.07, 225.00) obj216 (55.00, -0.49, 225.00)
+18-59-33-609:[Warn]:Time:18-59-33-608:StoryInstance queue concurrent message on_trigger_exit
+18-59-33-627:[Warn]:Time:18-59-33-625:StoryInstance queue concurrent message on_trigger_enter
+18-59-33-630:[Warn]:Time:18-59-33-628:damage 1101
+18-59-33-633:[Warn]:Time:18-59-33-631:damage 1103
+18-59-33-635:[Warn]:Time:18-59-33-634:damage 1102
+18-59-33-637:[Warn]:Time:18-59-33-636:damage 1106
+18-59-33-639:[Warn]:Time:18-59-33-638:StoryInstance queue concurrent message baozha
+18-59-33-658:[Warn]:Time:18-59-33-656:baozha => (50.00, 0.31, 222.00) obj179 (50.00, -0.12, 222.00)
+18-59-33-691:[Warn]:Time:18-59-33-690:StoryInstance queue concurrent message on_trigger_exit
+18-59-34-516:[Warn]:Time:18-59-34-515:StoryInstance queue concurrent message notify_player
+18-59-34-517:[Warn]:Time:18-59-34-516:StoryInstance queue concurrent message notify_player
+18-59-36-501:[Warn]:Time:18-59-36-500:StoryInstance queue concurrent message on_trigger_enter
+18-59-36-503:[Warn]:Time:18-59-36-501:damage 1101
+18-59-36-504:[Warn]:Time:18-59-36-503:damage 1103
+18-59-36-505:[Warn]:Time:18-59-36-505:StoryInstance queue concurrent message baozha
+18-59-36-520:[Warn]:Time:18-59-36-519:baozha => (54.00, 0.29, 249.00) obj206 (54.00, -0.11, 249.00)
+18-59-36-530:[Warn]:Time:18-59-36-529:StoryInstance queue concurrent message notify_player
+18-59-36-531:[Warn]:Time:18-59-36-530:StoryInstance queue concurrent message notify_player
+18-59-36-565:[Warn]:Time:18-59-36-564:StoryInstance queue concurrent message on_trigger_exit
+18-59-36-625:[Warn]:Time:18-59-36-624:StoryInstance queue concurrent message on_trigger_enter
+18-59-36-627:[Warn]:Time:18-59-36-626:damage 1101
+18-59-36-629:[Warn]:Time:18-59-36-628:damage 1103
+18-59-36-631:[Warn]:Time:18-59-36-630:damage 1102
+18-59-36-632:[Warn]:Time:18-59-36-631:damage 1106
+18-59-36-633:[Warn]:Time:18-59-36-633:StoryInstance queue concurrent message baozha
+18-59-36-646:[Warn]:Time:18-59-36-645:baozha => (54.00, 0.30, 245.00) obj205 (54.00, -0.13, 245.00)
+18-59-36-684:[Warn]:Time:18-59-36-682:StoryInstance queue concurrent message on_trigger_exit
+18-59-38-527:[Warn]:Time:18-59-38-526:StoryInstance queue concurrent message on_trigger_enter
+18-59-38-529:[Warn]:Time:18-59-38-528:damage 1102
+18-59-38-531:[Warn]:Time:18-59-38-530:damage 1103
+18-59-38-533:[Warn]:Time:18-59-38-532:damage 1101
+18-59-38-534:[Warn]:Time:18-59-38-533:damage 1106
+18-59-38-535:[Warn]:Time:18-59-38-534:StoryInstance queue concurrent message baozha
+18-59-38-546:[Warn]:Time:18-59-38-545:baozha => (66.00, 0.30, 260.00) obj295 (66.00, -0.10, 260.00)
+18-59-38-548:[Warn]:Time:18-59-38-546:StoryInstance queue concurrent message notify_player
+18-59-38-582:[Warn]:Time:18-59-38-580:StoryInstance queue concurrent message on_trigger_exit
+18-59-38-626:[Warn]:Time:18-59-38-625:StoryInstance queue concurrent message on_trigger_enter
+18-59-38-628:[Warn]:Time:18-59-38-627:StoryInstance queue concurrent message baozha
+18-59-38-641:[Warn]:Time:18-59-38-639:baozha => (68.00, 0.16, 267.00) obj310 (68.00, -0.26, 267.00)
+18-59-38-660:[Warn]:Time:18-59-38-659:StoryInstance queue concurrent message on_trigger_exit
+18-59-39-553:[Warn]:Time:18-59-39-552:StoryInstance queue concurrent message notify_player
+18-59-39-554:[Warn]:Time:18-59-39-553:StoryInstance queue concurrent message notify_player
+18-59-39-554:[Warn]:Time:18-59-39-554:StoryInstance queue concurrent message notify_player
+18-59-40-000:[Warn]:Time:18-59-39-999:StoryInstance queue message Option:on_toggle
+18-59-40-553:[Warn]:Time:18-59-40-552:StoryInstance queue concurrent message notify_player
+18-59-40-686:[Warn]:Time:18-59-40-685:StoryInstance queue concurrent message on_trigger_enter
+18-59-40-687:[Warn]:Time:18-59-40-686:StoryInstance queue concurrent message baozha
+18-59-40-698:[Warn]:Time:18-59-40-696:baozha => (70.00, -0.02, 281.00) obj322 (70.00, -0.02, 281.00)
+18-59-40-722:[Warn]:Time:18-59-40-721:StoryInstance queue concurrent message on_trigger_exit
+18-59-41-547:[Warn]:Time:18-59-41-543:StoryInstance queue concurrent message on_trigger_enter
+18-59-41-549:[Warn]:Time:18-59-41-548:damage 1102
+18-59-41-551:[Warn]:Time:18-59-41-550:damage 1103
+18-59-41-552:[Warn]:Time:18-59-41-551:damage 1101
+18-59-41-553:[Warn]:Time:18-59-41-552:damage 1106
+18-59-41-554:[Warn]:Time:18-59-41-553:StoryInstance queue concurrent message baozha
+18-59-41-567:[Warn]:Time:18-59-41-566:StoryInstance queue concurrent message on_trigger_enter
+18-59-41-570:[Warn]:Time:18-59-41-568:baozha => (70.00, 0.11, 283.00) obj323 (70.00, -0.29, 283.00)
+18-59-41-572:[Warn]:Time:18-59-41-571:damage 1103
+18-59-41-574:[Warn]:Time:18-59-41-573:damage 1101
+18-59-41-575:[Warn]:Time:18-59-41-574:StoryInstance queue concurrent message baozha
+18-59-41-576:[Warn]:Time:18-59-41-575:StoryInstance queue concurrent message notify_player
+18-59-41-586:[Warn]:Time:18-59-41-585:StoryInstance queue concurrent message on_trigger_exit
+18-59-41-588:[Warn]:Time:18-59-41-587:baozha => (76.00, 0.21, 287.00) obj351 (76.00, -0.19, 287.00)
+18-59-41-601:[Warn]:Time:18-59-41-600:StoryInstance queue concurrent message on_trigger_exit
+18-59-41-630:[Warn]:Time:18-59-41-629:StoryInstance queue concurrent message on_trigger_enter
+18-59-41-633:[Warn]:Time:18-59-41-631:damage 1102
+18-59-41-636:[Warn]:Time:18-59-41-634:damage 1103
+18-59-41-637:[Warn]:Time:18-59-41-637:damage 1101
+18-59-41-639:[Warn]:Time:18-59-41-638:damage 1106
+18-59-41-641:[Warn]:Time:18-59-41-640:StoryInstance queue concurrent message baozha
+18-59-41-655:[Warn]:Time:18-59-41-654:baozha => (74.00, 0.04, 283.00) obj339 (74.00, -0.37, 283.00)
+18-59-41-674:[Warn]:Time:18-59-41-673:StoryInstance queue concurrent message on_trigger_exit
+18-59-42-573:[Warn]:Time:18-59-42-572:StoryInstance queue concurrent message notify_player
+18-59-42-573:[Warn]:Time:18-59-42-573:StoryInstance queue concurrent message notify_player
+18-59-42-574:[Warn]:Time:18-59-42-574:StoryInstance queue concurrent message notify_player
+18-59-42-662:[Warn]:Time:18-59-42-660:StoryInstance queue concurrent message on_trigger_enter
+18-59-42-664:[Warn]:Time:18-59-42-663:damage 1101
+18-59-42-665:[Warn]:Time:18-59-42-665:damage 1103
+18-59-42-667:[Warn]:Time:18-59-42-666:StoryInstance queue concurrent message baozha
+18-59-42-676:[Warn]:Time:18-59-42-675:baozha => (77.00, 0.27, 295.00) obj359 (77.00, 0.27, 295.00)
+18-59-42-725:[Warn]:Time:18-59-42-723:StoryInstance queue concurrent message on_trigger_exit
+18-59-43-575:[Warn]:Time:18-59-43-574:StoryInstance queue concurrent message notify_player
+18-59-43-576:[Warn]:Time:18-59-43-575:StoryInstance queue concurrent message notify_player
+18-59-43-577:[Warn]:Time:18-59-43-576:StoryInstance queue concurrent message notify_player
+18-59-43-762:[Warn]:Time:18-59-43-761:StoryInstance queue concurrent message on_trigger_enter
+18-59-43-764:[Warn]:Time:18-59-43-762:StoryInstance queue concurrent message baozha
+18-59-43-772:[Warn]:Time:18-59-43-771:baozha => (67.00, 0.33, 295.00) obj308 (67.00, 0.33, 295.00)
+18-59-43-822:[Warn]:Time:18-59-43-821:StoryInstance queue concurrent message on_trigger_exit
+18-59-44-582:[Warn]:Time:18-59-44-581:StoryInstance queue concurrent message notify_player
+18-59-44-720:[Warn]:Time:18-59-44-719:StoryInstance queue concurrent message on_trigger_enter
+18-59-44-722:[Warn]:Time:18-59-44-721:damage 1101
+18-59-44-723:[Warn]:Time:18-59-44-722:damage 1103
+18-59-44-725:[Warn]:Time:18-59-44-724:damage 1102
+18-59-44-727:[Warn]:Time:18-59-44-726:damage 1106
+18-59-44-728:[Warn]:Time:18-59-44-727:StoryInstance queue concurrent message baozha
+18-59-44-740:[Warn]:Time:18-59-44-738:baozha => (78.00, 0.11, 304.00) obj365 (78.00, -0.32, 304.00)
+18-59-44-760:[Warn]:Time:18-59-44-759:StoryInstance queue concurrent message on_trigger_enter
+18-59-44-761:[Warn]:Time:18-59-44-760:StoryInstance queue concurrent message on_trigger_exit
+18-59-44-767:[Warn]:Time:18-59-44-766:damage 1101
+18-59-44-770:[Warn]:Time:18-59-44-768:damage 1103
+18-59-44-772:[Warn]:Time:18-59-44-770:damage 1102
+18-59-44-773:[Warn]:Time:18-59-44-773:damage 1106
+18-59-44-775:[Warn]:Time:18-59-44-774:StoryInstance queue concurrent message baozha
+18-59-44-785:[Warn]:Time:18-59-44-784:StoryInstance queue concurrent message on_trigger_enter
+18-59-44-787:[Warn]:Time:18-59-44-786:baozha => (73.00, -0.04, 309.00) obj336 (73.00, -0.48, 309.00)
+18-59-44-788:[Warn]:Time:18-59-44-787:damage 1101
+18-59-44-789:[Warn]:Time:18-59-44-788:damage 1103
+18-59-44-790:[Warn]:Time:18-59-44-789:StoryInstance queue concurrent message baozha
+18-59-44-802:[Warn]:Time:18-59-44-801:StoryInstance queue concurrent message on_trigger_exit
+18-59-44-804:[Warn]:Time:18-59-44-803:baozha => (71.00, 0.03, 311.00) obj329 (71.00, -0.42, 311.00)
+18-59-44-830:[Warn]:Time:18-59-44-829:StoryInstance queue concurrent message on_trigger_exit
+18-59-45-565:[Warn]:Time:18-59-45-565:StoryInstance queue concurrent message on_trigger_enter
+18-59-45-567:[Warn]:Time:18-59-45-566:damage 1101
+18-59-45-569:[Warn]:Time:18-59-45-568:damage 1103
+18-59-45-569:[Warn]:Time:18-59-45-569:damage 1102
+18-59-45-570:[Warn]:Time:18-59-45-570:damage 1106
+18-59-45-571:[Warn]:Time:18-59-45-571:StoryInstance queue concurrent message baozha
+18-59-45-581:[Warn]:Time:18-59-45-580:baozha => (77.00, 0.12, 312.00) obj360 (77.00, -0.29, 312.00)
+18-59-45-590:[Warn]:Time:18-59-45-588:StoryInstance queue concurrent message notify_player
+18-59-45-606:[Warn]:Time:18-59-45-605:StoryInstance queue concurrent message on_trigger_exit
+18-59-45-621:[Warn]:Time:18-59-45-620:StoryInstance queue concurrent message on_trigger_enter
+18-59-45-623:[Warn]:Time:18-59-45-621:StoryInstance queue message Option:on_toggle
+18-59-45-624:[Warn]:Time:18-59-45-623:damage 1101
+18-59-45-625:[Warn]:Time:18-59-45-625:damage 1103
+18-59-45-626:[Warn]:Time:18-59-45-626:damage 1102
+18-59-45-627:[Warn]:Time:18-59-45-627:damage 1106
+18-59-45-629:[Warn]:Time:18-59-45-628:StoryInstance queue concurrent message baozha
+18-59-45-640:[Warn]:Time:18-59-45-639:baozha => (76.00, 0.26, 314.00) obj352 (76.00, -0.16, 314.00)
+18-59-45-681:[Warn]:Time:18-59-45-680:StoryInstance queue concurrent message on_trigger_enter
+18-59-45-682:[Warn]:Time:18-59-45-681:StoryInstance queue concurrent message on_trigger_exit
+18-59-45-685:[Warn]:Time:18-59-45-684:damage 1101
+18-59-45-687:[Warn]:Time:18-59-45-686:damage 1103
+18-59-45-688:[Warn]:Time:18-59-45-687:damage 1102
+18-59-45-689:[Warn]:Time:18-59-45-688:damage 1106
+18-59-45-690:[Warn]:Time:18-59-45-689:StoryInstance queue concurrent message baozha
+18-59-45-703:[Warn]:Time:18-59-45-702:baozha => (76.00, 0.02, 315.00) obj353 (76.00, -0.41, 315.00)
+18-59-45-723:[Warn]:Time:18-59-45-722:StoryInstance queue concurrent message on_trigger_exit
+18-59-46-562:[Warn]:Time:18-59-46-561:StoryInstance queue concurrent message on_trigger_enter
+18-59-46-565:[Warn]:Time:18-59-46-564:damage 1101
+18-59-46-566:[Warn]:Time:18-59-46-566:damage 1103
+18-59-46-567:[Warn]:Time:18-59-46-567:damage 1102
+18-59-46-567:[Warn]:Time:18-59-46-567:damage 1106
+18-59-46-569:[Warn]:Time:18-59-46-568:StoryInstance queue concurrent message baozha
+18-59-46-578:[Warn]:Time:18-59-46-576:baozha => (75.00, 0.09, 324.00) obj346 (75.00, 0.09, 324.00)
+18-59-46-594:[Warn]:Time:18-59-46-593:StoryInstance queue concurrent message notify_player
+18-59-46-602:[Warn]:Time:18-59-46-601:StoryInstance queue concurrent message on_trigger_exit
+18-59-47-594:[Warn]:Time:18-59-47-593:StoryInstance queue concurrent message notify_player
+18-59-47-595:[Warn]:Time:18-59-47-594:StoryInstance queue concurrent message notify_player
+18-59-47-595:[Warn]:Time:18-59-47-595:StoryInstance queue concurrent message notify_player
+18-59-47-622:[Warn]:Time:18-59-47-621:StoryInstance queue concurrent message on_trigger_enter
+18-59-47-624:[Warn]:Time:18-59-47-623:damage 1103
+18-59-47-625:[Warn]:Time:18-59-47-624:damage 1101
+18-59-47-626:[Warn]:Time:18-59-47-625:damage 1102
+18-59-47-627:[Warn]:Time:18-59-47-626:damage 1106
+18-59-47-629:[Warn]:Time:18-59-47-628:StoryInstance queue concurrent message baozha
+18-59-47-637:[Warn]:Time:18-59-47-636:baozha => (70.00, 0.36, 328.00) obj324 (70.00, 0.36, 328.00)
+18-59-47-685:[Warn]:Time:18-59-47-684:StoryInstance queue concurrent message on_trigger_exit
+18-59-48-601:[Warn]:Time:18-59-48-600:StoryInstance queue concurrent message on_trigger_enter
+18-59-48-602:[Warn]:Time:18-59-48-602:damage 1101
+18-59-48-604:[Warn]:Time:18-59-48-603:damage 1103
+18-59-48-605:[Warn]:Time:18-59-48-604:damage 1102
+18-59-48-606:[Warn]:Time:18-59-48-605:damage 1106
+18-59-48-608:[Warn]:Time:18-59-48-606:StoryInstance queue concurrent message baozha
+18-59-48-616:[Warn]:Time:18-59-48-615:baozha => (74.00, 0.06, 337.00) obj340 (74.00, 0.06, 337.00)
+18-59-48-640:[Warn]:Time:18-59-48-639:StoryInstance queue concurrent message on_trigger_exit
+18-59-49-597:[Warn]:Time:18-59-49-595:StoryInstance queue concurrent message notify_player
+18-59-49-598:[Warn]:Time:18-59-49-597:StoryInstance queue concurrent message notify_player
+18-59-49-659:[Warn]:Time:18-59-49-658:StoryInstance queue concurrent message on_trigger_enter
+18-59-49-660:[Warn]:Time:18-59-49-659:damage 1101
+18-59-49-662:[Warn]:Time:18-59-49-661:damage 1103
+18-59-49-663:[Warn]:Time:18-59-49-662:damage 1102
+18-59-49-664:[Warn]:Time:18-59-49-664:damage 1106
+18-59-49-666:[Warn]:Time:18-59-49-665:StoryInstance queue concurrent message baozha
+18-59-49-674:[Warn]:Time:18-59-49-672:baozha => (79.00, 0.18, 341.00) obj369 (79.00, 0.18, 341.00)
+18-59-49-703:[Warn]:Time:18-59-49-703:StoryInstance queue concurrent message on_trigger_exit
+18-59-49-704:[Warn]:Time:18-59-49-703:StoryInstance queue concurrent message on_trigger_enter
+18-59-49-707:[Warn]:Time:18-59-49-706:damage 1101
+18-59-49-708:[Warn]:Time:18-59-49-708:damage 1103
+18-59-49-709:[Warn]:Time:18-59-49-709:damage 1102
+18-59-49-710:[Warn]:Time:18-59-49-710:damage 1106
+18-59-49-711:[Warn]:Time:18-59-49-711:StoryInstance queue concurrent message baozha
+18-59-49-720:[Warn]:Time:18-59-49-719:StoryInstance queue concurrent message on_trigger_enter
+18-59-49-721:[Warn]:Time:18-59-49-720:baozha => (81.00, -0.02, 340.00) obj375 (81.00, -0.45, 340.00)
+18-59-49-722:[Warn]:Time:18-59-49-721:damage 1103
+18-59-49-723:[Warn]:Time:18-59-49-722:damage 1102
+18-59-49-724:[Warn]:Time:18-59-49-723:damage 1106
+18-59-49-725:[Warn]:Time:18-59-49-724:StoryInstance queue concurrent message baozha
+18-59-49-735:[Warn]:Time:18-59-49-734:baozha => (85.00, 0.36, 338.00) obj395 (85.00, 0.36, 338.00)
+18-59-49-743:[Warn]:Time:18-59-49-742:StoryInstance queue concurrent message on_trigger_exit
+18-59-49-789:[Warn]:Time:18-59-49-788:StoryInstance queue concurrent message on_trigger_exit
+18-59-50-603:[Warn]:Time:18-59-50-602:StoryInstance queue concurrent message notify_player
+18-59-51-578:[Warn]:Time:18-59-51-577:StoryInstance queue concurrent message on_trigger_enter
+18-59-51-580:[Warn]:Time:18-59-51-579:damage 1101
+18-59-51-582:[Warn]:Time:18-59-51-580:damage 1103
+18-59-51-583:[Warn]:Time:18-59-51-582:damage 1102
+18-59-51-583:[Warn]:Time:18-59-51-583:damage 1106
+18-59-51-584:[Warn]:Time:18-59-51-584:StoryInstance queue concurrent message baozha
+18-59-51-592:[Warn]:Time:18-59-51-591:baozha => (86.00, 0.03, 361.00) obj398 (86.00, 0.03, 361.00)
+18-59-51-609:[Warn]:Time:18-59-51-608:StoryInstance queue concurrent message notify_player
+18-59-51-619:[Warn]:Time:18-59-51-618:StoryInstance queue concurrent message on_trigger_exit
+18-59-51-720:[Warn]:Time:18-59-51-719:StoryInstance queue concurrent message on_trigger_enter
+18-59-51-722:[Warn]:Time:18-59-51-721:damage 1101
+18-59-51-723:[Warn]:Time:18-59-51-722:damage 1103
+18-59-51-724:[Warn]:Time:18-59-51-723:damage 1102
+18-59-51-725:[Warn]:Time:18-59-51-724:damage 1106
+18-59-51-726:[Warn]:Time:18-59-51-725:StoryInstance queue concurrent message baozha
+18-59-51-735:[Warn]:Time:18-59-51-734:baozha => (90.00, 0.21, 360.00) obj416 (90.00, 0.21, 360.00)
+18-59-51-763:[Warn]:Time:18-59-51-762:StoryInstance queue concurrent message on_trigger_exit
+18-59-52-703:[Warn]:Time:18-59-52-702:StoryInstance queue concurrent message on_trigger_enter
+18-59-52-704:[Warn]:Time:18-59-52-703:damage 1101
+18-59-52-706:[Warn]:Time:18-59-52-705:damage 1103
+18-59-52-707:[Warn]:Time:18-59-52-706:damage 1102
+18-59-52-708:[Warn]:Time:18-59-52-707:damage 1106
+18-59-52-709:[Warn]:Time:18-59-52-708:StoryInstance queue concurrent message baozha
+18-59-52-717:[Warn]:Time:18-59-52-716:baozha => (92.00, 0.32, 369.00) obj424 (92.00, 0.32, 369.00)
+18-59-52-759:[Warn]:Time:18-59-52-758:StoryInstance queue concurrent message on_trigger_exit
+18-59-53-617:[Warn]:Time:18-59-53-615:StoryInstance queue concurrent message notify_player
+18-59-53-619:[Warn]:Time:18-59-53-617:StoryInstance queue concurrent message notify_player
+18-59-53-802:[Warn]:Time:18-59-53-801:StoryInstance queue concurrent message on_trigger_enter
+18-59-53-804:[Warn]:Time:18-59-53-803:damage 1101
+18-59-53-806:[Warn]:Time:18-59-53-805:damage 1103
+18-59-53-807:[Warn]:Time:18-59-53-806:damage 1102
+18-59-53-808:[Warn]:Time:18-59-53-808:damage 1106
+18-59-53-809:[Warn]:Time:18-59-53-809:StoryInstance queue concurrent message baozha
+18-59-53-823:[Warn]:Time:18-59-53-822:baozha => (88.00, 0.22, 374.00) obj410 (88.00, -0.23, 374.00)
+18-59-53-843:[Warn]:Time:18-59-53-842:StoryInstance queue concurrent message on_trigger_exit
+18-59-54-622:[Warn]:Time:18-59-54-621:StoryInstance queue concurrent message notify_player
+18-59-54-623:[Warn]:Time:18-59-54-622:StoryInstance queue concurrent message notify_player
+18-59-55-622:[Warn]:Time:18-59-55-621:StoryInstance queue concurrent message on_trigger_enter
+18-59-55-624:[Warn]:Time:18-59-55-623:damage 1101
+18-59-55-625:[Warn]:Time:18-59-55-624:damage 1103
+18-59-55-626:[Warn]:Time:18-59-55-625:damage 1102
+18-59-55-627:[Warn]:Time:18-59-55-626:damage 1106
+18-59-55-628:[Warn]:Time:18-59-55-628:StoryInstance queue concurrent message baozha
+18-59-55-629:[Warn]:Time:18-59-55-628:StoryInstance queue concurrent message notify_player
+18-59-55-629:[Warn]:Time:18-59-55-629:StoryInstance queue concurrent message notify_player
+18-59-55-630:[Warn]:Time:18-59-55-629:StoryInstance queue concurrent message notify_player
+18-59-55-638:[Warn]:Time:18-59-55-637:baozha => (96.00, 0.22, 390.00) obj439 (96.00, 0.22, 390.00)
+18-59-55-646:[Warn]:Time:18-59-55-645:StoryInstance queue concurrent message on_trigger_enter
+18-59-55-648:[Warn]:Time:18-59-55-647:damage 1101
+18-59-55-650:[Warn]:Time:18-59-55-649:damage 1103
+18-59-55-651:[Warn]:Time:18-59-55-650:damage 1102
+18-59-55-652:[Warn]:Time:18-59-55-652:damage 1106
+18-59-55-653:[Warn]:Time:18-59-55-653:StoryInstance queue concurrent message baozha
+18-59-55-665:[Warn]:Time:18-59-55-664:StoryInstance queue concurrent message on_trigger_exit
+18-59-55-666:[Warn]:Time:18-59-55-665:baozha => (94.00, 0.38, 389.00) obj435 (94.00, -0.03, 389.00)
+18-59-55-701:[Warn]:Time:18-59-55-700:StoryInstance queue concurrent message on_trigger_exit
+18-59-56-630:[Warn]:Time:18-59-56-629:StoryInstance queue concurrent message notify_player
+18-59-56-632:[Warn]:Time:18-59-56-631:StoryInstance queue concurrent message notify_player
+18-59-56-679:[Warn]:Time:18-59-56-678:StoryInstance queue concurrent message on_trigger_enter
+18-59-56-681:[Warn]:Time:18-59-56-679:StoryInstance queue concurrent message baozha
+18-59-56-690:[Warn]:Time:18-59-56-689:baozha => (86.00, 0.07, 397.00) obj399 (86.00, 0.07, 397.00)
+18-59-56-719:[Warn]:Time:18-59-56-718:StoryInstance queue concurrent message on_trigger_exit
+18-59-56-805:[Warn]:Time:18-59-56-804:StoryInstance queue concurrent message on_trigger_enter
+18-59-56-806:[Warn]:Time:18-59-56-805:damage 1101
+18-59-56-807:[Warn]:Time:18-59-56-807:damage 1102
+18-59-56-808:[Warn]:Time:18-59-56-808:damage 1103
+18-59-56-809:[Warn]:Time:18-59-56-809:damage 1106
+18-59-56-811:[Warn]:Time:18-59-56-810:StoryInstance queue concurrent message baozha
+18-59-56-824:[Warn]:Time:18-59-56-822:baozha => (91.00, 0.32, 396.00) obj419 (91.00, -0.13, 396.00)
+18-59-56-861:[Warn]:Time:18-59-56-859:StoryInstance queue concurrent message on_trigger_exit
+18-59-57-622:[Warn]:Time:18-59-57-622:StoryInstance queue concurrent message on_trigger_enter
+18-59-57-624:[Warn]:Time:18-59-57-623:StoryInstance queue concurrent message baozha
+18-59-57-632:[Warn]:Time:18-59-57-631:baozha => (92.00, 0.25, 405.00) obj425 (92.00, 0.25, 405.00)
+18-59-57-633:[Warn]:Time:18-59-57-632:StoryInstance queue concurrent message notify_player
+18-59-57-640:[Warn]:Time:18-59-57-639:StoryInstance queue concurrent message on_trigger_enter
+18-59-57-642:[Warn]:Time:18-59-57-641:damage 1101
+18-59-57-644:[Warn]:Time:18-59-57-642:damage 1102
+18-59-57-645:[Warn]:Time:18-59-57-644:damage 1103
+18-59-57-646:[Warn]:Time:18-59-57-646:damage 1106
+18-59-57-648:[Warn]:Time:18-59-57-647:StoryInstance queue concurrent message baozha
+18-59-57-656:[Warn]:Time:18-59-57-655:baozha => (96.00, 0.30, 402.00) obj440 (96.00, 0.30, 402.00)
+18-59-57-664:[Warn]:Time:18-59-57-663:StoryInstance queue concurrent message on_trigger_enter
+18-59-57-666:[Warn]:Time:18-59-57-665:damage 1101
+18-59-57-667:[Warn]:Time:18-59-57-667:damage 1102
+18-59-57-668:[Warn]:Time:18-59-57-667:damage 1103
+18-59-57-669:[Warn]:Time:18-59-57-668:damage 1106
+18-59-57-670:[Warn]:Time:18-59-57-669:StoryInstance queue concurrent message baozha
+18-59-57-680:[Warn]:Time:18-59-57-679:StoryInstance queue concurrent message on_trigger_exit
+18-59-57-682:[Warn]:Time:18-59-57-681:baozha => (98.00, 0.35, 401.00) obj446 (98.00, -0.07, 401.00)
+18-59-57-706:[Warn]:Time:18-59-57-705:StoryInstance queue concurrent message on_trigger_exit
+18-59-57-728:[Warn]:Time:18-59-57-727:StoryInstance queue concurrent message on_trigger_exit
+18-59-58-640:[Warn]:Time:18-59-58-639:StoryInstance queue concurrent message notify_player
+18-59-58-702:[Warn]:Time:18-59-58-701:StoryInstance queue concurrent message on_trigger_enter
+18-59-58-703:[Warn]:Time:18-59-58-702:damage 1101
+18-59-58-704:[Warn]:Time:18-59-58-703:damage 1102
+18-59-58-705:[Warn]:Time:18-59-58-704:damage 1103
+18-59-58-706:[Warn]:Time:18-59-58-705:damage 1106
+18-59-58-707:[Warn]:Time:18-59-58-706:StoryInstance queue concurrent message baozha
+18-59-58-718:[Warn]:Time:18-59-58-717:baozha => (103.00, 0.13, 413.00) obj471 (103.00, 0.13, 413.00)
+18-59-58-745:[Warn]:Time:18-59-58-744:StoryInstance queue concurrent message on_trigger_exit
+18-59-58-845:[Warn]:Time:18-59-58-844:StoryInstance queue concurrent message on_trigger_enter
+18-59-58-846:[Warn]:Time:18-59-58-845:damage 1101
+18-59-58-849:[Warn]:Time:18-59-58-847:damage 1102
+18-59-58-851:[Warn]:Time:18-59-58-850:damage 1103
+18-59-58-853:[Warn]:Time:18-59-58-852:damage 1106
+18-59-58-855:[Warn]:Time:18-59-58-854:damage 1104
+18-59-58-856:[Warn]:Time:18-59-58-855:StoryInstance queue concurrent message baozha
+18-59-58-870:[Warn]:Time:18-59-58-868:baozha => (102.00, 0.02, 405.00) obj465 (102.00, -0.43, 405.00)
+18-59-58-881:[Warn]:Time:18-59-58-880:StoryInstance queue concurrent message on_trigger_exit
+18-59-59-642:[Warn]:Time:18-59-59-641:StoryInstance queue concurrent message notify_player
+18-59-59-819:[Warn]:Time:18-59-59-818:StoryInstance queue concurrent message on_trigger_enter
+18-59-59-821:[Warn]:Time:18-59-59-820:damage 1102
+18-59-59-822:[Warn]:Time:18-59-59-821:damage 1103
+18-59-59-823:[Warn]:Time:18-59-59-823:damage 1101
+18-59-59-824:[Warn]:Time:18-59-59-823:damage 1106
+18-59-59-825:[Warn]:Time:18-59-59-825:StoryInstance queue concurrent message baozha
+18-59-59-840:[Warn]:Time:18-59-59-838:baozha => (110.00, -0.05, 416.00) obj500 (110.00, -0.05, 416.00)
+18-59-59-863:[Warn]:Time:18-59-59-862:StoryInstance queue concurrent message on_trigger_exit
+19-00-00-645:[Warn]:Time:19-00-00-644:StoryInstance queue concurrent message notify_player
+19-00-00-823:[Warn]:Time:19-00-00-823:StoryInstance queue concurrent message on_trigger_enter
+19-00-00-825:[Warn]:Time:19-00-00-824:damage 1102
+19-00-00-827:[Warn]:Time:19-00-00-826:damage 1103
+19-00-00-829:[Warn]:Time:19-00-00-828:damage 1101
+19-00-00-830:[Warn]:Time:19-00-00-829:damage 1106
+19-00-00-831:[Warn]:Time:19-00-00-830:damage 1104
+19-00-00-832:[Warn]:Time:19-00-00-832:StoryInstance queue concurrent message baozha
+19-00-00-841:[Warn]:Time:19-00-00-839:baozha => (117.00, 0.00, 414.00) obj522 (117.00, -0.45, 414.00)
+19-00-00-866:[Warn]:Time:19-00-00-865:StoryInstance queue concurrent message on_trigger_exit
+19-00-01-619:[Warn]:Time:19-00-01-618:StoryInstance queue concurrent message on_trigger_enter
+19-00-01-620:[Warn]:Time:19-00-01-619:damage 1102
+19-00-01-621:[Warn]:Time:19-00-01-621:damage 1103
+19-00-01-622:[Warn]:Time:19-00-01-622:damage 1101
+19-00-01-623:[Warn]:Time:19-00-01-623:damage 1106
+19-00-01-625:[Warn]:Time:19-00-01-624:StoryInstance queue concurrent message baozha
+19-00-01-635:[Warn]:Time:19-00-01-633:baozha => (129.00, 0.18, 420.00) obj601 (129.00, 0.18, 420.00)
+19-00-01-652:[Warn]:Time:19-00-01-651:StoryInstance queue concurrent message notify_player
+19-00-01-653:[Warn]:Time:19-00-01-652:StoryInstance queue concurrent message notify_player
+19-00-01-662:[Warn]:Time:19-00-01-660:StoryInstance queue concurrent message on_trigger_exit
+19-00-02-653:[Warn]:Time:19-00-02-651:StoryInstance queue concurrent message notify_player
+19-00-02-741:[Warn]:Time:19-00-02-740:StoryInstance queue concurrent message on_trigger_enter
+19-00-02-743:[Warn]:Time:19-00-02-742:damage 1102
+19-00-02-744:[Warn]:Time:19-00-02-743:damage 1103
+19-00-02-745:[Warn]:Time:19-00-02-744:damage 1101
+19-00-02-746:[Warn]:Time:19-00-02-745:damage 1106
+19-00-02-748:[Warn]:Time:19-00-02-747:StoryInstance queue concurrent message baozha
+19-00-02-756:[Warn]:Time:19-00-02-755:baozha => (137.00, 0.03, 417.00) obj663 (137.00, 0.03, 417.00)
+19-00-02-782:[Warn]:Time:19-00-02-781:StoryInstance queue concurrent message on_trigger_exit
+19-00-03-659:[Warn]:Time:19-00-03-657:StoryInstance queue concurrent message notify_player
+19-00-03-669:[Warn]:Time:19-00-03-668:StoryInstance queue concurrent message on_trigger_enter
+19-00-03-670:[Warn]:Time:19-00-03-669:damage 1102
+19-00-03-671:[Warn]:Time:19-00-03-671:damage 1103
+19-00-03-673:[Warn]:Time:19-00-03-672:damage 1101
+19-00-03-673:[Warn]:Time:19-00-03-673:damage 1106
+19-00-03-674:[Warn]:Time:19-00-03-674:StoryInstance queue concurrent message baozha
+19-00-03-684:[Warn]:Time:19-00-03-682:baozha => (145.00, 0.36, 422.00) obj720 (145.00, -0.05, 422.00)
+19-00-03-718:[Warn]:Time:19-00-03-717:StoryInstance queue concurrent message on_trigger_exit
+19-00-03-748:[Warn]:Time:19-00-03-746:StoryInstance queue concurrent message on_trigger_enter
+19-00-03-749:[Warn]:Time:19-00-03-748:damage 1102
+19-00-03-750:[Warn]:Time:19-00-03-750:damage 1103
+19-00-03-751:[Warn]:Time:19-00-03-751:damage 1101
+19-00-03-752:[Warn]:Time:19-00-03-751:damage 1106
+19-00-03-753:[Warn]:Time:19-00-03-752:damage 1104
+19-00-03-754:[Warn]:Time:19-00-03-753:StoryInstance queue concurrent message baozha
+19-00-03-771:[Warn]:Time:19-00-03-770:baozha => (140.00, 0.33, 424.00) obj687 (140.00, -0.09, 424.00)
+19-00-03-804:[Warn]:Time:19-00-03-803:StoryInstance queue concurrent message on_trigger_exit
+19-00-04-661:[Warn]:Time:19-00-04-660:StoryInstance queue concurrent message notify_player
+19-00-04-662:[Warn]:Time:19-00-04-661:StoryInstance queue concurrent message notify_player
+19-00-04-663:[Warn]:Time:19-00-04-662:StoryInstance queue concurrent message notify_player
+19-00-04-684:[Warn]:Time:19-00-04-682:StoryInstance queue concurrent message on_trigger_enter
+19-00-04-685:[Warn]:Time:19-00-04-684:damage 1102
+19-00-04-686:[Warn]:Time:19-00-04-686:damage 1103
+19-00-04-687:[Warn]:Time:19-00-04-687:damage 1101
+19-00-04-688:[Warn]:Time:19-00-04-687:damage 1106
+19-00-04-689:[Warn]:Time:19-00-04-688:damage 1104
+19-00-04-690:[Warn]:Time:19-00-04-689:StoryInstance queue concurrent message baozha
+19-00-04-700:[Warn]:Time:19-00-04-698:baozha => (150.00, 0.28, 423.00) obj757 (150.00, -0.14, 423.00)
+19-00-04-747:[Warn]:Time:19-00-04-746:StoryInstance queue concurrent message on_trigger_exit
+19-00-05-663:[Warn]:Time:19-00-05-662:StoryInstance queue concurrent message notify_player
+19-00-05-665:[Warn]:Time:19-00-05-664:StoryInstance queue concurrent message notify_player
+19-00-05-667:[Warn]:Time:19-00-05-666:StoryInstance queue concurrent message notify_player
+19-00-05-823:[Warn]:Time:19-00-05-822:StoryInstance queue concurrent message on_trigger_enter
+19-00-05-825:[Warn]:Time:19-00-05-824:damage 1102
+19-00-05-826:[Warn]:Time:19-00-05-825:damage 1103
+19-00-05-827:[Warn]:Time:19-00-05-826:damage 1101
+19-00-05-829:[Warn]:Time:19-00-05-828:damage 1106
+19-00-05-830:[Warn]:Time:19-00-05-829:StoryInstance queue concurrent message baozha
+19-00-05-842:[Warn]:Time:19-00-05-840:baozha => (154.00, 0.28, 431.00) obj796 (154.00, -0.17, 431.00)
+19-00-05-879:[Warn]:Time:19-00-05-878:StoryInstance queue concurrent message on_trigger_exit
+19-00-06-665:[Warn]:Time:19-00-06-663:StoryInstance queue concurrent message on_trigger_enter
+19-00-06-667:[Warn]:Time:19-00-06-666:damage 1102
+19-00-06-669:[Warn]:Time:19-00-06-668:damage 1103
+19-00-06-670:[Warn]:Time:19-00-06-669:damage 1101
+19-00-06-671:[Warn]:Time:19-00-06-670:damage 1106
+19-00-06-672:[Warn]:Time:19-00-06-671:damage 1104
+19-00-06-673:[Warn]:Time:19-00-06-672:StoryInstance queue concurrent message baozha
+19-00-06-673:[Warn]:Time:19-00-06-673:StoryInstance queue concurrent message notify_player
+19-00-06-674:[Warn]:Time:19-00-06-674:StoryInstance queue concurrent message notify_player
+19-00-06-685:[Warn]:Time:19-00-06-683:baozha => (164.00, 0.34, 427.00) obj855 (164.00, -0.08, 427.00)
+19-00-06-726:[Warn]:Time:19-00-06-725:StoryInstance queue concurrent message on_trigger_exit
+19-00-06-793:[Warn]:Time:19-00-06-792:StoryInstance queue concurrent message on_trigger_enter
+19-00-06-795:[Warn]:Time:19-00-06-794:damage 1102
+19-00-06-797:[Warn]:Time:19-00-06-796:damage 1103
+19-00-06-799:[Warn]:Time:19-00-06-798:damage 1101
+19-00-06-801:[Warn]:Time:19-00-06-800:damage 1106
+19-00-06-802:[Warn]:Time:19-00-06-801:StoryInstance queue concurrent message baozha
+19-00-06-816:[Warn]:Time:19-00-06-815:baozha => (168.00, 0.23, 423.00) obj867 (168.00, -0.21, 423.00)
+19-00-06-831:[Warn]:Time:19-00-06-831:StoryInstance queue concurrent message on_trigger_exit
+19-00-06-832:[Warn]:Time:19-00-06-831:StoryInstance queue concurrent message on_trigger_enter
+19-00-06-835:[Warn]:Time:19-00-06-834:damage 1102
+19-00-06-836:[Warn]:Time:19-00-06-836:damage 1103
+19-00-06-837:[Warn]:Time:19-00-06-837:damage 1101
+19-00-06-838:[Warn]:Time:19-00-06-838:damage 1106
+19-00-06-839:[Warn]:Time:19-00-06-839:damage 1104
+19-00-06-840:[Warn]:Time:19-00-06-840:StoryInstance queue concurrent message baozha
+19-00-06-857:[Warn]:Time:19-00-06-855:baozha => (165.00, 0.10, 425.00) obj863 (165.00, -0.35, 425.00)
+19-00-06-870:[Warn]:Time:19-00-06-869:StoryInstance queue concurrent message on_trigger_exit
+19-00-07-670:[Warn]:Time:19-00-07-668:StoryInstance queue concurrent message notify_player
+19-00-07-671:[Warn]:Time:19-00-07-670:StoryInstance queue concurrent message notify_player
+19-00-07-671:[Warn]:Time:19-00-07-671:StoryInstance queue concurrent message notify_player
+19-00-07-727:[Warn]:Time:19-00-07-727:StoryInstance queue concurrent message on_trigger_enter
+19-00-07-729:[Warn]:Time:19-00-07-728:damage 1102
+19-00-07-730:[Warn]:Time:19-00-07-730:damage 1103
+19-00-07-732:[Warn]:Time:19-00-07-731:damage 1101
+19-00-07-734:[Warn]:Time:19-00-07-733:damage 1106
+19-00-07-735:[Warn]:Time:19-00-07-734:StoryInstance queue concurrent message baozha
+19-00-07-747:[Warn]:Time:19-00-07-746:StoryInstance queue concurrent message on_trigger_enter
+19-00-07-748:[Warn]:Time:19-00-07-748:baozha => (178.00, 0.03, 423.00) obj918 (178.00, -0.39, 423.00)
+19-00-07-749:[Warn]:Time:19-00-07-749:damage 1102
+19-00-07-750:[Warn]:Time:19-00-07-750:damage 1103
+19-00-07-751:[Warn]:Time:19-00-07-751:damage 1101
+19-00-07-752:[Warn]:Time:19-00-07-752:damage 1106
+19-00-07-753:[Warn]:Time:19-00-07-753:StoryInstance queue concurrent message baozha
+19-00-07-766:[Warn]:Time:19-00-07-765:StoryInstance queue concurrent message on_trigger_exit
+19-00-07-768:[Warn]:Time:19-00-07-767:baozha => (176.00, 0.34, 425.00) obj901 (176.00, -0.09, 425.00)
+19-00-07-801:[Warn]:Time:19-00-07-800:StoryInstance queue concurrent message on_trigger_exit
+19-00-07-865:[Warn]:Time:19-00-07-863:StoryInstance queue concurrent message on_trigger_enter
+19-00-07-867:[Warn]:Time:19-00-07-865:damage 1102
+19-00-07-868:[Warn]:Time:19-00-07-867:damage 1103
+19-00-07-869:[Warn]:Time:19-00-07-869:damage 1101
+19-00-07-870:[Warn]:Time:19-00-07-870:damage 1106
+19-00-07-871:[Warn]:Time:19-00-07-871:damage 1104
+19-00-07-872:[Warn]:Time:19-00-07-872:StoryInstance queue concurrent message baozha
+19-00-07-887:[Warn]:Time:19-00-07-886:baozha => (174.00, 0.32, 426.00) obj889 (174.00, -0.13, 426.00)
+19-00-07-926:[Warn]:Time:19-00-07-926:StoryInstance queue concurrent message on_trigger_exit
+19-00-08-762:[Warn]:Time:19-00-08-761:StoryInstance queue concurrent message on_trigger_enter
+19-00-08-763:[Warn]:Time:19-00-08-762:damage 1101
+19-00-08-765:[Warn]:Time:19-00-08-764:damage 1102
+19-00-08-766:[Warn]:Time:19-00-08-765:damage 1103
+19-00-08-767:[Warn]:Time:19-00-08-766:damage 1106
+19-00-08-768:[Warn]:Time:19-00-08-767:damage 1105
+19-00-08-769:[Warn]:Time:19-00-08-768:damage 1104
+19-00-08-769:[Warn]:Time:19-00-08-769:StoryInstance queue concurrent message baozha
+19-00-08-778:[Warn]:Time:19-00-08-777:baozha => (179.00, 0.39, 426.00) obj922 (179.00, 0.39, 426.00)
+19-00-08-822:[Warn]:Time:19-00-08-821:StoryInstance queue concurrent message on_trigger_exit
+19-00-08-860:[Warn]:Time:19-00-08-859:StoryInstance queue concurrent message on_trigger_enter
+19-00-08-862:[Warn]:Time:19-00-08-861:StoryInstance queue concurrent message baozha
+19-00-08-872:[Warn]:Time:19-00-08-870:baozha => (185.00, 0.29, 418.00) obj942 (185.00, 0.29, 418.00)
+19-00-08-926:[Warn]:Time:19-00-08-925:StoryInstance queue concurrent message on_trigger_exit
+19-00-09-660:[Warn]:Time:19-00-09-659:StoryInstance queue concurrent message on_trigger_enter
+19-00-09-662:[Warn]:Time:19-00-09-661:damage 1102
+19-00-09-664:[Warn]:Time:19-00-09-663:damage 1103
+19-00-09-665:[Warn]:Time:19-00-09-664:damage 1106
+19-00-09-665:[Warn]:Time:19-00-09-665:damage 1100
+19-00-09-666:[Warn]:Time:19-00-09-666:damage 1101
+19-00-09-667:[Warn]:Time:19-00-09-666:StoryInstance queue concurrent message baozha
+19-00-09-676:[Warn]:Time:19-00-09-675:baozha => (191.00, 0.09, 426.00) obj963 (191.00, 0.09, 426.00)
+19-00-09-686:[Warn]:Time:19-00-09-685:StoryInstance queue concurrent message on_trigger_enter
+19-00-09-687:[Warn]:Time:19-00-09-687:damage 1102
+19-00-09-688:[Warn]:Time:19-00-09-688:damage 1103
+19-00-09-689:[Warn]:Time:19-00-09-689:damage 1106
+19-00-09-690:[Warn]:Time:19-00-09-690:damage 1100
+19-00-09-692:[Warn]:Time:19-00-09-691:damage 1101
+19-00-09-692:[Warn]:Time:19-00-09-692:damage 1105
+19-00-09-693:[Warn]:Time:19-00-09-693:damage 1104
+19-00-09-695:[Warn]:Time:19-00-09-694:StoryInstance queue concurrent message baozha
+19-00-09-704:[Warn]:Time:19-00-09-702:StoryInstance queue concurrent message on_trigger_exit
+19-00-09-706:[Warn]:Time:19-00-09-705:baozha => (186.00, 0.24, 429.00) obj948 (186.00, -0.18, 429.00)
+19-00-09-742:[Warn]:Time:19-00-09-741:StoryInstance queue concurrent message on_trigger_exit
+19-00-09-822:[Warn]:Time:19-00-09-822:StoryInstance queue concurrent message on_trigger_enter
+19-00-09-824:[Warn]:Time:19-00-09-823:damage 1103
+19-00-09-825:[Warn]:Time:19-00-09-825:damage 1100
+19-00-09-827:[Warn]:Time:19-00-09-826:StoryInstance queue concurrent message baozha
+19-00-09-836:[Warn]:Time:19-00-09-835:baozha => (194.00, 0.27, 424.00) obj983 (194.00, 0.27, 424.00)
+19-00-09-885:[Warn]:Time:19-00-09-884:StoryInstance queue concurrent message on_trigger_exit

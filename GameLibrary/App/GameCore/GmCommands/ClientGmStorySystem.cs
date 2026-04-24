@@ -18,8 +18,8 @@ namespace GameLibrary.GmCommands
     {
         public void Init()
         {
-            var calc = DslCalculatorHost.NewCalculator();
-            GmExpressionRegistrar.RegisterGmExpressions(calc);
+            var registry = DslCalculatorHost.GetSharedApiRegistry();
+            GmExpressionRegistrar.RegisterGmExpressions(registry);
         }
 
         public int ActiveStoryCount

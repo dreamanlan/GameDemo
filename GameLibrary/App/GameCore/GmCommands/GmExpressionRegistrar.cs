@@ -10,25 +10,25 @@ namespace GameLibrary.GmCommands
     /// </summary>
     public static class GmExpressionRegistrar
     {
-        public static void RegisterGmExpressions(DslCalculator calc)
+        public static void RegisterGmExpressions(DslCalculatorApiRegistry registry)
         {
-            if (calc == null)
+            if (registry == null)
                 return;
 
             // Register GM expressions
-            calc.Register("setmaxeffect", "setmaxeffect(group_id, max_count) - set max effect count for resource system",
+            registry.Register("setmaxeffect", "setmaxeffect(group_id, max_count) - set max effect count for resource system",
                 new ExpressionFactoryHelper<SetMaxEffectExp>());
-            calc.Register("setdebug", "setdebug(flag) - set debug mode",
+            registry.Register("setdebug", "setdebug(flag) - set debug mode",
                 new ExpressionFactoryHelper<SetDebugExp>());
-            calc.Register("editorbreak", "editorbreak() - trigger Unity Editor break",
+            registry.Register("editorbreak", "editorbreak() - trigger Unity Editor break",
                 new ExpressionFactoryHelper<EditorBreakExp>());
-            calc.Register("debugbreak", "debugbreak() - trigger debug break",
+            registry.Register("debugbreak", "debugbreak() - trigger debug break",
                 new ExpressionFactoryHelper<DebugBreakExp>());
-            calc.Register("allocmemory", "allocmemory(key, size) - allocate memory and store in global variable",
+            registry.Register("allocmemory", "allocmemory(key, size) - allocate memory and store in global variable",
                 new ExpressionFactoryHelper<AllocMemoryExp>());
-            calc.Register("freememory", "freememory(key) - free memory from global variable",
+            registry.Register("freememory", "freememory(key) - free memory from global variable",
                 new ExpressionFactoryHelper<FreeMemoryExp>());
-            calc.Register("consumecpu", "consumecpu(time_us) - consume CPU for testing",
+            registry.Register("consumecpu", "consumecpu(time_us) - consume CPU for testing",
                 new ExpressionFactoryHelper<ConsumeCpuExp>());
         }
     }

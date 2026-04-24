@@ -8,7 +8,6 @@ script(main)
     bindui(@window){
       onevent("toggle","option","Toggle");
     };
-    @txt_Text.text="";
     @window.SetActive(changetype(1,"bool"));
   };
   onnamespacedmessage("on_toggle")args($tag,$val,$inputs,$toggles,$sliders,$dropdowns)
