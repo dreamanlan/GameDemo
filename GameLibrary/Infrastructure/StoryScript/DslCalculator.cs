@@ -2310,6 +2310,7 @@ namespace StoryScript.DslExpression
             Calculator.SetVariable("$$", val);
             for (int index = 0; index < m_Expressions.Count; ++index) {
                 BoxedValue v = m_Expressions[index].Calc();
+                ret = v;
                 if (Calculator.RunState == RunStateEnum.Continue) {
                     Calculator.RunState = RunStateEnum.Normal;
                     break;
@@ -2317,7 +2318,6 @@ namespace StoryScript.DslExpression
                 else if (Calculator.RunState != RunStateEnum.Normal) {
                     if (Calculator.RunState == RunStateEnum.Break)
                         Calculator.RunState = RunStateEnum.Normal;
-                    ret = v;
                     return true;
                 }
             }
@@ -2343,8 +2343,8 @@ namespace StoryScript.DslExpression
                     var loopResult = new AsyncCalcResult();
                     var _ei2 = LoopOnceAsync(val, loopResult);
                     while (_ei2.MoveNext()) { yield return _ei2.Current; }
+                    v = loopResult.Value;
                     if (loopResult.IsBreak) {
-                        v = loopResult.Value;
                         break;
                     }
                 }
@@ -2356,8 +2356,8 @@ namespace StoryScript.DslExpression
                     var loopResult = new AsyncCalcResult();
                     var _ei3 = LoopOnceAsync(val, loopResult);
                     while (_ei3.MoveNext()) { yield return _ei3.Current; }
+                    v = loopResult.Value;
                     if (loopResult.IsBreak) {
-                        v = loopResult.Value;
                         break;
                     }
                 }
@@ -2379,6 +2379,7 @@ namespace StoryScript.DslExpression
                 else {
                     v = exp.Calc();
                 }
+                loopResult.Value = v;
                 if (Calculator.RunState == RunStateEnum.Continue) {
                     Calculator.RunState = RunStateEnum.Normal;
                     break;
@@ -2386,7 +2387,6 @@ namespace StoryScript.DslExpression
                 else if (Calculator.RunState != RunStateEnum.Normal) {
                     if (Calculator.RunState == RunStateEnum.Break)
                         Calculator.RunState = RunStateEnum.Normal;
-                    loopResult.Value = v;
                     loopResult.IsBreak = true;
                     yield break;
                 }

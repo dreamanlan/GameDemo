@@ -19,8 +19,9 @@ namespace StoryScript
                     sb.Append(", ");
                 sb.Append(operands[i].ToString());
             }
-            LogSystem.Warn("{0}", sb.ToString());
-            return BoxedValue.NullObject;
+            string str = sb.ToString();
+            LogSystem.Warn("{0}", str);
+            return BoxedValue.FromString(str);
         }
     }
 
@@ -43,14 +44,20 @@ namespace StoryScript
                         for (int i = 1; i < operands.Count; ++i) {
                             arrayList.Add(operands[i].GetObject());
                         }
-                        LogSystem.Warn(fmt, arrayList.ToArray());
+                        string str = string.Format(fmt, arrayList.ToArray());
+                        LogSystem.Warn("{0}", str);
+                        r = BoxedValue.FromString(str);
                     }
                     else {
-                        LogSystem.Warn("{0}", obj.GetObject());
+                        string str = obj.ToString();
+                        LogSystem.Warn("{0}", str);
+                        r = BoxedValue.FromString(str);
                     }
                 }
                 else {
-                    LogSystem.Warn("{0}", obj.GetObject());
+                    string str = obj.ToString();
+                    LogSystem.Warn("{0}", str);
+                    r = BoxedValue.FromString(str);
                 }
             }
             return r;
