@@ -116,10 +116,10 @@ namespace StoryScript.DslExpression
         public BoxedValue Calc()
         {
             if (IsAsync) {
-              AsyncCalcResult result = new AsyncCalcResult();
-              var enumer = DoCalc(result);
-              DrainEnumerator(enumer);
-              return result.Value;
+                AsyncCalcResult result = new AsyncCalcResult();
+                var enumer = DoCalc(result);
+                DrainEnumerator(enumer);
+                return result.Value;
             }
             else {
                 BoxedValue ret = BoxedValue.NullObject;

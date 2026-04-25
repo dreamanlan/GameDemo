@@ -148,7 +148,7 @@ namespace StoryScript
                 }
 
                 string remKey = "";
-                foreach(var pair in m_StoryInstancePool) {
+                foreach (var pair in m_StoryInstancePool) {
                     pair.Value.Remove(storyId);
 
                     if (pair.Value.Count == 0)
@@ -196,8 +196,7 @@ namespace StoryScript
         {
             lock (m_Lock) {
                 Dictionary<string, StoryInstance> existStoryInstances;
-                if (!m_StoryInstancePool.TryGetValue(resourceName, out existStoryInstances))
-                {
+                if (!m_StoryInstancePool.TryGetValue(resourceName, out existStoryInstances)) {
                     existStoryInstances = new Dictionary<string, StoryInstance>();
                     m_StoryInstancePool.Add(resourceName, existStoryInstances);
                 }
