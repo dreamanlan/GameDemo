@@ -104,6 +104,12 @@ namespace StoryScript
                 new ExpressionFactoryHelper<TerminateExp>());
             registry.Register("pause", "pause() - pause the current story instance",
                 new ExpressionFactoryHelper<PauseExp>());
+            registry.Register("time", "time() - get local milliseconds",
+                new ExpressionFactoryHelper<TimeExp>());
+            registry.Register("realtime", "realtime() - get local real milliseconds (not affected by time scale)",
+                new ExpressionFactoryHelper<RealTimeExp>());
+            registry.Register("elapsedtimeus", "elapsedtimeus() - get elapsed time in microseconds",
+                new ExpressionFactoryHelper<ElapsedTimeUsExp>());
             registry.Register("storybreak", "storybreak([condition]) - break until condition is met or story is skipped/speedup",
                 new ExpressionFactoryHelper<StoryBreakExp>());
 

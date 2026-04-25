@@ -119,9 +119,10 @@ namespace StoryScript
     /// <summary>
     /// waitlocalmessage(msgId1, msgId2, ...)[set(var, val) timeoutset(timeout, var, val)] - wait for message trigger
     /// </summary>
-    internal sealed class WaitLocalMessageExp : SimpleAsyncExpressionBase
+    internal sealed class WaitLocalMessageExp : AbstractExpression
     {
-        protected override IEnumerator OnCalc(IList<BoxedValue> operands, AsyncCalcResult result)
+        public override bool IsAsync { get { return true; } }
+        protected override IEnumerator DoCalc(AsyncCalcResult result)
         {
             var storyInst = Calculator.GetFuncContext<StoryInstance>();
             if (storyInst == null) {
@@ -231,9 +232,10 @@ namespace StoryScript
     /// <summary>
     /// waitlocalmessagehandler(msgId1, msgId2, ...)[set(var, val) timeoutset(timeout, var, val)] - wait for message handler completion
     /// </summary>
-    internal sealed class WaitLocalMessageHandlerExp : SimpleAsyncExpressionBase
+    internal sealed class WaitLocalMessageHandlerExp : AbstractExpression
     {
-        protected override IEnumerator OnCalc(IList<BoxedValue> operands, AsyncCalcResult result)
+        public override bool IsAsync { get { return true; } }
+        protected override IEnumerator DoCalc(AsyncCalcResult result)
         {
             var storyInst = Calculator.GetFuncContext<StoryInstance>();
             if (storyInst == null) {
@@ -336,9 +338,10 @@ namespace StoryScript
     /// <summary>
     /// storywaitlocalmessage(msgId1, msgId2, ...)[set(var, val) timeoutset(timeout, var, val)] - wait for message, skipped if story is skipped
     /// </summary>
-    internal sealed class StoryWaitLocalMessageExp : SimpleAsyncExpressionBase
+    internal sealed class StoryWaitLocalMessageExp : AbstractExpression
     {
-        protected override IEnumerator OnCalc(IList<BoxedValue> operands, AsyncCalcResult result)
+        public override bool IsAsync { get { return true; } }
+        protected override IEnumerator DoCalc(AsyncCalcResult result)
         {
             var storyInst = Calculator.GetFuncContext<StoryInstance>();
             if (storyInst == null) {
@@ -445,9 +448,10 @@ namespace StoryScript
     /// <summary>
     /// storywaitlocalmessagehandler(msgId1, msgId2, ...)[set(var, val) timeoutset(timeout, var, val)] - wait for handler, skipped if story is skipped
     /// </summary>
-    internal sealed class StoryWaitLocalMessageHandlerExp : SimpleAsyncExpressionBase
+    internal sealed class StoryWaitLocalMessageHandlerExp : AbstractExpression
     {
-        protected override IEnumerator OnCalc(IList<BoxedValue> operands, AsyncCalcResult result)
+        public override bool IsAsync { get { return true; } }
+        protected override IEnumerator DoCalc(AsyncCalcResult result)
         {
             var storyInst = Calculator.GetFuncContext<StoryInstance>();
             if (storyInst == null) {
@@ -703,9 +707,10 @@ namespace StoryScript
     /// <summary>
     /// waitlocalnamespacedmessage(msgId1, msgId2, ...)[set(var, val) timeoutset(timeout, var, val)] - wait for namespaced message trigger
     /// </summary>
-    internal sealed class WaitLocalNamespacedMessageExp : SimpleAsyncExpressionBase
+    internal sealed class WaitLocalNamespacedMessageExp : AbstractExpression
     {
-        protected override IEnumerator OnCalc(IList<BoxedValue> operands, AsyncCalcResult result)
+        public override bool IsAsync { get { return true; } }
+        protected override IEnumerator DoCalc(AsyncCalcResult result)
         {
             var storyInst = Calculator.GetFuncContext<StoryInstance>();
             if (storyInst == null) {
@@ -813,9 +818,10 @@ namespace StoryScript
     /// <summary>
     /// waitlocalnamespacedmessagehandler(msgId1, msgId2, ...)[set(var, val) timeoutset(timeout, var, val)] - wait for namespaced message handler
     /// </summary>
-    internal sealed class WaitLocalNamespacedMessageHandlerExp : SimpleAsyncExpressionBase
+    internal sealed class WaitLocalNamespacedMessageHandlerExp : AbstractExpression
     {
-        protected override IEnumerator OnCalc(IList<BoxedValue> operands, AsyncCalcResult result)
+        public override bool IsAsync { get { return true; } }
+        protected override IEnumerator DoCalc(AsyncCalcResult result)
         {
             var storyInst = Calculator.GetFuncContext<StoryInstance>();
             if (storyInst == null) {
@@ -919,9 +925,10 @@ namespace StoryScript
     /// <summary>
     /// storywaitlocalnamespacedmessage(msgId1, msgId2, ...)[set(var, val) timeoutset(timeout, var, val)] - wait for namespaced message, skipped if story is skipped
     /// </summary>
-    internal sealed class StoryWaitLocalNamespacedMessageExp : SimpleAsyncExpressionBase
+    internal sealed class StoryWaitLocalNamespacedMessageExp : AbstractExpression
     {
-        protected override IEnumerator OnCalc(IList<BoxedValue> operands, AsyncCalcResult result)
+        public override bool IsAsync { get { return true; } }
+        protected override IEnumerator DoCalc(AsyncCalcResult result)
         {
             var storyInst = Calculator.GetFuncContext<StoryInstance>();
             if (storyInst == null) {
@@ -1029,9 +1036,10 @@ namespace StoryScript
     /// <summary>
     /// storywaitlocalnamespacedmessagehandler(msgId1, msgId2, ...)[set(var, val) timeoutset(timeout, var, val)] - wait for namespaced handler, skipped if story is skipped
     /// </summary>
-    internal sealed class StoryWaitLocalNamespacedMessageHandlerExp : SimpleAsyncExpressionBase
+    internal sealed class StoryWaitLocalNamespacedMessageHandlerExp : AbstractExpression
     {
-        protected override IEnumerator OnCalc(IList<BoxedValue> operands, AsyncCalcResult result)
+        public override bool IsAsync { get { return true; } }
+        protected override IEnumerator DoCalc(AsyncCalcResult result)
         {
             var storyInst = Calculator.GetFuncContext<StoryInstance>();
             if (storyInst == null) {

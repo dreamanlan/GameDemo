@@ -110,11 +110,45 @@ namespace StoryScript
     }
 
     /// <summary>
+    /// time() - get local milliseconds
+    /// </summary>
+    internal sealed class TimeExp : SimpleExpressionBase
+    {
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        {
+            return BoxedValue.From(TimeUtility.GetLocalMilliseconds());
+        }
+    }
+
+    /// <summary>
+    /// realtime() - get local real milliseconds (not affected by time scale)
+    /// </summary>
+    internal sealed class RealTimeExp : SimpleExpressionBase
+    {
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        {
+            return BoxedValue.From(TimeUtility.GetLocalRealMilliseconds());
+        }
+    }
+
+    /// <summary>
+    /// elapsedtimeus() - get elapsed time in microseconds
+    /// </summary>
+    internal sealed class ElapsedTimeUsExp : SimpleExpressionBase
+    {
+        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        {
+            return BoxedValue.From(TimeUtility.GetElapsedTimeUs());
+        }
+    }
+
+    /// <summary>
     /// storybreak([condition]) - break until condition is met or story is skipped/speedup
     /// </summary>
-    internal sealed class StoryBreakExp : SimpleAsyncExpressionBase
+    internal sealed class StoryBreakExp : AbstractExpression
     {
-        protected override IEnumerator OnCalc(IList<BoxedValue> operands, AsyncCalcResult result)
+        public override bool IsAsync { get { return true; } }
+        protected override IEnumerator DoCalc(AsyncCalcResult result)
         {
             while (true) {
                 if (m_HaveCondition) {
