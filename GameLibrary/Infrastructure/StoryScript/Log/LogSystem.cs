@@ -24,6 +24,10 @@ namespace StoryScript
                 return;
             if (!StoryConfigManager.Instance.IsDevice || StoryConfigManager.Instance.IsDebug) {
                 format = "Time:" + DateTime.Now.ToString("HH-mm-ss-fff:") + format;
+                if (null == args || args.Length == 0) {
+                    Output(StoryLogType.Debug, format);
+                    return;
+                }
                 string str = string.Format("[Debug]:" + format, args);
                 Output(StoryLogType.Debug, str);
             }
@@ -35,6 +39,11 @@ namespace StoryScript
             if (!StoryConfigManager.Instance.LoggerEnabled)
                 return;
             if (!StoryConfigManager.Instance.IsDevice || StoryConfigManager.Instance.IsDevelopment || StoryConfigManager.Instance.IsDebug) {
+                format = "Time:" + DateTime.Now.ToString("HH-mm-ss-fff:") + format;
+                if (null == args || args.Length == 0) {
+                    Output(StoryLogType.Info, format);
+                    return;
+                }
                 string str = string.Format("[Info]:" + format, args);
                 Output(StoryLogType.Info, str);
             }
@@ -45,6 +54,10 @@ namespace StoryScript
                 return;
             if (!StoryConfigManager.Instance.IsDevice || StoryConfigManager.Instance.IsDevelopment || StoryConfigManager.Instance.IsDebug) {
                 format = "Time:" + DateTime.Now.ToString("HH-mm-ss-fff:") + format;
+                if (null == args || args.Length == 0) {
+                    Output(StoryLogType.Warn, format);
+                    return;
+                }
                 string str = string.Format("[Warn]:" + format, args);
                 Output(StoryLogType.Warn, str);
             }
@@ -55,6 +68,10 @@ namespace StoryScript
                 return;
             if (!StoryConfigManager.Instance.IsDevice || StoryConfigManager.Instance.IsDevelopment || StoryConfigManager.Instance.IsDebug) {
                 format = "Time:" + DateTime.Now.ToString("HH-mm-ss-fff:") + format;
+                if (null == args || args.Length == 0) {
+                    Output(StoryLogType.Error, format);
+                    return;
+                }
                 string str = string.Format("[Error]:" + format, args);
                 Output(StoryLogType.Error, str);
             }
@@ -67,6 +84,10 @@ namespace StoryScript
             if (!StoryConfigManager.Instance.IsDevice || StoryConfigManager.Instance.IsDevelopment || StoryConfigManager.Instance.IsDebug) {
                 if (!check) {
                     format = "Time:" + DateTime.Now.ToString("HH-mm-ss-fff:") + format;
+                    if (null == args || args.Length == 0) {
+                        Output(StoryLogType.Assert, format);
+                        return;
+                    }
                     string str = string.Format("[Assert]:" + format, args);
                     Output(StoryLogType.Assert, str);
                 }

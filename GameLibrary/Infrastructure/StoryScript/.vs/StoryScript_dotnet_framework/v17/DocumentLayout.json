@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|d:\\github\\gamedemo\\gamelibrary\\infrastructure\\storyscript\\scriptabledslhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:scriptabledslhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|d:\\github\\gamedemo\\gamelibrary\\infrastructure\\storyscript\\dslcalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:dslcalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|d:\\github\\gamedemo\\gamelibrary\\infrastructure\\storyscript\\log\\logsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:log\\logsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|d:\\github\\gamedemo\\gamelibrary\\infrastructure\\storyscript\\storyinstance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:storyinstance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|d:\\github\\gamedemo\\gamelibrary\\infrastructure\\storyscript\\storyexpressions\\waitexp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:storyexpressions\\waitexp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,14 +33,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|d:\\github\\gamedemo\\gamelibrary\\infrastructure\\storyscript\\storyexpressions\\controlexp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:storyexpressions\\controlexp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|d:\\github\\gamedemo\\gamelibrary\\infrastructure\\storyscript\\dslcalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:dslcalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|d:\\github\\gamedemo\\gamelibrary\\infrastructure\\storyscript\\storyinstance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:storyinstance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,6 +47,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ScriptableDslHelper.cs",
+              "DocumentMoniker": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\ScriptableDslHelper.cs",
+              "RelativeDocumentMoniker": "ScriptableDslHelper.cs",
+              "ToolTip": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\ScriptableDslHelper.cs",
+              "RelativeToolTip": "ScriptableDslHelper.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAACMAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T13:47:30.435Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LogSystem.cs",
+              "DocumentMoniker": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\Log\\LogSystem.cs",
+              "RelativeDocumentMoniker": "Log\\LogSystem.cs",
+              "ToolTip": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\Log\\LogSystem.cs",
+              "RelativeToolTip": "Log\\LogSystem.cs",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAswFkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T11:37:24.205Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "WaitExp.cs",
               "DocumentMoniker": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryExpressions\\WaitExp.cs",
               "RelativeDocumentMoniker": "StoryExpressions\\WaitExp.cs",
@@ -51,7 +85,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "MessageExp.cs",
               "DocumentMoniker": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryExpressions\\MessageExp.cs",
               "RelativeDocumentMoniker": "StoryExpressions\\MessageExp.cs",
@@ -63,7 +97,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "ControlExp.cs",
               "DocumentMoniker": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryExpressions\\ControlExp.cs",
               "RelativeDocumentMoniker": "StoryExpressions\\ControlExp.cs",
@@ -75,7 +109,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "StoryWaitExp.cs",
               "DocumentMoniker": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryExpressions\\StoryWaitExp.cs",
               "RelativeDocumentMoniker": "StoryExpressions\\StoryWaitExp.cs",
@@ -87,27 +121,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "DslCalculator.cs",
               "DocumentMoniker": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\DslCalculator.cs",
               "RelativeDocumentMoniker": "DslCalculator.cs",
               "ToolTip": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\DslCalculator.cs",
               "RelativeToolTip": "DslCalculator.cs",
-              "ViewState": "AgIAAAQTAAAAAAAAAIAzwBQTAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAALgRAAAAAAAAAAAUwMURAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T01:41:15.942Z"
+              "WhenOpened": "2026-04-26T01:41:15.942Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "StoryInstance.cs",
               "DocumentMoniker": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryInstance.cs",
               "RelativeDocumentMoniker": "StoryInstance.cs",
               "ToolTip": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryInstance.cs",
               "RelativeToolTip": "StoryInstance.cs",
-              "ViewState": "AgIAABMDAAAAAAAAAIAzwCEDAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAEsBAAAAAAAAAAAAAFIBAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T01:36:00.334Z"
+              "WhenOpened": "2026-04-26T01:36:00.334Z",
+              "EditorCaption": ""
             }
           ]
         }

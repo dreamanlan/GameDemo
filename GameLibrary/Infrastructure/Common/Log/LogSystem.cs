@@ -24,6 +24,10 @@ namespace GameLibrary
                 return;
             if (!GlobalVariables.Instance.IsDevice || GlobalVariables.Instance.IsDebug) {
                 format = "Time:" + DateTime.Now.ToString("HH-mm-ss-fff:") + format;
+                if (null == args || args.Length == 0) {
+                    Output(GameLogType.Debug, format);
+                    return;
+                }
                 string str = string.Format("[Debug]:" + format, args);
                 Output(GameLogType.Debug, str);
             }
@@ -35,6 +39,11 @@ namespace GameLibrary
             if (!GlobalVariables.Instance.LoggerEnabled)
                 return;
             if (!GlobalVariables.Instance.IsDevice || GlobalVariables.Instance.IsDevelopment || GlobalVariables.Instance.IsDebug) {
+                format = "Time:" + DateTime.Now.ToString("HH-mm-ss-fff:") + format;
+                if (null == args || args.Length == 0) {
+                    Output(GameLogType.Info, format);
+                    return;
+                }
                 string str = string.Format("[Info]:" + format, args);
                 Output(GameLogType.Info, str);
             }
@@ -46,6 +55,10 @@ namespace GameLibrary
                 return;
             if (!GlobalVariables.Instance.IsDevice || GlobalVariables.Instance.IsDevelopment || GlobalVariables.Instance.IsDebug) {
                 format = "Time:" + DateTime.Now.ToString("HH-mm-ss-fff:") + format;
+                if (null == args || args.Length == 0) {
+                    Output(GameLogType.Warn, format);
+                    return;
+                }
                 string str = string.Format("[Warn]:" + format, args);
                 Output(GameLogType.Warn, str);
             }
@@ -57,6 +70,10 @@ namespace GameLibrary
                 return;
             if (!GlobalVariables.Instance.IsDevice || GlobalVariables.Instance.IsDevelopment || GlobalVariables.Instance.IsDebug) {
                 format = "Time:" + DateTime.Now.ToString("HH-mm-ss-fff:") + format;
+                if (null == args || args.Length == 0) {
+                    Output(GameLogType.Error, format);
+                    return;
+                }
                 string str = string.Format("[Error]:" + format, args);
                 Output(GameLogType.Error, str);
             }
@@ -69,6 +86,10 @@ namespace GameLibrary
             if (!GlobalVariables.Instance.IsDevice || GlobalVariables.Instance.IsDevelopment || GlobalVariables.Instance.IsDebug) {
                 if (!check) {
                     format = "Time:" + DateTime.Now.ToString("HH-mm-ss-fff:") + format;
+                    if (null == args || args.Length == 0) {
+                        Output(GameLogType.Assert, format);
+                        return;
+                    }
                     string str = string.Format("[Assert]:" + format, args);
                     Output(GameLogType.Assert, str);
                 }
