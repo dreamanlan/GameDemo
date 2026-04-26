@@ -1806,6 +1806,9 @@ namespace StoryScript.DslExpression
                         for (int index = 0; index < clause.Expressions.Count; ++index) {
                             BoxedValue tv = clause.Expressions[index].Calc();
                             if (Calculator.RunState != RunStateEnum.Normal) {
+                                if (Calculator.RunState == RunStateEnum.Return || Calculator.RunState == RunStateEnum.Redirect) {
+                                    v = tv;
+                                }
                                 return v;
                             }
                             else {
@@ -1819,6 +1822,9 @@ namespace StoryScript.DslExpression
                     for (int index = 0; index < clause.Expressions.Count; ++index) {
                         BoxedValue tv = clause.Expressions[index].Calc();
                         if (Calculator.RunState != RunStateEnum.Normal) {
+                            if (Calculator.RunState == RunStateEnum.Return || Calculator.RunState == RunStateEnum.Redirect) {
+                                v = tv;
+                            }
                             return v;
                         }
                         else {
@@ -1858,6 +1864,9 @@ namespace StoryScript.DslExpression
                                 tv = exp.Calc();
                             }
                             if (Calculator.RunState != RunStateEnum.Normal) {
+                                if (Calculator.RunState == RunStateEnum.Return || Calculator.RunState == RunStateEnum.Redirect) {
+                                    v = tv;
+                                }
                                 result.Value = v;
                                 yield break;
                             }
@@ -1881,6 +1890,9 @@ namespace StoryScript.DslExpression
                             tv = exp.Calc();
                         }
                         if (Calculator.RunState != RunStateEnum.Normal) {
+                            if (Calculator.RunState == RunStateEnum.Return || Calculator.RunState == RunStateEnum.Redirect) {
+                                v = tv;
+                            }
                             result.Value = v;
                             yield break;
                         }
@@ -2018,6 +2030,9 @@ namespace StoryScript.DslExpression
                             break;
                         }
                         else if (Calculator.RunState != RunStateEnum.Normal) {
+                            if (Calculator.RunState == RunStateEnum.Return || Calculator.RunState == RunStateEnum.Redirect) {
+                                v = tv;
+                            }
                             if (Calculator.RunState == RunStateEnum.Break)
                                 Calculator.RunState = RunStateEnum.Normal;
                             return v;
@@ -2063,6 +2078,9 @@ namespace StoryScript.DslExpression
                             break;
                         }
                         else if (Calculator.RunState != RunStateEnum.Normal) {
+                            if (Calculator.RunState == RunStateEnum.Return || Calculator.RunState == RunStateEnum.Redirect) {
+                                v = tv;
+                            }
                             if (Calculator.RunState == RunStateEnum.Break)
                                 Calculator.RunState = RunStateEnum.Normal;
                             result.Value = v;
@@ -2160,6 +2178,9 @@ namespace StoryScript.DslExpression
                         break;
                     }
                     else if (Calculator.RunState != RunStateEnum.Normal) {
+                        if (Calculator.RunState == RunStateEnum.Return || Calculator.RunState == RunStateEnum.Redirect) {
+                            v = tv;
+                        }
                         if (Calculator.RunState == RunStateEnum.Break)
                             Calculator.RunState = RunStateEnum.Normal;
                         return v;
@@ -2202,6 +2223,9 @@ namespace StoryScript.DslExpression
                         break;
                     }
                     else if (Calculator.RunState != RunStateEnum.Normal) {
+                        if (Calculator.RunState == RunStateEnum.Return || Calculator.RunState == RunStateEnum.Redirect) {
+                            v = tv;
+                        }
                         if (Calculator.RunState == RunStateEnum.Break)
                             Calculator.RunState = RunStateEnum.Normal;
                         result.Value = v;
@@ -2358,6 +2382,9 @@ namespace StoryScript.DslExpression
                     break;
                 }
                 else if (Calculator.RunState != RunStateEnum.Normal) {
+                    if (Calculator.RunState == RunStateEnum.Return || Calculator.RunState == RunStateEnum.Redirect) {
+                        ret = v;
+                    }
                     if (Calculator.RunState == RunStateEnum.Break)
                         Calculator.RunState = RunStateEnum.Normal;
                     return true;
@@ -2429,6 +2456,9 @@ namespace StoryScript.DslExpression
                     break;
                 }
                 else if (Calculator.RunState != RunStateEnum.Normal) {
+                    if (Calculator.RunState == RunStateEnum.Return || Calculator.RunState == RunStateEnum.Redirect) {
+                        loopResult.Value = v;
+                    }
                     if (Calculator.RunState == RunStateEnum.Break)
                         Calculator.RunState = RunStateEnum.Normal;
                     loopResult.IsBreak = true;
@@ -2481,6 +2511,9 @@ namespace StoryScript.DslExpression
                         break;
                     }
                     else if (Calculator.RunState != RunStateEnum.Normal) {
+                        if (Calculator.RunState == RunStateEnum.Return || Calculator.RunState == RunStateEnum.Redirect) {
+                            v = tv;
+                        }
                         if (Calculator.RunState == RunStateEnum.Break)
                             Calculator.RunState = RunStateEnum.Normal;
                         return v;
@@ -2529,6 +2562,9 @@ namespace StoryScript.DslExpression
                         break;
                     }
                     else if (Calculator.RunState != RunStateEnum.Normal) {
+                        if (Calculator.RunState == RunStateEnum.Return || Calculator.RunState == RunStateEnum.Redirect) {
+                            v = tv;
+                        }
                         if (Calculator.RunState == RunStateEnum.Break)
                             Calculator.RunState = RunStateEnum.Normal;
                         result.Value = v;
