@@ -17,6 +17,9 @@ namespace StoryScript
 
         protected override IEnumerator DoCalc(AsyncCalcResult result)
         {
+            if (Calculator.IsInSyncCalculation) {
+                yield break;
+            }
             long waitTime = m_Time.Calc().GetInt();
 
             long startTime = TimeUtility.GetLocalMilliseconds();
@@ -95,6 +98,9 @@ namespace StoryScript
 
         protected override IEnumerator DoCalc(AsyncCalcResult result)
         {
+            if (Calculator.IsInSyncCalculation) {
+                yield break;
+            }
             int ms = m_Time.Calc().GetInt();
             var sw = System.Diagnostics.Stopwatch.StartNew();
             while (sw.ElapsedMilliseconds < ms) {

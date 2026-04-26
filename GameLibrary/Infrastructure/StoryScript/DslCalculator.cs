@@ -115,22 +115,28 @@ namespace StoryScript.DslExpression
         }
         public BoxedValue Calc()
         {
-            if (IsAsync) {
-                AsyncCalcResult result = new AsyncCalcResult();
-                var enumer = DoCalc(result);
-                DrainEnumerator(enumer);
-                return result.Value;
+            Calculator.SyncCalculationPush();
+            try {
+                if (IsAsync) {
+                    AsyncCalcResult result = new AsyncCalcResult();
+                    var enumer = DoCalc(result);
+                    DrainEnumerator(enumer);
+                    return result.Value;
+                }
+                else {
+                    BoxedValue ret = BoxedValue.NullObject;
+                    try {
+                        ret = DoCalc();
+                    }
+                    catch (Exception ex) {
+                        var msg = string.Format("calc:[{0}]", ToString());
+                        throw new Exception(msg, ex);
+                    }
+                    return ret;
+                }
             }
-            else {
-                BoxedValue ret = BoxedValue.NullObject;
-                try {
-                    ret = DoCalc();
-                }
-                catch (Exception ex) {
-                    var msg = string.Format("calc:[{0}]", ToString());
-                    throw new Exception(msg, ex);
-                }
-                return ret;
+            finally {
+                Calculator.SyncCalculationPop();
             }
         }
         public bool Load(Dsl.ISyntaxComponent dsl, DslCalculator calculator)
@@ -3956,6 +3962,7 @@ namespace StoryScript.DslExpression
         {
             m_Funcs.Clear();
             m_Stack.Clear();
+            m_GlobalSyncCalculationStack.Clear();
             m_NamedGlobalVariableIndexes.Clear();
             m_GlobalVariables.Clear();
         }
@@ -4244,10 +4251,12 @@ namespace StoryScript.DslExpression
         private BoxedValue Calc<T>(IList<BoxedValue> args, T funcContext, FuncInfo funcInfo) where T : class
         {
             LocalStackPush(args, funcContext, funcInfo);
+            SyncCalculationPush();
             try {
                 return CalcInCurrentContext(funcInfo.Codes);
             }
             finally {
+                SyncCalculationPop();
                 LocalStackPop();
             }
         }
@@ -4332,25 +4341,41 @@ namespace StoryScript.DslExpression
             get { return m_RunState; }
             set { m_RunState = value; }
         }
-        public void Log(string fmt, params object[] args)
+        public bool IsInSyncCalculation => SyncCalculationStack.Count > 0;
+        public void SyncCalculationPush()
         {
-            if (null != OnLog) {
-                if (args.Length == 0)
-                    OnLog(fmt);
-                else
-                    OnLog(string.Format(fmt, args));
+            SyncCalculationStack.Push(true);
+        }
+        public void SyncCalculationPop()
+        {
+            var stack = SyncCalculationStack;
+            if (stack.Count > 0) {
+                stack.Pop();
             }
         }
-        public void Log(object arg)
+        public AsyncTaskRuntimeContext CreateAsyncContext()
         {
-            if (null != OnLog) {
-                OnLog(string.Format("{0}", arg));
-            }
+            var ctx = new AsyncTaskRuntimeContext();
+            ctx.Stack = new Stack<StackInfo>();
+            return ctx;
+        }
+        public void SetAsyncContext(AsyncTaskRuntimeContext ctx)
+        {
+            m_Stack = (Stack<StackInfo>)ctx.Stack;
+            m_RunState = ctx.RunState;
+        }
+        public void SaveAsyncContext(AsyncTaskRuntimeContext ctx)
+        {
+            ctx.Stack = m_Stack;
+            ctx.RunState = m_RunState;
         }
         public T GetFuncContext<T>() where T : class
         {
-            var stackInfo = m_Stack.Peek();
-            return stackInfo.FuncContext as T;
+            if (m_Stack.Count > 0) {
+                var stackInfo = m_Stack.Peek();
+                return stackInfo.FuncContext as T;
+            }
+            return null;
         }
         public IList<BoxedValue> Arguments
         {
@@ -4675,6 +4700,21 @@ namespace StoryScript.DslExpression
             }
             return ret;
         }
+        public void Log(string fmt, params object[] args)
+        {
+            if (null != OnLog) {
+                if (args.Length == 0)
+                    OnLog(fmt);
+                else
+                    OnLog(string.Format(fmt, args));
+            }
+        }
+        public void Log(object arg)
+        {
+            if (null != OnLog) {
+                OnLog(string.Format("{0}", arg));
+            }
+        }
         internal int AllocGlobalVariableIndex(string name)
         {
             int ix;
@@ -4766,22 +4806,6 @@ namespace StoryScript.DslExpression
                 poped.Recycle();
             }
         }
-        public AsyncTaskRuntimeContext CreateAsyncContext()
-        {
-            var ctx = new AsyncTaskRuntimeContext();
-            ctx.Stack = new Stack<StackInfo>();
-            return ctx;
-        }
-        public void SetAsyncContext(AsyncTaskRuntimeContext ctx)
-        {
-            m_Stack = (Stack<StackInfo>)ctx.Stack;
-            m_RunState = ctx.RunState;
-        }
-        public void SaveAsyncContext(AsyncTaskRuntimeContext ctx)
-        {
-            ctx.Stack = m_Stack;
-            ctx.RunState = m_RunState;
-        }
 
         private Dsl.ISyntaxComponent ConvertMember(Dsl.ISyntaxComponent p, int paramClass)
         {
@@ -4858,6 +4882,18 @@ namespace StoryScript.DslExpression
                 return stackInfo.LocalVars;
             }
         }
+        private Stack<bool> SyncCalculationStack
+        {
+            get {
+                if (m_Stack.Count > 0) {
+                    var stackInfo = m_Stack.Peek();
+                    return stackInfo.SyncCalculationStack;
+                }
+                else {
+                    return m_GlobalSyncCalculationStack;
+                }
+            }
+        }
 
         private class StackInfo
         {
@@ -4865,6 +4901,7 @@ namespace StoryScript.DslExpression
             internal object FuncContext = null;
             internal List<BoxedValue> Args = new List<BoxedValue>();
             internal List<BoxedValue> LocalVars = new List<BoxedValue>();
+            internal Stack<bool> SyncCalculationStack = new Stack<bool>();
 
             internal void Init(FuncInfo funcInfo, object funcContext)
             {
@@ -4881,6 +4918,7 @@ namespace StoryScript.DslExpression
                 FuncContext = null;
                 Args.Clear();
                 LocalVars.Clear();
+                SyncCalculationStack.Clear();
 
                 s_Pool.Recycle(this);
             }
@@ -4894,6 +4932,7 @@ namespace StoryScript.DslExpression
         private RunStateEnum m_RunState = RunStateEnum.Normal;
         private Dictionary<string, FuncInfo> m_Funcs = new Dictionary<string, FuncInfo>();
         private Stack<StackInfo> m_Stack = new Stack<StackInfo>();
+        private Stack<bool> m_GlobalSyncCalculationStack = new Stack<bool>();
         private Dictionary<string, int> m_NamedGlobalVariableIndexes = new Dictionary<string, int>();
         private List<BoxedValue> m_GlobalVariables = new List<BoxedValue>();
         private DslCalculatorApiRegistry m_ApiRegistry = null;

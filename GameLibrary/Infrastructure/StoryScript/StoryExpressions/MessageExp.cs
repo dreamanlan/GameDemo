@@ -343,6 +343,9 @@ namespace StoryScript
         public override bool IsAsync { get { return true; } }
         protected override IEnumerator DoCalc(AsyncCalcResult result)
         {
+            if (Calculator.IsInSyncCalculation) {
+                yield break;
+            }
             var storyInst = Calculator.GetFuncContext<StoryInstance>();
             if (storyInst == null) {
                 result.Value = BoxedValue.NullObject;
@@ -453,6 +456,9 @@ namespace StoryScript
         public override bool IsAsync { get { return true; } }
         protected override IEnumerator DoCalc(AsyncCalcResult result)
         {
+            if (Calculator.IsInSyncCalculation) {
+                yield break;
+            }
             var storyInst = Calculator.GetFuncContext<StoryInstance>();
             if (storyInst == null) {
                 result.Value = BoxedValue.NullObject;
@@ -930,6 +936,9 @@ namespace StoryScript
         public override bool IsAsync { get { return true; } }
         protected override IEnumerator DoCalc(AsyncCalcResult result)
         {
+            if (Calculator.IsInSyncCalculation) {
+                yield break;
+            }
             var storyInst = Calculator.GetFuncContext<StoryInstance>();
             if (storyInst == null) {
                 result.Value = BoxedValue.NullObject;
@@ -1041,6 +1050,9 @@ namespace StoryScript
         public override bool IsAsync { get { return true; } }
         protected override IEnumerator DoCalc(AsyncCalcResult result)
         {
+            if (Calculator.IsInSyncCalculation) {
+                yield break;
+            }
             var storyInst = Calculator.GetFuncContext<StoryInstance>();
             if (storyInst == null) {
                 result.Value = BoxedValue.NullObject;

@@ -19,6 +19,9 @@ namespace GameLibrary.Story.StoryExpressions
 
         protected override IEnumerator DoCalc(AsyncCalcResult result)
         {
+            if (Calculator.IsInSyncCalculation) {
+                yield break;
+            }
             List<string> storyIds = new List<string>();
             for (int i = 0; i < m_StoryIds.Count; ++i)
             {
@@ -61,6 +64,9 @@ namespace GameLibrary.Story.StoryExpressions
                         var varVal = m_TimeoutSetVal.Calc();
                         storyInst.SetVariable(varName, varVal);
                     }
+                    break;
+                }
+                if (StoryConfigManager.Instance.IsStorySkipped) {
                     break;
                 }
                 yield return null;
@@ -208,6 +214,9 @@ namespace GameLibrary.Story.StoryExpressions
 
         protected override IEnumerator DoCalc(AsyncCalcResult result)
         {
+            if (Calculator.IsInSyncCalculation) {
+                yield break;
+            }
             List<string> msgIds = new List<string>();
             for (int i = 0; i < m_MsgIds.Count; ++i)
             {
@@ -256,6 +265,9 @@ namespace GameLibrary.Story.StoryExpressions
                         var varVal = m_TimeoutSetVal.Calc();
                         storyInst.SetVariable(varName, varVal);
                     }
+                    break;
+                }
+                if (StoryConfigManager.Instance.IsStorySkipped) {
                     break;
                 }
                 yield return null;
@@ -371,6 +383,9 @@ namespace GameLibrary.Story.StoryExpressions
 
         protected override IEnumerator DoCalc(AsyncCalcResult result)
         {
+            if (Calculator.IsInSyncCalculation) {
+                yield break;
+            }
             List<string> msgIds = new List<string>();
             for (int i = 0; i < m_MsgIds.Count; ++i)
             {
@@ -413,6 +428,9 @@ namespace GameLibrary.Story.StoryExpressions
                         var varVal = m_TimeoutSetVal.Calc();
                         storyInst.SetVariable(varName, varVal);
                     }
+                    break;
+                }
+                if (StoryConfigManager.Instance.IsStorySkipped) {
                     break;
                 }
                 yield return null;

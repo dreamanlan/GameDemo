@@ -150,6 +150,9 @@ namespace StoryScript
         public override bool IsAsync { get { return true; } }
         protected override IEnumerator DoCalc(AsyncCalcResult result)
         {
+            if (Calculator.IsInSyncCalculation) {
+                yield break;
+            }
             while (true) {
                 if (m_HaveCondition) {
                     int condVal = m_ConditionExp.Calc().GetInt();
