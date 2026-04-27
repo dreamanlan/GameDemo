@@ -124,7 +124,7 @@ namespace StoryScript
                     string text = Converter.FileContent2Utf8String(bytes);
                     Dsl.DslFile dataFile = new Dsl.DslFile();
                     ScriptableDslHelper.ForStoryInstance.SetCallbacks(dataFile);
-                    if (dataFile.LoadFromString(text, LogSystem.Log)) {
+                    if (dataFile.LoadFromString(text, LogError)) {
                         Load(dataFile, sceneId, _namespace, file);
                     }
                     else {
@@ -285,6 +285,12 @@ namespace StoryScript
 
         private bool m_IsStorySkipped = false;
         private bool m_IsStorySpeedup = false;
+
+        public static void LogError(string error)
+        {
+            error = DslSyntaxTransformer.TranslateDslSyntaxError(error);
+            LogSystem.Error(error);
+        }
 
         public static List<string> ReuseKeyBuffer
         {
