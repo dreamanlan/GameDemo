@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|d:\\github\\gamedemo\\gamelibrary\\infrastructure\\storyscript\\dslsyntaxtransformer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:dslsyntaxtransformer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|d:\\github\\gamedemo\\gamelibrary\\infrastructure\\storyscript\\storyexpressions\\propgetset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:storyexpressions\\propgetset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|d:\\github\\gamedemo\\gamelibrary\\infrastructure\\storyscript\\dslcalculatorhost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:dslcalculatorhost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|d:\\github\\gamedemo\\gamelibrary\\infrastructure\\storyscript\\dslcalculatorapiregistry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:dslcalculatorapiregistry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|d:\\github\\gamedemo\\gamelibrary\\infrastructure\\storyscript\\dslcalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:dslcalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|d:\\github\\gamedemo\\gamelibrary\\infrastructure\\storyscript\\dslsyntaxtransformer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|solutionrelative:dslsyntaxtransformer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{84F83990-1EF1-44BE-8D96-7F08B24C6ED6}|StoryScript_dotnet_framework.csproj|d:\\github\\gamedemo\\gamelibrary\\infrastructure\\storyscript\\storyinstance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,11 +62,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DslCalculatorHost.cs",
+              "DocumentMoniker": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\DslCalculatorHost.cs",
+              "RelativeDocumentMoniker": "DslCalculatorHost.cs",
+              "ToolTip": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\DslCalculatorHost.cs",
+              "RelativeToolTip": "DslCalculatorHost.cs",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T03:05:09.306Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DslCalculatorApiRegistry.cs",
+              "DocumentMoniker": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\DslCalculatorApiRegistry.cs",
+              "RelativeDocumentMoniker": "DslCalculatorApiRegistry.cs",
+              "ToolTip": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\DslCalculatorApiRegistry.cs",
+              "RelativeToolTip": "DslCalculatorApiRegistry.cs",
+              "ViewState": "AgIAAM0OAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T03:04:46.514Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "PropGetSet.cs",
+              "DocumentMoniker": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryExpressions\\PropGetSet.cs",
+              "RelativeDocumentMoniker": "StoryExpressions\\PropGetSet.cs",
+              "ToolTip": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryExpressions\\PropGetSet.cs",
+              "RelativeToolTip": "StoryExpressions\\PropGetSet.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T03:04:24.403Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "DslSyntaxTransformer.cs",
               "DocumentMoniker": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\DslSyntaxTransformer.cs",
               "RelativeDocumentMoniker": "DslSyntaxTransformer.cs",
@@ -67,7 +118,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "StoryConfigManager.cs",
               "DocumentMoniker": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryConfigManager.cs",
               "RelativeDocumentMoniker": "StoryConfigManager.cs",
@@ -75,12 +126,11 @@
               "RelativeToolTip": "StoryConfigManager.cs",
               "ViewState": "AgIAAG8AAAAAAAAAAAAswH4AAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T07:21:56.03Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-27T07:21:56.03Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "ScriptableDslHelper.cs",
               "DocumentMoniker": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\ScriptableDslHelper.cs",
               "RelativeDocumentMoniker": "ScriptableDslHelper.cs",
@@ -88,12 +138,11 @@
               "RelativeToolTip": "ScriptableDslHelper.cs",
               "ViewState": "AgIAACYAAAAAAAAAAAAowDYAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T13:47:30.435Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-26T13:47:30.435Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "LogSystem.cs",
               "DocumentMoniker": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\Log\\LogSystem.cs",
               "RelativeDocumentMoniker": "Log\\LogSystem.cs",
@@ -101,12 +150,11 @@
               "RelativeToolTip": "Log\\LogSystem.cs",
               "ViewState": "AgIAAFAAAAAAAAAAAAAswFkAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T11:37:24.205Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-26T11:37:24.205Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "WaitExp.cs",
               "DocumentMoniker": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryExpressions\\WaitExp.cs",
               "RelativeDocumentMoniker": "StoryExpressions\\WaitExp.cs",
@@ -118,7 +166,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "MessageExp.cs",
               "DocumentMoniker": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryExpressions\\MessageExp.cs",
               "RelativeDocumentMoniker": "StoryExpressions\\MessageExp.cs",
@@ -130,7 +178,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "ControlExp.cs",
               "DocumentMoniker": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryExpressions\\ControlExp.cs",
               "RelativeDocumentMoniker": "StoryExpressions\\ControlExp.cs",
@@ -142,7 +190,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "StoryWaitExp.cs",
               "DocumentMoniker": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryExpressions\\StoryWaitExp.cs",
               "RelativeDocumentMoniker": "StoryExpressions\\StoryWaitExp.cs",
@@ -154,20 +202,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "DslCalculator.cs",
               "DocumentMoniker": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\DslCalculator.cs",
               "RelativeDocumentMoniker": "DslCalculator.cs",
               "ToolTip": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\DslCalculator.cs",
               "RelativeToolTip": "DslCalculator.cs",
-              "ViewState": "AgIAAMkRAAAAAAAAAAAAAN8RAADKAAAAAAAAAA==",
+              "ViewState": "AgIAANkPAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-26T01:41:15.942Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "StoryInstance.cs",
               "DocumentMoniker": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryInstance.cs",
               "RelativeDocumentMoniker": "StoryInstance.cs",
@@ -175,8 +223,7 @@
               "RelativeToolTip": "StoryInstance.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAFIBAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T01:36:00.334Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-26T01:36:00.334Z"
             }
           ]
         }
