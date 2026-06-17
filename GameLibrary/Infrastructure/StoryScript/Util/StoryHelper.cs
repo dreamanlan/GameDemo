@@ -65,8 +65,6 @@ namespace StoryScript
             [ThreadStatic]
             private static System.Random s_Rand = null;
         }
-
-        static private float c_Precision = 0.001f;
     }
 }
 
