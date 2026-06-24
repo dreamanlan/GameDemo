@@ -209,6 +209,18 @@ namespace StoryScript.DslExpression
                     if (operands.Count >= 3) {
                         len = operands[2].GetInt();
                     }
+                    if(start >= str.Length) {
+                        start = str.Length - 1;
+                    }
+                    if (start < 0) {
+                        start = 0;
+                    }
+                    if (len < 0) {
+                        len = 0;
+                    }
+                    else if (start + len > str.Length) {
+                        len = str.Length - start;
+                    }
                     r = str.Substring(start, len);
                 }
             }
