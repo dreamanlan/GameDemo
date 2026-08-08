@@ -85,3 +85,5 @@ Unity3dProject/*.sln
 Unity3dProject/*.suo
 Unity3dProject/.vs
 Unity3dProject/.DS_Store
+/GameLibrary/Infrastructure/StoryScript/.codebuddy
+/GameLibrary/Infrastructure/StoryScript/.vs
