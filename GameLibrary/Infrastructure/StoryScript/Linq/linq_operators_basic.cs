@@ -47,15 +47,22 @@ namespace StoryScript.DslExpression
 
         public override bool MoveNext()
         {
+            if (null == _src) {
+                return false;
+            }
             while (_src.MoveNext()) {
                 var item = _src.Current;
                 BoxedValue prev = _calc.GetVariable("$$");
-                _calc.SetVariable("$$", item);
                 BoxedValue r = BoxedValue.NullObject;
-                for (int idx = 0; idx < _exprs.Count; ++idx) {
-                    r = _exprs[idx].Calc();
+                try {
+                    _calc.SetVariable("$$", item);
+                    for (int idx = 0; idx < _exprs.Count; ++idx) {
+                        r = _exprs[idx].Calc();
+                    }
                 }
-                _calc.SetVariable("$$", prev);
+                finally {
+                    _calc.SetVariable("$$", prev);
+                }
                 if (r.GetLong() != 0) {
                     _current = item;
                     return true;
@@ -64,12 +71,28 @@ namespace StoryScript.DslExpression
             return false;
         }
 
+        public override void Dispose()
+        {
+            var src = _src;
+            _src = null;
+            src?.Dispose();
+        }
+
         public override IEnumerator MoveNext(AsyncCalcResult result)
         {
+            if (null == _src) {
+                result.Value = BoxedValue.FromBool(false);
+                yield break;
+            }
             while (true) {
                 var _eiSrc = _src.MoveNext(result);
-                while (_eiSrc.MoveNext()) {
-                    yield return _eiSrc.Current;
+                try {
+                    while (_eiSrc.MoveNext()) {
+                        yield return _eiSrc.Current;
+                    }
+                }
+                finally {
+                    (_eiSrc as IDisposable)?.Dispose();
                 }
 
                 if (!result.Value.GetBool()) {
@@ -79,23 +102,32 @@ namespace StoryScript.DslExpression
 
                 var item = _src.Current;
                 BoxedValue prev = _calc.GetVariable("$$");
-                _calc.SetVariable("$$", item);
                 BoxedValue condVal = BoxedValue.NullObject;
 
-                for (int idx = 0; idx < _exprs.Count; ++idx) {
-                    var exp = _exprs[idx];
-                    if (exp.IsAsync) {
-                        var _eiCalc = exp.Calc(result);
-                        while (_eiCalc.MoveNext()) {
-                            yield return _eiCalc.Current;
+                try {
+                    _calc.SetVariable("$$", item);
+                    for (int idx = 0; idx < _exprs.Count; ++idx) {
+                        var exp = _exprs[idx];
+                        if (exp.IsAsync) {
+                            var _eiCalc = exp.Calc(result);
+                            try {
+                                while (_eiCalc.MoveNext()) {
+                                    yield return _eiCalc.Current;
+                                }
+                            }
+                            finally {
+                                (_eiCalc as IDisposable)?.Dispose();
+                            }
+                            condVal = result.Value;
                         }
-                        condVal = result.Value;
-                    }
-                    else {
-                        condVal = exp.Calc();
+                        else {
+                            condVal = exp.Calc();
+                        }
                     }
                 }
-                _calc.SetVariable("$$", prev);
+                finally {
+                    _calc.SetVariable("$$", prev);
+                }
 
                 if (condVal.GetLong() != 0) {
                     _current = item;
@@ -135,25 +167,48 @@ namespace StoryScript.DslExpression
 
         public override bool MoveNext()
         {
+            if (null == _src) {
+                return false;
+            }
             if (_src.MoveNext()) {
                 BoxedValue prev = _calc.GetVariable("$$");
-                _calc.SetVariable("$$", _src.Current);
                 BoxedValue r = BoxedValue.NullObject;
-                for (int idx = 0; idx < _exprs.Count; ++idx) {
-                    r = _exprs[idx].Calc();
+                try {
+                    _calc.SetVariable("$$", _src.Current);
+                    for (int idx = 0; idx < _exprs.Count; ++idx) {
+                        r = _exprs[idx].Calc();
+                    }
                 }
-                _calc.SetVariable("$$", prev);
+                finally {
+                    _calc.SetVariable("$$", prev);
+                }
                 _current = r;
                 return true;
             }
             return false;
         }
 
+        public override void Dispose()
+        {
+            var src = _src;
+            _src = null;
+            src?.Dispose();
+        }
+
         public override IEnumerator MoveNext(AsyncCalcResult result)
         {
+            if (null == _src) {
+                result.Value = BoxedValue.FromBool(false);
+                yield break;
+            }
             var _eiSrc = _src.MoveNext(result);
-            while (_eiSrc.MoveNext()) {
-                yield return _eiSrc.Current;
+            try {
+                while (_eiSrc.MoveNext()) {
+                    yield return _eiSrc.Current;
+                }
+            }
+            finally {
+                (_eiSrc as IDisposable)?.Dispose();
             }
 
             if (!result.Value.GetBool()) {
@@ -162,23 +217,32 @@ namespace StoryScript.DslExpression
             }
 
             BoxedValue prevSel = _calc.GetVariable("$$");
-            _calc.SetVariable("$$", _src.Current);
             BoxedValue mappedVal = BoxedValue.NullObject;
 
-            for (int idx = 0; idx < _exprs.Count; ++idx) {
-                var exp = _exprs[idx];
-                if (exp.IsAsync) {
-                    var _eiCalc = exp.Calc(result);
-                    while (_eiCalc.MoveNext()) {
-                        yield return _eiCalc.Current;
+            try {
+                _calc.SetVariable("$$", _src.Current);
+                for (int idx = 0; idx < _exprs.Count; ++idx) {
+                    var exp = _exprs[idx];
+                    if (exp.IsAsync) {
+                        var _eiCalc = exp.Calc(result);
+                        try {
+                            while (_eiCalc.MoveNext()) {
+                                yield return _eiCalc.Current;
+                            }
+                        }
+                        finally {
+                            (_eiCalc as IDisposable)?.Dispose();
+                        }
+                        mappedVal = result.Value;
                     }
-                    mappedVal = result.Value;
-                }
-                else {
-                    mappedVal = exp.Calc();
+                    else {
+                        mappedVal = exp.Calc();
+                    }
                 }
             }
-            _calc.SetVariable("$$", prevSel);
+            finally {
+                _calc.SetVariable("$$", prevSel);
+            }
 
             _current = mappedVal;
             result.Value = BoxedValue.FromBool(true);

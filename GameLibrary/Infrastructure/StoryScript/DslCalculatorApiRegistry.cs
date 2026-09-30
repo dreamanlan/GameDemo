@@ -209,7 +209,7 @@ namespace StoryScript.DslExpression
                     if (operands.Count >= 3) {
                         len = operands[2].GetInt();
                     }
-                    if(start >= str.Length) {
+                    if (start >= str.Length) {
                         start = str.Length - 1;
                     }
                     if (start < 0) {
@@ -929,9 +929,14 @@ namespace StoryScript.DslExpression
                 if (null != obj) {
                     List<BoxedValue> al = new List<BoxedValue>();
                     IEnumerator enumer = obj.GetEnumerator();
-                    while (enumer.MoveNext()) {
-                        var val = BoxedValue.FromObject(enumer.Current);
-                        al.Add(val);
+                    try {
+                        while (enumer.MoveNext()) {
+                            var val = BoxedValue.FromObject(enumer.Current);
+                            al.Add(val);
+                        }
+                    }
+                    finally {
+                        (enumer as System.IDisposable)?.Dispose();
                     }
                     r = BoxedValue.FromObject(al.ToArray());
                 }
@@ -1145,34 +1150,13 @@ namespace StoryScript.DslExpression
                 var ct = operands[1].GetInt();
                 if (null != enumer && enumer is List<BoxedValue> bvList) {
                     var e = bvList.GetEnumerator();
-                    List<List<BoxedValue>> al = new List<List<BoxedValue>>();
-                    List<BoxedValue> arr = new List<BoxedValue>();
-                    int ix = 0;
-                    while (e.MoveNext()) {
-                        if (ix < ct) {
-                            arr.Add(e.Current);
-                            ++ix;
-                        }
-                        if (ix >= ct) {
-                            al.Add(arr);
-                            arr = new List<BoxedValue>();
-                            ix = 0;
-                        }
-                    }
-                    if (arr.Count > 0) {
-                        al.Add(arr);
-                    }
-                    r = BoxedValue.FromObject(al);
-                }
-                else if (null != enumer) {
-                    var e = enumer.GetEnumerator();
-                    if (null != e) {
+                    try {
                         List<List<BoxedValue>> al = new List<List<BoxedValue>>();
                         List<BoxedValue> arr = new List<BoxedValue>();
                         int ix = 0;
                         while (e.MoveNext()) {
                             if (ix < ct) {
-                                arr.Add(BoxedValue.FromObject(e.Current));
+                                arr.Add(e.Current);
                                 ++ix;
                             }
                             if (ix >= ct) {
@@ -1185,6 +1169,37 @@ namespace StoryScript.DslExpression
                             al.Add(arr);
                         }
                         r = BoxedValue.FromObject(al);
+                    }
+                    finally {
+                        e.Dispose();
+                    }
+                }
+                else if (null != enumer) {
+                    var e = enumer.GetEnumerator();
+                    if (null != e) {
+                        try {
+                            List<List<BoxedValue>> al = new List<List<BoxedValue>>();
+                            List<BoxedValue> arr = new List<BoxedValue>();
+                            int ix = 0;
+                            while (e.MoveNext()) {
+                                if (ix < ct) {
+                                    arr.Add(BoxedValue.FromObject(e.Current));
+                                    ++ix;
+                                }
+                                if (ix >= ct) {
+                                    al.Add(arr);
+                                    arr = new List<BoxedValue>();
+                                    ix = 0;
+                                }
+                            }
+                            if (arr.Count > 0) {
+                                al.Add(arr);
+                            }
+                            r = BoxedValue.FromObject(al);
+                        }
+                        finally {
+                            (e as System.IDisposable)?.Dispose();
+                        }
                     }
                 }
             }
@@ -1453,34 +1468,13 @@ namespace StoryScript.DslExpression
                 var ct = operands[1].GetInt();
                 if (null != dict && dict is Dictionary<BoxedValue, BoxedValue> bvDict) {
                     var e = bvDict.GetEnumerator();
-                    var al = new List<Dictionary<BoxedValue, BoxedValue>>();
-                    var ht = new Dictionary<BoxedValue, BoxedValue>();
-                    int ix = 0;
-                    while (e.MoveNext()) {
-                        if (ix < ct) {
-                            ht.Add(e.Current.Key, e.Current.Value);
-                            ++ix;
-                        }
-                        if (ix >= ct) {
-                            al.Add(ht);
-                            ht = new Dictionary<BoxedValue, BoxedValue>();
-                            ix = 0;
-                        }
-                    }
-                    if (ht.Count > 0) {
-                        al.Add(ht);
-                    }
-                    r = BoxedValue.FromObject(al);
-                }
-                else if (null != dict) {
-                    var e = dict.GetEnumerator();
-                    if (null != e) {
+                    try {
                         var al = new List<Dictionary<BoxedValue, BoxedValue>>();
                         var ht = new Dictionary<BoxedValue, BoxedValue>();
                         int ix = 0;
                         while (e.MoveNext()) {
                             if (ix < ct) {
-                                ht.Add(BoxedValue.FromObject(e.Key), BoxedValue.FromObject(e.Value));
+                                ht.Add(e.Current.Key, e.Current.Value);
                                 ++ix;
                             }
                             if (ix >= ct) {
@@ -1493,6 +1487,37 @@ namespace StoryScript.DslExpression
                             al.Add(ht);
                         }
                         r = BoxedValue.FromObject(al);
+                    }
+                    finally {
+                        e.Dispose();
+                    }
+                }
+                else if (null != dict) {
+                    var e = dict.GetEnumerator();
+                    if (null != e) {
+                        try {
+                            var al = new List<Dictionary<BoxedValue, BoxedValue>>();
+                            var ht = new Dictionary<BoxedValue, BoxedValue>();
+                            int ix = 0;
+                            while (e.MoveNext()) {
+                                if (ix < ct) {
+                                    ht.Add(BoxedValue.FromObject(e.Key), BoxedValue.FromObject(e.Value));
+                                    ++ix;
+                                }
+                                if (ix >= ct) {
+                                    al.Add(ht);
+                                    ht = new Dictionary<BoxedValue, BoxedValue>();
+                                    ix = 0;
+                                }
+                            }
+                            if (ht.Count > 0) {
+                                al.Add(ht);
+                            }
+                            r = BoxedValue.FromObject(al);
+                        }
+                        finally {
+                            (e as System.IDisposable)?.Dispose();
+                        }
                     }
                 }
             }
@@ -3738,13 +3763,11 @@ namespace StoryScript.DslExpression
     }
     public sealed class DslCalculatorApiRegistry
     {
-        public SortedList<string, string> ApiDocs
-        {
+        public SortedList<string, string> ApiDocs {
             get { return m_ApiDocs; }
         }
 
-        public LinqOperatorRegistry LinqOperatorRegistry
-        {
+        public LinqOperatorRegistry LinqOperatorRegistry {
             get { return m_LinqOperatorRegistry; }
         }
 
@@ -3901,8 +3924,8 @@ namespace StoryScript.DslExpression
             Register("call", "call(func_name,arg1,arg2,...) api", new ExpressionFactoryHelper<CallExp>());
             Register("return", "return([val]) api", new ExpressionFactoryHelper<ReturnExp>());
             Register("redirect", "redirect(arg1,arg2,...) api", new ExpressionFactoryHelper<RedirectExp>());
-            Register("propset", "propset(varname,val) - set variable",new ExpressionFactoryHelper<PropSetExp>());
-            Register("propget", "propget(varname[,defval]) - get variable",new ExpressionFactoryHelper<PropGetExp>());
+            Register("propset", "propset(varname,val) - set variable", new ExpressionFactoryHelper<PropSetExp>());
+            Register("propget", "propget(varname[,defval]) - get variable", new ExpressionFactoryHelper<PropGetExp>());
             Register("propexists", "propexists(varname) - check variable", new ExpressionFactoryHelper<PropExistsExp>());
             Register("funcexists", "funcexists(funcname) - check function", new ExpressionFactoryHelper<FuncExistsExp>());
             Register("await", "await(\"func_name\", arg1, arg2, ...) api, call async function", new ExpressionFactoryHelper<AwaitExp>());

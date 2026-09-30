@@ -176,7 +176,7 @@ namespace StoryScript
                 }
                 return jsonData;
             }
-            else if (enumer != null) {
+            else if (enumer != null && !(obj is string)) {
                 var jsonData = new LitJson.JsonData();
                 var e = enumer.GetEnumerator();
                 while (e.MoveNext())

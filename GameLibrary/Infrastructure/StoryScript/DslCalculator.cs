@@ -47,7 +47,10 @@ namespace StoryScript.DslExpression
         public void Recycle(List<BoxedValue> list)
         {
             if (null != list) {
-                m_Pool.Enqueue(list);
+                list.Clear();
+                if (m_Pool.Count < MaxRetainedListCount && list.Capacity <= MaxRetainedListCapacity) {
+                    m_Pool.Enqueue(list);
+                }
             }
         }
         public void Clear()
@@ -59,6 +62,8 @@ namespace StoryScript.DslExpression
             m_Pool = new Queue<List<BoxedValue>>(initCapacity);
         }
 
+        private const int MaxRetainedListCount = 16;
+        private const int MaxRetainedListCapacity = 256;
         private Queue<List<BoxedValue>> m_Pool = null;
     }
     public sealed class AsyncCalcResult
@@ -71,6 +76,7 @@ namespace StoryScript.DslExpression
     {
         public object Stack = null;
         public RunStateEnum RunState = RunStateEnum.Normal;
+        internal Stack<bool> GlobalSyncCalculationStack = new Stack<bool>();
     }
 
     public interface IExpression
@@ -98,7 +104,12 @@ namespace StoryScript.DslExpression
         {
             if (IsAsync) {
                 var _ei = DoCalc(result);
-                while (_ei.MoveNext()) { yield return _ei.Current; }
+                try {
+                    while (_ei.MoveNext()) { yield return _ei.Current; }
+                }
+                finally {
+                    (_ei as IDisposable)?.Dispose();
+                }
             }
             else {
                 BoxedValue ret = BoxedValue.NullObject;
@@ -189,20 +200,26 @@ namespace StoryScript.DslExpression
         protected virtual IEnumerator DoCalc(AsyncCalcResult result) { result.Value = BoxedValue.NullObject; yield break; }
         private static void DrainEnumerator(IEnumerator enumer)
         {
-            while (enumer.MoveNext()) {
-                var cur = enumer.Current;
-                if (cur is IEnumerator nested) {
-                    DrainEnumerator(nested);
+            try {
+                while (enumer.MoveNext()) {
+                    var cur = enumer.Current;
+                    if (cur is IEnumerator nested) {
+                        DrainEnumerator(nested);
+                    }
+                    else {
+                        throw new InvalidOperationException("Synchronous calculation cannot yield execution. Use asynchronous calculation instead.");
+                    }
                 }
+            }
+            finally {
+                (enumer as IDisposable)?.Dispose();
             }
         }
 
-        protected DslCalculator Calculator
-        {
+        protected DslCalculator Calculator {
             get { return m_Calculator; }
         }
-        protected internal Dsl.ISyntaxComponent SyntaxComponent
-        {
+        protected internal Dsl.ISyntaxComponent SyntaxComponent {
             get { return m_Dsl; }
         }
 
@@ -391,15 +408,30 @@ namespace StoryScript.DslExpression
         protected override IEnumerator DoCalc(AsyncCalcResult result)
         {
             var operands = Calculator.NewCalculatorValueList();
-            for (int i = 0; i < m_Exps.Count; ++i) {
-                var _ei1 = m_Exps[i].Calc(result);
-                while (_ei1.MoveNext()) { yield return _ei1.Current; }
-                operands.Add(result.Value);
+            try {
+                for (int i = 0; i < m_Exps.Count; ++i) {
+                    var _ei1 = m_Exps[i].Calc(result);
+                    try {
+                        while (_ei1.MoveNext()) { yield return _ei1.Current; }
+                    }
+                    finally {
+                        (_ei1 as IDisposable)?.Dispose();
+                    }
+                    operands.Add(result.Value);
+                }
+                var _ei2 = OnCalc(operands, result);
+                try {
+                    while (_ei2.MoveNext()) { yield return _ei2.Current; }
+                }
+                finally {
+                    (_ei2 as IDisposable)?.Dispose();
+                }
             }
-            var _ei2 = OnCalc(operands, result);
-            while (_ei2.MoveNext()) { yield return _ei2.Current; }
-            Calculator.RecycleCalculatorValueList(operands);
+            finally {
+                Calculator.RecycleCalculatorValueList(operands);
+            }
         }
+
         protected override bool Load(IList<IExpression> exps)
         {
             m_Exps = exps;
@@ -1982,8 +2014,13 @@ namespace StoryScript.DslExpression
                     BoxedValue condVal;
                     if (clause.Condition.IsAsync) {
                         var _ei1 = clause.Condition.Calc(result);
-                        while (_ei1.MoveNext()) { yield return _ei1.Current; }
-                        condVal = result.Value;
+                        try {
+                            while (_ei1.MoveNext()) { yield return _ei1.Current; }
+                            condVal = result.Value;
+                        }
+                        finally {
+                            (_ei1 as System.IDisposable)?.Dispose();
+                        }
                     }
                     else {
                         condVal = clause.Condition.Calc();
@@ -1994,8 +2031,13 @@ namespace StoryScript.DslExpression
                             BoxedValue tv;
                             if (exp.IsAsync) {
                                 var _ei2 = exp.Calc(result);
-                                while (_ei2.MoveNext()) { yield return _ei2.Current; }
-                                tv = result.Value;
+                                try {
+                                    while (_ei2.MoveNext()) { yield return _ei2.Current; }
+                                    tv = result.Value;
+                                }
+                                finally {
+                                    (_ei2 as System.IDisposable)?.Dispose();
+                                }
                             }
                             else {
                                 tv = exp.Calc();
@@ -2020,8 +2062,13 @@ namespace StoryScript.DslExpression
                         BoxedValue tv;
                         if (exp.IsAsync) {
                             var _ei3 = exp.Calc(result);
-                            while (_ei3.MoveNext()) { yield return _ei3.Current; }
-                            tv = result.Value;
+                            try {
+                                while (_ei3.MoveNext()) { yield return _ei3.Current; }
+                                tv = result.Value;
+                            }
+                            finally {
+                                (_ei3 as System.IDisposable)?.Dispose();
+                            }
                         }
                         else {
                             tv = exp.Calc();
@@ -2192,8 +2239,13 @@ namespace StoryScript.DslExpression
                 BoxedValue condVal;
                 if (m_Condition.IsAsync) {
                     var _ei1 = m_Condition.Calc(result);
-                    while (_ei1.MoveNext()) { yield return _ei1.Current; }
-                    condVal = result.Value;
+                    try {
+                        while (_ei1.MoveNext()) { yield return _ei1.Current; }
+                        condVal = result.Value;
+                    }
+                    finally {
+                        (_ei1 as System.IDisposable)?.Dispose();
+                    }
                 }
                 else {
                     condVal = m_Condition.Calc();
@@ -2204,8 +2256,13 @@ namespace StoryScript.DslExpression
                         BoxedValue tv;
                         if (exp.IsAsync) {
                             var _ei2 = exp.Calc(result);
-                            while (_ei2.MoveNext()) { yield return _ei2.Current; }
-                            tv = result.Value;
+                            try {
+                                while (_ei2.MoveNext()) { yield return _ei2.Current; }
+                                tv = result.Value;
+                            }
+                            finally {
+                                (_ei2 as System.IDisposable)?.Dispose();
+                            }
                         }
                         else {
                             tv = exp.Calc();
@@ -2335,8 +2392,13 @@ namespace StoryScript.DslExpression
             BoxedValue countVal;
             if (m_Count.IsAsync) {
                 var _ei1 = m_Count.Calc(result);
-                while (_ei1.MoveNext()) { yield return _ei1.Current; }
-                countVal = result.Value;
+                try {
+                    while (_ei1.MoveNext()) { yield return _ei1.Current; }
+                    countVal = result.Value;
+                }
+                finally {
+                    (_ei1 as System.IDisposable)?.Dispose();
+                }
             }
             else {
                 countVal = m_Count.Calc();
@@ -2349,8 +2411,13 @@ namespace StoryScript.DslExpression
                     BoxedValue tv;
                     if (exp.IsAsync) {
                         var _ei2 = exp.Calc(result);
-                        while (_ei2.MoveNext()) { yield return _ei2.Current; }
-                        tv = result.Value;
+                        try {
+                            while (_ei2.MoveNext()) { yield return _ei2.Current; }
+                            tv = result.Value;
+                        }
+                        finally {
+                            (_ei2 as System.IDisposable)?.Dispose();
+                        }
                     }
                     else {
                         tv = exp.Calc();
@@ -2449,18 +2516,28 @@ namespace StoryScript.DslExpression
             IEnumerable obj = list.As<IEnumerable>();
             if (null != obj && obj is IEnumerable<BoxedValue> bvEnumer) {
                 var enumer = bvEnumer.GetEnumerator();
-                while (enumer.MoveNext()) {
-                    var val = enumer.Current;
-                    if (LoopOnce(val, ref v))
-                        return v;
+                try {
+                    while (enumer.MoveNext()) {
+                        var val = enumer.Current;
+                        if (LoopOnce(val, ref v))
+                            return v;
+                    }
+                }
+                finally {
+                    enumer.Dispose();
                 }
             }
             else if (null != obj) {
                 var enumer = obj.GetEnumerator();
-                while (enumer.MoveNext()) {
-                    var val = BoxedValue.FromObject(enumer.Current);
-                    if (LoopOnce(val, ref v))
-                        return v;
+                try {
+                    while (enumer.MoveNext()) {
+                        var val = BoxedValue.FromObject(enumer.Current);
+                        if (LoopOnce(val, ref v))
+                            return v;
+                    }
+                }
+                finally {
+                    (enumer as System.IDisposable)?.Dispose();
                 }
             }
             return v;
@@ -2538,7 +2615,12 @@ namespace StoryScript.DslExpression
             var listResult = new AsyncCalcResult();
             if (m_List.IsAsync) {
                 var _ei1 = m_List.Calc(listResult);
-                while (_ei1.MoveNext()) { yield return _ei1.Current; }
+                try {
+                    while (_ei1.MoveNext()) { yield return _ei1.Current; }
+                }
+                finally {
+                    (_ei1 as System.IDisposable)?.Dispose();
+                }
             }
             else {
                 listResult.Value = m_List.Calc();
@@ -2547,28 +2629,48 @@ namespace StoryScript.DslExpression
             IEnumerable obj = list.As<IEnumerable>();
             if (null != obj && obj is IEnumerable<BoxedValue> bvEnumer) {
                 var enumer = bvEnumer.GetEnumerator();
-                while (enumer.MoveNext()) {
-                    var val = enumer.Current;
-                    var loopResult = new AsyncCalcResult();
-                    var _ei2 = LoopOnceAsync(val, loopResult);
-                    while (_ei2.MoveNext()) { yield return _ei2.Current; }
-                    v = loopResult.Value;
-                    if (loopResult.IsBreak) {
-                        break;
+                try {
+                    while (enumer.MoveNext()) {
+                        var val = enumer.Current;
+                        var loopResult = new AsyncCalcResult();
+                        var _ei2 = LoopOnceAsync(val, loopResult);
+                        try {
+                            while (_ei2.MoveNext()) { yield return _ei2.Current; }
+                        }
+                        finally {
+                            (_ei2 as System.IDisposable)?.Dispose();
+                        }
+                        v = loopResult.Value;
+                        if (loopResult.IsBreak) {
+                            break;
+                        }
                     }
+                }
+                finally {
+                    enumer.Dispose();
                 }
             }
             else if (null != obj) {
                 var enumer = obj.GetEnumerator();
-                while (enumer.MoveNext()) {
-                    var val = BoxedValue.FromObject(enumer.Current);
-                    var loopResult = new AsyncCalcResult();
-                    var _ei3 = LoopOnceAsync(val, loopResult);
-                    while (_ei3.MoveNext()) { yield return _ei3.Current; }
-                    v = loopResult.Value;
-                    if (loopResult.IsBreak) {
-                        break;
+                try {
+                    while (enumer.MoveNext()) {
+                        var val = BoxedValue.FromObject(enumer.Current);
+                        var loopResult = new AsyncCalcResult();
+                        var _ei3 = LoopOnceAsync(val, loopResult);
+                        try {
+                            while (_ei3.MoveNext()) { yield return _ei3.Current; }
+                        }
+                        finally {
+                            (_ei3 as System.IDisposable)?.Dispose();
+                        }
+                        v = loopResult.Value;
+                        if (loopResult.IsBreak) {
+                            break;
+                        }
                     }
+                }
+                finally {
+                    (enumer as System.IDisposable)?.Dispose();
                 }
             }
             result.Value = v;
@@ -2582,8 +2684,13 @@ namespace StoryScript.DslExpression
                 if (exp.IsAsync) {
                     var subResult = new AsyncCalcResult();
                     var _ei = exp.Calc(subResult);
-                    while (_ei.MoveNext()) { yield return _ei.Current; }
-                    v = subResult.Value;
+                    try {
+                        while (_ei.MoveNext()) { yield return _ei.Current; }
+                        v = subResult.Value;
+                    }
+                    finally {
+                        (_ei as System.IDisposable)?.Dispose();
+                    }
                 }
                 else {
                     v = exp.Calc();
@@ -2638,27 +2745,32 @@ namespace StoryScript.DslExpression
                 list.Add(val);
             }
             var enumer = list.GetEnumerator();
-            while (enumer.MoveNext()) {
-                var val = enumer.Current;
-                Calculator.SetVariable("$$", val);
-                for (int index = 0; index < m_Expressions.Count; ++index) {
-                    BoxedValue tv = m_Expressions[index].Calc();
-                    if (Calculator.RunState == RunStateEnum.Continue) {
-                        Calculator.RunState = RunStateEnum.Normal;
-                        break;
-                    }
-                    else if (Calculator.RunState != RunStateEnum.Normal) {
-                        if (Calculator.RunState == RunStateEnum.Return || Calculator.RunState == RunStateEnum.Redirect) {
+            try {
+                while (enumer.MoveNext()) {
+                    var val = enumer.Current;
+                    Calculator.SetVariable("$$", val);
+                    for (int index = 0; index < m_Expressions.Count; ++index) {
+                        BoxedValue tv = m_Expressions[index].Calc();
+                        if (Calculator.RunState == RunStateEnum.Continue) {
+                            Calculator.RunState = RunStateEnum.Normal;
+                            break;
+                        }
+                        else if (Calculator.RunState != RunStateEnum.Normal) {
+                            if (Calculator.RunState == RunStateEnum.Return || Calculator.RunState == RunStateEnum.Redirect) {
+                                v = tv;
+                            }
+                            if (Calculator.RunState == RunStateEnum.Break)
+                                Calculator.RunState = RunStateEnum.Normal;
+                            return v;
+                        }
+                        else {
                             v = tv;
                         }
-                        if (Calculator.RunState == RunStateEnum.Break)
-                            Calculator.RunState = RunStateEnum.Normal;
-                        return v;
-                    }
-                    else {
-                        v = tv;
                     }
                 }
+            }
+            finally {
+                enumer.Dispose();
             }
             return v;
         }
@@ -2671,7 +2783,12 @@ namespace StoryScript.DslExpression
                 if (exp.IsAsync) {
                     var subResult = new AsyncCalcResult();
                     var _ei1 = exp.Calc(subResult);
-                    while (_ei1.MoveNext()) { yield return _ei1.Current; }
+                    try {
+                        while (_ei1.MoveNext()) { yield return _ei1.Current; }
+                    }
+                    finally {
+                        (_ei1 as System.IDisposable)?.Dispose();
+                    }
                     list.Add(subResult.Value);
                 }
                 else {
@@ -2679,38 +2796,48 @@ namespace StoryScript.DslExpression
                 }
             }
             var enumer = list.GetEnumerator();
-            while (enumer.MoveNext()) {
-                var val = enumer.Current;
-                Calculator.SetVariable("$$", val);
-                for (int index = 0; index < m_Expressions.Count; ++index) {
-                    var exp = m_Expressions[index];
-                    BoxedValue tv;
-                    if (exp.IsAsync) {
-                        var subResult = new AsyncCalcResult();
-                        var _ei2 = exp.Calc(subResult);
-                        while (_ei2.MoveNext()) { yield return _ei2.Current; }
-                        tv = subResult.Value;
-                    }
-                    else {
-                        tv = exp.Calc();
-                    }
-                    if (Calculator.RunState == RunStateEnum.Continue) {
-                        Calculator.RunState = RunStateEnum.Normal;
-                        break;
-                    }
-                    else if (Calculator.RunState != RunStateEnum.Normal) {
-                        if (Calculator.RunState == RunStateEnum.Return || Calculator.RunState == RunStateEnum.Redirect) {
+            try {
+                while (enumer.MoveNext()) {
+                    var val = enumer.Current;
+                    Calculator.SetVariable("$$", val);
+                    for (int index = 0; index < m_Expressions.Count; ++index) {
+                        var exp = m_Expressions[index];
+                        BoxedValue tv;
+                        if (exp.IsAsync) {
+                            var subResult = new AsyncCalcResult();
+                            var _ei2 = exp.Calc(subResult);
+                            try {
+                                while (_ei2.MoveNext()) { yield return _ei2.Current; }
+                            }
+                            finally {
+                                (_ei2 as System.IDisposable)?.Dispose();
+                            }
+                            tv = subResult.Value;
+                        }
+                        else {
+                            tv = exp.Calc();
+                        }
+                        if (Calculator.RunState == RunStateEnum.Continue) {
+                            Calculator.RunState = RunStateEnum.Normal;
+                            break;
+                        }
+                        else if (Calculator.RunState != RunStateEnum.Normal) {
+                            if (Calculator.RunState == RunStateEnum.Return || Calculator.RunState == RunStateEnum.Redirect) {
+                                v = tv;
+                            }
+                            if (Calculator.RunState == RunStateEnum.Break)
+                                Calculator.RunState = RunStateEnum.Normal;
+                            result.Value = v;
+                            yield break;
+                        }
+                        else {
                             v = tv;
                         }
-                        if (Calculator.RunState == RunStateEnum.Break)
-                            Calculator.RunState = RunStateEnum.Normal;
-                        result.Value = v;
-                        yield break;
-                    }
-                    else {
-                        v = tv;
                     }
                 }
+            }
+            finally {
+                enumer.Dispose();
             }
             result.Value = v;
         }
@@ -3644,14 +3771,25 @@ namespace StoryScript.DslExpression
                         IEnumerable enumer = obj as IEnumerable;
                         if (null != enumer && bvMethod.IsInteger) {
                             int index = bvMethod.GetInt();
+                            if (index < 0)
+                                return ret;
                             var e = enumer.GetEnumerator();
-                            for (int i = 0; i <= index; ++i) {
-                                e.MoveNext();
+                            try {
+                                while (e.MoveNext()) {
+                                    if (index == 0) {
+                                        var d = e.Current as Delegate;
+                                        if (null != d) {
+                                            ret = BoxedValue.FromObject(d.DynamicInvoke(_args));
+                                        }
+                                        break;
+                                    }
+                                    --index;
+                                }
                             }
-                            var d = e.Current as Delegate;
-                            if (null != d) {
-                                ret = BoxedValue.FromObject(d.DynamicInvoke(_args));
+                            finally {
+                                (e as System.IDisposable)?.Dispose();
                             }
+
                         }
                     }
                 }
@@ -3745,11 +3883,21 @@ namespace StoryScript.DslExpression
                         IEnumerable enumer = obj as IEnumerable;
                         if (null != enumer && bvMethod.IsInteger) {
                             int index = bvMethod.GetInt();
+                            if (index < 0)
+                                return ret;
                             var e = enumer.GetEnumerator();
-                            for (int i = 0; i <= index; ++i) {
-                                e.MoveNext();
+                            try {
+                                while (e.MoveNext()) {
+                                    if (index == 0) {
+                                        ret = BoxedValue.FromObject(e.Current);
+                                        break;
+                                    }
+                                    --index;
+                                }
                             }
-                            ret = BoxedValue.FromObject(e.Current);
+                            finally {
+                                (e as System.IDisposable)?.Dispose();
+                            }
                         }
                     }
                 }
@@ -3901,15 +4049,24 @@ namespace StoryScript.DslExpression
                 throw new Exception("Expected: await(\"func_name\", arg1, arg2, ...) api");
             var funcName = operands[0].AsString;
             var args = Calculator.NewCalculatorValueList();
-            for (int i = 1; i < operands.Count; ++i) {
-                args.Add(operands[i]);
+            try {
+                for (int i = 1; i < operands.Count; ++i) {
+                    args.Add(operands[i]);
+                }
+                var asyncResult = new AsyncCalcResult();
+                var enumerator = Calculator.CalcAsync(funcName, args, asyncResult);
+                try {
+                    while (enumerator.MoveNext()) { yield return enumerator.Current; }
+                    result.Value = asyncResult.Value;
+                }
+                finally {
+                    (enumerator as IDisposable)?.Dispose();
+                }
             }
-            var asyncResult = new AsyncCalcResult();
-            var enumerator = Calculator.CalcAsync(funcName, args, asyncResult);
-            Calculator.RecycleCalculatorValueList(args);
-            var _ei = enumerator;
-            while (_ei.MoveNext()) { yield return _ei.Current; }
-            result.Value = asyncResult.Value;
+            finally {
+                Calculator.RecycleCalculatorValueList(args);
+            }
+
         }
     }
     internal sealed class AwaitWhileExp : SimpleAsyncExpressionBase
@@ -3920,16 +4077,21 @@ namespace StoryScript.DslExpression
                 throw new Exception("Expected: awaitwhile(\"func_name\", arg1, arg2, ...) api, loop call sync function while result is true");
             var funcName = operands[0].AsString;
             var args = Calculator.NewCalculatorValueList();
-            for (int i = 1; i < operands.Count; ++i) {
-                args.Add(operands[i]);
+            try {
+                for (int i = 1; i < operands.Count; ++i) {
+                    args.Add(operands[i]);
+                }
+                BoxedValue v = Calculator.Calc(funcName, args);
+                while (v.GetBool()) {
+                    yield return null;
+                    v = Calculator.Calc(funcName, args);
+                }
+                result.Value = v;
             }
-            BoxedValue v = Calculator.Calc(funcName, args);
-            while (v.GetBool()) {
-                yield return null;
-                v = Calculator.Calc(funcName, args);
+            finally {
+                Calculator.RecycleCalculatorValueList(args);
             }
-            Calculator.RecycleCalculatorValueList(args);
-            result.Value = v;
+
         }
     }
     internal sealed class AwaitUntilExp : SimpleAsyncExpressionBase
@@ -3940,16 +4102,21 @@ namespace StoryScript.DslExpression
                 throw new Exception("Expected: awaituntil(\"func_name\", arg1, arg2, ...) api, loop call sync function until result is true");
             var funcName = operands[0].AsString;
             var args = Calculator.NewCalculatorValueList();
-            for (int i = 1; i < operands.Count; ++i) {
-                args.Add(operands[i]);
+            try {
+                for (int i = 1; i < operands.Count; ++i) {
+                    args.Add(operands[i]);
+                }
+                BoxedValue v = Calculator.Calc(funcName, args);
+                while (!v.GetBool()) {
+                    yield return null;
+                    v = Calculator.Calc(funcName, args);
+                }
+                result.Value = v;
             }
-            BoxedValue v = Calculator.Calc(funcName, args);
-            while (!v.GetBool()) {
-                yield return null;
-                v = Calculator.Calc(funcName, args);
+            finally {
+                Calculator.RecycleCalculatorValueList(args);
             }
-            Calculator.RecycleCalculatorValueList(args);
-            result.Value = v;
+
         }
     }
     internal sealed class AwaitTimeExp : SimpleAsyncExpressionBase
@@ -4008,8 +4175,7 @@ namespace StoryScript.DslExpression
         public TrySetVariableDelegation OnTrySetVariable;
         public LoadFailbackDelegation OnLoadFailback;
 
-        public DslCalculatorApiRegistry ApiRegistry
-        {
+        public DslCalculatorApiRegistry ApiRegistry {
             get { return m_ApiRegistry; }
             set { m_ApiRegistry = value; }
         }
@@ -4025,8 +4191,7 @@ namespace StoryScript.DslExpression
                 m_ApiRegistry.Register(name, doc, factory);
             }
         }
-        public SortedList<string, string> ApiDocs
-        {
+        public SortedList<string, string> ApiDocs {
             get {
                 if (null != m_ApiRegistry) {
                     return m_ApiRegistry.ApiDocs;
@@ -4037,18 +4202,31 @@ namespace StoryScript.DslExpression
         public void Clear()
         {
             m_Funcs.Clear();
+            m_FuncCalls.Clear();
             m_Stack.Clear();
             m_GlobalSyncCalculationStack.Clear();
             m_NamedGlobalVariableIndexes.Clear();
             m_GlobalVariables.Clear();
+            m_Pool.Clear();
         }
+        // Call only after all active calculations and coroutine disposal have finished.
+        internal void ResetRuntimeState()
+        {
+            m_Stack.Clear();
+            m_GlobalSyncCalculationStack.Clear();
+            m_RunState = RunStateEnum.Normal;
+            for (int i = 0; i < m_GlobalVariables.Count; ++i) {
+                m_GlobalVariables[i] = BoxedValue.NullObject;
+            }
+            m_Pool.Clear();
+        }
+
         public void ClearGlobalVariables()
         {
             m_NamedGlobalVariableIndexes.Clear();
             m_GlobalVariables.Clear();
         }
-        public IEnumerable<string> GlobalVariableNames
-        {
+        public IEnumerable<string> GlobalVariableNames {
             get { return m_NamedGlobalVariableIndexes.Keys; }
         }
         public bool TryGetGlobalVariable(string v, out BoxedValue result)
@@ -4256,8 +4434,13 @@ namespace StoryScript.DslExpression
             FuncInfo funcInfo;
             if (m_Funcs.TryGetValue(func, out funcInfo)) {
                 var enumerator = CalcAsync<object>(args, null, funcInfo, asyncCalcResult);
-                while (enumerator.MoveNext()) {
-                    yield return enumerator.Current;
+                try {
+                    while (enumerator.MoveNext()) {
+                        yield return enumerator.Current;
+                    }
+                }
+                finally {
+                    (enumerator as IDisposable)?.Dispose();
                 }
             }
             else {
@@ -4328,12 +4511,16 @@ namespace StoryScript.DslExpression
         private BoxedValue Calc<T>(IList<BoxedValue> args, T funcContext, FuncInfo funcInfo) where T : class
         {
             LocalStackPush(args, funcContext, funcInfo);
-            SyncCalculationPush();
             try {
-                return CalcInCurrentContext(funcInfo.Codes);
+                SyncCalculationPush();
+                try {
+                    return CalcInCurrentContext(funcInfo.Codes);
+                }
+                finally {
+                    SyncCalculationPop();
+                }
             }
             finally {
-                SyncCalculationPop();
                 LocalStackPop();
             }
         }
@@ -4345,57 +4532,62 @@ namespace StoryScript.DslExpression
                 IEnumerator asyncEnumerator = null;
                 AsyncCalcResult asyncResult = null;
                 try {
-                    if (exp.IsAsync) {
-                        asyncResult = new AsyncCalcResult();
-                        asyncEnumerator = exp.Calc(asyncResult);
+                    try {
+                        if (exp.IsAsync) {
+                            asyncResult = new AsyncCalcResult();
+                            asyncEnumerator = exp.Calc(asyncResult);
+                        }
+                        else {
+                            ret = exp.Calc();
+                        }
+                        if (m_RunState == RunStateEnum.Return) {
+                            m_RunState = RunStateEnum.Normal;
+                            break;
+                        }
+                        else if (m_RunState == RunStateEnum.Redirect) {
+                            break;
+                        }
                     }
-                    else {
-                        ret = exp.Calc();
+                    catch (DirectoryNotFoundException ex5) {
+                        Log("calc:[{0}] exception:{1}\n{2}", exp.ToString(), ex5.Message, ex5.StackTrace);
+                        OutputInnerException(ex5);
                     }
-                    if (m_RunState == RunStateEnum.Return) {
-                        m_RunState = RunStateEnum.Normal;
+                    catch (FileNotFoundException ex4) {
+                        Log("calc:[{0}] exception:{1}\n{2}", exp.ToString(), ex4.Message, ex4.StackTrace);
+                        OutputInnerException(ex4);
+                    }
+                    catch (IOException ex3) {
+                        Log("calc:[{0}] exception:{1}\n{2}", exp.ToString(), ex3.Message, ex3.StackTrace);
+                        OutputInnerException(ex3);
+                        ret = -1;
+                    }
+                    catch (UnauthorizedAccessException ex2) {
+                        Log("calc:[{0}] exception:{1}\n{2}", exp.ToString(), ex2.Message, ex2.StackTrace);
+                        OutputInnerException(ex2);
+                        ret = -1;
+                    }
+                    catch (NotSupportedException ex1) {
+                        Log("calc:[{0}] exception:{1}\n{2}", exp.ToString(), ex1.Message, ex1.StackTrace);
+                        OutputInnerException(ex1);
+                        ret = -1;
+                    }
+                    catch (Exception ex) {
+                        Log("calc:[{0}] exception:{1}\n{2}", exp.ToString(), ex.Message, ex.StackTrace);
+                        OutputInnerException(ex);
+                        ret = -1;
                         break;
                     }
-                    else if (m_RunState == RunStateEnum.Redirect) {
-                        break;
+                    if (asyncEnumerator != null) {
+                        while (asyncEnumerator.MoveNext()) {
+                            yield return asyncEnumerator.Current;
+                        }
+                        if (exp.IsAsync) {
+                            ret = asyncResult.Value;
+                        }
                     }
                 }
-                catch (DirectoryNotFoundException ex5) {
-                    Log("calc:[{0}] exception:{1}\n{2}", exp.ToString(), ex5.Message, ex5.StackTrace);
-                    OutputInnerException(ex5);
-                }
-                catch (FileNotFoundException ex4) {
-                    Log("calc:[{0}] exception:{1}\n{2}", exp.ToString(), ex4.Message, ex4.StackTrace);
-                    OutputInnerException(ex4);
-                }
-                catch (IOException ex3) {
-                    Log("calc:[{0}] exception:{1}\n{2}", exp.ToString(), ex3.Message, ex3.StackTrace);
-                    OutputInnerException(ex3);
-                    ret = -1;
-                }
-                catch (UnauthorizedAccessException ex2) {
-                    Log("calc:[{0}] exception:{1}\n{2}", exp.ToString(), ex2.Message, ex2.StackTrace);
-                    OutputInnerException(ex2);
-                    ret = -1;
-                }
-                catch (NotSupportedException ex1) {
-                    Log("calc:[{0}] exception:{1}\n{2}", exp.ToString(), ex1.Message, ex1.StackTrace);
-                    OutputInnerException(ex1);
-                    ret = -1;
-                }
-                catch (Exception ex) {
-                    Log("calc:[{0}] exception:{1}\n{2}", exp.ToString(), ex.Message, ex.StackTrace);
-                    OutputInnerException(ex);
-                    ret = -1;
-                    break;
-                }
-                if (asyncEnumerator != null) {
-                    while (asyncEnumerator.MoveNext()) {
-                        yield return asyncEnumerator.Current;
-                    }
-                    if (exp.IsAsync) {
-                        ret = asyncResult.Value;
-                    }
+                finally {
+                    (asyncEnumerator as IDisposable)?.Dispose();
                 }
             }
             asyncCalcResult.Value = ret;
@@ -4405,16 +4597,20 @@ namespace StoryScript.DslExpression
             LocalStackPush(args, funcContext, funcInfo);
             try {
                 var enumerator = CalcInCurrentContextAsync(funcInfo.Codes, asyncCalcResult);
-                while (enumerator.MoveNext()) {
-                    yield return enumerator.Current;
+                try {
+                    while (enumerator.MoveNext()) {
+                        yield return enumerator.Current;
+                    }
+                }
+                finally {
+                    (enumerator as IDisposable)?.Dispose();
                 }
             }
             finally {
                 LocalStackPop();
             }
         }
-        public RunStateEnum RunState
-        {
+        public RunStateEnum RunState {
             get { return m_RunState; }
             set { m_RunState = value; }
         }
@@ -4439,11 +4635,13 @@ namespace StoryScript.DslExpression
         public void SetAsyncContext(AsyncTaskRuntimeContext ctx)
         {
             m_Stack = (Stack<StackInfo>)ctx.Stack;
+            m_GlobalSyncCalculationStack = ctx.GlobalSyncCalculationStack;
             m_RunState = ctx.RunState;
         }
         public void SaveAsyncContext(AsyncTaskRuntimeContext ctx)
         {
             ctx.Stack = m_Stack;
+            ctx.GlobalSyncCalculationStack = m_GlobalSyncCalculationStack;
             ctx.RunState = m_RunState;
         }
         public T GetFuncContext<T>() where T : class
@@ -4454,8 +4652,7 @@ namespace StoryScript.DslExpression
             }
             return null;
         }
-        public IList<BoxedValue> Arguments
-        {
+        public IList<BoxedValue> Arguments {
             get {
                 var stackInfo = m_Stack.Peek();
                 return stackInfo.Args;
@@ -4889,14 +5086,23 @@ namespace StoryScript.DslExpression
         private void LocalStackPush<T>(IList<BoxedValue> args, T funcContext, FuncInfo funcInfo) where T : class
         {
             var si = StackInfo.New();
-            if (null != args) {
-                si.Args.AddRange(args);
-                for (int ix = args.Count; ix < funcInfo.ParamNum; ++ix) {
-                    si.Args.Add(BoxedValue.NullObject);
+            try {
+                if (null != args) {
+                    si.Args.AddRange(args);
+                    for (int ix = args.Count; ix < funcInfo.ParamNum; ++ix) {
+                        si.Args.Add(BoxedValue.NullObject);
+                    }
                 }
+                si.Init(funcInfo, funcContext);
+                if (IsInSyncCalculation) {
+                    si.SyncCalculationStack.Push(true);
+                }
+                m_Stack.Push(si);
             }
-            si.Init(funcInfo, funcContext);
-            m_Stack.Push(si);
+            catch {
+                si.Recycle();
+                throw;
+            }
         }
         private void LocalStackPop()
         {
@@ -4967,22 +5173,19 @@ namespace StoryScript.DslExpression
                 LocalVariables.Add(val);
             }
         }
-        private Dictionary<string, int> LocalVariableIndexes
-        {
+        private Dictionary<string, int> LocalVariableIndexes {
             get {
                 var stackInfo = m_Stack.Peek();
                 return stackInfo.FuncInfo.LocalVarIndexes;
             }
         }
-        private List<BoxedValue> LocalVariables
-        {
+        private List<BoxedValue> LocalVariables {
             get {
                 var stackInfo = m_Stack.Peek();
                 return stackInfo.LocalVars;
             }
         }
-        private Stack<bool> SyncCalculationStack
-        {
+        private Stack<bool> SyncCalculationStack {
             get {
                 if (m_Stack.Count > 0) {
                     var stackInfo = m_Stack.Peek();
@@ -5038,13 +5241,11 @@ namespace StoryScript.DslExpression
         private BoxedValueListPool m_Pool = new BoxedValueListPool(16);
         private List<FunctionCall> m_FuncCalls = new List<FunctionCall>();
 
-        public static int CheckStartInterval
-        {
+        public static int CheckStartInterval {
             get { return s_CheckStartInterval; }
             set { s_CheckStartInterval = value; }
         }
-        public static List<Task<int>> Tasks
-        {
+        public static List<Task<int>> Tasks {
             get { return s_Tasks; }
         }
         public static void CleanupCompletedTasks()
