@@ -50,8 +50,7 @@
               "RelativeToolTip": "ScriptableDslHelper.cs",
               "ViewState": "AgIAAKUAAAAAAAAAAAAwwLYAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-15T13:30:47.006Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-15T13:30:47.006Z"
             },
             {
               "$type": "Document",
@@ -63,8 +62,7 @@
               "RelativeToolTip": "DslSyntaxTransformer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-15T13:28:28.605Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-15T13:28:28.605Z"
             },
             {
               "$type": "Document",
@@ -76,8 +74,7 @@
               "RelativeToolTip": "DslCalculatorApiRegistry.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAwwA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-14T03:19:08.145Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-14T03:19:08.145Z"
             },
             {
               "$type": "Document",
@@ -102,8 +99,7 @@
               "RelativeToolTip": "Util\\Converter.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-14T03:03:20.247Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-14T03:03:20.247Z"
             },
             {
               "$type": "Document",
@@ -115,8 +111,7 @@
               "RelativeToolTip": "Util\\BomHelper.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEAAAABpAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-14T03:02:53.096Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-14T03:02:53.096Z"
             },
             {
               "$type": "Document",
@@ -128,8 +123,7 @@
               "RelativeToolTip": "Util\\GenericUtility.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-06T03:07:59.259Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-06T03:07:59.259Z"
             }
           ]
         }
