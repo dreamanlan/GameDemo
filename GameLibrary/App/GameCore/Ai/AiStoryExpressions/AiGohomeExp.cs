@@ -14,7 +14,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class AiGohomeExp : SimpleAsyncExpressionBase
     {
-        protected override IEnumerator OnCalc(IList<BoxedValue> operands, AsyncCalcResult result)
+        protected override IEnumerator OnCalc(DslCalculator calculator, IList<BoxedValue> operands, AsyncCalcResult result)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: ai_go_home(objId)");

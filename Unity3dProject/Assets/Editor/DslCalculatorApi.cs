@@ -24,7 +24,7 @@ namespace StoryScript.DslExpression
 {
     internal class GetObjectByIdExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             UnityEngine.Object r = null;
             if (operands.Count >= 1) {
@@ -39,7 +39,7 @@ namespace StoryScript.DslExpression
     }
     internal class GetObjectIdExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             int r = 0;
             if (operands.Count >= 1) {
@@ -53,7 +53,7 @@ namespace StoryScript.DslExpression
     }
     internal class AssetPath2GUIDExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             string r = string.Empty;
 #if UNITY_EDITOR
@@ -69,7 +69,7 @@ namespace StoryScript.DslExpression
     }
     internal class GUID2AssetPathExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             string r = string.Empty;
 #if UNITY_EDITOR
@@ -85,7 +85,7 @@ namespace StoryScript.DslExpression
     }
     internal class GetAssetPathExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             string r = null;
 #if UNITY_EDITOR
@@ -105,7 +105,7 @@ namespace StoryScript.DslExpression
     }
     internal class GetGuidAndLocalFileIdentifierExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var r = BoxedValue.NullObject;
 #if UNITY_EDITOR
@@ -128,7 +128,7 @@ namespace StoryScript.DslExpression
     }
     internal class GetDependenciesExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             string[] ret = null;
 #if UNITY_EDITOR
@@ -163,7 +163,7 @@ namespace StoryScript.DslExpression
     }
     internal class GetDirectDependenciesExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             string[] ret = null;
 #if UNITY_EDITOR
@@ -198,7 +198,7 @@ namespace StoryScript.DslExpression
     }
     internal class GetDependenciesGraphExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             string[] ret = null;
 #if UNITY_EDITOR
@@ -254,7 +254,7 @@ namespace StoryScript.DslExpression
     }
     internal class GetAssetImporterExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             BoxedValue r = BoxedValue.NullObject;
 #if UNITY_EDITOR
@@ -270,7 +270,7 @@ namespace StoryScript.DslExpression
     }
     internal class LoadAssetExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var r = BoxedValue.NullObject;
 #if UNITY_EDITOR
@@ -286,7 +286,7 @@ namespace StoryScript.DslExpression
     }
     internal class LoadAssetsExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var r = BoxedValue.NullObject;
 #if UNITY_EDITOR
@@ -302,7 +302,7 @@ namespace StoryScript.DslExpression
     }
     internal class UnloadAssetExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count >= 1) {
                 var obj = operands[0].As<UnityEngine.Object>();
@@ -339,7 +339,7 @@ namespace StoryScript.DslExpression
     }
     internal class AddObjectToAssetExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var r = false;
 #if UNITY_EDITOR
@@ -362,7 +362,7 @@ namespace StoryScript.DslExpression
     }
     internal class RemoveObjectFromAssetExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var r = false;
 #if UNITY_EDITOR
@@ -379,7 +379,7 @@ namespace StoryScript.DslExpression
     }
     internal class FromJsonOverwriteExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var r = false;
 #if UNITY_EDITOR
@@ -397,7 +397,7 @@ namespace StoryScript.DslExpression
     }
     internal class ToJsonExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var r = BoxedValue.EmptyString;
 #if UNITY_EDITOR
@@ -414,7 +414,7 @@ namespace StoryScript.DslExpression
     }
     internal sealed class GetStringInLengthExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2 || operands.Count > 3) {
                 throw new Exception("Expected: getstringinlength(str, len[, get_the_end_def_false])");
@@ -435,7 +435,7 @@ namespace StoryScript.DslExpression
     }
     internal class GetPrefabTypeExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var r = BoxedValue.NullObject;
 #if UNITY_EDITOR
@@ -451,7 +451,7 @@ namespace StoryScript.DslExpression
     }
     internal class GetPrefabStatusExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var r = BoxedValue.NullObject;
 #if UNITY_EDITOR
@@ -467,7 +467,7 @@ namespace StoryScript.DslExpression
     }
     internal class GetPrefabObjectExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var r = BoxedValue.NullObject;
 #if UNITY_EDITOR
@@ -483,7 +483,7 @@ namespace StoryScript.DslExpression
     }
     internal class GetPrefabParentExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var r = BoxedValue.NullObject;
 #if UNITY_EDITOR
@@ -499,7 +499,7 @@ namespace StoryScript.DslExpression
     }
     internal class GetPrefabParentAtPathExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var r = BoxedValue.NullObject;
 #if UNITY_EDITOR
@@ -516,7 +516,7 @@ namespace StoryScript.DslExpression
     }
     internal class GetPrefabParentFromOriginExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var r = BoxedValue.NullObject;
 #if UNITY_EDITOR
@@ -532,7 +532,7 @@ namespace StoryScript.DslExpression
     }
     internal class GetNearstPrefabRootExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var r = BoxedValue.NullObject;
 #if UNITY_EDITOR
@@ -548,7 +548,7 @@ namespace StoryScript.DslExpression
     }
     internal class GetNearstPrefabRootAssetExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var r = BoxedValue.NullObject;
 #if UNITY_EDITOR
@@ -564,7 +564,7 @@ namespace StoryScript.DslExpression
     }
     internal class GetOutermostPrefabRootExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var r = BoxedValue.NullObject;
 #if UNITY_EDITOR
@@ -580,7 +580,7 @@ namespace StoryScript.DslExpression
     }
     internal class GetOriginalPrefabRootWhereAddedExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var r = BoxedValue.NullObject;
 #if UNITY_EDITOR
@@ -596,7 +596,7 @@ namespace StoryScript.DslExpression
     }
     internal class GetPrefabOverridesExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var r = BoxedValue.NullObject;
 #if UNITY_EDITOR
@@ -616,7 +616,7 @@ namespace StoryScript.DslExpression
     }
     internal class FindPrefabInstancesExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var r = BoxedValue.NullObject;
 #if UNITY_EDITOR
@@ -632,7 +632,7 @@ namespace StoryScript.DslExpression
     }
     internal class FindPrefabInstancesInSceneExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var r = BoxedValue.NullObject;
 #if UNITY_EDITOR
@@ -649,7 +649,7 @@ namespace StoryScript.DslExpression
     }
     internal class ScanPrefabExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var r = BoxedValue.NullObject;
 #if UNITY_EDITOR
@@ -769,7 +769,7 @@ namespace StoryScript.DslExpression
     }
     internal class ScanDependencyExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var r = BoxedValue.NullObject;
 #if UNITY_EDITOR
@@ -948,7 +948,7 @@ namespace StoryScript.DslExpression
     }
     internal class CheckInternalDependencyExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var r = BoxedValue.NullObject;
 #if UNITY_EDITOR
@@ -1101,7 +1101,7 @@ namespace StoryScript.DslExpression
     }
     internal class ConvertDumpBinExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count >= 2) {
                 var binFile = operands[0].AsString;
@@ -1276,7 +1276,7 @@ namespace StoryScript.DslExpression
     }
     internal class DisplayProgressBarExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
 #if UNITY_EDITOR
             if (operands.Count >= 3) {
@@ -1293,7 +1293,7 @@ namespace StoryScript.DslExpression
     }
     internal class DisplayCancelableProgressBarExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             bool ret = false;
 #if UNITY_EDITOR
@@ -1311,7 +1311,7 @@ namespace StoryScript.DslExpression
     }
     internal class ClearProgressBarExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
 #if UNITY_EDITOR
             EditorUtility.ClearProgressBar();
@@ -1321,7 +1321,7 @@ namespace StoryScript.DslExpression
     }
     internal class OpenWithDefaultAppExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
 #if UNITY_EDITOR
             if (operands.Count >= 1) {
@@ -1336,7 +1336,7 @@ namespace StoryScript.DslExpression
     }
     internal class OpenFolderPanelExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
 #if UNITY_EDITOR
             string ret = null;
@@ -1356,7 +1356,7 @@ namespace StoryScript.DslExpression
     }
     internal class OpenFilePanelExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
 #if UNITY_EDITOR
             string ret = null;
@@ -1376,7 +1376,7 @@ namespace StoryScript.DslExpression
     }
     internal class OpenFilePanelWithFiltersExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
 #if UNITY_EDITOR
             string ret = null;
@@ -1402,7 +1402,7 @@ namespace StoryScript.DslExpression
     }
     internal class SaveFilePanelExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
 #if UNITY_EDITOR
             string ret = null;
@@ -1423,7 +1423,7 @@ namespace StoryScript.DslExpression
     }
     internal class SaveFilePanelInProjectExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
 #if UNITY_EDITOR
             string ret = null;
@@ -1453,7 +1453,7 @@ namespace StoryScript.DslExpression
     }
     internal class SaveFolderPanelExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
 #if UNITY_EDITOR
             string ret = null;
@@ -1473,7 +1473,7 @@ namespace StoryScript.DslExpression
     }
     internal class DisplayDialogExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
 #if UNITY_EDITOR
             int ret = -1;
@@ -1505,7 +1505,7 @@ namespace StoryScript.DslExpression
     }
     internal class HasCmdArgExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count >= 1) {
                 var name = operands[0].AsString;
@@ -1539,7 +1539,7 @@ namespace StoryScript.DslExpression
     }
     internal class StrLenExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count >= 1) {
                 string str = operands[0].GetString();
@@ -1551,7 +1551,7 @@ namespace StoryScript.DslExpression
 #if USE_GM_STORY
     internal class StoryVarExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var ret = BoxedValue.NullObject;
             if (operands.Count >= 1) {
@@ -1591,18 +1591,18 @@ namespace StoryScript.DslExpression
     /// </summary>
     internal sealed class CallStoryExp : AbstractExpression
     {
-        protected override BoxedValue DoCalc()
+        protected override BoxedValue DoCalc(DslCalculator calculator)
         {
             if (null != m_Api) {
-                return m_Api.Calc();
+                return m_Api.Calc(calculator);
             }
             else {
                 string msgId = m_MsgId;
                 if (string.IsNullOrEmpty(m_MsgId))
-                    msgId = null != m_Func ? m_Func.Calc().ToString() : string.Empty;
+                    msgId = null != m_Func ? m_Func.Calc(calculator).ToString() : string.Empty;
                 var args = ClientGmStorySystem.Instance.NewBoxedValueList();
                 for (int i = 0; i < m_Args.Count; ++i) {
-                    args.Add(m_Args[i].Calc());
+                    args.Add(m_Args[i].Calc(calculator));
                 }
                 ClientGmStorySystem.Instance.SendMessage(msgId, args);
                 return BoxedValue.NullObject;
@@ -1618,19 +1618,19 @@ namespace StoryScript.DslExpression
                     var f = func.GetId();
                     if (DslCalculatorHost.GetSharedApiRegistry().TryGetFactory(f, out var factory)) {
                         m_Api = factory.Create();
-                        m_Api.Load(p0, Calculator);
+                        m_Api.Load(p0, CodeStructure);
                     }
                     else {
                         m_MsgId = f;
                         for (int i = 0; i < func.GetParamNum(); ++i) {
-                            m_Args.Add(Calculator.Load(func.GetParam(i)));
+                            m_Args.Add(CodeStructure.Load(func.GetParam(i)));
                         }
                     }
                 }
                 else {
-                    m_Func = Calculator.Load(p0);
+                    m_Func = CodeStructure.Load(p0);
                     for (int i = 1; i < callData.GetParamNum(); ++i) {
-                        m_Args.Add(Calculator.Load(callData.GetParam(i)));
+                        m_Args.Add(CodeStructure.Load(callData.GetParam(i)));
                     }
                 }
             }

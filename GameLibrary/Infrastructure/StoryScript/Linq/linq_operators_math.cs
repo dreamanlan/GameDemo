@@ -37,7 +37,7 @@ namespace StoryScript.DslExpression
                     BoxedValue v = src.Current;
                     if (exprs.Count > 0) {
                         calcContext.SetVariable("$$", src.Current);
-                        v = Enumerable.First(exprs).Calc();
+                        v = Enumerable.First(exprs).Calc(calcContext);
                     }
 
                     double val = v.GetDouble();
@@ -89,7 +89,7 @@ namespace StoryScript.DslExpression
                         calcContext.SetVariable("$$", src.Current);
                         var mathExpr = Enumerable.First(exprs);
                         if (mathExpr.IsAsync) {
-                            var _eiCalc = mathExpr.Calc(result);
+                            var _eiCalc = mathExpr.Calc(calcContext, result);
                             try {
                                 while (_eiCalc.MoveNext()) {
                                     yield return _eiCalc.Current;
@@ -101,7 +101,7 @@ namespace StoryScript.DslExpression
                             }
                         }
                         else {
-                            v = mathExpr.Calc();
+                            v = mathExpr.Calc(calcContext);
                         }
                     }
 

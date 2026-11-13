@@ -11,7 +11,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GameObjectAnimationExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: gameobjectanimation(obj, anim_name)");
@@ -47,7 +47,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SetAnimatorParamExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 4)
                 throw new Exception("Expected: setanimatorparam(obj, type, name, value)");
@@ -100,16 +100,16 @@ namespace GameLibrary.Story.StoryExpressions
     {
         public override bool IsAsync { get { return false; } }
 
-        protected override BoxedValue DoCalc()
+        protected override BoxedValue DoCalc(DslCalculator calculator)
         {
-            int unitId = m_UnitIdExp.Calc().GetInt();
+            int unitId = m_UnitIdExp.Calc(calculator).GetInt();
             GameObject obj = SceneSystem.Instance.GetGameObjectByUnitId(unitId);
             if (null != obj)
             {
                 Animator animator = obj.GetComponentInChildren<Animator>();
                 if (null != animator)
                 {
-                    ApplyParams(animator);
+                    ApplyParams(calculator, animator);
                 }
             }
             return BoxedValue.NullObject;
@@ -129,7 +129,7 @@ namespace GameLibrary.Story.StoryExpressions
                 {
                     if (callData.GetParamNum() > 0)
                     {
-                        m_UnitIdExp = Calculator.Load(callData.GetParam(0));
+                        m_UnitIdExp = CodeStructure.Load(callData.GetParam(0));
                     }
                 }
             }
@@ -158,7 +158,7 @@ namespace GameLibrary.Story.StoryExpressions
             {
                 if (callData.GetParamNum() > 0)
                 {
-                    m_UnitIdExp = Calculator.Load(callData.GetParam(0));
+                    m_UnitIdExp = CodeStructure.Load(callData.GetParam(0));
                 }
             }
 
@@ -186,20 +186,20 @@ namespace GameLibrary.Story.StoryExpressions
             {
                 ParamInfo info = new ParamInfo();
                 info.Type = type;
-                info.KeyExp = Calculator.Load(callData.GetParam(0));
-                info.ValueExp = Calculator.Load(callData.GetParam(1));
+                info.KeyExp = CodeStructure.Load(callData.GetParam(0));
+                info.ValueExp = CodeStructure.Load(callData.GetParam(1));
                 m_Params.Add(info);
             }
         }
 
-        private void ApplyParams(Animator animator)
+        private void ApplyParams(DslCalculator calculator, Animator animator)
         {
             for (int i = 0; i < m_Params.Count; ++i)
             {
                 var param = m_Params[i];
                 string type = param.Type;
-                string key = param.KeyExp.Calc().ToString();
-                var val = param.ValueExp.Calc();
+                string key = param.KeyExp.Calc(calculator).ToString();
+                var val = param.ValueExp.Calc(calculator);
 
                 if (type == "int")
                 {
@@ -250,16 +250,16 @@ namespace GameLibrary.Story.StoryExpressions
     {
         public override bool IsAsync { get { return false; } }
 
-        protected override BoxedValue DoCalc()
+        protected override BoxedValue DoCalc(DslCalculator calculator)
         {
-            int objId = m_ObjIdExp.Calc().GetInt();
+            int objId = m_ObjIdExp.Calc(calculator).GetInt();
             GameObject obj = SceneSystem.Instance.GetGameObject(objId);
             if (null != obj)
             {
                 Animator animator = obj.GetComponentInChildren<Animator>();
                 if (null != animator)
                 {
-                    ApplyParams(animator);
+                    ApplyParams(calculator, animator);
                 }
             }
             return BoxedValue.NullObject;
@@ -279,7 +279,7 @@ namespace GameLibrary.Story.StoryExpressions
                 {
                     if (callData.GetParamNum() > 0)
                     {
-                        m_ObjIdExp = Calculator.Load(callData.GetParam(0));
+                        m_ObjIdExp = CodeStructure.Load(callData.GetParam(0));
                     }
                 }
             }
@@ -308,7 +308,7 @@ namespace GameLibrary.Story.StoryExpressions
             {
                 if (callData.GetParamNum() > 0)
                 {
-                    m_ObjIdExp = Calculator.Load(callData.GetParam(0));
+                    m_ObjIdExp = CodeStructure.Load(callData.GetParam(0));
                 }
             }
 
@@ -336,20 +336,20 @@ namespace GameLibrary.Story.StoryExpressions
             {
                 ParamInfo info = new ParamInfo();
                 info.Type = type;
-                info.KeyExp = Calculator.Load(callData.GetParam(0));
-                info.ValueExp = Calculator.Load(callData.GetParam(1));
+                info.KeyExp = CodeStructure.Load(callData.GetParam(0));
+                info.ValueExp = CodeStructure.Load(callData.GetParam(1));
                 m_Params.Add(info);
             }
         }
 
-        private void ApplyParams(Animator animator)
+        private void ApplyParams(DslCalculator calculator, Animator animator)
         {
             for (int i = 0; i < m_Params.Count; ++i)
             {
                 var param = m_Params[i];
                 string type = param.Type;
-                string key = param.KeyExp.Calc().ToString();
-                var val = param.ValueExp.Calc();
+                string key = param.KeyExp.Calc(calculator).ToString();
+                var val = param.ValueExp.Calc(calculator);
 
                 if (type == "int")
                 {

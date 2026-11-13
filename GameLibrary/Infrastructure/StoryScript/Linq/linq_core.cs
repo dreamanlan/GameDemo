@@ -72,7 +72,7 @@ namespace StoryScript.DslExpression
         private readonly HashSet<string> m_TerminalOps = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
     }
 
-    // Main expression unified router injecting 'this.Calculator' directly
+    // Main expression unified router injecting 'calculator' directly
     internal sealed class LinqExp : AbstractExpression
     {
         public override bool IsAsync { get { return m_IsAsync; } }
@@ -80,10 +80,10 @@ namespace StoryScript.DslExpression
         // ============================================================================
         // 1. SYNCHRONOUS FLOW ROUTE
         // ============================================================================
-        protected override BoxedValue DoCalc()
+        protected override BoxedValue DoCalc(DslCalculator calculator)
         {
-            var raw = m_List.Calc().GetObject();
-            var method = m_Method.Calc().GetString();
+            var raw = m_List.Calc(calculator).GetObject();
+            var method = m_Method.Calc(calculator).GetString();
             if (string.IsNullOrEmpty(method)) {
                 return BoxedValue.NullObject;
             }
@@ -95,17 +95,17 @@ namespace StoryScript.DslExpression
 
             bool ownershipTransferred = false;
             try {
-                var op = Calculator.ApiRegistry.LinqOperatorRegistry.GetOperator(method);
+                var op = CodeStructure.ApiRegistry.LinqOperatorRegistry.GetOperator(method);
                 if (null == op) {
                     return BoxedValue.NullObject;
                 }
 
-                if (Calculator.ApiRegistry.LinqOperatorRegistry.IsTerminalOperator(method)) {
+                if (CodeStructure.ApiRegistry.LinqOperatorRegistry.IsTerminalOperator(method)) {
                     // Terminal consumption retains ownership until completion.
-                    return op.ExecuteSyncTerminal(src, m_Expressions, this.Calculator);
+                    return op.ExecuteSyncTerminal(src, m_Expressions, calculator);
                 }
 
-                var value = BoxedValue.FromObject(new LinqStreamWrapper(op.CreateIterator(src, m_Expressions, this.Calculator)));
+                var value = BoxedValue.FromObject(new LinqStreamWrapper(op.CreateIterator(src, m_Expressions, calculator)));
                 ownershipTransferred = true;
                 return value;
             }
@@ -119,11 +119,11 @@ namespace StoryScript.DslExpression
         // ============================================================================
         // 2. ASYNCHRONOUS COROUTINE ROUTE
         // ============================================================================
-        protected override IEnumerator DoCalc(AsyncCalcResult result)
+        protected override IEnumerator DoCalc(DslCalculator calculator, AsyncCalcResult result)
         {
             BoxedValue rawVal;
             if (m_List.IsAsync) {
-                var _ei = m_List.Calc(result);
+                var _ei = m_List.Calc(calculator, result);
                 try {
                     while (_ei.MoveNext()) {
                         yield return _ei.Current;
@@ -135,10 +135,10 @@ namespace StoryScript.DslExpression
                 rawVal = result.Value;
             }
             else {
-                rawVal = m_List.Calc();
+                rawVal = m_List.Calc(calculator);
             }
 
-            var method = m_Method.Calc().GetString();
+            var method = m_Method.Calc(calculator).GetString();
             if (string.IsNullOrEmpty(method)) {
                 result.Value = BoxedValue.NullObject;
                 yield break;
@@ -152,14 +152,14 @@ namespace StoryScript.DslExpression
 
             bool ownershipTransferred = false;
             try {
-                var op = Calculator.ApiRegistry.LinqOperatorRegistry.GetOperator(method);
+                var op = CodeStructure.ApiRegistry.LinqOperatorRegistry.GetOperator(method);
                 if (null == op) {
                     result.Value = BoxedValue.NullObject;
                     yield break;
                 }
 
-                if (Calculator.ApiRegistry.LinqOperatorRegistry.IsTerminalOperator(method)) {
-                    var _eiTerminal = op.ExecuteAsyncTerminal(src, m_Expressions, result, this.Calculator);
+                if (CodeStructure.ApiRegistry.LinqOperatorRegistry.IsTerminalOperator(method)) {
+                    var _eiTerminal = op.ExecuteAsyncTerminal(src, m_Expressions, result, calculator);
                     try {
                         while (_eiTerminal.MoveNext()) {
                             yield return _eiTerminal.Current;
@@ -171,7 +171,7 @@ namespace StoryScript.DslExpression
                     yield break;
                 }
 
-                result.Value = BoxedValue.FromObject(new LinqStreamWrapper(op.CreateIterator(src, m_Expressions, this.Calculator)));
+                result.Value = BoxedValue.FromObject(new LinqStreamWrapper(op.CreateIterator(src, m_Expressions, calculator)));
                 ownershipTransferred = true;
             }
             finally {
@@ -194,10 +194,10 @@ namespace StoryScript.DslExpression
 
         protected override bool Load(Dsl.FunctionData c)
         {
-            m_List = Calculator.Load(c.GetParam(0));
-            m_Method = Calculator.Load(c.GetParam(1));
+            m_List = CodeStructure.Load(c.GetParam(0));
+            m_Method = CodeStructure.Load(c.GetParam(1));
             for (int i = 2; i < c.GetParamNum(); ++i) {
-                m_Expressions.Add(Calculator.Load(c.GetParam(i)));
+                m_Expressions.Add(CodeStructure.Load(c.GetParam(i)));
             }
 
             m_IsAsync = m_List.IsAsync;

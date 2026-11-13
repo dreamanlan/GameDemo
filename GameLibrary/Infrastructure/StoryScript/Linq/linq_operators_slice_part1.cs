@@ -33,10 +33,11 @@ namespace StoryScript.DslExpression
     {
         private LinqIterator _src;
         private List<IExpression> _exprs;
+        private DslCalculator _calc;
         private long _ct = -1;
         private bool _init = false;
 
-        public ItrTake(LinqIterator src, List<IExpression> exprs, DslCalculator calcContext) { _src = src; _exprs = exprs; }
+        public ItrTake(LinqIterator src, List<IExpression> exprs, DslCalculator calcContext) { _src = src; _exprs = exprs; _calc = calcContext; }
         public override BoxedValue Current => _src.Current;
         public override void Dispose()
         {
@@ -48,7 +49,7 @@ namespace StoryScript.DslExpression
         private void InitCount()
         {
             if (!_init) {
-                _ct = _exprs.Count > 0 ? Enumerable.First(_exprs).Calc().GetLong() : 0;
+                _ct = _exprs.Count > 0 ? Enumerable.First(_exprs).Calc(_calc).GetLong() : 0;
                 _init = true;
             }
         }
@@ -75,7 +76,7 @@ namespace StoryScript.DslExpression
                 if (_exprs.Count > 0) {
                     var firstExpr = Enumerable.First(_exprs);
                     if (firstExpr.IsAsync) {
-                        var _ei = firstExpr.Calc(result);
+                        var _ei = firstExpr.Calc(_calc, result);
                         try {
                             while (_ei.MoveNext()) {
                                 yield return _ei.Current;
@@ -87,7 +88,7 @@ namespace StoryScript.DslExpression
                         _ct = result.Value.GetLong();
                     }
                     else {
-                        _ct = firstExpr.Calc().GetLong();
+                        _ct = firstExpr.Calc(_calc).GetLong();
                     }
                 }
                 else {
@@ -127,10 +128,11 @@ namespace StoryScript.DslExpression
     {
         private LinqIterator _src;
         private List<IExpression> _exprs;
+        private DslCalculator _calc;
         private long _ct = -1;
         private bool _init = false;
 
-        public ItrSkip(LinqIterator src, List<IExpression> exprs, DslCalculator calcContext) { _src = src; _exprs = exprs; }
+        public ItrSkip(LinqIterator src, List<IExpression> exprs, DslCalculator calcContext) { _src = src; _exprs = exprs; _calc = calcContext; }
         public override BoxedValue Current => _src.Current;
         public override void Dispose()
         {
@@ -142,7 +144,7 @@ namespace StoryScript.DslExpression
         private void InitCount()
         {
             if (!_init) {
-                _ct = _exprs.Count > 0 ? Enumerable.First(_exprs).Calc().GetLong() : 0;
+                _ct = _exprs.Count > 0 ? Enumerable.First(_exprs).Calc(_calc).GetLong() : 0;
                 _init = true;
             }
         }
@@ -172,7 +174,7 @@ namespace StoryScript.DslExpression
                 if (_exprs.Count > 0) {
                     var firstExpr = Enumerable.First(_exprs);
                     if (firstExpr.IsAsync) {
-                        var _ei = firstExpr.Calc(result);
+                        var _ei = firstExpr.Calc(_calc, result);
                         try {
                             while (_ei.MoveNext()) {
                                 yield return _ei.Current;
@@ -184,7 +186,7 @@ namespace StoryScript.DslExpression
                         _ct = result.Value.GetLong();
                     }
                     else {
-                        _ct = firstExpr.Calc().GetLong();
+                        _ct = firstExpr.Calc(_calc).GetLong();
                     }
                 }
                 else {
@@ -260,7 +262,7 @@ namespace StoryScript.DslExpression
                     BoxedValue prev = _calc.GetVariable("$$");
                     try {
                         _calc.SetVariable("$$", _src.Current);
-                        key = Enumerable.First(_exprs).Calc();
+                        key = Enumerable.First(_exprs).Calc(_calc);
                     }
                     finally {
                         _calc.SetVariable("$$", prev);
@@ -300,7 +302,7 @@ namespace StoryScript.DslExpression
                         _calc.SetVariable("$$", _src.Current);
                         var firstExpr = Enumerable.First(_exprs);
                         if (firstExpr.IsAsync) {
-                            var _eiCalc = firstExpr.Calc(result);
+                            var _eiCalc = firstExpr.Calc(_calc, result);
                             try {
                                 while (_eiCalc.MoveNext()) {
                                     yield return _eiCalc.Current;
@@ -312,7 +314,7 @@ namespace StoryScript.DslExpression
                             key = result.Value;
                         }
                         else {
-                            key = firstExpr.Calc();
+                            key = firstExpr.Calc(_calc);
                         }
                     }
                     finally {

@@ -13,7 +13,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class AiNeedKeepAwayExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 3)
                 throw new Exception("Expected: ai_need_keep_away(objId, skillDist, ratio)");

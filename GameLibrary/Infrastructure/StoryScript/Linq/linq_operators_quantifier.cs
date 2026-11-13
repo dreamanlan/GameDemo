@@ -28,7 +28,7 @@ namespace StoryScript.DslExpression
                         return BoxedValue.FromBool(true);
                     }
                     calcContext.SetVariable("$$", src.Current);
-                    if (Enumerable.First(exprs).Calc().GetLong() != 0) {
+                    if (Enumerable.First(exprs).Calc(calcContext).GetLong() != 0) {
                         return BoxedValue.FromBool(true);
                     }
                 }
@@ -66,7 +66,7 @@ namespace StoryScript.DslExpression
                     var condExpr = Enumerable.First(exprs);
                     BoxedValue condRes;
                     if (condExpr.IsAsync) {
-                        var _eiCalc = condExpr.Calc(result);
+                        var _eiCalc = condExpr.Calc(calcContext, result);
                         try {
                             while (_eiCalc.MoveNext()) {
                                 yield return _eiCalc.Current;
@@ -78,7 +78,7 @@ namespace StoryScript.DslExpression
                         condRes = result.Value;
                     }
                     else {
-                        condRes = condExpr.Calc();
+                        condRes = condExpr.Calc(calcContext);
                     }
 
                     if (condRes.GetLong() != 0) {
@@ -108,7 +108,7 @@ namespace StoryScript.DslExpression
                         continue;
                     }
                     calcContext.SetVariable("$$", src.Current);
-                    if (Enumerable.First(exprs).Calc().GetLong() == 0) {
+                    if (Enumerable.First(exprs).Calc(calcContext).GetLong() == 0) {
                         return BoxedValue.FromBool(false);
                     }
                 }
@@ -145,7 +145,7 @@ namespace StoryScript.DslExpression
                     var condExpr = Enumerable.First(exprs);
                     BoxedValue condRes;
                     if (condExpr.IsAsync) {
-                        var _eiCalc = condExpr.Calc(result);
+                        var _eiCalc = condExpr.Calc(calcContext, result);
                         try {
                             while (_eiCalc.MoveNext()) {
                                 yield return _eiCalc.Current;
@@ -157,7 +157,7 @@ namespace StoryScript.DslExpression
                         condRes = result.Value;
                     }
                     else {
-                        condRes = condExpr.Calc();
+                        condRes = condExpr.Calc(calcContext);
                     }
 
                     if (condRes.GetLong() == 0) {

@@ -11,7 +11,7 @@ namespace StoryScript
     /// </summary>
     internal sealed class PrintExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             var sb = new StringBuilder();
             for (int i = 0; i < operands.Count; i++) {
@@ -30,7 +30,7 @@ namespace StoryScript
     /// </summary>
     internal sealed class PrintfExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: printf(fmt,arg1,arg2,...) api");
@@ -69,9 +69,9 @@ namespace StoryScript
     /// </summary>
     internal sealed class SuspendExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
-            var storyInst = Calculator.GetFuncContext<StoryInstance>();
+            var storyInst = calculator.GetFuncContext<StoryInstance>();
             if (storyInst != null) {
                 storyInst.CurrentCoroutine.IsSuspended = true;
             }
@@ -84,9 +84,9 @@ namespace StoryScript
     /// </summary>
     internal sealed class TerminateExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
-            var storyInst = Calculator.GetFuncContext<StoryInstance>();
+            var storyInst = calculator.GetFuncContext<StoryInstance>();
             if (storyInst != null) {
                 storyInst.IsTerminated = true;
             }
@@ -99,9 +99,9 @@ namespace StoryScript
     /// </summary>
     internal sealed class PauseExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
-            var storyInst = Calculator.GetFuncContext<StoryInstance>();
+            var storyInst = calculator.GetFuncContext<StoryInstance>();
             if (storyInst != null) {
                 storyInst.IsPaused = true;
             }
@@ -114,7 +114,7 @@ namespace StoryScript
     /// </summary>
     internal sealed class TimeExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             return BoxedValue.From(TimeUtility.GetLocalMilliseconds());
         }
@@ -125,7 +125,7 @@ namespace StoryScript
     /// </summary>
     internal sealed class RealTimeExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             return BoxedValue.From(TimeUtility.GetLocalRealMilliseconds());
         }
@@ -136,7 +136,7 @@ namespace StoryScript
     /// </summary>
     internal sealed class ElapsedTimeUsExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             return BoxedValue.From(TimeUtility.GetElapsedTimeUs());
         }
@@ -148,14 +148,14 @@ namespace StoryScript
     internal sealed class StoryBreakExp : AbstractExpression
     {
         public override bool IsAsync { get { return true; } }
-        protected override IEnumerator DoCalc(AsyncCalcResult result)
+        protected override IEnumerator DoCalc(DslCalculator calculator, AsyncCalcResult result)
         {
-            if (Calculator.IsInSyncCalculation) {
+            if (calculator.IsInSyncCalculation) {
                 yield break;
             }
             while (true) {
                 if (m_HaveCondition) {
-                    int condVal = m_ConditionExp.Calc().GetInt();
+                    int condVal = m_ConditionExp.Calc(calculator).GetInt();
                     if (condVal == 0) {
                         break;
                     }
@@ -180,7 +180,7 @@ namespace StoryScript
             int num = callData.GetParamNum();
             if (num > 0) {
                 m_HaveCondition = true;
-                m_ConditionExp = Calculator.Load(callData.GetParam(0));
+                m_ConditionExp = CodeStructure.Load(callData.GetParam(0));
             }
             return true;
         }

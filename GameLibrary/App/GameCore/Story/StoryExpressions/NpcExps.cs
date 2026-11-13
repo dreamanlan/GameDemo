@@ -15,14 +15,14 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class CreateNpcExp : AbstractExpression
     {
-        protected override BoxedValue DoCalc()
+        protected override BoxedValue DoCalc(DslCalculator calculator)
         {
-            int unitId = m_UnitId.Calc().GetInt();
-            Vector3Obj posObj = m_Pos.Calc();
+            int unitId = m_UnitId.Calc(calculator).GetInt();
+            Vector3Obj posObj = m_Pos.Calc(calculator);
             Vector3 pos = posObj;
-            float dir = m_Dir.Calc().GetFloat();
-            string model = m_Model.Calc().ToString();
-            int entityType = m_Type.Calc().GetInt();
+            float dir = m_Dir.Calc(calculator).GetFloat();
+            string model = m_Model.Calc(calculator).ToString();
+            int entityType = m_Type.Calc(calculator).GetInt();
 
             // Destroy existing entity with same unitId
             var entityInfo = SceneSystem.Instance.GetEntityByUnitId(unitId);
@@ -35,8 +35,8 @@ namespace GameLibrary.Story.StoryExpressions
             if (m_HaveAi)
             {
                 // With AI
-                string aiLogic = m_AiLogic.Calc().ToString();
-                IEnumerable aiParams = m_AiParams.Calc().GetObject() as IEnumerable;
+                string aiLogic = m_AiLogic.Calc(calculator).ToString();
+                IEnumerable aiParams = m_AiParams.Calc(calculator).GetObject() as IEnumerable;
                 List<string> ais = new List<string>();
                 if (aiParams != null)
                 {
@@ -54,8 +54,8 @@ namespace GameLibrary.Story.StoryExpressions
 
             if (m_HaveObjId && objId != 0)
             {
-                string varName = m_ObjIdVarName.Calc().ToString();
-                var storyInst = Calculator.GetFuncContext<StoryInstance>();
+                string varName = m_ObjIdVarName.Calc(calculator).ToString();
+                var storyInst = calculator.GetFuncContext<StoryInstance>();
                 if (null != storyInst)
                 {
                     storyInst.SetVariable(varName, objId);
@@ -76,15 +76,15 @@ namespace GameLibrary.Story.StoryExpressions
             m_ParamNum = callData.GetParamNum();
             if (m_ParamNum >= 5)
             {
-                m_UnitId = Calculator.Load(callData.GetParam(0));
-                m_Pos = Calculator.Load(callData.GetParam(1));
-                m_Dir = Calculator.Load(callData.GetParam(2));
-                m_Model = Calculator.Load(callData.GetParam(3));
-                m_Type = Calculator.Load(callData.GetParam(4));
+                m_UnitId = CodeStructure.Load(callData.GetParam(0));
+                m_Pos = CodeStructure.Load(callData.GetParam(1));
+                m_Dir = CodeStructure.Load(callData.GetParam(2));
+                m_Model = CodeStructure.Load(callData.GetParam(3));
+                m_Type = CodeStructure.Load(callData.GetParam(4));
                 if (m_ParamNum > 6)
                 {
-                    m_AiLogic = Calculator.Load(callData.GetParam(5));
-                    m_AiParams = Calculator.Load(callData.GetParam(6));
+                    m_AiLogic = CodeStructure.Load(callData.GetParam(5));
+                    m_AiParams = CodeStructure.Load(callData.GetParam(6));
                     m_HaveAi = true;
                 }
             }
@@ -121,7 +121,7 @@ namespace GameLibrary.Story.StoryExpressions
         {
             if (callData.GetId() == "objid" && callData.GetParamNum() == 1)
             {
-                m_ObjIdVarName = Calculator.Load(callData.GetParam(0));
+                m_ObjIdVarName = CodeStructure.Load(callData.GetParam(0));
                 m_HaveObjId = true;
             }
         }
@@ -144,7 +144,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class DestroyNpcExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: destroynpc(unit_id[, immediately])");
@@ -173,7 +173,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class NpcFaceExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: npcface(unit_id, dir[, immediately])");
@@ -201,7 +201,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class NpcStopExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: npcstop(unit_id)");
@@ -229,7 +229,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class NpcMoveExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: npcmove(unit_id, pos[, event])");
@@ -268,7 +268,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class NpcMoveWithWaypointsExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: npcmovewithwaypoints(unit_id, waypoints[, event])");
@@ -311,7 +311,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class NpcAttackExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: npcattack(unit_id[, target_unit_id])");
@@ -337,7 +337,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class NpcEnableAiExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: npcenableai(unit_id, enable)");
@@ -359,7 +359,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class NpcSetAiExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 3)
                 throw new Exception("Expected: npcsetai(unit_id, ai_logic, ai_params)");
@@ -397,7 +397,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class NpcSetAiTargetExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: npcsetaitarget(unit_id, target_id)");
@@ -420,7 +420,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class NpcSetCampExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: npcsetcamp(unit_id, camp_id)");
@@ -442,7 +442,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class DestroyNpcWithObjIdExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: destroynpcwithobjid(objid[, immediately])");
@@ -471,7 +471,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class NpcAnimationExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: npcanimation(unit_id, anim[, normalized_time])");
@@ -493,7 +493,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class NpcGetNpcTypeExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: npcgetnpctype(unitid)");
@@ -511,7 +511,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class NpcGetAiParamExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: npcgetaiparam(unitid, index)");

@@ -14,7 +14,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class AiKeepAwayExp : SimpleAsyncExpressionBase
     {
-        protected override IEnumerator OnCalc(IList<BoxedValue> operands, AsyncCalcResult result)
+        protected override IEnumerator OnCalc(DslCalculator calculator, IList<BoxedValue> operands, AsyncCalcResult result)
         {
             if (operands.Count < 3)
                 throw new Exception("Expected: ai_keep_away(objId, skillDist, ratio)");

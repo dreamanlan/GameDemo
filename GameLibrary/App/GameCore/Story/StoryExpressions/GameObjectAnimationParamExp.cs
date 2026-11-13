@@ -14,12 +14,12 @@ namespace GameLibrary.Story.StoryExpressions
     {
         public override bool IsAsync { get { return false; } }
 
-        protected override BoxedValue DoCalc()
+        protected override BoxedValue DoCalc(DslCalculator calculator)
         {
             if (m_ObjExp == null)
                 return BoxedValue.NullObject;
 
-            GameObject obj = GetGameObject(m_ObjExp.Calc());
+            GameObject obj = GetGameObject(m_ObjExp.Calc(calculator));
             if (null == obj)
                 return BoxedValue.NullObject;
 
@@ -30,8 +30,8 @@ namespace GameLibrary.Story.StoryExpressions
                 {
                     var param = m_Params[i];
                     string type = param.Type;
-                    string key = param.Key.Calc().ToString();
-                    var val = param.Value.Calc();
+                    string key = param.Key.Calc(calculator).ToString();
+                    var val = param.Value.Calc(calculator);
 
                     if (type == "int")
                     {
@@ -80,7 +80,7 @@ namespace GameLibrary.Story.StoryExpressions
                 {
                     if (callData.GetParamNum() > 0)
                     {
-                        m_ObjExp = Calculator.Load(callData.GetParam(0));
+                        m_ObjExp = CodeStructure.Load(callData.GetParam(0));
                     }
                 }
             }
@@ -113,7 +113,7 @@ namespace GameLibrary.Story.StoryExpressions
             {
                 if (callData.GetParamNum() > 0)
                 {
-                    m_ObjExp = Calculator.Load(callData.GetParam(0));
+                    m_ObjExp = CodeStructure.Load(callData.GetParam(0));
                 }
             }
 
@@ -144,8 +144,8 @@ namespace GameLibrary.Story.StoryExpressions
             {
                 ParamInfo info = new ParamInfo();
                 info.Type = type;
-                info.Key = Calculator.Load(callData.GetParam(0));
-                info.Value = Calculator.Load(callData.GetParam(1));
+                info.Key = CodeStructure.Load(callData.GetParam(0));
+                info.Value = CodeStructure.Load(callData.GetParam(1));
                 m_Params.Add(info);
             }
         }

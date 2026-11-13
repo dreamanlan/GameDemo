@@ -11,7 +11,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class LoadUiExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 3)
                 throw new Exception("Expected: loadui(name, prefab, dslfile[, dont_destroy_old])");
@@ -63,7 +63,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class ChangeSceneExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: changescene(target_scene)");
@@ -79,7 +79,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class QuitExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             UnityEngine.Application.Quit();
 #if UNITY_EDITOR
@@ -94,7 +94,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class OpenUrlExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: openurl(url)");
@@ -110,7 +110,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class HighlightPromptExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: highlightprompt(info)");

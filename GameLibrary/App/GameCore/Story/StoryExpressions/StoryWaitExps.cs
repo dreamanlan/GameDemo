@@ -17,25 +17,25 @@ namespace GameLibrary.Story.StoryExpressions
     {
         public override bool IsAsync { get { return true; } }
 
-        protected override IEnumerator DoCalc(AsyncCalcResult result)
+        protected override IEnumerator DoCalc(DslCalculator calculator, AsyncCalcResult result)
         {
-            if (Calculator.IsInSyncCalculation) {
+            if (calculator.IsInSyncCalculation) {
                 yield break;
             }
             List<string> storyIds = new List<string>();
             for (int i = 0; i < m_StoryIds.Count; ++i)
             {
-                storyIds.Add(m_StoryIds[i].Calc().ToString());
+                storyIds.Add(m_StoryIds[i].Calc(calculator).ToString());
             }
 
-            var storyInst = Calculator.GetFuncContext<StoryInstance>();
+            var storyInst = calculator.GetFuncContext<StoryInstance>();
             if (storyInst == null)
             {
                 result.Value = BoxedValue.NullObject;
                 yield break;
             }
 
-            int timeout = m_HaveSet ? m_TimeoutVal.Calc().GetInt() : 0;
+            int timeout = m_HaveSet ? m_TimeoutVal.Calc(calculator).GetInt() : 0;
             int curTime = 0;
 
             // Wait until all specified stories have finished
@@ -50,8 +50,8 @@ namespace GameLibrary.Story.StoryExpressions
                 {
                     if (m_HaveSet)
                     {
-                        string varName = m_SetVar.Calc().ToString();
-                        var varVal = m_SetVal.Calc();
+                        string varName = m_SetVar.Calc(calculator).ToString();
+                        var varVal = m_SetVal.Calc(calculator);
                         storyInst.SetVariable(varName, varVal);
                     }
                     break;
@@ -60,8 +60,8 @@ namespace GameLibrary.Story.StoryExpressions
                 {
                     if (m_HaveSet)
                     {
-                        string varName = m_TimeoutSetVar.Calc().ToString();
-                        var varVal = m_TimeoutSetVal.Calc();
+                        string varName = m_TimeoutSetVar.Calc(calculator).ToString();
+                        var varVal = m_TimeoutSetVal.Calc(calculator);
                         storyInst.SetVariable(varName, varVal);
                     }
                     break;
@@ -81,7 +81,7 @@ namespace GameLibrary.Story.StoryExpressions
             int num = funcData.GetParamNum();
             for (int i = 0; i < num; ++i)
             {
-                m_StoryIds.Add(Calculator.Load(funcData.GetParam(i)));
+                m_StoryIds.Add(CodeStructure.Load(funcData.GetParam(i)));
             }
             if (funcData.IsHighOrder)
             {
@@ -122,8 +122,8 @@ namespace GameLibrary.Story.StoryExpressions
                 int num = callData.GetParamNum();
                 if (num >= 2)
                 {
-                    m_SetVar = Calculator.Load(callData.GetParam(0));
-                    m_SetVal = Calculator.Load(callData.GetParam(1));
+                    m_SetVar = CodeStructure.Load(callData.GetParam(0));
+                    m_SetVal = CodeStructure.Load(callData.GetParam(1));
                 }
             }
             else if (callData.GetId() == "timeoutset")
@@ -132,9 +132,9 @@ namespace GameLibrary.Story.StoryExpressions
                 int num = callData.GetParamNum();
                 if (num >= 3)
                 {
-                    m_TimeoutVal = Calculator.Load(callData.GetParam(0));
-                    m_TimeoutSetVar = Calculator.Load(callData.GetParam(1));
-                    m_TimeoutSetVal = Calculator.Load(callData.GetParam(2));
+                    m_TimeoutVal = CodeStructure.Load(callData.GetParam(0));
+                    m_TimeoutSetVar = CodeStructure.Load(callData.GetParam(1));
+                    m_TimeoutSetVal = CodeStructure.Load(callData.GetParam(2));
                 }
             }
         }
@@ -147,8 +147,8 @@ namespace GameLibrary.Story.StoryExpressions
                 int num = callData.GetParamNum();
                 if (num >= 2)
                 {
-                    m_SetVar = Calculator.Load(callData.GetParam(0));
-                    m_SetVal = Calculator.Load(callData.GetParam(1));
+                    m_SetVar = CodeStructure.Load(callData.GetParam(0));
+                    m_SetVal = CodeStructure.Load(callData.GetParam(1));
                 }
             }
             else if (callData.GetId() == "timeoutset")
@@ -157,9 +157,9 @@ namespace GameLibrary.Story.StoryExpressions
                 int num = callData.GetParamNum();
                 if (num >= 3)
                 {
-                    m_TimeoutVal = Calculator.Load(callData.GetParam(0));
-                    m_TimeoutSetVar = Calculator.Load(callData.GetParam(1));
-                    m_TimeoutSetVal = Calculator.Load(callData.GetParam(2));
+                    m_TimeoutVal = CodeStructure.Load(callData.GetParam(0));
+                    m_TimeoutSetVar = CodeStructure.Load(callData.GetParam(1));
+                    m_TimeoutSetVal = CodeStructure.Load(callData.GetParam(2));
                 }
             }
         }
@@ -172,8 +172,8 @@ namespace GameLibrary.Story.StoryExpressions
                 int num = callData.GetParamNum();
                 if (num >= 2)
                 {
-                    m_SetVar = Calculator.Load(callData.GetParam(0));
-                    m_SetVal = Calculator.Load(callData.GetParam(1));
+                    m_SetVar = CodeStructure.Load(callData.GetParam(0));
+                    m_SetVal = CodeStructure.Load(callData.GetParam(1));
                 }
             }
         }
@@ -185,9 +185,9 @@ namespace GameLibrary.Story.StoryExpressions
                 int num = callData.GetParamNum();
                 if (num >= 3)
                 {
-                    m_TimeoutVal = Calculator.Load(callData.GetParam(0));
-                    m_TimeoutSetVar = Calculator.Load(callData.GetParam(1));
-                    m_TimeoutSetVal = Calculator.Load(callData.GetParam(2));
+                    m_TimeoutVal = CodeStructure.Load(callData.GetParam(0));
+                    m_TimeoutSetVar = CodeStructure.Load(callData.GetParam(1));
+                    m_TimeoutSetVal = CodeStructure.Load(callData.GetParam(2));
                 }
             }
         }
@@ -212,18 +212,18 @@ namespace GameLibrary.Story.StoryExpressions
     {
         public override bool IsAsync { get { return true; } }
 
-        protected override IEnumerator DoCalc(AsyncCalcResult result)
+        protected override IEnumerator DoCalc(DslCalculator calculator, AsyncCalcResult result)
         {
-            if (Calculator.IsInSyncCalculation) {
+            if (calculator.IsInSyncCalculation) {
                 yield break;
             }
             List<string> msgIds = new List<string>();
             for (int i = 0; i < m_MsgIds.Count; ++i)
             {
-                msgIds.Add(m_MsgIds[i].Calc().ToString());
+                msgIds.Add(m_MsgIds[i].Calc(calculator).ToString());
             }
 
-            var storyInst = Calculator.GetFuncContext<StoryInstance>();
+            var storyInst = calculator.GetFuncContext<StoryInstance>();
             if (storyInst == null)
             {
                 result.Value = BoxedValue.NullObject;
@@ -231,7 +231,7 @@ namespace GameLibrary.Story.StoryExpressions
             }
 
             long startTime = TimeUtility.GetLocalMilliseconds();
-            int timeout = m_HaveSet ? m_TimeoutVal.Calc().GetInt() : 0;
+            int timeout = m_HaveSet ? m_TimeoutVal.Calc(calculator).GetInt() : 0;
             int curTime = 0;
 
             // Wait until all specified messages have been received after start time
@@ -251,8 +251,8 @@ namespace GameLibrary.Story.StoryExpressions
                 {
                     if (m_HaveSet)
                     {
-                        string varName = m_SetVar.Calc().ToString();
-                        var varVal = m_SetVal.Calc();
+                        string varName = m_SetVar.Calc(calculator).ToString();
+                        var varVal = m_SetVal.Calc(calculator);
                         storyInst.SetVariable(varName, varVal);
                     }
                     break;
@@ -261,8 +261,8 @@ namespace GameLibrary.Story.StoryExpressions
                 {
                     if (m_HaveSet)
                     {
-                        string varName = m_TimeoutSetVar.Calc().ToString();
-                        var varVal = m_TimeoutSetVal.Calc();
+                        string varName = m_TimeoutSetVar.Calc(calculator).ToString();
+                        var varVal = m_TimeoutSetVal.Calc(calculator);
                         storyInst.SetVariable(varName, varVal);
                     }
                     break;
@@ -282,7 +282,7 @@ namespace GameLibrary.Story.StoryExpressions
             int num = funcData.GetParamNum();
             for (int i = 0; i < num; ++i)
             {
-                m_MsgIds.Add(Calculator.Load(funcData.GetParam(i)));
+                m_MsgIds.Add(CodeStructure.Load(funcData.GetParam(i)));
             }
             if (funcData.IsHighOrder)
             {
@@ -317,8 +317,8 @@ namespace GameLibrary.Story.StoryExpressions
                 int num = callData.GetParamNum();
                 if (num >= 2)
                 {
-                    m_SetVar = Calculator.Load(callData.GetParam(0));
-                    m_SetVal = Calculator.Load(callData.GetParam(1));
+                    m_SetVar = CodeStructure.Load(callData.GetParam(0));
+                    m_SetVal = CodeStructure.Load(callData.GetParam(1));
                 }
             }
             else if (callData.GetId() == "timeoutset")
@@ -327,9 +327,9 @@ namespace GameLibrary.Story.StoryExpressions
                 int num = callData.GetParamNum();
                 if (num >= 3)
                 {
-                    m_TimeoutVal = Calculator.Load(callData.GetParam(0));
-                    m_TimeoutSetVar = Calculator.Load(callData.GetParam(1));
-                    m_TimeoutSetVal = Calculator.Load(callData.GetParam(2));
+                    m_TimeoutVal = CodeStructure.Load(callData.GetParam(0));
+                    m_TimeoutSetVar = CodeStructure.Load(callData.GetParam(1));
+                    m_TimeoutSetVal = CodeStructure.Load(callData.GetParam(2));
                 }
             }
         }
@@ -341,8 +341,8 @@ namespace GameLibrary.Story.StoryExpressions
                 int num = callData.GetParamNum();
                 if (num >= 2)
                 {
-                    m_SetVar = Calculator.Load(callData.GetParam(0));
-                    m_SetVal = Calculator.Load(callData.GetParam(1));
+                    m_SetVar = CodeStructure.Load(callData.GetParam(0));
+                    m_SetVal = CodeStructure.Load(callData.GetParam(1));
                 }
             }
         }
@@ -354,9 +354,9 @@ namespace GameLibrary.Story.StoryExpressions
                 int num = callData.GetParamNum();
                 if (num >= 3)
                 {
-                    m_TimeoutVal = Calculator.Load(callData.GetParam(0));
-                    m_TimeoutSetVar = Calculator.Load(callData.GetParam(1));
-                    m_TimeoutSetVal = Calculator.Load(callData.GetParam(2));
+                    m_TimeoutVal = CodeStructure.Load(callData.GetParam(0));
+                    m_TimeoutSetVar = CodeStructure.Load(callData.GetParam(1));
+                    m_TimeoutSetVal = CodeStructure.Load(callData.GetParam(2));
                 }
             }
         }
@@ -381,25 +381,25 @@ namespace GameLibrary.Story.StoryExpressions
     {
         public override bool IsAsync { get { return true; } }
 
-        protected override IEnumerator DoCalc(AsyncCalcResult result)
+        protected override IEnumerator DoCalc(DslCalculator calculator, AsyncCalcResult result)
         {
-            if (Calculator.IsInSyncCalculation) {
+            if (calculator.IsInSyncCalculation) {
                 yield break;
             }
             List<string> msgIds = new List<string>();
             for (int i = 0; i < m_MsgIds.Count; ++i)
             {
-                msgIds.Add(m_MsgIds[i].Calc().ToString());
+                msgIds.Add(m_MsgIds[i].Calc(calculator).ToString());
             }
 
-            var storyInst = Calculator.GetFuncContext<StoryInstance>();
+            var storyInst = calculator.GetFuncContext<StoryInstance>();
             if (storyInst == null)
             {
                 result.Value = BoxedValue.NullObject;
                 yield break;
             }
 
-            int timeout = m_HaveSet ? m_TimeoutVal.Calc().GetInt() : 0;
+            int timeout = m_HaveSet ? m_TimeoutVal.Calc(calculator).GetInt() : 0;
             int curTime = 0;
 
             // Wait until all specified message handlers have finished
@@ -414,8 +414,8 @@ namespace GameLibrary.Story.StoryExpressions
                 {
                     if (m_HaveSet)
                     {
-                        string varName = m_SetVar.Calc().ToString();
-                        var varVal = m_SetVal.Calc();
+                        string varName = m_SetVar.Calc(calculator).ToString();
+                        var varVal = m_SetVal.Calc(calculator);
                         storyInst.SetVariable(varName, varVal);
                     }
                     break;
@@ -424,8 +424,8 @@ namespace GameLibrary.Story.StoryExpressions
                 {
                     if (m_HaveSet)
                     {
-                        string varName = m_TimeoutSetVar.Calc().ToString();
-                        var varVal = m_TimeoutSetVal.Calc();
+                        string varName = m_TimeoutSetVar.Calc(calculator).ToString();
+                        var varVal = m_TimeoutSetVal.Calc(calculator);
                         storyInst.SetVariable(varName, varVal);
                     }
                     break;
@@ -445,7 +445,7 @@ namespace GameLibrary.Story.StoryExpressions
             int num = funcData.GetParamNum();
             for (int i = 0; i < num; ++i)
             {
-                m_MsgIds.Add(Calculator.Load(funcData.GetParam(i)));
+                m_MsgIds.Add(CodeStructure.Load(funcData.GetParam(i)));
             }
             if (funcData.IsHighOrder)
             {
@@ -480,8 +480,8 @@ namespace GameLibrary.Story.StoryExpressions
                 int num = callData.GetParamNum();
                 if (num >= 2)
                 {
-                    m_SetVar = Calculator.Load(callData.GetParam(0));
-                    m_SetVal = Calculator.Load(callData.GetParam(1));
+                    m_SetVar = CodeStructure.Load(callData.GetParam(0));
+                    m_SetVal = CodeStructure.Load(callData.GetParam(1));
                 }
             }
             else if (callData.GetId() == "timeoutset")
@@ -490,9 +490,9 @@ namespace GameLibrary.Story.StoryExpressions
                 int num = callData.GetParamNum();
                 if (num >= 3)
                 {
-                    m_TimeoutVal = Calculator.Load(callData.GetParam(0));
-                    m_TimeoutSetVar = Calculator.Load(callData.GetParam(1));
-                    m_TimeoutSetVal = Calculator.Load(callData.GetParam(2));
+                    m_TimeoutVal = CodeStructure.Load(callData.GetParam(0));
+                    m_TimeoutSetVar = CodeStructure.Load(callData.GetParam(1));
+                    m_TimeoutSetVal = CodeStructure.Load(callData.GetParam(2));
                 }
             }
         }
@@ -504,8 +504,8 @@ namespace GameLibrary.Story.StoryExpressions
                 int num = callData.GetParamNum();
                 if (num >= 2)
                 {
-                    m_SetVar = Calculator.Load(callData.GetParam(0));
-                    m_SetVal = Calculator.Load(callData.GetParam(1));
+                    m_SetVar = CodeStructure.Load(callData.GetParam(0));
+                    m_SetVal = CodeStructure.Load(callData.GetParam(1));
                 }
             }
         }
@@ -517,9 +517,9 @@ namespace GameLibrary.Story.StoryExpressions
                 int num = callData.GetParamNum();
                 if (num >= 3)
                 {
-                    m_TimeoutVal = Calculator.Load(callData.GetParam(0));
-                    m_TimeoutSetVar = Calculator.Load(callData.GetParam(1));
-                    m_TimeoutSetVal = Calculator.Load(callData.GetParam(2));
+                    m_TimeoutVal = CodeStructure.Load(callData.GetParam(0));
+                    m_TimeoutSetVar = CodeStructure.Load(callData.GetParam(1));
+                    m_TimeoutSetVal = CodeStructure.Load(callData.GetParam(2));
                 }
             }
         }

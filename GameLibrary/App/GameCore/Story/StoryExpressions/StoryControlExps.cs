@@ -13,10 +13,10 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class StartStoryExp : AbstractExpression
     {
-        protected override BoxedValue DoCalc()
+        protected override BoxedValue DoCalc(DslCalculator calculator)
         {
-            string storyId = m_StoryId.Calc().ToString();
-            int multiple = m_Multiple != null ? m_Multiple.Calc().GetInt() : 0;
+            string storyId = m_StoryId.Calc(calculator).ToString();
+            int multiple = m_Multiple != null ? m_Multiple.Calc(calculator).GetInt() : 0;
             SceneSystem.Instance.QueueAction(() =>
             {
                 if (multiple == 0)
@@ -32,7 +32,7 @@ namespace GameLibrary.Story.StoryExpressions
             int num = funcData.GetParamNum();
             if (num > 0)
             {
-                m_StoryId = Calculator.Load(funcData.GetParam(0));
+                m_StoryId = CodeStructure.Load(funcData.GetParam(0));
             }
             if (funcData.HaveStatement())
             {
@@ -41,7 +41,7 @@ namespace GameLibrary.Story.StoryExpressions
                     Dsl.FunctionData cd = funcData.GetParam(i) as Dsl.FunctionData;
                     if (null != cd && cd.GetId() == "multiple" && cd.GetParamNum() > 0)
                     {
-                        m_Multiple = Calculator.Load(cd.GetParam(0));
+                        m_Multiple = CodeStructure.Load(cd.GetParam(0));
                     }
                 }
             }
@@ -59,7 +59,7 @@ namespace GameLibrary.Story.StoryExpressions
                     Load(first);
                     if (second.GetId() == "multiple" && second.GetParamNum() > 0)
                     {
-                        m_Multiple = Calculator.Load(second.GetParam(0));
+                        m_Multiple = CodeStructure.Load(second.GetParam(0));
                     }
                 }
             }
@@ -78,10 +78,10 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class StopStoryExp : AbstractExpression
     {
-        protected override BoxedValue DoCalc()
+        protected override BoxedValue DoCalc(DslCalculator calculator)
         {
-            string storyId = m_StoryId.Calc().ToString();
-            int multiple = m_Multiple != null ? m_Multiple.Calc().GetInt() : 0;
+            string storyId = m_StoryId.Calc(calculator).ToString();
+            int multiple = m_Multiple != null ? m_Multiple.Calc(calculator).GetInt() : 0;
             if (multiple == 0)
                 ClientStorySystem.Instance.MarkStoryTerminated(storyId);
             else
@@ -94,7 +94,7 @@ namespace GameLibrary.Story.StoryExpressions
             int num = funcData.GetParamNum();
             if (num > 0)
             {
-                m_StoryId = Calculator.Load(funcData.GetParam(0));
+                m_StoryId = CodeStructure.Load(funcData.GetParam(0));
             }
             if (funcData.HaveStatement())
             {
@@ -103,7 +103,7 @@ namespace GameLibrary.Story.StoryExpressions
                     Dsl.FunctionData cd = funcData.GetParam(i) as Dsl.FunctionData;
                     if (null != cd && cd.GetId() == "multiple" && cd.GetParamNum() > 0)
                     {
-                        m_Multiple = Calculator.Load(cd.GetParam(0));
+                        m_Multiple = CodeStructure.Load(cd.GetParam(0));
                     }
                 }
             }
@@ -121,7 +121,7 @@ namespace GameLibrary.Story.StoryExpressions
                     Load(first);
                     if (second.GetId() == "multiple" && second.GetParamNum() > 0)
                     {
-                        m_Multiple = Calculator.Load(second.GetParam(0));
+                        m_Multiple = CodeStructure.Load(second.GetParam(0));
                     }
                 }
             }
@@ -140,14 +140,14 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class PauseStoryExp : AbstractExpression
     {
-        protected override BoxedValue DoCalc()
+        protected override BoxedValue DoCalc(DslCalculator calculator)
         {
-            int multiple = m_Multiple != null ? m_Multiple.Calc().GetInt() : 0;
+            int multiple = m_Multiple != null ? m_Multiple.Calc(calculator).GetInt() : 0;
             if (multiple == 0)
             {
                 for (int i = 0; i < m_StoryIds.Count; i++)
                 {
-                    string storyId = m_StoryIds[i].Calc().ToString();
+                    string storyId = m_StoryIds[i].Calc(calculator).ToString();
                     ClientStorySystem.Instance.PauseStory(storyId, true);
                 }
             }
@@ -155,7 +155,7 @@ namespace GameLibrary.Story.StoryExpressions
             {
                 for (int i = 0; i < m_StoryIds.Count; i++)
                 {
-                    string storyId = m_StoryIds[i].Calc().ToString();
+                    string storyId = m_StoryIds[i].Calc(calculator).ToString();
                     ClientStorySystem.Instance.PauseStories(storyId, true);
                 }
             }
@@ -167,7 +167,7 @@ namespace GameLibrary.Story.StoryExpressions
             int num = funcData.GetParamNum();
             for (int i = 0; i < num; ++i)
             {
-                m_StoryIds.Add(Calculator.Load(funcData.GetParam(i)));
+                m_StoryIds.Add(CodeStructure.Load(funcData.GetParam(i)));
             }
             if (funcData.HaveStatement())
             {
@@ -176,7 +176,7 @@ namespace GameLibrary.Story.StoryExpressions
                     Dsl.FunctionData cd = funcData.GetParam(i) as Dsl.FunctionData;
                     if (null != cd && cd.GetId() == "multiple" && cd.GetParamNum() > 0)
                     {
-                        m_Multiple = Calculator.Load(cd.GetParam(0));
+                        m_Multiple = CodeStructure.Load(cd.GetParam(0));
                     }
                 }
             }
@@ -194,7 +194,7 @@ namespace GameLibrary.Story.StoryExpressions
                     Load(first);
                     if (second.GetId() == "multiple" && second.GetParamNum() > 0)
                     {
-                        m_Multiple = Calculator.Load(second.GetParam(0));
+                        m_Multiple = CodeStructure.Load(second.GetParam(0));
                     }
                 }
             }
@@ -213,14 +213,14 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class ResumeStoryExp : AbstractExpression
     {
-        protected override BoxedValue DoCalc()
+        protected override BoxedValue DoCalc(DslCalculator calculator)
         {
-            int multiple = m_Multiple != null ? m_Multiple.Calc().GetInt() : 0;
+            int multiple = m_Multiple != null ? m_Multiple.Calc(calculator).GetInt() : 0;
             if (multiple == 0)
             {
                 for (int i = 0; i < m_StoryIds.Count; i++)
                 {
-                    string storyId = m_StoryIds[i].Calc().ToString();
+                    string storyId = m_StoryIds[i].Calc(calculator).ToString();
                     ClientStorySystem.Instance.PauseStory(storyId, false);
                 }
             }
@@ -228,7 +228,7 @@ namespace GameLibrary.Story.StoryExpressions
             {
                 for (int i = 0; i < m_StoryIds.Count; i++)
                 {
-                    string storyId = m_StoryIds[i].Calc().ToString();
+                    string storyId = m_StoryIds[i].Calc(calculator).ToString();
                     ClientStorySystem.Instance.PauseStories(storyId, false);
                 }
             }
@@ -240,7 +240,7 @@ namespace GameLibrary.Story.StoryExpressions
             int num = funcData.GetParamNum();
             for (int i = 0; i < num; ++i)
             {
-                m_StoryIds.Add(Calculator.Load(funcData.GetParam(i)));
+                m_StoryIds.Add(CodeStructure.Load(funcData.GetParam(i)));
             }
             if (funcData.HaveStatement())
             {
@@ -249,7 +249,7 @@ namespace GameLibrary.Story.StoryExpressions
                     Dsl.FunctionData cd = funcData.GetParam(i) as Dsl.FunctionData;
                     if (null != cd && cd.GetId() == "multiple" && cd.GetParamNum() > 0)
                     {
-                        m_Multiple = Calculator.Load(cd.GetParam(0));
+                        m_Multiple = CodeStructure.Load(cd.GetParam(0));
                     }
                 }
             }
@@ -267,7 +267,7 @@ namespace GameLibrary.Story.StoryExpressions
                     Load(first);
                     if (second.GetId() == "multiple" && second.GetParamNum() > 0)
                     {
-                        m_Multiple = Calculator.Load(second.GetParam(0));
+                        m_Multiple = CodeStructure.Load(second.GetParam(0));
                     }
                 }
             }
@@ -283,7 +283,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SetStoryVariableExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 3)
                 throw new Exception("Expected: setstoryvariable(story_id[, namespace], name, value)");

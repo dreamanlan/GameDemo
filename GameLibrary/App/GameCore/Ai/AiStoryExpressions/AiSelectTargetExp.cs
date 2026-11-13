@@ -13,7 +13,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class AiSelectTargetExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: ai_select_target(objId, dist)");

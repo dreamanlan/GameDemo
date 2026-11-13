@@ -15,12 +15,12 @@ namespace GameLibrary.Story.StoryExpressions
     {
         public override bool IsAsync { get { return false; } }
 
-        protected override BoxedValue DoCalc()
+        protected override BoxedValue DoCalc(DslCalculator calculator)
         {
             if (m_Select == null || m_From == null)
                 return BoxedValue.NullObject;
 
-            BoxedValue fromVal = m_From.Calc();
+            BoxedValue fromVal = m_From.Calc(calculator);
             IEnumerable enumer = fromVal.ObjectVal as IEnumerable;
 
             if (enumer == null)
@@ -33,19 +33,19 @@ namespace GameLibrary.Story.StoryExpressions
             {
                 var v = BoxedValue.FromObject(enumerator.Current);
                 // Set iterator variable $$ so sub-expressions can reference it
-                Calculator.SetVariable("$$", v);
+                calculator.SetVariable("$$", v);
 
                 if (m_Where != null)
                 {
-                    BoxedValue whereVal = m_Where.Calc();
+                    BoxedValue whereVal = m_Where.Calc(calculator);
                     if (whereVal.GetInt() != 0)
                     {
-                        AddRow(coll, v);
+                        AddRow(calculator, coll, v);
                     }
                 }
                 else
                 {
-                    AddRow(coll, v);
+                    AddRow(calculator, coll, v);
                 }
             }
 
@@ -102,21 +102,21 @@ namespace GameLibrary.Story.StoryExpressions
             string id = callData.GetId();
             if (id == "select")
             {
-                m_Select = Calculator.Load(callData.GetParam(0));
+                m_Select = CodeStructure.Load(callData.GetParam(0));
             }
             else if (id == "from")
             {
-                m_From = Calculator.Load(callData.GetParam(0));
+                m_From = CodeStructure.Load(callData.GetParam(0));
             }
             else if (id == "where")
             {
-                m_Where = Calculator.Load(callData.GetParam(0));
+                m_Where = CodeStructure.Load(callData.GetParam(0));
             }
             else if (id == "orderby")
             {
                 for (int i = 0; i < callData.GetParamNum(); ++i)
                 {
-                    IExpression v = Calculator.Load(callData.GetParam(i));
+                    IExpression v = CodeStructure.Load(callData.GetParam(i));
                     m_OrderBy.Add(v);
                 }
             }
@@ -130,20 +130,20 @@ namespace GameLibrary.Story.StoryExpressions
             }
         }
 
-        private void AddRow(ArrayList coll, BoxedValue v)
+        private void AddRow(DslCalculator calculator, ArrayList coll, BoxedValue v)
         {
             BoxedValueList row = new BoxedValueList();
             coll.Add(row);
 
             // Evaluate SELECT with iterator set to v
-            Calculator.SetVariable("$$", v);
-            row.Add(m_Select.Calc());
+            calculator.SetVariable("$$", v);
+            row.Add(m_Select.Calc(calculator));
 
             // Evaluate ORDERBY with iterator set to v
             for (int i = 0; i < m_OrderBy.Count; ++i)
             {
-                Calculator.SetVariable("$$", v);
-                row.Add(m_OrderBy[i].Calc());
+                calculator.SetVariable("$$", v);
+                row.Add(m_OrderBy[i].Calc(calculator));
             }
         }
 

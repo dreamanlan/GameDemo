@@ -14,16 +14,16 @@ namespace GameLibrary.Story.StoryExpressions
     {
         public override bool IsAsync { get { return false; } }
 
-        protected override BoxedValue DoCalc()
+        protected override BoxedValue DoCalc(DslCalculator calculator)
         {
             if (m_ObjExp == null)
                 return BoxedValue.NullObject;
 
-            GameObject obj = m_ObjExp.Calc().ObjectVal as GameObject;
+            GameObject obj = m_ObjExp.Calc(calculator).ObjectVal as GameObject;
             if (null == obj)
                 return BoxedValue.NullObject;
 
-            var storyInst = Calculator.GetFuncContext<StoryInstance>();
+            var storyInst = calculator.GetFuncContext<StoryInstance>();
             if (null == storyInst)
                 return BoxedValue.NullObject;
 
@@ -42,8 +42,8 @@ namespace GameLibrary.Story.StoryExpressions
                     // Set up variable bindings
                     for (int ix = 0; ix < m_VarInfos.Count; ++ix)
                     {
-                        string name = m_VarInfos[ix].m_VarNameExp.Calc().ToString();
-                        string path = m_VarInfos[ix].m_ControlPathExp.Calc().ToString();
+                        string name = m_VarInfos[ix].m_VarNameExp.Calc(calculator).ToString();
+                        string path = m_VarInfos[ix].m_ControlPathExp.Calc(calculator).ToString();
                         GameObject ctrl = Utility.FindChildObjectByPath(obj, path);
                         if (null != ctrl)
                             AddVariable(storyInst, name, ctrl);
@@ -53,10 +53,10 @@ namespace GameLibrary.Story.StoryExpressions
                     handler0.WindowName = initer.WindowName;
 
                     // Set up UI element references
-                    SetupUiElements(obj, handler0);
+                    SetupUiElements(calculator, obj, handler0);
 
                     // Set up event listeners
-                    SetupEventListeners(obj, handler0);
+                    SetupEventListeners(calculator, obj, handler0);
                 }
             }
 
@@ -77,7 +77,7 @@ namespace GameLibrary.Story.StoryExpressions
                 {
                     if (callData.GetParamNum() > 0)
                     {
-                        m_ObjExp = Calculator.Load(callData.GetParam(0));
+                        m_ObjExp = CodeStructure.Load(callData.GetParam(0));
                     }
                 }
             }
@@ -130,7 +130,7 @@ namespace GameLibrary.Story.StoryExpressions
             {
                 if (callData.GetParamNum() > 0)
                 {
-                    m_ObjExp = Calculator.Load(callData.GetParam(0));
+                    m_ObjExp = CodeStructure.Load(callData.GetParam(0));
                 }
             }
 
@@ -180,8 +180,8 @@ namespace GameLibrary.Story.StoryExpressions
             if (num >= 2)
             {
                 VarInfo info = new VarInfo();
-                info.m_VarNameExp = Calculator.Load(callData.GetParam(0));
-                info.m_ControlPathExp = Calculator.Load(callData.GetParam(1));
+                info.m_VarNameExp = CodeStructure.Load(callData.GetParam(0));
+                info.m_ControlPathExp = CodeStructure.Load(callData.GetParam(1));
                 m_VarInfos.Add(info);
             }
         }
@@ -192,9 +192,9 @@ namespace GameLibrary.Story.StoryExpressions
             if (num >= 3)
             {
                 EventInfo info = new EventInfo();
-                info.m_EventExp = Calculator.Load(callData.GetParam(0));
-                info.m_TagExp = Calculator.Load(callData.GetParam(1));
-                info.m_PathExp = Calculator.Load(callData.GetParam(2));
+                info.m_EventExp = CodeStructure.Load(callData.GetParam(0));
+                info.m_TagExp = CodeStructure.Load(callData.GetParam(1));
+                info.m_PathExp = CodeStructure.Load(callData.GetParam(2));
                 m_EventInfos.Add(info);
             }
         }
@@ -204,16 +204,16 @@ namespace GameLibrary.Story.StoryExpressions
             int num = callData.GetParamNum();
             for (int i = 0; i < num; ++i)
             {
-                list.Add(Calculator.Load(callData.GetParam(i)));
+                list.Add(CodeStructure.Load(callData.GetParam(i)));
             }
         }
 
-        private void SetupUiElements(GameObject obj, UiStoryEventHandler handler0)
+        private void SetupUiElements(DslCalculator calculator, GameObject obj, UiStoryEventHandler handler0)
         {
             // Input fields
             for (int k = 0; k < m_Inputs.Count; ++k)
             {
-                string path = m_Inputs[k].Calc().ToString();
+                string path = m_Inputs[k].Calc(calculator).ToString();
                 var comp = Utility.FindComponentInChildren<InputField>(obj, path);
                 if (null != comp)
                     handler0.InputLabels.Add(comp);
@@ -222,7 +222,7 @@ namespace GameLibrary.Story.StoryExpressions
             // Toggles
             for (int k = 0; k < m_Toggles.Count; ++k)
             {
-                string path = m_Toggles[k].Calc().ToString();
+                string path = m_Toggles[k].Calc(calculator).ToString();
                 var comp = Utility.FindComponentInChildren<Toggle>(obj, path);
                 if (null != comp)
                     handler0.InputToggles.Add(comp);
@@ -231,7 +231,7 @@ namespace GameLibrary.Story.StoryExpressions
             // Sliders
             for (int k = 0; k < m_Sliders.Count; ++k)
             {
-                string path = m_Sliders[k].Calc().ToString();
+                string path = m_Sliders[k].Calc(calculator).ToString();
                 var comp = Utility.FindComponentInChildren<Slider>(obj, path);
                 if (null != comp)
                     handler0.InputSliders.Add(comp);
@@ -240,20 +240,20 @@ namespace GameLibrary.Story.StoryExpressions
             // Dropdowns
             for (int k = 0; k < m_DropDowns.Count; ++k)
             {
-                string path = m_DropDowns[k].Calc().ToString();
+                string path = m_DropDowns[k].Calc(calculator).ToString();
                 var comp = Utility.FindComponentInChildren<Dropdown>(obj, path);
                 if (null != comp)
                     handler0.InputDropdowns.Add(comp);
             }
         }
 
-        private void SetupEventListeners(GameObject obj, UiStoryEventHandler handler0)
+        private void SetupEventListeners(DslCalculator calculator, GameObject obj, UiStoryEventHandler handler0)
         {
             for (int ix = 0; ix < m_EventInfos.Count; ++ix)
             {
-                string evt = m_EventInfos[ix].m_EventExp.Calc().ToString();
-                string tag = m_EventInfos[ix].m_TagExp.Calc().ToString();
-                string path = m_EventInfos[ix].m_PathExp.Calc().ToString();
+                string evt = m_EventInfos[ix].m_EventExp.Calc(calculator).ToString();
+                string tag = m_EventInfos[ix].m_TagExp.Calc(calculator).ToString();
+                string path = m_EventInfos[ix].m_PathExp.Calc(calculator).ToString();
 
                 if (evt == "button")
                 {

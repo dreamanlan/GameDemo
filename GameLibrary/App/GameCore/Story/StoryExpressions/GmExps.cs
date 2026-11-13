@@ -10,7 +10,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SetMaxEffectExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: setmaxeffect(group_id, max_count)");
@@ -41,7 +41,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SetDebugExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: setdebug(flag)");
@@ -58,7 +58,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class EditorBreakExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             UnityEngine.Debug.Break();
             return BoxedValue.NullObject;
@@ -70,7 +70,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class DebugBreakExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             UnityEngine.Debug.DebugBreak();
             return BoxedValue.NullObject;
@@ -82,7 +82,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class AllocMemoryExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: allocmemory(key, size)");
@@ -90,7 +90,7 @@ namespace GameLibrary.Story.StoryExpressions
             string key = operands[0].ToString();
             int size = operands[1].GetInt();
 
-            var storyInst = Calculator.GetFuncContext<StoryInstance>();
+            var storyInst = calculator.GetFuncContext<StoryInstance>();
             if (storyInst != null)
             {
                 BoxedValue m = BoxedValue.FromObject(new byte[size]);
@@ -113,14 +113,14 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class FreeMemoryExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: freememory(key)");
 
             string key = operands[0].ToString();
 
-            var storyInst = Calculator.GetFuncContext<StoryInstance>();
+            var storyInst = calculator.GetFuncContext<StoryInstance>();
             if (storyInst != null)
             {
                 var globals = storyInst.ContextVariables;
@@ -143,7 +143,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class ConsumeCpuExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: consumecpu(time_us)");

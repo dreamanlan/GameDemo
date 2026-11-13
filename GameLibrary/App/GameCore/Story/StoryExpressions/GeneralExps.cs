@@ -12,7 +12,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class PreloadExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: preload(dslfile1, dslfile2, ...)");
@@ -32,7 +32,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SuspendAllMessageHandlerExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: suspendallmessagehandler(msgid1, msgid2, ...)");
@@ -51,7 +51,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class ResumeAllMessageHandlerExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: resumeallmessagehandler(msgid1, msgid2, ...)");
@@ -70,7 +70,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SendAiMessageExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: sendaimessage(objid, msg, ...)");
@@ -95,7 +95,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SendAiConcurrentMessageExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: sendaiconcurrentmessage(objid, msg, ...)");
@@ -120,7 +120,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SendAiNamespacedMessageExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: sendainamespacedmessage(objid, msg, ...)");
@@ -147,7 +147,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SendAiConcurrentNamespacedMessageExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: sendaiconcurrentnamespacedmessage(objid, msg, ...)");
@@ -172,7 +172,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SendScriptMessageExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: sendscriptmessage(msg, ...)");
@@ -199,7 +199,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class FireMessageExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: firemessage(msg, ...)");
@@ -220,7 +220,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class FireConcurrentMessageExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: fireconcurrentmessage(msg, ...)");
@@ -241,7 +241,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class PublishEventExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: publishevent(ev_name, group, ...)");
@@ -266,7 +266,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetTimeExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             return UnityEngine.Time.time;
         }
@@ -277,7 +277,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetTimeScaleExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             return UnityEngine.Time.timeScale;
         }
@@ -288,7 +288,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class IsActiveExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: isactive(obj)");
@@ -305,7 +305,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class IsReallyActiveExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: isreallyactive(obj)");
@@ -322,7 +322,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class IsVisibleExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: isvisible(obj)");
@@ -343,7 +343,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetParentExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getparent(obj)");
@@ -360,7 +360,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetUnityUiTypeExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getunityuitype(name)");
@@ -378,7 +378,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetUserTypeExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getusertype(name)");
@@ -396,7 +396,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetEntityInfoExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getentityinfo(objid)");
@@ -412,7 +412,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetEntityViewExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getentityview(viewid)");
@@ -428,7 +428,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GlobalExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             return BoxedValue.FromObject(GlobalVariables.Instance);
         }
@@ -439,7 +439,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SceneExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             return BoxedValue.FromObject(SceneSystem.Instance);
         }
@@ -450,7 +450,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class ResourceSystemExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             return BoxedValue.FromObject(ResourceSystem.Instance);
         }
@@ -461,7 +461,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetStoryExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getstory(story_id[, namespace])");
@@ -478,7 +478,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetStoryVariableExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: getstoryvariable(story_id, var_name[, namespace])");
@@ -498,7 +498,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class Deg2RadExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: deg2rad(degree)");
@@ -513,7 +513,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class Rad2DegExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: rad2deg(radian)");
@@ -528,7 +528,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetUnityTypeExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getunitytype(typeName)");
@@ -546,7 +546,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetPersistentPathExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             return UnityEngine.Application.persistentDataPath;
         }
@@ -557,7 +557,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetStreamingAssetsExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             return UnityEngine.Application.streamingAssetsPath;
         }
@@ -568,7 +568,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class ReadFileExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: readfile(path)");
@@ -588,7 +588,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class IsStorySkippedExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             return StoryConfigManager.Instance.IsStorySkipped;
         }
@@ -599,7 +599,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetChildExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: getchild(obj, path)");
@@ -627,7 +627,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class CountNpcExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: countnpc(campId)");

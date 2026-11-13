@@ -14,7 +14,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class AiChaseExp : SimpleAsyncExpressionBase
     {
-        protected override IEnumerator OnCalc(IList<BoxedValue> operands, AsyncCalcResult result)
+        protected override IEnumerator OnCalc(DslCalculator calculator, IList<BoxedValue> operands, AsyncCalcResult result)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: ai_chase(objId, skillDist)");

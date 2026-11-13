@@ -12,7 +12,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class ObjFaceExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: objface(obj_id, dir[, immediately])");
@@ -41,7 +41,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class ObjStopExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: objstop(obj_id)");
@@ -70,7 +70,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SetHpExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: sethp(objid, value)");
@@ -93,7 +93,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SetMaxHpExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: setmaxhp(objid, value)");
@@ -116,7 +116,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetHpExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: gethp(objid)");
@@ -138,7 +138,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetMaxHpExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getmaxhp(objid)");
@@ -160,7 +160,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SetLevelExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: setlevel(objid, value)");
@@ -183,7 +183,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetLevelExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getlevel(objid)");
@@ -205,7 +205,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SetUnitIdExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: setunitid(obj_id, unit_id)");
@@ -228,7 +228,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class ObjSetCampExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: objsetcamp(objid, camp_id)");
@@ -251,7 +251,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class ObjMoveExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: objmove(obj_id, pos[, event])");
@@ -291,7 +291,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class ObjMoveWithWaypointsExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: objmovewithwaypoints(obj_id, waypoints[, event])");
@@ -335,7 +335,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class ObjAttackExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: objattack(obj_id[, target_obj_id])");
@@ -362,7 +362,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class ObjEnableAiExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: objenableai(obj_id, enable)");
@@ -385,7 +385,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class ObjSetAiExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 3)
                 throw new Exception("Expected: objsetai(obj_id, ai_logic, ai_params)");
@@ -424,7 +424,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class ObjSetAiTargetExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: objsetaitarget(obj_id, target_id)");
@@ -448,7 +448,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class ObjAnimationExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: objanimation(obj_id, anim[, normalized_time])");
@@ -471,7 +471,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SetEnergyExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: setenergy(objid, value)");
@@ -494,7 +494,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetEnergyExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getenergy(objid)");
@@ -516,7 +516,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SetMaxEnergyExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: setmaxenergy(objid, value)");
@@ -539,7 +539,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetMaxEnergyExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getmaxenergy(objid)");
@@ -561,7 +561,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SetSpeedExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: setspeed(objid, value)");
@@ -584,7 +584,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetSpeedExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getspeed(objid)");
@@ -606,7 +606,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SetExpExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: setexp(objid, value)");
@@ -629,7 +629,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetExpExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getexp(objid)");
@@ -651,7 +651,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SetAttrExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 3)
                 throw new Exception("Expected: setattr(objid, attrid, value)");
@@ -682,7 +682,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class MarkControlByStoryExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: markcontrolbystory(objid, true_or_false)");
@@ -707,7 +707,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetPositionExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getposition(obj)");
@@ -737,7 +737,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class FindAllObjIdsExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: findallobjids(position, radius)");
@@ -763,7 +763,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetPositionXExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getpositionx(obj_id[, local])");
@@ -787,7 +787,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetPositionYExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getpositiony(obj_id[, local])");
@@ -811,7 +811,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetPositionZExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getpositionz(obj_id[, local])");
@@ -835,7 +835,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetRotationExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getrotation(obj_id[, local])");
@@ -862,7 +862,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetRotationXExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getrotationx(obj_id[, local])");
@@ -885,7 +885,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetRotationYExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getrotationy(obj_id[, local])");
@@ -908,7 +908,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetRotationZExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getrotationz(obj_id[, local])");
@@ -931,7 +931,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetScaleExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getscale(obj_id)");
@@ -957,7 +957,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetScaleXExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getscalex(obj_id)");
@@ -979,7 +979,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetScaleYExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getscaley(obj_id)");
@@ -1001,7 +1001,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetScaleZExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getscalez(obj_id)");
@@ -1023,7 +1023,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class PositionExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 3)
                 throw new Exception("Expected: position(x, y, z)");
@@ -1041,7 +1041,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class RotationExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 3)
                 throw new Exception("Expected: rotation(x, y, z)");
@@ -1059,7 +1059,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class ScaleExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 3)
                 throw new Exception("Expected: scale(x, y, z)");
@@ -1077,7 +1077,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetCampExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: getcamp(objid)");
@@ -1095,7 +1095,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetAttrExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: getattr(objid, attrid)");
@@ -1124,7 +1124,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class CalcOffsetExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 3)
                 throw new Exception("Expected: calcoffset(obj_id, target_obj_id, offset)");
@@ -1155,7 +1155,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class CalcDirExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: calcdir(obj_id, target_obj_id)");
@@ -1180,7 +1180,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class IsEnemyExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: isenemy(camp1, camp2)");
@@ -1196,7 +1196,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class IsFriendExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: isfriend(camp1, camp2)");
@@ -1212,7 +1212,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class ObjGetNpcTypeExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: objgetnpctype(objid)");
@@ -1230,7 +1230,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class ObjGetAiParamExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: objgetaiparam(objid, index)");

@@ -12,7 +12,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class DestroyGameObjectExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
                 throw new Exception("Expected: destroygameobject(path_or_obj)");
@@ -44,10 +44,10 @@ namespace GameLibrary.Story.StoryExpressions
     {
         public override bool IsAsync { get { return true; } }
 
-        protected override IEnumerator DoCalc(AsyncCalcResult result)
+        protected override IEnumerator DoCalc(DslCalculator calculator, AsyncCalcResult result)
         {
-            var name = m_Name.Calc().ToString();
-            var prefab = m_Prefab.Calc().ToString();
+            var name = m_Name.Calc(calculator).ToString();
+            var prefab = m_Prefab.Calc(calculator).ToString();
 
             var obj = ResourceSystem.Instance.NewObject(prefab) as GameObject;
             if (null != obj)
@@ -60,7 +60,7 @@ namespace GameLibrary.Story.StoryExpressions
                 // parent
                 if (m_HaveParent)
                 {
-                    var parentVal = m_Parent.Calc();
+                    var parentVal = m_Parent.Calc(calculator);
                     GameObject parent = GameObjectExpHelpers.GetGameObject(parentVal);
                     if (null != parent)
                     {
@@ -71,21 +71,21 @@ namespace GameLibrary.Story.StoryExpressions
                 // position
                 if (null != m_Position)
                 {
-                    Vector3Obj posObj = m_Position.Calc();
+                    Vector3Obj posObj = m_Position.Calc(calculator);
                     obj.transform.localPosition = posObj;
                 }
 
                 // rotation
                 if (null != m_Rotation)
                 {
-                    Vector3Obj rotObj = m_Rotation.Calc();
+                    Vector3Obj rotObj = m_Rotation.Calc(calculator);
                     obj.transform.localEulerAngles = rotObj;
                 }
 
                 // scale
                 if (null != m_Scale)
                 {
-                    Vector3Obj scaleObj = m_Scale.Calc();
+                    Vector3Obj scaleObj = m_Scale.Calc(calculator);
                     obj.transform.localScale = scaleObj;
                 }
 
@@ -94,7 +94,7 @@ namespace GameLibrary.Story.StoryExpressions
                 {
                     for (int i = 0; i < m_DisableComponents.Count; ++i)
                     {
-                        var typeName = m_DisableComponents[i].Calc().ToString();
+                        var typeName = m_DisableComponents[i].Calc(calculator).ToString();
                         var type = Utility.GetType(typeName);
                         if (null != type)
                         {
@@ -113,7 +113,7 @@ namespace GameLibrary.Story.StoryExpressions
                 {
                     for (int i = 0; i < m_RemoveComponents.Count; ++i)
                     {
-                        var typeName = m_RemoveComponents[i].Calc().ToString();
+                        var typeName = m_RemoveComponents[i].Calc(calculator).ToString();
                         var type = Utility.GetType(typeName);
                         if (null != type)
                         {
@@ -129,8 +129,8 @@ namespace GameLibrary.Story.StoryExpressions
                 // set obj variable
                 if (m_HaveObj)
                 {
-                    string varName = m_ObjVarName.Calc().ToString();
-                    var storyInst = Calculator.GetFuncContext<StoryInstance>();
+                    string varName = m_ObjVarName.Calc(calculator).ToString();
+                    var storyInst = calculator.GetFuncContext<StoryInstance>();
                     if (null != storyInst)
                     {
                         storyInst.SetVariable(varName, obj);
@@ -161,12 +161,12 @@ namespace GameLibrary.Story.StoryExpressions
                 int num = callData.GetParamNum();
                 if (num > 1)
                 {
-                    m_Name = Calculator.Load(callData.GetParam(0));
-                    m_Prefab = Calculator.Load(callData.GetParam(1));
+                    m_Name = CodeStructure.Load(callData.GetParam(0));
+                    m_Prefab = CodeStructure.Load(callData.GetParam(1));
                     if (num > 2)
                     {
                         m_HaveParent = true;
-                        m_Parent = Calculator.Load(callData.GetParam(2));
+                        m_Parent = CodeStructure.Load(callData.GetParam(2));
                     }
                 }
             }
@@ -223,7 +223,7 @@ namespace GameLibrary.Story.StoryExpressions
         {
             if (callData.GetId() == "obj" && callData.GetParamNum() == 1)
             {
-                m_ObjVarName = Calculator.Load(callData.GetParam(0));
+                m_ObjVarName = CodeStructure.Load(callData.GetParam(0));
                 m_HaveObj = true;
             }
         }
@@ -235,23 +235,23 @@ namespace GameLibrary.Story.StoryExpressions
             if (id == "position")
             {
                 if (num == 3)
-                    m_Position = Calculator.Load(callData);
+                    m_Position = CodeStructure.Load(callData);
                 else if (num > 0)
-                    m_Position = Calculator.Load(callData.GetParam(0));
+                    m_Position = CodeStructure.Load(callData.GetParam(0));
             }
             else if (id == "rotation")
             {
                 if (num == 3)
-                    m_Rotation = Calculator.Load(callData);
+                    m_Rotation = CodeStructure.Load(callData);
                 else if (num > 0)
-                    m_Rotation = Calculator.Load(callData.GetParam(0));
+                    m_Rotation = CodeStructure.Load(callData.GetParam(0));
             }
             else if (id == "scale")
             {
                 if (num == 3)
-                    m_Scale = Calculator.Load(callData);
+                    m_Scale = CodeStructure.Load(callData);
                 else if (num > 0)
-                    m_Scale = Calculator.Load(callData.GetParam(0));
+                    m_Scale = CodeStructure.Load(callData.GetParam(0));
             }
             else if (id == "disable")
             {
@@ -259,7 +259,7 @@ namespace GameLibrary.Story.StoryExpressions
                     m_DisableComponents = new List<IExpression>();
                 for (int i = 0; i < num; ++i)
                 {
-                    m_DisableComponents.Add(Calculator.Load(callData.GetParam(i)));
+                    m_DisableComponents.Add(CodeStructure.Load(callData.GetParam(i)));
                 }
             }
             else if (id == "remove")
@@ -268,7 +268,7 @@ namespace GameLibrary.Story.StoryExpressions
                     m_RemoveComponents = new List<IExpression>();
                 for (int i = 0; i < num; ++i)
                 {
-                    m_RemoveComponents.Add(Calculator.Load(callData.GetParam(i)));
+                    m_RemoveComponents.Add(CodeStructure.Load(callData.GetParam(i)));
                 }
             }
         }
@@ -291,7 +291,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SetActiveExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: setactive(path_or_obj, active)");
@@ -326,7 +326,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SetVisibleExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: setvisible(path_or_obj, visible)");
@@ -350,7 +350,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SetParentExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: setparent(child, parent)");
@@ -374,10 +374,10 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SetTransformExp : AbstractExpression
     {
-        protected override BoxedValue DoCalc()
+        protected override BoxedValue DoCalc(DslCalculator calculator)
         {
-            var objVal = m_Obj.Calc();
-            int worldOrLocal = m_WorldOrLocal.Calc().GetInt();
+            var objVal = m_Obj.Calc(calculator);
+            int worldOrLocal = m_WorldOrLocal.Calc(calculator).GetInt();
             GameObject obj = GameObjectExpHelpers.GetGameObject(objVal);
             if (null == obj) return BoxedValue.NullObject;
 
@@ -385,7 +385,7 @@ namespace GameLibrary.Story.StoryExpressions
 
             if (null != m_Position)
             {
-                Vector3Obj position = m_Position.Calc();
+                Vector3Obj position = m_Position.Calc(calculator);
                 if (0 == worldOrLocal)
                 {
                     obj.transform.localPosition = position;
@@ -404,7 +404,7 @@ namespace GameLibrary.Story.StoryExpressions
             }
             if (null != m_Rotation)
             {
-                Vector3Obj rotation = m_Rotation.Calc();
+                Vector3Obj rotation = m_Rotation.Calc(calculator);
                 if (0 == worldOrLocal)
                     obj.transform.localEulerAngles = rotation;
                 else
@@ -412,7 +412,7 @@ namespace GameLibrary.Story.StoryExpressions
             }
             if (null != m_Scale)
             {
-                Vector3Obj scale = m_Scale.Calc();
+                Vector3Obj scale = m_Scale.Calc(calculator);
                 obj.transform.localScale = scale;
             }
             return BoxedValue.NullObject;
@@ -430,8 +430,8 @@ namespace GameLibrary.Story.StoryExpressions
                 int num = callData.GetParamNum();
                 if (num > 1)
                 {
-                    m_Obj = Calculator.Load(callData.GetParam(0));
-                    m_WorldOrLocal = Calculator.Load(callData.GetParam(1));
+                    m_Obj = CodeStructure.Load(callData.GetParam(0));
+                    m_WorldOrLocal = CodeStructure.Load(callData.GetParam(1));
                 }
             }
 
@@ -456,23 +456,23 @@ namespace GameLibrary.Story.StoryExpressions
             if (id == "position")
             {
                 if (num == 3)
-                    m_Position = Calculator.Load(callData);
+                    m_Position = CodeStructure.Load(callData);
                 else if (num > 0)
-                    m_Position = Calculator.Load(callData.GetParam(0));
+                    m_Position = CodeStructure.Load(callData.GetParam(0));
             }
             else if (id == "rotation")
             {
                 if (num == 3)
-                    m_Rotation = Calculator.Load(callData);
+                    m_Rotation = CodeStructure.Load(callData);
                 else if (num > 0)
-                    m_Rotation = Calculator.Load(callData.GetParam(0));
+                    m_Rotation = CodeStructure.Load(callData.GetParam(0));
             }
             else if (id == "scale")
             {
                 if (num == 3)
-                    m_Scale = Calculator.Load(callData);
+                    m_Scale = CodeStructure.Load(callData);
                 else if (num > 0)
-                    m_Scale = Calculator.Load(callData.GetParam(0));
+                    m_Scale = CodeStructure.Load(callData.GetParam(0));
             }
         }
 
@@ -488,7 +488,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SetActorScaleExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: setactorscale(objid, scale)");
@@ -511,7 +511,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SendMessageExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: sendmessage(obj, msg, ...)");
@@ -544,7 +544,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SendMessageWithTagExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: sendmessagewithtag(tag, msg, ...)");
@@ -585,7 +585,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class SendMessageWithGameObjectExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: sendmessagewithgameobject(obj, msg, ...)");
@@ -628,7 +628,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class AutoRecycleExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: auturecycle(path_or_obj, enable)");
@@ -679,10 +679,10 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class AddComponentExp : AbstractExpression
     {
-        protected override BoxedValue DoCalc()
+        protected override BoxedValue DoCalc(DslCalculator calculator)
         {
-            var objVal = m_ObjPath.Calc();
-            var componentTypeVal = m_ComponentType.Calc();
+            var objVal = m_ObjPath.Calc(calculator);
+            var componentTypeVal = m_ComponentType.Calc(calculator);
 
             GameObject obj = GameObjectExpHelpers.GetGameObject(objVal);
             if (null == obj)
@@ -703,8 +703,8 @@ namespace GameLibrary.Story.StoryExpressions
                 var component = obj.AddComponent(componentType);
                 if (m_HaveObj && null != component)
                 {
-                    string varName = m_ObjVarName.Calc().ToString();
-                    var storyInst = Calculator.GetFuncContext<StoryInstance>();
+                    string varName = m_ObjVarName.Calc(calculator).ToString();
+                    var storyInst = calculator.GetFuncContext<StoryInstance>();
                     if (null != storyInst)
                     {
                         storyInst.SetVariable(varName, component);
@@ -726,8 +726,8 @@ namespace GameLibrary.Story.StoryExpressions
             }
             if (null != callData && callData.HaveParam())
             {
-                m_ObjPath = Calculator.Load(callData.GetParam(0));
-                m_ComponentType = Calculator.Load(callData.GetParam(1));
+                m_ObjPath = CodeStructure.Load(callData.GetParam(0));
+                m_ComponentType = CodeStructure.Load(callData.GetParam(1));
             }
             if (funcData.HaveStatement())
             {
@@ -762,7 +762,7 @@ namespace GameLibrary.Story.StoryExpressions
         {
             if (callData.GetId() == "obj" && callData.GetParamNum() == 1)
             {
-                m_ObjVarName = Calculator.Load(callData.GetParam(0));
+                m_ObjVarName = CodeStructure.Load(callData.GetParam(0));
                 m_HaveObj = true;
             }
         }
@@ -778,7 +778,7 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class RemoveComponentExp : SimpleExpressionBase
     {
-        protected override BoxedValue OnCalc(IList<BoxedValue> operands)
+        protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
                 throw new Exception("Expected: removecomponent(obj, component_type)");
@@ -820,10 +820,10 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class AddTransformExp : AbstractExpression
     {
-        protected override BoxedValue DoCalc()
+        protected override BoxedValue DoCalc(DslCalculator calculator)
         {
-            var objVal = m_ObjPath.Calc();
-            int worldOrLocal = m_LocalOrWorld.Calc().GetInt();
+            var objVal = m_ObjPath.Calc(calculator);
+            int worldOrLocal = m_LocalOrWorld.Calc(calculator).GetInt();
 
             GameObject obj = GameObjectExpHelpers.GetGameObject(objVal);
             if (null == obj) return BoxedValue.NullObject;
@@ -831,7 +831,7 @@ namespace GameLibrary.Story.StoryExpressions
             var entityInfo = SceneSystem.Instance.GetEntityByGameObject(obj);
             if (m_Position != null)
             {
-                var v = m_Position.Calc();
+                var v = m_Position.Calc(calculator);
                 Vector3Obj positionObj = v;
                 Vector3 position = positionObj;
                 if (0 == worldOrLocal)
@@ -853,7 +853,7 @@ namespace GameLibrary.Story.StoryExpressions
             }
             if (m_Rotation != null)
             {
-                var v = m_Rotation.Calc();
+                var v = m_Rotation.Calc(calculator);
                 Vector3Obj rotationObj = v;
                 Vector3 rotation = rotationObj;
                 if (0 == worldOrLocal)
@@ -863,7 +863,7 @@ namespace GameLibrary.Story.StoryExpressions
             }
             if (m_Scale != null)
             {
-                var v = m_Scale.Calc();
+                var v = m_Scale.Calc(calculator);
                 Vector3Obj scaleObj = v;
                 Vector3 scale = scaleObj;
                 obj.transform.localScale += new UnityEngine.Vector3(scale.x, scale.y, scale.z);
@@ -880,8 +880,8 @@ namespace GameLibrary.Story.StoryExpressions
             }
             if (null != callData && callData.HaveParam())
             {
-                m_ObjPath = Calculator.Load(callData.GetParam(0));
-                m_LocalOrWorld = Calculator.Load(callData.GetParam(1));
+                m_ObjPath = CodeStructure.Load(callData.GetParam(0));
+                m_LocalOrWorld = CodeStructure.Load(callData.GetParam(1));
             }
             if (funcData.HaveStatement())
             {
@@ -904,23 +904,23 @@ namespace GameLibrary.Story.StoryExpressions
             if (id == "position")
             {
                 if (num == 3)
-                    m_Position = Calculator.Load(callData);
+                    m_Position = CodeStructure.Load(callData);
                 else if (num > 0)
-                    m_Position = Calculator.Load(callData.GetParam(0));
+                    m_Position = CodeStructure.Load(callData.GetParam(0));
             }
             else if (id == "rotation")
             {
                 if (num == 3)
-                    m_Rotation = Calculator.Load(callData);
+                    m_Rotation = CodeStructure.Load(callData);
                 else if (num > 0)
-                    m_Rotation = Calculator.Load(callData.GetParam(0));
+                    m_Rotation = CodeStructure.Load(callData.GetParam(0));
             }
             else if (id == "scale")
             {
                 if (num == 3)
-                    m_Scale = Calculator.Load(callData);
+                    m_Scale = CodeStructure.Load(callData);
                 else if (num > 0)
-                    m_Scale = Calculator.Load(callData.GetParam(0));
+                    m_Scale = CodeStructure.Load(callData.GetParam(0));
             }
         }
 
@@ -939,20 +939,20 @@ namespace GameLibrary.Story.StoryExpressions
     /// </summary>
     internal sealed class GetGameObjectExp : AbstractExpression
     {
-        protected override BoxedValue DoCalc()
+        protected override BoxedValue DoCalc(DslCalculator calculator)
         {
-            var objVal = m_ObjPath.Calc();
+            var objVal = m_ObjPath.Calc(calculator);
             string objPath = objVal.IsString ? objVal.ToString() : null;
 
             List<string> disables = new List<string>();
             for (int i = 0; i < m_DisableComponents.Count; ++i)
             {
-                disables.Add(m_DisableComponents[i].Calc().ToString());
+                disables.Add(m_DisableComponents[i].Calc(calculator).ToString());
             }
             List<string> removes = new List<string>();
             for (int i = 0; i < m_RemoveComponents.Count; ++i)
             {
-                removes.Add(m_RemoveComponents[i].Calc().ToString());
+                removes.Add(m_RemoveComponents[i].Calc(calculator).ToString());
             }
 
             GameObject obj = null;
@@ -1015,7 +1015,7 @@ namespace GameLibrary.Story.StoryExpressions
 
             if (null != callData && callData.HaveParam())
             {
-                m_ObjPath = Calculator.Load(callData.GetParam(0));
+                m_ObjPath = CodeStructure.Load(callData.GetParam(0));
             }
 
             if (funcData.HaveStatement())
@@ -1039,14 +1039,14 @@ namespace GameLibrary.Story.StoryExpressions
             {
                 for (int i = 0; i < callData.GetParamNum(); ++i)
                 {
-                    m_DisableComponents.Add(Calculator.Load(callData.GetParam(i)));
+                    m_DisableComponents.Add(CodeStructure.Load(callData.GetParam(i)));
                 }
             }
             else if (id == "remove")
             {
                 for (int i = 0; i < callData.GetParamNum(); ++i)
                 {
-                    m_RemoveComponents.Add(Calculator.Load(callData.GetParam(i)));
+                    m_RemoveComponents.Add(CodeStructure.Load(callData.GetParam(i)));
                 }
             }
         }

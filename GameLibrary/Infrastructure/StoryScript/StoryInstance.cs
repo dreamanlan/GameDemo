@@ -63,7 +63,7 @@ namespace StoryScript
             get { return m_Config; }
         }
 
-        public DslCalculator Calculator {
+        public DslCalculator calculator {
             get { return m_Calculator; }
         }
 
@@ -174,7 +174,7 @@ namespace StoryScript
                                         var exp = calculator.Load(defData.GetParam(0));
                                         BoxedValue val = BoxedValue.NullObject;
                                         if (null != exp) {
-                                            val = exp.Calc();
+                                            val = exp.Calc(m_Calculator);
                                         }
                                         if (!m_PreInitedLocalVariables.ContainsKey(id)) {
                                             m_PreInitedLocalVariables.Add(id, val);
