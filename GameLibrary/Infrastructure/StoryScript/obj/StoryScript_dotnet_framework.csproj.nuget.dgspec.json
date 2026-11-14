@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript_dotnet_framework.csproj": {}
+    "d:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript_dotnet_framework.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript_dotnet_framework.csproj": {
+    "d:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript_dotnet_framework.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript_dotnet_framework.csproj",
+        "projectUniqueName": "d:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript_dotnet_framework.csproj",
         "projectName": "StoryScript",
-        "projectPath": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript_dotnet_framework.csproj",
+        "projectPath": "d:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript_dotnet_framework.csproj",
         "packagesPath": "C:\\Users\\dreamanlan\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\obj\\",
+        "outputPath": "d:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
