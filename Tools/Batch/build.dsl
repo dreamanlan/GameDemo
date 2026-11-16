@@ -1,26 +1,26 @@
 script(main)
 {
-    fileecho(true);
+    file_echo(true);
 
     cfg=arg(1);
     Configuration=arg(1);
     
     paused=true;
-    if(argnum()>=3){
-    	paused=changetype(arg(2), "bool");
+    if(arg_num()>=3){
+    	paused=change_type(arg(2), "bool");
     };
 
     call("setcolor");
-    $encoding = getinputencoding();
-    setencoding(936);
+    $encoding = get_input_encoding();
+    set_encoding(936);
     echo("encoding:{0} {1}", $encoding.EncodingName, $encoding.EncodingName);
-    echo("commandline:{0}", cmdline());
-    echo("commandline args:{0}", stringjoin(",",cmdlineargs()));
-    echo("args:{0}", stringjoin(",",args()));
+    echo("command_line:{0}", cmd_line());
+    echo("command_line args:{0}", string_join(",",cmd_line_args()));
+    echo("args:{0}", string_join(",",args()));
     echo("current directory:{0}", pwd());
-    echo("script directory:{0}", getscriptdir());
+    echo("script directory:{0}", get_script_directory());
 
-    rootdir=getscriptdir()+"/../..";
+    rootdir=get_script_directory()+"/../..";
     plugindir=rootdir+"/Unity3dProject/Assets/Plugins/game";
     logdir=rootdir+"/BuildLog";
     libdir=rootdir+"/GameLibrary/ExternLibrary";
@@ -35,13 +35,13 @@ script(main)
     msbuild2019="C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe";
     msbuild2017="C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\MSBuild\\15.0\\Bin\\MSBuild.exe";
 
-    if(fileexist(msbuild2022)){
+    if(file_exist(msbuild2022)){
         xbuild=msbuild2022;
     }
-    elseif(fileexist(msbuild2019)){
+    elseif(file_exist(msbuild2019)){
         xbuild=msbuild2019;
     }
-    elseif(fileexist(msbuild2017)){
+    elseif(file_exist(msbuild2017)){
         xbuild=msbuild2017;
     }
     else{
@@ -51,7 +51,7 @@ script(main)
     mono=expand("%rootdir%/Tools/mono/mono.exe");
     
     echo();
-    looplist(listhashtable(envs())){
+    loop_list(list_hashtable(envs())){
         echo("{0}={1}",$$.Key,$$.Value);
     };
     echo();
@@ -72,7 +72,7 @@ script(main)
         :};
     };
     
-    createdir(logdir);
+    create_dir(logdir);
 
     echo("building GameLibrary.sln ...");
     $var0 = command{
@@ -88,35 +88,35 @@ script(main)
     
     echo("result:{0}", $var0);
     if($var0){
-        setfgcolor("Red");
+        set_fg_color("Red");
         echo("compile GameLibrary.sln failed, see Client/BuildLog/GameLibrary.sln.log");
         call("setcolor");
     };
 
     cd(rootdir+"/GameLibrary/App/GameCore/bin/%cfg%");
     echo("curdir:{0}",pwd());
-    looplist(listfiles(rootdir+"/GameLibrary/App/GameCore/bin/%cfg%/netstandard2.1","*.dll")){
-        $filename = getfilename($$);
+    loop_list(list_files(rootdir+"/GameLibrary/App/GameCore/bin/%cfg%/netstandard2.1","*.dll")){
+        $filename = get_file_name($$);
         $targetPath = plugindir+"/"+$filename;
-        copyfile($$, $targetPath);
+        copy_file($$, $targetPath);
         //echo("copy {0} to {1}", $$, $targetPath);
     };
     // Note: PDB files are now embedded in DLLs (<DebugType>embedded</DebugType> in .csproj)
     // No need to copy separate .pdb or .mdb files
 
-    looplist(listfiles(plugindir,"Unity*.dll")){
-        deletefile($$);
+    loop_list(list_files(plugindir,"Unity*.dll")){
+        delete_file($$);
     };
-    deletefile(plugindir+"/netstandard.dll");
+    delete_file(plugindir+"/netstandard.dll");
     cd(rootdir);
 
     if($var0){
-        setfgcolor("Red");
+        set_fg_color("Red");
         echo("compile failed !");
         call("setcolor");
     };
 
-    resetcolor();
+    reset_color();
     if(paused){
 	    echo("press any key ...");
 	    pause();
@@ -126,9 +126,9 @@ script(main)
 
 script(setcolor)
 {
-    if(osplatform()=="Unix"){
-        setfgcolor("Blue");
+    if(os_platform()=="Unix"){
+        set_fg_color("Blue");
     }else{
-        setfgcolor("Yellow");
+        set_fg_color("Yellow");
     };
 };

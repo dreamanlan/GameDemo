@@ -5,20 +5,20 @@ script(main)
   };
   onmessage("start")
   {
-    bindui(@window){
+    bind_ui(@window){
       onevent("button","cont","Button");
     };
-    @window.SetActive(changetype(0,"bool"));
+    @window.SetActive(change_type(0,"bool"));
   };
   onmessage("show_victory")
   {
-    @window.SetActive(changetype(1,"bool"));
+    @window.SetActive(change_type(1,"bool"));
   };
   onnamespacedmessage("on_click")args($tag,$inputs,$toggles,$sliders,$dropdowns)
   {
-    @window.SetActive(changetype(0,"bool"));
+    @window.SetActive(change_type(0,"bool"));
     if($tag=="cont"){
-      firemessage("on_victory_button_click");
+      fire_message("on_victory_button_click");
     };
   };
 };

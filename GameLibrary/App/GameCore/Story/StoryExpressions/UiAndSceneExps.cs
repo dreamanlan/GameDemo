@@ -7,14 +7,14 @@ using StoryScript.DslExpression;
 namespace GameLibrary.Story.StoryExpressions
 {
     /// <summary>
-    /// loadui(name, prefab, dslfile[, dont_destroy_old]) - load a UI prefab
+    /// load_ui(name, prefab, dslfile[, dont_destroy_old]) - load a UI prefab
     /// </summary>
     internal sealed class LoadUiExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 3)
-                throw new Exception("Expected: loadui(name, prefab, dslfile[, dont_destroy_old])");
+                throw new Exception("Expected: load_ui(name, prefab, dslfile[, dont_destroy_old])");
 
             string name = operands[0].ToString();
             string prefab = operands[1].ToString();
@@ -59,14 +59,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// changescene(target_scene) - change to a different scene
+    /// change_scene(target_scene) - change to a different scene
     /// </summary>
     internal sealed class ChangeSceneExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: changescene(target_scene)");
+                throw new Exception("Expected: change_scene(target_scene)");
 
             string targetScene = operands[0].ToString();
             SceneSystem.Instance.ChangeScene(targetScene);
@@ -90,14 +90,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// openurl(url) - open a URL
+    /// open_url(url) - open a URL
     /// </summary>
     internal sealed class OpenUrlExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: openurl(url)");
+                throw new Exception("Expected: open_url(url)");
 
             string url = operands[0].ToString();
             UnityEngine.Application.OpenURL(url);
@@ -106,14 +106,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// highlightprompt(info) - show a highlight prompt
+    /// highlight_prompt(info) - show a highlight prompt
     /// </summary>
     internal sealed class HighlightPromptExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: highlightprompt(info)");
+                throw new Exception("Expected: highlight_prompt(info)");
 
             string info = operands[0].ToString();
             SceneSystem.Instance.HighlightPrompt(info);

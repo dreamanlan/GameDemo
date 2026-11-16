@@ -7,16 +7,16 @@ height
 {
   $x=arg(0);
   $y=arg(1);
-  height = clamp(rndfloat(0,1),0,0.01)+samplered("img", $x, $y)/1000.0+samplegreen("img", $x, $y)/1000.0+sampleblue("img", $x, $y)/1000.0;
+  height = clamp(rnd_float(0,1),0,0.01)+sample_red("img", $x, $y)/1000.0+sample_green("img", $x, $y)/1000.0+sample_blue("img", $x, $y)/1000.0;
 }
 alphamap
 {
   $x=arg(0);
   $y=arg(1);
-  $h = getheight($y, $x);
-  clearalpha();
-  setalpha(0, sin($x/180.0));
-  setalpha(1, cos($y/180.0));
-  setalpha(2, sin($x/180.0));
-  setalpha(3, cos($y/180.0));
+  $h = get_height($y, $x);
+  clear_alpha();
+  set_alpha(0, sin($x/180.0));
+  set_alpha(1, cos($y/180.0));
+  set_alpha(2, sin($x/180.0));
+  set_alpha(3, cos($y/180.0));
 };

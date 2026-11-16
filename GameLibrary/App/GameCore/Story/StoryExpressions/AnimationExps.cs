@@ -7,14 +7,14 @@ using StoryScript.DslExpression;
 namespace GameLibrary.Story.StoryExpressions
 {
     /// <summary>
-    /// gameobjectanimation(obj, anim_name) - play an animation on a GameObject
+    /// game_object_animation(obj, anim_name) - play an animation on a GameObject
     /// </summary>
     internal sealed class GameObjectAnimationExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: gameobjectanimation(obj, anim_name)");
+                throw new Exception("Expected: game_object_animation(obj, anim_name)");
 
             GameObject obj = AnimationExpHelpers.GetGameObject(operands[0]);
             string anim = operands[1].ToString();
@@ -42,7 +42,7 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// setanimatorparam(obj, type, name, value) - set an animator parameter
+    /// set_anim_at_or_param(obj, type, name, value) - set an animator parameter
     /// Types: int, float, bool, trigger
     /// </summary>
     internal sealed class SetAnimatorParamExp : SimpleExpressionBase
@@ -50,7 +50,7 @@ namespace GameLibrary.Story.StoryExpressions
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 4)
-                throw new Exception("Expected: setanimatorparam(obj, type, name, value)");
+                throw new Exception("Expected: set_anim_at_or_param(obj, type, name, value)");
 
             GameObject obj = AnimationExpHelpers.GetGameObject(operands[0]);
             string type = operands[1].ToString();
@@ -93,7 +93,7 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// npcanimationparam(unit_id) { int(key, value); float(key, value); bool(key, value); trigger(key, value); }
+    /// npc_animation_param(unit_id) { int(key, value); float(key, value); bool(key, value); trigger(key, value); }
     /// - set animator parameters on an NPC
     /// </summary>
     internal sealed class NpcAnimationParamExp : AbstractExpression
@@ -117,7 +117,7 @@ namespace GameLibrary.Story.StoryExpressions
 
         protected override bool Load(Dsl.StatementData statementData)
         {
-            // Parse: npcanimationparam(unit_id) { ... }
+            // Parse: npc_animation_param(unit_id) { ... }
             Dsl.FunctionData funcData = statementData.First.AsFunction;
             if (null != funcData)
             {
@@ -149,7 +149,7 @@ namespace GameLibrary.Story.StoryExpressions
 
         protected override bool Load(Dsl.FunctionData funcData)
         {
-            // Handle: npcanimationparam(unit_id) without block
+            // Handle: npc_animation_param(unit_id) without block
             Dsl.FunctionData callData = funcData;
             if (funcData.IsHighOrder)
                 callData = funcData.LowerOrderFunction;
@@ -243,7 +243,7 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// objanimationparam(obj_id) { int(key, value); float(key, value); bool(key, value); trigger(key, value); }
+    /// obj_animation_param(obj_id) { int(key, value); float(key, value); bool(key, value); trigger(key, value); }
     /// - set animator parameters on a GameObject
     /// </summary>
     internal sealed class ObjAnimationParamExp : AbstractExpression
@@ -267,7 +267,7 @@ namespace GameLibrary.Story.StoryExpressions
 
         protected override bool Load(Dsl.StatementData statementData)
         {
-            // Parse: objanimationparam(obj_id) { ... }
+            // Parse: obj_animation_param(obj_id) { ... }
             Dsl.FunctionData funcData = statementData.First.AsFunction;
             if (null != funcData)
             {
@@ -299,7 +299,7 @@ namespace GameLibrary.Story.StoryExpressions
 
         protected override bool Load(Dsl.FunctionData funcData)
         {
-            // Handle: objanimationparam(obj_id) without block
+            // Handle: obj_animation_param(obj_id) without block
             Dsl.FunctionData callData = funcData;
             if (funcData.IsHighOrder)
                 callData = funcData.LowerOrderFunction;

@@ -19,7 +19,7 @@ The old `IStoryCommand`/`IStoryFunction` system has been successfully removed fr
 
 #### `DslCalculatorApi.cs`
 - Removed `USE_GM_STORY` section that contained `StoryVarExp`, `StoryFunctionExp`, `StoryCommandExp` classes
-- Removed registration of `storyvar`, `storyfunction`, `storycommand` expressions
+- Removed registration of `story_var`, `storyfunction`, `storycommand` expressions
 - Commented out `#define USE_GM_STORY`
 
 #### `ClientGmStorySystem.cs`

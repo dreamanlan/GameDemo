@@ -168,7 +168,7 @@ dec(@var,value);
 作用：
   自减操作。
 
-5.propset(value,value);
+5.prop_set(value,value);
 
 作用：
   第一个value必须是一个字符串value，表示变量名(对于局部变量与全局变量，名字必须包括特殊的@与@@前缀)。
@@ -251,7 +251,7 @@ dec(@var,value);
   暂停当前的消息处理指定时间。注意，一个消息处理如果没有wait或sleep调用，会一直执行直到结束。因此如果有大的循环处理，里面应该调用sleep(0);来
   释放控制权以允许其它逻辑正常执行。if部分为可选，用于在条件不满足时提前结束等待。
 
-12.storywait(毫秒数)[if(条件表达式)];
+12.story_wait(毫秒数)[if(条件表达式)];
 
 作用：
   暂停当前的消息处理指定时间。注意，一个消息处理如果没有wait或sleep调用，会一直执行直到结束。因此如果有大的循环处理，里面应该调用sleep(0);来
@@ -268,13 +268,13 @@ dec(@var,value);
 作用：
   按format指定的格式格式化参数表各个value，然后输出拼接好的字符串到调试日志。
 
-15.localmessage(消息ID，参数表);
+15.local_message(消息ID，参数表);
 
 作用：
   触发一个本story内的消息。注意消息ID是一个字符串，对应onmessage的参数部分所描蕍alue南D，onmessage有多个参数则用:把各参数拼接成消息ID。这里
   的参数表的各个value在onmessage处理里可以通过$0,$1,...来访问。
 
-16.storylocalmessage(消息ID，参数表);
+16.story_local_message(消息ID，参数表);
 
 作用：
   触发一个本story内的消息。注意消息ID是一个字符串，对应onmessage的参数部分所描蕍alue南D，onmessage有多个参数则用:把各参数拼接成消息ID。这里
@@ -285,7 +285,7 @@ dec(@var,value);
 作用：
   结束当前story的执行。
 
-18.looplist(value)
+18.loop_list(value)
 {
   	cmd1();
   	cmd2();
@@ -294,37 +294,37 @@ dec(@var,value);
 作用：
   对value指定的list的各个value遍历循环执行命令列表，在命令中通过$$来获得当前遍历到的list元素。
 
-19.listset(list,index,value);
+19.list_set(list,index,value);
 
 作用：
   修改指定list的index元素value为value。
 
-20.listadd(list,value);
+20.list_add(list,value);
 
 作用：
   给list添加值为value的元素。
 
-21.listremove(list,value);
+21.list_remove(list,value);
 
 作用：
   删除list里值为value的元素。
 
-22.listinsert(list,index,value);
+22.list_insert(list,index,value);
 
 作用：
   往list里index位置插入值为value的元素。
 
-23.listremoveat(list,index);
+23.list_remove_at(list,index);
 
 作用：
   删除list里索引为index的元素。
 
-24.listclear(list);
+24.list_clear(list);
 
 作用：
   清空list。
 
-25.clearmessage(msgid1,msgid2,...);
+25.clear_message(msgid1,msgid2,...);
 
 作用：
   清空指定的消息队列，如果不指定参数刚清空所有消息队列。
@@ -334,12 +334,12 @@ dec(@var,value);
 作用：
   调用指定类/对象的方法。
 
-27.dotnetset(obj/type,property,arg1,arg2,...);
+27.dotnet_set(obj/type,property,arg1,arg2,...);
 
 作用：
   设置指定类/对象的特性/字段。
 
-28.writealllines(file,lines);
+28.write_all_lines(file,lines);
 
 作用：
   写文件。
@@ -349,42 +349,42 @@ dec(@var,value);
 作用：
   写文件。
 
-30.hashtableadd(hashtable,key,value);
+30.hashtable_add(hashtable,key,value);
 
 作用：
   往哈希表里添加元素。
 
-31.hashtableset(hashtable,key,value);
+31.hashtable_set(hashtable,key,value);
 
 作用：
   往哈希表里添加或修改元素。
 
-32.hashtableremove(hashtable,key);
+32.hashtable_remove(hashtable,key);
 
 作用：
   移除哈希表里的元素。
 
-33.hashtableclear(hashtable);
+33.hashtable_clear(hashtable);
 
 作用：
   清空哈希表。
 
-34.waitlocalmessage(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
+34.wait_local_message(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
 
 作用：
 waitlocalmessage等待当前story的指定消息之一触发。(var部分用字符串指定变量名，这样允许一个变量或表达式的value作为变量)
 
-35.waitlocalmessagehandler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
+35.wait_local_message_handler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
 
 作用：
 waitlocalmessagehandler等待当前story的指定消息处理全部执行完毕。(var部分用字符串指定变量名，这样允许一个变量或表达式的value作为变量)
 
-36.storywaitlocalmessage(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
+36.story_wait_local_message(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
 
 作用：
 storywaitlocalmessage等待当前story的指定消息之一触发。(var部分用字符串指定变量名，这样允许一个变量或表达式的value作为变量)。如果剧情取消按钮被按下，则不再等待按超时处理
 
-37.storywaitlocalmessagehandler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
+37.story_wait_local_message_handler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
 
 作用：
 storywaitlocalmessagehandler等待当前story的指定消息处理全部执行完毕。(var部分用字符串指定变量名，这样允许一个变量或表达式的value作为变量)。如果剧情取消按钮被按下，则不再等待按超时处理
@@ -394,7 +394,7 @@ storywaitlocalmessagehandler等待当前story的指定消息处理全部执行�
 作用：
   暂停同一story里的指定的消息处理。
 
-39.resumelocalmessagehandler(msgid,msgid,...);
+39.resume_local_message_handler(msgid,msgid,...);
 
 作用：
   恢复同一story里的指定的消息处理。
@@ -404,7 +404,7 @@ storywaitlocalmessagehandler等待当前story的指定消息处理全部执行�
 作用：
   暂停同一story里的指定的名字空间里的消息处理。
 
-41.resumelocalnamespacedmessagehandler(msgid,msgid,...);
+41.resume_local_namespaced_message_handler(msgid,msgid,...);
 
 作用：
   恢复同一story里的指定的名字空间里的消息处理。
@@ -470,17 +470,17 @@ storywaitlocalmessagehandler等待当前story的指定消息处理全部执行�
 
 六、内部函数
 
-1.vector2(x,y);
+1.vector_2(x,y);
 
 作用：
   构造一个vector2对象。
 
-2.vector3(x,y,z);
+2.vector_3(x,y,z);
 
 作用：
   构造一个vector3对象。
 
-3.vector4(x,y,z,w);
+3.vector_4(x,y,z,w);
 
 作用：
   构造一个vector4对象。
@@ -505,27 +505,27 @@ storywaitlocalmessagehandler等待当前story的指定消息处理全部执行�
 作用：
   按格式化串格式化指定的参数列表，构成一个字符串。
 
-8.propget(value[,defaultvalue]);
+8.prop_get(value[,defaultvalue]);
 
 作用：
 value必须是个字符串value，表示要读取value的变量名。此函数用于动态获取变量value。
 
-9.intlist("1 2 3 4 5");
+9.int_list("1 2 3 4 5");
 
 作用：
   从字符串里读取数字列表，分隔符可以是' '、','、'|'之一。返回value用于looplist语句遍历。
 
-10.stringlist("a b c d e");
+10.string_list("a b c d e");
 
 作用：
   从字符串里读取字符串列表，分隔符可以是' '、','、'|'之一。返回value用于looplist语句遍历。
 
-11.vector2list("v1x v1y v2x v2y");
+11.vector_2_list("v1x v1y v2x v2y");
 
 作用：
   从字符串里读取vector2列表，分隔符可以是' '、','、'|'之一。返回value用于looplist语句遍历。
 
-12.vector3list("v1x v1y v1z v2x v2y v2z");
+12.vector_3_list("v1x v1y v1z v2x v2y v2z");
 
 作用：
   从字符串里读取vector3列表，分隔符可以是' '、','、'|'之一。返回value用于looplist语句遍历。
@@ -540,108 +540,108 @@ value必须是个字符串value，表示要读取value的变量名。此函数�
 作用：
   获取字符串子串。
 
-15.rndint(min,max);
+15.rnd_int(min,max);
 
 作用：
   获得一个介于[min,max)间的随机整数。
 
-16.rndfloat();
+16.rnd_float();
 
 作用：
   获得一个0~1之前的随机浮点数。
 
-17.floatlist("1.0 2.0 3.0 4.0 5.0");
+17.float_list("1.0 2.0 3.0 4.0 5.0");
 
 作用：
   从字符串里读取数字列表，分隔符可以是' '、','、'|'之一。返回value用于looplist语句遍历。
 
 18.用法:
-rndfromlist(intlist("1 2 3 4 5 6 7 8")[,defaultvalue]);
+rnd_from_list(int_list("1 2 3 4 5 6 7 8")[,defaultvalue]);
 
 作用：
   从指定的list里随机取一个value。
 
-19.listget(list,index[,defaultvalue]);
+19.list_get(list,index[,defaultvalue]);
 
 作用：
   从指定的list取第index个元素。
 
-20.listsize(list);
+20.list_size(list);
 
 作用：
   取指定list的元素个数。
 
-21.vector2dist(vector2(1,2),vector2(3,4));
+21.vector_2_dist(vector_2(1,2),vector_2(3,4));
 
 作用：
   计算2点距离。
 
-22.vector3dist(vector3(1,2,3),vector3(4,5,6));
+22.vector_3_dist(vector_3(1,2,3),vector_3(4,5,6));
 
 作用：
   计算2点距离（2D距离）。
 
-23.vector2to3(vector2(1,2));
+23.vector_2_to_3(vector_2(1,2));
 
 作用：
   将vector2转换成vector3，yvalue部分置0。
 
-24.vector3to2(vector3(1,2,3));
+24.vector_3_to_2(vector_3(1,2,3));
 
 作用：
   将vector3转换成vector2，丢掉yvalue部分。
 
-25.isnull(x);
+25.is_null(x);
 
 作用：
   判断指定value是否为空。
 
-26.str2int(str);
+26.str_2_int(str);
 
 作用：
   将字符串转成整数。
 
-27.str2float(str);
+27.str_2_float(str);
 
 作用：
   将字符串转成浮点数。
 
-28.dotnetcall(obj/type,method,arg1,arg2,...);
+28.dotnet_call(obj/type,method,arg1,arg2,...);
 
 作用：
   调用指定类/对象的方法，并取得返回value。
 
-29.dotnetget(obj/type,property,arg1,arg2,...);
+29.dotnet_get(obj/type,property,arg1,arg2,...);
 
 作用：
   获取指定类/对象的特性/字段的value。
 
-30.changetype(value,obj/type);
+30.change_type(value,obj/type);
 
 作用：
   改变value的类型，返回新类型的value。(type可以是sbyte、byte、short、ushort、int、uint、long、ulong、float、double、string、bool等)
 
-31.parseenum(obj/type, "enumvalue");
+31.parse_enum(obj/type, "enumvalue");
 
 作用：
   按指定枚举类型解析字符串，返回一个枚举值。
 
-32.readalllines(file);
+32.read_all_lines(file);
 
 作用：
   读文件所有行，返回文件行内容列表。
 
-33.readfile(file);
+33.read_file(file);
 
 作用：
   读文件，返回文件内容字符串。
 
-34.tojson(hashtable);
+34.to_json(hashtable);
 
 作用：
   将哈希表转为json字符串。
 
-35.fromjson(str);
+35.from_json(str);
 
 作用：
   解析指定json字符串，返回哈希表或数组。
@@ -653,32 +653,32 @@ rndfromlist(intlist("1 2 3 4 5 6 7 8")[,defaultvalue]);
 作用：
   构造一个哈希表。
 
-37.hashtableget(hashtable,key[,defval]);
+37.hashtable_get(hashtable,key[,defval]);
 
 作用：
   获取哈希表指定名称或索引的value。（可选指定缺省value）
 
-38.hashtablesize(hashtable);
+38.hashtable_size(hashtable);
 
 作用：
   获取指定哈希表的元素个数。
 
-39.hashtablekeys(hashtable);
+39.hashtable_keys(hashtable);
 
 作用：
   获取指定哈希表的key列表，结果可用于looplist语句。
 
-40.hashtablevalues(hashtable);
+40.hashtable_values(hashtable);
 
 作用：
   获取指定哈希表的value列表，结果可用于looplist语句。
 
-41.dictformat(dictId,arg1,arg2,...);
+41.dict_format(dictId,arg1,arg2,...);
 
 作用：
   按譾alue浜胖付ǖ母袷交袷交址?
 
-42.dictget(dictId);
+42.dict_get(dictId);
 
 作用：
   读取譾alue浜哦杂Φ淖址?
@@ -688,135 +688,135 @@ rndfromlist(intlist("1 2 3 4 5 6 7 8")[,defaultvalue]);
 作用：
   对服务器传回使用了譾alue涞淖址凶value涮婊弧?
 
-44.gettype("System.Console");
+44.get_type("System.Console");
 
 作用：
   获取指定名称的Class的Type。
   静态类名写法：TopNamespace.SubNameSpace.ContainingClass+NestedClass, MyAssembly, Version=1.3.0.0, Culture=neutral, PublicKeyToken=b17a5c561934e089
 
-45.rndvector3(center,radius);
+45.rnd_vector_3(center,radius);
 
 作用：
   取指定点周围的随机点。
 
-46.rndvector2(center,radius);
+46.rnd_vector_2(center,radius);
 
 作用：
   取指定点周围的随机点。
 
 七、剧情函数
 
-1.npcidlist();
+1.npc_id_list();
 
 作用：
   获取NPC id列表，结果用于looplist语句遍历。
 
-2.objid2unitid(objid);
+2.obj_id_2_unit_id(objid);
 
 作用：
   取得指定objid对象的unitid。
 
-3.unitid2objid(unitid);
+3.unit_id_2_obj_id(unitid);
 
 作用：
   取得指定unitid对象的objid，仅对npc有效。
 
-4.getposition(objid[, world_or_local]);
+4.get_position(objid[, world_or_local]);
 
 作用：
   取得指定objid对象的位置，可用于需要位置的函数与命令。
 
-5.getcamp(objid);
+5.get_camp(objid);
 
 作用：
   取得指定objid对象的阵营，用于判断敌我关系。
 
-6.isenemy(camp1,camp2);
+6.is_enemy(camp1,camp2);
 
 作用：
   判断2个阵营是否敌对。
 
-7.isfriend(camp1,camp2);
+7.is_friend(camp1,camp2);
 
 作用：
   判断2个阵营是否友好。
 
-8.getpositionx(objid[, world_or_local]);
+8.get_position_x(objid[, world_or_local]);
 
 作用：
   取得指定objid对象的位置，可用于需要位置的函数与命令。
 
-9.getpositiony(objid[, world_or_local]);
+9.get_position_y(objid[, world_or_local]);
 
 作用：
   取得指定objid对象的位置，可用于需要位置的函数与命令。
 
-10.getpositionz(objid[, world_or_local]);
+10.get_position_z(objid[, world_or_local]);
 
 作用：
   取得指定objid对象的位置，可用于需要位置的函数与命令。
 
-11.getrotation(objid[, world_or_local]);
+11.get_rotation(objid[, world_or_local]);
 
 作用：
   取得指定objid对象的旋转（欧拉角）。
 
-12.getrotationx(objid[, world_or_local]);
+12.get_rotation_x(objid[, world_or_local]);
 
 作用：
   取得指定objid对象的旋转（欧拉角）。
 
-13.getrotationy(objid[, world_or_local]);
+13.get_rotation_y(objid[, world_or_local]);
 
 作用：
   取得指定objid对象的旋转（欧拉角）。
 
-14.getrotationz(objid[, world_or_local]);
+14.get_rotation_z(objid[, world_or_local]);
 
 作用：
   取得指定objid对象的旋转（欧拉角）。
 
-15.getscale(objid);
+15.get_scale(objid);
 
 作用：
   取得指定objid对象的缩放。
 
-16.getscalex(objid);
+16.get_scale_x(objid);
 
 作用：
   取得指定objid对象的缩放。
 
-17.getscaley(objid);
+17.get_scale_y(objid);
 
 作用：
   取得指定objid对象的缩放。
 
-18.getscalez(objid);
+18.get_scale_z(objid);
 
 作用：
   取得指定objid对象的缩放。
 
-19.gethp(objid);
+19.get_hp(objid);
 
 作用：
   获取指定对象的hp
 
-20.getmaxhp(objid);
+20.get_max_hp(objid);
 
 作用：
   获取指定对象的maxhp属性value。
 
-21.calcdir(objid,targetid);
+21.calc_dir(objid,targetid);
 
 作用：
   计算从指定对象面向目标对象的方向value。（弧度）
 
-22.combatnpccount([camp_id]);
+22.combat_npc_count([camp_id]);
 
 作用：
   获取战斗npc数量。
 
-23.iscombatnpc(objid);
+23.is_combat_npc(objid);
 
 作用：
   获取指定npc是否战斗npc。
@@ -826,12 +826,12 @@ rndfromlist(intlist("1 2 3 4 5 6 7 8")[,defaultvalue]);
 作用：
   获取指定对象的linkid。
 
-25.getlevel(objid);
+25.get_level(objid);
 
 作用：
   获取指定对象的等级。
 
-26.getattr(objid,attrid,value[,defaultvalue]);
+26.get_attr(objid,attrid,value[,defaultvalue]);
 
 作用：
   获取指定对象的指定属性value。
@@ -856,7 +856,7 @@ rndfromlist(intlist("1 2 3 4 5 6 7 8")[,defaultvalue]);
 作用：
   取指定objid对象的sceneindex。
 
-31.iscontrolbystory(objid);
+31.is_control_by_story(objid);
 
 作用：
   判断指定对象当前是否标记了由story脚本控制。
@@ -866,12 +866,12 @@ rndfromlist(intlist("1 2 3 4 5 6 7 8")[,defaultvalue]);
 作用：
   判断指定对象是否处理硬直、浮空等由受击引起的受控状态。
 
-33.getunitytype(typename);
+33.get_unity_type(typename);
 
 作用：
   获取指定类型的unity3d类型Type实例。
 
-34.getunityuitype(typename);
+34.get_unity_ui_type(typename);
 
 作用：
   获取指定类型的unity3d UI类型Type实例。
@@ -881,12 +881,12 @@ rndfromlist(intlist("1 2 3 4 5 6 7 8")[,defaultvalue]);
 作用：
   获取Assembly-CSharp.dll里指定类型的对象。
 
-36.getentityinfo(objid);
+36.get_entity_info(objid);
 
 作用：
   获取指定id的EntityInfo对象。
 
-37.getentityview(objid);
+37.get_entity_view(objid);
 
 作用：
   获取指定id的EntityViewModel对象。
@@ -901,7 +901,7 @@ rndfromlist(intlist("1 2 3 4 5 6 7 8")[,defaultvalue]);
 作用：
   获取指定id对象的根GameObject（如果使用了骑乘，则返回骑乘的GameObject）。
 
-40.getglobal();
+40.get_global();
 
 作用：
   获取GlobalVariables对象实例。
@@ -916,12 +916,12 @@ rndfromlist(intlist("1 2 3 4 5 6 7 8")[,defaultvalue]);
 作用：
   判断是否纯客户端模式。
 
-43.deg2rad(val);
+43.deg_2_rad(val);
 
 作用：
   将角度转换为弧度。
 
-44.rad2deg(val);
+44.rad_2_deg(val);
 
 作用：
   将弧度转换为角度。
@@ -936,33 +936,33 @@ rndfromlist(intlist("1 2 3 4 5 6 7 8")[,defaultvalue]);
 作用：
   获取Curvy插件在场景里放置的曲线的控制点列表，path为路径。
 
-47.offsetspline(spline, vector3(x,y,z));
+47.offset_spline(spline, vector_3(x,y,z));
 
 作用：
   获取一条曲线偏移vector3(x,y,z)后的曲线。
 
-48.offsetvector3(pt, vector3(x,y,z));
-offsetvector3(pt, pt2, vector3(x,y,z));
+48.offset_vector_3(pt, vector_3(x,y,z));
+offset_vector_3(pt, pt2, vector_3(x,y,z));
 
 作用：
   获取指定点偏移vector3(x,y,z)后的曲线，如果指定pt2，则偏移按pt->pt2方向旋转。
 
-49.npcfindimpactseqbyid(unitId,impactId);
+49.npc_find_impact_seq_by_id(unitId,impactId);
 
 作用：
   查找指定NPC上指定impactId的第一个impact的seq。
 
-50.objfindimpactseqbyid(objId,impactId);
+50.obj_find_impact_seq_by_id(objId,impactId);
 
 作用：
   查找指定NPC上指定impactId的第一个impact的seq。
 
-51.npcgetaiparam(unitId,index);
+51.npc_get_ai_param(unitId,index);
 
 作用：
   获得指定AI参数。
 
-52.objgetaiparam(objId,index);
+52.obj_get_ai_param(objId,index);
 
 作用：
   获得指定AI参数。
@@ -972,15 +972,15 @@ offsetvector3(pt, pt2, vector3(x,y,z));
 作用：
   获取当前玩家的tableid，一般为0，对应npcinfo表ID。
 
-54.getplayerid();
+54.get_player_id();
 
 作用：
   获取当前玩家的objid。
 
-55.findobjid(tableid);
-findobjid(type, tableid);
-findobjid(type, vector3(x, 0 ,z), range);
-findobjid(type, tableid, vector3(x, 0 ,z), range);
+55.find_obj_id(tableid);
+find_obj_id(type, tableid);
+find_obj_id(type, vector_3(x, 0 ,z), range);
+find_obj_id(type, tableid, vector_3(x, 0 ,z), range);
 
 作用：
   查找符合条件的obj的objid。type为TypedEntityEnum的值：
@@ -1000,67 +1000,67 @@ findobjid(type, tableid, vector3(x, 0 ,z), range);
       MaxTypeNum
   }
 
-56.npcgetnpctype(unitid);
+56.npc_get_npc_type(unitid);
 
 作用：
   获取指定npc的类型。
 
-57.npcgetsummonerid(unitid);
+57.npc_get_summoner_id(unitid);
 
 作用：
   获取指定npc的召唤者id。
 
-58.objgetnpctype(objid);
+58.obj_get_npc_type(objid);
 
 作用：
   获取指定obj的类型。
 
-59.objgetsummonerid(objid);
+59.obj_get_summoner_id(objid);
 
 作用：
   获取指定obj的召唤者id。
 
-60.calcoffset(objid,targetobjid,vector3(x,y,z));
+60.calc_offset(objid,targetobjid,vector_3(x,y,z));
 
 作用：
   计算沿objid->targetobjid方向，相对objid偏移(x,y,z)的位置。
 
-61.npccount(startUnitId,endUnitId);
+61.npc_count(startUnitId,endUnitId);
 
 作用：
   统计在指定范围[startUnitId,endUnitId]内的活着的npc数目。
 
-62.getaidata(objid,aidatatype);
+62.get_ai_data(objid,aidatatype);
 
 作用：
   获取指定npc的AiData,aidatatype可以是AiData_General等。
 
-63.npcgetsummonskillid(unitid);
+63.npc_get_summon_skill_id(unitid);
 
 作用：
   获取召唤指定npc的技能ID。
 
-64.objgetsummonskillid(objid);
+64.obj_get_summon_skill_id(objid);
 
 作用：
   获取召唤指定npc的技能ID。
 
-65.getactor(objid);
+65.get_actor(objid);
 
 作用：
   获取指定objid的unity3d GameObject。
 
-66.isvisible(objid);
+66.is_visible(objid);
 
 作用：
   获取指定objid的显示状态。
 
-67.npcgetformation(unitid);
+67.npc_get_formation(unitid);
 
 作用：
   获取npc队形数据。
 
-68.objgetformation(objid);
+68.obj_get_formation(objid);
 
 作用：
   获取npc除形数据。
@@ -1072,27 +1072,27 @@ findobjid(type, tableid, vector3(x, 0 ,z), range);
 
 八、剧情命令
 
-1.startstory("clientlogic");
+1.start_story("clientlogic");
 
 作用：
   启动指定的story。
 
-2.stopstory("clientlogic");
+2.stop_story("clientlogic");
 
 作用：
   停止指定的story。
 
-3.firemessage(消息id,参数表);
+3.fire_message(消息id,参数表);
 
 作用：
   触发指定消息，与localmessage的不同是这个命令触发的消息将广播到当前所有在执行的story。
 
-4.changescene(scene_id);
+4.change_scene(scene_id);
 
 作用：
   切换到目标场景。
 
-5.createnpc(npc_unit_id,vector3(x,y,z),dir,camp,linkId[,ai,stringlist("param1 param2 param3 ...")])[objid("@objid")];
+5.create_npc(npc_unit_id,vector_3(x,y,z),dir,camp,linkId[,ai,string_list("param1 param2 param3 ...")])[objid("@objid")];
 
 作用：
   创建npc，可指定位置与朝向。带objid语法的样式用于获取objid到指定变量名（字符串名，可以是运算结果构成的变量名）
@@ -1107,17 +1107,17 @@ findobjid(type, tableid, vector3(x, 0 ,z), range);
 作用：
   等待指定的npc的动作组加载完成，timeout为等待超时时间。
 
-8.destroynpc(npc_unit_id);
+8.destroy_npc(npc_unit_id);
 
 作用：
   删除指定unit_id的npc，如果有多个，则都会删除。
 
-9.npcmove(unit_id,vector3(x,y,z)[, event]);
+9.npc_move(unit_id,vector_3(x,y,z)[, event]);
 
 作用：
   移动指定npc到目标点。
 
-10.npcenableai(unit_id,true_or_false);
+10.npc_enable_ai(unit_id,true_or_false);
 
 作用：
   允许或禁止npc AI，第二个参数必须是"true"或"false"。
@@ -1133,17 +1133,17 @@ findobjid(type, tableid, vector3(x, 0 ,z), range);
 作用：
   npc下骑乘。
 
-13.npcface(unit_id,dir);
+13.npc_face(unit_id,dir);
 
 作用：
   控制npc朝向（如果有ai控制，这一命令不一定有效果）。
 
-14.npcmovewithwaypoints(unit_id,vector3list("v1x v1y v2x v2y")[, event]);
+14.npc_move_with_waypoints(unit_id,vector_3_list("v1x v1y v2x v2y")[, event]);
 
 作用：
   控制npc沿指定路线移动。
 
-15.npcstop(unit_id);
+15.npc_stop(unit_id);
 
 作用：
   停止正在执行的移动或巡逻命令，进入休闲ai状态。
@@ -1153,7 +1153,7 @@ findobjid(type, tableid, vector3(x, 0 ,z), range);
 作用：
   允许/禁止npc移动。
 
-17.npcsetcamp(unit_id,camp_id);
+17.npc_set_camp(unit_id,camp_id);
 
 作用：
   设置npc阵营id。
@@ -1178,22 +1178,22 @@ findobjid(type, tableid, vector3(x, 0 ,z), range);
 作用：
   obj下骑乘。
 
-22.objface(objid,dir);
+22.obj_face(objid,dir);
 
 作用：
   控制游戏对象朝向。
 
-23.objmove(objid,vector3(x,y,z)[, event]);
+23.obj_move(objid,vector_3(x,y,z)[, event]);
 
 作用：
   移动游戏对象到目标点。
 
-24.objmovewithwaypoints(objid,vector3list("v1x v1y v2x v2y")[, event]);
+24.obj_move_with_waypoints(objid,vector_3_list("v1x v1y v2x v2y")[, event]);
 
 作用：
   控制游戏对象沿指定路线移动。
 
-25.lockframe(0.1);
+25.lock_frame(0.1);
 
 作用：
   改变当前渲染层时间快慢。通常在一定时间后恢复。
@@ -1223,82 +1223,82 @@ findobjid(type, tableid, vector3(x, 0 ,z), range);
 作用：
   检查是否服务器story状态。
 
-31.setstoryskipped(0_or_1);
+31.set_story_skipped(0_or_1);
 
 作用：
   设置是否跳过story状态。
 
-32.isstoryskipped();
+32.is_story_skipped();
 
 作用：
   检查是否跳过story状态。
 
-33.sendaimessage(objid,msg,arg1,arg2,...);
+33.send_ai_message(objid,msg,arg1,arg2,...);
 
 作用：
   在剧情脚本里给某个obj的ai发剧情消息。（注意：参数只支持整数、浮点数与字符串三种类型）
 
-34.sendaiconcurrentmessage(objid,msg,arg1,arg2,...);
+34.send_ai_concurrent_message(objid,msg,arg1,arg2,...);
 
 作用：
   在剧情脚本里给某个obj的ai发剧情消息。（注意：参数只支持整数、浮点数与字符串三种类型）
 
-35.sendainamespacedmessage(objid,msg,arg1,arg2,...);
+35.send_ai_namespaced_message(objid,msg,arg1,arg2,...);
 
 作用：
   在剧情脚本里给某个obj的ai发剧情消息。（注意：参数只支持整数、浮点数与字符串三种类型）
 
-36.sendaiconcurrentnamespacedmessage(objid,msg,arg1,arg2,...);
+36.send_ai_concurrent_namespaced_message(objid,msg,arg1,arg2,...);
 
 作用：
   在剧情脚本里给某个obj的ai发剧情消息。（注意：参数只支持整数、浮点数与字符串三种类型）
 
-37.publishevent(ev_name,group,arg1,arg2,...);
+37.publish_event(ev_name,group,arg1,arg2,...);
 
 作用：
   在剧情脚本里直接发布逻辑层或渲染层事件，从而触发订阅对应事件的处理。（注意：参数只支持整数、浮点数与字符串三种类型，所以并不是所有事件都能由此命令触发）
 
-38.objanimation(objid,anim[,normalized_start_time]);
+38.obj_animation(objid,anim[,normalized_start_time]);
 
 作用：
   让指定对象播放指定动作anim。
 
-39.npcanimation(unitid,anim[,normalized_start_time]);
+39.npc_animation(unitid,anim[,normalized_start_time]);
 
 作用：
   让指定对象播放指定动作anim。
 
-40.sendmessage(name,msg,arg1,arg2,...);
+40.send_message(name,msg,arg1,arg2,...);
 
 作用：
   在剧情脚本里直接给渲染层指定gameobject发消息。（注意：参数只支持整数、浮点数与字符串三种类型）
 
-41.sendmessagewithtag(tag,msg,arg1,arg2,...);
+41.send_message_with_tag(tag,msg,arg1,arg2,...);
 
 作用：
   在剧情脚本里直接给渲染层指定gameobject发消息。（注意：参数只支持整数、浮点数与字符串三种类型）
 
-42.sendmessagewithgameobject(gameobject or objid,msg,arg1,arg2,...);
+42.send_message_with_game_object(gameobject or objid,msg,arg1,arg2,...);
 
 作用：
   在剧情脚本里直接给渲染层指定gameobject发消息。（注意：参数只支持整数、浮点数与字符串三种类型）
 
-43.npcsetai(unit_id,ai_logic_id,stringlist("aiparam0 aiparam1 aiparam2"));
+43.npc_set_ai(unit_id,ai_logic_id,string_list("aiparam0 aiparam1 aiparam2"));
 
 作用：
   改变指定npc的ai逻辑并指定对应ai逻辑的ai参数。
 
-44.npcaddimpact(unit_id,impact_id,arg1,arg2,arg3,...)[seq("@seq")];
+44.npc_add_impact(unit_id,impact_id,arg1,arg2,arg3,...)[seq("@seq")];
 
 作用：
   给npc加buff。
 
-45.npcremoveimpact(unit_id,seq);
+45.npc_remove_impact(unit_id,seq);
 
 作用：
   去掉npc身上的指定buff。
 
-46.objstop(objid);
+46.obj_stop(objid);
 
 作用：与对应版本的npcXXX相同，只是第一个参数改成objid，并可用于玩家。
 
@@ -1307,91 +1307,91 @@ findobjid(type, tableid, vector3(x, 0 ,z), range);
 作用：
   允许/禁止obj移动。
 
-48.objenableai(objid,true_or_false);
+48.obj_enable_ai(objid,true_or_false);
 
 作用：与对应版本的npcXXX相同，只是第一个参数改成objid，并可用于玩家。
 
-49.objsetai(objid,ailogicid,stringlist("p1 p2 p3 p4"));
+49.obj_set_ai(objid,ailogicid,string_list("p1 p2 p3 p4"));
 
 作用：与对应版本的npcXXX相同，只是第一个参数改成objid，并可用于玩家。
 
-50.objaddimpact(objid,impactid,arg1,arg2,arg3,...)[seq("@seq")];
+50.obj_add_impact(objid,impactid,arg1,arg2,arg3,...)[seq("@seq")];
 
 作用：与对应版本的npcXXX相同，只是第一个参数改成objid，并可用于玩家。
 
-51.objremoveimpact(objid,seq);
+51.obj_remove_impact(objid,seq);
 
 作用：与对应版本的npcXXX相同，只是第一个参数改成objid，并可用于玩家。
 
-52.highlightpromptwithdict(objid,dictid,arg1,arg2,...);
+52.highlight_prompt_with_dict(objid,dictid,arg1,arg2,...);
 
 作用：
   在屏幕中上方显示醒目提示信息
 
-53.highlightprompt(msg);
+53.highlight_prompt(msg);
 
 作用：
   在屏幕中上方显示醒目提示信息
 
-54.destroynpcwithobjid(objid);
+54.destroy_npc_with_obj_id(objid);
 
 作用：
   销毁指定objid的npc。
 
-55.sethp(objid,hp);
+55.set_hp(objid,hp);
 
 作用：
   设置指定obj的战斗属性value。
 
-56.setlevel(objid,lvl);
+56.set_level(objid,lvl);
 
 作用：
   设置指定对象的等级。
 
-57.setattr(objid,attrid,value);
+57.set_attr(objid,attrid,value);
 
 作用：
   设置指定对象的指定属性value。  
 
-58.markcontrolbystory(objid,true/false);
+58.mark_control_by_story(objid,true/false);
 
 作用：
   标记指定对象是否由story脚本控制。（主要用在战神赛的机器人放技能时）
 
-59.waitstory(storyid1,storyid2,...)[set(var,val)timeoutset(timeout,var,val)];
+59.wait_story(storyid1,storyid2,...)[set(var,val)timeoutset(timeout,var,val)];
 
 作用：
   等待运行的各story执行完毕。(var部分用字符串指定变量名，这样允许一个变量或表达式的value作为变量)
 
-60.waitallmessage(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
+60.wait_all_message(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
 
 作用：
 waitallmessage等待指定的消息之一触发。(var部分用字符串指定变量名，这样允许一个变量或表达式的value作为变量)
 
-61.waitallmessagehandler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
+61.wait_all_message_handler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
 
 作用：
 waitallmessagehandler等待运行的各story的指定消息都执行完毕。(var部分用字符串指定变量名，这样允许一个变量或表达式的value作为变量)
 
-62.camerafollow(npc_unit_id1,npc_unit_id2,...)[with(camera_path)];
+62.camera_follow(npc_unit_id1,npc_unit_id2,...)[with(camera_path)];
 
 作用：
   让像机跟随指定的npc列表，按顺序处理，找到第一个可跟随目标为止。
 
-63.cameralook(unit_id)[with(camera_path)];
-cameralook(vector3(x,y,z))[with(camera_path)];
+63.camera_look(unit_id)[with(camera_path)];
+camera_look(vector_3(x,y,z))[with(camera_path)];
 
 作用：
   让像机看着指定目标。  
 
-64.cameralookimmediately(unit_id)[with(camera_path)];
-cameralookimmediately(vector3(x,y,z))[with(camera_path)];
+64.camera_look_immediately(unit_id)[with(camera_path)];
+camera_look_immediately(vector_3(x,y,z))[with(camera_path)];
 
 作用：
   让像机立即看着指定目标。  
 
-65.cameralooktoward(unit_id)[with(camera_path)];
-cameralooktoward(vector3(x,y,z))[with(camera_path)];
+65.camera_look_toward(unit_id)[with(camera_path)];
+camera_look_toward(vector_3(x,y,z))[with(camera_path)];
 
 作用：
   让像机在当前位置转向指定目标。  
@@ -1401,12 +1401,12 @@ cameralooktoward(vector3(x,y,z))[with(camera_path)];
 作用：
   像机是否自动跟随（仅游戏主像机支持）。  
 
-67.camerafixedyaw(yaw)[with(camera_path)];
+67.camera_fixed_yaw(yaw)[with(camera_path)];
 
 作用：
   让像机水平方向旋转指定角度。  
 
-68.camerayaw(yaw, anglelag, snaplag)[with(camera_path)];
+68.camera_yaw(yaw, anglelag, snaplag)[with(camera_path)];
 
 作用：
   水平旋转摄像机。
@@ -1421,17 +1421,17 @@ cameralooktoward(vector3(x,y,z))[with(camera_path)];
 作用：
   摄像机抬头、低头（目前未实现）。
 
-71.cameraheight(height, lag)[with(camera_path)];
+71.camera_height(height, lag)[with(camera_path)];
 
 作用：
   设置摄像机高度。
 
-72.cameradistance(distance, lag)[with(camera_path)];
+72.camera_distance(distance, lag)[with(camera_path)];
 
 作用：
   设置摄像机远近。
 
-73.camerasetdistanceheight(distance, height)[with(camera_path)];
+73.camera_set_distance_height(distance, height)[with(camera_path)];
 
 作用：
   设置摄像机高度与远近参数，立即生效。
@@ -1446,47 +1446,47 @@ cameralooktoward(vector3(x,y,z))[with(camera_path)];
 作用：
   恢复摄像机高度与远近参数到记录的值。
 
-76.camerasetfollowspeed(maxdist, mindist, maxspeed, minspeed, power)[with(camera_path)];
+76.camera_set_follow_speed(maxdist, mindist, maxspeed, minspeed, power)[with(camera_path)];
 
 作用：
   设置摄像机跟随的速度相关参数。
 
-77.cameraresetfollowspeed()[with(camera_path)];
+77.camera_reset_follow_speed()[with(camera_path)];
 
 作用：
   恢复摄像机跟随的速度相关参数到初始值。
 
-78.camerafollowobj(objid)[with(camera_path)];
+78.camera_follow_obj(objid)[with(camera_path)];
 
 作用：
   摄像机跟随指定对象。
 
-79.cameralookobj(objid)[with(camera_path)];
+79.camera_look_obj(objid)[with(camera_path)];
 
 作用：
   摄像机看着指定对象，像机平滑移动到目标位置。
 
-80.cameralookobjimmediately(objid)[with(camera_path)];
+80.camera_look_obj_immediately(objid)[with(camera_path)];
 
 作用：
   摄像机立即看着指定对象。
 
-81.cameralooktowardobj(objid)[with(camera_path)];
+81.camera_look_toward_obj(objid)[with(camera_path)];
 
 作用：
   摄像机立即看着指定对象。
 
-82.cameralookcopy(src_camera_path, unit_id or vector3(x,y,z))[with(camera_path)];
+82.camera_look_copy(src_camera_path, unit_id or vector_3(x,y,z))[with(camera_path)];
 
 作用：
   拷贝另一摄像机参数，使用这些参数看向同一目标(使用unitid指定)或目标点。
 
-83.cameralookobjcopy(src_camera_path, objid)[with(camera_path)];
+83.camera_look_obj_copy(src_camera_path, objid)[with(camera_path)];
 
 作用：
   拷贝另一摄像机参数，使用这些参数看向同一目标(使用objid指定)。
 
-84.cameraenable(name, 1_or_0, 1_or_0);
+84.camera_enable(name, 1_or_0, 1_or_0);
 
 作用：
   允许/禁用摄像机。(参数1--像机路径，参数2--是否允许fading，参数3--是否允许story)
@@ -1501,27 +1501,27 @@ cameralooktoward(vector3(x,y,z))[with(camera_path)];
 作用：
   将剧情prefab里对剧情相机的操作修改为对主相机的操作。
 
-87.showdlg(objid, dlgid[, event]);
+87.show_dlg(objid, dlgid[, event]);
 
 作用：
   显示NPC对话，并可以指定结束时触发的消息。
 
-88.setunitid(objid,unitid);
+88.set_unit_id(objid,unitid);
 
 作用：
   修改某个obj的unitid。
 
-89.setplayerid(objid);
+89.set_player_id(objid);
 
 作用：
   设置玩家对象objid。 
 
-90.npcsetsummonerid(unitid,objid);
+90.npc_set_summoner_id(unitid,objid);
 
 作用：
   指定召唤者id。  
 
-91.objsetsummonerid(objid,objid);
+91.obj_set_summoner_id(objid,objid);
 
 作用：
   指定召唤者id。  
@@ -1566,7 +1566,7 @@ cameralooktoward(vector3(x,y,z))[with(camera_path)];
 作用：
   修改npc动作战斗模式(0-非战斗 1-战斗)。
 
-100.npccastskill(unit_id, skill_id);
+100.npc_cast_skill(unit_id, skill_id);
 
 作用：
   客户端发起技能。
@@ -1581,7 +1581,7 @@ cameralooktoward(vector3(x,y,z))[with(camera_path)];
 作用：
   客户端自动同步位置到指定点（只适用于小范围位置差异）。
 
-103.objcastskill(obj_id, skill_id);
+103.obj_cast_skill(obj_id, skill_id);
 
 作用：
   客户端发起技能。
@@ -1601,22 +1601,22 @@ cameralooktoward(vector3(x,y,z))[with(camera_path)];
 作用：
   使用载具。
 
-107.areadetect(gameobjectname,radius,callback)[set(var,val,elseval)];
+107.area_detect(gameobjectname,radius,callback)[set(var,val,elseval)];
 
 示例：
 	while(@triggered==0){
-	  areadetect("StoryPoint",5,"LetsGo")set("@triggered",1,0);    
+	  area_detect("StoryPoint",5,"LetsGo")set("@triggered",1,0);    
 	  wait(100);
 	};
 作用：
   检测区域条件是否满足，满足后发送callback的message，message带一个参数：gameobjectname。可选的在检测条件满足时设置变量为一个valueval，否则设置为另一个valueelseval。
 
-108.gameobjectanimation(objpath, anim[, normalized_time]);
+108.game_object_animation(objpath, anim[, normalized_time]);
 
 作用：
   让指定unity gameobject播放动作。  
 
-109.gameobjectanimationparam(obj)
+109.game_object_animation_param(obj)
 {
     float(name,val);
     int(name,val);
@@ -1627,12 +1627,12 @@ cameralooktoward(vector3(x,y,z))[with(camera_path)];
 作用：
   修改unity gameobject的动画控制器参数。  
 
-110.npcsetaitarget(unit_id,target);
+110.npc_set_ai_target(unit_id,target);
 
 作用：
   设置指定npc的AI目标。
 
-111.objsetaitarget(objid,target);
+111.obj_set_ai_target(objid,target);
 
 作用：
   设置指定npc的AI目标。
@@ -1647,37 +1647,37 @@ cameralooktoward(vector3(x,y,z))[with(camera_path)];
 作用：
   设置指定npc的AI移动到达目标的停止范围。
 
-114.npcsetsummonskillid(unitid,skillid);
+114.npc_set_summon_skill_id(unitid,skillid);
 
 作用：
   指定召唤技能id。  
 
-115.objsetsummonskillid(objid,skillid);
+115.obj_set_summon_skill_id(objid,skillid);
 
 作用：
   指定召唤技能id。  
 
-116.objsetcamp(objid,camp_id);
+116.obj_set_camp(objid,camp_id);
 
 作用：
   设置npc阵营id。
 
-117.setvisible(objid,0_or_1);
+117.set_visible(objid,0_or_1);
 
 作用：
   设置npc是否显示。
 
-118.putonground(objpath);
+118.put_on_ground(objpath);
 
 作用：
   将gameobject放置到地面，这样开启navmeshagent不会报错。
 
-119.npcsetformation(npc_unit_id,index);
+119.npc_set_formation(npc_unit_id,index);
 
 作用：
   设置npc队形数据。
 
-120.objsetformation(obj_id, index);
+120.obj_set_formation(obj_id, index);
 
 作用：
   设置npc队形数据。
@@ -1741,12 +1741,12 @@ cameralooktoward(vector3(x,y,z))[with(camera_path)];
 作用：
   预加载指定的NPC的相关资源。
 
-124.loadui(name, prefab, dslfile);
+124.load_ui(name, prefab, dslfile);
 
 作用：
   加载dsl实现逻辑的UI。
 
-125.bindui(gameobject){
+125.bind_ui(gameobject){
     var("@varname","Panel/Input"); 										//variable bind to control
     inputs("",...);           												//the InputField args to event
     toggles("",...);																	//the Toggle args to event
@@ -1767,12 +1767,12 @@ on_dropdown事件的固定参数为tag、selected_index（整数value）
 on_slider事件的固定参数为tag、slider_value（浮点数)
 on_input事件的固定参数为tag、input_value（字符串)
 
-126.pausestory(storyid,storyid,...);
+126.pause_story(story_id,story_id,...);
 
 作用：
   暂停指定的story。
 
-127.resumestory(storyid,storyid,...);
+127.resume_story(story_id,story_id,...);
 
 作用：
   恢复指定的story。
@@ -1782,12 +1782,12 @@ on_input事件的固定参数为tag、input_value（字符串)
 作用：
   暂停当前所有story里的指定消息处理
 
-129.resumeallmessagehandler(msgid,msgid,...);
+129.resume_all_message_handler(msgid,msgid,...);
 
 作用：
   恢复当前所有story里的指定消息处理
 
-130.objanimationparam(obj_id)
+130.obj_animation_param(obj_id)
 {
     float(name,val);
     int(name,val);
@@ -1798,7 +1798,7 @@ on_input事件的固定参数为tag、input_value（字符串)
 作用：
   修改指定对象的动画控制器的参数或触发器。  
 
-131.npcanimationparam(unit_id)
+131.npc_animation_param(unit_id)
 {
     float(name,val);
     int(name,val);
@@ -1811,47 +1811,47 @@ on_input事件的固定参数为tag、input_value（字符串)
 
 九、渲染层函数
 
-1.blackboardget(name);
+1.blackboard_get(name);
 
 作用：
   获取渲染层指定名譾alue幕捍媸荨?
 
-2.gettime();
+2.get_time();
 
 作用：
   获取渲染层时间。
 
-3.gettimescale();
+3.get_time_scale();
 
 作用：
   获取渲染层时间倍率。
 
-4.isactive(game_object_path);
+4.is_active(game_object_path);
 
 作用：
   判断指定GameObject是否active，isactive判断对象自身，isreallyactive检查对象所在层次路径是否都active。（主要用于判断窗口是否可见）
 
-5.isreallyactive(game_object_path);
+5.is_really_active(game_object_path);
 
 作用：
   判断指定GameObject是否active，isactive判断对象自身，isreallyactive检查对象所在层次路径是否都active。（主要用于判断窗口是否可见）
 
-6.getcomponent(game_object_path，component_type_name/type);
+6.get_component(game_object_path，component_type_name/type);
 
 作用：
   获取指定gameobject上的指定component实例。
 
-7.getgameobject(game_object_path);
+7.get_game_object(game_object_path);
 
 作用：
   获取gameobject对象实例。 
 
-8.getparent(game_object_path);
+8.get_parent(game_object_path);
 
 作用：
   获取gameobject父对象实例。 
 
-9.getchild(game_object_path, child_path);
+9.get_child(game_object_path, child_path);
 
 作用：
   获取gameobject子对象实例。 
@@ -1863,40 +1863,40 @@ on_input事件的固定参数为tag、input_value（字符串)
 
 十、渲染染层命令
 
-1.blackboardclear();
+1.blackboard_clear();
 
 作用：
   清空渲染层数据缓存。
 
-2.blackboardset(name,value);
+2.blackboard_set(name,value);
 
 作用：
   添加/修改渲染层数据缓存。
 
-3.creategameobject(name, prefab[, parent])[obj("varname")]{
-    position(vector3(x,y,z));
-    rotation(vector3(x,y,z));
-    scale(vector3(x,y,z));
+3.create_game_object(name, prefab[, parent])[obj("varname")]{
+    position(vector_3(x,y,z));
+    rotation(vector_3(x,y,z));
+    scale(vector_3(x,y,z));
 };
 
 作用：
   创建一个GameObject，可选的挂在指定父节点上。
 
-4.settransform(name, world_or_local){
-    position(vector3(x,y,z));
-    rotation(vector3(x,y,z));
-    scale(vector3(x,y,z));
+4.set_transform(name, world_or_local){
+    position(vector_3(x,y,z));
+    rotation(vector_3(x,y,z));
+    scale(vector_3(x,y,z));
 };
 
 作用：
   修改指定对象的transform。
 
-5.destroygameobject(path);
+5.destroy_game_object(path);
 
 作用：
   销毁gameobject。
 
-6.autorecycle(path, 1_or_0);
+6.auto_recycle(path, 1_or_0);
 
 作用：
   设置是否在场景重置时自动销毁gameobject。
@@ -1906,27 +1906,27 @@ on_input事件的固定参数为tag、input_value（字符串)
 作用：
   让obj跟随指定目标，parent为空串或0则解除跟随。
 
-8.setparent(objpath,parent,stay_world_pos);
+8.set_parent(objpath,parent,stay_world_pos);
 
 作用：
   销毁gameobject。
 
-9.setactive(objpath,1_or_0);
+9.set_active(objpath,1_or_0);
 
 作用：
   改变gameobject的active状态。
 
-10.addcomponent(objpath, component_name/component_type)[obj("@varname")];
+10.add_component(objpath, component_name/component_type)[obj("@varname")];
 
 作用：
   添加component到obj.可选部分指定一个对象名来存储component对象实例。
 
-11.removecomponent(objpath,type);
+11.remove_component(objpath,type);
 
 作用：
   删除指定组件。
 
-12.openurl(url);
+12.open_url(url);
 
 作用：
   用浏览器打开指定url。
@@ -1936,7 +1936,7 @@ on_input事件的固定参数为tag、input_value（字符串)
 作用：
   退出游戏。
 
-14.localnamespacedmessage(msgId,arg1,arg2,...);
+14.local_namespaced_message(msgId,arg1,arg2,...);
 
 作用：
   发送本名字空间内的消息，对应的消息处理由下述语法提供
@@ -1949,9 +1949,9 @@ on_input事件的固定参数为tag、input_value（字符串)
   {
       //消息处理
   };
-  类似的，localmessage(ns+":"+msgId,arg1,arg2,...);与发送消息的语法等价，后面类似的基于namespace的方法是这样与对应的普通方法等价，不再一一缀述。
+  类似的，local_message(ns+":"+msgId,arg1,arg2,...);与发送消息的语法等价，后面类似的基于namespace的方法是这样与对应的普通方法等价，不再一一缀述。
 
-15.storylocalnamespacedmessage(msgId,arg1,arg2,...);
+15.story_local_namespaced_message(msgId,arg1,arg2,...);
 
 作用：
   发送本名字空间内的消息（如果取消按钮被按下，则不再发送消息），对应的消息处理由下述语法提供
@@ -1964,166 +1964,166 @@ on_input事件的固定参数为tag、input_value（字符串)
   {
       //消息处理
   };
-  类似的，storylocalmessage(ns+":"+msgId,arg1,arg2,...);与发送消息的语法等价，后面类似的基于namespace的方法是这样与对应的普通方法等价，不再一一缀述。
+  类似的，story_local_message(ns+":"+msgId,arg1,arg2,...);与发送消息的语法等价，后面类似的基于namespace的方法是这样与对应的普通方法等价，不再一一缀述。
 
-16.clearnamespacedmessage(msgid1,msgid2,...);
+16.clear_namespaced_message(msgid1,msgid2,...);
 
 作用：
   清空指定的本地名字空间内的消息。
 
-17.waitlocalnamespacedmessage(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
+17.wait_local_namespaced_message(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
 
 作用：
   waitlocalnamespacedmessage等待指定的本地名字空间内的消息之一触发。(var部分用字符串指定变量名，这样允许一个变量或表达式的value作为变量)
 
-18.waitlocalnamespacedmessagehandler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
+18.wait_local_namespaced_message_handler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
 
 作用：
   waitlocalnamespacedmessagehandler等待指定的本地名字空间内的消息处理全部执行完毕。(var部分用字符串指定变量名，这样允许一个变量或表达式的value作为变量)
 
-19.storywaitlocalnamespacedmessage(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
+19.story_wait_local_namespaced_message(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
 
 作用：
   storywaitlocalnamespacedmessage等待指定的本地名字空间内的消息之一触发。(var部分用字符串指定变量名，这样允许一个变量或表达式的value作为变量)。如果剧情取消按钮被按下，则不再等待按超时处理
 
-20.storywaitlocalnamespacedmessagehandler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
+20.story_wait_local_namespaced_message_handler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
 
 作用：
   storywaitlocalnamespacedmessagehandler等待指定的本地名字空间内的消息处理全部执行完毕。(var部分用字符串指定变量名，这样允许一个变量或表达式的value作为变量)。如果剧情取消按钮被按下，则不再等待按超时处理
 
 十一、脚本支持消息
 
-1.sendmessage("ZhanChangLogic/Spline", "PlayCurvy", "on_end_reached");
+1.send_message("ZhanChangLogic/Spline", "PlayCurvy", "on_end_reached");
 
 作用：
   播放一段Curvy轨迹
 
-2.sendmessage("ZhanChangLogic/Spline", "PlayCurvy2", "on_end_reached", "on_control_point_reached");
+2.send_message("ZhanChangLogic/Spline", "PlayCurvy2", "on_end_reached", "on_control_point_reached");
 
 作用：
   播放一段Curvy轨迹
 
-3.sendmessage("ZhanChangLogic/Spline", "PauseCurvy");
+3.send_message("ZhanChangLogic/Spline", "PauseCurvy");
 
 作用：
   暂停一段Curvy轨迹
 
-4.sendmessage("ZhanChangLogic/Spline", "ResumeCurvy");
+4.send_message("ZhanChangLogic/Spline", "ResumeCurvy");
 
 作用：
   恢复一段Curvy轨迹
 
-5.sendmessage("ZhanChangLogic/Spline", "StopCurvy");
+5.send_message("ZhanChangLogic/Spline", "StopCurvy");
 
 作用：
   停止一段Curvy轨迹
 
-6.sendmessage("ZhanChangLogic/Spline", "PlayTimeline");
+6.send_message("ZhanChangLogic/Spline", "PlayTimeline");
 
 作用：
   播放timeline
 
-7.sendmessage("ZhanChangLogic/Spline", "PauseTimeline");
+7.send_message("ZhanChangLogic/Spline", "PauseTimeline");
 
 作用：
   暂停timeline
 
-8.sendmessage("ZhanChangLogic/Spline", "ResumeTimeline");
+8.send_message("ZhanChangLogic/Spline", "ResumeTimeline");
 
 作用：
   恢复timeline
 
-9.sendmessage("ZhanChangLogic/Spline", "StopTimeline");
+9.send_message("ZhanChangLogic/Spline", "StopTimeline");
 
 作用：
   停止timeline
 
-10.sendmessage("ZhanChangLogic/Video", "PlayVideo");
+10.send_message("ZhanChangLogic/Video", "PlayVideo");
 
 作用：
   播放video
 
-11.sendmessage("ZhanChangLogic/Video", "PauseVideo");
+11.send_message("ZhanChangLogic/Video", "PauseVideo");
 
 作用：
   暂停video
 
-12.sendmessage("ZhanChangLogic/Video", "ResumeVideo");
+12.send_message("ZhanChangLogic/Video", "ResumeVideo");
 
 作用：
   恢复video
 
-13.sendmessage("ZhanChangLogic/Video", "StopVideo");
+13.send_message("ZhanChangLogic/Video", "StopVideo");
 
 作用：
   停止video
 
-14.sendmessage("ZhanChangLogic/Camera", "DimScreen", time);
+14.send_message("ZhanChangLogic/Camera", "DimScreen", time);
 
 作用：
   淡出屏幕（变暗），time为毫秒，在time时间内变暗
 
-15.sendmessage("ZhanChangLogic/Camera", "LightScreen", time);
+15.send_message("ZhanChangLogic/Camera", "LightScreen", time);
 
 作用：
   淡入屏幕（变亮），time为毫秒，在time时间内变亮
 
-16.sendmessage("ZhanChangLogic/Camera", "LightTo", time, red, green, blue, alpha);
+16.send_message("ZhanChangLogic/Camera", "LightTo", time, red, green, blue, alpha);
 
 作用：
   变亮到指定颜色，time为毫秒，在time时间内变亮, r,g,b,a的范围为0~2，超过1表示过曝光。
 
-17.sendmessage("StartScript","ToFollowPathSmoothly",@playerObjId);
+17.send_message("StartScript","ToFollowPathSmoothly",@playerObjId);
 
 作用：
   游戏相机跟随指定对象。
 
-18.sendmessage("ZhanChangLogic/Camera","CameraShake",time,shake_type,magnitude,shake_curve);
+18.send_message("ZhanChangLogic/Camera","CameraShake",time,shake_type,magnitude,shake_curve);
 
 作用：
   震屏。time为时间，shake_type为类型，一般为0，magnitude为幅度，shake_curve为震屏曲线，一般为0。
 
-19.sendmessage("ZhanChangLogic/DynamicObstacle","EnableObstacle",1_or_0);
+19.send_message("ZhanChangLogic/DynamicObstacle","EnableObstacle",1_or_0);
 
 作用：
   开关动态阻挡。
 
-20.sendmessage("ZhanChangLogic/Light","SetLightVisible",1_or_0);
+20.send_message("ZhanChangLogic/Light","SetLightVisible",1_or_0);
 
 作用：
   开关点光。
 
-21.sendmessage("ZhanChangLogic/Object","SetVisible",1_or_0);
+21.send_message("ZhanChangLogic/Object","SetVisible",1_or_0);
 
 作用：
   显示/隐藏对象。
 
-22.sendmessage("ZhanChangLogic/Object","PlayAnimation", anim, speed);
+22.send_message("ZhanChangLogic/Object","PlayAnimation", anim, speed);
 
 作用：
   播放动画。
 
-23.sendmessage("ZhanChangLogic/Object","PlayParticle", 1_or_0);
+23.send_message("ZhanChangLogic/Object","PlayParticle", 1_or_0);
 
 作用：
   播放特效。
 
-24.sendmessage("ZhanChangLogic/Object","PlaySound", index);
+24.send_message("ZhanChangLogic/Object","PlaySound", index);
 
 作用：
   播放声音，使用unity3d的AudioSource。
 
-25.sendmessage("ZhanChangLogic/Object","StopSound", index);
+25.send_message("ZhanChangLogic/Object","StopSound", index);
 
 作用：
   停止播放声音，使用unity3d的AudioSource。
 
-26.sendmessage("StartScript","PlaySoundWithFmod", eventname);
+26.send_message("StartScript","PlaySoundWithFmod", eventname);
 
 作用：
   播放Fmod声音。
 
-27.sendmessage("StartScript","ChangeWeather", type, time);
+27.send_message("StartScript","ChangeWeather", type, time);
 
 作用：
   改变天气。目前支持type为rain -- 下雨、night -- 正常天气

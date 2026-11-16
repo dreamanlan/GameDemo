@@ -7,8 +7,8 @@ using StoryScript.DslExpression;
 namespace GameLibrary.Story.StoryExpressions
 {
     /// <summary>
-    /// waitstory(story_id1, story_id2, ...)[set(var,val)timeoutset(timeout,var,val)] - wait for stories to finish
-    /// waitstory(story_id1, story_id2, ...){
+    /// wait_story(story_id1, story_id2, ...)[set(var,val)timeoutset(timeout,var,val)] - wait for stories to finish
+    /// wait_story(story_id1, story_id2, ...){
     ///     set(var, val);
     ///     timeoutset(timeout, var, val);
     /// };
@@ -202,8 +202,8 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// waitallmessage(msgid1, msgid2, ...)[set(var,val)timeoutset(timeout,var,val)] - wait for all specified messages to be received
-    /// waitallmessage(msgid1, msgid2, ...){
+    /// wait_all_message(msgid1, msgid2, ...)[set(var,val)timeoutset(timeout,var,val)] - wait for all specified messages to be received
+    /// wait_all_message(msgid1, msgid2, ...){
     ///     set(var, val);
     ///     timeoutset(timeout, var, val);
     /// };
@@ -371,8 +371,8 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// waitallmessagehandler(msgid1, msgid2, ...)[set(var,val)timeoutset(timeout,var,val)] - wait for all message handlers to finish
-    /// waitallmessagehandler(msgid1, msgid2, ...){
+    /// wait_all_message_handler(msgid1, msgid2, ...)[set(var,val)timeoutset(timeout,var,val)] - wait for all message handlers to finish
+    /// wait_all_message_handler(msgid1, msgid2, ...){
     ///     set(var, val);
     ///     timeoutset(timeout, var, val);
     /// };

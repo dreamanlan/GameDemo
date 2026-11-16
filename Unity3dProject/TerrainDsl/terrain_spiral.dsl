@@ -9,14 +9,14 @@ height
 {
   $x=arg(0);
   $y=arg(1);
-  height = clamp(rndfloat(0,1),0,0.01)+samplered("img", $x/2, $y/2)/500.0;
+  height = clamp(rnd_float(0,1),0,0.01)+sample_red("img", $x/2, $y/2)/500.0;
   /*
-  if(height>0.1 && rndint(0,100)<5){
-    addtree(0,$x/128,height,$y/128,0,1,1,0x00ff00,0xff0000);
+  if(height>0.1 && rnd_int(0,100)<5){
+    add_tree(0,$x/128,height,$y/128,0,1,1,0x00ff00,0xff0000);
   };
   */
   $prefab="LightRed";
-  $v=rndint(0,100);
+  $v=rnd_int(0,100);
   if($v<25){
   	$prefab="LightRed";
   }elseif($v<50){
@@ -26,18 +26,18 @@ height
   }else{
   	$prefab="Blue";
   };
-  if(height<0.06 && rndint(0,100)<=1){
-    addobject($x,height+rndfloat(20,25),$y,$prefab);
+  if(height<0.06 && rnd_int(0,100)<=1){
+    add_object($x,height+rnd_float(20,25),$y,$prefab);
   };
 }
 alphamap
 {
   $x=arg(0);
   $y=arg(1);
-  $h = getheight($y, $x);
-  clearalpha();
-  setalpha(0, sin($x/180.0));
-  setalpha(1, cos($y/180.0));
+  $h = get_height($y, $x);
+  clear_alpha();
+  set_alpha(0, sin($x/180.0));
+  set_alpha(1, cos($y/180.0));
 }
 detail
 {

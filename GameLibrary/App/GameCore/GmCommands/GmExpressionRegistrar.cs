@@ -16,19 +16,19 @@ namespace GameLibrary.GmCommands
                 return;
 
             // Register GM expressions
-            registry.Register("setmaxeffect", "setmaxeffect(group_id, max_count) - set max effect count for resource system",
+            registry.Register("set_max_effect", "set_max_effect(group_id, max_count) - set max effect count for resource system",
                 new ExpressionFactoryHelper<SetMaxEffectExp>());
-            registry.Register("setdebug", "setdebug(flag) - set debug mode",
+            registry.Register("set_debug", "set_debug(flag) - set debug mode",
                 new ExpressionFactoryHelper<SetDebugExp>());
-            registry.Register("editorbreak", "editorbreak() - trigger Unity Editor break",
+            registry.Register("editor_break", "editor_break() - trigger Unity Editor break",
                 new ExpressionFactoryHelper<EditorBreakExp>());
-            registry.Register("debugbreak", "debugbreak() - trigger debug break",
+            registry.Register("debug_break", "debug_break() - trigger debug break",
                 new ExpressionFactoryHelper<DebugBreakExp>());
-            registry.Register("allocmemory", "allocmemory(key, size) - allocate memory and store in global variable",
+            registry.Register("alloc_memory", "alloc_memory(key, size) - allocate memory and store in global variable",
                 new ExpressionFactoryHelper<AllocMemoryExp>());
-            registry.Register("freememory", "freememory(key) - free memory from global variable",
+            registry.Register("free_memory", "free_memory(key) - free memory from global variable",
                 new ExpressionFactoryHelper<FreeMemoryExp>());
-            registry.Register("consumecpu", "consumecpu(time_us) - consume CPU for testing",
+            registry.Register("consume_cpu", "consume_cpu(time_us) - consume CPU for testing",
                 new ExpressionFactoryHelper<ConsumeCpuExp>());
         }
     }

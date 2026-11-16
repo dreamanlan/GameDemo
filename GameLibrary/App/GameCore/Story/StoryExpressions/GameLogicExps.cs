@@ -8,7 +8,7 @@ using UnityEngine;
 namespace GameLibrary.Story.StoryExpressions
 {
     /// <summary>
-    /// blackboardclear() - clear the scene blackboard variables
+    /// blackboard_clear() - clear the scene blackboard variables
     /// </summary>
     internal sealed class BlackboardClearExp : SimpleExpressionBase
     {
@@ -20,14 +20,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// blackboardset(name, value) - set a variable on the scene blackboard
+    /// blackboard_set(name, value) - set a variable on the scene blackboard
     /// </summary>
     internal sealed class BlackboardSetExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: blackboardset(name, value)");
+                throw new Exception("Expected: blackboard_set(name, value)");
             string name = operands[0].ToString();
             object value = operands[1].GetObject();
             SceneSystem.Instance.BlackBoard.SetVariable(name, value);
@@ -36,14 +36,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// bornfinish(objid) - finish the born state of an entity
+    /// born_finish(objid) - finish the born state of an entity
     /// </summary>
     internal sealed class BornFinishExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: bornfinish(objid)");
+                throw new Exception("Expected: born_finish(objid)");
             int objId = operands[0].GetInt();
             EntityInfo npc = SceneSystem.Instance.GetEntityById(objId);
             if (null != npc)
@@ -56,14 +56,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// deadfinish(objid) - finish the dead state of an entity
+    /// dead_finish(objid) - finish the dead state of an entity
     /// </summary>
     internal sealed class DeadFinishExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: deadfinish(objid)");
+                throw new Exception("Expected: dead_finish(objid)");
             int objId = operands[0].GetInt();
             EntityInfo npc = SceneSystem.Instance.GetEntityById(objId);
             if (null != npc)
@@ -76,14 +76,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// setplayerid([objid,] leaderid) - set player ID or entity leader ID
+    /// set_player_id([objid,] leaderid) - set player ID or entity leader ID
     /// </summary>
     internal sealed class SetPlayerIdExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: setplayerid([objid,] leaderid)");
+                throw new Exception("Expected: set_player_id([objid,] leaderid)");
 
             if (operands.Count > 1)
             {
@@ -107,14 +107,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// setstoryskipped(0_or_1) - set story skipped state
+    /// set_story_skipped(0_or_1) - set story skipped state
     /// </summary>
     internal sealed class SetStorySkippedExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: setstoryskipped(0_or_1)");
+                throw new Exception("Expected: set_story_skipped(0_or_1)");
 
             int state = operands[0].GetInt();
             StoryConfigManager.Instance.IsStorySkipped = state != 0;
@@ -123,14 +123,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// setstoryspeedup(0_or_1) - set story speedup state
+    /// set_story_speed_up(0_or_1) - set story speedup state
     /// </summary>
     internal sealed class SetStorySpeedupExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: setstoryspeedup(0_or_1)");
+                throw new Exception("Expected: set_story_speed_up(0_or_1)");
 
             int state = operands[0].GetInt();
             StoryConfigManager.Instance.IsStorySpeedup = state != 0;
@@ -139,14 +139,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// blackboardget(name[, default_value]) - get a blackboard variable
+    /// blackboard_get(name[, default_value]) - get a blackboard variable
     /// </summary>
     internal sealed class BlackboardGetExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: blackboardget(name[, default_value])");
+                throw new Exception("Expected: blackboard_get(name[, default_value])");
 
             string name = operands[0].ToString();
             if (SceneSystem.Instance.BlackBoard.TryGetVariable(name, out object v))
@@ -158,7 +158,7 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// getplayerid() - get player entity object ID
+    /// get_player_id() - get player entity object ID
     /// </summary>
     internal sealed class GetPlayerIdExp : SimpleExpressionBase
     {
@@ -170,14 +170,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// unitid2objid(unitid) - convert unit ID to object ID
+    /// unit_id_2_obj_id(unitid) - convert unit ID to object ID
     /// </summary>
     internal sealed class UnitId2ObjIdExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: unitid2objid(unitid)");
+                throw new Exception("Expected: unit_id_2_obj_id(unitid)");
 
             int unitId = operands[0].GetInt();
             int objId = 0;
@@ -193,14 +193,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// objid2unitid(objid) - convert object ID to unit ID
+    /// obj_id_2_unit_id(objid) - convert object ID to unit ID
     /// </summary>
     internal sealed class ObjId2UnitIdExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: objid2unitid(objid)");
+                throw new Exception("Expected: obj_id_2_unit_id(objid)");
 
             int objId = operands[0].GetInt();
             EntityInfo obj = SceneSystem.Instance.GetEntityById(objId);
@@ -211,14 +211,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// findobjid(type, position, range) - find nearest entity by type within range
+    /// find_obj_id(type, position, range) - find nearest entity by type within range
     /// </summary>
     internal sealed class FindObjIdExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 3)
-                throw new Exception("Expected: findobjid(type, position, range)");
+                throw new Exception("Expected: find_obj_id(type, position, range)");
 
             EntityTypeEnum type = (EntityTypeEnum)operands[0].GetInt();
             Vector3Obj posObj = operands[1];
@@ -233,14 +233,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// findobjids(type, position, range) - find all entity IDs by type within range
+    /// find_obj_ids(type, position, range) - find all entity IDs by type within range
     /// </summary>
     internal sealed class FindObjIdsExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 3)
-                throw new Exception("Expected: findobjids(type, position, range)");
+                throw new Exception("Expected: find_obj_ids(type, position, range)");
 
             EntityTypeEnum type = (EntityTypeEnum)operands[0].GetInt();
             Vector3Obj posObj = operands[1];
@@ -260,14 +260,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// countdyingnpc(campId[, relation]) - count dying NPCs by camp or relation
+    /// count_dying_npc(campId[, relation]) - count dying NPCs by camp or relation
     /// </summary>
     internal sealed class CountDyingNpcExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: countdyingnpc(campId[, relation])");
+                throw new Exception("Expected: count_dying_npc(campId[, relation])");
 
             int campId = operands[0].GetInt();
             if (operands.Count > 1)

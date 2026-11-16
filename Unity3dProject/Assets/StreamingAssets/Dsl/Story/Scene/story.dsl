@@ -15,13 +15,13 @@
 	{
 		//启动时默认会进行的处理，一般用来执行初始化
 		printf("story_main start");
-		setstoryskipped(0);
+		set_story_skipped(0);
 	};
 	onmessage("start_game")
 	{
         $ct = 0;
-        $list = fromjson(readfile(getstreamingassets()+"/objlist.txt"));
-        looplist($list){
+        $list = from_json(read_file(get_streaming_assets()+"/objlist.txt"));
+        loop_list($list){
             $info = $$;
             $name = $info[0];
             $x = $info[1];
@@ -33,86 +33,86 @@
             };
         };
 
-		@scoreUi = getcomponent("Canvas/Panel/Score", "UnityEngine.UI.Text");
-		@hpUi = getcomponent("Canvas/Panel/Hp", "UnityEngine.UI.Text");
-		@gravityUi = getcomponent("Canvas/Panel/Gravity", "UnityEngine.UI.Text");
+		@scoreUi = get_component("Canvas/Panel/Score", "UnityEngine.UI.Text");
+		@hpUi = get_component("Canvas/Panel/Hp", "UnityEngine.UI.Text");
+		@gravityUi = get_component("Canvas/Panel/Gravity", "UnityEngine.UI.Text");
 
-		sendmessage("StartScript","UiCameraEnable","UICamera",0);
-		loadui("Option", "UI/Option", "Dsl/Story/Ui/option.dsl");
-		loadui("Info", "UI/Info", "Dsl/Story/Ui/info.dsl");
-		loadui("CenterInfo", "UI/CenterInfo", "Dsl/Story/Ui/centerinfo.dsl");
-		loadui("Victory", "UI/Victory", "Dsl/Story/Ui/victory.dsl");
-		loadui("Failed", "UI/Failed", "Dsl/Story/Ui/failed.dsl");
+		send_message("StartScript","UiCameraEnable","UICamera",0);
+		load_ui("Option", "UI/Option", "Dsl/Story/Ui/option.dsl");
+		load_ui("Info", "UI/Info", "Dsl/Story/Ui/info.dsl");
+		load_ui("CenterInfo", "UI/CenterInfo", "Dsl/Story/Ui/centerinfo.dsl");
+		load_ui("Victory", "UI/Victory", "Dsl/Story/Ui/victory.dsl");
+		load_ui("Failed", "UI/Failed", "Dsl/Story/Ui/failed.dsl");
 		wait(200);
-		sendmessage("StartScript","UiCameraEnable","UICamera",1);
+		send_message("StartScript","UiCameraEnable","UICamera",1);
 
-		createnpc(1001,vector3(50,0,50),0,"Player",0,"ai_player",list("Dsl/Ai/ailogic_player.dsl"));
-		createnpc(1002,rndvector3(vector3(50,0,50),9),0,"Npc",0,"ai_npc",list("Dsl/Ai/ailogic_npc.dsl"));
-		createnpc(1003,rndvector3(vector3(50,0,50),9),0,"Npc",0,"ai_npc",list("Dsl/Ai/ailogic_npc.dsl"));
-		createnpc(1004,rndvector3(vector3(50,0,50),9),0,"Npc",0,"ai_npc",list("Dsl/Ai/ailogic_npc.dsl"));
-		createnpc(1005,rndvector3(vector3(50,0,50),9),0,"Npc",0,"ai_npc",list("Dsl/Ai/ailogic_npc.dsl"));
-		createnpc(1006,rndvector3(vector3(50,0,50),9),0,"Npc",0,"ai_npc",list("Dsl/Ai/ailogic_npc.dsl"));
-		createnpc(1007,rndvector3(vector3(50,0,50),9),0,"Npc",0,"ai_npc",list("Dsl/Ai/ailogic_npc.dsl"));
-		npcsetcamp(1001,3);
-		npcsetcamp(1002,4);
-		npcsetcamp(1003,4);
-		npcsetcamp(1004,4);
-		npcsetcamp(1005,4);
-		npcsetcamp(1006,4);
-		npcsetcamp(1007,4);
+		create_npc(1001,vector_3(50,0,50),0,"Player",0,"ai_player",list("Dsl/Ai/ailogic_player.dsl"));
+		create_npc(1002,rnd_vector_3(vector_3(50,0,50),9),0,"Npc",0,"ai_npc",list("Dsl/Ai/ailogic_npc.dsl"));
+		create_npc(1003,rnd_vector_3(vector_3(50,0,50),9),0,"Npc",0,"ai_npc",list("Dsl/Ai/ailogic_npc.dsl"));
+		create_npc(1004,rnd_vector_3(vector_3(50,0,50),9),0,"Npc",0,"ai_npc",list("Dsl/Ai/ailogic_npc.dsl"));
+		create_npc(1005,rnd_vector_3(vector_3(50,0,50),9),0,"Npc",0,"ai_npc",list("Dsl/Ai/ailogic_npc.dsl"));
+		create_npc(1006,rnd_vector_3(vector_3(50,0,50),9),0,"Npc",0,"ai_npc",list("Dsl/Ai/ailogic_npc.dsl"));
+		create_npc(1007,rnd_vector_3(vector_3(50,0,50),9),0,"Npc",0,"ai_npc",list("Dsl/Ai/ailogic_npc.dsl"));
+		npc_set_camp(1001,3);
+		npc_set_camp(1002,4);
+		npc_set_camp(1003,4);
+		npc_set_camp(1004,4);
+		npc_set_camp(1005,4);
+		npc_set_camp(1006,4);
+		npc_set_camp(1007,4);
 
 		$speed = 5+4.0*6.0/(5.0+@level);
 		$npcspeed = $speed+6;
 		
-		setspeed(unitid2objid(1001),$speed);
-		setspeed(unitid2objid(1002),$npcspeed);
-		setspeed(unitid2objid(1003),$npcspeed);
-		setspeed(unitid2objid(1004),$npcspeed);
-		setspeed(unitid2objid(1005),$npcspeed);
-		setspeed(unitid2objid(1006),$npcspeed);
-		setspeed(unitid2objid(1007),$npcspeed);
+		set_speed(unit_id_2_obj_id(1001),$speed);
+		set_speed(unit_id_2_obj_id(1002),$npcspeed);
+		set_speed(unit_id_2_obj_id(1003),$npcspeed);
+		set_speed(unit_id_2_obj_id(1004),$npcspeed);
+		set_speed(unit_id_2_obj_id(1005),$npcspeed);
+		set_speed(unit_id_2_obj_id(1006),$npcspeed);
+		set_speed(unit_id_2_obj_id(1007),$npcspeed);
 		
 		wait(300);
 		@leftCount = 2048;
 		@totalCount = 2048;
 		@scoreUi.text = ""+@score;
-		$g = vector3(0,-(@totalCount*9.8)/@leftCount,0);
-		getunitytype("Physics").gravity = $g;
+		$g = vector_3(0,-(@totalCount*9.8)/@leftCount,0);
+		get_unity_type("Physics").gravity = $g;
 		@gravityUi.text = ""+$g.Value.y;
 
-		addcomponent(unitid2objid(1001), "StoryObject,Assembly-CSharp");
-		addcomponent(unitid2objid(1002), "StoryObject,Assembly-CSharp");
-		addcomponent(unitid2objid(1003), "StoryObject,Assembly-CSharp");
-		addcomponent(unitid2objid(1004), "StoryObject,Assembly-CSharp");
-		addcomponent(unitid2objid(1005), "StoryObject,Assembly-CSharp");
-		addcomponent(unitid2objid(1006), "StoryObject,Assembly-CSharp");
-		addcomponent(unitid2objid(1007), "StoryObject,Assembly-CSharp");
-		npcanimation(1001,"idle2");
-		npcanimation(1002,"idle2");
-		setplayerid(unitid2objid(1001));
-		sendmessage("Camera", "CameraFollow", unitid2objid(1001));
-		firemessage("show_centerinfo",1,"重力山谷 (Level "+@level+")",200);
-        sendmessage("StartScript", "PlayMusic", rndint(2,5));
+		add_component(unit_id_2_obj_id(1001), "StoryObject,Assembly-CSharp");
+		add_component(unit_id_2_obj_id(1002), "StoryObject,Assembly-CSharp");
+		add_component(unit_id_2_obj_id(1003), "StoryObject,Assembly-CSharp");
+		add_component(unit_id_2_obj_id(1004), "StoryObject,Assembly-CSharp");
+		add_component(unit_id_2_obj_id(1005), "StoryObject,Assembly-CSharp");
+		add_component(unit_id_2_obj_id(1006), "StoryObject,Assembly-CSharp");
+		add_component(unit_id_2_obj_id(1007), "StoryObject,Assembly-CSharp");
+		npc_animation(1001,"idle2");
+		npc_animation(1002,"idle2");
+		set_player_id(unit_id_2_obj_id(1001));
+		send_message("Camera", "CameraFollow", unit_id_2_obj_id(1001));
+		fire_message("show_centerinfo",1,"重力山谷 (Level "+@level+")",200);
+        send_message("StartScript", "PlayMusic", rnd_int(2,5));
 		wait(2000);
 		@noBuddy = 0;
-		sendmessage("objs", "Play");
+		send_message("objs", "Play");
 	};
 	onmessage("on_hide_centerinfo")args($id)
 	{
-        sendmessage("Camera", "Fading", 0, 1000);
+        send_message("Camera", "Fading", 0, 1000);
 	};
 	onmessage("notify_player")args($obj)
 	{
-		if(!isnull($obj)){
+		if(!is_null($obj)){
 			if($obj.name=="obj1201"){
-				sendmessage("StartScript", "PlayMusic", 1);
-				//firemessage("show_victory");
+				send_message("StartScript", "PlayMusic", 1);
+				//fire_message("show_victory");
 			}else{
-				sendmessagewithgameobject($obj, "EnableGravity", 1);
-				sendmessagewithgameobject($obj, "PlaySound", 0);
-				if(!isnull($obj.transform) && $obj.transform.childCount==0){
-					creategameobject("fire", "SceneFire", $obj){
-						position(vector3(0,0,0));
+				send_message_with_game_object($obj, "EnableGravity", 1);
+				send_message_with_game_object($obj, "PlaySound", 0);
+				if(!is_null($obj.transform) && $obj.transform.childCount==0){
+					create_game_object("fire", "SceneFire", $obj){
+						position(vector_3(0,0,0));
 					};
 				};
 			};
@@ -120,87 +120,87 @@
 	};
 	onmessage("on_trigger_enter")args($obj1,$collider1,$obj2,$collider2,$pt1,$pt2,$time)
 	{
-		sendmessagewithgameobject($obj1, "PlaySound", 1);
-		$pt = getposition($obj1, 0);
+		send_message_with_game_object($obj1, "PlaySound", 1);
+		$pt = get_position($obj1, 0);
 		if($pt.Value.y < -20){
-			printf("please check obj {0} {1} {2} <= {3} {4} {5}", $obj1.name, $pt, time(), $pt1, $pt2, changetype($time*1000,"long"));
-			//editorbreak();
+			printf("please check obj {0} {1} {2} <= {3} {4} {5}", $obj1.name, $pt, time(), $pt1, $pt2, change_type($time*1000,"long"));
+			//editor_break();
 		};
-		$list = findallobjids($pt,5);
-		if(!isnull($list)){
-			looplist($list){
+		$list = find_all_obj_ids($pt,5);
+		if(!is_null($list)){
+			loop_list($list){
 				$objid=$$;
-				sethp($objid,gethp($objid)-100);
+				set_hp($objid,get_hp($objid)-100);
 				printf("damage {0}", $objid);
-				sendmessagewithgameobject(getgameobject($objid),"TweenUiPrefabWithText","BlueText"+$objid,"UI/RedText",vector3(0,2,0),"","-100");
+				send_message_with_game_object(get_game_object($objid),"TweenUiPrefabWithText","BlueText"+$objid,"UI/RedText",vector_3(0,2,0),"","-100");
 			};
 		};
-		@hpUi.text = ""+gethp(getplayerid());
-		localconcurrentmessage("baozha", $pt, $obj1);
+		@hpUi.text = ""+get_hp(get_player_id());
+		local_concurrent_message("baozha", $pt, $obj1);
 		wait(3000);
-		destroygameobject(getchild($obj1,"fire"));
-		destroygameobject($obj1);
+		destroy_game_object(get_child($obj1,"fire"));
+		destroy_game_object($obj1);
 	};
 	onmessage("on_trigger_exit")args($obj1,$collider1,$obj2,$collider2,$pt1,$pt2,$time)
 	{
 		$tag = $obj1.tag;
 		if($tag=="Red"){
 			@score=@score+100;
-			sendmessagewithgameobject(getgameobject(getplayerid()),"TweenUiPrefabWithText","RedText"+getplayerid(),"UI/BlueText",vector3(1,2,0),"","+100");
+			send_message_with_game_object(get_game_object(get_player_id()),"TweenUiPrefabWithText","RedText"+get_player_id(),"UI/BlueText",vector_3(1,2,0),"","+100");
 		}elseif($tag=="Blue"){
 			@score=@score+200;
-			sendmessagewithgameobject(getgameobject(getplayerid()),"TweenUiPrefabWithText","RedText"+getplayerid(),"UI/BlueText",vector3(1,2,0),"","+200");
+			send_message_with_game_object(get_game_object(get_player_id()),"TweenUiPrefabWithText","RedText"+get_player_id(),"UI/BlueText",vector_3(1,2,0),"","+200");
 		}elseif($tag=="LightRed"){
 			@score=@score+400;
-			sendmessagewithgameobject(getgameobject(getplayerid()),"TweenUiPrefabWithText","RedText"+getplayerid(),"UI/BlueText",vector3(1,2,0),"","+400");
+			send_message_with_game_object(get_game_object(get_player_id()),"TweenUiPrefabWithText","RedText"+get_player_id(),"UI/BlueText",vector_3(1,2,0),"","+400");
 		}else{
 			@score=@score+800;
-			sendmessagewithgameobject(getgameobject(getplayerid()),"TweenUiPrefabWithText","RedText"+getplayerid(),"UI/BlueText",vector3(1,2,0),"","+800");
+			send_message_with_game_object(get_game_object(get_player_id()),"TweenUiPrefabWithText","RedText"+get_player_id(),"UI/BlueText",vector_3(1,2,0),"","+800");
 		};
 		@scoreUi.text = ""+@score;
 		dec(@leftCount);
 		if(@leftCount<1){
 			@leftCount = 1;
 		};
-		$g = vector3(0,-(@totalCount*9.8)/@leftCount,0);
-		getunitytype("Physics").gravity = $g;
+		$g = vector_3(0,-(@totalCount*9.8)/@leftCount,0);
+		get_unity_type("Physics").gravity = $g;
 		@gravityUi.text = ""+$g.Value.y;
 	};
 	onmessage("baozha")args($pt, $cobj)
 	{
-		printf("baozha => {0} {1} {2}", $pt, $cobj.name, getposition($cobj, 1));
-		creategameobject("gbaozha", "gbaozha")obj("$obj"){
+		printf("baozha => {0} {1} {2}", $pt, $cobj.name, get_position($cobj, 1));
+		create_game_object("gbaozha", "gbaozha")obj("$obj"){
 			position($pt);
 		};
 		wait(3000);
-		destroygameobject($obj);
+		destroy_game_object($obj);
 	};
 	onmessage("obj_killed")
 	{
-		printf("{0} blue:{1} red:{2}", @noBuddy, countnpc(3), countnpc(4));
+		printf("{0} blue:{1} red:{2}", @noBuddy, count_npc(3), count_npc(4));
 		
-		$speed = 5+4.0*6.0/(5.0+@level)*countnpc(4)/6;
-		setspeed(getplayerid(),$speed);
+		$speed = 5+4.0*6.0/(5.0+@level)*count_npc(4)/6;
+		set_speed(get_player_id(),$speed);
 		if(@noBuddy<=0){
-			if(countnpc(4)<=0){
+			if(count_npc(4)<=0){
 				@noBuddy = 1;
-				firemessage("show_info", 1, "你的伙伴们全部牺牲了，你将不得不自己独自走完剩下的路！", 200);
+				fire_message("show_info", 1, "你的伙伴们全部牺牲了，你将不得不自己独自走完剩下的路！", 200);
 			};
 		};
 	};
 	onmessage("npc_killed", 1001)
 	{
-		sendmessage("StartScript", "PlayMusic", 0);
-		firemessage("show_failed");
+		send_message("StartScript", "PlayMusic", 0);
+		fire_message("show_failed");
 	};
 	onmessage("on_victory_button_click")
 	{
 		inc(@level);
-		changescene("Game");
+		change_scene("Game");
 	};
 	onmessage("on_failed_button_click")
 	{
 		@score = 0;
-		changescene("Game");
+		change_scene("Game");
 	};
 };

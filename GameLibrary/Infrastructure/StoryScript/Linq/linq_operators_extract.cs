@@ -11,7 +11,7 @@ namespace StoryScript.DslExpression
         {
             Register("first", new OpFirstOperator());
             Register("last", new OpLastOperator());
-            Register("tolist", new OpToListOperator());
+            Register("to_list", new OpToListOperator());
         }
     }
 

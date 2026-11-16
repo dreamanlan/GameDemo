@@ -6,14 +6,14 @@ using StoryScript.DslExpression;
 namespace GameLibrary.Story.StoryExpressions
 {
     /// <summary>
-    /// setmaxeffect(group_id, max_count) - set max effect count for resource system
+    /// set_max_effect(group_id, max_count) - set max effect count for resource system
     /// </summary>
     internal sealed class SetMaxEffectExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: setmaxeffect(group_id, max_count)");
+                throw new Exception("Expected: set_max_effect(group_id, max_count)");
 
             int groupId = operands[0].GetInt();
             int maxCount = operands[1].GetInt();
@@ -37,14 +37,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// setdebug(flag) - set debug mode
+    /// set_debug(flag) - set debug mode
     /// </summary>
     internal sealed class SetDebugExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: setdebug(flag)");
+                throw new Exception("Expected: set_debug(flag)");
 
             int val = operands[0].GetInt();
             GlobalVariables.Instance.IsDebug = val != 0;
@@ -54,7 +54,7 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// editorbreak() - trigger Unity Editor break
+    /// editor_break() - trigger Unity Editor break
     /// </summary>
     internal sealed class EditorBreakExp : SimpleExpressionBase
     {
@@ -66,7 +66,7 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// debugbreak() - trigger debug break
+    /// debug_break() - trigger debug break
     /// </summary>
     internal sealed class DebugBreakExp : SimpleExpressionBase
     {
@@ -78,14 +78,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// allocmemory(key, size) - allocate memory and store in global variable
+    /// alloc_memory(key, size) - allocate memory and store in global variable
     /// </summary>
     internal sealed class AllocMemoryExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: allocmemory(key, size)");
+                throw new Exception("Expected: alloc_memory(key, size)");
 
             string key = operands[0].ToString();
             int size = operands[1].GetInt();
@@ -109,14 +109,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// freememory(key) - free memory from global variable
+    /// free_memory(key) - free memory from global variable
     /// </summary>
     internal sealed class FreeMemoryExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: freememory(key)");
+                throw new Exception("Expected: free_memory(key)");
 
             string key = operands[0].ToString();
 
@@ -139,14 +139,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// consumecpu(time_us) - consume CPU for testing
+    /// consume_cpu(time_us) - consume CPU for testing
     /// </summary>
     internal sealed class ConsumeCpuExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: consumecpu(time_us)");
+                throw new Exception("Expected: consume_cpu(time_us)");
 
             int time = operands[0].GetInt();
             long startTime = TimeUtility.GetElapsedTimeUs();

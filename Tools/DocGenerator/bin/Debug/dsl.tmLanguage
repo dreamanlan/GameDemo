@@ -126,7 +126,7 @@
 		<key>control-statement</key>
 		<dict>
 			<key>match</key>
-				<string>(?&lt;!\.)\b(loop|foreach|while|looplist|if|elseif|else|skill|section|oninterrupt|onstop|emitskill|hitskill|script|story|local|onmessage|onnamespacedmessage)\b</string>
+				<string>(?&lt;!\.)\b(loop|foreach|while|loop_list|if|elseif|else|skill|section|oninterrupt|onstop|emitskill|hitskill|script|story|local|onmessage|onnamespacedmessage)\b</string>
 			<key>name</key>
 			<string>keyword.control.dsl</string>
 		</dict>

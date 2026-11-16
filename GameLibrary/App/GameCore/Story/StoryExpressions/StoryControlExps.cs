@@ -6,8 +6,8 @@ using StoryScript.DslExpression;
 namespace GameLibrary.Story.StoryExpressions
 {
     /// <summary>
-    /// startstory(story_id) { multiple(val); } - start a story
-    /// startstory(story_id){
+    /// start_story(story_id) { multiple(val); } - start a story
+    /// start_story(story_id){
     ///     multiple(val);
     /// };
     /// </summary>
@@ -71,8 +71,8 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// stopstory(story_id) { multiple(val); } - stop a story
-    /// stopstory(story_id){
+    /// stop_story(story_id) { multiple(val); } - stop a story
+    /// stop_story(story_id){
     ///     multiple(val);
     /// };
     /// </summary>
@@ -133,8 +133,8 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// pausestory(story_id1, story_id2, ...) { multiple(val); } - pause stories
-    /// pausestory(story_id1, story_id2, ...){
+    /// pause_story(story_id1, story_id2, ...) { multiple(val); } - pause stories
+    /// pause_story(story_id1, story_id2, ...){
     ///     multiple(val);
     /// };
     /// </summary>
@@ -206,8 +206,8 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// resumestory(story_id1, story_id2, ...) { multiple(val); } - resume paused stories
-    /// resumestory(story_id1, story_id2, ...){
+    /// resume_story(story_id1, story_id2, ...) { multiple(val); } - resume paused stories
+    /// resume_story(story_id1, story_id2, ...){
     ///     multiple(val);
     /// };
     /// </summary>
@@ -279,14 +279,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// setstoryvariable(story_id[, namespace], name, value) - set a variable on another story instance
+    /// set_story_variable(story_id[, namespace], name, value) - set a variable on another story instance
     /// </summary>
     internal sealed class SetStoryVariableExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 3)
-                throw new Exception("Expected: setstoryvariable(story_id[, namespace], name, value)");
+                throw new Exception("Expected: set_story_variable(story_id[, namespace], name, value)");
 
             string storyId;
             string ns = string.Empty;

@@ -8,8 +8,8 @@ using UnityEngine;
 namespace GameLibrary.Story.StoryExpressions
 {
     /// <summary>
-    /// createnpc(unit_id, vector3(x,y,z), dir, model, type[, ai, stringlist("param1 param2...")])[objid("varname")] - create an NPC
-    /// createnpc(unit_id, vector3(x,y,z), dir, model, type[, ai, stringlist("param1 param2...")]) {
+    /// create_npc(unit_id, vector_3(x,y,z), dir, model, type[, ai, string_list("param1 param2...")])[objid("varname")] - create an NPC
+    /// create_npc(unit_id, vector_3(x,y,z), dir, model, type[, ai, string_list("param1 param2...")]) {
     ///     objid("varname");
     /// };
     /// </summary>
@@ -140,14 +140,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// destroynpc(unit_id[, immediately]) - destroy an NPC by unit ID
+    /// destroy_npc(unit_id[, immediately]) - destroy an NPC by unit ID
     /// </summary>
     internal sealed class DestroyNpcExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: destroynpc(unit_id[, immediately])");
+                throw new Exception("Expected: destroy_npc(unit_id[, immediately])");
 
             int unitId = operands[0].GetInt();
             bool immediately = operands.Count > 1 ? operands[1].GetBool() : false;
@@ -169,14 +169,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// npcface(unit_id, dir[, immediately]) - set NPC face direction
+    /// npc_face(unit_id, dir[, immediately]) - set NPC face direction
     /// </summary>
     internal sealed class NpcFaceExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: npcface(unit_id, dir[, immediately])");
+                throw new Exception("Expected: npc_face(unit_id, dir[, immediately])");
 
             int unitId = operands[0].GetInt();
             float dir = operands[1].GetFloat();
@@ -197,14 +197,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// npcstop(unit_id) - stop NPC movement
+    /// npc_stop(unit_id) - stop NPC movement
     /// </summary>
     internal sealed class NpcStopExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: npcstop(unit_id)");
+                throw new Exception("Expected: npc_stop(unit_id)");
 
             int unitId = operands[0].GetInt();
             EntityInfo npc = SceneSystem.Instance.GetEntityByUnitId(unitId);
@@ -225,14 +225,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// npcmove(unit_id, vector3(x,y,z)[, event]) - move NPC to position
+    /// npc_move(unit_id, vector_3(x,y,z)[, event]) - move NPC to position
     /// </summary>
     internal sealed class NpcMoveExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: npcmove(unit_id, pos[, event])");
+                throw new Exception("Expected: npc_move(unit_id, pos[, event])");
 
             int unitId = operands[0].GetInt();
             Vector3Obj posObj = operands[1];
@@ -264,14 +264,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// npcmovewithwaypoints(unit_id, waypoints[, event]) - move NPC along waypoints
+    /// npc_move_with_waypoints(unit_id, waypoints[, event]) - move NPC along waypoints
     /// </summary>
     internal sealed class NpcMoveWithWaypointsExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: npcmovewithwaypoints(unit_id, waypoints[, event])");
+                throw new Exception("Expected: npc_move_with_waypoints(unit_id, waypoints[, event])");
 
             int unitId = operands[0].GetInt();
             var poses = operands[1].GetObject() as List<object>;
@@ -307,14 +307,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// npcattack(unit_id[, target_unit_id]) - command NPC to attack target
+    /// npc_attack(unit_id[, target_unit_id]) - command NPC to attack target
     /// </summary>
     internal sealed class NpcAttackExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: npcattack(unit_id[, target_unit_id])");
+                throw new Exception("Expected: npc_attack(unit_id[, target_unit_id])");
 
             int unitId = operands[0].GetInt();
             int targetUnitId = operands.Count > 1 ? operands[1].GetInt() : 0;
@@ -333,14 +333,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// npcenableai(unit_id, enable) - enable/disable NPC AI
+    /// npc_enable_ai(unit_id, enable) - enable/disable NPC AI
     /// </summary>
     internal sealed class NpcEnableAiExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: npcenableai(unit_id, enable)");
+                throw new Exception("Expected: npc_enable_ai(unit_id, enable)");
 
             int unitId = operands[0].GetInt();
             int enable = operands[1].GetInt();
@@ -355,14 +355,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// npcsetai(unit_id, ai_logic, ai_params) - set NPC AI logic and parameters
+    /// npc_set_ai(unit_id, ai_logic, ai_params) - set NPC AI logic and parameters
     /// </summary>
     internal sealed class NpcSetAiExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 3)
-                throw new Exception("Expected: npcsetai(unit_id, ai_logic, ai_params)");
+                throw new Exception("Expected: npc_set_ai(unit_id, ai_logic, ai_params)");
 
             int unitId = operands[0].GetInt();
             string aiLogic = operands[1].ToString();
@@ -393,14 +393,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// npcsetaitarget(unit_id, target_id) - set NPC AI target
+    /// npc_set_ai_target(unit_id, target_id) - set NPC AI target
     /// </summary>
     internal sealed class NpcSetAiTargetExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: npcsetaitarget(unit_id, target_id)");
+                throw new Exception("Expected: npc_set_ai_target(unit_id, target_id)");
 
             int unitId = operands[0].GetInt();
             int targetId = operands[1].GetInt();
@@ -416,14 +416,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// npcsetcamp(unit_id, camp_id) - set NPC camp
+    /// npc_set_camp(unit_id, camp_id) - set NPC camp
     /// </summary>
     internal sealed class NpcSetCampExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: npcsetcamp(unit_id, camp_id)");
+                throw new Exception("Expected: npc_set_camp(unit_id, camp_id)");
 
             int unitId = operands[0].GetInt();
             int campId = operands[1].GetInt();
@@ -438,14 +438,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// destroynpcwithobjid(objid[, immediately]) - destroy an NPC by object ID
+    /// destroy_npc_with_obj_id(objid[, immediately]) - destroy an NPC by object ID
     /// </summary>
     internal sealed class DestroyNpcWithObjIdExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: destroynpcwithobjid(objid[, immediately])");
+                throw new Exception("Expected: destroy_npc_with_obj_id(objid[, immediately])");
 
             int objId = operands[0].GetInt();
             bool immediately = operands.Count > 1 ? operands[1].GetBool() : false;
@@ -467,14 +467,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// npcanimation(unit_id, anim[, normalized_time]) - play NPC animation
+    /// npc_animation(unit_id, anim[, normalized_time]) - play NPC animation
     /// </summary>
     internal sealed class NpcAnimationExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: npcanimation(unit_id, anim[, normalized_time])");
+                throw new Exception("Expected: npc_animation(unit_id, anim[, normalized_time])");
 
             int unitId = operands[0].GetInt();
             string anim = operands[1].ToString();
@@ -489,14 +489,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// npcgetnpctype(unitid) - get NPC entity type
+    /// npc_get_npc_type(unitid) - get NPC entity type
     /// </summary>
     internal sealed class NpcGetNpcTypeExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: npcgetnpctype(unitid)");
+                throw new Exception("Expected: npc_get_npc_type(unitid)");
 
             int unitId = operands[0].GetInt();
             EntityInfo obj = SceneSystem.Instance.GetEntityByUnitId(unitId);
@@ -507,14 +507,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// npcgetaiparam(unitid, index) - get NPC AI parameter
+    /// npc_get_ai_param(unitid, index) - get NPC AI parameter
     /// </summary>
     internal sealed class NpcGetAiParamExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: npcgetaiparam(unitid, index)");
+                throw new Exception("Expected: npc_get_ai_param(unitid, index)");
 
             int unitId = operands[0].GetInt();
             int index = operands[1].GetInt();

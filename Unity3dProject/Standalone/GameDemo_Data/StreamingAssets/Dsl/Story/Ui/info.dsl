@@ -6,41 +6,41 @@ script(main)
     };
     onmessage("start")
     {
-        bindui(@window){
+        bind_ui(@window){
             var("@txt","Text");
         };
-        @window.SetActive(changetype(0,"bool"));
+        @window.SetActive(change_type(0,"bool"));
     };
     onmessage("show_info")args($id,$info,$interval,$start,$end)
     {
-        @window.SetActive(changetype(1,"bool"));
-        if(isnull($interval)){
+        @window.SetActive(change_type(1,"bool"));
+        if(is_null($interval)){
             $interval = 200;
         };
-        if(isnull($start)){
+        if(is_null($start)){
             $start = 0;
         };
         if($start > $info.Length){
             $start = 0;
         };
-        if(isnull($end) || $end > $info.Length){
+        if(is_null($end) || $end > $info.Length){
             $end = $info.Length;
         };
         $len = $end;
         $ct = $start + 1;
         //printf("info:{0} len:{1} ct:{2}",$info,$len,$ct);
-        while($ct<=$len && !isstoryskipped()){
-            //printf("info:{0} len:{1} ct:{2} show:{3} isstoryskipped:{4}",$info,$len,$ct,substring($info,0,$ct),isstoryskipped());
+        while($ct<=$len && !is_story_skipped()){
+            //printf("info:{0} len:{1} ct:{2} show:{3} is_story_skipped:{4}",$info,$len,$ct,substring($info,0,$ct),is_story_skipped());
             @txt_Text.text = substring($info, 0, $ct);
-            storywait($interval);
+            story_wait($interval);
             inc($ct);
         };
-        storywait(500);
-        localmessage("hide_info",$id);
+        story_wait(500);
+        local_message("hide_info",$id);
     };
     onmessage("hide_info")args($id)
     {
-        @window.SetActive(changetype(0,"bool"));
-        firemessage("on_hide_info",$id);
+        @window.SetActive(change_type(0,"bool"));
+        fire_message("on_hide_info",$id);
     };
 };

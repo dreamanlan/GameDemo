@@ -8,7 +8,7 @@ using StoryScript.DslExpression;
 namespace GameLibrary.Story.StoryExpressions
 {
     /// <summary>
-    /// bindui(obj) { var(...); onevent(...); inputs(...); ... } - bind UI events and variables
+    /// bind_ui(obj) { var(...); onevent(...); inputs(...); ... } - bind UI events and variables
     /// </summary>
     internal sealed class BindUiExp : AbstractExpression
     {
@@ -65,7 +65,7 @@ namespace GameLibrary.Story.StoryExpressions
 
         protected override bool Load(Dsl.StatementData statementData)
         {
-            // Parse: bindui(obj) { ... }
+            // Parse: bind_ui(obj) { ... }
             Dsl.FunctionData funcData = statementData.First.AsFunction;
             if (null != funcData)
             {
@@ -121,7 +121,7 @@ namespace GameLibrary.Story.StoryExpressions
 
         protected override bool Load(Dsl.FunctionData funcData)
         {
-            // Handle: bindui(obj) without block
+            // Handle: bind_ui(obj) without block
             Dsl.FunctionData callData = funcData;
             if (funcData.IsHighOrder)
                 callData = funcData.LowerOrderFunction;

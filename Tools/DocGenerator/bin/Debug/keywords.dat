@@ -1,7 +1,7 @@
 loop
 foreach
 while
-looplist
+loop_list
 if
 elseif
 else

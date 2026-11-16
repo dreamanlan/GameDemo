@@ -209,10 +209,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("propset")
+@snippets("prop_set")
 $____begin____
 
-propset(value,value);
+prop_set(value,value);
 
 $_____end_____
 @doc
@@ -365,10 +365,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("storywait")
+@snippets("story_wait")
 $____begin____
 
-storywait(毫秒数)[if(条件表达式)];
+story_wait(毫秒数)[if(条件表达式)];
 
 $_____end_____
 @doc
@@ -409,10 +409,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("localmessage")
+@snippets("local_message")
 $____begin____
 
-localmessage(消息ID，参数表);
+local_message(消息ID，参数表);
 
 $_____end_____
 @doc
@@ -424,10 +424,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("storylocalmessage")
+@snippets("story_local_message")
 $____begin____
 
-storylocalmessage(消息ID，参数表);
+story_local_message(消息ID，参数表);
 
 $_____end_____
 @doc
@@ -453,10 +453,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("looplist")
+@snippets("loop_list")
 $____begin____
 
-looplist(value)
+loop_list(value)
 {
   	cmd1();
   	cmd2();
@@ -471,10 +471,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("listset")
+@snippets("list_set")
 $____begin____
 
-listset(list,index,value);
+list_set(list,index,value);
 
 $_____end_____
 @doc
@@ -485,10 +485,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("listadd")
+@snippets("list_add")
 $____begin____
 
-listadd(list,value);
+list_add(list,value);
 
 $_____end_____
 @doc
@@ -499,10 +499,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("listremove")
+@snippets("list_remove")
 $____begin____
 
-listremove(list,value);
+list_remove(list,value);
 
 $_____end_____
 @doc
@@ -513,10 +513,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("listinsert")
+@snippets("list_insert")
 $____begin____
 
-listinsert(list,index,value);
+list_insert(list,index,value);
 
 $_____end_____
 @doc
@@ -527,10 +527,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("listremoveat")
+@snippets("list_remove_at")
 $____begin____
 
-listremoveat(list,index);
+list_remove_at(list,index);
 
 $_____end_____
 @doc
@@ -541,10 +541,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("listclear")
+@snippets("list_clear")
 $____begin____
 
-listclear(list);
+list_clear(list);
 
 $_____end_____
 @doc
@@ -555,10 +555,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("clearmessage")
+@snippets("clear_message")
 $____begin____
 
-clearmessage(msgid1,msgid2,...);
+clear_message(msgid1,msgid2,...);
 
 $_____end_____
 @doc
@@ -583,10 +583,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("dotnetset")
+@snippets("dotnet_set")
 $____begin____
 
-dotnetset(obj/type,property,arg1,arg2,...);
+dotnet_set(obj/type,property,arg1,arg2,...);
 
 $_____end_____
 @doc
@@ -597,10 +597,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("writealllines")
+@snippets("write_all_lines")
 $____begin____
 
-writealllines(file,lines);
+write_all_lines(file,lines);
 
 $_____end_____
 @doc
@@ -611,10 +611,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("writefile")
+@snippets("write_file")
 $____begin____
 
-writefile(file,txt);
+write_file(file,txt);
 
 $_____end_____
 @doc
@@ -625,10 +625,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("hashtableadd")
+@snippets("hashtable_add")
 $____begin____
 
-hashtableadd(hashtable,key,value);
+hashtable_add(hashtable,key,value);
 
 $_____end_____
 @doc
@@ -639,10 +639,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("hashtableset")
+@snippets("hashtable_set")
 $____begin____
 
-hashtableset(hashtable,key,value);
+hashtable_set(hashtable,key,value);
 
 $_____end_____
 @doc
@@ -653,10 +653,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("hashtableremove")
+@snippets("hashtable_remove")
 $____begin____
 
-hashtableremove(hashtable,key);
+hashtable_remove(hashtable,key);
 
 $_____end_____
 @doc
@@ -667,10 +667,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("hashtableclear")
+@snippets("hashtable_clear")
 $____begin____
 
-hashtableclear(hashtable);
+hashtable_clear(hashtable);
 
 $_____end_____
 @doc
@@ -681,10 +681,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("waitlocalmessage")
+@snippets("wait_local_message")
 $____begin____
 
-waitlocalmessage(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
+wait_local_message(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
 
 $_____end_____
 @doc
@@ -695,10 +695,10 @@ waitlocalmessage等待当前story的指定消息之一触发。(var部分用字�
 
 $_____end_____;
 
-@snippets("waitlocalmessagehandler")
+@snippets("wait_local_message_handler")
 $____begin____
 
-waitlocalmessagehandler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
+wait_local_message_handler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
 
 $_____end_____
 @doc
@@ -709,10 +709,10 @@ waitlocalmessagehandler等待当前story的指定消息处理全部执行完毕�
 
 $_____end_____;
 
-@snippets("storywaitlocalmessage")
+@snippets("story_wait_local_message")
 $____begin____
 
-storywaitlocalmessage(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
+story_wait_local_message(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
 
 $_____end_____
 @doc
@@ -723,10 +723,10 @@ storywaitlocalmessage等待当前story的指定消息之一触发。(var部分�
 
 $_____end_____;
 
-@snippets("storywaitlocalmessagehandler")
+@snippets("story_wait_local_message_handler")
 $____begin____
 
-storywaitlocalmessagehandler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
+story_wait_local_message_handler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
 
 $_____end_____
 @doc
@@ -751,10 +751,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("resumelocalmessagehandler")
+@snippets("resume_local_message_handler")
 $____begin____
 
-resumelocalmessagehandler(msgid,msgid,...);
+resume_local_message_handler(msgid,msgid,...);
 
 $_____end_____
 @doc
@@ -779,10 +779,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("resumelocalnamespacedmessagehandler")
+@snippets("resume_local_namespaced_message_handler")
 $____begin____
 
-resumelocalnamespacedmessagehandler(msgid,msgid,...);
+resume_local_namespaced_message_handler(msgid,msgid,...);
 
 $_____end_____
 @doc
@@ -940,10 +940,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("vector2")
+@snippets("vector_2")
 $____begin____
 
-vector2(x,y);
+vector_2(x,y);
 
 $_____end_____
 @doc
@@ -954,10 +954,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("vector3")
+@snippets("vector_3")
 $____begin____
 
-vector3(x,y,z);
+vector_3(x,y,z);
 
 $_____end_____
 @doc
@@ -968,10 +968,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("vector4")
+@snippets("vector_4")
 $____begin____
 
-vector4(x,y,z,w);
+vector_4(x,y,z,w);
 
 $_____end_____
 @doc
@@ -1038,10 +1038,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("propget")
+@snippets("prop_get")
 $____begin____
 
-propget(value[,defaultvalue]);
+prop_get(value[,defaultvalue]);
 
 $_____end_____
 @doc
@@ -1052,10 +1052,10 @@ value必须是个字符串value，表示要读取value的变量名。此函数�
 
 $_____end_____;
 
-@snippets("intlist")
+@snippets("int_list")
 $____begin____
 
-intlist("1 2 3 4 5");
+int_list("1 2 3 4 5");
 
 $_____end_____
 @doc
@@ -1066,10 +1066,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("stringlist")
+@snippets("string_list")
 $____begin____
 
-stringlist("a b c d e");
+string_list("a b c d e");
 
 $_____end_____
 @doc
@@ -1080,10 +1080,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("vector2list")
+@snippets("vector_2_list")
 $____begin____
 
-vector2list("v1x v1y v2x v2y");
+vector_2_list("v1x v1y v2x v2y");
 
 $_____end_____
 @doc
@@ -1094,10 +1094,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("vector3list")
+@snippets("vector_3_list")
 $____begin____
 
-vector3list("v1x v1y v1z v2x v2y v2z");
+vector_3_list("v1x v1y v1z v2x v2y v2z");
 
 $_____end_____
 @doc
@@ -1136,10 +1136,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("rndint")
+@snippets("rnd_int")
 $____begin____
 
-rndint(min,max);
+rnd_int(min,max);
 
 $_____end_____
 @doc
@@ -1150,10 +1150,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("rndfloat")
+@snippets("rnd_float")
 $____begin____
 
-rndfloat();
+rnd_float();
 
 $_____end_____
 @doc
@@ -1164,10 +1164,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("floatlist")
+@snippets("float_list")
 $____begin____
 
-floatlist("1.0 2.0 3.0 4.0 5.0");
+float_list("1.0 2.0 3.0 4.0 5.0");
 
 $_____end_____
 @doc
@@ -1178,10 +1178,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("rndfromlist")
+@snippets("rnd_from_list")
 $____begin____
   用法:
-rndfromlist(intlist("1 2 3 4 5 6 7 8")[,defaultvalue]);
+rnd_from_list(int_list("1 2 3 4 5 6 7 8")[,defaultvalue]);
 
 $_____end_____
 @doc
@@ -1192,10 +1192,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("listget")
+@snippets("list_get")
 $____begin____
 
-listget(list,index[,defaultvalue]);
+list_get(list,index[,defaultvalue]);
 
 $_____end_____
 @doc
@@ -1206,10 +1206,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("listsize")
+@snippets("list_size")
 $____begin____
 
-listsize(list);
+list_size(list);
 
 $_____end_____
 @doc
@@ -1220,10 +1220,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("vector2dist")
+@snippets("vector_2_dist")
 $____begin____
 
-vector2dist(vector2(1,2),vector2(3,4));
+vector_2_dist(vector_2(1,2),vector_2(3,4));
 
 $_____end_____
 @doc
@@ -1234,10 +1234,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("vector3dist")
+@snippets("vector_3_dist")
 $____begin____
 
-vector3dist(vector3(1,2,3),vector3(4,5,6));
+vector_3_dist(vector_3(1,2,3),vector_3(4,5,6));
 
 $_____end_____
 @doc
@@ -1248,10 +1248,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("vector2to3")
+@snippets("vector_2_to_3")
 $____begin____
 
-vector2to3(vector2(1,2));
+vector_2_to_3(vector_2(1,2));
 
 $_____end_____
 @doc
@@ -1262,10 +1262,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("vector3to2")
+@snippets("vector_3_to_2")
 $____begin____
 
-vector3to2(vector3(1,2,3));
+vector_3_to_2(vector_3(1,2,3));
 
 $_____end_____
 @doc
@@ -1276,10 +1276,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("isnull")
+@snippets("is_null")
 $____begin____
 
-isnull(x);
+is_null(x);
 
 $_____end_____
 @doc
@@ -1290,10 +1290,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("str2int")
+@snippets("str_2_int")
 $____begin____
 
-str2int(str);
+str_2_int(str);
 
 $_____end_____
 @doc
@@ -1304,10 +1304,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("str2float")
+@snippets("str_2_float")
 $____begin____
 
-str2float(str);
+str_2_float(str);
 
 $_____end_____
 @doc
@@ -1318,10 +1318,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("dotnetcall")
+@snippets("dotnet_call")
 $____begin____
 
-dotnetcall(obj/type,method,arg1,arg2,...);
+dotnet_call(obj/type,method,arg1,arg2,...);
 
 $_____end_____
 @doc
@@ -1332,10 +1332,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("dotnetget")
+@snippets("dotnet_get")
 $____begin____
 
-dotnetget(obj/type,property,arg1,arg2,...);
+dotnet_get(obj/type,property,arg1,arg2,...);
 
 $_____end_____
 @doc
@@ -1346,10 +1346,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("changetype")
+@snippets("change_type")
 $____begin____
 
-changetype(value,obj/type);
+change_type(value,obj/type);
 
 $_____end_____
 @doc
@@ -1360,10 +1360,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("parseenum")
+@snippets("parse_enum")
 $____begin____
 
-parseenum(obj/type, "enumvalue");
+parse_enum(obj/type, "enumvalue");
 
 $_____end_____
 @doc
@@ -1374,10 +1374,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("readalllines")
+@snippets("read_all_lines")
 $____begin____
 
-readalllines(file);
+read_all_lines(file);
 
 $_____end_____
 @doc
@@ -1388,10 +1388,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("readfile")
+@snippets("read_file")
 $____begin____
 
-readfile(file);
+read_file(file);
 
 $_____end_____
 @doc
@@ -1402,10 +1402,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("tojson")
+@snippets("to_json")
 $____begin____
 
-tojson(hashtable);
+to_json(hashtable);
 
 $_____end_____
 @doc
@@ -1416,10 +1416,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("fromjson")
+@snippets("from_json")
 $____begin____
 
-fromjson(str);
+from_json(str);
 
 $_____end_____
 @doc
@@ -1446,10 +1446,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("hashtableget")
+@snippets("hashtable_get")
 $____begin____
 
-hashtableget(hashtable,key[,defval]);
+hashtable_get(hashtable,key[,defval]);
 
 $_____end_____
 @doc
@@ -1460,10 +1460,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("hashtablesize")
+@snippets("hashtable_size")
 $____begin____
 
-hashtablesize(hashtable);
+hashtable_size(hashtable);
 
 $_____end_____
 @doc
@@ -1474,10 +1474,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("hashtablekeys")
+@snippets("hashtable_keys")
 $____begin____
 
-hashtablekeys(hashtable);
+hashtable_keys(hashtable);
 
 $_____end_____
 @doc
@@ -1488,10 +1488,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("hashtablevalues")
+@snippets("hashtable_values")
 $____begin____
 
-hashtablevalues(hashtable);
+hashtable_values(hashtable);
 
 $_____end_____
 @doc
@@ -1502,10 +1502,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("dictformat")
+@snippets("dict_format")
 $____begin____
 
-dictformat(dictId,arg1,arg2,...);
+dict_format(dictId,arg1,arg2,...);
 
 $_____end_____
 @doc
@@ -1516,10 +1516,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("dictget")
+@snippets("dict_get")
 $____begin____
 
-dictget(dictId);
+dict_get(dictId);
 
 $_____end_____
 @doc
@@ -1544,10 +1544,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("gettype")
+@snippets("get_type")
 $____begin____
 
-gettype("System.Console");
+get_type("System.Console");
 
 $_____end_____
 @doc
@@ -1559,10 +1559,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("rndvector3")
+@snippets("rnd_vector_3")
 $____begin____
 
-rndvector3(center,radius);
+rnd_vector_3(center,radius);
 
 $_____end_____
 @doc
@@ -1573,10 +1573,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("rndvector2")
+@snippets("rnd_vector_2")
 $____begin____
 
-rndvector2(center,radius);
+rnd_vector_2(center,radius);
 
 $_____end_____
 @doc
@@ -1594,10 +1594,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("objid2unitid")
+@snippets("obj_id_2_unit_id")
 $____begin____
 
-objid2unitid(objid);
+obj_id_2_unit_id(objid);
 
 $_____end_____
 @doc
@@ -1608,10 +1608,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("unitid2objid")
+@snippets("unit_id_2_obj_id")
 $____begin____
 
-unitid2objid(unitid);
+unit_id_2_obj_id(unitid);
 
 $_____end_____
 @doc
@@ -1622,10 +1622,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("getposition")
+@snippets("get_position")
 $____begin____
 
-getposition(objid[, world_or_local]);
+get_position(objid[, world_or_local]);
 
 $_____end_____
 @doc
@@ -1636,10 +1636,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("getcamp")
+@snippets("get_camp")
 $____begin____
 
-getcamp(objid);
+get_camp(objid);
 
 $_____end_____
 @doc
@@ -1650,10 +1650,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("isenemy")
+@snippets("is_enemy")
 $____begin____
 
-isenemy(camp1,camp2);
+is_enemy(camp1,camp2);
 
 $_____end_____
 @doc
@@ -1664,10 +1664,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("isfriend")
+@snippets("is_friend")
 $____begin____
 
-isfriend(camp1,camp2);
+is_friend(camp1,camp2);
 
 $_____end_____
 @doc
@@ -1678,10 +1678,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("getpositionx")
+@snippets("get_position_x")
 $____begin____
 
-getpositionx(objid[, world_or_local]);
+get_position_x(objid[, world_or_local]);
 
 $_____end_____
 @doc
@@ -1695,7 +1695,7 @@ $_____end_____;
 @snippets("getpostiony")
 $____begin____
 
-getpositiony(objid[, world_or_local]);
+get_position_y(objid[, world_or_local]);
 
 $_____end_____
 @doc
@@ -1706,10 +1706,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("getpositionz")
+@snippets("get_position_z")
 $____begin____
 
-getpositionz(objid[, world_or_local]);
+get_position_z(objid[, world_or_local]);
 
 $_____end_____
 @doc
@@ -1720,10 +1720,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("getrotation")
+@snippets("get_rotation")
 $____begin____
 
-getrotation(objid[, world_or_local]);
+get_rotation(objid[, world_or_local]);
 
 $_____end_____
 @doc
@@ -1734,10 +1734,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("getrotationx")
+@snippets("get_rotation_x")
 $____begin____
 
-getrotationx(objid[, world_or_local]);
+get_rotation_x(objid[, world_or_local]);
 
 $_____end_____
 @doc
@@ -1748,10 +1748,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("getrotationy")
+@snippets("get_rotation_y")
 $____begin____
 
-getrotationy(objid[, world_or_local]);
+get_rotation_y(objid[, world_or_local]);
 
 $_____end_____
 @doc
@@ -1762,10 +1762,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("getrotationz")
+@snippets("get_rotation_z")
 $____begin____
 
-getrotationz(objid[, world_or_local]);
+get_rotation_z(objid[, world_or_local]);
 
 $_____end_____
 @doc
@@ -1776,10 +1776,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("getscale")
+@snippets("get_scale")
 $____begin____
 
-getscale(objid);
+get_scale(objid);
 
 $_____end_____
 @doc
@@ -1790,10 +1790,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("getscalex")
+@snippets("get_scale_x")
 $____begin____
 
-getscalex(objid);
+get_scale_x(objid);
 
 $_____end_____
 @doc
@@ -1804,10 +1804,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("getscaley")
+@snippets("get_scale_y")
 $____begin____
 
-getscaley(objid);
+get_scale_y(objid);
 
 $_____end_____
 @doc
@@ -1818,10 +1818,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("getscalez")
+@snippets("get_scale_z")
 $____begin____
 
-getscalez(objid);
+get_scale_z(objid);
 
 $_____end_____
 @doc
@@ -1832,10 +1832,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("gethp")
+@snippets("get_hp")
 $____begin____
 
-gethp(objid);
+get_hp(objid);
 
 $_____end_____
 @doc
@@ -1846,10 +1846,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("getmaxhp")
+@snippets("get_max_hp")
 $____begin____
 
-getmaxhp(objid);
+get_max_hp(objid);
 
 $_____end_____
 @doc
@@ -1860,10 +1860,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("calcdir")
+@snippets("calc_dir")
 $____begin____
 
-calcdir(objid,targetid);
+calc_dir(objid,targetid);
 
 $_____end_____
 @doc
@@ -1874,10 +1874,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("getlevel")
+@snippets("get_level")
 $____begin____
 
-getlevel(objid);
+get_level(objid);
 
 $_____end_____
 @doc
@@ -1888,10 +1888,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("getattr")
+@snippets("get_attr")
 $____begin____
 
-getattr(objid,attrid,value[,defaultvalue]);
+get_attr(objid,attrid,value[,defaultvalue]);
 
 $_____end_____
 @doc
@@ -1902,10 +1902,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("iscontrolbystory")
+@snippets("is_control_by_story")
 $____begin____
 
-iscontrolbystory(objid);
+is_control_by_story(objid);
 
 $_____end_____
 @doc
@@ -1916,10 +1916,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("getunitytype")
+@snippets("get_unity_type")
 $____begin____
 
-getunitytype(typename);
+get_unity_type(typename);
 
 $_____end_____
 @doc
@@ -1930,10 +1930,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("getunityuitype")
+@snippets("get_unity_ui_type")
 $____begin____
 
-getunityuitype(typename);
+get_unity_ui_type(typename);
 
 $_____end_____
 @doc
@@ -1958,10 +1958,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("getentityinfo")
+@snippets("get_entity_info")
 $____begin____
 
-getentityinfo(objid);
+get_entity_info(objid);
 
 $_____end_____
 @doc
@@ -1972,10 +1972,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("getentityview")
+@snippets("get_entity_view")
 $____begin____
 
-getentityview(objid);
+get_entity_view(objid);
 
 $_____end_____
 @doc
@@ -1986,10 +1986,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("deg2rad")
+@snippets("deg_2_rad")
 $____begin____
 
-deg2rad(val);
+deg_2_rad(val);
 
 $_____end_____
 @doc
@@ -2000,10 +2000,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("rad2deg")
+@snippets("rad_2_deg")
 $____begin____
 
-rad2deg(val);
+rad_2_deg(val);
 
 $_____end_____
 @doc
@@ -2014,10 +2014,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("npcgetaiparam")
+@snippets("npc_get_ai_param")
 $____begin____
 
-npcgetaiparam(unitId,index);
+npc_get_ai_param(unitId,index);
 
 $_____end_____
 @doc
@@ -2028,10 +2028,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("objgetaiparam")
+@snippets("obj_get_ai_param")
 $____begin____
 
-objgetaiparam(objId,index);
+obj_get_ai_param(objId,index);
 
 $_____end_____
 @doc
@@ -2042,10 +2042,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("getplayerid")
+@snippets("get_player_id")
 $____begin____
 
-getplayerid();
+get_player_id();
 
 $_____end_____
 @doc
@@ -2056,10 +2056,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("findobjid")
+@snippets("find_obj_id")
 $____begin____
 
-findobjid(type, vector3(x, 0 ,z), range);
+find_obj_id(type, vector_3(x, 0 ,z), range);
 
 $_____end_____
 @doc
@@ -2076,10 +2076,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("findobjids")
+@snippets("find_obj_ids")
 $____begin____
 
-findobjids(type, vector3(x, 0 ,z), range);
+find_obj_ids(type, vector_3(x, 0 ,z), range);
 
 $_____end_____
 @doc
@@ -2096,10 +2096,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("findallobjids")
+@snippets("find_all_obj_ids")
 $____begin____
 
-findallobjids(vector3(x, 0 ,z), range);
+find_all_obj_ids(vector_3(x, 0 ,z), range);
 
 $_____end_____
 @doc
@@ -2110,10 +2110,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("npcgetnpctype")
+@snippets("npc_get_npc_type")
 $____begin____
 
-npcgetnpctype(unitid);
+npc_get_npc_type(unitid);
 
 $_____end_____
 @doc
@@ -2124,10 +2124,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("objgetnpctype")
+@snippets("obj_get_npc_type")
 $____begin____
 
-objgetnpctype(objid);
+obj_get_npc_type(objid);
 
 $_____end_____
 @doc
@@ -2138,10 +2138,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("calcoffset")
+@snippets("calc_offset")
 $____begin____
 
-calcoffset(objid,targetobjid,vector3(x,y,z));
+calc_offset(objid,targetobjid,vector_3(x,y,z));
 
 $_____end_____
 @doc
@@ -2152,10 +2152,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("isvisible")
+@snippets("is_visible")
 $____begin____
 
-isvisible(objid);
+is_visible(objid);
 
 $_____end_____
 @doc
@@ -2173,10 +2173,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("startstory")
+@snippets("start_story")
 $____begin____
 
-startstory("clientlogic");
+start_story("clientlogic");
 
 $_____end_____
 @doc
@@ -2187,10 +2187,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("stopstory")
+@snippets("stop_story")
 $____begin____
 
-stopstory("clientlogic");
+stop_story("clientlogic");
 
 $_____end_____
 @doc
@@ -2201,10 +2201,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("firemessage")
+@snippets("fire_message")
 $____begin____
 
-firemessage(消息id,参数表);
+fire_message(消息id,参数表);
 
 $_____end_____
 @doc
@@ -2215,10 +2215,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("changescene")
+@snippets("change_scene")
 $____begin____
 
-changescene(scene_name);
+change_scene(scene_name);
 
 $_____end_____
 @doc
@@ -2229,10 +2229,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("createnpc")
+@snippets("create_npc")
 $____begin____
 
-createnpc(npc_unit_id,vector3(x,y,z),dir,camp,linkId[,ai,stringlist("param1 param2 param3 ...")])[objid("@objid")];
+create_npc(npc_unit_id,vector_3(x,y,z),dir,camp,linkId[,ai,string_list("param1 param2 param3 ...")])[objid("@objid")];
 
 $_____end_____
 @doc
@@ -2243,10 +2243,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("destroynpc")
+@snippets("destroy_npc")
 $____begin____
 
-destroynpc(npc_unit_id);
+destroy_npc(npc_unit_id);
 
 $_____end_____
 @doc
@@ -2257,10 +2257,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("npcmove")
+@snippets("npc_move")
 $____begin____
 
-npcmove(unit_id,vector3(x,y,z)[, event]);
+npc_move(unit_id,vector_3(x,y,z)[, event]);
 
 $_____end_____
 @doc
@@ -2271,10 +2271,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("npcenableai")
+@snippets("npc_enable_ai")
 $____begin____
 
-npcenableai(unit_id,true_or_false);
+npc_enable_ai(unit_id,true_or_false);
 
 $_____end_____
 @doc
@@ -2286,10 +2286,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("npcface")
+@snippets("npc_face")
 $____begin____
 
-npcface(unit_id,dir);
+npc_face(unit_id,dir);
 
 $_____end_____
 @doc
@@ -2300,10 +2300,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("npcmovewithwaypoints")
+@snippets("npc_move_with_waypoints")
 $____begin____
 
-npcmovewithwaypoints(unit_id,vector3list("v1x v1y v2x v2y")[, event]);
+npc_move_with_waypoints(unit_id,vector_3_list("v1x v1y v2x v2y")[, event]);
 
 $_____end_____
 @doc
@@ -2314,10 +2314,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("npcstop")
+@snippets("npc_stop")
 $____begin____
 
-npcstop(unit_id);
+npc_stop(unit_id);
 
 $_____end_____
 @doc
@@ -2328,10 +2328,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("npcsetcamp")
+@snippets("npc_set_camp")
 $____begin____
 
-npcsetcamp(unit_id,camp_id);
+npc_set_camp(unit_id,camp_id);
 
 $_____end_____
 @doc
@@ -2342,10 +2342,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("objface")
+@snippets("obj_face")
 $____begin____
 
-objface(objid,dir);
+obj_face(objid,dir);
 
 $_____end_____
 @doc
@@ -2356,10 +2356,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("objmove")
+@snippets("obj_move")
 $____begin____
 
-objmove(objid,vector3(x,y,z)[, event]);
+obj_move(objid,vector_3(x,y,z)[, event]);
 
 $_____end_____
 @doc
@@ -2370,10 +2370,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("objmovewithwaypoints")
+@snippets("obj_move_with_waypoints")
 $____begin____
 
-objmovewithwaypoints(objid,vector3list("v1x v1y v2x v2y")[, event]);
+obj_move_with_waypoints(objid,vector_3_list("v1x v1y v2x v2y")[, event]);
 
 $_____end_____
 @doc
@@ -2384,10 +2384,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("setstoryskipped")
+@snippets("set_story_skipped")
 $____begin____
 
-setstoryskipped(0_or_1);
+set_story_skipped(0_or_1);
 
 $_____end_____
 @doc
@@ -2398,10 +2398,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("isstoryskipped")
+@snippets("is_story_skipped")
 $____begin____
 
-isstoryskipped();
+is_story_skipped();
 
 $_____end_____
 @doc
@@ -2412,10 +2412,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("sendaimessage")
+@snippets("send_ai_message")
 $____begin____
 
-sendaimessage(objid,msg,arg1,arg2,...);
+send_ai_message(objid,msg,arg1,arg2,...);
 
 $_____end_____
 @doc
@@ -2426,10 +2426,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("sendaiconcurrentmessage")
+@snippets("send_ai_concurrent_message")
 $____begin____
 
-sendaiconcurrentmessage(objid,msg,arg1,arg2,...);
+send_ai_concurrent_message(objid,msg,arg1,arg2,...);
 
 $_____end_____
 @doc
@@ -2440,10 +2440,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("sendainamespacedmessage")
+@snippets("send_ai_namespaced_message")
 $____begin____
 
-sendainamespacedmessage(objid,msg,arg1,arg2,...);
+send_ai_namespaced_message(objid,msg,arg1,arg2,...);
 
 $_____end_____
 @doc
@@ -2454,10 +2454,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("sendaiconcurrentnamespacedmessage")
+@snippets("send_ai_concurrent_namespaced_message")
 $____begin____
 
-sendaiconcurrentnamespacedmessage(objid,msg,arg1,arg2,...);
+send_ai_concurrent_namespaced_message(objid,msg,arg1,arg2,...);
 
 $_____end_____
 @doc
@@ -2468,10 +2468,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("publishevent")
+@snippets("publish_event")
 $____begin____
 
-publishevent(ev_name,group,arg1,arg2,...);
+publish_event(ev_name,group,arg1,arg2,...);
 
 $_____end_____
 @doc
@@ -2482,10 +2482,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("objanimation")
+@snippets("obj_animation")
 $____begin____
 
-objanimation(objid,anim[,normalized_start_time]);
+obj_animation(objid,anim[,normalized_start_time]);
 
 $_____end_____
 @doc
@@ -2496,10 +2496,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("npcanimation")
+@snippets("npc_animation")
 $____begin____
 
-npcanimation(unitid,anim[,normalized_start_time]);
+npc_animation(unitid,anim[,normalized_start_time]);
 
 $_____end_____
 @doc
@@ -2510,10 +2510,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("sendmessage")
+@snippets("send_message")
 $____begin____
 
-sendmessage(name,msg,arg1,arg2,...);
+send_message(name,msg,arg1,arg2,...);
 
 $_____end_____
 @doc
@@ -2524,10 +2524,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("sendmessagewithtag")
+@snippets("send_message_with_tag")
 $____begin____
 
-sendmessagewithtag(tag,msg,arg1,arg2,...);
+send_message_with_tag(tag,msg,arg1,arg2,...);
 
 $_____end_____
 @doc
@@ -2538,10 +2538,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("sendmessagewithgameobject")
+@snippets("send_message_with_game_object")
 $____begin____
 
-sendmessagewithgameobject(gameobject or objid,msg,arg1,arg2,...);
+send_message_with_game_object(gameobject or objid,msg,arg1,arg2,...);
 
 $_____end_____
 @doc
@@ -2552,10 +2552,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("npcsetai")
+@snippets("npc_set_ai")
 $____begin____
 
-npcsetai(unit_id,ai_logic_id,stringlist("aiparam0 aiparam1 aiparam2"));
+npc_set_ai(unit_id,ai_logic_id,string_list("aiparam0 aiparam1 aiparam2"));
 
 $_____end_____
 @doc
@@ -2566,10 +2566,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("objstop")
+@snippets("obj_stop")
 $____begin____
 
-objstop(objid);
+obj_stop(objid);
 
 $_____end_____
 @doc
@@ -2579,10 +2579,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("objenableai")
+@snippets("obj_enable_ai")
 $____begin____
 
-objenableai(objid,true_or_false);
+obj_enable_ai(objid,true_or_false);
 
 $_____end_____
 @doc
@@ -2592,10 +2592,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("objsetai")
+@snippets("obj_set_ai")
 $____begin____
 
-objsetai(objid,ailogicid,stringlist("p1 p2 p3 p4"));
+obj_set_ai(objid,ailogicid,string_list("p1 p2 p3 p4"));
 
 $_____end_____
 @doc
@@ -2605,10 +2605,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("highlightprompt")
+@snippets("highlight_prompt")
 $____begin____
 
-highlightprompt(msg);
+highlight_prompt(msg);
 
 $_____end_____
 @doc
@@ -2619,10 +2619,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("destroynpcwithobjid")
+@snippets("destroy_npc_with_obj_id")
 $____begin____
 
-destroynpcwithobjid(objid);
+destroy_npc_with_obj_id(objid);
 
 $_____end_____
 @doc
@@ -2633,10 +2633,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("sethp")
+@snippets("set_hp")
 $____begin____
 
-sethp(objid,hp);
+set_hp(objid,hp);
 
 $_____end_____
 @doc
@@ -2647,10 +2647,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("setlevel")
+@snippets("set_level")
 $____begin____
 
-setlevel(objid,lvl);
+set_level(objid,lvl);
 
 $_____end_____
 @doc
@@ -2661,10 +2661,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("setattr")
+@snippets("set_attr")
 $____begin____
 
-setattr(objid,attrid,value);
+set_attr(objid,attrid,value);
 
 $_____end_____
 @doc
@@ -2675,10 +2675,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("markcontrolbystory")
+@snippets("mark_control_by_story")
 $____begin____
 
-markcontrolbystory(objid,true/false);
+mark_control_by_story(objid,true/false);
 
 $_____end_____
 @doc
@@ -2689,10 +2689,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("waitstory")
+@snippets("wait_story")
 $____begin____
 
-waitstory(storyid1,storyid2,...)[set(var,val)timeoutset(timeout,var,val)];
+wait_story(storyid1,storyid2,...)[set(var,val)timeoutset(timeout,var,val)];
 
 $_____end_____
 @doc
@@ -2703,10 +2703,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("waitallmessage")
+@snippets("wait_all_message")
 $____begin____
 
-waitallmessage(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
+wait_all_message(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
 
 $_____end_____
 @doc
@@ -2717,10 +2717,10 @@ waitallmessage等待指定的消息之一触发。(var部分用字符串指定�
 
 $_____end_____;
 
-@snippets("waitallmessagehandler")
+@snippets("wait_all_message_handler")
 $____begin____
 
-waitallmessagehandler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
+wait_all_message_handler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
 
 $_____end_____
 @doc
@@ -2731,10 +2731,10 @@ waitallmessagehandler等待运行的各story的指定消息都执行完毕。(va
 
 $_____end_____;
 
-@snippets("setunitid")
+@snippets("set_unit_id")
 $____begin____
 
-setunitid(objid,unitid);
+set_unit_id(objid,unitid);
 
 $_____end_____
 @doc
@@ -2745,10 +2745,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("setplayerid")
+@snippets("set_player_id")
 $____begin____
 
-setplayerid(objid);
+set_player_id(objid);
 
 $_____end_____
 @doc
@@ -2759,10 +2759,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("gameobjectanimation")
+@snippets("game_object_animation")
 $____begin____
 
-gameobjectanimation(objpath, anim[, normalized_time]);
+game_object_animation(objpath, anim[, normalized_time]);
 
 $_____end_____
 @doc
@@ -2773,10 +2773,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("gameobjectanimationparam")
+@snippets("game_object_animation_param")
 $____begin____
 
-gameobjectanimationparam(obj)
+game_object_animation_param(obj)
 {
     float(name,val);
     int(name,val);
@@ -2793,10 +2793,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("npcsetaitarget")
+@snippets("npc_set_ai_target")
 $____begin____
 
-npcsetaitarget(unit_id,target);
+npc_set_ai_target(unit_id,target);
 
 $_____end_____
 @doc
@@ -2807,10 +2807,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("objsetaitarget")
+@snippets("obj_set_ai_target")
 $____begin____
 
-objsetaitarget(objid,target);
+obj_set_ai_target(objid,target);
 
 $_____end_____
 @doc
@@ -2821,10 +2821,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("objsetcamp")
+@snippets("obj_set_camp")
 $____begin____
 
-objsetcamp(objid,camp_id);
+obj_set_camp(objid,camp_id);
 
 $_____end_____
 @doc
@@ -2835,10 +2835,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("setvisible")
+@snippets("set_visible")
 $____begin____
 
-setvisible(objid,0_or_1);
+set_visible(objid,0_or_1);
 
 $_____end_____
 @doc
@@ -2849,10 +2849,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets(loadui)
+@snippets(load_ui)
 $____begin____
 
-loadui(name, prefab, dslfile);
+load_ui(name, prefab, dsl_file);
 
 $_____end_____
 @doc
@@ -2863,10 +2863,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets(bindui)
+@snippets(bind_ui)
 $____begin____
 
-bindui(gameobject){
+bind_ui(gameobject){
     var("@varname","Panel/Input"); 										//variable bind to control
     inputs("",...);           												//the InputField args to event
     toggles("",...);																	//the Toggle args to event
@@ -2894,10 +2894,10 @@ on_input事件的固定参数为tag、input_value（字符串)
 $_____end_____;
 
 //---------------------------------------------------------------------------------------------------------
-@snippets("pausestory")
+@snippets("pause_story")
 $____begin____
 
-pausestory(storyid,storyid,...);
+pause_story(story_id,story_id,...);
 
 $_____end_____
 @doc
@@ -2908,10 +2908,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("resumestory")
+@snippets("resume_story")
 $____begin____
 
-resumestory(storyid,storyid,...);
+resume_story(story_id,story_id,...);
 
 $_____end_____
 @doc
@@ -2936,10 +2936,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("resumeallmessagehandler")
+@snippets("resume_all_message_handler")
 $____begin____
 
-resumeallmessagehandler(msgid,msgid,...);
+resume_all_message_handler(msgid,msgid,...);
 
 $_____end_____
 @doc
@@ -2950,10 +2950,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("objanimationparam")
+@snippets("obj_animation_param")
 $____begin____
 
-objanimationparam(obj_id)
+obj_animation_param(obj_id)
 {
     float(name,val);
     int(name,val);
@@ -2970,10 +2970,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("npcanimationparam")
+@snippets("npc_animation_param")
 $____begin____
 
-npcanimationparam(unit_id)
+npc_animation_param(unit_id)
 {
     float(name,val);
     int(name,val);
@@ -2997,10 +2997,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("blackboardget")
+@snippets("blackboard_get")
 $____begin____
 
-blackboardget(name);
+blackboard_get(name);
 
 $_____end_____
 @doc
@@ -3011,10 +3011,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("gettime")
+@snippets("get_time")
 $____begin____
 
-gettime();
+get_time();
 
 $_____end_____
 @doc
@@ -3025,10 +3025,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("gettimescale")
+@snippets("get_time_scale")
 $____begin____
 
-gettimescale();
+get_time_scale();
 
 $_____end_____
 @doc
@@ -3039,10 +3039,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("isactive")
+@snippets("is_active")
 $____begin____
 
-isactive(game_object_path);
+is_active(game_object_path);
 
 $_____end_____
 @doc
@@ -3053,10 +3053,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("isreallyactive")
+@snippets("is_really_active")
 $____begin____
 
-isreallyactive(game_object_path);
+is_really_active(game_object_path);
 
 $_____end_____
 @doc
@@ -3067,10 +3067,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("getcomponent")
+@snippets("get_component")
 $____begin____
 
-getcomponent(game_object_path，component_type_name/type);
+get_component(game_object_path，component_type_name/type);
 
 $_____end_____
 @doc
@@ -3081,10 +3081,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("getgameobject")
+@snippets("get_game_object")
 $____begin____
 
-getgameobject(game_object_path);
+get_game_object(game_object_path);
 
 $_____end_____
 @doc
@@ -3095,10 +3095,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("getparent")
+@snippets("get_parent")
 $____begin____
 
-getparent(game_object_path);
+get_parent(game_object_path);
 
 $_____end_____
 @doc
@@ -3109,10 +3109,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("getchild")
+@snippets("get_child")
 $____begin____
 
-getchild(game_object_path, child_path);
+get_child(game_object_path, child_path);
 
 $_____end_____
 @doc
@@ -3144,10 +3144,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("blackboardclear")
+@snippets("blackboard_clear")
 $____begin____
 
-blackboardclear();
+blackboard_clear();
 
 $_____end_____
 @doc
@@ -3158,10 +3158,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("blackboardset")
+@snippets("blackboard_set")
 $____begin____
 
-blackboardset(name,value);
+blackboard_set(name,value);
 
 $_____end_____
 @doc
@@ -3172,13 +3172,13 @@ $____begin____
 
 $_____end_____;
 
-@snippets("creategameobject")
+@snippets("create_game_object")
 $____begin____
 
-creategameobject(name, prefab[, parent])[obj("varname")]{
-    position(vector3(x,y,z));
-    rotation(vector3(x,y,z));
-    scale(vector3(x,y,z));
+create_game_object(name, prefab[, parent])[obj("varname")]{
+    position(vector_3(x,y,z));
+    rotation(vector_3(x,y,z));
+    scale(vector_3(x,y,z));
 };
 
 $_____end_____
@@ -3190,13 +3190,13 @@ $____begin____
 
 $_____end_____;
 
-@snippets("settransform")
+@snippets("set_transform")
 $____begin____
 
-settransform(name, world_or_local){
-    position(vector3(x,y,z));
-    rotation(vector3(x,y,z));
-    scale(vector3(x,y,z));
+set_transform(name, world_or_local){
+    position(vector_3(x,y,z));
+    rotation(vector_3(x,y,z));
+    scale(vector_3(x,y,z));
 };
 
 $_____end_____
@@ -3208,10 +3208,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("destroygameobject")
+@snippets("destroy_game_object")
 $____begin____
 
-destroygameobject(path);
+destroy_game_object(path);
 
 $_____end_____
 @doc
@@ -3222,10 +3222,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("autorecycle")
+@snippets("auto_recycle")
 $____begin____
 
-autorecycle(path, 1_or_0);
+auto_recycle(path, 1_or_0);
 
 $_____end_____
 @doc
@@ -3250,10 +3250,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("setparent")
+@snippets("set_parent")
 $____begin____
 
-setparent(objpath,parent,stay_world_pos);
+set_parent(objpath,parent,stay_world_pos);
 
 $_____end_____
 @doc
@@ -3264,10 +3264,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("setactive")
+@snippets("set_active")
 $____begin____
 
-setactive(objpath,1_or_0);
+set_active(objpath,1_or_0);
 
 $_____end_____
 @doc
@@ -3278,10 +3278,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("addcomponent")
+@snippets("add_component")
 $____begin____
 
-addcomponent(objpath, component_name/component_type)[obj("@varname")];
+add_component(objpath, component_name/component_type)[obj("@varname")];
 
 $_____end_____
 @doc
@@ -3292,10 +3292,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("removecomponent")
+@snippets("remove_component")
 $____begin____
 
-removecomponent(objpath,type);
+remove_component(objpath,type);
 
 $_____end_____
 @doc
@@ -3306,10 +3306,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("openurl")
+@snippets("open_url")
 $____begin____
 
-openurl(url);
+open_url(url);
 
 $_____end_____
 @doc
@@ -3334,10 +3334,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("localnamespacedmessage")
+@snippets("local_namespaced_message")
 $____begin____
 
-localnamespacedmessage(msgId,arg1,arg2,...);
+local_namespaced_message(msgId,arg1,arg2,...);
 
 $_____end_____
 @doc
@@ -3354,14 +3354,14 @@ $____begin____
   {
       //消息处理
   };
-  类似的，localmessage(ns+":"+msgId,arg1,arg2,...);与发送消息的语法等价，后面类似的基于namespace的方法是这样与对应的普通方法等价，不再一一缀述。
+  类似的，local_message(ns+":"+msgId,arg1,arg2,...);与发送消息的语法等价，后面类似的基于namespace的方法是这样与对应的普通方法等价，不再一一缀述。
 
 $_____end_____;
 
-@snippets("storylocalnamespacedmessage")
+@snippets("story_local_namespaced_message")
 $____begin____
 
-storylocalnamespacedmessage(msgId,arg1,arg2,...);
+story_local_namespaced_message(msgId,arg1,arg2,...);
 
 $_____end_____
 @doc
@@ -3378,14 +3378,14 @@ $____begin____
   {
       //消息处理
   };
-  类似的，storylocalmessage(ns+":"+msgId,arg1,arg2,...);与发送消息的语法等价，后面类似的基于namespace的方法是这样与对应的普通方法等价，不再一一缀述。
+  类似的，story_local_message(ns+":"+msgId,arg1,arg2,...);与发送消息的语法等价，后面类似的基于namespace的方法是这样与对应的普通方法等价，不再一一缀述。
 
 $_____end_____;
 
-@snippets("clearnamespacedmessage")
+@snippets("clear_namespaced_message")
 $____begin____
 
-clearnamespacedmessage(msgid1,msgid2,...);
+clear_namespaced_message(msgid1,msgid2,...);
 
 $_____end_____
 @doc
@@ -3396,10 +3396,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("waitlocalnamespacedmessage")
+@snippets("wait_local_namespaced_message")
 $____begin____
 
-waitlocalnamespacedmessage(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
+wait_local_namespaced_message(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
 
 $_____end_____
 @doc
@@ -3410,10 +3410,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("waitlocalnamespacedmessagehandler")
+@snippets("wait_local_namespaced_message_handler")
 $____begin____
 
-waitlocalnamespacedmessagehandler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
+wait_local_namespaced_message_handler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
 
 $_____end_____
 @doc
@@ -3424,10 +3424,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("storywaitlocalnamespacedmessage")
+@snippets("story_wait_local_namespaced_message")
 $____begin____
 
-storywaitlocalnamespacedmessage(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
+story_wait_local_namespaced_message(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
 
 $_____end_____
 @doc
@@ -3438,10 +3438,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("storywaitlocalnamespacedmessagehandler")
+@snippets("story_wait_local_namespaced_message_handler")
 $____begin____
 
-storywaitlocalnamespacedmessagehandler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
+story_wait_local_namespaced_message_handler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];
 
 $_____end_____
 @doc
@@ -3459,10 +3459,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("sendmessage DimScreen")
+@snippets("send_message DimScreen")
 $____begin____
 
-sendmessage("ZhanChangLogic/Camera", "DimScreen", time);
+send_message("ZhanChangLogic/Camera", "DimScreen", time);
 
 $_____end_____
 @doc
@@ -3473,10 +3473,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("sendmessage LightScreen")
+@snippets("send_message LightScreen")
 $____begin____
 
-sendmessage("ZhanChangLogic/Camera", "LightScreen", time);
+send_message("ZhanChangLogic/Camera", "LightScreen", time);
 
 $_____end_____
 @doc
@@ -3487,10 +3487,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("sendmessage LightTo")
+@snippets("send_message LightTo")
 $____begin____
 
-sendmessage("ZhanChangLogic/Camera", "LightTo", time, red, green, blue, alpha);
+send_message("ZhanChangLogic/Camera", "LightTo", time, red, green, blue, alpha);
 
 $_____end_____
 @doc
@@ -3501,10 +3501,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("sendmessage EnableObstacle")
+@snippets("send_message EnableObstacle")
 $____begin____
 
-sendmessage("ZhanChangLogic/DynamicObstacle","EnableObstacle",1_or_0);
+send_message("ZhanChangLogic/DynamicObstacle","EnableObstacle",1_or_0);
 
 $_____end_____
 @doc
@@ -3515,10 +3515,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("sendmessage SetLightVisible")
+@snippets("send_message SetLightVisible")
 $____begin____
 
-sendmessage("ZhanChangLogic/Light","SetLightVisible",1_or_0);
+send_message("ZhanChangLogic/Light","SetLightVisible",1_or_0);
 
 $_____end_____
 @doc
@@ -3529,10 +3529,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("sendmessage SetVisible")
+@snippets("send_message SetVisible")
 $____begin____
 
-sendmessage("ZhanChangLogic/Object","SetVisible",1_or_0);
+send_message("ZhanChangLogic/Object","SetVisible",1_or_0);
 
 $_____end_____
 @doc
@@ -3543,10 +3543,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("sendmessage PlayAnimation")
+@snippets("send_message PlayAnimation")
 $____begin____
 
-sendmessage("ZhanChangLogic/Object","PlayAnimation", anim, speed);
+send_message("ZhanChangLogic/Object","PlayAnimation", anim, speed);
 
 $_____end_____
 @doc
@@ -3557,10 +3557,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("sendmessage PlayParticle")
+@snippets("send_message PlayParticle")
 $____begin____
 
-sendmessage("ZhanChangLogic/Object","PlayParticle", 1_or_0);
+send_message("ZhanChangLogic/Object","PlayParticle", 1_or_0);
 
 $_____end_____
 @doc
@@ -3571,10 +3571,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("sendmessage PlaySound")
+@snippets("send_message PlaySound")
 $____begin____
 
-sendmessage("ZhanChangLogic/Object","PlaySound", index);
+send_message("ZhanChangLogic/Object","PlaySound", index);
 
 $_____end_____
 @doc
@@ -3585,10 +3585,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("sendmessage StopSound")
+@snippets("send_message StopSound")
 $____begin____
 
-sendmessage("ZhanChangLogic/Object","StopSound", index);
+send_message("ZhanChangLogic/Object","StopSound", index);
 
 $_____end_____
 @doc

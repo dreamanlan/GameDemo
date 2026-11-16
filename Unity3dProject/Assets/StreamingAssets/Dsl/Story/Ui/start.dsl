@@ -5,26 +5,26 @@ script(main)
   };
   onmessage("start")
   {
-    bindui(@window){
+    bind_ui(@window){
       var("@txt","Text");
       onevent("button","start","Button");
     };
     @txt_Text.text="";
-    @window.SetActive(changetype(1,"bool"));
-    localnamespacedmessage("loop_work");
+    @window.SetActive(change_type(1,"bool"));
+    local_namespaced_message("loop_work");
   };
   onnamespacedmessage("loop_work")
   {
-    sendmessagewithgameobject(@txt,"EnableTweener",0);
+    send_message_with_game_object(@txt,"EnableTweener",0);
     @txt_Text.text="无尽之路";
     wait(1000);
-    sendmessagewithgameobject(@txt,"EnableTweener",1);
+    send_message_with_game_object(@txt,"EnableTweener",1);
   };
   onnamespacedmessage("on_click")args($tag,$inputs,$toggles,$sliders,$dropdowns)
   {
-    @window.SetActive(changetype(0,"bool"));
+    @window.SetActive(change_type(0,"bool"));
     if($tag=="start"){
-      firemessage("on_start_button_click");
+      fire_message("on_start_button_click");
     };
   };
 };

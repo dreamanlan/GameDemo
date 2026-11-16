@@ -1554,7 +1554,7 @@ namespace VisualStoryTool
                 }
                 for (int ix = node.Commands.Count - 1; ix >= 0; --ix) {
                     var cmd = node.Commands[ix];
-                    if (cmd.Name == "storybreak") {
+                    if (cmd.Name == "story_break") {
                         node.Commands.RemoveAt(ix);
                         node.Container.Rect.height -= m_ItemHeight;
                     }

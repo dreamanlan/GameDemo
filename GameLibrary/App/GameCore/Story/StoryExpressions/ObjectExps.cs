@@ -8,14 +8,14 @@ using StoryScript.DslExpression;
 namespace GameLibrary.Story.StoryExpressions
 {
     /// <summary>
-    /// objface(obj_id, dir[, immediately]) - set object face direction
+    /// obj_face(obj_id, dir[, immediately]) - set object face direction
     /// </summary>
     internal sealed class ObjFaceExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: objface(obj_id, dir[, immediately])");
+                throw new Exception("Expected: obj_face(obj_id, dir[, immediately])");
 
             int objId = operands[0].GetInt();
             float dir = operands[1].GetFloat();
@@ -37,14 +37,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// objstop(obj_id) - stop object movement
+    /// obj_stop(obj_id) - stop object movement
     /// </summary>
     internal sealed class ObjStopExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: objstop(obj_id)");
+                throw new Exception("Expected: obj_stop(obj_id)");
 
             int objId = operands[0].GetInt();
             EntityInfo obj = SceneSystem.Instance.GetEntityById(objId);
@@ -66,14 +66,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// sethp(objid, value) - set entity HP
+    /// set_hp(objid, value) - set entity HP
     /// </summary>
     internal sealed class SetHpExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: sethp(objid, value)");
+                throw new Exception("Expected: set_hp(objid, value)");
 
             int objId = operands[0].GetInt();
             int value = operands[1].GetInt();
@@ -89,14 +89,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// setmaxhp(objid, value) - set entity max HP
+    /// set_max_hp(objid, value) - set entity max HP
     /// </summary>
     internal sealed class SetMaxHpExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: setmaxhp(objid, value)");
+                throw new Exception("Expected: set_max_hp(objid, value)");
 
             int objId = operands[0].GetInt();
             int value = operands[1].GetInt();
@@ -112,14 +112,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// gethp(objid) - get entity HP
+    /// get_hp(objid) - get entity HP
     /// </summary>
     internal sealed class GetHpExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: gethp(objid)");
+                throw new Exception("Expected: get_hp(objid)");
 
             int objId = operands[0].GetInt();
             int hp = 0;
@@ -134,14 +134,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// getmaxhp(objid) - get entity max HP
+    /// get_max_hp(objid) - get entity max HP
     /// </summary>
     internal sealed class GetMaxHpExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: getmaxhp(objid)");
+                throw new Exception("Expected: get_max_hp(objid)");
 
             int objId = operands[0].GetInt();
             int maxHp = 0;
@@ -156,14 +156,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// setlevel(objid, value) - set entity level
+    /// set_level(objid, value) - set entity level
     /// </summary>
     internal sealed class SetLevelExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: setlevel(objid, value)");
+                throw new Exception("Expected: set_level(objid, value)");
 
             int objId = operands[0].GetInt();
             int value = operands[1].GetInt();
@@ -179,14 +179,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// getlevel(objid) - get entity level
+    /// get_level(objid) - get entity level
     /// </summary>
     internal sealed class GetLevelExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: getlevel(objid)");
+                throw new Exception("Expected: get_level(objid)");
 
             int objId = operands[0].GetInt();
             int level = 0;
@@ -201,14 +201,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// setunitid(obj_id, unit_id) - set entity unit ID
+    /// set_unit_id(obj_id, unit_id) - set entity unit ID
     /// </summary>
     internal sealed class SetUnitIdExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: setunitid(obj_id, unit_id)");
+                throw new Exception("Expected: set_unit_id(obj_id, unit_id)");
 
             int objId = operands[0].GetInt();
             int unitId = operands[1].GetInt();
@@ -224,14 +224,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// objsetcamp(objid, camp_id) - set entity camp
+    /// obj_set_camp(objid, camp_id) - set entity camp
     /// </summary>
     internal sealed class ObjSetCampExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: objsetcamp(objid, camp_id)");
+                throw new Exception("Expected: obj_set_camp(objid, camp_id)");
 
             int objId = operands[0].GetInt();
             int campId = operands[1].GetInt();
@@ -247,14 +247,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// objmove(obj_id, vector3(x,y,z)[, event]) - move object to position
+    /// obj_move(obj_id, vector_3(x,y,z)[, event]) - move object to position
     /// </summary>
     internal sealed class ObjMoveExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: objmove(obj_id, pos[, event])");
+                throw new Exception("Expected: obj_move(obj_id, pos[, event])");
 
             int objId = operands[0].GetInt();
             Vector3Obj posObj = operands[1];
@@ -287,14 +287,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// objmovewithwaypoints(obj_id, waypoints[, event]) - move object along waypoints
+    /// obj_move_with_waypoints(obj_id, waypoints[, event]) - move object along waypoints
     /// </summary>
     internal sealed class ObjMoveWithWaypointsExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: objmovewithwaypoints(obj_id, waypoints[, event])");
+                throw new Exception("Expected: obj_move_with_waypoints(obj_id, waypoints[, event])");
 
             int objId = operands[0].GetInt();
             var poses = operands[1].GetObject() as List<object>;
@@ -331,14 +331,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// objattack(obj_id[, target_obj_id]) - command object to attack target
+    /// obj_attack(obj_id[, target_obj_id]) - command object to attack target
     /// </summary>
     internal sealed class ObjAttackExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: objattack(obj_id[, target_obj_id])");
+                throw new Exception("Expected: obj_attack(obj_id[, target_obj_id])");
 
             int objId = operands[0].GetInt();
             int targetObjId = operands.Count > 1 ? operands[1].GetInt() : 0;
@@ -358,14 +358,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// objenableai(obj_id, enable) - enable/disable object AI
+    /// obj_enable_ai(obj_id, enable) - enable/disable object AI
     /// </summary>
     internal sealed class ObjEnableAiExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: objenableai(obj_id, enable)");
+                throw new Exception("Expected: obj_enable_ai(obj_id, enable)");
 
             int objId = operands[0].GetInt();
             int enable = operands[1].GetInt();
@@ -381,14 +381,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// objsetai(obj_id, ai_logic, ai_params) - set object AI logic and parameters
+    /// obj_set_ai(obj_id, ai_logic, ai_params) - set object AI logic and parameters
     /// </summary>
     internal sealed class ObjSetAiExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 3)
-                throw new Exception("Expected: objsetai(obj_id, ai_logic, ai_params)");
+                throw new Exception("Expected: obj_set_ai(obj_id, ai_logic, ai_params)");
 
             int objId = operands[0].GetInt();
             string aiLogic = operands[1].ToString();
@@ -420,14 +420,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// objsetaitarget(obj_id, target_id) - set object AI target
+    /// obj_set_ai_target(obj_id, target_id) - set object AI target
     /// </summary>
     internal sealed class ObjSetAiTargetExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: objsetaitarget(obj_id, target_id)");
+                throw new Exception("Expected: obj_set_ai_target(obj_id, target_id)");
 
             int objId = operands[0].GetInt();
             int targetId = operands[1].GetInt();
@@ -444,14 +444,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// objanimation(obj_id, anim[, normalized_time]) - play object animation
+    /// obj_animation(obj_id, anim[, normalized_time]) - play object animation
     /// </summary>
     internal sealed class ObjAnimationExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: objanimation(obj_id, anim[, normalized_time])");
+                throw new Exception("Expected: obj_animation(obj_id, anim[, normalized_time])");
 
             int objId = operands[0].GetInt();
             string anim = operands[1].ToString();
@@ -467,14 +467,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// setenergy(objid, value) - set entity energy
+    /// set_energy(objid, value) - set entity energy
     /// </summary>
     internal sealed class SetEnergyExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: setenergy(objid, value)");
+                throw new Exception("Expected: set_energy(objid, value)");
 
             int objId = operands[0].GetInt();
             int value = operands[1].GetInt();
@@ -490,14 +490,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// getenergy(objid) - get entity energy
+    /// get_energy(objid) - get entity energy
     /// </summary>
     internal sealed class GetEnergyExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: getenergy(objid)");
+                throw new Exception("Expected: get_energy(objid)");
 
             int objId = operands[0].GetInt();
             int energy = 0;
@@ -512,14 +512,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// setmaxenergy(objid, value) - set entity max energy
+    /// set_max_energy(objid, value) - set entity max energy
     /// </summary>
     internal sealed class SetMaxEnergyExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: setmaxenergy(objid, value)");
+                throw new Exception("Expected: set_max_energy(objid, value)");
 
             int objId = operands[0].GetInt();
             int value = operands[1].GetInt();
@@ -535,14 +535,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// getmaxenergy(objid) - get entity max energy
+    /// get_max_energy(objid) - get entity max energy
     /// </summary>
     internal sealed class GetMaxEnergyExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: getmaxenergy(objid)");
+                throw new Exception("Expected: get_max_energy(objid)");
 
             int objId = operands[0].GetInt();
             int maxEnergy = 0;
@@ -557,14 +557,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// setspeed(objid, value) - set entity speed
+    /// set_speed(objid, value) - set entity speed
     /// </summary>
     internal sealed class SetSpeedExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: setspeed(objid, value)");
+                throw new Exception("Expected: set_speed(objid, value)");
 
             int objId = operands[0].GetInt();
             float value = operands[1].GetFloat();
@@ -580,14 +580,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// getspeed(objid) - get entity speed
+    /// get_speed(objid) - get entity speed
     /// </summary>
     internal sealed class GetSpeedExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: getspeed(objid)");
+                throw new Exception("Expected: get_speed(objid)");
 
             int objId = operands[0].GetInt();
             float speed = 0;
@@ -602,14 +602,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// setexp(objid, value) - set entity exp
+    /// set_exp(objid, value) - set entity exp
     /// </summary>
     internal sealed class SetExpExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: setexp(objid, value)");
+                throw new Exception("Expected: set_exp(objid, value)");
 
             int objId = operands[0].GetInt();
             int value = operands[1].GetInt();
@@ -625,14 +625,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// getexp(objid) - get entity exp
+    /// get_exp(objid) - get entity exp
     /// </summary>
     internal sealed class GetExpExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: getexp(objid)");
+                throw new Exception("Expected: get_exp(objid)");
 
             int objId = operands[0].GetInt();
             int exp = 0;
@@ -647,14 +647,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// setattr(objid, attrid, value) - set entity attribute
+    /// set_attr(objid, attrid, value) - set entity attribute
     /// </summary>
     internal sealed class SetAttrExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 3)
-                throw new Exception("Expected: setattr(objid, attrid, value)");
+                throw new Exception("Expected: set_attr(objid, attrid, value)");
 
             int objId = operands[0].GetInt();
             int attrId = operands[1].GetInt();
@@ -670,7 +670,7 @@ namespace GameLibrary.Story.StoryExpressions
                 }
                 catch (Exception ex)
                 {
-                    LogSystem.Error("setattr throw exception:{0}\n{1}", ex.Message, ex.StackTrace);
+                    LogSystem.Error("set_attr throw exception:{0}\n{1}", ex.Message, ex.StackTrace);
                 }
             }
             return false;
@@ -678,14 +678,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// markcontrolbystory(objid, true_or_false) - mark entity as controlled by story
+    /// mark_control_by_story(objid, true_or_false) - mark entity as controlled by story
     /// </summary>
     internal sealed class MarkControlByStoryExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: markcontrolbystory(objid, true_or_false)");
+                throw new Exception("Expected: mark_control_by_story(objid, true_or_false)");
 
             int objId = operands[0].GetInt();
             string value = operands[1].ToString();
@@ -703,14 +703,14 @@ namespace GameLibrary.Story.StoryExpressions
     // ========== Get Position/Rotation/Scale ==========
 
     /// <summary>
-    /// getposition(obj) - get position of object
+    /// get_position(obj) - get position of object
     /// </summary>
     internal sealed class GetPositionExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: getposition(obj)");
+                throw new Exception("Expected: get_position(obj)");
 
             UnityEngine.Vector3 pos = UnityEngine.Vector3.zero;
             var objVal = operands[0];
@@ -733,14 +733,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// findallobjids(position, radius) - find all object IDs within radius
+    /// find_all_obj_ids(position, radius) - find all object IDs within radius
     /// </summary>
     internal sealed class FindAllObjIdsExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: findallobjids(position, radius)");
+                throw new Exception("Expected: find_all_obj_ids(position, radius)");
 
             Vector3Obj posObj = operands[0];
             UnityEngine.Vector3 pos = posObj;
@@ -759,14 +759,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// getpositionx(obj_id[, local]) - get entity X position
+    /// get_position_x(obj_id[, local]) - get entity X position
     /// </summary>
     internal sealed class GetPositionXExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: getpositionx(obj_id[, local])");
+                throw new Exception("Expected: get_position_x(obj_id[, local])");
 
             int objId = operands[0].GetInt();
             bool local = operands.Count > 1 && operands[1].GetBool();
@@ -783,14 +783,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// getpositiony(obj_id[, local]) - get entity Y position
+    /// get_position_y(obj_id[, local]) - get entity Y position
     /// </summary>
     internal sealed class GetPositionYExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: getpositiony(obj_id[, local])");
+                throw new Exception("Expected: get_position_y(obj_id[, local])");
 
             int objId = operands[0].GetInt();
             bool local = operands.Count > 1 && operands[1].GetBool();
@@ -807,14 +807,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// getpositionz(obj_id[, local]) - get entity Z position
+    /// get_position_z(obj_id[, local]) - get entity Z position
     /// </summary>
     internal sealed class GetPositionZExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: getpositionz(obj_id[, local])");
+                throw new Exception("Expected: get_position_z(obj_id[, local])");
 
             int objId = operands[0].GetInt();
             bool local = operands.Count > 1 && operands[1].GetBool();
@@ -831,14 +831,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// getrotation(obj_id[, local]) - get entity rotation as Vector3
+    /// get_rotation(obj_id[, local]) - get entity rotation as Vector3
     /// </summary>
     internal sealed class GetRotationExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: getrotation(obj_id[, local])");
+                throw new Exception("Expected: get_rotation(obj_id[, local])");
 
             int objId = operands[0].GetInt();
             bool local = operands.Count > 1 && operands[1].GetBool();
@@ -858,14 +858,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// getrotationx(obj_id[, local]) - get entity rotation X
+    /// get_rotation_x(obj_id[, local]) - get entity rotation X
     /// </summary>
     internal sealed class GetRotationXExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: getrotationx(obj_id[, local])");
+                throw new Exception("Expected: get_rotation_x(obj_id[, local])");
 
             int objId = operands[0].GetInt();
             bool local = operands.Count > 1 && operands[1].GetBool();
@@ -881,14 +881,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// getrotationy(obj_id[, local]) - get entity rotation Y
+    /// get_rotation_y(obj_id[, local]) - get entity rotation Y
     /// </summary>
     internal sealed class GetRotationYExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: getrotationy(obj_id[, local])");
+                throw new Exception("Expected: get_rotation_y(obj_id[, local])");
 
             int objId = operands[0].GetInt();
             bool local = operands.Count > 1 && operands[1].GetBool();
@@ -904,14 +904,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// getrotationz(obj_id[, local]) - get entity rotation Z
+    /// get_rotation_z(obj_id[, local]) - get entity rotation Z
     /// </summary>
     internal sealed class GetRotationZExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: getrotationz(obj_id[, local])");
+                throw new Exception("Expected: get_rotation_z(obj_id[, local])");
 
             int objId = operands[0].GetInt();
             bool local = operands.Count > 1 && operands[1].GetBool();
@@ -927,14 +927,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// getscale(obj_id) - get entity scale as Vector3
+    /// get_scale(obj_id) - get entity scale as Vector3
     /// </summary>
     internal sealed class GetScaleExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: getscale(obj_id)");
+                throw new Exception("Expected: get_scale(obj_id)");
 
             int objId = operands[0].GetInt();
             EntityInfo obj = SceneSystem.Instance.GetEntityById(objId);
@@ -953,14 +953,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// getscalex(obj_id) - get entity scale X
+    /// get_scale_x(obj_id) - get entity scale X
     /// </summary>
     internal sealed class GetScaleXExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: getscalex(obj_id)");
+                throw new Exception("Expected: get_scale_x(obj_id)");
 
             int objId = operands[0].GetInt();
             EntityInfo obj = SceneSystem.Instance.GetEntityById(objId);
@@ -975,14 +975,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// getscaley(obj_id) - get entity scale Y
+    /// get_scale_y(obj_id) - get entity scale Y
     /// </summary>
     internal sealed class GetScaleYExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: getscaley(obj_id)");
+                throw new Exception("Expected: get_scale_y(obj_id)");
 
             int objId = operands[0].GetInt();
             EntityInfo obj = SceneSystem.Instance.GetEntityById(objId);
@@ -997,14 +997,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// getscalez(obj_id) - get entity scale Z
+    /// get_scale_z(obj_id) - get entity scale Z
     /// </summary>
     internal sealed class GetScaleZExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: getscalez(obj_id)");
+                throw new Exception("Expected: get_scale_z(obj_id)");
 
             int objId = operands[0].GetInt();
             EntityInfo obj = SceneSystem.Instance.GetEntityById(objId);
@@ -1073,14 +1073,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// getcamp(objid) - get entity camp ID
+    /// get_camp(objid) - get entity camp ID
     /// </summary>
     internal sealed class GetCampExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: getcamp(objid)");
+                throw new Exception("Expected: get_camp(objid)");
 
             int objId = operands[0].GetInt();
             EntityInfo obj = SceneSystem.Instance.GetEntityById(objId);
@@ -1091,14 +1091,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// getattr(objid, attrid) - get entity attribute value
+    /// get_attr(objid, attrid) - get entity attribute value
     /// </summary>
     internal sealed class GetAttrExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: getattr(objid, attrid)");
+                throw new Exception("Expected: get_attr(objid, attrid)");
 
             int objId = operands[0].GetInt();
             int attrId = operands[1].GetInt();
@@ -1112,7 +1112,7 @@ namespace GameLibrary.Story.StoryExpressions
                 }
                 catch (Exception ex)
                 {
-                    LogSystem.Error("getattr throw exception:{0}\n{1}", ex.Message, ex.StackTrace);
+                    LogSystem.Error("get_attr throw exception:{0}\n{1}", ex.Message, ex.StackTrace);
                 }
             }
             return 0L;
@@ -1120,14 +1120,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// calcoffset(obj_id, target_obj_id, offset) - calculate offset position relative to target
+    /// calc_offset(obj_id, target_obj_id, offset) - calculate offset position relative to target
     /// </summary>
     internal sealed class CalcOffsetExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 3)
-                throw new Exception("Expected: calcoffset(obj_id, target_obj_id, offset)");
+                throw new Exception("Expected: calc_offset(obj_id, target_obj_id, offset)");
 
             int objId = operands[0].GetInt();
             int targetObjId = operands[1].GetInt();
@@ -1151,14 +1151,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// calcdir(obj_id, target_obj_id) - calculate facing direction from obj to target
+    /// calc_dir(obj_id, target_obj_id) - calculate facing direction from obj to target
     /// </summary>
     internal sealed class CalcDirExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: calcdir(obj_id, target_obj_id)");
+                throw new Exception("Expected: calc_dir(obj_id, target_obj_id)");
 
             int objId = operands[0].GetInt();
             int targetObjId = operands[1].GetInt();
@@ -1176,14 +1176,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// isenemy(camp1, camp2) - check if camp1 is enemy of camp2
+    /// is_enemy(camp1, camp2) - check if camp1 is enemy of camp2
     /// </summary>
     internal sealed class IsEnemyExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: isenemy(camp1, camp2)");
+                throw new Exception("Expected: is_enemy(camp1, camp2)");
 
             int camp1 = operands[0].GetInt();
             int camp2 = operands[1].GetInt();
@@ -1192,14 +1192,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// isfriend(camp1, camp2) - check if camp1 is friend of camp2
+    /// is_friend(camp1, camp2) - check if camp1 is friend of camp2
     /// </summary>
     internal sealed class IsFriendExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: isfriend(camp1, camp2)");
+                throw new Exception("Expected: is_friend(camp1, camp2)");
 
             int camp1 = operands[0].GetInt();
             int camp2 = operands[1].GetInt();
@@ -1208,14 +1208,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// objgetnpctype(objid) - get entity type by object ID
+    /// obj_get_npc_type(objid) - get entity type by object ID
     /// </summary>
     internal sealed class ObjGetNpcTypeExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: objgetnpctype(objid)");
+                throw new Exception("Expected: obj_get_npc_type(objid)");
 
             int objId = operands[0].GetInt();
             EntityInfo obj = SceneSystem.Instance.GetEntityById(objId);
@@ -1226,14 +1226,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// objgetaiparam(objid, index) - get entity AI parameter
+    /// obj_get_ai_param(objid, index) - get entity AI parameter
     /// </summary>
     internal sealed class ObjGetAiParamExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: objgetaiparam(objid, index)");
+                throw new Exception("Expected: obj_get_ai_param(objid, index)");
 
             int objId = operands[0].GetInt();
             int index = operands[1].GetInt();

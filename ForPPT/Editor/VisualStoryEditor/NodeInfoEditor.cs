@@ -564,7 +564,7 @@ namespace VisualStoryTool
         protected static bool TryParseVector3(Dsl.FunctionData cd, out Vector3 v)
         {
             v = Vector3.zero;
-            if (cd.GetId() == "vector3") {
+            if (cd.GetId() == "vector_3") {
                 float x, y, z;
                 bool bx = float.TryParse(cd.GetParamId(0), out x);
                 bool by = float.TryParse(cd.GetParamId(1), out y);
@@ -708,7 +708,7 @@ namespace VisualStoryTool
             var cd = m_ParamInfo.DslInitValue as Dsl.FunctionData;
             if (null != cd) {
                 if(!TryParseVector3(cd, out m_Val)) {
-                    m_Value = "vector3(0,0,0)";
+                    m_Value = "vector_3(0,0,0)";
                 }
             }
         }
@@ -718,7 +718,7 @@ namespace VisualStoryTool
             var newVal = EditorGUILayout.Vector3Field(string.Empty, m_Val);
             if ((newVal - m_Val).sqrMagnitude > Mathf.Epsilon) {
                 m_Val = newVal;
-                m_Value = string.Format("vector3({0:f2},{1:f2},{2:f2})", m_Val.x, m_Val.y, m_Val.z);
+                m_Value = string.Format("vector_3({0:f2},{1:f2},{2:f2})", m_Val.x, m_Val.y, m_Val.z);
                 if (m_ParamInfo.IsCamera) {
                     SyncCamera(newVal);
                 }
@@ -1322,7 +1322,7 @@ namespace VisualStoryTool
             var cd = m_ParamInfo.DslInitValue as Dsl.FunctionData;
             if (null != cd) {
                 if (!TryParseVector3(cd, out m_Pos)) {
-                    m_Value = "vector3(0,0,0)";
+                    m_Value = "vector_3(0,0,0)";
                 }
             }
             CreatePosObj(m_Pos);
@@ -1357,7 +1357,7 @@ namespace VisualStoryTool
                 var newPos = m_ParamInfo.SceneObject.transform.position;
                 if ((newPos - m_Pos).sqrMagnitude > Mathf.Epsilon) {
                     m_Pos = newPos;
-                    m_Value = string.Format("vector3({0:f2},{1:f2},{2:f2})", m_Pos.x, m_Pos.y, m_Pos.z);
+                    m_Value = string.Format("vector_3({0:f2},{1:f2},{2:f2})", m_Pos.x, m_Pos.y, m_Pos.z);
                     return true;
                 }
             }
@@ -1421,9 +1421,9 @@ namespace VisualStoryTool
         {
             m_Value = m_ParamInfo.InitValue;
             var cd = m_ParamInfo.DslInitValue as Dsl.FunctionData;
-            if (null != cd && cd.GetId() == "vector3") {
+            if (null != cd && cd.GetId() == "vector_3") {
                 if (!TryParseVector3(cd, out m_Pos)) {
-                    m_Value = "vector3(0,0,0)";
+                    m_Value = "vector_3(0,0,0)";
                 }
             }
             CreatePosDirObj(true, m_Pos, 0);
@@ -1458,7 +1458,7 @@ namespace VisualStoryTool
                 var newPos = m_ParamInfo.SceneObject.transform.position;
                 if ((newPos - m_Pos).sqrMagnitude > Mathf.Epsilon) {
                     m_Pos = newPos;
-                    m_Value = string.Format("vector3({0:f2},{1:f2},{2:f2})", m_Pos.x, m_Pos.y, m_Pos.z);
+                    m_Value = string.Format("vector_3({0:f2},{1:f2},{2:f2})", m_Pos.x, m_Pos.y, m_Pos.z);
                     return true;
                 }
             }
@@ -1521,7 +1521,7 @@ namespace VisualStoryTool
             var cd = m_ParamInfo.DslInitValue as Dsl.FunctionData;
             if (null != cd) {
                 if (!TryParseVector3(cd, out m_Pos)) {
-                    m_Value = "vector3(0,0,0)";
+                    m_Value = "vector_3(0,0,0)";
                 }
             }
             CreatePos3dObj(m_Pos);
@@ -1556,7 +1556,7 @@ namespace VisualStoryTool
                 var newPos = m_ParamInfo.SceneObject.transform.position;
                 if ((newPos - m_Pos).sqrMagnitude > Mathf.Epsilon) {
                     m_Pos = newPos;
-                    m_Value = string.Format("vector3({0:f2},{1:f2},{2:f2})", m_Pos.x, m_Pos.y, m_Pos.z);
+                    m_Value = string.Format("vector_3({0:f2},{1:f2},{2:f2})", m_Pos.x, m_Pos.y, m_Pos.z);
                     return true;
                 }
             }
@@ -1572,9 +1572,9 @@ namespace VisualStoryTool
         {
             m_Value = m_ParamInfo.InitValue;
             var cd = m_ParamInfo.DslInitValue as Dsl.FunctionData;
-            if (null != cd && cd.GetId() == "vector3") {
+            if (null != cd && cd.GetId() == "vector_3") {
                 if (!TryParseVector3(cd, out m_Dir)) {
-                    m_Value = "vector3(0,0,0)";
+                    m_Value = "vector_3(0,0,0)";
                 }
             }
             CreateDir3dObj(m_Dir);
@@ -1609,7 +1609,7 @@ namespace VisualStoryTool
                 var newDir = m_ParamInfo.SceneObject.transform.localEulerAngles;
                 if ((newDir - m_Dir).sqrMagnitude > Mathf.Epsilon) {
                     m_Dir = newDir;
-                    m_Value = string.Format("vector3({0:f2},{1:f2},{2:f2})", m_Dir.x, m_Dir.y, m_Dir.z);
+                    m_Value = string.Format("vector_3({0:f2},{1:f2},{2:f2})", m_Dir.x, m_Dir.y, m_Dir.z);
                     if (m_ParamInfo.IsCamera) {
                         SyncCamera(newDir);
                     }
@@ -1628,9 +1628,9 @@ namespace VisualStoryTool
         {
             m_Value = m_ParamInfo.InitValue;
             var cd = m_ParamInfo.DslInitValue as Dsl.FunctionData;
-            if (null != cd && cd.GetId() == "vector3") {
+            if (null != cd && cd.GetId() == "vector_3") {
                 if (!TryParseVector3(cd, out m_Pos)) {
-                    m_Value = "vector3(0,0,0)";
+                    m_Value = "vector_3(0,0,0)";
                 }
             }
             CreatePosDir3dObj(true, m_Pos, Vector3.zero);
@@ -1665,7 +1665,7 @@ namespace VisualStoryTool
                 var newPos = m_ParamInfo.SceneObject.transform.position;
                 if ((newPos - m_Pos).sqrMagnitude > Mathf.Epsilon) {
                     m_Pos = newPos;
-                    m_Value = string.Format("vector3({0:f2},{1:f2},{2:f2})", m_Pos.x, m_Pos.y, m_Pos.z);
+                    m_Value = string.Format("vector_3({0:f2},{1:f2},{2:f2})", m_Pos.x, m_Pos.y, m_Pos.z);
                     if (m_ParamInfo.IsCamera) {
                         SyncCamera(newPos);
                     }
@@ -1684,9 +1684,9 @@ namespace VisualStoryTool
         {
             m_Value = m_ParamInfo.InitValue;
             var cd = m_ParamInfo.DslInitValue as Dsl.FunctionData;
-            if (null != cd && cd.GetId() == "vector3") {
+            if (null != cd && cd.GetId() == "vector_3") {
                 if (!TryParseVector3(cd, out m_Dir)) {
-                    m_Value = "vector3(0,0,0)";
+                    m_Value = "vector_3(0,0,0)";
                 }
             }
             CreatePosDir3dObj(false, Vector3.zero, m_Dir);
@@ -1716,7 +1716,7 @@ namespace VisualStoryTool
                 var newDir = m_ParamInfo.SceneObject.transform.localEulerAngles;
                 if ((newDir - m_Dir).sqrMagnitude > Mathf.Epsilon) {
                     m_Dir = newDir;
-                    m_Value = string.Format("vector3({0:f2},{1:f2},{2:f2})", m_Dir.x, m_Dir.y, m_Dir.z);
+                    m_Value = string.Format("vector_3({0:f2},{1:f2},{2:f2})", m_Dir.x, m_Dir.y, m_Dir.z);
                     if (m_ParamInfo.IsCamera) {
                         SyncCamera(newDir);
                     }
@@ -1745,7 +1745,7 @@ namespace VisualStoryTool
                         m_Path = cd.GetParamId(0);
                     } else if (key == "extension") {
                         m_Ext = cd.GetParamId(0);
-                    } else if (key == "hasextension") {
+                    } else if (key == "has_extension") {
                         m_HasExtension = key == "true";
                     }
                 }
@@ -1806,7 +1806,7 @@ namespace VisualStoryTool
                         m_Ext = cd.GetParamId(0);
                     } else if(key == "path") {
                         m_Path = cd.GetParamId(0);
-                    } else if (key == "hasextension") {
+                    } else if (key == "has_extension") {
                         m_HasExtension = key == "true";
                     }
                 }
@@ -2033,7 +2033,7 @@ namespace VisualStoryTool
                         m_Type = System.Type.GetType("UnityEngine." + t + ",UnityEngine");
                     } else if (key == "path") {
                         m_Path = cd.GetParamId(0);
-                    } else if (key == "hasextension") {
+                    } else if (key == "has_extension") {
                         m_HasExtension = key == "true";
                     }
                 }
@@ -2336,13 +2336,13 @@ namespace VisualStoryTool
                 return CreateParamDrawerImpl<IntDrawer>(param, tupleInfo, cmdInfo, nodeInfo);
             } else if (type == "float") {
                 return CreateParamDrawerImpl<FloatDrawer>(param, tupleInfo, cmdInfo, nodeInfo);
-            } else if (type == "vector3") {
+            } else if (type == "vector_3") {
                 return CreateParamDrawerImpl<Vector3Drawer>(param, tupleInfo, cmdInfo, nodeInfo);
-            } else if (type == "intlist") {
+            } else if (type == "int_list") {
                 return CreateParamDrawerImpl<IntListDrawer>(param, tupleInfo, cmdInfo, nodeInfo);
-            } else if (type == "floatlist") {
+            } else if (type == "float_list") {
                 return CreateParamDrawerImpl<FloatListDrawer>(param, tupleInfo, cmdInfo, nodeInfo);
-            } else if (type == "stringlist") {
+            } else if (type == "string_list") {
                 return CreateParamDrawerImpl<StringListDrawer>(param, tupleInfo, cmdInfo, nodeInfo);
             }
             return null;

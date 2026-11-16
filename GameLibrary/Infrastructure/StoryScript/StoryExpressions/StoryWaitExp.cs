@@ -6,8 +6,8 @@ using StoryScript.DslExpression;
 namespace StoryScript
 {
     /// <summary>
-    /// storywait(ms)[condition(exp)] - wait for specified milliseconds (can be skipped if story is skipped)
-    /// storywait(ms){
+    /// story_wait(ms)[condition(exp)] - wait for specified milliseconds (can be skipped if story is skipped)
+    /// story_wait(ms){
     ///     condition(exp);
     /// };
     /// </summary>
@@ -87,8 +87,8 @@ namespace StoryScript
     }
 
     /// <summary>
-    /// storyrealtimewait(ms)[condition(exp)] - wait for specified real time (in milliseconds, can be skipped if story is skipped)
-    /// storyrealtimewait(ms){
+    /// story_real_time_wait(ms)[condition(exp)] - wait for specified real time (in milliseconds, can be skipped if story is skipped)
+    /// story_real_time_wait(ms){
     ///     condition(exp);
     /// };
     /// </summary>

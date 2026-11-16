@@ -7,7 +7,7 @@ using StoryScript.DslExpression;
 namespace GameLibrary.Story.StoryExpressions
 {
     /// <summary>
-    /// gameobjectanimationparam(obj) { int(key, value); float(key, value); bool(key, value); trigger(key, value); ... }
+    /// game_object_animation_param(obj) { int(key, value); float(key, value); bool(key, value); trigger(key, value); ... }
     /// - set animator parameters on a GameObject
     /// </summary>
     internal sealed class GameObjectAnimationParamExp : AbstractExpression
@@ -68,7 +68,7 @@ namespace GameLibrary.Story.StoryExpressions
 
         protected override bool Load(Dsl.StatementData statementData)
         {
-            // Parse: gameobjectanimationparam(obj) { ... }
+            // Parse: game_object_animation_param(obj) { ... }
             Dsl.FunctionData funcData = statementData.First.AsFunction;
             if (null != funcData)
             {
@@ -104,7 +104,7 @@ namespace GameLibrary.Story.StoryExpressions
 
         protected override bool Load(Dsl.FunctionData funcData)
         {
-            // Handle: gameobjectanimationparam(obj) without block or with block in FunctionData
+            // Handle: game_object_animation_param(obj) without block or with block in FunctionData
             Dsl.FunctionData callData = funcData;
             if (funcData.IsHighOrder)
                 callData = funcData.LowerOrderFunction;

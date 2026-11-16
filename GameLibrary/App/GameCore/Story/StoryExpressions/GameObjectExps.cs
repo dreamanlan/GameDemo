@@ -8,14 +8,14 @@ using StoryScript.DslExpression;
 namespace GameLibrary.Story.StoryExpressions
 {
     /// <summary>
-    /// destroygameobject(path_or_obj) - destroy a GameObject by path or reference
+    /// destroy_game_object(path_or_obj) - destroy a GameObject by path or reference
     /// </summary>
     internal sealed class DestroyGameObjectExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 1)
-                throw new Exception("Expected: destroygameobject(path_or_obj)");
+                throw new Exception("Expected: destroy_game_object(path_or_obj)");
 
             GameObject obj = GameObjectExpHelpers.GetGameObject(operands[0]);
             if (null != obj)
@@ -32,10 +32,10 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// creategameobject(name, prefab[, parent])[obj("varname")]{
-    ///     position(vector3(x,y,z));
-    ///     rotation(vector3(x,y,z));
-    ///     scale(vector3(x,y,z));
+    /// create_game_object(name, prefab[, parent])[obj("varname")]{
+    ///     position(vector_3(x,y,z));
+    ///     rotation(vector_3(x,y,z));
+    ///     scale(vector_3(x,y,z));
     ///     disable("typename", "typename", ...);
     ///     remove("typename", "typename", ...);
     /// };
@@ -146,8 +146,8 @@ namespace GameLibrary.Story.StoryExpressions
 
         protected override bool Load(Dsl.FunctionData funcData)
         {
-            // Handle: creategameobject(name, prefab[, parent]) { ... }
-            // Also handle: creategameobject(name, prefab[, parent])[obj("varname")] { ... }
+            // Handle: create_game_object(name, prefab[, parent]) { ... }
+            // Also handle: create_game_object(name, prefab[, parent])[obj("varname")] { ... }
             Dsl.FunctionData callData = funcData;
             if (funcData.IsHighOrder)
             {
@@ -187,7 +187,7 @@ namespace GameLibrary.Story.StoryExpressions
 
         protected override bool Load(Dsl.StatementData statementData)
         {
-            // Handle: creategameobject(name, prefab)[obj("varname")] { ... }
+            // Handle: create_game_object(name, prefab)[obj("varname")] { ... }
             if (statementData.Functions.Count == 2)
             {
                 Dsl.FunctionData first = statementData.First.AsFunction;
@@ -287,14 +287,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// setactive(path_or_obj, active) - set GameObject active state
+    /// set_active(path_or_obj, active) - set GameObject active state
     /// </summary>
     internal sealed class SetActiveExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: setactive(path_or_obj, active)");
+                throw new Exception("Expected: set_active(path_or_obj, active)");
 
             var objVal = operands[0];
             int active = operands[1].GetInt();
@@ -322,14 +322,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// setvisible(path_or_obj, visible) - set GameObject visibility
+    /// set_visible(path_or_obj, visible) - set GameObject visibility
     /// </summary>
     internal sealed class SetVisibleExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: setvisible(path_or_obj, visible)");
+                throw new Exception("Expected: set_visible(path_or_obj, visible)");
 
             GameObject obj = GameObjectExpHelpers.GetGameObject(operands[0]);
             int visible = operands[1].GetInt();
@@ -346,14 +346,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// setparent(child, parent) - set GameObject parent
+    /// set_parent(child, parent) - set GameObject parent
     /// </summary>
     internal sealed class SetParentExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: setparent(child, parent)");
+                throw new Exception("Expected: set_parent(child, parent)");
 
             GameObject child = GameObjectExpHelpers.GetGameObject(operands[0]);
             GameObject parent = GameObjectExpHelpers.GetGameObject(operands[1]);
@@ -366,10 +366,10 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// settransform(obj, local_or_world){
-    ///     position(vector3(x,y,z));
-    ///     rotation(vector3(x,y,z));
-    ///     scale(vector3(x,y,z));
+    /// set_transform(obj, local_or_world){
+    ///     position(vector_3(x,y,z));
+    ///     rotation(vector_3(x,y,z));
+    ///     scale(vector_3(x,y,z));
     /// };
     /// </summary>
     internal sealed class SetTransformExp : AbstractExpression
@@ -420,7 +420,7 @@ namespace GameLibrary.Story.StoryExpressions
 
         protected override bool Load(Dsl.FunctionData funcData)
         {
-            // Handle: settransform(obj, local_or_world) { position(); rotation(); scale(); }
+            // Handle: set_transform(obj, local_or_world) { position(); rotation(); scale(); }
             Dsl.FunctionData callData = funcData;
             if (funcData.IsHighOrder)
                 callData = funcData.LowerOrderFunction;
@@ -484,14 +484,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// setactorscale(objid, vector3(x,y,z)) - set actor scale
+    /// set_actor_scale(objid, vector_3(x,y,z)) - set actor scale
     /// </summary>
     internal sealed class SetActorScaleExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: setactorscale(objid, scale)");
+                throw new Exception("Expected: set_actor_scale(objid, scale)");
 
             int objId = operands[0].GetInt();
             Vector3Obj scaleObj = operands[1];
@@ -507,14 +507,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// sendmessage(obj, msg, arg1, arg2, ...) - send Unity message to GameObject
+    /// send_message(obj, msg, arg1, arg2, ...) - send Unity message to GameObject
     /// </summary>
     internal sealed class SendMessageExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: sendmessage(obj, msg, ...)");
+                throw new Exception("Expected: send_message(obj, msg, ...)");
 
             GameObject obj = GameObjectExpHelpers.GetGameObject(operands[0]);
             string msg = operands[1].ToString();
@@ -540,14 +540,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// sendmessagewithtag(tag, msg, arg1, arg2, ...) - send Unity message to GameObjects by tag
+    /// send_message_with_tag(tag, msg, arg1, arg2, ...) - send Unity message to GameObjects by tag
     /// </summary>
     internal sealed class SendMessageWithTagExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: sendmessagewithtag(tag, msg, ...)");
+                throw new Exception("Expected: send_message_with_tag(tag, msg, ...)");
 
             string tag = operands[0].ToString();
             string msg = operands[1].ToString();
@@ -581,14 +581,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// sendmessagewithgameobject(obj, msg, args...) - send Unity message to GameObject (supports both GameObject and object ID)
+    /// send_message_with_game_object(obj, msg, args...) - send Unity message to GameObject (supports both GameObject and object ID)
     /// </summary>
     internal sealed class SendMessageWithGameObjectExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: sendmessagewithgameobject(obj, msg, ...)");
+                throw new Exception("Expected: send_message_with_game_object(obj, msg, ...)");
 
             var objVal = operands[0];
             string msg = operands[1].ToString();
@@ -675,7 +675,7 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// addcomponent(obj, component_type)obj("varName") - add component to GameObject, returns the component
+    /// add_component(obj, component_type)obj("varName") - add component to GameObject, returns the component
     /// </summary>
     internal sealed class AddComponentExp : AbstractExpression
     {
@@ -774,14 +774,14 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// removecomponent(obj, component_type) - remove component from GameObject
+    /// remove_component(obj, component_type) - remove component from GameObject
     /// </summary>
     internal sealed class RemoveComponentExp : SimpleExpressionBase
     {
         protected override BoxedValue OnCalc(DslCalculator calculator, IList<BoxedValue> operands)
         {
             if (operands.Count < 2)
-                throw new Exception("Expected: removecomponent(obj, component_type)");
+                throw new Exception("Expected: remove_component(obj, component_type)");
 
             GameObject obj = GameObjectExpHelpers.GetGameObject(operands[0]);
             if (null == obj)
@@ -811,11 +811,11 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// addtransform(obj, local_or_world){position(v3);rotation(v3);scale(v3)} - add transform values to GameObject
-    /// addtransform(obj, local_or_world){
-    ///     position(vector3(x,y,z));
-    ///     rotation(vector3(x,y,z));
-    ///     scale(vector3(x,y,z));
+    /// add_transform(obj, local_or_world){position(v3);rotation(v3);scale(v3)} - add transform values to GameObject
+    /// add_transform(obj, local_or_world){
+    ///     position(vector_3(x,y,z));
+    ///     rotation(vector_3(x,y,z));
+    ///     scale(vector_3(x,y,z));
     /// };
     /// </summary>
     internal sealed class AddTransformExp : AbstractExpression
@@ -932,7 +932,7 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// getgameobject(objid) {
+    /// get_game_object(objid) {
     ///     disable("typename", "typename", ...);
     ///     remove("typename", "typename", ...);
     /// };

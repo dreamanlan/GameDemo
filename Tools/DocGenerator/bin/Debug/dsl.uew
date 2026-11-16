@@ -51,7 +51,7 @@
 loop
 foreach
 while
-looplist
+loop_list
 if
 elseif
 else
@@ -67,7 +67,7 @@ local
 onmessage
 onnamespacedmessage
 
-/C8"Functions¡¢Commands and Triggers" STYLE_FUNCTION
+/C8"Functionsï¿½ï¿½Commands and Triggers" STYLE_FUNCTION
 assign
 inc
 dec

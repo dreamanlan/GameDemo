@@ -9,13 +9,13 @@
   };
   onnamespacedmessage("on_born")
   {
-    bornfinish(@objid);
+    born_finish(@objid);
   };
   onnamespacedmessage("on_dead")
   {
     wait(500);
-    objanimation(@objid, "dying", 0);
+    obj_animation(@objid, "dying", 0);
     wait(5000);
-    deadfinish(@objid);
+    dead_finish(@objid);
   };
 };

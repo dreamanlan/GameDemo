@@ -147,12 +147,12 @@
 		"description": "dec (story)"
 		},
 
-	"propset (story)": {
-		"prefix": "propset",
+	"prop_set (story)": {
+		"prefix": "prop_set",
 		"body": [
-			"propset(value,value);"
+			"prop_set(value,value);"
 		],
-		"description": "propset (story)"
+		"description": "prop_set (story)"
 		},
 
 	"foreach (story)": {
@@ -263,12 +263,12 @@
 		"description": "sleep (story)"
 		},
 
-	"storywait (story)": {
-		"prefix": "storywait",
+	"story_wait (story)": {
+		"prefix": "story_wait",
 		"body": [
-			"storywait(毫秒数)[if(条件表达式)];"
+			"story_wait(毫秒数)[if(条件表达式)];"
 		],
-		"description": "storywait (story)"
+		"description": "story_wait (story)"
 		},
 
 	"storysleep (story)": {
@@ -287,20 +287,20 @@
 		"description": "log command (story)"
 		},
 
-	"localmessage (story)": {
-		"prefix": "localmessage",
+	"local_message (story)": {
+		"prefix": "local_message",
 		"body": [
-			"localmessage(消息ID，参数表);"
+			"local_message(消息ID，参数表);"
 		],
-		"description": "localmessage (story)"
+		"description": "local_message (story)"
 		},
 
-	"storylocalmessage (story)": {
-		"prefix": "storylocalmessage",
+	"story_local_message (story)": {
+		"prefix": "story_local_message",
 		"body": [
-			"storylocalmessage(消息ID，参数表);"
+			"story_local_message(消息ID，参数表);"
 		],
-		"description": "storylocalmessage (story)"
+		"description": "story_local_message (story)"
 		},
 
 	"terminate (story)": {
@@ -311,72 +311,72 @@
 		"description": "terminate (story)"
 		},
 
-	"looplist (story)": {
-		"prefix": "looplist",
+	"loop_list (story)": {
+		"prefix": "loop_list",
 		"body": [
-			"looplist(value)",
+			"loop_list(value)",
 			"{",
 			"  	cmd1();",
 			"  	cmd2();",
 			"};"
 		],
-		"description": "looplist (story)"
+		"description": "loop_list (story)"
 		},
 
-	"listset (story)": {
-		"prefix": "listset",
+	"list_set (story)": {
+		"prefix": "list_set",
 		"body": [
-			"listset(list,index,value);"
+			"list_set(list,index,value);"
 		],
-		"description": "listset (story)"
+		"description": "list_set (story)"
 		},
 
-	"listadd (story)": {
-		"prefix": "listadd",
+	"list_add (story)": {
+		"prefix": "list_add",
 		"body": [
-			"listadd(list,value);"
+			"list_add(list,value);"
 		],
-		"description": "listadd (story)"
+		"description": "list_add (story)"
 		},
 
-	"listremove (story)": {
-		"prefix": "listremove",
+	"list_remove (story)": {
+		"prefix": "list_remove",
 		"body": [
-			"listremove(list,value);"
+			"list_remove(list,value);"
 		],
-		"description": "listremove (story)"
+		"description": "list_remove (story)"
 		},
 
-	"listinsert (story)": {
-		"prefix": "listinsert",
+	"list_insert (story)": {
+		"prefix": "list_insert",
 		"body": [
-			"listinsert(list,index,value);"
+			"list_insert(list,index,value);"
 		],
-		"description": "listinsert (story)"
+		"description": "list_insert (story)"
 		},
 
-	"listremoveat (story)": {
-		"prefix": "listremoveat",
+	"list_remove_at (story)": {
+		"prefix": "list_remove_at",
 		"body": [
-			"listremoveat(list,index);"
+			"list_remove_at(list,index);"
 		],
-		"description": "listremoveat (story)"
+		"description": "list_remove_at (story)"
 		},
 
-	"listclear (story)": {
-		"prefix": "listclear",
+	"list_clear (story)": {
+		"prefix": "list_clear",
 		"body": [
-			"listclear(list);"
+			"list_clear(list);"
 		],
-		"description": "listclear (story)"
+		"description": "list_clear (story)"
 		},
 
-	"clearmessage (story)": {
-		"prefix": "clearmessage",
+	"clear_message (story)": {
+		"prefix": "clear_message",
 		"body": [
-			"clearmessage(msgid1,msgid2,...);"
+			"clear_message(msgid1,msgid2,...);"
 		],
-		"description": "clearmessage (story)"
+		"description": "clear_message (story)"
 		},
 
 	"dotnetexec (story)": {
@@ -387,20 +387,20 @@
 		"description": "dotnetexec (story)"
 		},
 
-	"dotnetset (story)": {
-		"prefix": "dotnetset",
+	"dotnet_set (story)": {
+		"prefix": "dotnet_set",
 		"body": [
-			"dotnetset(obj/type,property,arg1,arg2,...);"
+			"dotnet_set(obj/type,property,arg1,arg2,...);"
 		],
-		"description": "dotnetset (story)"
+		"description": "dotnet_set (story)"
 		},
 
-	"writealllines (story)": {
-		"prefix": "writealllines",
+	"write_all_lines (story)": {
+		"prefix": "write_all_lines",
 		"body": [
-			"writealllines(file,lines);"
+			"write_all_lines(file,lines);"
 		],
-		"description": "writealllines (story)"
+		"description": "write_all_lines (story)"
 		},
 
 	"writefile (story)": {
@@ -411,68 +411,68 @@
 		"description": "writefile (story)"
 		},
 
-	"hashtableadd (story)": {
-		"prefix": "hashtableadd",
+	"hashtable_add (story)": {
+		"prefix": "hashtable_add",
 		"body": [
-			"hashtableadd(hashtable,key,value);"
+			"hashtable_add(hashtable,key,value);"
 		],
-		"description": "hashtableadd (story)"
+		"description": "hashtable_add (story)"
 		},
 
-	"hashtableset (story)": {
-		"prefix": "hashtableset",
+	"hashtable_set (story)": {
+		"prefix": "hashtable_set",
 		"body": [
-			"hashtableset(hashtable,key,value);"
+			"hashtable_set(hashtable,key,value);"
 		],
-		"description": "hashtableset (story)"
+		"description": "hashtable_set (story)"
 		},
 
-	"hashtableremove (story)": {
-		"prefix": "hashtableremove",
+	"hashtable_remove (story)": {
+		"prefix": "hashtable_remove",
 		"body": [
-			"hashtableremove(hashtable,key);"
+			"hashtable_remove(hashtable,key);"
 		],
-		"description": "hashtableremove (story)"
+		"description": "hashtable_remove (story)"
 		},
 
-	"hashtableclear (story)": {
-		"prefix": "hashtableclear",
+	"hashtable_clear (story)": {
+		"prefix": "hashtable_clear",
 		"body": [
-			"hashtableclear(hashtable);"
+			"hashtable_clear(hashtable);"
 		],
-		"description": "hashtableclear (story)"
+		"description": "hashtable_clear (story)"
 		},
 
-	"waitlocalmessage (story)": {
-		"prefix": "waitlocalmessage",
+	"wait_local_message (story)": {
+		"prefix": "wait_local_message",
 		"body": [
-			"waitlocalmessage(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
+			"wait_local_message(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
 		],
-		"description": "waitlocalmessage (story)"
+		"description": "wait_local_message (story)"
 		},
 
-	"waitlocalmessagehandler (story)": {
-		"prefix": "waitlocalmessagehandler",
+	"wait_local_message_handler (story)": {
+		"prefix": "wait_local_message_handler",
 		"body": [
-			"waitlocalmessagehandler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
+			"wait_local_message_handler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
 		],
-		"description": "waitlocalmessagehandler (story)"
+		"description": "wait_local_message_handler (story)"
 		},
 
-	"storywaitlocalmessage (story)": {
-		"prefix": "storywaitlocalmessage",
+	"story_wait_local_message (story)": {
+		"prefix": "story_wait_local_message",
 		"body": [
-			"storywaitlocalmessage(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
+			"story_wait_local_message(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
 		],
-		"description": "storywaitlocalmessage (story)"
+		"description": "story_wait_local_message (story)"
 		},
 
-	"storywaitlocalmessagehandler (story)": {
-		"prefix": "storywaitlocalmessagehandler",
+	"story_wait_local_message_handler (story)": {
+		"prefix": "story_wait_local_message_handler",
 		"body": [
-			"storywaitlocalmessagehandler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
+			"story_wait_local_message_handler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
 		],
-		"description": "storywaitlocalmessagehandler (story)"
+		"description": "story_wait_local_message_handler (story)"
 		},
 
 	"pauselocalmessagehandler (story)": {
@@ -483,12 +483,12 @@
 		"description": "pauselocalmessagehandler (story)"
 		},
 
-	"resumelocalmessagehandler (story)": {
-		"prefix": "resumelocalmessagehandler",
+	"resume_local_message_handler (story)": {
+		"prefix": "resume_local_message_handler",
 		"body": [
-			"resumelocalmessagehandler(msgid,msgid,...);"
+			"resume_local_message_handler(msgid,msgid,...);"
 		],
-		"description": "resumelocalmessagehandler (story)"
+		"description": "resume_local_message_handler (story)"
 		},
 
 	"pauselocalnamespacedmessagehandler (story)": {
@@ -499,12 +499,12 @@
 		"description": "pauselocalnamespacedmessagehandler (story)"
 		},
 
-	"resumelocalnamespacedmessagehandler (story)": {
-		"prefix": "resumelocalnamespacedmessagehandler",
+	"resume_local_namespaced_message_handler (story)": {
+		"prefix": "resume_local_namespaced_message_handler",
 		"body": [
-			"resumelocalnamespacedmessagehandler(msgid,msgid,...);"
+			"resume_local_namespaced_message_handler(msgid,msgid,...);"
 		],
-		"description": "resumelocalnamespacedmessagehandler (story)"
+		"description": "resume_local_namespaced_message_handler (story)"
 		},
 
 	"pause (story)": {
@@ -619,28 +619,28 @@
 		"description": "max (story)"
 		},
 
-	"vector2 (story)": {
-		"prefix": "vector2",
+	"vector_2 (story)": {
+		"prefix": "vector_2",
 		"body": [
-			"vector2(x,y);"
+			"vector_2(x,y);"
 		],
-		"description": "vector2 (story)"
+		"description": "vector_2 (story)"
 		},
 
-	"vector3 (story)": {
-		"prefix": "vector3",
+	"vector_3 (story)": {
+		"prefix": "vector_3",
 		"body": [
-			"vector3(x,y,z);"
+			"vector_3(x,y,z);"
 		],
-		"description": "vector3 (story)"
+		"description": "vector_3 (story)"
 		},
 
-	"vector4 (story)": {
-		"prefix": "vector4",
+	"vector_4 (story)": {
+		"prefix": "vector_4",
 		"body": [
-			"vector4(x,y,z,w);"
+			"vector_4(x,y,z,w);"
 		],
-		"description": "vector4 (story)"
+		"description": "vector_4 (story)"
 		},
 
 	"quaternion (story)": {
@@ -675,44 +675,44 @@
 		"description": "format (story)"
 		},
 
-	"propget (story)": {
-		"prefix": "propget",
+	"prop_get (story)": {
+		"prefix": "prop_get",
 		"body": [
-			"propget(value[,defaultvalue]);"
+			"prop_get(value[,defaultvalue]);"
 		],
-		"description": "propget (story)"
+		"description": "prop_get (story)"
 		},
 
-	"intlist (story)": {
-		"prefix": "intlist",
+	"int_list (story)": {
+		"prefix": "int_list",
 		"body": [
-			"intlist(\"1 2 3 4 5\");"
+			"int_list(\"1 2 3 4 5\");"
 		],
-		"description": "intlist (story)"
+		"description": "int_list (story)"
 		},
 
-	"stringlist (story)": {
-		"prefix": "stringlist",
+	"string_list (story)": {
+		"prefix": "string_list",
 		"body": [
-			"stringlist(\"a b c d e\");"
+			"string_list(\"a b c d e\");"
 		],
-		"description": "stringlist (story)"
+		"description": "string_list (story)"
 		},
 
-	"vector2list (story)": {
-		"prefix": "vector2list",
+	"vector_2_list (story)": {
+		"prefix": "vector_2_list",
 		"body": [
-			"vector2list(\"v1x v1y v2x v2y\");"
+			"vector_2_list(\"v1x v1y v2x v2y\");"
 		],
-		"description": "vector2list (story)"
+		"description": "vector_2_list (story)"
 		},
 
-	"vector3list (story)": {
-		"prefix": "vector3list",
+	"vector_3_list (story)": {
+		"prefix": "vector_3_list",
 		"body": [
-			"vector3list(\"v1x v1y v1z v2x v2y v2z\");"
+			"vector_3_list(\"v1x v1y v1z v2x v2y v2z\");"
 		],
-		"description": "vector3list (story)"
+		"description": "vector_3_list (story)"
 		},
 
 	"list (story)": {
@@ -731,173 +731,173 @@
 		"description": "substring (story)"
 		},
 
-	"rndint (story)": {
-		"prefix": "rndint",
+	"rnd_int (story)": {
+		"prefix": "rnd_int",
 		"body": [
-			"rndint(min,max);"
+			"rnd_int(min,max);"
 		],
-		"description": "rndint (story)"
+		"description": "rnd_int (story)"
 		},
 
-	"rndfloat (story)": {
-		"prefix": "rndfloat",
+	"rnd_float (story)": {
+		"prefix": "rnd_float",
 		"body": [
-			"rndfloat();"
+			"rnd_float();"
 		],
-		"description": "rndfloat (story)"
+		"description": "rnd_float (story)"
 		},
 
-	"floatlist (story)": {
-		"prefix": "floatlist",
+	"float_list (story)": {
+		"prefix": "float_list",
 		"body": [
-			"floatlist(\"1.0 2.0 3.0 4.0 5.0\");"
+			"float_list(\"1.0 2.0 3.0 4.0 5.0\");"
 		],
-		"description": "floatlist (story)"
+		"description": "float_list (story)"
 		},
 
-	"rndfromlist (story)": {
-		"prefix": "rndfromlist",
+	"rnd_from_list (story)": {
+		"prefix": "rnd_from_list",
 		"body": [
 			"用法:",
-			"rndfromlist(intlist(\"1 2 3 4 5 6 7 8\")[,defaultvalue]);"
+			"rnd_from_list(int_list(\"1 2 3 4 5 6 7 8\")[,defaultvalue]);"
 		],
-		"description": "rndfromlist (story)"
+		"description": "rnd_from_list (story)"
 		},
 
-	"listget (story)": {
-		"prefix": "listget",
+	"list_get (story)": {
+		"prefix": "list_get",
 		"body": [
-			"listget(list,index[,defaultvalue]);"
+			"list_get(list,index[,defaultvalue]);"
 		],
-		"description": "listget (story)"
+		"description": "list_get (story)"
 		},
 
-	"listsize (story)": {
-		"prefix": "listsize",
+	"list_size (story)": {
+		"prefix": "list_size",
 		"body": [
-			"listsize(list);"
+			"list_size(list);"
 		],
-		"description": "listsize (story)"
+		"description": "list_size (story)"
 		},
 
-	"vector2dist (story)": {
-		"prefix": "vector2dist",
+	"vector_2_dist (story)": {
+		"prefix": "vector_2_dist",
 		"body": [
-			"vector2dist(vector2(1,2),vector2(3,4));"
+			"vector_2_dist(vector_2(1,2),vector_2(3,4));"
 		],
-		"description": "vector2dist (story)"
+		"description": "vector_2_dist (story)"
 		},
 
-	"vector3dist (story)": {
-		"prefix": "vector3dist",
+	"vector_3_dist (story)": {
+		"prefix": "vector_3_dist",
 		"body": [
-			"vector3dist(vector3(1,2,3),vector3(4,5,6));"
+			"vector_3_dist(vector_3(1,2,3),vector_3(4,5,6));"
 		],
-		"description": "vector3dist (story)"
+		"description": "vector_3_dist (story)"
 		},
 
-	"vector2to3 (story)": {
-		"prefix": "vector2to3",
+	"vector_2_to_3 (story)": {
+		"prefix": "vector_2_to_3",
 		"body": [
-			"vector2to3(vector2(1,2));"
+			"vector_2_to_3(vector_2(1,2));"
 		],
-		"description": "vector2to3 (story)"
+		"description": "vector_2_to_3 (story)"
 		},
 
-	"vector3to2 (story)": {
-		"prefix": "vector3to2",
+	"vector_3_to_2 (story)": {
+		"prefix": "vector_3_to_2",
 		"body": [
-			"vector3to2(vector3(1,2,3));"
+			"vector_3_to_2(vector_3(1,2,3));"
 		],
-		"description": "vector3to2 (story)"
+		"description": "vector_3_to_2 (story)"
 		},
 
-	"isnull (story)": {
-		"prefix": "isnull",
+	"is_null (story)": {
+		"prefix": "is_null",
 		"body": [
-			"isnull(x);"
+			"is_null(x);"
 		],
-		"description": "isnull (story)"
+		"description": "is_null (story)"
 		},
 
-	"str2int (story)": {
-		"prefix": "str2int",
+	"str_2_int (story)": {
+		"prefix": "str_2_int",
 		"body": [
-			"str2int(str);"
+			"str_2_int(str);"
 		],
-		"description": "str2int (story)"
+		"description": "str_2_int (story)"
 		},
 
-	"str2float (story)": {
-		"prefix": "str2float",
+	"str_2_float (story)": {
+		"prefix": "str_2_float",
 		"body": [
-			"str2float(str);"
+			"str_2_float(str);"
 		],
-		"description": "str2float (story)"
+		"description": "str_2_float (story)"
 		},
 
-	"dotnetcall (story)": {
-		"prefix": "dotnetcall",
+	"dotnet_call (story)": {
+		"prefix": "dotnet_call",
 		"body": [
-			"dotnetcall(obj/type,method,arg1,arg2,...);"
+			"dotnet_call(obj/type,method,arg1,arg2,...);"
 		],
-		"description": "dotnetcall (story)"
+		"description": "dotnet_call (story)"
 		},
 
-	"dotnetget (story)": {
-		"prefix": "dotnetget",
+	"dotnet_get (story)": {
+		"prefix": "dotnet_get",
 		"body": [
-			"dotnetget(obj/type,property,arg1,arg2,...);"
+			"dotnet_get(obj/type,property,arg1,arg2,...);"
 		],
-		"description": "dotnetget (story)"
+		"description": "dotnet_get (story)"
 		},
 
-	"changetype (story)": {
-		"prefix": "changetype",
+	"change_type (story)": {
+		"prefix": "change_type",
 		"body": [
-			"changetype(value,obj/type);"
+			"change_type(value,obj/type);"
 		],
-		"description": "changetype (story)"
+		"description": "change_type (story)"
 		},
 
-	"parseenum (story)": {
-		"prefix": "parseenum",
+	"parse_enum (story)": {
+		"prefix": "parse_enum",
 		"body": [
-			"parseenum(obj/type, \"enumvalue\");"
+			"parse_enum(obj/type, \"enumvalue\");"
 		],
-		"description": "parseenum (story)"
+		"description": "parse_enum (story)"
 		},
 
-	"readalllines (story)": {
-		"prefix": "readalllines",
+	"read_all_lines (story)": {
+		"prefix": "read_all_lines",
 		"body": [
-			"readalllines(file);"
+			"read_all_lines(file);"
 		],
-		"description": "readalllines (story)"
+		"description": "read_all_lines (story)"
 		},
 
-	"readfile (story)": {
-		"prefix": "readfile",
+	"read_file (story)": {
+		"prefix": "read_file",
 		"body": [
-			"readfile(file);"
+			"read_file(file);"
 		],
-		"description": "readfile (story)"
+		"description": "read_file (story)"
 		},
 
-	"tojson (story)": {
-		"prefix": "tojson",
+	"to_json (story)": {
+		"prefix": "to_json",
 		"body": [
-			"tojson(hashtable);"
+			"to_json(hashtable);"
 		],
-		"description": "tojson (story)"
+		"description": "to_json (story)"
 		},
 
-	"fromjson (story)": {
-		"prefix": "fromjson",
+	"from_json (story)": {
+		"prefix": "from_json",
 		"body": [
-			"fromjson(str);"
+			"from_json(str);"
 		],
-		"description": "fromjson (story)"
+		"description": "from_json (story)"
 		},
 
 	"hashtable (story)": {
@@ -910,52 +910,52 @@
 		"description": "hashtable (story)"
 		},
 
-	"hashtableget (story)": {
-		"prefix": "hashtableget",
+	"hashtable_get (story)": {
+		"prefix": "hashtable_get",
 		"body": [
-			"hashtableget(hashtable,key[,defval]);"
+			"hashtable_get(hashtable,key[,defval]);"
 		],
-		"description": "hashtableget (story)"
+		"description": "hashtable_get (story)"
 		},
 
-	"hashtablesize (story)": {
-		"prefix": "hashtablesize",
+	"hashtable_size (story)": {
+		"prefix": "hashtable_size",
 		"body": [
-			"hashtablesize(hashtable);"
+			"hashtable_size(hashtable);"
 		],
-		"description": "hashtablesize (story)"
+		"description": "hashtable_size (story)"
 		},
 
-	"hashtablekeys (story)": {
-		"prefix": "hashtablekeys",
+	"hashtable_keys (story)": {
+		"prefix": "hashtable_keys",
 		"body": [
-			"hashtablekeys(hashtable);"
+			"hashtable_keys(hashtable);"
 		],
-		"description": "hashtablekeys (story)"
+		"description": "hashtable_keys (story)"
 		},
 
-	"hashtablevalues (story)": {
-		"prefix": "hashtablevalues",
+	"hashtable_values (story)": {
+		"prefix": "hashtable_values",
 		"body": [
-			"hashtablevalues(hashtable);"
+			"hashtable_values(hashtable);"
 		],
-		"description": "hashtablevalues (story)"
+		"description": "hashtable_values (story)"
 		},
 
-	"dictformat (story)": {
-		"prefix": "dictformat",
+	"dict_format (story)": {
+		"prefix": "dict_format",
 		"body": [
-			"dictformat(dictId,arg1,arg2,...);"
+			"dict_format(dictId,arg1,arg2,...);"
 		],
-		"description": "dictformat (story)"
+		"description": "dict_format (story)"
 		},
 
-	"dictget (story)": {
-		"prefix": "dictget",
+	"dict_get (story)": {
+		"prefix": "dict_get",
 		"body": [
-			"dictget(dictId);"
+			"dict_get(dictId);"
 		],
-		"description": "dictget (story)"
+		"description": "dict_get (story)"
 		},
 
 	"dictparse (story)": {
@@ -966,212 +966,212 @@
 		"description": "dictparse (story)"
 		},
 
-	"gettype (story)": {
-		"prefix": "gettype",
+	"get_type (story)": {
+		"prefix": "get_type",
 		"body": [
-			"gettype(\"System.Console\");"
+			"get_type(\"System.Console\");"
 		],
-		"description": "gettype (story)"
+		"description": "get_type (story)"
 		},
 
-	"rndvector3 (story)": {
-		"prefix": "rndvector3",
+	"rnd_vector_3 (story)": {
+		"prefix": "rnd_vector_3",
 		"body": [
-			"rndvector3(center,radius);"
+			"rnd_vector_3(center,radius);"
 		],
-		"description": "rndvector3 (story)"
+		"description": "rnd_vector_3 (story)"
 		},
 
-	"rndvector2 (story)": {
-		"prefix": "rndvector2",
+	"rnd_vector_2 (story)": {
+		"prefix": "rnd_vector_2",
 		"body": [
-			"rndvector2(center,radius);"
+			"rnd_vector_2(center,radius);"
 		],
-		"description": "rndvector2 (story)"
+		"description": "rnd_vector_2 (story)"
 		},
 
-	"npcidlist (story)": {
-		"prefix": "npcidlist",
+	"npc_id_list (story)": {
+		"prefix": "npc_id_list",
 		"body": [
-			"npcidlist();"
+			"npc_id_list();"
 		],
-		"description": "npcidlist (story)"
+		"description": "npc_id_list (story)"
 		},
 
-	"objid2unitid (story)": {
-		"prefix": "objid2unitid",
+	"obj_id_2_unit_id (story)": {
+		"prefix": "obj_id_2_unit_id",
 		"body": [
-			"objid2unitid(objid);"
+			"obj_id_2_unit_id(objid);"
 		],
-		"description": "objid2unitid (story)"
+		"description": "obj_id_2_unit_id (story)"
 		},
 
-	"unitid2objid (story)": {
-		"prefix": "unitid2objid",
+	"unit_id_2_obj_id (story)": {
+		"prefix": "unit_id_2_obj_id",
 		"body": [
-			"unitid2objid(unitid);"
+			"unit_id_2_obj_id(unitid);"
 		],
-		"description": "unitid2objid (story)"
+		"description": "unit_id_2_obj_id (story)"
 		},
 
-	"getposition (story)": {
-		"prefix": "getposition",
+	"get_position (story)": {
+		"prefix": "get_position",
 		"body": [
-			"getposition(objid[, world_or_local]);"
+			"get_position(objid[, world_or_local]);"
 		],
-		"description": "getposition (story)"
+		"description": "get_position (story)"
 		},
 
-	"getcamp (story)": {
-		"prefix": "getcamp",
+	"get_camp (story)": {
+		"prefix": "get_camp",
 		"body": [
-			"getcamp(objid);"
+			"get_camp(objid);"
 		],
-		"description": "getcamp (story)"
+		"description": "get_camp (story)"
 		},
 
-	"isenemy (story)": {
-		"prefix": "isenemy",
+	"is_enemy (story)": {
+		"prefix": "is_enemy",
 		"body": [
-			"isenemy(camp1,camp2);"
+			"is_enemy(camp1,camp2);"
 		],
-		"description": "isenemy (story)"
+		"description": "is_enemy (story)"
 		},
 
-	"isfriend (story)": {
-		"prefix": "isfriend",
+	"is_friend (story)": {
+		"prefix": "is_friend",
 		"body": [
-			"isfriend(camp1,camp2);"
+			"is_friend(camp1,camp2);"
 		],
-		"description": "isfriend (story)"
+		"description": "is_friend (story)"
 		},
 
-	"getpositionx (story)": {
-		"prefix": "getpositionx",
+	"get_position_x (story)": {
+		"prefix": "get_position_x",
 		"body": [
-			"getpositionx(objid[, world_or_local]);"
+			"get_position_x(objid[, world_or_local]);"
 		],
-		"description": "getpositionx (story)"
+		"description": "get_position_x (story)"
 		},
 
 	"getpostiony (story)": {
 		"prefix": "getpostiony",
 		"body": [
-			"getpositiony(objid[, world_or_local]);"
+			"get_position_y(objid[, world_or_local]);"
 		],
 		"description": "getpostiony (story)"
 		},
 
-	"getpositionz (story)": {
-		"prefix": "getpositionz",
+	"get_position_z (story)": {
+		"prefix": "get_position_z",
 		"body": [
-			"getpositionz(objid[, world_or_local]);"
+			"get_position_z(objid[, world_or_local]);"
 		],
-		"description": "getpositionz (story)"
+		"description": "get_position_z (story)"
 		},
 
-	"getrotation (story)": {
-		"prefix": "getrotation",
+	"get_rotation (story)": {
+		"prefix": "get_rotation",
 		"body": [
-			"getrotation(objid[, world_or_local]);"
+			"get_rotation(objid[, world_or_local]);"
 		],
-		"description": "getrotation (story)"
+		"description": "get_rotation (story)"
 		},
 
-	"getrotationx (story)": {
-		"prefix": "getrotationx",
+	"get_rotation_x (story)": {
+		"prefix": "get_rotation_x",
 		"body": [
-			"getrotationx(objid[, world_or_local]);"
+			"get_rotation_x(objid[, world_or_local]);"
 		],
-		"description": "getrotationx (story)"
+		"description": "get_rotation_x (story)"
 		},
 
-	"getrotationy (story)": {
-		"prefix": "getrotationy",
+	"get_rotation_y (story)": {
+		"prefix": "get_rotation_y",
 		"body": [
-			"getrotationy(objid[, world_or_local]);"
+			"get_rotation_y(objid[, world_or_local]);"
 		],
-		"description": "getrotationy (story)"
+		"description": "get_rotation_y (story)"
 		},
 
-	"getrotationz (story)": {
-		"prefix": "getrotationz",
+	"get_rotation_z (story)": {
+		"prefix": "get_rotation_z",
 		"body": [
-			"getrotationz(objid[, world_or_local]);"
+			"get_rotation_z(objid[, world_or_local]);"
 		],
-		"description": "getrotationz (story)"
+		"description": "get_rotation_z (story)"
 		},
 
-	"getscale (story)": {
-		"prefix": "getscale",
+	"get_scale (story)": {
+		"prefix": "get_scale",
 		"body": [
-			"getscale(objid);"
+			"get_scale(objid);"
 		],
-		"description": "getscale (story)"
+		"description": "get_scale (story)"
 		},
 
-	"getscalex (story)": {
-		"prefix": "getscalex",
+	"get_scale_x (story)": {
+		"prefix": "get_scale_x",
 		"body": [
-			"getscalex(objid);"
+			"get_scale_x(objid);"
 		],
-		"description": "getscalex (story)"
+		"description": "get_scale_x (story)"
 		},
 
-	"getscaley (story)": {
-		"prefix": "getscaley",
+	"get_scale_y (story)": {
+		"prefix": "get_scale_y",
 		"body": [
-			"getscaley(objid);"
+			"get_scale_y(objid);"
 		],
-		"description": "getscaley (story)"
+		"description": "get_scale_y (story)"
 		},
 
-	"getscalez (story)": {
-		"prefix": "getscalez",
+	"get_scale_z (story)": {
+		"prefix": "get_scale_z",
 		"body": [
-			"getscalez(objid);"
+			"get_scale_z(objid);"
 		],
-		"description": "getscalez (story)"
+		"description": "get_scale_z (story)"
 		},
 
-	"gethp (story)": {
-		"prefix": "gethp",
+	"get_hp (story)": {
+		"prefix": "get_hp",
 		"body": [
-			"gethp(objid);"
+			"get_hp(objid);"
 		],
-		"description": "gethp (story)"
+		"description": "get_hp (story)"
 		},
 
-	"getmaxhp (story)": {
-		"prefix": "getmaxhp",
+	"get_max_hp (story)": {
+		"prefix": "get_max_hp",
 		"body": [
-			"getmaxhp(objid);"
+			"get_max_hp(objid);"
 		],
-		"description": "getmaxhp (story)"
+		"description": "get_max_hp (story)"
 		},
 
-	"calcdir (story)": {
-		"prefix": "calcdir",
+	"calc_dir (story)": {
+		"prefix": "calc_dir",
 		"body": [
-			"calcdir(objid,targetid);"
+			"calc_dir(objid,targetid);"
 		],
-		"description": "calcdir (story)"
+		"description": "calc_dir (story)"
 		},
 
-	"combatnpccount (story)": {
-		"prefix": "combatnpccount",
+	"combat_npc_count (story)": {
+		"prefix": "combat_npc_count",
 		"body": [
-			"combatnpccount([camp_id]);"
+			"combat_npc_count([camp_id]);"
 		],
-		"description": "combatnpccount (story)"
+		"description": "combat_npc_count (story)"
 		},
 
-	"iscombatnpc (story)": {
-		"prefix": "iscombatnpc",
+	"is_combat_npc (story)": {
+		"prefix": "is_combat_npc",
 		"body": [
-			"iscombatnpc(objid);"
+			"is_combat_npc(objid);"
 		],
-		"description": "iscombatnpc (story)"
+		"description": "is_combat_npc (story)"
 		},
 
 	"getlinkid (story)": {
@@ -1182,20 +1182,20 @@
 		"description": "getlinkid (story)"
 		},
 
-	"getlevel (story)": {
-		"prefix": "getlevel",
+	"get_level (story)": {
+		"prefix": "get_level",
 		"body": [
-			"getlevel(objid);"
+			"get_level(objid);"
 		],
-		"description": "getlevel (story)"
+		"description": "get_level (story)"
 		},
 
-	"getattr (story)": {
-		"prefix": "getattr",
+	"get_attr (story)": {
+		"prefix": "get_attr",
 		"body": [
-			"getattr(objid,attrid,value[,defaultvalue]);"
+			"get_attr(objid,attrid,value[,defaultvalue]);"
 		],
-		"description": "getattr (story)"
+		"description": "get_attr (story)"
 		},
 
 	"tableid2objid (story)": {
@@ -1230,12 +1230,12 @@
 		"description": "objid2sceneindex (story)"
 		},
 
-	"iscontrolbystory (story)": {
-		"prefix": "iscontrolbystory",
+	"is_control_by_story (story)": {
+		"prefix": "is_control_by_story",
 		"body": [
-			"iscontrolbystory(objid);"
+			"is_control_by_story(objid);"
 		],
-		"description": "iscontrolbystory (story)"
+		"description": "is_control_by_story (story)"
 		},
 
 	"objisundercontrol (story)": {
@@ -1246,20 +1246,20 @@
 		"description": "objisundercontrol (story)"
 		},
 
-	"getunitytype (story)": {
-		"prefix": "getunitytype",
+	"get_unity_type (story)": {
+		"prefix": "get_unity_type",
 		"body": [
-			"getunitytype(typename);"
+			"get_unity_type(typename);"
 		],
-		"description": "getunitytype (story)"
+		"description": "get_unity_type (story)"
 		},
 
-	"getunityuitype (story)": {
-		"prefix": "getunityuitype",
+	"get_unity_ui_type (story)": {
+		"prefix": "get_unity_ui_type",
 		"body": [
-			"getunityuitype(typename);"
+			"get_unity_ui_type(typename);"
 		],
-		"description": "getunityuitype (story)"
+		"description": "get_unity_ui_type (story)"
 		},
 
 	"getscripttype (story)": {
@@ -1270,20 +1270,20 @@
 		"description": "getscripttype (story)"
 		},
 
-	"getentityinfo (story)": {
-		"prefix": "getentityinfo",
+	"get_entity_info (story)": {
+		"prefix": "get_entity_info",
 		"body": [
-			"getentityinfo(objid);"
+			"get_entity_info(objid);"
 		],
-		"description": "getentityinfo (story)"
+		"description": "get_entity_info (story)"
 		},
 
-	"getentityview (story)": {
-		"prefix": "getentityview",
+	"get_entity_view (story)": {
+		"prefix": "get_entity_view",
 		"body": [
-			"getentityview(objid);"
+			"get_entity_view(objid);"
 		],
-		"description": "getentityview (story)"
+		"description": "get_entity_view (story)"
 		},
 
 	"getmountview (story)": {
@@ -1302,12 +1302,12 @@
 		"description": "getentityrootgameobject (story)"
 		},
 
-	"getglobal (story)": {
-		"prefix": "getglobal",
+	"get_global (story)": {
+		"prefix": "get_global",
 		"body": [
-			"getglobal();"
+			"get_global();"
 		],
-		"description": "getglobal (story)"
+		"description": "get_global (story)"
 		},
 
 	"clientmodule (story)": {
@@ -1326,20 +1326,20 @@
 		"description": "ispureclient (story)"
 		},
 
-	"deg2rad (story)": {
-		"prefix": "deg2rad",
+	"deg_2_rad (story)": {
+		"prefix": "deg_2_rad",
 		"body": [
-			"deg2rad(val);"
+			"deg_2_rad(val);"
 		],
-		"description": "deg2rad (story)"
+		"description": "deg_2_rad (story)"
 		},
 
-	"rad2deg (story)": {
-		"prefix": "rad2deg",
+	"rad_2_deg (story)": {
+		"prefix": "rad_2_deg",
 		"body": [
-			"rad2deg(val);"
+			"rad_2_deg(val);"
 		],
-		"description": "rad2deg (story)"
+		"description": "rad_2_deg (story)"
 		},
 
 	"getspline (story)": {
@@ -1358,53 +1358,53 @@
 		"description": "getsplinepoints (story)"
 		},
 
-	"offsetspline (story)": {
-		"prefix": "offsetspline",
+	"offset_spline (story)": {
+		"prefix": "offset_spline",
 		"body": [
-			"offsetspline(spline, vector3(x,y,z));"
+			"offset_spline(spline, vector_3(x,y,z));"
 		],
-		"description": "offsetspline (story)"
+		"description": "offset_spline (story)"
 		},
 
-	"offsetvector3 (story)": {
-		"prefix": "offsetvector3",
+	"offset_vector_3 (story)": {
+		"prefix": "offset_vector_3",
 		"body": [
-			"offsetvector3(pt, vector3(x,y,z));",
-			"offsetvector3(pt, pt2, vector3(x,y,z));"
+			"offset_vector_3(pt, vector_3(x,y,z));",
+			"offset_vector_3(pt, pt2, vector_3(x,y,z));"
 		],
-		"description": "offsetvector3 (story)"
+		"description": "offset_vector_3 (story)"
 		},
 
-	"npcfindimpactseqbyid (story)": {
-		"prefix": "npcfindimpactseqbyid",
+	"npc_find_impact_seq_by_id (story)": {
+		"prefix": "npc_find_impact_seq_by_id",
 		"body": [
-			"npcfindimpactseqbyid(unitId,impactId);"
+			"npc_find_impact_seq_by_id(unitId,impactId);"
 		],
-		"description": "npcfindimpactseqbyid (story)"
+		"description": "npc_find_impact_seq_by_id (story)"
 		},
 
-	"objfindimpactseqbyid (story)": {
-		"prefix": "objfindimpactseqbyid",
+	"obj_find_impact_seq_by_id (story)": {
+		"prefix": "obj_find_impact_seq_by_id",
 		"body": [
-			"objfindimpactseqbyid(objId,impactId);"
+			"obj_find_impact_seq_by_id(objId,impactId);"
 		],
-		"description": "objfindimpactseqbyid (story)"
+		"description": "obj_find_impact_seq_by_id (story)"
 		},
 
-	"npcgetaiparam (story)": {
-		"prefix": "npcgetaiparam",
+	"npc_get_ai_param (story)": {
+		"prefix": "npc_get_ai_param",
 		"body": [
-			"npcgetaiparam(unitId,index);"
+			"npc_get_ai_param(unitId,index);"
 		],
-		"description": "npcgetaiparam (story)"
+		"description": "npc_get_ai_param (story)"
 		},
 
-	"objgetaiparam (story)": {
-		"prefix": "objgetaiparam",
+	"obj_get_ai_param (story)": {
+		"prefix": "obj_get_ai_param",
 		"body": [
-			"objgetaiparam(objId,index);"
+			"obj_get_ai_param(objId,index);"
 		],
-		"description": "objgetaiparam (story)"
+		"description": "obj_get_ai_param (story)"
 		},
 
 	"getplayerlinkid (story)": {
@@ -1415,127 +1415,127 @@
 		"description": "getplayerlinkid (story)"
 		},
 
-	"getplayerid (story)": {
-		"prefix": "getplayerid",
+	"get_player_id (story)": {
+		"prefix": "get_player_id",
 		"body": [
-			"getplayerid();"
+			"get_player_id();"
 		],
-		"description": "getplayerid (story)"
+		"description": "get_player_id (story)"
 		},
 
-	"findobjid (story)": {
-		"prefix": "findobjid",
+	"find_obj_id (story)": {
+		"prefix": "find_obj_id",
 		"body": [
-			"findobjid(tableid);",
-			"findobjid(type, tableid);",
-			"findobjid(type, vector3(x, 0 ,z), range);",
-			"findobjid(type, tableid, vector3(x, 0 ,z), range);"
+			"find_obj_id(tableid);",
+			"find_obj_id(type, tableid);",
+			"find_obj_id(type, vector_3(x, 0 ,z), range);",
+			"find_obj_id(type, tableid, vector_3(x, 0 ,z), range);"
 		],
-		"description": "findobjid (story)"
+		"description": "find_obj_id (story)"
 		},
 
-	"npcgetnpctype (story)": {
-		"prefix": "npcgetnpctype",
+	"npc_get_npc_type (story)": {
+		"prefix": "npc_get_npc_type",
 		"body": [
-			"npcgetnpctype(unitid);"
+			"npc_get_npc_type(unitid);"
 		],
-		"description": "npcgetnpctype (story)"
+		"description": "npc_get_npc_type (story)"
 		},
 
-	"npcgetsummonerid (story)": {
-		"prefix": "npcgetsummonerid",
+	"npc_get_summoner_id (story)": {
+		"prefix": "npc_get_summoner_id",
 		"body": [
-			"npcgetsummonerid(unitid);"
+			"npc_get_summoner_id(unitid);"
 		],
-		"description": "npcgetsummonerid (story)"
+		"description": "npc_get_summoner_id (story)"
 		},
 
-	"objgetnpctype (story)": {
-		"prefix": "objgetnpctype",
+	"obj_get_npc_type (story)": {
+		"prefix": "obj_get_npc_type",
 		"body": [
-			"objgetnpctype(objid);"
+			"obj_get_npc_type(objid);"
 		],
-		"description": "objgetnpctype (story)"
+		"description": "obj_get_npc_type (story)"
 		},
 
-	"objgetsummonerid (story)": {
-		"prefix": "objgetsummonerid",
+	"obj_get_summoner_id (story)": {
+		"prefix": "obj_get_summoner_id",
 		"body": [
-			"objgetsummonerid(objid);"
+			"obj_get_summoner_id(objid);"
 		],
-		"description": "objgetsummonerid (story)"
+		"description": "obj_get_summoner_id (story)"
 		},
 
-	"calcoffset (story)": {
-		"prefix": "calcoffset",
+	"calc_offset (story)": {
+		"prefix": "calc_offset",
 		"body": [
-			"calcoffset(objid,targetobjid,vector3(x,y,z));"
+			"calc_offset(objid,targetobjid,vector_3(x,y,z));"
 		],
-		"description": "calcoffset (story)"
+		"description": "calc_offset (story)"
 		},
 
-	"npccount (story)": {
-		"prefix": "npccount",
+	"npc_count (story)": {
+		"prefix": "npc_count",
 		"body": [
-			"npccount(startUnitId,endUnitId);"
+			"npc_count(startUnitId,endUnitId);"
 		],
-		"description": "npccount (story)"
+		"description": "npc_count (story)"
 		},
 
-	"getaidata (story)": {
-		"prefix": "getaidata",
+	"get_ai_data (story)": {
+		"prefix": "get_ai_data",
 		"body": [
-			"getaidata(objid,aidatatype);"
+			"get_ai_data(objid,aidatatype);"
 		],
-		"description": "getaidata (story)"
+		"description": "get_ai_data (story)"
 		},
 
-	"npcgetsummonskillid (story)": {
-		"prefix": "npcgetsummonskillid",
+	"npc_get_summon_skill_id (story)": {
+		"prefix": "npc_get_summon_skill_id",
 		"body": [
-			"npcgetsummonskillid(unitid);"
+			"npc_get_summon_skill_id(unitid);"
 		],
-		"description": "npcgetsummonskillid (story)"
+		"description": "npc_get_summon_skill_id (story)"
 		},
 
-	"objgetsummonskillid (story)": {
-		"prefix": "objgetsummonskillid",
+	"obj_get_summon_skill_id (story)": {
+		"prefix": "obj_get_summon_skill_id",
 		"body": [
-			"objgetsummonskillid(objid);"
+			"obj_get_summon_skill_id(objid);"
 		],
-		"description": "objgetsummonskillid (story)"
+		"description": "obj_get_summon_skill_id (story)"
 		},
 
-	"getactor (story)": {
-		"prefix": "getactor",
+	"get_actor (story)": {
+		"prefix": "get_actor",
 		"body": [
-			"getactor(objid);"
+			"get_actor(objid);"
 		],
-		"description": "getactor (story)"
+		"description": "get_actor (story)"
 		},
 
-	"isvisible (story)": {
-		"prefix": "isvisible",
+	"is_visible (story)": {
+		"prefix": "is_visible",
 		"body": [
-			"isvisible(objid);"
+			"is_visible(objid);"
 		],
-		"description": "isvisible (story)"
+		"description": "is_visible (story)"
 		},
 
-	"npcgetformation (story)": {
-		"prefix": "npcgetformation",
+	"npc_get_formation (story)": {
+		"prefix": "npc_get_formation",
 		"body": [
-			"npcgetformation(unitid);"
+			"npc_get_formation(unitid);"
 		],
-		"description": "npcgetformation (story)"
+		"description": "npc_get_formation (story)"
 		},
 
-	"objgetformation (story)": {
-		"prefix": "objgetformation",
+	"obj_get_formation (story)": {
+		"prefix": "obj_get_formation",
 		"body": [
-			"objgetformation(objid);"
+			"obj_get_formation(objid);"
 		],
-		"description": "objgetformation (story)"
+		"description": "obj_get_formation (story)"
 		},
 
 	"movementenabled (story)": {
@@ -1546,44 +1546,44 @@
 		"description": "movementenabled (story)"
 		},
 
-	"startstory (story)": {
-		"prefix": "startstory",
+	"start_story (story)": {
+		"prefix": "start_story",
 		"body": [
-			"startstory(\"clientlogic\");"
+			"start_story(\"clientlogic\");"
 		],
-		"description": "startstory (story)"
+		"description": "start_story (story)"
 		},
 
-	"stopstory (story)": {
-		"prefix": "stopstory",
+	"stop_story (story)": {
+		"prefix": "stop_story",
 		"body": [
-			"stopstory(\"clientlogic\");"
+			"stop_story(\"clientlogic\");"
 		],
-		"description": "stopstory (story)"
+		"description": "stop_story (story)"
 		},
 
-	"firemessage (story)": {
-		"prefix": "firemessage",
+	"fire_message (story)": {
+		"prefix": "fire_message",
 		"body": [
-			"firemessage(消息id,参数表);"
+			"fire_message(消息id,参数表);"
 		],
-		"description": "firemessage (story)"
+		"description": "fire_message (story)"
 		},
 
-	"changescene (story)": {
-		"prefix": "changescene",
+	"change_scene (story)": {
+		"prefix": "change_scene",
 		"body": [
-			"changescene(scene_id);"
+			"change_scene(scene_id);"
 		],
-		"description": "changescene (story)"
+		"description": "change_scene (story)"
 		},
 
-	"createnpc (story)": {
-		"prefix": "createnpc",
+	"create_npc (story)": {
+		"prefix": "create_npc",
 		"body": [
-			"createnpc(npc_unit_id,vector3(x,y,z),dir,camp,linkId[,ai,stringlist(\"param1 param2 param3 ...\")])[objid(\"@objid\")];"
+			"create_npc(npc_unit_id,vector_3(x,y,z),dir,camp,linkId[,ai,string_list(\"param1 param2 param3 ...\")])[objid(\"@objid\")];"
 		],
-		"description": "createnpc (story)"
+		"description": "create_npc (story)"
 		},
 
 	"waitnpcload (story)": {
@@ -1602,28 +1602,28 @@
 		"description": "waitnpcanimload (story)"
 		},
 
-	"destroynpc (story)": {
-		"prefix": "destroynpc",
+	"destroy_npc (story)": {
+		"prefix": "destroy_npc",
 		"body": [
-			"destroynpc(npc_unit_id);"
+			"destroy_npc(npc_unit_id);"
 		],
-		"description": "destroynpc (story)"
+		"description": "destroy_npc (story)"
 		},
 
-	"npcmove (story)": {
-		"prefix": "npcmove",
+	"npc_move (story)": {
+		"prefix": "npc_move",
 		"body": [
-			"npcmove(unit_id,vector3(x,y,z)[, event]);"
+			"npc_move(unit_id,vector_3(x,y,z)[, event]);"
 		],
-		"description": "npcmove (story)"
+		"description": "npc_move (story)"
 		},
 
-	"npcenableai (story)": {
-		"prefix": "npcenableai",
+	"npc_enable_ai (story)": {
+		"prefix": "npc_enable_ai",
 		"body": [
-			"npcenableai(unit_id,true_or_false);"
+			"npc_enable_ai(unit_id,true_or_false);"
 		],
-		"description": "npcenableai (story)"
+		"description": "npc_enable_ai (story)"
 		},
 
 	"npcmount (story)": {
@@ -1642,28 +1642,28 @@
 		"description": "npcunmount (story)"
 		},
 
-	"npcface (story)": {
-		"prefix": "npcface",
+	"npc_face (story)": {
+		"prefix": "npc_face",
 		"body": [
-			"npcface(unit_id,dir);"
+			"npc_face(unit_id,dir);"
 		],
-		"description": "npcface (story)"
+		"description": "npc_face (story)"
 		},
 
-	"npcmovewithwaypoints (story)": {
-		"prefix": "npcmovewithwaypoints",
+	"npc_move_with_waypoints (story)": {
+		"prefix": "npc_move_with_waypoints",
 		"body": [
-			"npcmovewithwaypoints(unit_id,vector3list(\"v1x v1y v2x v2y\")[, event]);"
+			"npc_move_with_waypoints(unit_id,vector_3_list(\"v1x v1y v2x v2y\")[, event]);"
 		],
-		"description": "npcmovewithwaypoints (story)"
+		"description": "npc_move_with_waypoints (story)"
 		},
 
-	"npcstop (story)": {
-		"prefix": "npcstop",
+	"npc_stop (story)": {
+		"prefix": "npc_stop",
 		"body": [
-			"npcstop(unit_id);"
+			"npc_stop(unit_id);"
 		],
-		"description": "npcstop (story)"
+		"description": "npc_stop (story)"
 		},
 
 	"npcenablemovement (story)": {
@@ -1674,12 +1674,12 @@
 		"description": "npcenablemovement (story)"
 		},
 
-	"npcsetcamp (story)": {
-		"prefix": "npcsetcamp",
+	"npc_set_camp (story)": {
+		"prefix": "npc_set_camp",
 		"body": [
-			"npcsetcamp(unit_id,camp_id);"
+			"npc_set_camp(unit_id,camp_id);"
 		],
-		"description": "npcsetcamp (story)"
+		"description": "npc_set_camp (story)"
 		},
 
 	"waitobjload (story)": {
@@ -1714,36 +1714,36 @@
 		"description": "objunmount (story)"
 		},
 
-	"objface (story)": {
-		"prefix": "objface",
+	"obj_face (story)": {
+		"prefix": "obj_face",
 		"body": [
-			"objface(objid,dir);"
+			"obj_face(objid,dir);"
 		],
-		"description": "objface (story)"
+		"description": "obj_face (story)"
 		},
 
-	"objmove (story)": {
-		"prefix": "objmove",
+	"obj_move (story)": {
+		"prefix": "obj_move",
 		"body": [
-			"objmove(objid,vector3(x,y,z)[, event]);"
+			"obj_move(objid,vector_3(x,y,z)[, event]);"
 		],
-		"description": "objmove (story)"
+		"description": "obj_move (story)"
 		},
 
-	"objmovewithwaypoints (story)": {
-		"prefix": "objmovewithwaypoints",
+	"obj_move_with_waypoints (story)": {
+		"prefix": "obj_move_with_waypoints",
 		"body": [
-			"objmovewithwaypoints(objid,vector3list(\"v1x v1y v2x v2y\")[, event]);"
+			"obj_move_with_waypoints(objid,vector_3_list(\"v1x v1y v2x v2y\")[, event]);"
 		],
-		"description": "objmovewithwaypoints (story)"
+		"description": "obj_move_with_waypoints (story)"
 		},
 
-	"lockframe (story)": {
-		"prefix": "lockframe",
+	"lock_frame (story)": {
+		"prefix": "lock_frame",
 		"body": [
-			"lockframe(0.1);"
+			"lock_frame(0.1);"
 		],
-		"description": "lockframe (story)"
+		"description": "lock_frame (story)"
 		},
 
 	"setbattlestate (story)": {
@@ -1786,132 +1786,132 @@
 		"description": "isstorystate (story)"
 		},
 
-	"setstoryskipped (story)": {
-		"prefix": "setstoryskipped",
+	"set_story_skipped (story)": {
+		"prefix": "set_story_skipped",
 		"body": [
-			"setstoryskipped(0_or_1);"
+			"set_story_skipped(0_or_1);"
 		],
-		"description": "setstoryskipped (story)"
+		"description": "set_story_skipped (story)"
 		},
 
-	"isstoryskipped (story)": {
-		"prefix": "isstoryskipped",
+	"is_story_skipped (story)": {
+		"prefix": "is_story_skipped",
 		"body": [
-			"isstoryskipped();"
+			"is_story_skipped();"
 		],
-		"description": "isstoryskipped (story)"
+		"description": "is_story_skipped (story)"
 		},
 
-	"sendaimessage (story)": {
-		"prefix": "sendaimessage",
+	"send_ai_message (story)": {
+		"prefix": "send_ai_message",
 		"body": [
-			"sendaimessage(objid,msg,arg1,arg2,...);"
+			"send_ai_message(objid,msg,arg1,arg2,...);"
 		],
-		"description": "sendaimessage (story)"
+		"description": "send_ai_message (story)"
 		},
 
-	"sendaiconcurrentmessage (story)": {
-		"prefix": "sendaiconcurrentmessage",
+	"send_ai_concurrent_message (story)": {
+		"prefix": "send_ai_concurrent_message",
 		"body": [
-			"sendaiconcurrentmessage(objid,msg,arg1,arg2,...);"
+			"send_ai_concurrent_message(objid,msg,arg1,arg2,...);"
 		],
-		"description": "sendaiconcurrentmessage (story)"
+		"description": "send_ai_concurrent_message (story)"
 		},
 
-	"sendainamespacedmessage (story)": {
-		"prefix": "sendainamespacedmessage",
+	"send_ai_namespaced_message (story)": {
+		"prefix": "send_ai_namespaced_message",
 		"body": [
-			"sendainamespacedmessage(objid,msg,arg1,arg2,...);"
+			"send_ai_namespaced_message(objid,msg,arg1,arg2,...);"
 		],
-		"description": "sendainamespacedmessage (story)"
+		"description": "send_ai_namespaced_message (story)"
 		},
 
-	"sendaiconcurrentnamespacedmessage (story)": {
-		"prefix": "sendaiconcurrentnamespacedmessage",
+	"send_ai_concurrent_namespaced_message (story)": {
+		"prefix": "send_ai_concurrent_namespaced_message",
 		"body": [
-			"sendaiconcurrentnamespacedmessage(objid,msg,arg1,arg2,...);"
+			"send_ai_concurrent_namespaced_message(objid,msg,arg1,arg2,...);"
 		],
-		"description": "sendaiconcurrentnamespacedmessage (story)"
+		"description": "send_ai_concurrent_namespaced_message (story)"
 		},
 
-	"publishevent (story)": {
-		"prefix": "publishevent",
+	"publish_event (story)": {
+		"prefix": "publish_event",
 		"body": [
-			"publishevent(ev_name,group,arg1,arg2,...);"
+			"publish_event(ev_name,group,arg1,arg2,...);"
 		],
-		"description": "publishevent (story)"
+		"description": "publish_event (story)"
 		},
 
-	"objanimation (story)": {
-		"prefix": "objanimation",
+	"obj_animation (story)": {
+		"prefix": "obj_animation",
 		"body": [
-			"objanimation(objid,anim[,normalized_start_time]);"
+			"obj_animation(objid,anim[,normalized_start_time]);"
 		],
-		"description": "objanimation (story)"
+		"description": "obj_animation (story)"
 		},
 
-	"npcanimation (story)": {
-		"prefix": "npcanimation",
+	"npc_animation (story)": {
+		"prefix": "npc_animation",
 		"body": [
-			"npcanimation(unitid,anim[,normalized_start_time]);"
+			"npc_animation(unitid,anim[,normalized_start_time]);"
 		],
-		"description": "npcanimation (story)"
+		"description": "npc_animation (story)"
 		},
 
-	"sendmessage (story)": {
-		"prefix": "sendmessage",
+	"send_message (story)": {
+		"prefix": "send_message",
 		"body": [
-			"sendmessage(name,msg,arg1,arg2,...);"
+			"send_message(name,msg,arg1,arg2,...);"
 		],
-		"description": "sendmessage (story)"
+		"description": "send_message (story)"
 		},
 
-	"sendmessagewithtag (story)": {
-		"prefix": "sendmessagewithtag",
+	"send_message_with_tag (story)": {
+		"prefix": "send_message_with_tag",
 		"body": [
-			"sendmessagewithtag(tag,msg,arg1,arg2,...);"
+			"send_message_with_tag(tag,msg,arg1,arg2,...);"
 		],
-		"description": "sendmessagewithtag (story)"
+		"description": "send_message_with_tag (story)"
 		},
 
-	"sendmessagewithgameobject (story)": {
-		"prefix": "sendmessagewithgameobject",
+	"send_message_with_game_object (story)": {
+		"prefix": "send_message_with_game_object",
 		"body": [
-			"sendmessagewithgameobject(gameobject or objid,msg,arg1,arg2,...);"
+			"send_message_with_game_object(gameobject or objid,msg,arg1,arg2,...);"
 		],
-		"description": "sendmessagewithgameobject (story)"
+		"description": "send_message_with_game_object (story)"
 		},
 
-	"npcsetai (story)": {
-		"prefix": "npcsetai",
+	"npc_set_ai (story)": {
+		"prefix": "npc_set_ai",
 		"body": [
-			"npcsetai(unit_id,ai_logic_id,stringlist(\"aiparam0 aiparam1 aiparam2\"));"
+			"npc_set_ai(unit_id,ai_logic_id,string_list(\"aiparam0 aiparam1 aiparam2\"));"
 		],
-		"description": "npcsetai (story)"
+		"description": "npc_set_ai (story)"
 		},
 
-	"npcaddimpact (story)": {
-		"prefix": "npcaddimpact",
+	"npc_add_impact (story)": {
+		"prefix": "npc_add_impact",
 		"body": [
-			"npcaddimpact(unit_id,impact_id,arg1,arg2,arg3,...)[seq(\"@seq\")];"
+			"npc_add_impact(unit_id,impact_id,arg1,arg2,arg3,...)[seq(\"@seq\")];"
 		],
-		"description": "npcaddimpact (story)"
+		"description": "npc_add_impact (story)"
 		},
 
-	"npcremoveimpact (story)": {
-		"prefix": "npcremoveimpact",
+	"npc_remove_impact (story)": {
+		"prefix": "npc_remove_impact",
 		"body": [
-			"npcremoveimpact(unit_id,seq);"
+			"npc_remove_impact(unit_id,seq);"
 		],
-		"description": "npcremoveimpact (story)"
+		"description": "npc_remove_impact (story)"
 		},
 
-	"objstop (story)": {
-		"prefix": "objstop",
+	"obj_stop (story)": {
+		"prefix": "obj_stop",
 		"body": [
-			"objstop(objid);"
+			"obj_stop(objid);"
 		],
-		"description": "objstop (story)"
+		"description": "obj_stop (story)"
 		},
 
 	"objenablemovement (story)": {
@@ -1922,151 +1922,151 @@
 		"description": "objenablemovement (story)"
 		},
 
-	"objenableai (story)": {
-		"prefix": "objenableai",
+	"obj_enable_ai (story)": {
+		"prefix": "obj_enable_ai",
 		"body": [
-			"objenableai(objid,true_or_false);"
+			"obj_enable_ai(objid,true_or_false);"
 		],
-		"description": "objenableai (story)"
+		"description": "obj_enable_ai (story)"
 		},
 
-	"objsetai (story)": {
-		"prefix": "objsetai",
+	"obj_set_ai (story)": {
+		"prefix": "obj_set_ai",
 		"body": [
-			"objsetai(objid,ailogicid,stringlist(\"p1 p2 p3 p4\"));"
+			"obj_set_ai(objid,ailogicid,string_list(\"p1 p2 p3 p4\"));"
 		],
-		"description": "objsetai (story)"
+		"description": "obj_set_ai (story)"
 		},
 
-	"objaddimpact (story)": {
-		"prefix": "objaddimpact",
+	"obj_add_impact (story)": {
+		"prefix": "obj_add_impact",
 		"body": [
-			"objaddimpact(objid,impactid,arg1,arg2,arg3,...)[seq(\"@seq\")];"
+			"obj_add_impact(objid,impactid,arg1,arg2,arg3,...)[seq(\"@seq\")];"
 		],
-		"description": "objaddimpact (story)"
+		"description": "obj_add_impact (story)"
 		},
 
-	"objremoveimpact (story)": {
-		"prefix": "objremoveimpact",
+	"obj_remove_impact (story)": {
+		"prefix": "obj_remove_impact",
 		"body": [
-			"objremoveimpact(objid,seq);"
+			"obj_remove_impact(objid,seq);"
 		],
-		"description": "objremoveimpact (story)"
+		"description": "obj_remove_impact (story)"
 		},
 
-	"highlightpromptwithdict (story)": {
-		"prefix": "highlightpromptwithdict",
+	"highlight_prompt_with_dict (story)": {
+		"prefix": "highlight_prompt_with_dict",
 		"body": [
-			"highlightpromptwithdict(objid,dictid,arg1,arg2,...);"
+			"highlight_prompt_with_dict(objid,dictid,arg1,arg2,...);"
 		],
-		"description": "highlightpromptwithdict (story)"
+		"description": "highlight_prompt_with_dict (story)"
 		},
 
-	"highlightprompt (story)": {
-		"prefix": "highlightprompt",
+	"highlight_prompt (story)": {
+		"prefix": "highlight_prompt",
 		"body": [
-			"highlightprompt(msg);"
+			"highlight_prompt(msg);"
 		],
-		"description": "highlightprompt (story)"
+		"description": "highlight_prompt (story)"
 		},
 
-	"destroynpcwithobjid (story)": {
-		"prefix": "destroynpcwithobjid",
+	"destroy_npc_with_obj_id (story)": {
+		"prefix": "destroy_npc_with_obj_id",
 		"body": [
-			"destroynpcwithobjid(objid);"
+			"destroy_npc_with_obj_id(objid);"
 		],
-		"description": "destroynpcwithobjid (story)"
+		"description": "destroy_npc_with_obj_id (story)"
 		},
 
-	"sethp (story)": {
-		"prefix": "sethp",
+	"set_hp (story)": {
+		"prefix": "set_hp",
 		"body": [
-			"sethp(objid,hp);"
+			"set_hp(objid,hp);"
 		],
-		"description": "sethp (story)"
+		"description": "set_hp (story)"
 		},
 
-	"setlevel (story)": {
-		"prefix": "setlevel",
+	"set_level (story)": {
+		"prefix": "set_level",
 		"body": [
-			"setlevel(objid,lvl);"
+			"set_level(objid,lvl);"
 		],
-		"description": "setlevel (story)"
+		"description": "set_level (story)"
 		},
 
-	"setattr (story)": {
-		"prefix": "setattr",
+	"set_attr (story)": {
+		"prefix": "set_attr",
 		"body": [
-			"setattr(objid,attrid,value);"
+			"set_attr(objid,attrid,value);"
 		],
-		"description": "setattr (story)"
+		"description": "set_attr (story)"
 		},
 
-	"markcontrolbystory (story)": {
-		"prefix": "markcontrolbystory",
+	"mark_control_by_story (story)": {
+		"prefix": "mark_control_by_story",
 		"body": [
-			"markcontrolbystory(objid,true/false);"
+			"mark_control_by_story(objid,true/false);"
 		],
-		"description": "markcontrolbystory (story)"
+		"description": "mark_control_by_story (story)"
 		},
 
-	"waitstory (story)": {
-		"prefix": "waitstory",
+	"wait_story (story)": {
+		"prefix": "wait_story",
 		"body": [
-			"waitstory(storyid1,storyid2,...)[set(var,val)timeoutset(timeout,var,val)];"
+			"wait_story(storyid1,storyid2,...)[set(var,val)timeoutset(timeout,var,val)];"
 		],
-		"description": "waitstory (story)"
+		"description": "wait_story (story)"
 		},
 
-	"waitallmessage (story)": {
-		"prefix": "waitallmessage",
+	"wait_all_message (story)": {
+		"prefix": "wait_all_message",
 		"body": [
-			"waitallmessage(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
+			"wait_all_message(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
 		],
-		"description": "waitallmessage (story)"
+		"description": "wait_all_message (story)"
 		},
 
-	"waitallmessagehandler (story)": {
-		"prefix": "waitallmessagehandler",
+	"wait_all_message_handler (story)": {
+		"prefix": "wait_all_message_handler",
 		"body": [
-			"waitallmessagehandler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
+			"wait_all_message_handler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
 		],
-		"description": "waitallmessagehandler (story)"
+		"description": "wait_all_message_handler (story)"
 		},
 
-	"camerafollow (story)": {
-		"prefix": "camerafollow",
+	"camera_follow (story)": {
+		"prefix": "camera_follow",
 		"body": [
-			"camerafollow(npc_unit_id1,npc_unit_id2,...)[with(camera_path)];"
+			"camera_follow(npc_unit_id1,npc_unit_id2,...)[with(camera_path)];"
 		],
-		"description": "camerafollow (story)"
+		"description": "camera_follow (story)"
 		},
 
-	"cameralook (story)": {
-		"prefix": "cameralook",
+	"camera_look (story)": {
+		"prefix": "camera_look",
 		"body": [
-			"cameralook(unit_id)[with(camera_path)];",
-			"cameralook(vector3(x,y,z))[with(camera_path)];"
+			"camera_look(unit_id)[with(camera_path)];",
+			"camera_look(vector_3(x,y,z))[with(camera_path)];"
 		],
-		"description": "cameralook (story)"
+		"description": "camera_look (story)"
 		},
 
-	"cameralookimmediately (story)": {
-		"prefix": "cameralookimmediately",
+	"camera_look_immediately (story)": {
+		"prefix": "camera_look_immediately",
 		"body": [
-			"cameralookimmediately(unit_id)[with(camera_path)];",
-			"cameralookimmediately(vector3(x,y,z))[with(camera_path)];"
+			"camera_look_immediately(unit_id)[with(camera_path)];",
+			"camera_look_immediately(vector_3(x,y,z))[with(camera_path)];"
 		],
-		"description": "cameralookimmediately (story)"
+		"description": "camera_look_immediately (story)"
 		},
 
-	"cameralooktoward (story)": {
-		"prefix": "cameralooktoward",
+	"camera_look_toward (story)": {
+		"prefix": "camera_look_toward",
 		"body": [
-			"cameralooktoward(unit_id)[with(camera_path)];",
-			"cameralooktoward(vector3(x,y,z))[with(camera_path)];"
+			"camera_look_toward(unit_id)[with(camera_path)];",
+			"camera_look_toward(vector_3(x,y,z))[with(camera_path)];"
 		],
-		"description": "cameralooktoward (story)"
+		"description": "camera_look_toward (story)"
 		},
 
 	"camerakeepfollow (story)": {
@@ -2077,20 +2077,20 @@
 		"description": "camerakeepfollow (story)"
 		},
 
-	"camerafixedyaw (story)": {
-		"prefix": "camerafixedyaw",
+	"camera_fixed_yaw (story)": {
+		"prefix": "camera_fixed_yaw",
 		"body": [
-			"camerafixedyaw(yaw)[with(camera_path)];"
+			"camera_fixed_yaw(yaw)[with(camera_path)];"
 		],
-		"description": "camerafixedyaw (story)"
+		"description": "camera_fixed_yaw (story)"
 		},
 
-	"camerayaw (story)": {
-		"prefix": "camerayaw",
+	"camera_yaw (story)": {
+		"prefix": "camera_yaw",
 		"body": [
-			"camerayaw(yaw, anglelag, snaplag)[with(camera_path)];"
+			"camera_yaw(yaw, anglelag, snaplag)[with(camera_path)];"
 		],
-		"description": "camerayaw (story)"
+		"description": "camera_yaw (story)"
 		},
 
 	"camerafixedpitch (story)": {
@@ -2109,28 +2109,28 @@
 		"description": "camerapitch (story)"
 		},
 
-	"cameraheight (story)": {
-		"prefix": "cameraheight",
+	"camera_height (story)": {
+		"prefix": "camera_height",
 		"body": [
-			"cameraheight(height, lag)[with(camera_path)];"
+			"camera_height(height, lag)[with(camera_path)];"
 		],
-		"description": "cameraheight (story)"
+		"description": "camera_height (story)"
 		},
 
-	"cameradistance (story)": {
-		"prefix": "cameradistance",
+	"camera_distance (story)": {
+		"prefix": "camera_distance",
 		"body": [
-			"cameradistance(distance, lag)[with(camera_path)];"
+			"camera_distance(distance, lag)[with(camera_path)];"
 		],
-		"description": "cameradistance (story)"
+		"description": "camera_distance (story)"
 		},
 
-	"camerasetdistanceheight (story)": {
-		"prefix": "camerasetdistanceheight",
+	"camera_set_distance_height (story)": {
+		"prefix": "camera_set_distance_height",
 		"body": [
-			"camerasetdistanceheight(distance, height)[with(camera_path)];"
+			"camera_set_distance_height(distance, height)[with(camera_path)];"
 		],
-		"description": "camerasetdistanceheight (story)"
+		"description": "camera_set_distance_height (story)"
 		},
 
 	"camerastoredistanceheight (story)": {
@@ -2149,76 +2149,76 @@
 		"description": "camerarestoredistanceheight (story)"
 		},
 
-	"camerasetfollowspeed (story)": {
-		"prefix": "camerasetfollowspeed",
+	"camera_set_follow_speed (story)": {
+		"prefix": "camera_set_follow_speed",
 		"body": [
-			"camerasetfollowspeed(maxdist, mindist, maxspeed, minspeed, power)[with(camera_path)];"
+			"camera_set_follow_speed(maxdist, mindist, maxspeed, minspeed, power)[with(camera_path)];"
 		],
-		"description": "camerasetfollowspeed (story)"
+		"description": "camera_set_follow_speed (story)"
 		},
 
-	"cameraresetfollowspeed (story)": {
-		"prefix": "cameraresetfollowspeed",
+	"camera_reset_follow_speed (story)": {
+		"prefix": "camera_reset_follow_speed",
 		"body": [
-			"cameraresetfollowspeed()[with(camera_path)];"
+			"camera_reset_follow_speed()[with(camera_path)];"
 		],
-		"description": "cameraresetfollowspeed (story)"
+		"description": "camera_reset_follow_speed (story)"
 		},
 
-	"camerafollowobj (story)": {
-		"prefix": "camerafollowobj",
+	"camera_follow_obj (story)": {
+		"prefix": "camera_follow_obj",
 		"body": [
-			"camerafollowobj(objid)[with(camera_path)];"
+			"camera_follow_obj(objid)[with(camera_path)];"
 		],
-		"description": "camerafollowobj (story)"
+		"description": "camera_follow_obj (story)"
 		},
 
-	"cameralookobj (story)": {
-		"prefix": "cameralookobj",
+	"camera_look_obj (story)": {
+		"prefix": "camera_look_obj",
 		"body": [
-			"cameralookobj(objid)[with(camera_path)];"
+			"camera_look_obj(objid)[with(camera_path)];"
 		],
-		"description": "cameralookobj (story)"
+		"description": "camera_look_obj (story)"
 		},
 
-	"cameralookobjimmediately (story)": {
-		"prefix": "cameralookobjimmediately",
+	"camera_look_obj_immediately (story)": {
+		"prefix": "camera_look_obj_immediately",
 		"body": [
-			"cameralookobjimmediately(objid)[with(camera_path)];"
+			"camera_look_obj_immediately(objid)[with(camera_path)];"
 		],
-		"description": "cameralookobjimmediately (story)"
+		"description": "camera_look_obj_immediately (story)"
 		},
 
-	"cameralooktowardobj (story)": {
-		"prefix": "cameralooktowardobj",
+	"camera_look_toward_obj (story)": {
+		"prefix": "camera_look_toward_obj",
 		"body": [
-			"cameralooktowardobj(objid)[with(camera_path)];"
+			"camera_look_toward_obj(objid)[with(camera_path)];"
 		],
-		"description": "cameralooktowardobj (story)"
+		"description": "camera_look_toward_obj (story)"
 		},
 
-	"cameralookcopy (story)": {
-		"prefix": "cameralookcopy",
+	"camera_look_copy (story)": {
+		"prefix": "camera_look_copy",
 		"body": [
-			"cameralookcopy(src_camera_path, unit_id or vector3(x,y,z))[with(camera_path)];"
+			"camera_look_copy(src_camera_path, unit_id or vector_3(x,y,z))[with(camera_path)];"
 		],
-		"description": "cameralookcopy (story)"
+		"description": "camera_look_copy (story)"
 		},
 
-	"cameralookobjcopy (story)": {
-		"prefix": "cameralookobjcopy",
+	"camera_look_obj_copy (story)": {
+		"prefix": "camera_look_obj_copy",
 		"body": [
-			"cameralookobjcopy(src_camera_path, objid)[with(camera_path)];"
+			"camera_look_obj_copy(src_camera_path, objid)[with(camera_path)];"
 		],
-		"description": "cameralookobjcopy (story)"
+		"description": "camera_look_obj_copy (story)"
 		},
 
-	"cameraenable (story)": {
-		"prefix": "cameraenable",
+	"camera_enable (story)": {
+		"prefix": "camera_enable",
 		"body": [
-			"cameraenable(name, 1_or_0, 1_or_0);"
+			"camera_enable(name, 1_or_0, 1_or_0);"
 		],
-		"description": "cameraenable (story)"
+		"description": "camera_enable (story)"
 		},
 
 	"cameraenablestory (story)": {
@@ -2237,44 +2237,44 @@
 		"description": "bindtomaincamera (story)"
 		},
 
-	"showdlg (story)": {
-		"prefix": "showdlg",
+	"show_dlg (story)": {
+		"prefix": "show_dlg",
 		"body": [
-			"showdlg(objid, dlgid[, event]);"
+			"show_dlg(objid, dlgid[, event]);"
 		],
-		"description": "showdlg (story)"
+		"description": "show_dlg (story)"
 		},
 
-	"setunitid (story)": {
-		"prefix": "setunitid",
+	"set_unit_id (story)": {
+		"prefix": "set_unit_id",
 		"body": [
-			"setunitid(objid,unitid);"
+			"set_unit_id(objid,unitid);"
 		],
-		"description": "setunitid (story)"
+		"description": "set_unit_id (story)"
 		},
 
-	"setplayerid (story)": {
-		"prefix": "setplayerid",
+	"set_player_id (story)": {
+		"prefix": "set_player_id",
 		"body": [
-			"setplayerid(objid);"
+			"set_player_id(objid);"
 		],
-		"description": "setplayerid (story)"
+		"description": "set_player_id (story)"
 		},
 
-	"npcsetsummonerid (story)": {
-		"prefix": "npcsetsummonerid",
+	"npc_set_summoner_id (story)": {
+		"prefix": "npc_set_summoner_id",
 		"body": [
-			"npcsetsummonerid(unitid,objid);"
+			"npc_set_summoner_id(unitid,objid);"
 		],
-		"description": "npcsetsummonerid (story)"
+		"description": "npc_set_summoner_id (story)"
 		},
 
-	"objsetsummonerid (story)": {
-		"prefix": "objsetsummonerid",
+	"obj_set_summoner_id (story)": {
+		"prefix": "obj_set_summoner_id",
 		"body": [
-			"objsetsummonerid(objid,objid);"
+			"obj_set_summoner_id(objid,objid);"
 		],
-		"description": "objsetsummonerid (story)"
+		"description": "obj_set_summoner_id (story)"
 		},
 
 	"npcdisplay (story)": {
@@ -2341,12 +2341,12 @@
 		"description": "objinfight (story)"
 		},
 
-	"npccastskill (story)": {
-		"prefix": "npccastskill",
+	"npc_cast_skill (story)": {
+		"prefix": "npc_cast_skill",
 		"body": [
-			"npccastskill(unit_id, skill_id);"
+			"npc_cast_skill(unit_id, skill_id);"
 		],
-		"description": "npccastskill (story)"
+		"description": "npc_cast_skill (story)"
 		},
 
 	"npchideweapon (story)": {
@@ -2365,12 +2365,12 @@
 		"description": "npcautosync (story)"
 		},
 
-	"objcastskill (story)": {
-		"prefix": "objcastskill",
+	"obj_cast_skill (story)": {
+		"prefix": "obj_cast_skill",
 		"body": [
-			"objcastskill(obj_id, skill_id);"
+			"obj_cast_skill(obj_id, skill_id);"
 		],
-		"description": "objcastskill (story)"
+		"description": "obj_cast_skill (story)"
 		},
 
 	"objhideweapon (story)": {
@@ -2397,26 +2397,26 @@
 		"description": "usevehicle (story)"
 		},
 
-	"areadetect (story)": {
-		"prefix": "areadetect",
+	"area_detect (story)": {
+		"prefix": "area_detect",
 		"body": [
-			"areadetect(gameobjectname,radius,callback)[set(var,val,elseval)];"
+			"area_detect(gameobjectname,radius,callback)[set(var,val,elseval)];"
 		],
-		"description": "areadetect (story)"
+		"description": "area_detect (story)"
 		},
 
-	"gameobjectanimation (story)": {
-		"prefix": "gameobjectanimation",
+	"game_object_animation (story)": {
+		"prefix": "game_object_animation",
 		"body": [
-			"gameobjectanimation(objpath, anim[, normalized_time]);"
+			"game_object_animation(objpath, anim[, normalized_time]);"
 		],
-		"description": "gameobjectanimation (story)"
+		"description": "game_object_animation (story)"
 		},
 
-	"gameobjectanimationparam (story)": {
-		"prefix": "gameobjectanimationparam",
+	"game_object_animation_param (story)": {
+		"prefix": "game_object_animation_param",
 		"body": [
-			"gameobjectanimationparam(obj)",
+			"game_object_animation_param(obj)",
 			"{",
 			"    float(name,val);",
 			"    int(name,val);",
@@ -2424,23 +2424,23 @@
 			"    trigger(name,val);",
 			"};"
 		],
-		"description": "gameobjectanimationparam (story)"
+		"description": "game_object_animation_param (story)"
 		},
 
-	"npcsetaitarget (story)": {
-		"prefix": "npcsetaitarget",
+	"npc_set_ai_target (story)": {
+		"prefix": "npc_set_ai_target",
 		"body": [
-			"npcsetaitarget(unit_id,target);"
+			"npc_set_ai_target(unit_id,target);"
 		],
-		"description": "npcsetaitarget (story)"
+		"description": "npc_set_ai_target (story)"
 		},
 
-	"objsetaitarget (story)": {
-		"prefix": "objsetaitarget",
+	"obj_set_ai_target (story)": {
+		"prefix": "obj_set_ai_target",
 		"body": [
-			"objsetaitarget(objid,target);"
+			"obj_set_ai_target(objid,target);"
 		],
-		"description": "objsetaitarget (story)"
+		"description": "obj_set_ai_target (story)"
 		},
 
 	"npcsetaireachscope (story)": {
@@ -2459,60 +2459,60 @@
 		"description": "objsetaireachscope (story)"
 		},
 
-	"npcsetsummonskillid (story)": {
-		"prefix": "npcsetsummonskillid",
+	"npc_set_summon_skill_id (story)": {
+		"prefix": "npc_set_summon_skill_id",
 		"body": [
-			"npcsetsummonskillid(unitid,skillid);"
+			"npc_set_summon_skill_id(unitid,skillid);"
 		],
-		"description": "npcsetsummonskillid (story)"
+		"description": "npc_set_summon_skill_id (story)"
 		},
 
-	"objsetsummonskillid (story)": {
-		"prefix": "objsetsummonskillid",
+	"obj_set_summon_skill_id (story)": {
+		"prefix": "obj_set_summon_skill_id",
 		"body": [
-			"objsetsummonskillid(objid,skillid);"
+			"obj_set_summon_skill_id(objid,skillid);"
 		],
-		"description": "objsetsummonskillid (story)"
+		"description": "obj_set_summon_skill_id (story)"
 		},
 
-	"objsetcamp (story)": {
-		"prefix": "objsetcamp",
+	"obj_set_camp (story)": {
+		"prefix": "obj_set_camp",
 		"body": [
-			"objsetcamp(objid,camp_id);"
+			"obj_set_camp(objid,camp_id);"
 		],
-		"description": "objsetcamp (story)"
+		"description": "obj_set_camp (story)"
 		},
 
-	"setvisible (story)": {
-		"prefix": "setvisible",
+	"set_visible (story)": {
+		"prefix": "set_visible",
 		"body": [
-			"setvisible(objid,0_or_1);"
+			"set_visible(objid,0_or_1);"
 		],
-		"description": "setvisible (story)"
+		"description": "set_visible (story)"
 		},
 
-	"putonground (story)": {
-		"prefix": "putonground",
+	"put_on_ground (story)": {
+		"prefix": "put_on_ground",
 		"body": [
-			"putonground(objpath);"
+			"put_on_ground(objpath);"
 		],
-		"description": "putonground (story)"
+		"description": "put_on_ground (story)"
 		},
 
-	"npcsetformation (story)": {
-		"prefix": "npcsetformation",
+	"npc_set_formation (story)": {
+		"prefix": "npc_set_formation",
 		"body": [
-			"npcsetformation(npc_unit_id,index);"
+			"npc_set_formation(npc_unit_id,index);"
 		],
-		"description": "npcsetformation (story)"
+		"description": "npc_set_formation (story)"
 		},
 
-	"objsetformation (story)": {
-		"prefix": "objsetformation",
+	"obj_set_formation (story)": {
+		"prefix": "obj_set_formation",
 		"body": [
-			"objsetformation(obj_id, index);"
+			"obj_set_formation(obj_id, index);"
 		],
-		"description": "objsetformation (story)"
+		"description": "obj_set_formation (story)"
 		},
 
 	"defplayer (story)": {
@@ -2590,18 +2590,18 @@
 		"description": "preload story command, multiple line"
 		},
 
-	"loadui (story)": {
-		"prefix": "loadui",
+	"load_ui (story)": {
+		"prefix": "load_ui",
 		"body": [
-			"loadui(name, prefab, dslfile);"
+			"load_ui(name, prefab, dslfile);"
 		],
-		"description": "loadui (story)"
+		"description": "load_ui (story)"
 		},
 
-	"bindui (story)": {
-		"prefix": "bindui",
+	"bind_ui (story)": {
+		"prefix": "bind_ui",
 		"body": [
-			"bindui(gameobject){",
+			"bind_ui(gameobject){",
 			"    var(\"@varname\",\"Panel/Input\"); 										//variable bind to control",
 			"    inputs(\"\",...);           												//the InputField args to event",
 			"    toggles(\"\",...);																	//the Toggle args to event",
@@ -2614,23 +2614,23 @@
 			"    onevent(\"input\",\"eventtag\",\"Panel/Input\"); 				//on_input event's tag and the control bind to",
 			"};"
 		],
-		"description": "bindui (story)"
+		"description": "bind_ui (story)"
 		},
 
-	"pausestory (story)": {
-		"prefix": "pausestory",
+	"pause_story (story)": {
+		"prefix": "pause_story",
 		"body": [
-			"pausestory(storyid,storyid,...);"
+			"pause_story(story_id,story_id,...);"
 		],
-		"description": "pausestory (story)"
+		"description": "pause_story (story)"
 		},
 
-	"resumestory (story)": {
-		"prefix": "resumestory",
+	"resume_story (story)": {
+		"prefix": "resume_story",
 		"body": [
-			"resumestory(storyid,storyid,...);"
+			"resume_story(story_id,story_id,...);"
 		],
-		"description": "resumestory (story)"
+		"description": "resume_story (story)"
 		},
 
 	"pauseallmessagehandler (story)": {
@@ -2641,18 +2641,18 @@
 		"description": "pauseallmessagehandler (story)"
 		},
 
-	"resumeallmessagehandler (story)": {
-		"prefix": "resumeallmessagehandler",
+	"resume_all_message_handler (story)": {
+		"prefix": "resume_all_message_handler",
 		"body": [
-			"resumeallmessagehandler(msgid,msgid,...);"
+			"resume_all_message_handler(msgid,msgid,...);"
 		],
-		"description": "resumeallmessagehandler (story)"
+		"description": "resume_all_message_handler (story)"
 		},
 
-	"objanimationparam (story)": {
-		"prefix": "objanimationparam",
+	"obj_animation_param (story)": {
+		"prefix": "obj_animation_param",
 		"body": [
-			"objanimationparam(obj_id)",
+			"obj_animation_param(obj_id)",
 			"{",
 			"    float(name,val);",
 			"    int(name,val);",
@@ -2660,13 +2660,13 @@
 			"    trigger(name,val);",
 			"};"
 		],
-		"description": "objanimationparam (story)"
+		"description": "obj_animation_param (story)"
 		},
 
-	"npcanimationparam (story)": {
-		"prefix": "npcanimationparam",
+	"npc_animation_param (story)": {
+		"prefix": "npc_animation_param",
 		"body": [
-			"npcanimationparam(unit_id)",
+			"npc_animation_param(unit_id)",
 			"{",
 			"    float(name,val);",
 			"    int(name,val);",
@@ -2674,79 +2674,79 @@
 			"    trigger(name,val);",
 			"};"
 		],
-		"description": "npcanimationparam (story)"
+		"description": "npc_animation_param (story)"
 		},
 
-	"blackboardget (story)": {
-		"prefix": "blackboardget",
+	"blackboard_get (story)": {
+		"prefix": "blackboard_get",
 		"body": [
-			"blackboardget(name);"
+			"blackboard_get(name);"
 		],
-		"description": "blackboardget (story)"
+		"description": "blackboard_get (story)"
 		},
 
-	"gettime (story)": {
-		"prefix": "gettime",
+	"get_time (story)": {
+		"prefix": "get_time",
 		"body": [
-			"gettime();"
+			"get_time();"
 		],
-		"description": "gettime (story)"
+		"description": "get_time (story)"
 		},
 
-	"gettimescale (story)": {
-		"prefix": "gettimescale",
+	"get_time_scale (story)": {
+		"prefix": "get_time_scale",
 		"body": [
-			"gettimescale();"
+			"get_time_scale();"
 		],
-		"description": "gettimescale (story)"
+		"description": "get_time_scale (story)"
 		},
 
-	"isactive (story)": {
-		"prefix": "isactive",
+	"is_active (story)": {
+		"prefix": "is_active",
 		"body": [
-			"isactive(game_object_path);"
+			"is_active(game_object_path);"
 		],
-		"description": "isactive (story)"
+		"description": "is_active (story)"
 		},
 
-	"isreallyactive (story)": {
-		"prefix": "isreallyactive",
+	"is_really_active (story)": {
+		"prefix": "is_really_active",
 		"body": [
-			"isreallyactive(game_object_path);"
+			"is_really_active(game_object_path);"
 		],
-		"description": "isreallyactive (story)"
+		"description": "is_really_active (story)"
 		},
 
-	"getcomponent (story)": {
-		"prefix": "getcomponent",
+	"get_component (story)": {
+		"prefix": "get_component",
 		"body": [
-			"getcomponent(game_object_path，component_type_name/type);"
+			"get_component(game_object_path，component_type_name/type);"
 		],
-		"description": "getcomponent (story)"
+		"description": "get_component (story)"
 		},
 
-	"getgameobject (story)": {
-		"prefix": "getgameobject",
+	"get_game_object (story)": {
+		"prefix": "get_game_object",
 		"body": [
-			"getgameobject(game_object_path);"
+			"get_game_object(game_object_path);"
 		],
-		"description": "getgameobject (story)"
+		"description": "get_game_object (story)"
 		},
 
-	"getparent (story)": {
-		"prefix": "getparent",
+	"get_parent (story)": {
+		"prefix": "get_parent",
 		"body": [
-			"getparent(game_object_path);"
+			"get_parent(game_object_path);"
 		],
-		"description": "getparent (story)"
+		"description": "get_parent (story)"
 		},
 
-	"getchild (story)": {
-		"prefix": "getchild",
+	"get_child (story)": {
+		"prefix": "get_child",
 		"body": [
-			"getchild(game_object_path, child_path);"
+			"get_child(game_object_path, child_path);"
 		],
-		"description": "getchild (story)"
+		"description": "get_child (story)"
 		},
 
 	"namespace (story)": {
@@ -2757,60 +2757,60 @@
 		"description": "namespace (story)"
 		},
 
-	"blackboardclear (story)": {
-		"prefix": "blackboardclear",
+	"blackboard_clear (story)": {
+		"prefix": "blackboard_clear",
 		"body": [
-			"blackboardclear();"
+			"blackboard_clear();"
 		],
-		"description": "blackboardclear (story)"
+		"description": "blackboard_clear (story)"
 		},
 
-	"blackboardset (story)": {
-		"prefix": "blackboardset",
+	"blackboard_set (story)": {
+		"prefix": "blackboard_set",
 		"body": [
-			"blackboardset(name,value);"
+			"blackboard_set(name,value);"
 		],
-		"description": "blackboardset (story)"
+		"description": "blackboard_set (story)"
 		},
 
-	"creategameobject (story)": {
-		"prefix": "creategameobject",
+	"create_game_object (story)": {
+		"prefix": "create_game_object",
 		"body": [
-			"creategameobject(name, prefab[, parent])[obj(\"varname\")]{",
-			"    position(vector3(x,y,z));",
-			"    rotation(vector3(x,y,z));",
-			"    scale(vector3(x,y,z));",
+			"create_game_object(name, prefab[, parent])[obj(\"varname\")]{",
+			"    position(vector_3(x,y,z));",
+			"    rotation(vector_3(x,y,z));",
+			"    scale(vector_3(x,y,z));",
 			"};"
 		],
-		"description": "creategameobject (story)"
+		"description": "create_game_object (story)"
 		},
 
-	"settransform (story)": {
-		"prefix": "settransform",
+	"set_transform (story)": {
+		"prefix": "set_transform",
 		"body": [
-			"settransform(name, world_or_local){",
-			"    position(vector3(x,y,z));",
-			"    rotation(vector3(x,y,z));",
-			"    scale(vector3(x,y,z));",
+			"set_transform(name, world_or_local){",
+			"    position(vector_3(x,y,z));",
+			"    rotation(vector_3(x,y,z));",
+			"    scale(vector_3(x,y,z));",
 			"};"
 		],
-		"description": "settransform (story)"
+		"description": "set_transform (story)"
 		},
 
-	"destroygameobject (story)": {
-		"prefix": "destroygameobject",
+	"destroy_game_object (story)": {
+		"prefix": "destroy_game_object",
 		"body": [
-			"destroygameobject(path);"
+			"destroy_game_object(path);"
 		],
-		"description": "destroygameobject (story)"
+		"description": "destroy_game_object (story)"
 		},
 
-	"autorecycle (story)": {
-		"prefix": "autorecycle",
+	"auto_recycle (story)": {
+		"prefix": "auto_recycle",
 		"body": [
-			"autorecycle(path, 1_or_0);"
+			"auto_recycle(path, 1_or_0);"
 		],
-		"description": "autorecycle (story)"
+		"description": "auto_recycle (story)"
 		},
 
 	"followtarget (story)": {
@@ -2821,44 +2821,44 @@
 		"description": "followtarget (story)"
 		},
 
-	"setparent (story)": {
-		"prefix": "setparent",
+	"set_parent (story)": {
+		"prefix": "set_parent",
 		"body": [
-			"setparent(objpath,parent,stay_world_pos);"
+			"set_parent(objpath,parent,stay_world_pos);"
 		],
-		"description": "setparent (story)"
+		"description": "set_parent (story)"
 		},
 
-	"setactive (story)": {
-		"prefix": "setactive",
+	"set_active (story)": {
+		"prefix": "set_active",
 		"body": [
-			"setactive(objpath,1_or_0);"
+			"set_active(objpath,1_or_0);"
 		],
-		"description": "setactive (story)"
+		"description": "set_active (story)"
 		},
 
-	"addcomponent (story)": {
-		"prefix": "addcomponent",
+	"add_component (story)": {
+		"prefix": "add_component",
 		"body": [
-			"addcomponent(objpath, component_name/component_type)[obj(\"@varname\")];"
+			"add_component(objpath, component_name/component_type)[obj(\"@varname\")];"
 		],
-		"description": "addcomponent (story)"
+		"description": "add_component (story)"
 		},
 
-	"removecomponent (story)": {
-		"prefix": "removecomponent",
+	"remove_component (story)": {
+		"prefix": "remove_component",
 		"body": [
-			"removecomponent(objpath,type);"
+			"remove_component(objpath,type);"
 		],
-		"description": "removecomponent (story)"
+		"description": "remove_component (story)"
 		},
 
-	"openurl (story)": {
-		"prefix": "openurl",
+	"open_url (story)": {
+		"prefix": "open_url",
 		"body": [
-			"openurl(url);"
+			"open_url(url);"
 		],
-		"description": "openurl (story)"
+		"description": "open_url (story)"
 		},
 
 	"quit (story)": {
@@ -2869,276 +2869,276 @@
 		"description": "quit (story)"
 		},
 
-	"localnamespacedmessage (story)": {
-		"prefix": "localnamespacedmessage",
+	"local_namespaced_message (story)": {
+		"prefix": "local_namespaced_message",
 		"body": [
-			"localnamespacedmessage(msgId,arg1,arg2,...);"
+			"local_namespaced_message(msgId,arg1,arg2,...);"
 		],
-		"description": "localnamespacedmessage (story)"
+		"description": "local_namespaced_message (story)"
 		},
 
-	"storylocalnamespacedmessage (story)": {
-		"prefix": "storylocalnamespacedmessage",
+	"story_local_namespaced_message (story)": {
+		"prefix": "story_local_namespaced_message",
 		"body": [
-			"storylocalnamespacedmessage(msgId,arg1,arg2,...);"
+			"story_local_namespaced_message(msgId,arg1,arg2,...);"
 		],
-		"description": "storylocalnamespacedmessage (story)"
+		"description": "story_local_namespaced_message (story)"
 		},
 
-	"clearnamespacedmessage (story)": {
-		"prefix": "clearnamespacedmessage",
+	"clear_namespaced_message (story)": {
+		"prefix": "clear_namespaced_message",
 		"body": [
-			"clearnamespacedmessage(msgid1,msgid2,...);"
+			"clear_namespaced_message(msgid1,msgid2,...);"
 		],
-		"description": "clearnamespacedmessage (story)"
+		"description": "clear_namespaced_message (story)"
 		},
 
-	"waitlocalnamespacedmessage (story)": {
-		"prefix": "waitlocalnamespacedmessage",
+	"wait_local_namespaced_message (story)": {
+		"prefix": "wait_local_namespaced_message",
 		"body": [
-			"waitlocalnamespacedmessage(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
+			"wait_local_namespaced_message(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
 		],
-		"description": "waitlocalnamespacedmessage (story)"
+		"description": "wait_local_namespaced_message (story)"
 		},
 
-	"waitlocalnamespacedmessagehandler (story)": {
-		"prefix": "waitlocalnamespacedmessagehandler",
+	"wait_local_namespaced_message_handler (story)": {
+		"prefix": "wait_local_namespaced_message_handler",
 		"body": [
-			"waitlocalnamespacedmessagehandler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
+			"wait_local_namespaced_message_handler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
 		],
-		"description": "waitlocalnamespacedmessagehandler (story)"
+		"description": "wait_local_namespaced_message_handler (story)"
 		},
 
-	"storywaitlocalnamespacedmessage (story)": {
-		"prefix": "storywaitlocalnamespacedmessage",
+	"story_wait_local_namespaced_message (story)": {
+		"prefix": "story_wait_local_namespaced_message",
 		"body": [
-			"storywaitlocalnamespacedmessage(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
+			"story_wait_local_namespaced_message(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
 		],
-		"description": "storywaitlocalnamespacedmessage (story)"
+		"description": "story_wait_local_namespaced_message (story)"
 		},
 
-	"storywaitlocalnamespacedmessagehandler (story)": {
-		"prefix": "storywaitlocalnamespacedmessagehandler",
+	"story_wait_local_namespaced_message_handler (story)": {
+		"prefix": "story_wait_local_namespaced_message_handler",
 		"body": [
-			"storywaitlocalnamespacedmessagehandler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
+			"story_wait_local_namespaced_message_handler(msgid1,msgid2,...)[set(var,val)timeoutset(timeout,var,val)];"
 		],
-		"description": "storywaitlocalnamespacedmessagehandler (story)"
+		"description": "story_wait_local_namespaced_message_handler (story)"
 		},
 
-	"sendmessage PlayCurvy (story)": {
-		"prefix": "sendmessage PlayCurvy",
+	"send_message PlayCurvy (story)": {
+		"prefix": "send_message PlayCurvy",
 		"body": [
-			"sendmessage(\"ZhanChangLogic/Spline\", \"PlayCurvy\", \"on_end_reached\");"
+			"send_message(\"ZhanChangLogic/Spline\", \"PlayCurvy\", \"on_end_reached\");"
 		],
-		"description": "sendmessage PlayCurvy (story)"
+		"description": "send_message PlayCurvy (story)"
 		},
 
-	"sendmessage PlayCurvy2 (story)": {
-		"prefix": "sendmessage PlayCurvy2",
+	"send_message PlayCurvy2 (story)": {
+		"prefix": "send_message PlayCurvy2",
 		"body": [
-			"sendmessage(\"ZhanChangLogic/Spline\", \"PlayCurvy2\", \"on_end_reached\", \"on_control_point_reached\");"
+			"send_message(\"ZhanChangLogic/Spline\", \"PlayCurvy2\", \"on_end_reached\", \"on_control_point_reached\");"
 		],
-		"description": "sendmessage PlayCurvy2 (story)"
+		"description": "send_message PlayCurvy2 (story)"
 		},
 
-	"sendmessage PauseCurvy (story)": {
-		"prefix": "sendmessage PauseCurvy",
+	"send_message PauseCurvy (story)": {
+		"prefix": "send_message PauseCurvy",
 		"body": [
-			"sendmessage(\"ZhanChangLogic/Spline\", \"PauseCurvy\");"
+			"send_message(\"ZhanChangLogic/Spline\", \"PauseCurvy\");"
 		],
-		"description": "sendmessage PauseCurvy (story)"
+		"description": "send_message PauseCurvy (story)"
 		},
 
-	"sendmessage ResumeCurvy (story)": {
-		"prefix": "sendmessage ResumeCurvy",
+	"send_message ResumeCurvy (story)": {
+		"prefix": "send_message ResumeCurvy",
 		"body": [
-			"sendmessage(\"ZhanChangLogic/Spline\", \"ResumeCurvy\");"
+			"send_message(\"ZhanChangLogic/Spline\", \"ResumeCurvy\");"
 		],
-		"description": "sendmessage ResumeCurvy (story)"
+		"description": "send_message ResumeCurvy (story)"
 		},
 
-	"sendmessage StopCurvy (story)": {
-		"prefix": "sendmessage StopCurvy",
+	"send_message StopCurvy (story)": {
+		"prefix": "send_message StopCurvy",
 		"body": [
-			"sendmessage(\"ZhanChangLogic/Spline\", \"StopCurvy\");"
+			"send_message(\"ZhanChangLogic/Spline\", \"StopCurvy\");"
 		],
-		"description": "sendmessage StopCurvy (story)"
+		"description": "send_message StopCurvy (story)"
 		},
 
-	"sendmessage PlayTimeline (story)": {
-		"prefix": "sendmessage PlayTimeline",
+	"send_message PlayTimeline (story)": {
+		"prefix": "send_message PlayTimeline",
 		"body": [
-			"sendmessage(\"ZhanChangLogic/Spline\", \"PlayTimeline\");"
+			"send_message(\"ZhanChangLogic/Spline\", \"PlayTimeline\");"
 		],
-		"description": "sendmessage PlayTimeline (story)"
+		"description": "send_message PlayTimeline (story)"
 		},
 
-	"sendmessage PauseTimeline (story)": {
-		"prefix": "sendmessage PauseTimeline",
+	"send_message PauseTimeline (story)": {
+		"prefix": "send_message PauseTimeline",
 		"body": [
-			"sendmessage(\"ZhanChangLogic/Spline\", \"PauseTimeline\");"
+			"send_message(\"ZhanChangLogic/Spline\", \"PauseTimeline\");"
 		],
-		"description": "sendmessage PauseTimeline (story)"
+		"description": "send_message PauseTimeline (story)"
 		},
 
-	"sendmessage ResumeTimeline (story)": {
-		"prefix": "sendmessage ResumeTimeline",
+	"send_message ResumeTimeline (story)": {
+		"prefix": "send_message ResumeTimeline",
 		"body": [
-			"sendmessage(\"ZhanChangLogic/Spline\", \"ResumeTimeline\");"
+			"send_message(\"ZhanChangLogic/Spline\", \"ResumeTimeline\");"
 		],
-		"description": "sendmessage ResumeTimeline (story)"
+		"description": "send_message ResumeTimeline (story)"
 		},
 
-	"sendmessage StopTimeline (story)": {
-		"prefix": "sendmessage StopTimeline",
+	"send_message StopTimeline (story)": {
+		"prefix": "send_message StopTimeline",
 		"body": [
-			"sendmessage(\"ZhanChangLogic/Spline\", \"StopTimeline\");"
+			"send_message(\"ZhanChangLogic/Spline\", \"StopTimeline\");"
 		],
-		"description": "sendmessage StopTimeline (story)"
+		"description": "send_message StopTimeline (story)"
 		},
 
-	"sendmessage PlayVideo (story)": {
-		"prefix": "sendmessage PlayVideo",
+	"send_message PlayVideo (story)": {
+		"prefix": "send_message PlayVideo",
 		"body": [
-			"sendmessage(\"ZhanChangLogic/Video\", \"PlayVideo\");"
+			"send_message(\"ZhanChangLogic/Video\", \"PlayVideo\");"
 		],
-		"description": "sendmessage PlayVideo (story)"
+		"description": "send_message PlayVideo (story)"
 		},
 
-	"sendmessage PauseVideo (story)": {
-		"prefix": "sendmessage PauseVideo",
+	"send_message PauseVideo (story)": {
+		"prefix": "send_message PauseVideo",
 		"body": [
-			"sendmessage(\"ZhanChangLogic/Video\", \"PauseVideo\");"
+			"send_message(\"ZhanChangLogic/Video\", \"PauseVideo\");"
 		],
-		"description": "sendmessage PauseVideo (story)"
+		"description": "send_message PauseVideo (story)"
 		},
 
-	"sendmessage ResumeVideo (story)": {
-		"prefix": "sendmessage ResumeVideo",
+	"send_message ResumeVideo (story)": {
+		"prefix": "send_message ResumeVideo",
 		"body": [
-			"sendmessage(\"ZhanChangLogic/Video\", \"ResumeVideo\");"
+			"send_message(\"ZhanChangLogic/Video\", \"ResumeVideo\");"
 		],
-		"description": "sendmessage ResumeVideo (story)"
+		"description": "send_message ResumeVideo (story)"
 		},
 
-	"sendmessage StopVideo (story)": {
-		"prefix": "sendmessage StopVideo",
+	"send_message StopVideo (story)": {
+		"prefix": "send_message StopVideo",
 		"body": [
-			"sendmessage(\"ZhanChangLogic/Video\", \"StopVideo\");"
+			"send_message(\"ZhanChangLogic/Video\", \"StopVideo\");"
 		],
-		"description": "sendmessage StopVideo (story)"
+		"description": "send_message StopVideo (story)"
 		},
 
-	"sendmessage DimScreen (story)": {
-		"prefix": "sendmessage DimScreen",
+	"send_message DimScreen (story)": {
+		"prefix": "send_message DimScreen",
 		"body": [
-			"sendmessage(\"ZhanChangLogic/Camera\", \"DimScreen\", time);"
+			"send_message(\"ZhanChangLogic/Camera\", \"DimScreen\", time);"
 		],
-		"description": "sendmessage DimScreen (story)"
+		"description": "send_message DimScreen (story)"
 		},
 
-	"sendmessage LightScreen (story)": {
-		"prefix": "sendmessage LightScreen",
+	"send_message LightScreen (story)": {
+		"prefix": "send_message LightScreen",
 		"body": [
-			"sendmessage(\"ZhanChangLogic/Camera\", \"LightScreen\", time);"
+			"send_message(\"ZhanChangLogic/Camera\", \"LightScreen\", time);"
 		],
-		"description": "sendmessage LightScreen (story)"
+		"description": "send_message LightScreen (story)"
 		},
 
-	"sendmessage LightTo (story)": {
-		"prefix": "sendmessage LightTo",
+	"send_message LightTo (story)": {
+		"prefix": "send_message LightTo",
 		"body": [
-			"sendmessage(\"ZhanChangLogic/Camera\", \"LightTo\", time, red, green, blue, alpha);"
+			"send_message(\"ZhanChangLogic/Camera\", \"LightTo\", time, red, green, blue, alpha);"
 		],
-		"description": "sendmessage LightTo (story)"
+		"description": "send_message LightTo (story)"
 		},
 
-	"sendmessage ToFollowPathSmoothly (story)": {
-		"prefix": "sendmessage ToFollowPathSmoothly",
+	"send_message ToFollowPathSmoothly (story)": {
+		"prefix": "send_message ToFollowPathSmoothly",
 		"body": [
-			"sendmessage(\"StartScript\",\"ToFollowPathSmoothly\",@playerObjId);"
+			"send_message(\"StartScript\",\"ToFollowPathSmoothly\",@playerObjId);"
 		],
-		"description": "sendmessage ToFollowPathSmoothly (story)"
+		"description": "send_message ToFollowPathSmoothly (story)"
 		},
 
-	"sendmessage CameraShake (story)": {
-		"prefix": "sendmessage CameraShake",
+	"send_message CameraShake (story)": {
+		"prefix": "send_message CameraShake",
 		"body": [
-			"sendmessage(\"ZhanChangLogic/Camera\",\"CameraShake\",time,shake_type,magnitude,shake_curve);"
+			"send_message(\"ZhanChangLogic/Camera\",\"CameraShake\",time,shake_type,magnitude,shake_curve);"
 		],
-		"description": "sendmessage CameraShake (story)"
+		"description": "send_message CameraShake (story)"
 		},
 
-	"sendmessage EnableObstacle (story)": {
-		"prefix": "sendmessage EnableObstacle",
+	"send_message EnableObstacle (story)": {
+		"prefix": "send_message EnableObstacle",
 		"body": [
-			"sendmessage(\"ZhanChangLogic/DynamicObstacle\",\"EnableObstacle\",1_or_0);"
+			"send_message(\"ZhanChangLogic/DynamicObstacle\",\"EnableObstacle\",1_or_0);"
 		],
-		"description": "sendmessage EnableObstacle (story)"
+		"description": "send_message EnableObstacle (story)"
 		},
 
-	"sendmessage SetLightVisible (story)": {
-		"prefix": "sendmessage SetLightVisible",
+	"send_message SetLightVisible (story)": {
+		"prefix": "send_message SetLightVisible",
 		"body": [
-			"sendmessage(\"ZhanChangLogic/Light\",\"SetLightVisible\",1_or_0);"
+			"send_message(\"ZhanChangLogic/Light\",\"SetLightVisible\",1_or_0);"
 		],
-		"description": "sendmessage SetLightVisible (story)"
+		"description": "send_message SetLightVisible (story)"
 		},
 
-	"sendmessage SetVisible (story)": {
-		"prefix": "sendmessage SetVisible",
+	"send_message SetVisible (story)": {
+		"prefix": "send_message SetVisible",
 		"body": [
-			"sendmessage(\"ZhanChangLogic/Object\",\"SetVisible\",1_or_0);"
+			"send_message(\"ZhanChangLogic/Object\",\"SetVisible\",1_or_0);"
 		],
-		"description": "sendmessage SetVisible (story)"
+		"description": "send_message SetVisible (story)"
 		},
 
-	"sendmessage PlayAnimation (story)": {
-		"prefix": "sendmessage PlayAnimation",
+	"send_message PlayAnimation (story)": {
+		"prefix": "send_message PlayAnimation",
 		"body": [
-			"sendmessage(\"ZhanChangLogic/Object\",\"PlayAnimation\", anim, speed);"
+			"send_message(\"ZhanChangLogic/Object\",\"PlayAnimation\", anim, speed);"
 		],
-		"description": "sendmessage PlayAnimation (story)"
+		"description": "send_message PlayAnimation (story)"
 		},
 
-	"sendmessage PlayParticle (story)": {
-		"prefix": "sendmessage PlayParticle",
+	"send_message PlayParticle (story)": {
+		"prefix": "send_message PlayParticle",
 		"body": [
-			"sendmessage(\"ZhanChangLogic/Object\",\"PlayParticle\", 1_or_0);"
+			"send_message(\"ZhanChangLogic/Object\",\"PlayParticle\", 1_or_0);"
 		],
-		"description": "sendmessage PlayParticle (story)"
+		"description": "send_message PlayParticle (story)"
 		},
 
-	"sendmessage PlaySound (story)": {
-		"prefix": "sendmessage PlaySound",
+	"send_message PlaySound (story)": {
+		"prefix": "send_message PlaySound",
 		"body": [
-			"sendmessage(\"ZhanChangLogic/Object\",\"PlaySound\", index);"
+			"send_message(\"ZhanChangLogic/Object\",\"PlaySound\", index);"
 		],
-		"description": "sendmessage PlaySound (story)"
+		"description": "send_message PlaySound (story)"
 		},
 
-	"sendmessage StopSound (story)": {
-		"prefix": "sendmessage StopSound",
+	"send_message StopSound (story)": {
+		"prefix": "send_message StopSound",
 		"body": [
-			"sendmessage(\"ZhanChangLogic/Object\",\"StopSound\", index);"
+			"send_message(\"ZhanChangLogic/Object\",\"StopSound\", index);"
 		],
-		"description": "sendmessage StopSound (story)"
+		"description": "send_message StopSound (story)"
 		},
 
-	"sendmessage PlaySoundWithFmod (story)": {
-		"prefix": "sendmessage PlaySoundWithFmod",
+	"send_message PlaySoundWithFmod (story)": {
+		"prefix": "send_message PlaySoundWithFmod",
 		"body": [
-			"sendmessage(\"StartScript\",\"PlaySoundWithFmod\", eventname);"
+			"send_message(\"StartScript\",\"PlaySoundWithFmod\", eventname);"
 		],
-		"description": "sendmessage PlaySoundWithFmod (story)"
+		"description": "send_message PlaySoundWithFmod (story)"
 		},
 
-	"sendmessage ChangeWeather (story)": {
-		"prefix": "sendmessage ChangeWeather",
+	"send_message ChangeWeather (story)": {
+		"prefix": "send_message ChangeWeather",
 		"body": [
-			"sendmessage(\"StartScript\",\"ChangeWeather\", type, time);"
+			"send_message(\"StartScript\",\"ChangeWeather\", type, time);"
 		],
-		"description": "sendmessage ChangeWeather (story)"
+		"description": "send_message ChangeWeather (story)"
 		},
 
 
