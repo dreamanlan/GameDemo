@@ -247,7 +247,7 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// obj_move(obj_id, vector_3(x,y,z)[, event]) - move object to position
+    /// obj_move(obj_id, vector3(x,y,z)[, event]) - move object to position
     /// </summary>
     internal sealed class ObjMoveExp : SimpleExpressionBase
     {

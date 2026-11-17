@@ -19,17 +19,17 @@
         $hp=get_hp($objid);
         $maxhp=get_max_hp($objid);
         if($hp<$maxhp/5){
-          send_message_with_game_object(get_game_object($objid),"TweenUiPrefabWithText",""+$objid,"UI/YellowText",vector_3(0,2,0),"","啊，我要死了！",2);
+          send_message_with_game_object(get_game_object($objid),"TweenUiPrefabWithText",""+$objid,"UI/YellowText",vector3(0,2,0),"","啊，我要死了！",2);
         }elseif($hp<$maxhp/4){
-          send_message_with_game_object(get_game_object($objid),"TweenUiPrefabWithText",""+$objid,"UI/YellowText",vector_3(0,2,0),"","啊，我要回家！",2);
+          send_message_with_game_object(get_game_object($objid),"TweenUiPrefabWithText",""+$objid,"UI/YellowText",vector3(0,2,0),"","啊，我要回家！",2);
         }elseif($hp<$maxhp/3){
-          send_message_with_game_object(get_game_object($objid),"TweenUiPrefabWithText",""+$objid,"UI/YellowText",vector_3(0,2,0),"","啊，我伤的很重！",2);
+          send_message_with_game_object(get_game_object($objid),"TweenUiPrefabWithText",""+$objid,"UI/YellowText",vector3(0,2,0),"","啊，我伤的很重！",2);
         }elseif($hp<$maxhp/2){
-          send_message_with_game_object(get_game_object($objid),"TweenUiPrefabWithText",""+$objid,"UI/YellowText",vector_3(0,2,0),"","啊，我受伤了！",2);
+          send_message_with_game_object(get_game_object($objid),"TweenUiPrefabWithText",""+$objid,"UI/YellowText",vector3(0,2,0),"","啊，我受伤了！",2);
         }elseif($hp<$maxhp){
-          send_message_with_game_object(get_game_object($objid),"TweenUiPrefabWithText",""+$objid,"UI/YellowText",vector_3(0,2,0),"","啊，好恐怖！",2);
+          send_message_with_game_object(get_game_object($objid),"TweenUiPrefabWithText",""+$objid,"UI/YellowText",vector3(0,2,0),"","啊，好恐怖！",2);
         }else{
-          send_message_with_game_object(get_game_object($objid),"TweenUiPrefabWithText",""+$objid,"UI/YellowText",vector_3(0,2,0),"","这是哪里？？？",2);
+          send_message_with_game_object(get_game_object($objid),"TweenUiPrefabWithText",""+$objid,"UI/YellowText",vector3(0,2,0),"","这是哪里？？？",2);
         };
       };
     };

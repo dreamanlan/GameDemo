@@ -470,17 +470,17 @@ storywaitlocalmessagehandler等待当前story的指定消息处理全部执行�
 
 六、内部函数
 
-1.vector_2(x,y);
+1.vector2(x,y);
 
 作用：
   构造一个vector2对象。
 
-2.vector_3(x,y,z);
+2.vector3(x,y,z);
 
 作用：
   构造一个vector3对象。
 
-3.vector_4(x,y,z,w);
+3.vector4(x,y,z,w);
 
 作用：
   构造一个vector4对象。
@@ -520,12 +520,12 @@ value必须是个字符串value，表示要读取value的变量名。此函数�
 作用：
   从字符串里读取字符串列表，分隔符可以是' '、','、'|'之一。返回value用于looplist语句遍历。
 
-11.vector_2_list("v1x v1y v2x v2y");
+11.vector2_list("v1x v1y v2x v2y");
 
 作用：
   从字符串里读取vector2列表，分隔符可以是' '、','、'|'之一。返回value用于looplist语句遍历。
 
-12.vector_3_list("v1x v1y v1z v2x v2y v2z");
+12.vector3_list("v1x v1y v1z v2x v2y v2z");
 
 作用：
   从字符串里读取vector3列表，分隔符可以是' '、','、'|'之一。返回value用于looplist语句遍历。
@@ -571,22 +571,22 @@ rnd_from_list(int_list("1 2 3 4 5 6 7 8")[,defaultvalue]);
 作用：
   取指定list的元素个数。
 
-21.vector_2_dist(vector_2(1,2),vector_2(3,4));
+21.vector2_dist(vector2(1,2),vector2(3,4));
 
 作用：
   计算2点距离。
 
-22.vector_3_dist(vector_3(1,2,3),vector_3(4,5,6));
+22.vector3_dist(vector3(1,2,3),vector3(4,5,6));
 
 作用：
   计算2点距离（2D距离）。
 
-23.vector_2_to_3(vector_2(1,2));
+23.vector2_to_3(vector2(1,2));
 
 作用：
   将vector2转换成vector3，yvalue部分置0。
 
-24.vector_3_to_2(vector_3(1,2,3));
+24.vector3_to_2(vector3(1,2,3));
 
 作用：
   将vector3转换成vector2，丢掉yvalue部分。
@@ -694,12 +694,12 @@ rnd_from_list(int_list("1 2 3 4 5 6 7 8")[,defaultvalue]);
   获取指定名称的Class的Type。
   静态类名写法：TopNamespace.SubNameSpace.ContainingClass+NestedClass, MyAssembly, Version=1.3.0.0, Culture=neutral, PublicKeyToken=b17a5c561934e089
 
-45.rnd_vector_3(center,radius);
+45.rnd_vector3(center,radius);
 
 作用：
   取指定点周围的随机点。
 
-46.rnd_vector_2(center,radius);
+46.rnd_vector2(center,radius);
 
 作用：
   取指定点周围的随机点。
@@ -936,13 +936,13 @@ rnd_from_list(int_list("1 2 3 4 5 6 7 8")[,defaultvalue]);
 作用：
   获取Curvy插件在场景里放置的曲线的控制点列表，path为路径。
 
-47.offset_spline(spline, vector_3(x,y,z));
+47.offset_spline(spline, vector3(x,y,z));
 
 作用：
   获取一条曲线偏移vector3(x,y,z)后的曲线。
 
-48.offset_vector_3(pt, vector_3(x,y,z));
-offset_vector_3(pt, pt2, vector_3(x,y,z));
+48.offset_vector3(pt, vector3(x,y,z));
+offset_vector3(pt, pt2, vector3(x,y,z));
 
 作用：
   获取指定点偏移vector3(x,y,z)后的曲线，如果指定pt2，则偏移按pt->pt2方向旋转。
@@ -979,8 +979,8 @@ offset_vector_3(pt, pt2, vector_3(x,y,z));
 
 55.find_obj_id(tableid);
 find_obj_id(type, tableid);
-find_obj_id(type, vector_3(x, 0 ,z), range);
-find_obj_id(type, tableid, vector_3(x, 0 ,z), range);
+find_obj_id(type, vector3(x, 0 ,z), range);
+find_obj_id(type, tableid, vector3(x, 0 ,z), range);
 
 作用：
   查找符合条件的obj的objid。type为TypedEntityEnum的值：
@@ -1020,7 +1020,7 @@ find_obj_id(type, tableid, vector_3(x, 0 ,z), range);
 作用：
   获取指定obj的召唤者id。
 
-60.calc_offset(objid,targetobjid,vector_3(x,y,z));
+60.calc_offset(objid,targetobjid,vector3(x,y,z));
 
 作用：
   计算沿objid->targetobjid方向，相对objid偏移(x,y,z)的位置。
@@ -1092,7 +1092,7 @@ find_obj_id(type, tableid, vector_3(x, 0 ,z), range);
 作用：
   切换到目标场景。
 
-5.create_npc(npc_unit_id,vector_3(x,y,z),dir,camp,linkId[,ai,string_list("param1 param2 param3 ...")])[objid("@objid")];
+5.create_npc(npc_unit_id,vector3(x,y,z),dir,camp,linkId[,ai,string_list("param1 param2 param3 ...")])[objid("@objid")];
 
 作用：
   创建npc，可指定位置与朝向。带objid语法的样式用于获取objid到指定变量名（字符串名，可以是运算结果构成的变量名）
@@ -1112,7 +1112,7 @@ find_obj_id(type, tableid, vector_3(x, 0 ,z), range);
 作用：
   删除指定unit_id的npc，如果有多个，则都会删除。
 
-9.npc_move(unit_id,vector_3(x,y,z)[, event]);
+9.npc_move(unit_id,vector3(x,y,z)[, event]);
 
 作用：
   移动指定npc到目标点。
@@ -1138,7 +1138,7 @@ find_obj_id(type, tableid, vector_3(x, 0 ,z), range);
 作用：
   控制npc朝向（如果有ai控制，这一命令不一定有效果）。
 
-14.npc_move_with_waypoints(unit_id,vector_3_list("v1x v1y v2x v2y")[, event]);
+14.npc_move_with_waypoints(unit_id,vector3_list("v1x v1y v2x v2y")[, event]);
 
 作用：
   控制npc沿指定路线移动。
@@ -1183,12 +1183,12 @@ find_obj_id(type, tableid, vector_3(x, 0 ,z), range);
 作用：
   控制游戏对象朝向。
 
-23.obj_move(objid,vector_3(x,y,z)[, event]);
+23.obj_move(objid,vector3(x,y,z)[, event]);
 
 作用：
   移动游戏对象到目标点。
 
-24.obj_move_with_waypoints(objid,vector_3_list("v1x v1y v2x v2y")[, event]);
+24.obj_move_with_waypoints(objid,vector3_list("v1x v1y v2x v2y")[, event]);
 
 作用：
   控制游戏对象沿指定路线移动。
@@ -1379,19 +1379,19 @@ waitallmessagehandler等待运行的各story的指定消息都执行完毕。(va
   让像机跟随指定的npc列表，按顺序处理，找到第一个可跟随目标为止。
 
 63.camera_look(unit_id)[with(camera_path)];
-camera_look(vector_3(x,y,z))[with(camera_path)];
+camera_look(vector3(x,y,z))[with(camera_path)];
 
 作用：
   让像机看着指定目标。  
 
 64.camera_look_immediately(unit_id)[with(camera_path)];
-camera_look_immediately(vector_3(x,y,z))[with(camera_path)];
+camera_look_immediately(vector3(x,y,z))[with(camera_path)];
 
 作用：
   让像机立即看着指定目标。  
 
 65.camera_look_toward(unit_id)[with(camera_path)];
-camera_look_toward(vector_3(x,y,z))[with(camera_path)];
+camera_look_toward(vector3(x,y,z))[with(camera_path)];
 
 作用：
   让像机在当前位置转向指定目标。  
@@ -1476,7 +1476,7 @@ camera_look_toward(vector_3(x,y,z))[with(camera_path)];
 作用：
   摄像机立即看着指定对象。
 
-82.camera_look_copy(src_camera_path, unit_id or vector_3(x,y,z))[with(camera_path)];
+82.camera_look_copy(src_camera_path, unit_id or vector3(x,y,z))[with(camera_path)];
 
 作用：
   拷贝另一摄像机参数，使用这些参数看向同一目标(使用unitid指定)或目标点。
@@ -1874,18 +1874,18 @@ on_input事件的固定参数为tag、input_value（字符串)
   添加/修改渲染层数据缓存。
 
 3.create_game_object(name, prefab[, parent])[obj("varname")]{
-    position(vector_3(x,y,z));
-    rotation(vector_3(x,y,z));
-    scale(vector_3(x,y,z));
+    position(vector3(x,y,z));
+    rotation(vector3(x,y,z));
+    scale(vector3(x,y,z));
 };
 
 作用：
   创建一个GameObject，可选的挂在指定父节点上。
 
 4.set_transform(name, world_or_local){
-    position(vector_3(x,y,z));
-    rotation(vector_3(x,y,z));
-    scale(vector_3(x,y,z));
+    position(vector3(x,y,z));
+    rotation(vector3(x,y,z));
+    scale(vector3(x,y,z));
 };
 
 作用：

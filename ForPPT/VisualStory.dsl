@@ -171,9 +171,9 @@ defapi(npcautosync, "Npc/移动/小范围平移Npc"){
 	unitId(int, "UnitID"){
 		initval(1001);
 	};
-	pos(vector_3, "位置"){
+	pos(vector3, "位置"){
 		semantic(position);
-		initval(vector_3(100,100,100));
+		initval(vector3(100,100,100));
 	};
 };
 defapi(objautosync, "Obj/小范围平移Obj"){
@@ -181,9 +181,9 @@ defapi(objautosync, "Obj/小范围平移Obj"){
 		semantic(objid);
 		initval(get_player_id());
 	};
-	pos(vector_3, "位置"){
+	pos(vector3, "位置"){
 		semantic(position);
-		initval(vector_3(100,100,100));
+		initval(vector3(100,100,100));
 	};
 };
 defapi(SetPlayerId, "Npc/设置为玩家"){
@@ -196,9 +196,9 @@ defapi(CreateNpcNoWait,"Npc/创建/创建Npc(不等待)"){
 	unitId(int, "UnitID"){
 		initval(1001);
 	};
-	pos(vector_3, "位置"){
+	pos(vector3, "位置"){
 		semantic(posdir_pos);
-		initval(vector_3(100,100,100));
+		initval(vector3(100,100,100));
 	};
 	dir(float, "朝向"){
 		semantic(posdir_dir);
@@ -214,13 +214,13 @@ defapi(CreateFloatNpcNoWait,"Npc/创建/创建浮空Npc(不等待)"){
 	unitId(int, "UnitID"){
 		initval(1001);
 	};
-	pos(vector_3, "位置"){
+	pos(vector3, "位置"){
 		semantic(posdir3d_pos);
-		initval(vector_3(100,100,100));
+		initval(vector3(100,100,100));
 	};
-	dir(vector_3, "朝向"){
+	dir(vector3, "朝向"){
 		semantic(posdir3d_dir);
-		initval(vector_3(0,0,0));
+		initval(vector3(0,0,0));
 	};
 	camp(int, "阵营"){
 		initval(100);
@@ -233,9 +233,9 @@ defapi(CreateAiNpcNoWait,"Npc/创建/创建带AI的Npc(不等待)"){
 	unitId(int, "UnitID"){
 		initval(1001);
 	};
-	pos(vector_3, "位置"){
+	pos(vector3, "位置"){
 		semantic(posdir_pos);
-		initval(vector_3(100,100,100));
+		initval(vector3(100,100,100));
 	};
 	dir(float, "朝向"){
 		semantic(posdir_dir);
@@ -284,9 +284,9 @@ defapi(CreateNpc,"Npc/创建/创建Npc"){
 	unitId(int, "UnitID"){
 		initval(1001);
 	};
-	pos(vector_3, "位置"){
+	pos(vector3, "位置"){
 		semantic(posdir_pos);
-		initval(vector_3(100,100,100));
+		initval(vector3(100,100,100));
 	};
 	dir(float, "朝向"){
 		semantic(posdir_dir);
@@ -302,13 +302,13 @@ defapi(CreateFloatNpc,"Npc/创建/创建浮空Npc"){
 	unitId(int, "UnitID"){
 		initval(1001);
 	};
-	pos(vector_3, "位置"){
+	pos(vector3, "位置"){
 		semantic(posdir3d_pos);
-		initval(vector_3(100,100,100));
+		initval(vector3(100,100,100));
 	};
-	dir(vector_3, "朝向"){
+	dir(vector3, "朝向"){
 		semantic(posdir3d_dir);
-		initval(vector_3(0,0,0));
+		initval(vector3(0,0,0));
 	};
 	camp(int, "阵营"){
 		initval(100);
@@ -321,9 +321,9 @@ defapi(CreateAiNpc,"Npc/创建/创建带AI的Npc"){
 	unitId(int, "UnitID"){
 		initval(1001);
 	};
-	pos(vector_3, "位置"){
+	pos(vector3, "位置"){
 		semantic(posdir_pos);
-		initval(vector_3(100,100,100));
+		initval(vector3(100,100,100));
 	};
 	dir(float, "朝向"){
 		semantic(posdir_dir);
@@ -444,9 +444,9 @@ defapi(NpcLookAt,"Npc/看向/Npc看向某点"){
 	unitId(int, "UnitID"){
 		initval(1001);
 	};
-	pos(vector_3, "位置"){
+	pos(vector3, "位置"){
 		semantic(position3d);
-		initval(vector_3(100,100,100));
+		initval(vector3(100,100,100));
 	};
 };
 defapi(NpcLookAtNpc,"Npc/看向/Npc看向Npc"){
@@ -487,9 +487,9 @@ defapi(ObjLookAt,"Obj/看向/Obj看向某点"){
 		semantic(objid);
 		initval(get_player_id());
 	};
-	pos(vector_3, "位置"){
+	pos(vector3, "位置"){
 		semantic(position3d);
-		initval(vector_3(100,100,100));
+		initval(vector3(100,100,100));
 	};
 };
 defapi(ObjLookAtNpc,"Obj/看向/Obj看向Npc"){
@@ -818,9 +818,9 @@ defapi(npc_move,"Npc/移动/Npc移动"){
 	unitId(int, "UnitID"){
 		initval(1001);
 	};
-	pos(vector_3, "位置"){
+	pos(vector3, "位置"){
 		semantic(position);
-		initval(vector_3(100,100,100));
+		initval(vector3(100,100,100));
 	};
 	msg(string, "结束消息"){
 		semantic(message);
@@ -831,9 +831,9 @@ defapi(obj_move,"Obj/Obj移动"){
 		semantic(objid);
 		initval(get_player_id());
 	};
-	pos(vector_3, "位置"){
+	pos(vector3, "位置"){
 		semantic(position);
-		initval(vector_3(100,100,100));
+		initval(vector3(100,100,100));
 	};
 	msg(string, "结束消息"){
 		semantic(message);
@@ -873,7 +873,7 @@ defapi(npc_move_with_waypoints,"Npc/移动/Npc沿路径移动"){
 	unitId(int, "UnitID"){
 		initval(1001);
 	};
-	pos(vector_3_list, "路径"){
+	pos(vector3_list, "路径"){
 		semantic(spline);
 		initval(getsplinepoints("path"));
 	};
@@ -886,7 +886,7 @@ defapi(obj_move_with_waypoints,"Obj/移动/Obj沿路径移动"){
 		semantic(objid);
 		initval(get_player_id());
 	};
-	pos(vector_3_list, "路径"){
+	pos(vector3_list, "路径"){
 		semantic(spline);
 		initval(getsplinepoints("path"));
 	};
@@ -1137,13 +1137,13 @@ defapi(StopTimeLineWithPlayer, "Timeline/带玩家Timeline/停止带玩家Timeli
     forceMainCamera(int, "切换回主相机"){
         initval(0);  
     };
-		pos(vector_3, "位置"){
+		pos(vector3, "位置"){
 			semantic(posdir3d_pos);
-			initval(vector_3(0,0,0));
+			initval(vector3(0,0,0));
 		};
-		dir(vector_3, "朝向"){
+		dir(vector3, "朝向"){
 			semantic(posdir3d_dir);
-			initval(vector_3(0,0,0));
+			initval(vector3(0,0,0));
 		};
 };
 defapi(PlayTimeLineWithPlayerWithoutCam, "Timeline/带玩家Timeline/播放带玩家Timeline不带镜头"){
@@ -1199,13 +1199,13 @@ defapi(PlayTimeLineWithPlayerNoFadeWithoutCam, "Timeline/带玩家Timeline/播�
 	};
 };
 defapi(StopTimeLineWithPlayerWithoutCam, "Timeline/带玩家Timeline/停止带玩家Timeline不带镜头"){
-		pos(vector_3, "位置"){
+		pos(vector3, "位置"){
 			semantic(posdir3d_pos);
-			initval(vector_3(0,0,0));
+			initval(vector3(0,0,0));
 		};
-		dir(vector_3, "朝向"){
+		dir(vector3, "朝向"){
 			semantic(posdir3d_dir);
-			initval(vector_3(0,0,0));
+			initval(vector3(0,0,0));
 		};
 };
 defapi(PlayComplexTimeLine, "Timeline/带玩家Timeline/播放Timeline（指定玩家结点）"){
@@ -1270,13 +1270,13 @@ defapi(StopComplexTimeLine, "Timeline/带玩家Timeline/停止带玩家Timeline�
     forceMainCamera(int, "切换回主相机"){
         initval(0);  
     };
-		pos(vector_3, "位置"){
+		pos(vector3, "位置"){
 			semantic(posdir3d_pos);
-			initval(vector_3(0,0,0));
+			initval(vector3(0,0,0));
 		};
-		dir(vector_3, "朝向"){
+		dir(vector3, "朝向"){
 			semantic(posdir3d_dir);
-			initval(vector_3(0,0,0));
+			initval(vector3(0,0,0));
 		};
 };
 defapi(SwitchToStoryCameraVC, "Camera/VC相机/切换到剧情VC相机");
@@ -1306,14 +1306,14 @@ defapi(VC_Damping, "Camera/VC相机/VC相机缓动"){
 	};
 };
 defapi(VC_SetPosAndDir,"Camera/VC相机/VC相机放置"){
-	pos(vector_3, "位置"){
+	pos(vector3, "位置"){
 		semantic(posdir3d_pos);
-		initval(vector_3(0,0,0));
+		initval(vector3(0,0,0));
 		camera(true);
 	};
-	dir(vector_3, "朝向"){
+	dir(vector3, "朝向"){
 		semantic(posdir3d_dir);
-		initval(vector_3(0,0,0));
+		initval(vector3(0,0,0));
 		camera(true);
 	};
 };
@@ -1337,8 +1337,8 @@ defapi(VC_LookAt, "Camera/VC相机/VC相机LookAt Npc"){
 		initval(1001);
 		camera(true);
 	};
-	offset(vector_3, "偏移"){
-		initval(vector_3(0,1.5,0));
+	offset(vector3, "偏移"){
+		initval(vector3(0,1.5,0));
 		camera(true);
 	};
 };
@@ -1347,8 +1347,8 @@ defapi(VC_Follow, "Camera/VC相机/VC相机Follow Npc"){
 		initval(1001);
 		camera(true);
 	};
-	offset(vector_3, "偏移"){
-		initval(vector_3(0,2,3));
+	offset(vector3, "偏移"){
+		initval(vector3(0,2,3));
 		camera(true);
 	};
 };
@@ -1357,8 +1357,8 @@ defapi(VC_LookAtObj, "Camera/VC相机/VC相机LookAt Obj"){
 		semantic(objid);
 		initval(get_player_id());
 	};
-	offset(vector_3, "偏移"){
-		initval(vector_3(0,1.5,0));
+	offset(vector3, "偏移"){
+		initval(vector3(0,1.5,0));
 		camera(true);
 	};
 };
@@ -1367,8 +1367,8 @@ defapi(VC_FollowObj, "Camera/VC相机/VC相机Follow Obj"){
 		semantic(objid);
 		initval(get_player_id());
 	};
-	offset(vector_3, "偏移"){
-		initval(vector_3(0,2,3));
+	offset(vector3, "偏移"){
+		initval(vector3(0,2,3));
 		camera(true);
 	};
 };
@@ -1418,14 +1418,14 @@ defapi(VCA_SetPosAndDir,"Camera/VC相机阵列/VC相机阵列放置"){
 	index(int, "索引（0~7）"){
 		initval(0);
 	};
-	pos(vector_3, "位置"){
+	pos(vector3, "位置"){
 		semantic(posdir3d_pos);
-		initval(vector_3(0,0,0));
+		initval(vector3(0,0,0));
 		camera(true);
 	};
-	dir(vector_3, "朝向"){
+	dir(vector3, "朝向"){
 		semantic(posdir3d_dir);
-		initval(vector_3(0,0,0));
+		initval(vector3(0,0,0));
 		camera(true);
 	};
 };
@@ -1458,8 +1458,8 @@ defapi(VCA_LookAt, "Camera/VC相机阵列/VC相机阵列LookAt Npc"){
 		initval(1001);
 		camera(true);
 	};
-	offset(vector_3, "偏移"){
-		initval(vector_3(0,1.5,0));
+	offset(vector3, "偏移"){
+		initval(vector3(0,1.5,0));
 		camera(true);
 	};
 };
@@ -1471,8 +1471,8 @@ defapi(VCA_Follow, "Camera/VC相机阵列/VC相机阵列Follow Npc"){
 		initval(1001);
 		camera(true);
 	};
-	offset(vector_3, "偏移"){
-		initval(vector_3(0,2,3));
+	offset(vector3, "偏移"){
+		initval(vector3(0,2,3));
 		camera(true);
 	};
 };
@@ -1484,8 +1484,8 @@ defapi(VCA_LookAtObj, "Camera/VC相机阵列/VC相机阵列LookAt Obj"){
 		semantic(objid);
 		initval(get_player_id());
 	};
-	offset(vector_3, "偏移"){
-		initval(vector_3(0,1.5,0));
+	offset(vector3, "偏移"){
+		initval(vector3(0,1.5,0));
 		camera(true);
 	};
 };
@@ -1497,8 +1497,8 @@ defapi(VCA_FollowObj, "Camera/VC相机阵列/VC相机阵列Follow Obj"){
 		semantic(objid);
 		initval(get_player_id());
 	};
-	offset(vector_3, "偏移"){
-		initval(vector_3(0,2,3));
+	offset(vector3, "偏移"){
+		initval(vector3(0,2,3));
 		camera(true);
 	};
 };
@@ -1538,14 +1538,14 @@ defapi(VCA_Lens, "Camera/VC相机阵列/VC相机阵列镜头设置"){
 };
 defapi(MC_SyncPosAndDir,"Camera/主相机/主相机同步跟随位置与朝向");
 defapi(MC_SetPosAndDir,"Camera//主相机主相机放置"){
-	pos(vector_3, "位置"){
+	pos(vector3, "位置"){
 		semantic(posdir3d_pos);
-		initval(vector_3(0,0,0));
+		initval(vector3(0,0,0));
 		camera(true);
 	};
-	dir(vector_3, "朝向"){
+	dir(vector3, "朝向"){
 		semantic(posdir3d_dir);
-		initval(vector_3(0,0,0));
+		initval(vector3(0,0,0));
 		camera(true);
 	};
 };
@@ -1865,14 +1865,14 @@ defapi(create_game_object, "Load/创建GameObject"){
 	path(string, "父对象路径"){
 		initval("");
 	};
-	position(vector_3, "位置"){
+	position(vector3, "位置"){
 		semantic(posdir3d_pos);
-		initval(vector_3(0,0,0));
+		initval(vector3(0,0,0));
 		optional(true);
 	};
-	rotation(vector_3, "朝向"){
+	rotation(vector3, "朝向"){
 		semantic(posdir3d_dir);
-		initval(vector_3(0,0,0));
+		initval(vector3(0,0,0));
 		optional(true);
 	};
 };
@@ -1973,16 +1973,16 @@ defapi(set_transform, "Load/调整GameObject位置与旋转"){
 	worldOrLocal(int, "1-世界坐标 0-本地坐标"){
 		initval(1);
 	};
-	position(vector_3, "位置"){
-		initval(vector_3(0,0,0));
+	position(vector3, "位置"){
+		initval(vector3(0,0,0));
 		optional(true);
 	};
-	rotation(vector_3, "朝向"){
-		initval(vector_3(0,0,0));
+	rotation(vector3, "朝向"){
+		initval(vector3(0,0,0));
 		optional(true);
 	};
-	scale(vector_3, "缩放"){
-		initval(vector_3(1,1,1));
+	scale(vector3, "缩放"){
+		initval(vector3(1,1,1));
 		optional(true);
 	};
 };
@@ -1993,16 +1993,16 @@ defapi(NpcSetTransform, "Load/调整挂接Npc位置与旋转"){
 	worldOrLocal(int, "1-世界坐标 0-本地坐标"){
 		initval(1);
 	};
-	$position(vector_3, "位置"){
-		initval(vector_3(0,0,0));
+	$position(vector3, "位置"){
+		initval(vector3(0,0,0));
 		optional(true);
 	};
-	$rotation(vector_3, "朝向"){
-		initval(vector_3(0,0,0));
+	$rotation(vector3, "朝向"){
+		initval(vector3(0,0,0));
 		optional(true);
 	};
-	$scale(vector_3, "缩放"){
-		initval(vector_3(1,1,1));
+	$scale(vector3, "缩放"){
+		initval(vector3(1,1,1));
 		optional(true);
 	};
 };
@@ -2014,16 +2014,16 @@ defapi(ObjSetTransform, "Load/调整挂接Obj位置与旋转"){
 	worldOrLocal(int, "1-世界坐标 0-本地坐标"){
 		initval(1);
 	};
-	$position(vector_3, "位置"){
-		initval(vector_3(0,0,0));
+	$position(vector3, "位置"){
+		initval(vector3(0,0,0));
 		optional(true);
 	};
-	$rotation(vector_3, "朝向"){
-		initval(vector_3(0,0,0));
+	$rotation(vector3, "朝向"){
+		initval(vector3(0,0,0));
 		optional(true);
 	};
-	$scale(vector_3, "缩放"){
-		initval(vector_3(1,1,1));
+	$scale(vector3, "缩放"){
+		initval(vector3(1,1,1));
 		optional(true);
 	};
 };

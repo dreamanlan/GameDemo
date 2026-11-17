@@ -46,13 +46,13 @@
 		wait(200);
 		send_message("StartScript","UiCameraEnable","UICamera",1);
 
-		create_npc(1001,vector_3(50,0,50),0,"Player",0,"ai_player",list("Dsl/Ai/ailogic_player.dsl"));
-		create_npc(1002,rnd_vector_3(vector_3(50,0,50),9),0,"Npc",0,"ai_npc",list("Dsl/Ai/ailogic_npc.dsl"));
-		create_npc(1003,rnd_vector_3(vector_3(50,0,50),9),0,"Npc",0,"ai_npc",list("Dsl/Ai/ailogic_npc.dsl"));
-		create_npc(1004,rnd_vector_3(vector_3(50,0,50),9),0,"Npc",0,"ai_npc",list("Dsl/Ai/ailogic_npc.dsl"));
-		create_npc(1005,rnd_vector_3(vector_3(50,0,50),9),0,"Npc",0,"ai_npc",list("Dsl/Ai/ailogic_npc.dsl"));
-		create_npc(1006,rnd_vector_3(vector_3(50,0,50),9),0,"Npc",0,"ai_npc",list("Dsl/Ai/ailogic_npc.dsl"));
-		create_npc(1007,rnd_vector_3(vector_3(50,0,50),9),0,"Npc",0,"ai_npc",list("Dsl/Ai/ailogic_npc.dsl"));
+		create_npc(1001,vector3(50,0,50),0,"Player",0,"ai_player",list("Dsl/Ai/ailogic_player.dsl"));
+		create_npc(1002,rnd_vector3(vector3(50,0,50),9),0,"Npc",0,"ai_npc",list("Dsl/Ai/ailogic_npc.dsl"));
+		create_npc(1003,rnd_vector3(vector3(50,0,50),9),0,"Npc",0,"ai_npc",list("Dsl/Ai/ailogic_npc.dsl"));
+		create_npc(1004,rnd_vector3(vector3(50,0,50),9),0,"Npc",0,"ai_npc",list("Dsl/Ai/ailogic_npc.dsl"));
+		create_npc(1005,rnd_vector3(vector3(50,0,50),9),0,"Npc",0,"ai_npc",list("Dsl/Ai/ailogic_npc.dsl"));
+		create_npc(1006,rnd_vector3(vector3(50,0,50),9),0,"Npc",0,"ai_npc",list("Dsl/Ai/ailogic_npc.dsl"));
+		create_npc(1007,rnd_vector3(vector3(50,0,50),9),0,"Npc",0,"ai_npc",list("Dsl/Ai/ailogic_npc.dsl"));
 		npc_set_camp(1001,3);
 		npc_set_camp(1002,4);
 		npc_set_camp(1003,4);
@@ -76,7 +76,7 @@
 		@leftCount = 2048;
 		@totalCount = 2048;
 		@scoreUi.text = ""+@score;
-		$g = vector_3(0,-(@totalCount*9.8)/@leftCount,0);
+		$g = vector3(0,-(@totalCount*9.8)/@leftCount,0);
 		get_unity_type("Physics").gravity = $g;
 		@gravityUi.text = ""+$g.Value.y;
 
@@ -112,7 +112,7 @@
 				send_message_with_game_object($obj, "PlaySound", 0);
 				if(!is_null($obj.transform) && $obj.transform.childCount==0){
 					create_game_object("fire", "SceneFire", $obj){
-						position(vector_3(0,0,0));
+						position(vector3(0,0,0));
 					};
 				};
 			};
@@ -132,7 +132,7 @@
 				$objid=$$;
 				set_hp($objid,get_hp($objid)-100);
 				printf("damage {0}", $objid);
-				send_message_with_game_object(get_game_object($objid),"TweenUiPrefabWithText","BlueText"+$objid,"UI/RedText",vector_3(0,2,0),"","-100");
+				send_message_with_game_object(get_game_object($objid),"TweenUiPrefabWithText","BlueText"+$objid,"UI/RedText",vector3(0,2,0),"","-100");
 			};
 		};
 		@hpUi.text = ""+get_hp(get_player_id());
@@ -146,23 +146,23 @@
 		$tag = $obj1.tag;
 		if($tag=="Red"){
 			@score=@score+100;
-			send_message_with_game_object(get_game_object(get_player_id()),"TweenUiPrefabWithText","RedText"+get_player_id(),"UI/BlueText",vector_3(1,2,0),"","+100");
+			send_message_with_game_object(get_game_object(get_player_id()),"TweenUiPrefabWithText","RedText"+get_player_id(),"UI/BlueText",vector3(1,2,0),"","+100");
 		}elseif($tag=="Blue"){
 			@score=@score+200;
-			send_message_with_game_object(get_game_object(get_player_id()),"TweenUiPrefabWithText","RedText"+get_player_id(),"UI/BlueText",vector_3(1,2,0),"","+200");
+			send_message_with_game_object(get_game_object(get_player_id()),"TweenUiPrefabWithText","RedText"+get_player_id(),"UI/BlueText",vector3(1,2,0),"","+200");
 		}elseif($tag=="LightRed"){
 			@score=@score+400;
-			send_message_with_game_object(get_game_object(get_player_id()),"TweenUiPrefabWithText","RedText"+get_player_id(),"UI/BlueText",vector_3(1,2,0),"","+400");
+			send_message_with_game_object(get_game_object(get_player_id()),"TweenUiPrefabWithText","RedText"+get_player_id(),"UI/BlueText",vector3(1,2,0),"","+400");
 		}else{
 			@score=@score+800;
-			send_message_with_game_object(get_game_object(get_player_id()),"TweenUiPrefabWithText","RedText"+get_player_id(),"UI/BlueText",vector_3(1,2,0),"","+800");
+			send_message_with_game_object(get_game_object(get_player_id()),"TweenUiPrefabWithText","RedText"+get_player_id(),"UI/BlueText",vector3(1,2,0),"","+800");
 		};
 		@scoreUi.text = ""+@score;
 		dec(@leftCount);
 		if(@leftCount<1){
 			@leftCount = 1;
 		};
-		$g = vector_3(0,-(@totalCount*9.8)/@leftCount,0);
+		$g = vector3(0,-(@totalCount*9.8)/@leftCount,0);
 		get_unity_type("Physics").gravity = $g;
 		@gravityUi.text = ""+$g.Value.y;
 	};

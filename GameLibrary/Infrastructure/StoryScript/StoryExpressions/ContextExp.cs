@@ -8,7 +8,7 @@ namespace StoryScript
     // ========== Context Info ==========
 
     /// <summary>
-    /// eval(exp1, exp_2, ...) - evaluate all expressions and return the last value
+    /// eval(exp1, exp2, ...) - evaluate all expressions and return the last value
     /// </summary>
     internal sealed class EvalExp : SimpleExpressionBase
     {

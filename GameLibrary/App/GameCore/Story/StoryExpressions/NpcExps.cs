@@ -8,8 +8,8 @@ using UnityEngine;
 namespace GameLibrary.Story.StoryExpressions
 {
     /// <summary>
-    /// create_npc(unit_id, vector_3(x,y,z), dir, model, type[, ai, string_list("param1 param2...")])[objid("varname")] - create an NPC
-    /// create_npc(unit_id, vector_3(x,y,z), dir, model, type[, ai, string_list("param1 param2...")]) {
+    /// create_npc(unit_id, vector3(x,y,z), dir, model, type[, ai, string_list("param1 param2...")])[objid("varname")] - create an NPC
+    /// create_npc(unit_id, vector3(x,y,z), dir, model, type[, ai, string_list("param1 param2...")]) {
     ///     objid("varname");
     /// };
     /// </summary>
@@ -225,7 +225,7 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// npc_move(unit_id, vector_3(x,y,z)[, event]) - move NPC to position
+    /// npc_move(unit_id, vector3(x,y,z)[, event]) - move NPC to position
     /// </summary>
     internal sealed class NpcMoveExp : SimpleExpressionBase
     {

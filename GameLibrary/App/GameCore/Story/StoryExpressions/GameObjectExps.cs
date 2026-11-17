@@ -33,9 +33,9 @@ namespace GameLibrary.Story.StoryExpressions
 
     /// <summary>
     /// create_game_object(name, prefab[, parent])[obj("varname")]{
-    ///     position(vector_3(x,y,z));
-    ///     rotation(vector_3(x,y,z));
-    ///     scale(vector_3(x,y,z));
+    ///     position(vector3(x,y,z));
+    ///     rotation(vector3(x,y,z));
+    ///     scale(vector3(x,y,z));
     ///     disable("typename", "typename", ...);
     ///     remove("typename", "typename", ...);
     /// };
@@ -367,9 +367,9 @@ namespace GameLibrary.Story.StoryExpressions
 
     /// <summary>
     /// set_transform(obj, local_or_world){
-    ///     position(vector_3(x,y,z));
-    ///     rotation(vector_3(x,y,z));
-    ///     scale(vector_3(x,y,z));
+    ///     position(vector3(x,y,z));
+    ///     rotation(vector3(x,y,z));
+    ///     scale(vector3(x,y,z));
     /// };
     /// </summary>
     internal sealed class SetTransformExp : AbstractExpression
@@ -484,7 +484,7 @@ namespace GameLibrary.Story.StoryExpressions
     }
 
     /// <summary>
-    /// set_actor_scale(objid, vector_3(x,y,z)) - set actor scale
+    /// set_actor_scale(objid, vector3(x,y,z)) - set actor scale
     /// </summary>
     internal sealed class SetActorScaleExp : SimpleExpressionBase
     {
@@ -813,9 +813,9 @@ namespace GameLibrary.Story.StoryExpressions
     /// <summary>
     /// add_transform(obj, local_or_world){position(v3);rotation(v3);scale(v3)} - add transform values to GameObject
     /// add_transform(obj, local_or_world){
-    ///     position(vector_3(x,y,z));
-    ///     rotation(vector_3(x,y,z));
-    ///     scale(vector_3(x,y,z));
+    ///     position(vector3(x,y,z));
+    ///     rotation(vector3(x,y,z));
+    ///     scale(vector3(x,y,z));
     /// };
     /// </summary>
     internal sealed class AddTransformExp : AbstractExpression

@@ -482,9 +482,9 @@ namespace VisualStoryTool
                                                 pi.DslInitValue = ParamInfo.StringToDsl("0");
                                                 pi.InitValue = "0";
                                             }
-                                            else if (pi.Type == "vector_3" && string.IsNullOrEmpty(pi.InitValue)) {
-                                                pi.DslInitValue = ParamInfo.StringToDsl("vector_3(0,0,0)");
-                                                pi.InitValue = "vector_3(0,0,0)";
+                                            else if (pi.Type == "vector3" && string.IsNullOrEmpty(pi.InitValue)) {
+                                                pi.DslInitValue = ParamInfo.StringToDsl("vector3(0,0,0)");
+                                                pi.InitValue = "vector3(0,0,0)";
                                             }
                                         }
                                         else if(cd.HaveStatement()) {
@@ -542,9 +542,9 @@ namespace VisualStoryTool
                                                 pi.DslInitValue = ParamInfo.StringToDsl("0");
                                                 pi.InitValue = "0";
                                             }
-                                            else if (pi.Type == "vector_3" && string.IsNullOrEmpty(pi.InitValue)) {
-                                                pi.DslInitValue = ParamInfo.StringToDsl("vector_3(0,0,0)");
-                                                pi.InitValue = "vector_3(0,0,0)";
+                                            else if (pi.Type == "vector3" && string.IsNullOrEmpty(pi.InitValue)) {
+                                                pi.DslInitValue = ParamInfo.StringToDsl("vector3(0,0,0)");
+                                                pi.InitValue = "vector3(0,0,0)";
                                             }
 
                                             if (pi.IsOptional) {

@@ -940,10 +940,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("vector_2")
+@snippets("vector2")
 $____begin____
 
-vector_2(x,y);
+vector2(x,y);
 
 $_____end_____
 @doc
@@ -954,10 +954,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("vector_3")
+@snippets("vector3")
 $____begin____
 
-vector_3(x,y,z);
+vector3(x,y,z);
 
 $_____end_____
 @doc
@@ -968,10 +968,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("vector_4")
+@snippets("vector4")
 $____begin____
 
-vector_4(x,y,z,w);
+vector4(x,y,z,w);
 
 $_____end_____
 @doc
@@ -1080,10 +1080,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("vector_2_list")
+@snippets("vector2_list")
 $____begin____
 
-vector_2_list("v1x v1y v2x v2y");
+vector2_list("v1x v1y v2x v2y");
 
 $_____end_____
 @doc
@@ -1094,10 +1094,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("vector_3_list")
+@snippets("vector3_list")
 $____begin____
 
-vector_3_list("v1x v1y v1z v2x v2y v2z");
+vector3_list("v1x v1y v1z v2x v2y v2z");
 
 $_____end_____
 @doc
@@ -1220,10 +1220,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("vector_2_dist")
+@snippets("vector2_dist")
 $____begin____
 
-vector_2_dist(vector_2(1,2),vector_2(3,4));
+vector2_dist(vector2(1,2),vector2(3,4));
 
 $_____end_____
 @doc
@@ -1234,10 +1234,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("vector_3_dist")
+@snippets("vector3_dist")
 $____begin____
 
-vector_3_dist(vector_3(1,2,3),vector_3(4,5,6));
+vector3_dist(vector3(1,2,3),vector3(4,5,6));
 
 $_____end_____
 @doc
@@ -1248,10 +1248,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("vector_2_to_3")
+@snippets("vector2_to_3")
 $____begin____
 
-vector_2_to_3(vector_2(1,2));
+vector2_to_3(vector2(1,2));
 
 $_____end_____
 @doc
@@ -1262,10 +1262,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("vector_3_to_2")
+@snippets("vector3_to_2")
 $____begin____
 
-vector_3_to_2(vector_3(1,2,3));
+vector3_to_2(vector3(1,2,3));
 
 $_____end_____
 @doc
@@ -1559,10 +1559,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("rnd_vector_3")
+@snippets("rnd_vector3")
 $____begin____
 
-rnd_vector_3(center,radius);
+rnd_vector3(center,radius);
 
 $_____end_____
 @doc
@@ -1573,10 +1573,10 @@ $____begin____
 
 $_____end_____;
 
-@snippets("rnd_vector_2")
+@snippets("rnd_vector2")
 $____begin____
 
-rnd_vector_2(center,radius);
+rnd_vector2(center,radius);
 
 $_____end_____
 @doc
@@ -2059,7 +2059,7 @@ $_____end_____;
 @snippets("find_obj_id")
 $____begin____
 
-find_obj_id(type, vector_3(x, 0 ,z), range);
+find_obj_id(type, vector3(x, 0 ,z), range);
 
 $_____end_____
 @doc
@@ -2079,7 +2079,7 @@ $_____end_____;
 @snippets("find_obj_ids")
 $____begin____
 
-find_obj_ids(type, vector_3(x, 0 ,z), range);
+find_obj_ids(type, vector3(x, 0 ,z), range);
 
 $_____end_____
 @doc
@@ -2099,7 +2099,7 @@ $_____end_____;
 @snippets("find_all_obj_ids")
 $____begin____
 
-find_all_obj_ids(vector_3(x, 0 ,z), range);
+find_all_obj_ids(vector3(x, 0 ,z), range);
 
 $_____end_____
 @doc
@@ -2141,7 +2141,7 @@ $_____end_____;
 @snippets("calc_offset")
 $____begin____
 
-calc_offset(objid,targetobjid,vector_3(x,y,z));
+calc_offset(objid,targetobjid,vector3(x,y,z));
 
 $_____end_____
 @doc
@@ -2232,7 +2232,7 @@ $_____end_____;
 @snippets("create_npc")
 $____begin____
 
-create_npc(npc_unit_id,vector_3(x,y,z),dir,camp,linkId[,ai,string_list("param1 param2 param3 ...")])[objid("@objid")];
+create_npc(npc_unit_id,vector3(x,y,z),dir,camp,linkId[,ai,string_list("param1 param2 param3 ...")])[objid("@objid")];
 
 $_____end_____
 @doc
@@ -2260,7 +2260,7 @@ $_____end_____;
 @snippets("npc_move")
 $____begin____
 
-npc_move(unit_id,vector_3(x,y,z)[, event]);
+npc_move(unit_id,vector3(x,y,z)[, event]);
 
 $_____end_____
 @doc
@@ -2303,7 +2303,7 @@ $_____end_____;
 @snippets("npc_move_with_waypoints")
 $____begin____
 
-npc_move_with_waypoints(unit_id,vector_3_list("v1x v1y v2x v2y")[, event]);
+npc_move_with_waypoints(unit_id,vector3_list("v1x v1y v2x v2y")[, event]);
 
 $_____end_____
 @doc
@@ -2359,7 +2359,7 @@ $_____end_____;
 @snippets("obj_move")
 $____begin____
 
-obj_move(objid,vector_3(x,y,z)[, event]);
+obj_move(objid,vector3(x,y,z)[, event]);
 
 $_____end_____
 @doc
@@ -2373,7 +2373,7 @@ $_____end_____;
 @snippets("obj_move_with_waypoints")
 $____begin____
 
-obj_move_with_waypoints(objid,vector_3_list("v1x v1y v2x v2y")[, event]);
+obj_move_with_waypoints(objid,vector3_list("v1x v1y v2x v2y")[, event]);
 
 $_____end_____
 @doc
@@ -3176,9 +3176,9 @@ $_____end_____;
 $____begin____
 
 create_game_object(name, prefab[, parent])[obj("varname")]{
-    position(vector_3(x,y,z));
-    rotation(vector_3(x,y,z));
-    scale(vector_3(x,y,z));
+    position(vector3(x,y,z));
+    rotation(vector3(x,y,z));
+    scale(vector3(x,y,z));
 };
 
 $_____end_____
@@ -3194,9 +3194,9 @@ $_____end_____;
 $____begin____
 
 set_transform(name, world_or_local){
-    position(vector_3(x,y,z));
-    rotation(vector_3(x,y,z));
-    scale(vector_3(x,y,z));
+    position(vector3(x,y,z));
+    rotation(vector3(x,y,z));
+    scale(vector3(x,y,z));
 };
 
 $_____end_____

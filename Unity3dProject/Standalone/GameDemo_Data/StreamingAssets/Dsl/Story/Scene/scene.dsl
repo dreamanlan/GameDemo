@@ -18,7 +18,7 @@ script(scene_main)
     onmessage("move_to")args($x,$y,$z)
     {
         if(get_hp(unit_id_2_obj_id(1001))>0){
-            npc_move(1001, vector_3($x, $y, $z));
+            npc_move(1001, vector3($x, $y, $z));
         };
     };
     onmessage("on_start_button_click")

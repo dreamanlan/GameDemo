@@ -504,28 +504,28 @@
 		"description": "max (story)"
 		},
 
-	"vector_2 (story)": {
-		"prefix": "vector_2",
+	"vector2 (story)": {
+		"prefix": "vector2",
 		"body": [
-			"vector_2(x,y);"
+			"vector2(x,y);"
 		],
-		"description": "vector_2 (story)"
+		"description": "vector2 (story)"
 		},
 
-	"vector_3 (story)": {
-		"prefix": "vector_3",
+	"vector3 (story)": {
+		"prefix": "vector3",
 		"body": [
-			"vector_3(x,y,z);"
+			"vector3(x,y,z);"
 		],
-		"description": "vector_3 (story)"
+		"description": "vector3 (story)"
 		},
 
-	"vector_4 (story)": {
-		"prefix": "vector_4",
+	"vector4 (story)": {
+		"prefix": "vector4",
 		"body": [
-			"vector_4(x,y,z,w);"
+			"vector4(x,y,z,w);"
 		],
-		"description": "vector_4 (story)"
+		"description": "vector4 (story)"
 		},
 
 	"quaternion (story)": {
@@ -584,20 +584,20 @@
 		"description": "string_list (story)"
 		},
 
-	"vector_2_list (story)": {
-		"prefix": "vector_2_list",
+	"vector2_list (story)": {
+		"prefix": "vector2_list",
 		"body": [
-			"vector_2_list(\"v1x v1y v2x v2y\");"
+			"vector2_list(\"v1x v1y v2x v2y\");"
 		],
-		"description": "vector_2_list (story)"
+		"description": "vector2_list (story)"
 		},
 
-	"vector_3_list (story)": {
-		"prefix": "vector_3_list",
+	"vector3_list (story)": {
+		"prefix": "vector3_list",
 		"body": [
-			"vector_3_list(\"v1x v1y v1z v2x v2y v2z\");"
+			"vector3_list(\"v1x v1y v1z v2x v2y v2z\");"
 		],
-		"description": "vector_3_list (story)"
+		"description": "vector3_list (story)"
 		},
 
 	"list (story)": {
@@ -665,36 +665,36 @@
 		"description": "list_size (story)"
 		},
 
-	"vector_2_dist (story)": {
-		"prefix": "vector_2_dist",
+	"vector2_dist (story)": {
+		"prefix": "vector2_dist",
 		"body": [
-			"vector_2_dist(vector_2(1,2),vector_2(3,4));"
+			"vector2_dist(vector2(1,2),vector2(3,4));"
 		],
-		"description": "vector_2_dist (story)"
+		"description": "vector2_dist (story)"
 		},
 
-	"vector_3_dist (story)": {
-		"prefix": "vector_3_dist",
+	"vector3_dist (story)": {
+		"prefix": "vector3_dist",
 		"body": [
-			"vector_3_dist(vector_3(1,2,3),vector_3(4,5,6));"
+			"vector3_dist(vector3(1,2,3),vector3(4,5,6));"
 		],
-		"description": "vector_3_dist (story)"
+		"description": "vector3_dist (story)"
 		},
 
-	"vector_2_to_3 (story)": {
-		"prefix": "vector_2_to_3",
+	"vector2_to_3 (story)": {
+		"prefix": "vector2_to_3",
 		"body": [
-			"vector_2_to_3(vector_2(1,2));"
+			"vector2_to_3(vector2(1,2));"
 		],
-		"description": "vector_2_to_3 (story)"
+		"description": "vector2_to_3 (story)"
 		},
 
-	"vector_3_to_2 (story)": {
-		"prefix": "vector_3_to_2",
+	"vector3_to_2 (story)": {
+		"prefix": "vector3_to_2",
 		"body": [
-			"vector_3_to_2(vector_3(1,2,3));"
+			"vector3_to_2(vector3(1,2,3));"
 		],
-		"description": "vector_3_to_2 (story)"
+		"description": "vector3_to_2 (story)"
 		},
 
 	"is_null (story)": {
@@ -859,20 +859,20 @@
 		"description": "get_type (story)"
 		},
 
-	"rnd_vector_3 (story)": {
-		"prefix": "rnd_vector_3",
+	"rnd_vector3 (story)": {
+		"prefix": "rnd_vector3",
 		"body": [
-			"rnd_vector_3(center,radius);"
+			"rnd_vector3(center,radius);"
 		],
-		"description": "rnd_vector_3 (story)"
+		"description": "rnd_vector3 (story)"
 		},
 
-	"rnd_vector_2 (story)": {
-		"prefix": "rnd_vector_2",
+	"rnd_vector2 (story)": {
+		"prefix": "rnd_vector2",
 		"body": [
-			"rnd_vector_2(center,radius);"
+			"rnd_vector2(center,radius);"
 		],
-		"description": "rnd_vector_2 (story)"
+		"description": "rnd_vector2 (story)"
 		},
 
 	"npc_id_list (story)": {
@@ -1246,18 +1246,18 @@
 	"offset_spline (story)": {
 		"prefix": "offset_spline",
 		"body": [
-			"offset_spline(spline, vector_3(x,y,z));"
+			"offset_spline(spline, vector3(x,y,z));"
 		],
 		"description": "offset_spline (story)"
 		},
 
-	"offset_vector_3 (story)": {
-		"prefix": "offset_vector_3",
+	"offset_vector3 (story)": {
+		"prefix": "offset_vector3",
 		"body": [
-			"offset_vector_3(pt, vector_3(x,y,z));",
-			"offset_vector_3(pt, pt2, vector_3(x,y,z));"
+			"offset_vector3(pt, vector3(x,y,z));",
+			"offset_vector3(pt, pt2, vector3(x,y,z));"
 		],
-		"description": "offset_vector_3 (story)"
+		"description": "offset_vector3 (story)"
 		},
 
 	"npc_find_impact_seq_by_id (story)": {
@@ -1313,8 +1313,8 @@
 		"body": [
 			"find_obj_id(tableid);",
 			"find_obj_id(type, tableid);",
-			"find_obj_id(type, vector_3(x, 0 ,z), range);",
-			"find_obj_id(type, tableid, vector_3(x, 0 ,z), range);"
+			"find_obj_id(type, vector3(x, 0 ,z), range);",
+			"find_obj_id(type, tableid, vector3(x, 0 ,z), range);"
 		],
 		"description": "find_obj_id (story)"
 		},
@@ -1354,7 +1354,7 @@
 	"calc_offset (story)": {
 		"prefix": "calc_offset",
 		"body": [
-			"calc_offset(objid,targetobjid,vector_3(x,y,z));"
+			"calc_offset(objid,targetobjid,vector3(x,y,z));"
 		],
 		"description": "calc_offset (story)"
 		},
@@ -1466,7 +1466,7 @@
 	"create_npc (story)": {
 		"prefix": "create_npc",
 		"body": [
-			"create_npc(npc_unit_id,vector_3(x,y,z),dir,camp,linkId[,ai,string_list(\"param1 param2 param3 ...\")])[objid(\"@objid\")];"
+			"create_npc(npc_unit_id,vector3(x,y,z),dir,camp,linkId[,ai,string_list(\"param1 param2 param3 ...\")])[objid(\"@objid\")];"
 		],
 		"description": "create_npc (story)"
 		},
@@ -1498,7 +1498,7 @@
 	"npc_move (story)": {
 		"prefix": "npc_move",
 		"body": [
-			"npc_move(unit_id,vector_3(x,y,z)[, event]);"
+			"npc_move(unit_id,vector3(x,y,z)[, event]);"
 		],
 		"description": "npc_move (story)"
 		},
@@ -1538,7 +1538,7 @@
 	"npc_move_with_waypoints (story)": {
 		"prefix": "npc_move_with_waypoints",
 		"body": [
-			"npc_move_with_waypoints(unit_id,vector_3_list(\"v1x v1y v2x v2y\")[, event]);"
+			"npc_move_with_waypoints(unit_id,vector3_list(\"v1x v1y v2x v2y\")[, event]);"
 		],
 		"description": "npc_move_with_waypoints (story)"
 		},
@@ -1610,7 +1610,7 @@
 	"obj_move (story)": {
 		"prefix": "obj_move",
 		"body": [
-			"obj_move(objid,vector_3(x,y,z)[, event]);"
+			"obj_move(objid,vector3(x,y,z)[, event]);"
 		],
 		"description": "obj_move (story)"
 		},
@@ -1618,7 +1618,7 @@
 	"obj_move_with_waypoints (story)": {
 		"prefix": "obj_move_with_waypoints",
 		"body": [
-			"obj_move_with_waypoints(objid,vector_3_list(\"v1x v1y v2x v2y\")[, event]);"
+			"obj_move_with_waypoints(objid,vector3_list(\"v1x v1y v2x v2y\")[, event]);"
 		],
 		"description": "obj_move_with_waypoints (story)"
 		},
@@ -1931,7 +1931,7 @@
 		"prefix": "camera_look",
 		"body": [
 			"camera_look(unit_id)[with(camera_path)];",
-			"camera_look(vector_3(x,y,z))[with(camera_path)];"
+			"camera_look(vector3(x,y,z))[with(camera_path)];"
 		],
 		"description": "camera_look (story)"
 		},
@@ -1940,7 +1940,7 @@
 		"prefix": "camera_look_immediately",
 		"body": [
 			"camera_look_immediately(unit_id)[with(camera_path)];",
-			"camera_look_immediately(vector_3(x,y,z))[with(camera_path)];"
+			"camera_look_immediately(vector3(x,y,z))[with(camera_path)];"
 		],
 		"description": "camera_look_immediately (story)"
 		},
@@ -1949,7 +1949,7 @@
 		"prefix": "camera_look_toward",
 		"body": [
 			"camera_look_toward(unit_id)[with(camera_path)];",
-			"camera_look_toward(vector_3(x,y,z))[with(camera_path)];"
+			"camera_look_toward(vector3(x,y,z))[with(camera_path)];"
 		],
 		"description": "camera_look_toward (story)"
 		},
@@ -2085,7 +2085,7 @@
 	"camera_look_copy (story)": {
 		"prefix": "camera_look_copy",
 		"body": [
-			"camera_look_copy(src_camera_path, unit_id or vector_3(x,y,z))[with(camera_path)];"
+			"camera_look_copy(src_camera_path, unit_id or vector3(x,y,z))[with(camera_path)];"
 		],
 		"description": "camera_look_copy (story)"
 		},
@@ -2662,9 +2662,9 @@
 		"prefix": "create_game_object",
 		"body": [
 			"create_game_object(name, prefab[, parent])[obj(\"varname\")]{",
-			"    position(vector_3(x,y,z));",
-			"    rotation(vector_3(x,y,z));",
-			"    scale(vector_3(x,y,z));",
+			"    position(vector3(x,y,z));",
+			"    rotation(vector3(x,y,z));",
+			"    scale(vector3(x,y,z));",
 			"};"
 		],
 		"description": "create_game_object (story)"
@@ -2674,9 +2674,9 @@
 		"prefix": "set_transform",
 		"body": [
 			"set_transform(name, world_or_local){",
-			"    position(vector_3(x,y,z));",
-			"    rotation(vector_3(x,y,z));",
-			"    scale(vector_3(x,y,z));",
+			"    position(vector3(x,y,z));",
+			"    rotation(vector3(x,y,z));",
+			"    scale(vector3(x,y,z));",
 			"};"
 		],
 		"description": "set_transform (story)"
