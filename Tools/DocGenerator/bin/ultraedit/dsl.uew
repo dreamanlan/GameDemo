@@ -355,8 +355,8 @@ objsetformation
 defplayer
 defnpc
 preload
-loadui
-bindui
+load_ui
+bind_ui
 pausestory
 resumestory
 pauseallmessagehandler
