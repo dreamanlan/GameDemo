@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\GitHub\\GameDemo\\GameLibrary\\App\\GameCore\\GameCore.csproj": {}
+    "D:\\GitHub\\GameDemo\\GameLibrary\\App\\GameCore\\GameCore.csproj": {}
   },
   "projects": {
-    "d:\\GitHub\\GameDemo\\GameLibrary\\App\\GameCore\\GameCore.csproj": {
+    "D:\\GitHub\\GameDemo\\GameLibrary\\App\\GameCore\\GameCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\GitHub\\GameDemo\\GameLibrary\\App\\GameCore\\GameCore.csproj",
+        "projectUniqueName": "D:\\GitHub\\GameDemo\\GameLibrary\\App\\GameCore\\GameCore.csproj",
         "projectName": "GameCore",
-        "projectPath": "d:\\GitHub\\GameDemo\\GameLibrary\\App\\GameCore\\GameCore.csproj",
+        "projectPath": "D:\\GitHub\\GameDemo\\GameLibrary\\App\\GameCore\\GameCore.csproj",
         "packagesPath": "C:\\Users\\dreamanlan\\.nuget\\packages\\",
-        "outputPath": "d:\\GitHub\\GameDemo\\GameLibrary\\App\\GameCore\\obj\\",
+        "outputPath": "D:\\GitHub\\GameDemo\\GameLibrary\\App\\GameCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,11 +33,11 @@
           "netstandard2.1": {
             "targetAlias": "netstandard2.1",
             "projectReferences": {
-              "d:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\Common\\Common.csproj": {
-                "projectPath": "d:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\Common\\Common.csproj"
+              "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\Common\\Common.csproj": {
+                "projectPath": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\Common\\Common.csproj"
               },
-              "d:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript.csproj": {
-                "projectPath": "d:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript.csproj"
+              "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript.csproj": {
+                "projectPath": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript.csproj"
               }
             }
           }
@@ -77,14 +77,14 @@
         }
       }
     },
-    "d:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\Common\\Common.csproj": {
+    "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\Common\\Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\Common\\Common.csproj",
+        "projectUniqueName": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\Common\\Common.csproj",
         "projectName": "Common",
-        "projectPath": "d:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\Common\\Common.csproj",
+        "projectPath": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\Common\\Common.csproj",
         "packagesPath": "C:\\Users\\dreamanlan\\.nuget\\packages\\",
-        "outputPath": "d:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\Common\\obj\\",
+        "outputPath": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -106,8 +106,8 @@
           "netstandard2.1": {
             "targetAlias": "netstandard2.1",
             "projectReferences": {
-              "d:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript.csproj": {
-                "projectPath": "d:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript.csproj"
+              "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript.csproj": {
+                "projectPath": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript.csproj"
               }
             }
           }
@@ -147,14 +147,14 @@
         }
       }
     },
-    "d:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript.csproj": {
+    "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript.csproj",
+        "projectUniqueName": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript.csproj",
         "projectName": "StoryScript",
-        "projectPath": "d:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript.csproj",
+        "projectPath": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\StoryScript.csproj",
         "packagesPath": "C:\\Users\\dreamanlan\\.nuget\\packages\\",
-        "outputPath": "d:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\obj\\",
+        "outputPath": "D:\\GitHub\\GameDemo\\GameLibrary\\Infrastructure\\StoryScript\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
